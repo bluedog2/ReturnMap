@@ -70,12 +70,13 @@ public class SpriteAtlasPrebuildGenerator : IPreprocessBuildWithReport
                 continue;
             }
 
+            string atlasName = System.IO.Path.GetFileNameWithoutExtension(atlasPath);
+
             // Check if already exists
             var existingEntry = settings.FindAssetEntry(guid);
             if (existingEntry != null)
             {
                 // Ensure address matches filename
-                var atlasName = System.IO.Path.GetFileNameWithoutExtension(atlasPath);
                 if (existingEntry.address != atlasName)
                 {
                     existingEntry.address = atlasName;
@@ -85,7 +86,6 @@ public class SpriteAtlasPrebuildGenerator : IPreprocessBuildWithReport
 
             // Create addressable entry
             var entry = settings.CreateOrMoveEntry(guid, group, false, false);
-            var atlasName = System.IO.Path.GetFileNameWithoutExtension(atlasPath);
             entry.address = atlasName; // Use atlas name as address
 
             Debug.Log($"[SpriteAtlas] Added to Addressables: {atlasName} at {atlasPath}");

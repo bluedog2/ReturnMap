@@ -23,15 +23,13 @@ namespace ReTrap
         public float hangTimeThreshold = 1f;
         public float hangTimeGravityMult = 0.5f;
 
-        [Header("Dash Settings")]
-        public float dashForce = 20f;
-        public float dashDuration = 0.2f;
-        public int maxDashes = 3;
-
         [Header("Ground Detection")]
         public Transform groundCheck;
         public float groundCheckRadius = 0.2f;
         public LayerMask groundLayer;
+
+        [Header("References")]
+        public Transform visualContainer;
 
         private Rigidbody2D rb;
         private Vector2 moveInput;
@@ -39,28 +37,38 @@ namespace ReTrap
         private float coyoteTimeCounter;
         private float jumpBufferCounter;
         private bool isJumping;
-        private int currentDashes;
-        private bool isDashing;
-        private float dashTimeLeft;
 
         private PlayerInput playerInput;
-        private SpriteRenderer spriteRenderer;
         private Animator animator;
 
         private int currentAnimationHash;
+        private float groundExitTimer;
+        private const float GROUND_BUFFER = 0.1f;
+        private bool isFacingRight = true;
 
-        // Animation States (Hashes for performance)
+        // Animation States
         private static readonly int PLAYER_IDLE = Animator.StringToHash("Idle");
         private static readonly int PLAYER_RUN = Animator.StringToHash("Run");
+        private static readonly int PLAYER_JUMP_START = Animator.StringToHash("Jump_Start");
+        private static readonly int PLAYER_JUMP_LOOP = Animator.StringToHash("Jump_Loop");
+        private static readonly int PLAYER_FALL_LOOP = Animator.StringToHash("Fall_Loop");
+        private static readonly int PLAYER_LAND = Animator.StringToHash("Land");
+
+        private float jumpStartAnimTimer;
+        private float landAnimTimer;
+        private bool wasGroundedLastFrame;
 
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
             rb.gravityScale = gravityScale;
-            currentDashes = maxDashes;
             playerInput = GetComponent<PlayerInput>();
-            spriteRenderer = GetComponentInChildren<SpriteRenderer>();
             animator = GetComponent<Animator>();
+            
+            if (visualContainer == null)
+            {
+                visualContainer = transform.Find("Visual");
+            }
         }
 
         private void OnEnable()
@@ -68,25 +76,6 @@ namespace ReTrap
             if (playerInput != null)
             {
                 playerInput.onActionTriggered += HandleAction;
-                
-                // Force enable map and all actions in asset
-                if (playerInput.actions != null) 
-                {
-                    playerInput.actions.Enable();
-                    Debug.Log("Input Actions Enabled explicitly.");
-                }
-                
-                if (playerInput.currentActionMap != null) 
-                {
-                    playerInput.currentActionMap.Enable();
-                    Debug.Log($"Input Map '{playerInput.currentActionMap.name}' Enabled explicitly.");
-                }
-                else if (!string.IsNullOrEmpty(playerInput.defaultActionMap))
-                {
-                    playerInput.SwitchCurrentActionMap(playerInput.defaultActionMap);
-                    playerInput.currentActionMap?.Enable();
-                    Debug.Log($"Input Map Switched to '{playerInput.defaultActionMap}' and Enabled.");
-                }
             }
         }
 
@@ -98,38 +87,20 @@ namespace ReTrap
             }
         }
 
-        // For "Invoke CSharp Events"
         private void HandleAction(InputAction.CallbackContext context)
         {
-            string actionName = context.action.name;
-
-            if (actionName == "Move") PerformMove(context);
-            else if (actionName == "Jump") PerformJumpAction(context);
-            else if (actionName == "Dash") PerformDash(context);
-        }
-
-        // For "Send Messages"
-        public void OnMove(InputValue value)
-        {
-            moveInput = value.Get<Vector2>();
-            Debug.Log($"Input (Message): Move {moveInput}");
-        }
-
-        public void OnJump(InputValue value)
-        {
-            if (value.isPressed)
+            if (context.performed || context.started || context.canceled)
             {
-                jumpBufferCounter = jumpBufferTime;
-                Debug.Log("Input (Message): Jump Pressed");
-            }
-        }
+                string actionName = context.action.name;
 
-        public void OnDash(InputValue value)
-        {
-            if (value.isPressed && currentDashes > 0 && !isDashing)
-            {
-                StartDash();
-                Debug.Log("Input (Message): Dash Pressed");
+                if (actionName == "Move")
+                {
+                    moveInput = context.ReadValue<Vector2>();
+                }
+                else if (actionName == "Jump")
+                {
+                    PerformJumpAction(context);
+                }
             }
         }
 
@@ -138,74 +109,115 @@ namespace ReTrap
             CheckGround();
             HandleTimers();
             HandleJump();
-            FlipSprite();
             UpdateAnimationState();
+            FlipSprite();
         }
 
         private void UpdateAnimationState()
         {
             if (animator == null) return;
 
-            // FSM Logic: Ground Movement
-            if (isGrounded)
+            // 1. Landing state priority
+            if (landAnimTimer > 0)
             {
-                if (Mathf.Abs(moveInput.x) > 0.1f) 
-                    ChangeAnimationState(PLAYER_RUN);
-                else 
-                    ChangeAnimationState(PLAYER_IDLE);
+                landAnimTimer -= Time.deltaTime;
+                ChangeAnimationState(PLAYER_LAND);
+                return;
             }
-            // Future: add air states (Jump/Fall) here
+
+            // 2. Jump Start (Takeoff) animation
+            if (jumpStartAnimTimer > 0)
+            {
+                jumpStartAnimTimer -= Time.deltaTime;
+                ChangeAnimationState(PLAYER_JUMP_START);
+                
+                // Transition to air loop if starting to fall
+                if (rb.linearVelocity.y < -1.0f) jumpStartAnimTimer = 0;
+                else return;
+            }
+
+            // 3. Air states
+            if (!isGrounded)
+            {
+                if (rb.linearVelocity.y > 0.1f)
+                    ChangeAnimationState(PLAYER_JUMP_LOOP);
+                else
+                    ChangeAnimationState(PLAYER_FALL_LOOP);
+            }
+            // 4. Ground states
+            else
+            {
+                if (Mathf.Abs(moveInput.x) > 0.01f || Mathf.Abs(rb.linearVelocity.x) > 0.1f)
+                {
+                    ChangeAnimationState(PLAYER_RUN);
+                }
+                else
+                {
+                    ChangeAnimationState(PLAYER_IDLE);
+                }
+            }
         }
 
         private void ChangeAnimationState(int newStateHash)
         {
             if (currentAnimationHash == newStateHash) return;
 
-            animator.CrossFade(newStateHash, 0.1f);
+            // Crossfade with 0 duration as requested for immediate overwrite
+            animator.CrossFade(newStateHash, 0f);
             currentAnimationHash = newStateHash;
         }
 
         private void FlipSprite()
-{
-            if (moveInput.x > 0.1f)
+        {
+            // LOCK direction to input only. This ensures facing persists in Idle.
+            if (moveInput.x > 0.01f)
             {
-                if (spriteRenderer != null) spriteRenderer.flipX = false;
-                else transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+                isFacingRight = true;
             }
-            else if (moveInput.x < -0.1f)
+            else if (moveInput.x < -0.01f)
             {
-                if (spriteRenderer != null) spriteRenderer.flipX = true;
-                else transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+                isFacingRight = false;
+            }
+
+            if (visualContainer != null)
+            {
+                Vector3 scale = visualContainer.localScale;
+                float targetX = isFacingRight ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
+                
+                if (!Mathf.Approximately(scale.x, targetX))
+                {
+                    scale.x = targetX;
+                    visualContainer.localScale = scale;
+                }
             }
         }
 
+
         private void FixedUpdate()
         {
-            if (isDashing)
-            {
-                HandleDashPhysics();
-            }
-            else
-            {
-                ApplyMovement();
-                ApplyGravityScale();
-            }
+            ApplyMovement();
+            ApplyGravityScale();
         }
 
         private void CheckGround()
         {
+            wasGroundedLastFrame = isGrounded;
             isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
             if (isGrounded)
             {
+                groundExitTimer = GROUND_BUFFER;
                 coyoteTimeCounter = coyoteTime;
                 
-                // Reset jumping state when grounded and not moving upwards
-                if (rb.linearVelocity.y <= 0.1f)
+                if (!wasGroundedLastFrame && rb.linearVelocity.y <= 0.1f)
                 {
+                    landAnimTimer = 0.33f; // Duration matching the landing clip
                     isJumping = false;
-                    currentDashes = maxDashes;
                 }
+            }
+            else
+            {
+                groundExitTimer -= Time.deltaTime;
             }
         }
 
@@ -231,14 +243,12 @@ namespace ReTrap
             jumpBufferCounter = 0f;
             coyoteTimeCounter = 0f;
             isJumping = true;
+            jumpStartAnimTimer = 0.33f; // Set to actual clip duration
+
+            ChangeAnimationState(PLAYER_JUMP_START);
         }
 
-        public void PerformMove(InputAction.CallbackContext context)
-        {
-            moveInput = context.ReadValue<Vector2>();
-        }
-
-        public void PerformJumpAction(InputAction.CallbackContext context)
+        private void PerformJumpAction(InputAction.CallbackContext context)
         {
             if (context.started)
             {
@@ -249,36 +259,6 @@ namespace ReTrap
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
                 coyoteTimeCounter = 0f;
-            }
-        }
-
-        public void PerformDash(InputAction.CallbackContext context)
-        {
-            if (context.started && currentDashes > 0 && !isDashing)
-            {
-                StartDash();
-            }
-        }
-
-        private void StartDash()
-        {
-            isDashing = true;
-            dashTimeLeft = dashDuration;
-            currentDashes--;
-            rb.gravityScale = 0f;
-            
-            float dashDir = moveInput.x != 0 ? Mathf.Sign(moveInput.x) : transform.localScale.x;
-            rb.linearVelocity = new Vector2(dashDir * dashForce, 0f);
-        }
-
-        private void HandleDashPhysics()
-        {
-            dashTimeLeft -= Time.fixedDeltaTime;
-            if (dashTimeLeft <= 0)
-            {
-                isDashing = false;
-                rb.gravityScale = gravityScale;
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x * 0.5f, rb.linearVelocity.y);
             }
         }
 
@@ -300,7 +280,6 @@ namespace ReTrap
             }
             else if (isJumping && Mathf.Abs(rb.linearVelocity.y) < hangTimeThreshold)
             {
-                // Hang Time logic
                 rb.gravityScale = gravityScale * hangTimeGravityMult;
             }
             else
