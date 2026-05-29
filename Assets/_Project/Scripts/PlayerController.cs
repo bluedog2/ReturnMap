@@ -44,6 +44,14 @@ namespace ReTrap
         private float dashTimeLeft;
 
         private PlayerInput playerInput;
+        private SpriteRenderer spriteRenderer;
+        private Animator animator;
+
+        private int currentAnimationHash;
+
+        // Animation States (Hashes for performance)
+        private static readonly int PLAYER_IDLE = Animator.StringToHash("Idle");
+        private static readonly int PLAYER_RUN = Animator.StringToHash("Run");
 
         private void Awake()
         {
@@ -51,6 +59,8 @@ namespace ReTrap
             rb.gravityScale = gravityScale;
             currentDashes = maxDashes;
             playerInput = GetComponent<PlayerInput>();
+            spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+            animator = GetComponent<Animator>();
         }
 
         private void OnEnable()
@@ -128,6 +138,45 @@ namespace ReTrap
             CheckGround();
             HandleTimers();
             HandleJump();
+            FlipSprite();
+            UpdateAnimationState();
+        }
+
+        private void UpdateAnimationState()
+        {
+            if (animator == null) return;
+
+            // FSM Logic: Ground Movement
+            if (isGrounded)
+            {
+                if (Mathf.Abs(moveInput.x) > 0.1f) 
+                    ChangeAnimationState(PLAYER_RUN);
+                else 
+                    ChangeAnimationState(PLAYER_IDLE);
+            }
+            // Future: add air states (Jump/Fall) here
+        }
+
+        private void ChangeAnimationState(int newStateHash)
+        {
+            if (currentAnimationHash == newStateHash) return;
+
+            animator.CrossFade(newStateHash, 0.1f);
+            currentAnimationHash = newStateHash;
+        }
+
+        private void FlipSprite()
+{
+            if (moveInput.x > 0.1f)
+            {
+                if (spriteRenderer != null) spriteRenderer.flipX = false;
+                else transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            }
+            else if (moveInput.x < -0.1f)
+            {
+                if (spriteRenderer != null) spriteRenderer.flipX = true;
+                else transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            }
         }
 
         private void FixedUpdate()
@@ -145,16 +194,17 @@ namespace ReTrap
 
         private void CheckGround()
         {
-            bool wasGrounded = isGrounded;
             isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
             if (isGrounded)
             {
                 coyoteTimeCounter = coyoteTime;
-                if (!wasGrounded)
+                
+                // Reset jumping state when grounded and not moving upwards
+                if (rb.linearVelocity.y <= 0.1f)
                 {
                     isJumping = false;
-                    currentDashes = maxDashes; // Reset dashes on ground
+                    currentDashes = maxDashes;
                 }
             }
         }
@@ -181,13 +231,11 @@ namespace ReTrap
             jumpBufferCounter = 0f;
             coyoteTimeCounter = 0f;
             isJumping = true;
-            Debug.Log("Jump Performed");
         }
 
         public void PerformMove(InputAction.CallbackContext context)
         {
             moveInput = context.ReadValue<Vector2>();
-            Debug.Log($"Move Input Updated: {moveInput}");
         }
 
         public void PerformJumpAction(InputAction.CallbackContext context)
