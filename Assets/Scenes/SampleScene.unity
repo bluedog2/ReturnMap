@@ -275,7 +275,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -447,7 +447,7 @@ Transform:
   m_GameObject: {fileID: 923383017}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.12, y: -0.32200003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -629,9 +629,9 @@ MonoBehaviour:
   moveSpeed: 8
   acceleration: 50
   deceleration: 50
-  jumpForce: 12
+  jumpForce: 30
   jumpCutMultiplier: 0.5
-  gravityScale: 3
+  gravityScale: 4
   fallGravityMultiplier: 1.5
   coyoteTime: 0.15
   jumpBufferTime: 0.15
@@ -743,8 +743,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 1.152}
-  m_Size: {x: 1, y: 2.56}
+  m_Offset: {x: -0.12, y: 2.018}
+  m_Size: {x: 2.982, y: 4.68}
   m_Direction: 0
 --- !u!1 &1693843772
 GameObject:
@@ -820,7 +820,7 @@ MonoBehaviour:
     CustomLookAtTarget: 1
   Lens:
     FieldOfView: 40
-    OrthographicSize: 10
+    OrthographicSize: 5
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -934,7 +934,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 220241982381024109, guid: 145b1773f98019e45bb5dc8883a5faa0, type: 3}
+  m_Sprite: {fileID: -6380253342915259589, guid: 145b1773f98019e45bb5dc8883a5faa0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
