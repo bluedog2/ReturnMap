@@ -1,300 +1,275 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
 namespace ReTrap
 {
+    /// <summary>
+    /// 플레이어 물리 / 입력 전담 컨트롤러.
+    /// 애니메이션은 PlayerAnimationFSM 이 담당하며, 이 클래스는 이벤트와 상태 프로퍼티만 노출합니다.
+    /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
     public class PlayerController : MonoBehaviour
     {
-        [Header("Movement Settings")]
-        public float moveSpeed = 8f;
-        public float acceleration = 50f;
-        public float deceleration = 50f;
+        // ── Inspector ─────────────────────────────────────────────────────────
 
-        [Header("Jump Settings")]
-        public float jumpForce = 12f;
-        public float jumpCutMultiplier = 0.5f;
-        public float gravityScale = 3f;
-        public float fallGravityMultiplier = 1.5f;
+        [Header("Movement")]
+        [SerializeField] private float moveSpeed       = 8f;
+        [SerializeField] private float acceleration    = 50f;
+        [SerializeField] private float deceleration    = 50f;
 
-        [Header("Advanced Jump Settings")]
-        public float coyoteTime = 0.15f;
-        public float jumpBufferTime = 0.15f;
-        public float hangTimeThreshold = 1f;
-        public float hangTimeGravityMult = 0.5f;
+        [Header("Jump")]
+        [SerializeField] private float jumpForce            = 12f;
+        [SerializeField] private float jumpCutMultiplier    = 0.5f;
+        [SerializeField] private float gravityScale         = 3f;
+        [SerializeField] private float fallGravityMultiplier = 1.5f;
+
+        [Header("Advanced Jump")]
+        [SerializeField] private float coyoteTime         = 0.15f;
+        [SerializeField] private float jumpBufferTime     = 0.15f;
+        [SerializeField] private float hangTimeThreshold  = 1f;
+        [SerializeField] private float hangTimeGravityMult = 0.5f;
+
+        [Header("Dash")]
+        [SerializeField] private float dashSpeed    = 18f;
+        [SerializeField] private float dashDuration = 0.2f;
+        [SerializeField] private float dashCooldown = 0.1f;
+        [SerializeField] private int   maxDashCount = 3;
 
         [Header("Ground Detection")]
-        public Transform groundCheck;
-        public float groundCheckRadius = 0.2f;
-        public LayerMask groundLayer;
+        [SerializeField] private Transform groundCheck;
+        [SerializeField] private float     groundCheckRadius = 0.2f;
+        [SerializeField] private LayerMask groundLayer;
 
         [Header("References")]
-        public Transform visualContainer;
+        [SerializeField] private Transform visualContainer;
+
+        // ── 외부 공개 상태 (FSM 이 읽음) ──────────────────────────────────────
+
+        public Vector2 MoveInput       { get; private set; }
+        public Vector2 Velocity        => rb.linearVelocity;
+        public bool    IsGrounded      { get; private set; }
+        public bool    IsJumping       { get; private set; }
+        public bool    IsDashing       { get; private set; }
+        public bool    IsFacingRight   { get; private set; } = true;
+        public int     RemainingDashes { get; private set; }
+
+        // ── 이벤트 (FSM 이 구독) ──────────────────────────────────────────────
+
+        public event Action OnJump;
+        public event Action OnLand;
+        public event Action OnDashStart;
+        public event Action OnDashEnd;
+
+        // ── Private ───────────────────────────────────────────────────────────
 
         private Rigidbody2D rb;
-        private Vector2 moveInput;
-        private bool isGrounded;
+        private PlayerInput playerInput;
+
         private float coyoteTimeCounter;
         private float jumpBufferCounter;
-        private bool isJumping;
+        private float dashCooldownCounter;
+        private float dashTimer;
+        private bool  wasGroundedLastFrame;
 
-        private PlayerInput playerInput;
-        private Animator animator;
-
-        private int currentAnimationHash;
-        private float groundExitTimer;
-        private const float GROUND_BUFFER = 0.1f;
-        private bool isFacingRight = true;
-
-        // Animation States
-        private static readonly int PLAYER_IDLE = Animator.StringToHash("Idle");
-        private static readonly int PLAYER_RUN = Animator.StringToHash("Run");
-        private static readonly int PLAYER_JUMP_START = Animator.StringToHash("Jump_Start");
-        private static readonly int PLAYER_JUMP_LOOP = Animator.StringToHash("Jump_Loop");
-        private static readonly int PLAYER_FALL_LOOP = Animator.StringToHash("Fall_Loop");
-        private static readonly int PLAYER_LAND = Animator.StringToHash("Land");
-
-        private float jumpStartAnimTimer;
-        private float landAnimTimer;
-        private bool wasGroundedLastFrame;
+        // ── Unity ─────────────────────────────────────────────────────────────
 
         private void Awake()
         {
-            rb = GetComponent<Rigidbody2D>();
-            rb.gravityScale = gravityScale;
+            rb          = GetComponent<Rigidbody2D>();
             playerInput = GetComponent<PlayerInput>();
-            animator = GetComponent<Animator>();
-            
+
+            rb.gravityScale = gravityScale;
+            RemainingDashes = maxDashCount;
+
             if (visualContainer == null)
-            {
                 visualContainer = transform.Find("Visual");
-            }
         }
 
-        private void OnEnable()
-        {
-            if (playerInput != null)
-            {
-                playerInput.onActionTriggered += HandleAction;
-            }
-        }
-
-        private void OnDisable()
-        {
-            if (playerInput != null)
-            {
-                playerInput.onActionTriggered -= HandleAction;
-            }
-        }
-
-        private void HandleAction(InputAction.CallbackContext context)
-        {
-            if (context.performed || context.started || context.canceled)
-            {
-                string actionName = context.action.name;
-
-                if (actionName == "Move")
-                {
-                    moveInput = context.ReadValue<Vector2>();
-                }
-                else if (actionName == "Jump")
-                {
-                    PerformJumpAction(context);
-                }
-            }
-        }
+        private void OnEnable()  => playerInput.onActionTriggered += HandleAction;
+        private void OnDisable() => playerInput.onActionTriggered -= HandleAction;
 
         private void Update()
         {
             CheckGround();
-            HandleTimers();
+            TickTimers();
             HandleJump();
-            UpdateAnimationState();
+            TickDash();
             FlipSprite();
         }
 
-        private void UpdateAnimationState()
-        {
-            if (animator == null) return;
-
-            // 1. Landing state priority
-            if (landAnimTimer > 0)
-            {
-                landAnimTimer -= Time.deltaTime;
-                ChangeAnimationState(PLAYER_LAND);
-                return;
-            }
-
-            // 2. Jump Start (Takeoff) animation
-            if (jumpStartAnimTimer > 0)
-            {
-                jumpStartAnimTimer -= Time.deltaTime;
-                ChangeAnimationState(PLAYER_JUMP_START);
-                
-                // Transition to air loop if starting to fall
-                if (rb.linearVelocity.y < -1.0f) jumpStartAnimTimer = 0;
-                else return;
-            }
-
-            // 3. Air states
-            if (!isGrounded)
-            {
-                if (rb.linearVelocity.y > 0.1f)
-                    ChangeAnimationState(PLAYER_JUMP_LOOP);
-                else
-                    ChangeAnimationState(PLAYER_FALL_LOOP);
-            }
-            // 4. Ground states
-            else
-            {
-                if (Mathf.Abs(moveInput.x) > 0.01f || Mathf.Abs(rb.linearVelocity.x) > 0.1f)
-                {
-                    ChangeAnimationState(PLAYER_RUN);
-                }
-                else
-                {
-                    ChangeAnimationState(PLAYER_IDLE);
-                }
-            }
-        }
-
-        private void ChangeAnimationState(int newStateHash)
-        {
-            if (currentAnimationHash == newStateHash) return;
-
-            // Crossfade with 0 duration as requested for immediate overwrite
-            animator.CrossFade(newStateHash, 0f);
-            currentAnimationHash = newStateHash;
-        }
-
-        private void FlipSprite()
-        {
-            // LOCK direction to input only. This ensures facing persists in Idle.
-            if (moveInput.x > 0.01f)
-            {
-                isFacingRight = true;
-            }
-            else if (moveInput.x < -0.01f)
-            {
-                isFacingRight = false;
-            }
-
-            if (visualContainer != null)
-            {
-                Vector3 scale = visualContainer.localScale;
-                float targetX = isFacingRight ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
-                
-                if (!Mathf.Approximately(scale.x, targetX))
-                {
-                    scale.x = targetX;
-                    visualContainer.localScale = scale;
-                }
-            }
-        }
-
-
         private void FixedUpdate()
         {
-            ApplyMovement();
-            ApplyGravityScale();
+            if (!IsDashing)
+            {
+                ApplyMovement();
+                ApplyGravityScale();
+            }
         }
+
+        // ── Input ─────────────────────────────────────────────────────────────
+
+        private void HandleAction(InputAction.CallbackContext ctx)
+        {
+            switch (ctx.action.name)
+            {
+                case "Move":
+                    if (ctx.performed || ctx.canceled)
+                        MoveInput = ctx.ReadValue<Vector2>();
+                    break;
+
+                case "Jump":
+                    HandleJumpInput(ctx);
+                    break;
+
+                case "Dash":
+                    if (ctx.started) TryDash();
+                    break;
+            }
+        }
+
+        private void HandleJumpInput(InputAction.CallbackContext ctx)
+        {
+            if (ctx.started)
+                jumpBufferCounter = jumpBufferTime;
+
+            if (ctx.canceled && rb.linearVelocity.y > 0f)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x,
+                                                rb.linearVelocity.y * jumpCutMultiplier);
+                coyoteTimeCounter = 0f;
+            }
+        }
+
+        // ── Ground ────────────────────────────────────────────────────────────
 
         private void CheckGround()
         {
-            wasGroundedLastFrame = isGrounded;
-            isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+            wasGroundedLastFrame = IsGrounded;
+            IsGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
-            if (isGrounded)
+            if (IsGrounded)
             {
-                groundExitTimer = GROUND_BUFFER;
                 coyoteTimeCounter = coyoteTime;
-                
+                RemainingDashes   = maxDashCount; // 착지 시 대시 충전
+
                 if (!wasGroundedLastFrame && rb.linearVelocity.y <= 0.1f)
                 {
-                    landAnimTimer = 0.33f; // Duration matching the landing clip
-                    isJumping = false;
+                    IsJumping = false;
+                    OnLand?.Invoke();
                 }
             }
-            else
-            {
-                groundExitTimer -= Time.deltaTime;
-            }
         }
 
-        private void HandleTimers()
+        // ── Timers ────────────────────────────────────────────────────────────
+
+        private void TickTimers()
         {
-            if (!isGrounded)
-                coyoteTimeCounter -= Time.deltaTime;
-
-            jumpBufferCounter -= Time.deltaTime;
+            if (!IsGrounded)        coyoteTimeCounter  -= Time.deltaTime;
+            jumpBufferCounter  -= Time.deltaTime;
+            dashCooldownCounter -= Time.deltaTime;
         }
+
+        // ── Jump ──────────────────────────────────────────────────────────────
 
         private void HandleJump()
         {
-            if (jumpBufferCounter > 0f && coyoteTimeCounter > 0f && !isJumping)
-            {
+            if (jumpBufferCounter > 0f && coyoteTimeCounter > 0f && !IsJumping && !IsDashing)
                 PerformJump();
-            }
         }
 
         private void PerformJump()
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            jumpBufferCounter = 0f;
-            coyoteTimeCounter = 0f;
-            isJumping = true;
-            jumpStartAnimTimer = 0.33f; // Set to actual clip duration
-
-            ChangeAnimationState(PLAYER_JUMP_START);
+            jumpBufferCounter  = 0f;
+            coyoteTimeCounter  = 0f;
+            IsJumping          = true;
+            OnJump?.Invoke();
         }
 
-        private void PerformJumpAction(InputAction.CallbackContext context)
+        // ── Dash ──────────────────────────────────────────────────────────────
+
+        private void TryDash()
         {
-            if (context.started)
-            {
-                jumpBufferCounter = jumpBufferTime;
-            }
+            if (RemainingDashes <= 0 || dashCooldownCounter > 0f || IsDashing) return;
 
-            if (context.canceled && rb.linearVelocity.y > 0)
+            RemainingDashes--;
+            dashCooldownCounter = dashCooldown;
+            dashTimer           = dashDuration;
+            IsDashing           = true;
+
+            float dir = Mathf.Abs(MoveInput.x) > 0.01f
+                ? Mathf.Sign(MoveInput.x)
+                : (IsFacingRight ? 1f : -1f);
+
+            rb.linearVelocity = new Vector2(dir * dashSpeed, 0f);
+            rb.gravityScale   = 0f;
+
+            OnDashStart?.Invoke();
+        }
+
+        private void TickDash()
+        {
+            if (!IsDashing) return;
+
+            dashTimer -= Time.deltaTime;
+            if (dashTimer <= 0f)
             {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
-                coyoteTimeCounter = 0f;
+                IsDashing       = false;
+                rb.gravityScale = gravityScale;
+                OnDashEnd?.Invoke();
             }
         }
+
+        /// <summary>오브젝트 획득 등으로 외부에서 대시 충전.</summary>
+        public void AddDashCharge(int count = 1)
+            => RemainingDashes = Mathf.Min(RemainingDashes + count, maxDashCount);
+
+        // ── Movement / Gravity ────────────────────────────────────────────────
 
         private void ApplyMovement()
         {
-            float targetSpeed = moveInput.x * moveSpeed;
-            float speedDif = targetSpeed - rb.linearVelocity.x;
-            float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : deceleration;
-            float movement = speedDif * accelRate;
-
-            rb.AddForce(movement * Vector2.right, ForceMode2D.Force);
+            float targetSpeed = MoveInput.x * moveSpeed;
+            float speedDiff   = targetSpeed - rb.linearVelocity.x;
+            float accelRate   = Mathf.Abs(targetSpeed) > 0.01f ? acceleration : deceleration;
+            rb.AddForce(speedDiff * accelRate * Vector2.right, ForceMode2D.Force);
         }
 
         private void ApplyGravityScale()
         {
-            if (rb.linearVelocity.y < 0)
-            {
+            if (rb.linearVelocity.y < 0f)
                 rb.gravityScale = gravityScale * fallGravityMultiplier;
-            }
-            else if (isJumping && Mathf.Abs(rb.linearVelocity.y) < hangTimeThreshold)
-            {
+            else if (IsJumping && Mathf.Abs(rb.linearVelocity.y) < hangTimeThreshold)
                 rb.gravityScale = gravityScale * hangTimeGravityMult;
-            }
             else
-            {
                 rb.gravityScale = gravityScale;
+        }
+
+        // ── Sprite Flip ───────────────────────────────────────────────────────
+
+        private void FlipSprite()
+        {
+            if      (MoveInput.x > 0.01f)  IsFacingRight = true;
+            else if (MoveInput.x < -0.01f) IsFacingRight = false;
+
+            if (visualContainer == null) return;
+
+            Vector3 s   = visualContainer.localScale;
+            float targetX = IsFacingRight ? Mathf.Abs(s.x) : -Mathf.Abs(s.x);
+            if (!Mathf.Approximately(s.x, targetX))
+            {
+                s.x = targetX;
+                visualContainer.localScale = s;
             }
         }
 
+        // ── Gizmos ────────────────────────────────────────────────────────────
+
         private void OnDrawGizmosSelected()
         {
-            if (groundCheck != null)
-            {
-                Gizmos.color = Color.red;
-                Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
-            }
+            if (groundCheck == null) return;
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
         }
     }
 }
