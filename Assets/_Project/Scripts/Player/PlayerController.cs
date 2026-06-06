@@ -63,8 +63,9 @@ namespace ReTrap
 
         // ── Private ───────────────────────────────────────────────────────────
 
-        private Rigidbody2D rb;
-        private PlayerInput playerInput;
+        private Rigidbody2D    rb;
+        private PlayerInput    playerInput;
+        private SpriteRenderer visualSR;   // Visual 자식의 SpriteRenderer (flipX 용)
 
         private float coyoteTimeCounter;
         private float jumpBufferCounter;
@@ -84,6 +85,9 @@ namespace ReTrap
 
             if (visualContainer == null)
                 visualContainer = transform.Find("Visual");
+
+            if (visualContainer != null)
+                visualSR = visualContainer.GetComponent<SpriteRenderer>();
         }
 
         private void OnEnable()  => playerInput.onActionTriggered += HandleAction;
@@ -95,7 +99,14 @@ namespace ReTrap
             TickTimers();
             HandleJump();
             TickDash();
-            FlipSprite();
+            UpdateFacingDirection(); // IsFacingRight 방향만 갱신
+        }
+
+        // Animator 갱신(Update → Animator → LateUpdate) 순서이므로
+        // LateUpdate 에서 Scale 을 덮어써야 Animator WriteDefaults 의 영향을 받지 않습니다.
+        private void LateUpdate()
+        {
+            ApplyFlip();
         }
 
         private void FixedUpdate()
@@ -247,20 +258,22 @@ namespace ReTrap
 
         // ── Sprite Flip ───────────────────────────────────────────────────────
 
-        private void FlipSprite()
+        /// <summary>입력에 따라 IsFacingRight 플래그만 갱신. Update 에서 호출.</summary>
+        private void UpdateFacingDirection()
         {
             if      (MoveInput.x > 0.01f)  IsFacingRight = true;
             else if (MoveInput.x < -0.01f) IsFacingRight = false;
+        }
 
-            if (visualContainer == null) return;
-
-            Vector3 s   = visualContainer.localScale;
-            float targetX = IsFacingRight ? Mathf.Abs(s.x) : -Mathf.Abs(s.x);
-            if (!Mathf.Approximately(s.x, targetX))
-            {
-                s.x = targetX;
-                visualContainer.localScale = s;
-            }
+        /// <summary>
+        /// IsFacingRight 에 따라 SpriteRenderer.flipX 를 설정합니다.
+        /// localScale 대신 flipX 를 사용하므로 Animator 의 Scale 바인딩 영향을 받지 않습니다.
+        /// LateUpdate 에서 호출 → Animator 갱신(Update~LateUpdate 사이) 이후 실행 보장.
+        /// </summary>
+        private void ApplyFlip()
+        {
+            if (visualSR == null) return;
+            visualSR.flipX = !IsFacingRight;
         }
 
         // ── Gizmos ────────────────────────────────────────────────────────────

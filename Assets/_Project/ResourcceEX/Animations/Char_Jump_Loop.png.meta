@@ -1,57 +1,12 @@
 fileFormatVersion: 2
-guid: 58f3a2a6adad70a4b8ea77726850c2d2
+guid: 01872374b25ebf54cb34e2a62b68ed60
 labels:
 - UnityAI
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2844922160836227370
-    second: Lord_Idle_0
-  - first:
-      213: 4081104624904058242
-    second: Lord_Idle_1
-  - first:
-      213: 8204837667187830371
-    second: Lord_Idle_2
-  - first:
-      213: 3962168275917698948
-    second: Lord_Idle_3
-  - first:
-      213: -6330009917172692584
-    second: Lord_Idle_4
-  - first:
-      213: 6762186987690636975
-    second: Lord_Idle_5
-  - first:
-      213: -2371099829663280339
-    second: Lord_Idle_6
-  - first:
-      213: 6678315965824824928
-    second: Lord_Idle_7
-  - first:
-      213: -9002216680604547270
-    second: Lord_Idle_8
-  - first:
-      213: 574601202704911549
-    second: Lord_Idle_9
-  - first:
-      213: -7583750905308515433
-    second: Lord_Idle_10
-  - first:
-      213: -3584061313653943624
-    second: Lord_Idle_11
-  - first:
-      213: 8433717736360949196
-    second: Lord_Idle_12
-  - first:
-      213: -2576417720376735098
-    second: Lord_Idle_13
-  - first:
-      213: -7093617291331168328
-    second: Lord_Idle_14
-  - first:
-      213: -4636554838243177080
-    second: Lord_Idle_15
+      213: 7352639385291648520
+    second: Char_Jump_Loop_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -84,7 +39,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -98,7 +53,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 60
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -122,7 +77,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -147,7 +102,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Lord_Idle_0
+      name: frame_0
       rect:
         serializedVersion: 2
         x: 0
@@ -160,16 +115,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6de48b52e5ec488d0800000000000000
-      internalID: -2844922160836227370
+      spriteID: 11d389640169c874f83ce7dc9e6c8192
+      internalID: -1618705081
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lord_Idle_1
+      name: frame_1
       rect:
         serializedVersion: 2
         x: 256
@@ -182,16 +137,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2853c92a80ff2a830800000000000000
-      internalID: 4081104624904058242
+      spriteID: b894013aad6634d41b4f43dd789721ef
+      internalID: 1539934311
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lord_Idle_2
+      name: frame_2
       rect:
         serializedVersion: 2
         x: 512
@@ -204,16 +159,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 36ea97023607dd170800000000000000
-      internalID: 8204837667187830371
+      spriteID: 91a3b2bd5b153ee46b264f0cda546520
+      internalID: 1016581347
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lord_Idle_3
+      name: frame_3
       rect:
         serializedVersion: 2
         x: 768
@@ -226,16 +181,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4877562fd037cf630800000000000000
-      internalID: 3962168275917698948
+      spriteID: a723897bb1a3e9846a42e139a89ea442
+      internalID: -751062371
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lord_Idle_4
+      name: frame_4
       rect:
         serializedVersion: 2
         x: 0
@@ -248,16 +203,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 899c836a4894728a0800000000000000
-      internalID: -6330009917172692584
+      spriteID: e4c9e1e5a2a030541a84353ae7c06854
+      internalID: -1327190569
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lord_Idle_5
+      name: frame_5
       rect:
         serializedVersion: 2
         x: 256
@@ -270,16 +225,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: fa6b11adc3d18dd50800000000000000
-      internalID: 6762186987690636975
+      spriteID: a3325b208370b5348b4a5b38d22cb8b7
+      internalID: -808840801
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lord_Idle_6
+      name: frame_6
       rect:
         serializedVersion: 2
         x: 512
@@ -292,16 +247,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d235eed7449281fd0800000000000000
-      internalID: -2371099829663280339
+      spriteID: 25ab493bbff72cf43882f064c4122dc3
+      internalID: 359022154
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lord_Idle_7
+      name: frame_7
       rect:
         serializedVersion: 2
         x: 768
@@ -314,16 +269,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 066fec8dcf42eac50800000000000000
-      internalID: 6678315965824824928
+      spriteID: b8dee350fc95f6646accb9838c8a11da
+      internalID: -1750847386
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lord_Idle_8
+      name: frame_8
       rect:
         serializedVersion: 2
         x: 0
@@ -336,16 +291,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a374871ff93b11380800000000000000
-      internalID: -9002216680604547270
+      spriteID: 3156f546729004d46870bca9760da51d
+      internalID: -1898776327
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lord_Idle_9
+      name: frame_9
       rect:
         serializedVersion: 2
         x: 256
@@ -358,16 +313,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: dbc0dbedfb469f700800000000000000
-      internalID: 574601202704911549
+      spriteID: ffeb72067110e7c49accfd1426852bdc
+      internalID: -932800389
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lord_Idle_10
+      name: frame_10
       rect:
         serializedVersion: 2
         x: 512
@@ -380,16 +335,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 793f9086bba11c690800000000000000
-      internalID: -7583750905308515433
+      spriteID: edf3e7e4e8121e14fad32272fb378ef3
+      internalID: 1628242404
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lord_Idle_11
+      name: frame_11
       rect:
         serializedVersion: 2
         x: 768
@@ -402,16 +357,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8b2df62793bd24ec0800000000000000
-      internalID: -3584061313653943624
+      spriteID: c0682b46856d4634d942b3f03e4575f9
+      internalID: -88014026
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lord_Idle_12
+      name: frame_12
       rect:
         serializedVersion: 2
         x: 0
@@ -424,16 +379,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: cc5b4b3f8959a0570800000000000000
-      internalID: 8433717736360949196
+      spriteID: cdb13af8b92071a49847403ca2b5328a
+      internalID: 1936389232
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lord_Idle_13
+      name: frame_13
       rect:
         serializedVersion: 2
         x: 256
@@ -446,16 +401,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 68a4ce7dbb9be3cd0800000000000000
-      internalID: -2576417720376735098
+      spriteID: 96f093c0358e60d4eb7c58a89a1c1071
+      internalID: 566796569
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lord_Idle_14
+      name: frame_14
       rect:
         serializedVersion: 2
         x: 512
@@ -468,16 +423,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8b713a938a86e8d90800000000000000
-      internalID: -7093617291331168328
+      spriteID: e87416538fa7a6440b3e4f3f145a8f65
+      internalID: -382277809
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lord_Idle_15
+      name: frame_15
       rect:
         serializedVersion: 2
         x: 768
@@ -490,10 +445,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 88d85eca0f5a7afb0800000000000000
-      internalID: -4636554838243177080
+      spriteID: d1ca4da388beb6c4b9aca131c074509f
+      internalID: 901491298
       vertices: []
       indices: 
       edges: []
@@ -512,38 +467,22 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Lord_Idle_0: -2844922160836227370
-      Lord_Idle_1: 4081104624904058242
-      Lord_Idle_10: -7583750905308515433
-      Lord_Idle_11: -3584061313653943624
-      Lord_Idle_12: 8433717736360949196
-      Lord_Idle_13: -2576417720376735098
-      Lord_Idle_14: -7093617291331168328
-      Lord_Idle_15: -4636554838243177080
-      Lord_Idle_2: 8204837667187830371
-      Lord_Idle_3: 3962168275917698948
-      Lord_Idle_4: -6330009917172692584
-      Lord_Idle_5: 6762186987690636975
-      Lord_Idle_6: -2371099829663280339
-      Lord_Idle_7: 6678315965824824928
-      Lord_Idle_8: -9002216680604547270
-      Lord_Idle_9: 574601202704911549
-      frame_0: -1353553373
-      frame_1: -837042017
-      frame_10: -455925958
-      frame_11: -110148290
-      frame_12: -904231833
-      frame_13: 957678336
-      frame_14: -140461121
-      frame_15: 867353727
-      frame_2: 1964504969
-      frame_3: -1785510291
-      frame_4: -1481024008
-      frame_5: 79688836
-      frame_6: -169963414
-      frame_7: -1878820734
-      frame_8: 901872660
-      frame_9: 1658856756
+      frame_0: -1618705081
+      frame_1: 1539934311
+      frame_10: 1628242404
+      frame_11: -88014026
+      frame_12: 1936389232
+      frame_13: 566796569
+      frame_14: -382277809
+      frame_15: 901491298
+      frame_2: 1016581347
+      frame_3: -751062371
+      frame_4: -1327190569
+      frame_5: -808840801
+      frame_6: 359022154
+      frame_7: -1750847386
+      frame_8: -1898776327
+      frame_9: -932800389
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

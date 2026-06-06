@@ -1,57 +1,45 @@
 fileFormatVersion: 2
-guid: 932fcfdf60e06d6489471507b0483590
+guid: 07a3093eb135f8a43b53fd4e190dd7b0
 labels:
 - UnityAI
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -652628154035121358
-    second: Lord_Jump_Final_0
+      213: -5842718609361386727
+    second: Char_Idle_0
   - first:
-      213: -266553960043444550
-    second: Lord_Jump_Final_1
+      213: -7068015219602756109
+    second: Char_Idle_1
   - first:
-      213: 3556424459614259916
-    second: Lord_Jump_Final_2
+      213: -3362021164030270283
+    second: Char_Idle_2
   - first:
-      213: -579689720874359987
-    second: Lord_Jump_Final_3
+      213: 340445503034521470
+    second: Char_Idle_3
   - first:
-      213: -5105019307120656682
-    second: Lord_Jump_Final_4
+      213: -536112031348893233
+    second: Char_Idle_4
   - first:
-      213: 8441632686002305355
-    second: Lord_Jump_Final_5
+      213: -7138143156099692456
+    second: Char_Idle_5
   - first:
-      213: 4744728978225720803
-    second: Lord_Jump_Final_6
+      213: -4885837515809820722
+    second: Char_Idle_6
   - first:
-      213: -4420631818969647614
-    second: Lord_Jump_Final_7
+      213: 4861479943368460045
+    second: Char_Idle_7
   - first:
-      213: 6386978171564507731
-    second: Lord_Jump_Final_8
+      213: -477502873661059815
+    second: Char_Idle_8
   - first:
-      213: -4083228071770838046
-    second: Lord_Jump_Final_9
+      213: -4730481720660652651
+    second: Char_Idle_9
   - first:
-      213: 3395070845582214589
-    second: Lord_Jump_Final_10
+      213: 5623942951717697347
+    second: Char_Idle_10
   - first:
-      213: -4110650847529960192
-    second: Lord_Jump_Final_11
-  - first:
-      213: 8977910961818139735
-    second: Lord_Jump_Final_12
-  - first:
-      213: 3586288779688579911
-    second: Lord_Jump_Final_13
-  - first:
-      213: 6226608821687738866
-    second: Lord_Jump_Final_14
-  - first:
-      213: 3380538133260417779
-    second: Lord_Jump_Final_15
+      213: 8572770851116020399
+    second: Char_Idle_11
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -98,7 +86,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1024
+  spritePixelsToUnits: 83
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -122,7 +110,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -147,353 +135,265 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Lord_Jump_Final_0
+      name: Char_Idle_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 768
+        y: 682
         width: 256
-        height: 256
+        height: 341
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2335154d62661f6f0800000000000000
-      internalID: -652628154035121358
+      spriteID: 913437e716e7aeea0800000000000000
+      internalID: -5842718609361386727
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lord_Jump_Final_1
+      name: Char_Idle_1
       rect:
         serializedVersion: 2
         x: 256
-        y: 768
+        y: 682
         width: 256
-        height: 256
+        height: 341
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ab6032ae5920d4cf0800000000000000
-      internalID: -266553960043444550
+      spriteID: 3fde5801b9d59ed90800000000000000
+      internalID: -7068015219602756109
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lord_Jump_Final_2
+      name: Char_Idle_2
       rect:
         serializedVersion: 2
         x: 512
-        y: 768
+        y: 682
         width: 256
-        height: 256
+        height: 341
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cca81d90435fa5130800000000000000
-      internalID: 3556424459614259916
+      spriteID: 5b461a66093b751d0800000000000000
+      internalID: -3362021164030270283
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lord_Jump_Final_3
+      name: Char_Idle_3
       rect:
         serializedVersion: 2
         x: 768
-        y: 768
+        y: 682
         width: 256
-        height: 256
+        height: 341
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d43a65b254784f7f0800000000000000
-      internalID: -579689720874359987
+      spriteID: e7770c9916189b400800000000000000
+      internalID: 340445503034521470
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lord_Jump_Final_4
+      name: Char_Idle_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 512
+        y: 341
         width: 256
-        height: 256
+        height: 341
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6deff8bdcf35729b0800000000000000
-      internalID: -5105019307120656682
+      spriteID: fc9d2aba2f85f88f0800000000000000
+      internalID: -536112031348893233
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lord_Jump_Final_5
+      name: Char_Idle_5
       rect:
         serializedVersion: 2
         x: 256
-        y: 512
+        y: 341
         width: 256
-        height: 256
+        height: 341
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b497e75c334b62570800000000000000
-      internalID: 8441632686002305355
+      spriteID: 858cac87e9830fc90800000000000000
+      internalID: -7138143156099692456
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lord_Jump_Final_6
+      name: Char_Idle_6
       rect:
         serializedVersion: 2
         x: 512
-        y: 512
+        y: 341
         width: 256
-        height: 256
+        height: 341
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3ed65a6fdd9a8d140800000000000000
-      internalID: 4744728978225720803
+      spriteID: ecfe0e76aa4023cb0800000000000000
+      internalID: -4885837515809820722
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lord_Jump_Final_7
+      name: Char_Idle_7
       rect:
         serializedVersion: 2
         x: 768
-        y: 512
+        y: 341
         width: 256
-        height: 256
+        height: 341
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 206768b38c2c6a2c0800000000000000
-      internalID: -4420631818969647614
+      spriteID: d07c9235042777340800000000000000
+      internalID: 4861479943368460045
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lord_Jump_Final_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 256
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 352c640beca13a850800000000000000
-      internalID: 6386978171564507731
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Lord_Jump_Final_9
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 256
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2eb223dd3b57557c0800000000000000
-      internalID: -4083228071770838046
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Lord_Jump_Final_10
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 256
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: db5863a32f6bd1f20800000000000000
-      internalID: 3395070845582214589
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Lord_Jump_Final_11
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 256
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 00d715555d804f6c0800000000000000
-      internalID: -4110650847529960192
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Lord_Jump_Final_12
+      name: Char_Idle_8
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 256
-        height: 256
+        height: 341
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 75c7148e372f79c70800000000000000
-      internalID: 8977910961818139735
+      spriteID: 91d44349aa19f59f0800000000000000
+      internalID: -477502873661059815
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lord_Jump_Final_13
+      name: Char_Idle_9
       rect:
         serializedVersion: 2
         x: 256
         y: 0
         width: 256
-        height: 256
+        height: 341
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7439e47e4ae05c130800000000000000
-      internalID: 3586288779688579911
+      spriteID: 59d0b8f20f3f95eb0800000000000000
+      internalID: -4730481720660652651
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lord_Jump_Final_14
+      name: Char_Idle_10
       rect:
         serializedVersion: 2
         x: 512
         y: 0
         width: 256
-        height: 256
+        height: 341
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2f1e20cbbbb596650800000000000000
-      internalID: 6226608821687738866
+      spriteID: 347f13251524c0e40800000000000000
+      internalID: 5623942951717697347
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lord_Jump_Final_15
+      name: Char_Idle_11
       rect:
         serializedVersion: 2
         x: 768
         y: 0
         width: 256
-        height: 256
+        height: 341
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3fa36a675851aee20800000000000000
-      internalID: 3380538133260417779
+      spriteID: fa2f7992ba998f670800000000000000
+      internalID: 8572770851116020399
       vertices: []
       indices: 
       edges: []
@@ -512,22 +412,18 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Lord_Jump_Final_0: -652628154035121358
-      Lord_Jump_Final_1: -266553960043444550
-      Lord_Jump_Final_10: 3395070845582214589
-      Lord_Jump_Final_11: -4110650847529960192
-      Lord_Jump_Final_12: 8977910961818139735
-      Lord_Jump_Final_13: 3586288779688579911
-      Lord_Jump_Final_14: 6226608821687738866
-      Lord_Jump_Final_15: 3380538133260417779
-      Lord_Jump_Final_2: 3556424459614259916
-      Lord_Jump_Final_3: -579689720874359987
-      Lord_Jump_Final_4: -5105019307120656682
-      Lord_Jump_Final_5: 8441632686002305355
-      Lord_Jump_Final_6: 4744728978225720803
-      Lord_Jump_Final_7: -4420631818969647614
-      Lord_Jump_Final_8: 6386978171564507731
-      Lord_Jump_Final_9: -4083228071770838046
+      Char_Idle_0: -5842718609361386727
+      Char_Idle_1: -7068015219602756109
+      Char_Idle_10: 5623942951717697347
+      Char_Idle_11: 8572770851116020399
+      Char_Idle_2: -3362021164030270283
+      Char_Idle_3: 340445503034521470
+      Char_Idle_4: -536112031348893233
+      Char_Idle_5: -7138143156099692456
+      Char_Idle_6: -4885837515809820722
+      Char_Idle_7: 4861479943368460045
+      Char_Idle_8: -477502873661059815
+      Char_Idle_9: -4730481720660652651
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

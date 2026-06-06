@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: fb6962f749d230547b4ece37daa079c2
+guid: 6912d106735d7b3498fa6be2bb901a37
 labels:
 - UnityAI
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 454173229395953195
-    second: Lord_Concept_0
+      213: -8655046180890404370
+    second: Lord_Concept 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -53,7 +53,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 237
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -102,7 +102,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Lord_Concept_0
+      name: Lord_Concept 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -117,8 +117,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b2643a4552c8d4600800000000000000
-      internalID: 454173229395953195
+      spriteID: ee91d69da5913e780800000000000000
+      internalID: -8655046180890404370
       vertices: []
       indices: 
       edges: []
@@ -137,7 +137,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Lord_Concept_0: 454173229395953195
+      Lord_Concept 1_0: -8655046180890404370
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
