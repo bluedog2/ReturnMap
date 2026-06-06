@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Rendering;
+using System;
 using System.Collections;
 
 namespace ReTrap
@@ -14,6 +15,9 @@ namespace ReTrap
     public class GamePhaseManager : MonoBehaviour
     {
         public static GamePhaseManager Instance { get; private set; }
+
+        /// <summary>페이즈 전환 시 발행. TrapMutationManager 등이 구독.</summary>
+        public static event Action<GamePhase> OnPhaseChanged;
 
         [Header("Volumes")]
         public Volume buildVolume;
@@ -37,6 +41,7 @@ namespace ReTrap
         public void SetPhase(GamePhase newPhase, bool immediate = false)
         {
             currentPhase = newPhase;
+            OnPhaseChanged?.Invoke(newPhase);
             StopAllCoroutines();
             
             if (immediate)
