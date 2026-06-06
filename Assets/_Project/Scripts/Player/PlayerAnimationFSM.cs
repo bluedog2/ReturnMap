@@ -8,13 +8,12 @@ namespace ReTrap
 
     public enum PlayerAnimState
     {
-        Idle,
-        Run,
-        JumpStart,
-        JumpLoop,
-        FallLoop,
-        Land,
-        Dash
+        Idle,       // 0
+        Run,        // 1
+        JumpStart,  // 2  — 상승 중 루프 (Char_Jump_Start)
+        JumpLoop,   // 3  — 하강 중 루프 (Char_Fall_Loop)
+        Land,       // 4
+        Dash        // 5
     }
 
     public interface IPlayerAnimState
@@ -38,9 +37,8 @@ namespace ReTrap
         public static readonly int HASH_RUN        = Animator.StringToHash("Run");
         public static readonly int HASH_JUMP_START = Animator.StringToHash("Jump_Start");
         public static readonly int HASH_JUMP_LOOP  = Animator.StringToHash("Jump_Loop");
-        public static readonly int HASH_FALL_LOOP  = Animator.StringToHash("Fall_Loop");
         public static readonly int HASH_LAND       = Animator.StringToHash("Land");
-        public static readonly int HASH_DASH       = Animator.StringToHash("Dash"); // 대시 클립 추가 시 사용
+        public static readonly int HASH_DASH       = Animator.StringToHash("Dash");
 
         // ── 내부 참조 ────────────────────────────────────────────────────────
         public PlayerController Controller { get; private set; }
@@ -66,9 +64,8 @@ namespace ReTrap
                 new RunState(this),       // 1 Run
                 new JumpStartState(this), // 2 JumpStart
                 new JumpLoopState(this),  // 3 JumpLoop
-                new FallLoopState(this),  // 4 FallLoop
-                new LandState(this),      // 5 Land
-                new DashState(this),      // 6 Dash
+                new LandState(this),      // 4 Land
+                new DashState(this),      // 5 Dash
             };
         }
 
@@ -104,7 +101,7 @@ namespace ReTrap
                     ? PlayerAnimState.Run : PlayerAnimState.Idle);
             else
                 TransitionTo(Controller.Velocity.y > 0f
-                    ? PlayerAnimState.JumpLoop : PlayerAnimState.FallLoop);
+                    ? PlayerAnimState.JumpStart : PlayerAnimState.JumpLoop);
         }
 
         // ── 공개 API ──────────────────────────────────────────────────────────
@@ -154,7 +151,7 @@ namespace ReTrap
             var c = fsm.Controller;
             if (!c.IsGrounded)
             {
-                fsm.TransitionTo(c.Velocity.y > 0.1f ? PlayerAnimState.JumpLoop : PlayerAnimState.FallLoop);
+                fsm.TransitionTo(c.Velocity.y > 0.1f ? PlayerAnimState.JumpStart : PlayerAnimState.JumpLoop);
                 return;
             }
             if (Mathf.Abs(c.MoveInput.x) > 0.01f)
@@ -177,7 +174,7 @@ namespace ReTrap
             var c = fsm.Controller;
             if (!c.IsGrounded)
             {
-                fsm.TransitionTo(c.Velocity.y > 0.1f ? PlayerAnimState.JumpLoop : PlayerAnimState.FallLoop);
+                fsm.TransitionTo(c.Velocity.y > 0.1f ? PlayerAnimState.JumpStart : PlayerAnimState.JumpLoop);
                 return;
             }
             if (Mathf.Abs(c.MoveInput.x) < 0.01f && Mathf.Abs(c.Velocity.x) < 0.1f)
@@ -187,34 +184,28 @@ namespace ReTrap
         public void OnExit() { }
     }
 
-    /// <summary>JumpStart — 점프 직후 이륙 모션. 클립 재생 후 JumpLoop 로 전이.</summary>
+    /// <summary>
+    /// JumpStart — 상승 중 루프 (Char_Jump_Start 스프라이트).
+    /// velocity.y 가 0 아래로 떨어지면 JumpLoop(하강) 으로 전이.
+    /// </summary>
     internal class JumpStartState : IPlayerAnimState
     {
         private readonly PlayerAnimationFSM fsm;
-        private float timer;
-        private const float CLIP_DURATION = 0.33f;
-
         internal JumpStartState(PlayerAnimationFSM fsm) => this.fsm = fsm;
 
-        public void OnEnter()
-        {
-            fsm.Play(PlayerAnimationFSM.HASH_JUMP_START);
-            timer = CLIP_DURATION;
-        }
+        public void OnEnter() => fsm.Play(PlayerAnimationFSM.HASH_JUMP_START);
 
         public void OnUpdate()
         {
-            timer -= Time.deltaTime;
-            // 하강이 시작되거나 타이머 종료 시 공중 루프로 전이
-            if (fsm.Controller.Velocity.y < -1f || timer <= 0f)
-                fsm.TransitionTo(fsm.Controller.Velocity.y >= 0f
-                    ? PlayerAnimState.JumpLoop : PlayerAnimState.FallLoop);
+            // 하강 시작 → 하강 루프로 전이
+            if (fsm.Controller.Velocity.y < -0.1f)
+                fsm.TransitionTo(PlayerAnimState.JumpLoop);
         }
 
         public void OnExit() { }
     }
 
-    /// <summary>JumpLoop — 상승 중 루프.</summary>
+    /// <summary>JumpLoop — 하강 중 루프 (Char_Fall_Loop 스프라이트). Land 이벤트로 탈출.</summary>
     internal class JumpLoopState : IPlayerAnimState
     {
         private readonly PlayerAnimationFSM fsm;
@@ -222,24 +213,9 @@ namespace ReTrap
 
         public void OnEnter() => fsm.Play(PlayerAnimationFSM.HASH_JUMP_LOOP);
 
-        public void OnUpdate()
-        {
-            if (fsm.Controller.Velocity.y < -0.1f)
-                fsm.TransitionTo(PlayerAnimState.FallLoop);
-        }
+        public void OnUpdate() { } // OnLand 이벤트가 전이 처리
 
         public void OnExit() { }
-    }
-
-    /// <summary>FallLoop — 하강 중 루프. Land 이벤트로 탈출.</summary>
-    internal class FallLoopState : IPlayerAnimState
-    {
-        private readonly PlayerAnimationFSM fsm;
-        internal FallLoopState(PlayerAnimationFSM fsm) => this.fsm = fsm;
-
-        public void OnEnter()  => fsm.Play(PlayerAnimationFSM.HASH_FALL_LOOP);
-        public void OnUpdate() { } // OnLand 이벤트가 전이 처리
-        public void OnExit()   { }
     }
 
     /// <summary>Land — 착지 모션. 클립 완료 후 Idle / Run 으로 전이.</summary>

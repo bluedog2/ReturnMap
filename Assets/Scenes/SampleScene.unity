@@ -708,10 +708,12 @@ MonoBehaviour:
   moveSpeed: 8
   acceleration: 50
   deceleration: 50
-  jumpForce: 30
-  jumpCutMultiplier: 0.5
+  jumpForce: 20
   gravityScale: 4
   fallGravityMultiplier: 1.5
+  jumpHoldGravityMult: 0.35
+  maxJumpHoldTime: 0.25
+  jumpCutMultiplier: 0.75
   coyoteTime: 0.15
   jumpBufferTime: 0.15
   hangTimeThreshold: 1
