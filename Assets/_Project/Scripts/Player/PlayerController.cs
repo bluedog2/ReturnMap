@@ -288,6 +288,34 @@ namespace ReTrap
             => RemainingDashes = Mathf.Min(RemainingDashes + count, maxDashCount);
 
         /// <summary>
+        /// 리스폰 시 런타임 상태를 완전히 초기화합니다. RespawnManager 에서 호출.
+        /// 대시·점프·넉백 상태와 물리 속도를 모두 리셋합니다.
+        /// </summary>
+        public void ResetState()
+        {
+            // 대시 초기화
+            IsDashing           = false;
+            dashTimer           = 0f;
+            dashCooldownCounter = 0f;
+            dashRechargeCounter = 0f;
+            RemainingDashes     = maxDashCount;
+
+            // 점프 초기화
+            IsJumping         = false;
+            isHoldingJump     = false;
+            jumpHoldTimer     = 0f;
+            jumpBufferCounter = 0f;
+            coyoteTimeCounter = 0f;
+
+            // 넉백 초기화
+            knockbackTimer = 0f;
+
+            // 물리 초기화
+            rb.linearVelocity = Vector2.zero;
+            rb.gravityScale   = gravityScale;
+        }
+
+        /// <summary>
         /// 함정 등 외부에서 순간 속도를 덮어씌워 넉백 처리.
         /// <paramref name="duration"/> 동안 플레이어 입력 이동 연산을 억제해
         /// 감속 Force 가 즉시 넉백을 상쇄하는 현상을 방지합니다.

@@ -721,6 +721,7 @@ MonoBehaviour:
   dashSpeed: 18
   dashDuration: 0.2
   dashCooldown: 0.1
+  dashRechargeTime: 1
   maxDashCount: 3
   groundCheck: {fileID: 923383018}
   groundCheckRadius: 0.4
