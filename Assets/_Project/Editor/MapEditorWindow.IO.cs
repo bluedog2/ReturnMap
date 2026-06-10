@@ -25,6 +25,28 @@ namespace ReTrap.EditorTools
                 return;
             }
 
+            // 콘텐츠 검증 — 경고는 저장을 막지 않고 확인만 받는다 (특수 맵 허용)
+            var warnings = MapAuthoringValidator.Validate(map);
+            if (warnings.Count > 0)
+            {
+                const int MaxShow = 8;
+                var sb = new System.Text.StringBuilder();
+                sb.AppendLine($"콘텐츠 경고 {warnings.Count}건:");
+                sb.AppendLine();
+                for (int i = 0; i < warnings.Count && i < MaxShow; i++)
+                    sb.AppendLine($"• {warnings[i]}");
+                if (warnings.Count > MaxShow)
+                    sb.AppendLine($"… 외 {warnings.Count - MaxShow}건 (콘솔 참조)");
+                sb.AppendLine();
+                sb.Append("그래도 저장할까요?");
+
+                foreach (var warning in warnings)
+                    Debug.LogWarning($"[MapEditor] {warning}");
+
+                if (!EditorUtility.DisplayDialog("맵 콘텐츠 경고", sb.ToString(), "저장", "취소"))
+                    return;
+            }
+
             string dir = Path.Combine(Application.streamingAssetsPath, "Maps");
             if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
 

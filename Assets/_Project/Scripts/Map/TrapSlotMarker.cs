@@ -26,14 +26,29 @@ namespace ReTrap
         /// <summary>슬롯이 비어있는지 여부.</summary>
         public bool IsEmpty => OccupiedBy == null;
 
-        // ── 초기화 ────────────────────────────────────────────────────────────
+        // ── 초기화 / 레지스트리 등록 ─────────────────────────────────────────
 
-        /// <summary>MapLoader 에서 생성 직후 호출.</summary>
+        private bool _registered;
+
+        /// <summary>
+        /// MapLoader 에서 생성 직후 호출. 좌표 확정과 동시에
+        /// <see cref="TrapSlotRegistry"/> 에 등록됩니다.
+        /// (OnEnable 등록은 AddComponent 시점에 좌표가 0,0 이라 사용 불가)
+        /// </summary>
         public void Init(int x, int y, TrapAnchor anchor)
         {
             GridX  = x;
             GridY  = y;
             Anchor = anchor;
+
+            TrapSlotRegistry.Register(this);
+            _registered = true;
+        }
+
+        private void OnDestroy()
+        {
+            if (_registered)
+                TrapSlotRegistry.Unregister(this);
         }
 
         // ── 5단계 Build Phase 연동 ────────────────────────────────────────────
@@ -43,13 +58,16 @@ namespace ReTrap
         {
             if (!IsEmpty) return false;
             OccupiedBy = trapObject;
+            TrapSlotRegistry.NotifyOccupancyChanged();
             return true;
         }
 
         /// <summary>함정 제거. Build Phase UI 에서 호출합니다.</summary>
         public void Vacate()
         {
+            if (OccupiedBy == null) return;
             OccupiedBy = null;
+            TrapSlotRegistry.NotifyOccupancyChanged();
         }
 
 #if UNITY_EDITOR

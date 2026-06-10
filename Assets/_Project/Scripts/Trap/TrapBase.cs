@@ -78,6 +78,30 @@ namespace ReTrap
         /// <summary>타일맵 그리드에서 차지하는 셀 크기.</summary>
         public Vector2Int CellSize     => cellSize;
 
+        // ── 슬롯 호환 (Build Phase) ───────────────────────────────────────────
+
+        /// <summary>
+        /// 이 함정을 설치할 수 있는 슬롯 anchor 목록.
+        /// Build UI 가 설치 가능 슬롯 필터링에 사용합니다.
+        /// </summary>
+        public abstract TrapAnchor[] CompatibleAnchors { get; }
+
+        /// <summary>해당 anchor 슬롯에 설치 가능한지.</summary>
+        public bool IsCompatibleWith(TrapAnchor anchor)
+        {
+            var list = CompatibleAnchors;
+            for (int i = 0; i < list.Length; i++)
+                if (list[i] == anchor) return true;
+            return false;
+        }
+
+        /// <summary>
+        /// 설치 슬롯의 anchor 에 맞게 방향 필드를 설정합니다
+        /// (예: 천장 스파이크 → isFlipped, 좌벽 슈터 → facingRight).
+        /// Build UI 가 Instantiate 직후(Start 이전)에 호출합니다.
+        /// </summary>
+        public virtual void ConfigureForAnchor(TrapAnchor anchor) { }
+
         // ── Unity ─────────────────────────────────────────────────────────────
 
         protected virtual void Awake()

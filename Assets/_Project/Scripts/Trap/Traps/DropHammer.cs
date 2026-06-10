@@ -33,6 +33,12 @@ namespace ReTrap
     [RequireComponent(typeof(Rigidbody2D))]
     public class DropHammer : TrapBase
     {
+        // ── 슬롯 호환 ─────────────────────────────────────────────────────────
+
+        private static readonly TrapAnchor[] COMPATIBLE = { TrapAnchor.Ceiling };
+
+        public override TrapAnchor[] CompatibleAnchors => COMPATIBLE;
+
         // ── Inspector ─────────────────────────────────────────────────────────
 
         [Header("DropHammer — 낙하 설정")]

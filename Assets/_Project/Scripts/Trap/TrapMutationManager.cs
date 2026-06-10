@@ -44,9 +44,8 @@ namespace ReTrap
 
         // ── 내부 상태 ─────────────────────────────────────────────────────────
 
-        private int            currentSeed;
-        private System.Random  rng;
-        private bool           hasMutated; // Play 중 중복 호출 방지
+        private int  currentSeed;
+        private bool hasMutated; // Play 중 중복 호출 방지
 
         // ── Unity ─────────────────────────────────────────────────────────────
 
@@ -93,15 +92,17 @@ namespace ReTrap
 
         // ── 공개 API ──────────────────────────────────────────────────────────
 
-        /// <summary>씬의 모든 TrapBase 에 변이 적용. 같은 시드 = 같은 결과.</summary>
+        /// <summary>
+        /// 씬의 모든 TrapBase 에 변이 적용. 같은 시드 = 같은 결과.
+        /// <para>변이는 함정의 <b>그리드 좌표 해시</b>로 독립 결정되므로
+        /// 함정을 추가/제거해도 다른 함정의 변이는 변하지 않습니다
+        /// (Build Phase 에서 배치를 바꿔도 비기너 모드 약속 유지).</para>
+        /// </summary>
         public void MutateAll()
         {
-            // 매번 같은 시드로 RNG 재초기화 → 함정 순서가 같으면 결과도 동일
-            rng = new System.Random(currentSeed);
-
-            var traps = FindObjectsByType<TrapBase>(FindObjectsSortMode.InstanceID);
+            var traps = FindObjectsByType<TrapBase>(FindObjectsSortMode.None);
             foreach (var trap in traps)
-                trap.Mutate(RollState());
+                trap.Mutate(RollStateFor(trap));
 
 #if UNITY_EDITOR
             Debug.Log($"[MutationManager] MutateAll — Seed:{currentSeed}  Traps:{traps.Length}");
@@ -122,7 +123,6 @@ namespace ReTrap
         public void RollNewSeed()
         {
             currentSeed = UnityEngine.Random.Range(int.MinValue, int.MaxValue);
-            rng         = new System.Random(currentSeed);
         }
 
         /// <summary>
@@ -142,9 +142,28 @@ namespace ReTrap
 
         // ── 내부 — RNG ────────────────────────────────────────────────────────
 
-        private TrapState RollState()
+        /// <summary>
+        /// 함정 1개의 변이를 <c>hash(시드, 그리드 좌표)</c> 로 독립 결정합니다.
+        /// <list type="bullet">
+        ///   <item>같은 시드 + 같은 칸 = 항상 같은 변이 (순서·개수 무관)</item>
+        ///   <item>수동 배치 함정도 월드 좌표 → 그리드 칸 변환으로 동일하게 동작</item>
+        /// </list>
+        /// </summary>
+        private TrapState RollStateFor(TrapBase trap)
         {
-            float r = (float)rng.NextDouble();
+            // 맵 원점 기준 그리드 칸 좌표
+            Vector2 origin = MapLoader.Instance != null ? MapLoader.Instance.MapOrigin : Vector2.zero;
+            Vector2 local  = (Vector2)trap.transform.position - origin;
+            int gx = Mathf.FloorToInt(local.x);
+            int gy = Mathf.FloorToInt(local.y);
+
+            // 시드 × 좌표 해시 (소수 곱 XOR — 인접 칸 상관성 제거)
+            int hash = unchecked(currentSeed
+                                 ^ (gx * 73856093)
+                                 ^ (gy * 19349663));
+
+            var localRng = new System.Random(hash);
+            float r = (float)localRng.NextDouble();
 
             if (r < normalChance)
                 return TrapState.Normal;

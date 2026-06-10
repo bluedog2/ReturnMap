@@ -56,6 +56,20 @@ namespace ReTrap
 
         private Coroutine criticalCoroutine;
 
+        // ── 슬롯 호환 ─────────────────────────────────────────────────────────
+
+        private static readonly TrapAnchor[] COMPATIBLE =
+            { TrapAnchor.Floor, TrapAnchor.Ceiling };
+
+        public override TrapAnchor[] CompatibleAnchors => COMPATIBLE;
+
+        /// <summary>천장 슬롯이면 가시를 아래 방향으로 뒤집고 Y 기준값 재계산.</summary>
+        public override void ConfigureForAnchor(TrapAnchor anchor)
+        {
+            isFlipped  = anchor == TrapAnchor.Ceiling;
+            retractedY = isFlipped ? extendHeight : -extendHeight; // Awake 계산 갱신
+        }
+
         // ── Unity ─────────────────────────────────────────────────────────────
 
         protected override void Awake()

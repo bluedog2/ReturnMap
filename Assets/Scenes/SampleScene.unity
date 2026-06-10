@@ -604,6 +604,8 @@ GameObject:
   - component: {fileID: 984637844}
   - component: {fileID: 984637846}
   - component: {fileID: 984637847}
+  - component: {fileID: 984637849}
+  - component: {fileID: 984637848}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -671,6 +673,39 @@ MonoBehaviour:
   deathDelay: 1
   respawnInvincibleDuration: 1.5
   respawnGoesToBuild: 0
+--- !u!114 &984637848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984637843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82fbb2933d46efb488cfb4fffcf23183, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReTrap.BuildPhaseController
+  trapPrefabs:
+  - {fileID: 153341084760501597, guid: 6e0e193ef809c9f46a1ae88d028be298, type: 3}
+  - {fileID: 570977386896062070, guid: 4732fea782ed4774fbe9a0da183e5300, type: 3}
+  - {fileID: 2016699982551983012, guid: 6deaf5016c355bb42807b8cef1536064, type: 3}
+  trapRoot: {fileID: 0}
+--- !u!114 &984637849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984637843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b04bcd84d4dde284094b47def7625b33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReTrap.TrapMutationManager
+  normalChance: 0.5
+  dudChance: 0.2
+  criticalChance: 0.2
+  hardMode: 0
 --- !u!43 &1141403931
 Mesh:
   m_ObjectHideFlags: 0
@@ -981,7 +1016,7 @@ MonoBehaviour:
   dashRechargeTime: 1
   maxDashCount: 3
   groundCheck: {fileID: 923383018}
-  groundCheckRadius: 0.15
+  groundCheckSize: {x: 0.74, y: 0.12}
   groundLayer:
     serializedVersion: 2
     m_Bits: 512

@@ -56,6 +56,17 @@ namespace ReTrap
 
         private Coroutine firingCoroutine;
 
+        // ── 슬롯 호환 ─────────────────────────────────────────────────────────
+
+        private static readonly TrapAnchor[] COMPATIBLE =
+            { TrapAnchor.LeftWall, TrapAnchor.RightWall };
+
+        public override TrapAnchor[] CompatibleAnchors => COMPATIBLE;
+
+        /// <summary>좌벽 슬롯 = 오른쪽 발사, 우벽 슬롯 = 왼쪽 발사.</summary>
+        public override void ConfigureForAnchor(TrapAnchor anchor)
+            => facingRight = anchor == TrapAnchor.LeftWall;
+
         // ── TrapBase 구현 ─────────────────────────────────────────────────────
 
         protected override void OnNormal()
