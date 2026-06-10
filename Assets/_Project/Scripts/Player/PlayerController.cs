@@ -46,7 +46,9 @@ namespace ReTrap
 
         [Header("Ground Detection")]
         [SerializeField] private Transform groundCheck;
-        [SerializeField] private float     groundCheckRadius = 0.2f;
+        [Tooltip("발밑 판정 박스. 폭은 캡슐 폭(0.7)보다 약간 좁게 — 벽 접촉을 바닥으로 오인하지 않는 한계값.\n" +
+                 "원형 점 판정은 턱 모서리에 걸쳐 섰을 때 공중으로 오판하므로 박스를 사용합니다.")]
+        [SerializeField] private Vector2   groundCheckSize = new Vector2(0.64f, 0.12f);
         [SerializeField] private LayerMask groundLayer;
 
         [Header("References")]
@@ -63,6 +65,12 @@ namespace ReTrap
 
         public bool    IsGrounded      { get; private set; }
         public bool    IsJumping       { get; private set; }
+
+        /// <summary>
+        /// 확실한 하강 여부. 점프 정점의 체공(hang time) 구간은 false 로 유지해
+        /// 애니메이션이 정점에서 너무 일찍 하강 모션으로 바뀌는 것을 방지합니다.
+        /// </summary>
+        public bool    IsFalling       => rb.linearVelocity.y < -hangTimeThreshold;
         public bool    IsDashing       { get; private set; }
         public bool    IsFacingRight   { get; private set; } = true;
         public int     RemainingDashes { get; private set; }
@@ -188,15 +196,21 @@ namespace ReTrap
         private void CheckGround()
         {
             wasGroundedLastFrame = IsGrounded;
-            IsGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+            IsGrounded = Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0f, groundLayer);
 
             if (IsGrounded)
             {
                 // 지면에 있는 동안 코요테 타임을 지속 충전 (절벽에서 뛰어내리는 순간부터 카운트다운)
                 coyoteTimeCounter = coyoteTime;
 
-                // 착지 순간에만 처리 (매 프레임 실행 방지)
-                if (!wasGroundedLastFrame && rb.linearVelocity.y <= 0.1f)
+                bool justLanded  = !wasGroundedLastFrame;
+                bool stillRising = rb.linearVelocity.y > 0.1f;
+
+                // 착지 이벤트 발행 조건:
+                //  (1) 새로 지면에 닿았고 상승 중이 아닐 때 (일반 착지)
+                //  (2) 상승 중에 모서리에 올라타 (1)이 누락된 경우 —
+                //      IsJumping 이 남은 채 지면 위에서 상승이 끝나는 프레임에 발행
+                if (!stillRising && (justLanded || IsJumping))
                 {
                     IsJumping = false;
                     OnLand?.Invoke();
@@ -384,7 +398,7 @@ namespace ReTrap
         {
             if (groundCheck == null) return;
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+            Gizmos.DrawWireCube(groundCheck.position, groundCheckSize);
         }
     }
 }

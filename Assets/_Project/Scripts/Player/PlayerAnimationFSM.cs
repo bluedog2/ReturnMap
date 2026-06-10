@@ -100,8 +100,8 @@ namespace ReTrap
                 TransitionTo(Mathf.Abs(Controller.MoveInput.x) > 0.01f
                     ? PlayerAnimState.Run : PlayerAnimState.Idle);
             else
-                TransitionTo(Controller.Velocity.y > 0f
-                    ? PlayerAnimState.JumpStart : PlayerAnimState.JumpLoop);
+                TransitionTo(Controller.IsFalling
+                    ? PlayerAnimState.JumpLoop : PlayerAnimState.JumpStart);
         }
 
         // ── 공개 API ──────────────────────────────────────────────────────────
@@ -197,8 +197,8 @@ namespace ReTrap
 
         public void OnUpdate()
         {
-            // 하강 시작 → 하강 루프로 전이
-            if (fsm.Controller.Velocity.y < -0.1f)
+            // 정점 체공(hang time) 구간은 상승 모션 유지, 확실히 떨어질 때만 하강 루프로 전이
+            if (fsm.Controller.IsFalling)
                 fsm.TransitionTo(PlayerAnimState.JumpLoop);
         }
 
