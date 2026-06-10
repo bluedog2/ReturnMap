@@ -89,6 +89,31 @@ namespace ReTrap
             // Beneficial 발판은 기본적으로 비활성화
             if (platformArea != null)
                 platformArea.enabled = false;
+
+            ValidateTriggerRouting();
+        }
+
+        /// <summary>
+        /// 자식 콜라이더의 트리거 이벤트는 부모 Rigidbody2D 가 있어야 이 컴포넌트의
+        /// OnTriggerEnter2D 로 전달된다. 누락 시 함정이 데미지를 영영 못 주는데
+        /// 에러도 없이 조용히 실패하므로, 여기서 즉시 경고를 띄운다.
+        /// </summary>
+        private void ValidateTriggerRouting()
+        {
+            if (damageArea == null)
+            {
+                Debug.LogWarning($"[TrapBase] {name}: DamageArea 콜라이더가 없습니다 — " +
+                                 "피격 감지가 동작하지 않습니다.", this);
+                return;
+            }
+
+            bool areaOnChild = damageArea.transform != transform;
+            bool hasRootRb   = GetComponent<Rigidbody2D>() != null;
+
+            if (areaOnChild && !hasRootRb)
+                Debug.LogWarning($"[TrapBase] {name}: DamageArea 가 자식 오브젝트인데 루트에 " +
+                                 "Rigidbody2D 가 없습니다 — 트리거 이벤트가 루트로 전달되지 않아 " +
+                                 "데미지가 들어가지 않습니다. 루트에 Rigidbody2D(Kinematic) 를 추가하세요.", this);
         }
 
         /// <summary>
