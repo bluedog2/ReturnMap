@@ -121,12 +121,38 @@ namespace ReTrap
         {
             if (playerHealth != null)
                 playerHealth.OnDeath += HandleDeath;
+
+            MapLoader.OnMapLoaded += HandleMapLoaded;
         }
 
         private void OnDisable()
         {
             if (playerHealth != null)
                 playerHealth.OnDeath -= HandleDeath;
+
+            MapLoader.OnMapLoaded -= HandleMapLoaded;
+        }
+
+        // ── 맵 연동 ───────────────────────────────────────────────────────────
+
+        /// <summary>
+        /// 맵 로드 완료 시 리스폰 지점을 맵의 spawnPoint 로 갱신하고
+        /// 플레이어를 그 위치로 즉시 배치합니다.
+        /// </summary>
+        private void HandleMapLoaded(MapData map)
+        {
+            Vector2 origin = MapLoader.Instance != null ? MapLoader.Instance.MapOrigin : Vector2.zero;
+            Vector2 spawn  = map.CellToWorld(map.spawnPoint.x, map.spawnPoint.y, origin);
+
+            SetRespawnPoint(spawn);
+
+            // 시작 위치 배치 (리스폰과 동일한 텔레포트 + 상태 초기화)
+            if (playerController != null)
+            {
+                playerController.transform.position = new Vector3(
+                    spawn.x, spawn.y, playerController.transform.position.z);
+                playerController.ResetState();
+            }
         }
 
         // ── 공개 API ──────────────────────────────────────────────────────────

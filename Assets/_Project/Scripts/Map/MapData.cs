@@ -66,8 +66,18 @@ namespace ReTrap
     public class MapData
     {
         // ── 메타 ──────────────────────────────────────────────────────────────
+
+        /// <summary>
+        /// 데이터 스키마 버전. 필드 추가·의미 변경 시 올리고
+        /// <see cref="FromJson"/> 쪽에서 버전 분기로 구형 맵을 마이그레이션합니다.
+        /// </summary>
+        public int    version     = 1;
+
         public string mapId       = "stage_new";
         public string displayName = "";
+
+        /// <summary>Build Phase 에서 플레이어가 함정 설치에 쓸 수 있는 예산.</summary>
+        public int    buildBudget = 100;
 
         // ── 그리드 크기 ──────────────────────────────────────────────────────
         public int   width    = 24;
@@ -228,6 +238,13 @@ namespace ReTrap
                     if (!InBounds(s.x, s.y))
                     {
                         error = $"trapSlot 범위 초과: ({s.x},{s.y})";
+                        return false;
+                    }
+
+                    // anchor 오타가 조용히 Floor 로 폴백되는 것을 차단
+                    if (!Enum.TryParse(s.anchor, out TrapAnchor _))
+                    {
+                        error = $"trapSlot anchor 파싱 불가: '{s.anchor}' at ({s.x},{s.y})";
                         return false;
                     }
                 }

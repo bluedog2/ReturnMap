@@ -50,7 +50,7 @@ namespace ReTrap
         public Sprite     markerSprite;
 
         [Tooltip("슬롯 마커에 곱할 색. 반투명 주황 권장 (alpha 0.6).")]
-        public Color      tint = new Color(1f, 0.5f, 0f, 0.6f);
+        public Color      tint = TilePaletteConfig.DefaultSlotTint;
     }
 
     // ═══════════════════════════════════════════════════════════════════════════
@@ -58,6 +58,26 @@ namespace ReTrap
     [CreateAssetMenu(menuName = "ReTrap/Tile Palette Config", fileName = "TilePaletteConfig")]
     public class TilePaletteConfig : ScriptableObject
     {
+        // ── 폴백 기본값 (에디터·로더 공용 — 단일 정의) ───────────────────────
+
+        /// <summary>슬롯 마커 기본 색 (반투명 주황). 팔레트/엔트리 미설정 시 공용 폴백.</summary>
+        public static readonly Color DefaultSlotTint = new Color(1f, 0.5f, 0f, 0.6f);
+
+        /// <summary>
+        /// 팔레트 에셋 자체가 없을 때 사용할 타입별 기본 색.
+        /// MapEditorWindow / MapLoader 가 공유합니다 — 색 변경은 여기 한 곳만.
+        /// </summary>
+        public static Color FallbackColor(TileType type)
+        {
+            switch (type)
+            {
+                case TileType.Floor:   return new Color(0.55f, 0.38f, 0.24f); // 갈색
+                case TileType.Wall:    return new Color(0.45f, 0.45f, 0.48f); // 회색
+                case TileType.Ceiling: return new Color(0.28f, 0.28f, 0.32f); // 짙은 회색
+                default:               return new Color(0.18f, 0.18f, 0.20f); // Empty
+            }
+        }
+
         // ── Inspector ─────────────────────────────────────────────────────────
 
         [Header("타일 엔트리 (TileType 1개당 1개)")]
@@ -144,7 +164,7 @@ namespace ReTrap
         public Color GetSlotTint(TrapAnchor anchor)
         {
             var v = SlotEntry(anchor);
-            return v != null ? v.tint : new Color(1f, 0.5f, 0f, 0.6f);
+            return v != null ? v.tint : DefaultSlotTint;
         }
 
         // ── 내부 — 캐시 ──────────────────────────────────────────────────────
