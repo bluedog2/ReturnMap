@@ -15,7 +15,7 @@ MonoBehaviour:
   tiles:
   - type: 0
     sprite: {fileID: 0}
-    fallbackColor: {r: 0, g: 0, b: 0, a: 0}
+    fallbackColor: {r: 0.18, g: 0.18, b: 0.2, a: 1}
     isSolid: 0
     collisionLayer:
       serializedVersion: 2
@@ -23,41 +23,41 @@ MonoBehaviour:
     prefabOverride: {fileID: 0}
   - type: 1
     sprite: {fileID: 21300000, guid: c007ad3e8a88f9c43b459aca9ca4bf50, type: 3}
-    fallbackColor: {r: 0, g: 0, b: 0, a: 0}
-    isSolid: 0
+    fallbackColor: {r: 0.55, g: 0.38, b: 0.24, a: 1}
+    isSolid: 1
     collisionLayer:
       serializedVersion: 2
-      m_Bits: 0
-    prefabOverride: {fileID: 132408396212772539, guid: 404972406a4c63a4eafe864943da6455, type: 3}
+      m_Bits: 512
+    prefabOverride: {fileID: 0}
   - type: 2
     sprite: {fileID: 21300000, guid: c007ad3e8a88f9c43b459aca9ca4bf50, type: 3}
-    fallbackColor: {r: 0, g: 0, b: 0, a: 0}
-    isSolid: 0
+    fallbackColor: {r: 0.45, g: 0.45, b: 0.48, a: 1}
+    isSolid: 1
     collisionLayer:
       serializedVersion: 2
-      m_Bits: 0
-    prefabOverride: {fileID: 132408396212772539, guid: 404972406a4c63a4eafe864943da6455, type: 3}
+      m_Bits: 512
+    prefabOverride: {fileID: 0}
   - type: 3
     sprite: {fileID: 21300000, guid: c007ad3e8a88f9c43b459aca9ca4bf50, type: 3}
-    fallbackColor: {r: 0, g: 0, b: 0, a: 0}
-    isSolid: 0
+    fallbackColor: {r: 0.28, g: 0.28, b: 0.32, a: 1}
+    isSolid: 1
     collisionLayer:
       serializedVersion: 2
-      m_Bits: 0
-    prefabOverride: {fileID: 132408396212772539, guid: 404972406a4c63a4eafe864943da6455, type: 3}
+      m_Bits: 512
+    prefabOverride: {fileID: 0}
   slotMarkers:
   - anchor: 0
     markerSprite: {fileID: 21300000, guid: c007ad3e8a88f9c43b459aca9ca4bf50, type: 3}
-    tint: {r: 0, g: 0, b: 0, a: 0}
+    tint: {r: 1, g: 0.5, b: 0, a: 0.6}
   - anchor: 1
     markerSprite: {fileID: 21300000, guid: c007ad3e8a88f9c43b459aca9ca4bf50, type: 3}
-    tint: {r: 0, g: 0, b: 0, a: 0}
+    tint: {r: 1, g: 0.5, b: 0, a: 0.6}
   - anchor: 2
     markerSprite: {fileID: 21300000, guid: c007ad3e8a88f9c43b459aca9ca4bf50, type: 3}
-    tint: {r: 0, g: 0, b: 0, a: 0}
+    tint: {r: 1, g: 0.5, b: 0, a: 0.6}
   - anchor: 3
     markerSprite: {fileID: 21300000, guid: c007ad3e8a88f9c43b459aca9ca4bf50, type: 3}
-    tint: {r: 0, g: 0, b: 0, a: 0}
+    tint: {r: 1, g: 0.5, b: 0, a: 0.6}
   sharedMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   tileSortingLayer: Map
   tileSortingOrder: 0

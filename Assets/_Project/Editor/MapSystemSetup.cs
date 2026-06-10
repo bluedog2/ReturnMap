@@ -43,6 +43,64 @@ namespace ReTrap.EditorTools
             Debug.Log("[MapSystemSetup] ✅ 세팅 완료 — 플레이하면 stage_01 이 자동 로드됩니다.");
         }
 
+        // ── 플레이어 벽 마찰 제거 ─────────────────────────────────────────────
+
+        private const string FrictionlessMatPath =
+            "Assets/_Project/Settings/PlayerFrictionless.physicsMaterial2D";
+
+        /// <summary>
+        /// 마찰 0 PhysicsMaterial2D 를 만들어 플레이어 캡슐에 할당합니다.
+        /// <para>공중에서 벽에 이동키를 누르고 있으면 마찰이 중력을 상쇄해
+        /// 벽에 매달리는 현상(wall stick)을 제거합니다.</para>
+        /// </summary>
+        [MenuItem("ReTrap/Setup/플레이어 벽 마찰 제거")]
+        public static void SetupPlayerFrictionless()
+        {
+            if (EditorApplication.isPlaying)
+            {
+                EditorUtility.DisplayDialog("벽 마찰 제거",
+                    "플레이 모드에서는 실행할 수 없습니다.\n플레이를 중지한 뒤 다시 실행하세요.", "확인");
+                return;
+            }
+
+            // 1. 마찰 0 머티리얼 에셋 (없으면 생성)
+            var mat = AssetDatabase.LoadAssetAtPath<PhysicsMaterial2D>(FrictionlessMatPath);
+            if (mat == null)
+            {
+                mat = new PhysicsMaterial2D("PlayerFrictionless")
+                {
+                    friction        = 0f,
+                    bounciness      = 0f,
+                    // Minimum: 상대(타일 0.4)와 조합해도 항상 0 보장
+                    frictionCombine = PhysicsMaterialCombine2D.Minimum,
+                    bounceCombine   = PhysicsMaterialCombine2D.Minimum,
+                };
+                AssetDatabase.CreateAsset(mat, FrictionlessMatPath);
+                AssetDatabase.SaveAssets();
+                Debug.Log($"[MapSystemSetup] PhysicsMaterial2D 생성 → {FrictionlessMatPath}");
+            }
+
+            // 2. 플레이어 캡슐에 할당
+            var player = UnityEngine.Object.FindFirstObjectByType<PlayerController>();
+            if (player == null)
+            {
+                Debug.LogWarning("[MapSystemSetup] 씬에서 PlayerController 를 찾지 못했습니다.");
+                return;
+            }
+
+            var capsule = player.GetComponent<CapsuleCollider2D>();
+            if (capsule == null)
+            {
+                Debug.LogWarning("[MapSystemSetup] Player 에 CapsuleCollider2D 가 없습니다.");
+                return;
+            }
+
+            capsule.sharedMaterial = mat;
+            EditorSceneManager.MarkSceneDirty(player.gameObject.scene);
+            EditorSceneManager.SaveOpenScenes();
+            Debug.Log("[MapSystemSetup] ✅ 플레이어 캡슐에 마찰 0 머티리얼 적용 — 벽 매달림 제거 완료");
+        }
+
         // ── 1. Sorting Layer ─────────────────────────────────────────────────
 
         private static void EnsureSortingLayer(string layerName)

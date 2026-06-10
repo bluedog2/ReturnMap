@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReTrap.MapLoader
   _palette: {fileID: 11400000, guid: 70f10683ba3aa2e4a9c2f059b7b9b22e, type: 2}
-  _mapRoot: {fileID: 0}
+  _mapRoot: {fileID: 1929613291}
   _autoLoadMapId: stage_01
 --- !u!4 &394809661
 Transform:
@@ -414,7 +414,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 12
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -439,7 +439,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 9.17, z: -10}
+  m_LocalPosition: {x: 0, y: 3.1699998, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -586,7 +586,7 @@ Transform:
   m_GameObject: {fileID: 923383017}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.85, z: 0}
+  m_LocalPosition: {x: 0, y: -0.764, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -962,10 +962,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62dd8f79f12181c4d8b32aba922a95de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReTrap.PlayerController
-  moveSpeed: 8
+  moveSpeed: 3
   acceleration: 50
   deceleration: 50
-  jumpForce: 20
+  jumpForce: 11
   gravityScale: 4
   fallGravityMultiplier: 1.5
   jumpHoldGravityMult: 0.35
@@ -1062,7 +1062,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8018e2e34dd10b343a9fd9f6d26fe048, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1086,8 +1086,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.7, y: 1.7}
+  m_Offset: {x: 0, y: -0.01}
+  m_Size: {x: 0.7, y: 1.49}
   m_Direction: 0
 --- !u!114 &1250373946
 MonoBehaviour:
@@ -1225,7 +1225,7 @@ MonoBehaviour:
     CustomLookAtTarget: 1
   Lens:
     FieldOfView: 40
-    OrthographicSize: 12
+    OrthographicSize: 6
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -1252,7 +1252,7 @@ Transform:
   m_GameObject: {fileID: 1693843772}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.28, z: -10}
+  m_LocalPosition: {x: 0, y: 0.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1323,6 +1323,37 @@ Material:
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
+--- !u!1 &1929613290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1929613291}
+  m_Layer: 0
+  m_Name: Map
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1929613291
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929613290}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2017971587
 GameObject:
   m_ObjectHideFlags: 0
@@ -1565,3 +1596,4 @@ SceneRoots:
   - {fileID: 1693843775}
   - {fileID: 512269906}
   - {fileID: 394809661}
+  - {fileID: 1929613291}

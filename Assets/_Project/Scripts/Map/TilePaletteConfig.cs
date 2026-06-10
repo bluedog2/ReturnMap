@@ -262,6 +262,18 @@ namespace ReTrap
                     if (v.isSolid && v.collisionLayer.value == 1)
                         Debug.LogWarning($"[TilePaletteConfig] {v.type} 은 Solid 지만 Default 레이어 — " +
                                          $"Ground 레이어 권장: {name}", this);
+
+                    // 지형 타일인데 isSolid 꺼짐 → 플레이어가 뚫고 떨어짐
+                    if (v.type != TileType.Empty && !v.isSolid)
+                        Debug.LogWarning($"[TilePaletteConfig] {v.type} 의 Is Solid 가 꺼져 있음 — " +
+                                         $"콜라이더가 생성되지 않아 플레이어가 통과합니다: {name}", this);
+
+                    // 프리팹 오버라이드에 Collider2D 없음 → MapLoader 가 BoxCollider2D 를 자동 부착
+                    if (v.isSolid && v.prefabOverride != null &&
+                        v.prefabOverride.GetComponent<Collider2D>() == null)
+                        Debug.LogWarning($"[TilePaletteConfig] {v.type} 프리팹 '{v.prefabOverride.name}' 에 " +
+                                         $"Collider2D 없음 — 런타임에 1×1 BoxCollider2D 가 자동 부착됩니다. " +
+                                         $"다른 모양이 필요하면 프리팹에 직접 추가하세요: {name}", this);
                 }
             }
         }

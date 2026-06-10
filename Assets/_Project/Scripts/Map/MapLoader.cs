@@ -210,12 +210,30 @@ namespace ReTrap
         {
             Vector2 worldPos = map.CellToWorld(x, y, origin);
 
-            // 프리팹 오버라이드 우선
+            // 프리팹 오버라이드 우선 — 특수 타일용 (애니메이션·파티클·스크립트 등)
             GameObject prefab = _palette != null ? _palette.GetPrefabOverride(type) : null;
             if (prefab != null)
             {
                 var inst = Instantiate(prefab, worldPos, Quaternion.identity, _mapRoot);
                 inst.name = $"Tile_{type}_{x}_{y}";
+
+                // 물리는 프리팹 구성과 무관하게 팔레트 isSolid 가 보장
+                if (_palette.IsSolid(type))
+                {
+                    var col = inst.GetComponent<Collider2D>();
+                    if (col == null)
+                    {
+                        var box  = inst.AddComponent<BoxCollider2D>();
+                        box.size = Vector2.one * map.tileUnit;
+                        col      = box;
+                    }
+
+                    // Box/Polygon 만 컴포지트 병합 가능 — 그 외는 단독 콜라이더로 동작
+                    if (col is BoxCollider2D || col is PolygonCollider2D)
+                        col.compositeOperation = Collider2D.CompositeOperation.Merge;
+
+                    inst.layer = _palette.GetCollisionLayerIndex(type);
+                }
                 return;
             }
 
