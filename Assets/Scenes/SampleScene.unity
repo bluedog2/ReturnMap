@@ -178,6 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 512269906}
   - component: {fileID: 512269907}
+  - component: {fileID: 512269908}
   m_Layer: 0
   m_Name: CameraBounds
   m_TagString: Untagged
@@ -246,6 +247,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 100, y: 40}
   m_EdgeRadius: 0
+--- !u!114 &512269908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512269904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4dcd800efd1285488b5129231568b0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReTrap.CameraConfinerSync
+  _confiner: {fileID: 1693843776}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
