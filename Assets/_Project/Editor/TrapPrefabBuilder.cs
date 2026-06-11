@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
+using UnityEngine.UI;
 
 namespace ReTrap.EditorTools
 {
@@ -42,7 +45,11 @@ namespace ReTrap.EditorTools
             var shooter= BuildArrowShooter(sprite, arrow);
             var hammer = BuildDropHammer(sprite);
 
-            WireScene(new List<GameObject> { spike, shooter, hammer });
+            var hud      = BuildHudPrefab();
+            var uiCanvas = EnsureUiCanvas();
+            EnsureEventSystem();
+
+            WireScene(new List<GameObject> { spike, shooter, hammer }, hud, uiCanvas);
 
             EditorSceneManager.SaveOpenScenes();
             Debug.Log("[TrapPrefabBuilder] ✅ 함정 프리팹 + Build UI 세팅 완료");
@@ -217,9 +224,178 @@ namespace ReTrap.EditorTools
             return SavePrefab(go, "DropHammer");
         }
 
+        // ── Build HUD 프리팹 (uGUI Canvas) ───────────────────────────────────
+
+        private const string HudPrefabPath = "Assets/_Project/Prefabs/UI/BuildHud.prefab";
+
+        /// <summary>
+        /// Build HUD <b>패널</b> 프리팹 생성 (Canvas 없음 — 씬의 UICanvas 아래에 로드됨).
+        /// 함정 버튼 자체는 BuildHudController 가 런타임에 동적 생성합니다.
+        /// </summary>
+        private static GameObject BuildHudPrefab()
+        {
+            var existing = AssetDatabase.LoadAssetAtPath<GameObject>(HudPrefabPath);
+            if (existing != null)
+            {
+                // 구버전(Canvas 포함 루트) 프리팹이면 재생성
+                if (existing.GetComponent<Canvas>() == null) return existing;
+                AssetDatabase.DeleteAsset(HudPrefabPath);
+                Debug.Log("[TrapPrefabBuilder] 구버전 HUD(Canvas 포함) 삭제 — 패널형으로 재생성");
+            }
+
+            if (!AssetDatabase.IsValidFolder("Assets/_Project/Prefabs/UI"))
+                AssetDatabase.CreateFolder("Assets/_Project/Prefabs", "UI");
+
+            Font font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+
+            // ── 패널 루트 (RectTransform 전체 스트레치 — 부모 Canvas 에 맞춤) ──
+            var root = new GameObject("BuildHud", typeof(RectTransform));
+            var rootRect = (RectTransform)root.transform;
+            rootRect.anchorMin = Vector2.zero;
+            rootRect.anchorMax = Vector2.one;
+            rootRect.offsetMin = Vector2.zero;
+            rootRect.offsetMax = Vector2.zero;
+
+            // ── Build 패널 (좌상단) ──────────────────────────────────────────
+            var panel = new GameObject("Panel",
+                typeof(RectTransform), typeof(Image), typeof(VerticalLayoutGroup));
+            panel.transform.SetParent(root.transform, false);
+
+            var panelRect = (RectTransform)panel.transform;
+            panelRect.anchorMin        = new Vector2(0f, 1f);
+            panelRect.anchorMax        = new Vector2(0f, 1f);
+            panelRect.pivot            = new Vector2(0f, 1f);
+            panelRect.anchoredPosition = new Vector2(12f, -12f);
+            panelRect.sizeDelta        = new Vector2(300f, 158f);
+
+            panel.GetComponent<Image>().color = new Color(0.08f, 0.08f, 0.1f, 0.75f);
+
+            var vlayout = panel.GetComponent<VerticalLayoutGroup>();
+            vlayout.padding                = new RectOffset(10, 10, 8, 8);
+            vlayout.spacing                = 6f;
+            vlayout.childControlWidth      = true;
+            vlayout.childControlHeight     = true;
+            vlayout.childForceExpandWidth  = true;
+            vlayout.childForceExpandHeight = false;
+
+            // ── 예산 텍스트 ──────────────────────────────────────────────────
+            var budgetText = MakeText(panel.transform, "BudgetText", "예산  100",
+                font, 20, FontStyle.Bold, new Color(1f, 0.9f, 0.4f), 26f);
+
+            // ── 함정 버튼 컨테이너 ───────────────────────────────────────────
+            var buttons = new GameObject("Buttons",
+                typeof(RectTransform), typeof(HorizontalLayoutGroup), typeof(LayoutElement));
+            buttons.transform.SetParent(panel.transform, false);
+
+            var hlayout = buttons.GetComponent<HorizontalLayoutGroup>();
+            hlayout.spacing                = 8f;
+            hlayout.childControlWidth      = false;
+            hlayout.childControlHeight     = false;
+            hlayout.childForceExpandWidth  = false;
+            hlayout.childForceExpandHeight = false;
+            hlayout.childAlignment         = TextAnchor.MiddleLeft;
+
+            buttons.GetComponent<LayoutElement>().preferredHeight = 64f;
+
+            // ── 힌트 텍스트 ──────────────────────────────────────────────────
+            var hintText = MakeText(panel.transform, "HintText",
+                "버튼/1~3: 선택 · 슬롯 클릭: 설치", font, 12, FontStyle.Normal,
+                new Color(0.85f, 0.85f, 0.85f), 34f);
+
+            // ── Play 중 복귀 힌트 (패널 밖, 기본 비활성) ─────────────────────
+            var playHint = MakeText(root.transform, "PlayHint",
+                "[B] 빌드 페이즈로 돌아가기", font, 16, FontStyle.Bold,
+                new Color(1f, 1f, 1f, 0.7f), 24f);
+            var playRect = (RectTransform)playHint.transform;
+            playRect.anchorMin        = new Vector2(0f, 1f);
+            playRect.anchorMax        = new Vector2(0f, 1f);
+            playRect.pivot            = new Vector2(0f, 1f);
+            playRect.anchoredPosition = new Vector2(12f, -12f);
+            playRect.sizeDelta        = new Vector2(360f, 26f);
+            playHint.gameObject.SetActive(false);
+
+            // ── 컨트롤러 연결 ────────────────────────────────────────────────
+            var hudCtrl = root.AddComponent<BuildHudController>();
+            var so = new SerializedObject(hudCtrl);
+            so.FindProperty("panel").objectReferenceValue           = panel;
+            so.FindProperty("budgetText").objectReferenceValue      = budgetText;
+            so.FindProperty("buttonContainer").objectReferenceValue = buttons.transform;
+            so.FindProperty("hintText").objectReferenceValue        = hintText;
+            so.FindProperty("playHint").objectReferenceValue        = playHint.gameObject;
+            so.ApplyModifiedPropertiesWithoutUndo();
+
+            var prefab = PrefabUtility.SaveAsPrefabAsset(root, HudPrefabPath);
+            Object.DestroyImmediate(root);
+            Debug.Log($"[TrapPrefabBuilder] HUD 프리팹 생성 → {HudPrefabPath}");
+            return prefab;
+        }
+
+        private static Text MakeText(Transform parent, string name, string content,
+                                     Font font, int size, FontStyle style,
+                                     Color color, float preferredHeight)
+        {
+            var go = new GameObject(name,
+                typeof(RectTransform), typeof(Text), typeof(LayoutElement));
+            go.transform.SetParent(parent, false);
+
+            var text = go.GetComponent<Text>();
+            text.text          = content;
+            text.font          = font;
+            text.fontSize      = size;
+            text.fontStyle     = style;
+            text.color         = color;
+            text.alignment     = TextAnchor.MiddleLeft;
+            text.raycastTarget = false;
+
+            go.GetComponent<LayoutElement>().preferredHeight = preferredHeight;
+            return text;
+        }
+
+        // ── 씬 공유 UICanvas ─────────────────────────────────────────────────
+
+        /// <summary>
+        /// 씬에 영구 UI 루트 'UICanvas' 를 보장합니다.
+        /// 모든 UI 패널 프리팹(BuildHud, 추후 HP바 등)이 이 아래에 로드됩니다.
+        /// </summary>
+        private static GameObject EnsureUiCanvas()
+        {
+            var existing = GameObject.Find("UICanvas");
+            if (existing != null && existing.GetComponent<Canvas>() != null)
+                return existing;
+
+            var go = new GameObject("UICanvas",
+                typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
+
+            var canvas = go.GetComponent<Canvas>();
+            canvas.renderMode   = RenderMode.ScreenSpaceOverlay;
+            canvas.sortingOrder = 10;
+
+            var scaler = go.GetComponent<CanvasScaler>();
+            scaler.uiScaleMode         = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            scaler.referenceResolution = new Vector2(1920f, 1080f);
+            scaler.matchWidthOrHeight  = 0.5f;
+
+            EditorSceneManager.MarkSceneDirty(go.scene);
+            Debug.Log("[TrapPrefabBuilder] 씬에 UICanvas 생성 (공유 UI 루트)");
+            return go;
+        }
+
+        // ── EventSystem (uGUI 버튼 클릭 필수) ────────────────────────────────
+
+        private static void EnsureEventSystem()
+        {
+            if (Object.FindFirstObjectByType<EventSystem>() != null) return;
+
+            var go = new GameObject("EventSystem",
+                typeof(EventSystem), typeof(InputSystemUIInputModule));
+            EditorSceneManager.MarkSceneDirty(go.scene);
+            Debug.Log("[TrapPrefabBuilder] EventSystem (InputSystemUIInputModule) 추가");
+        }
+
         // ── 씬 배선 ───────────────────────────────────────────────────────────
 
-        private static void WireScene(List<GameObject> prefabs)
+        private static void WireScene(List<GameObject> prefabs, GameObject hudPrefab,
+                                      GameObject uiCanvas)
         {
             var managers = GameObject.Find("Managers");
             if (managers == null)
@@ -244,6 +420,8 @@ namespace ReTrap.EditorTools
             list.arraySize = prefabs.Count;
             for (int i = 0; i < prefabs.Count; i++)
                 list.GetArrayElementAtIndex(i).objectReferenceValue = prefabs[i];
+            so.FindProperty("hudPrefab").objectReferenceValue = hudPrefab;
+            so.FindProperty("uiRoot").objectReferenceValue    = uiCanvas != null ? uiCanvas.transform : null;
             so.ApplyModifiedPropertiesWithoutUndo();
 
             EditorSceneManager.MarkSceneDirty(managers.scene);

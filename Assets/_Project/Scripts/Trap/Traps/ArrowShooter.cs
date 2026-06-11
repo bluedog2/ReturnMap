@@ -63,9 +63,22 @@ namespace ReTrap
 
         public override TrapAnchor[] CompatibleAnchors => COMPATIBLE;
 
-        /// <summary>좌벽 슬롯 = 오른쪽 발사, 우벽 슬롯 = 왼쪽 발사.</summary>
+        /// <summary>
+        /// 좌벽 슬롯 = 오른쪽 발사, 우벽 슬롯 = 왼쪽 발사.
+        /// 발사구(firePoint)도 발사 방향 쪽으로 반전 — 안 하면 우벽 설치 시
+        /// 화살이 벽 안에서 생성돼 즉시 소멸한다.
+        /// </summary>
         public override void ConfigureForAnchor(TrapAnchor anchor)
-            => facingRight = anchor == TrapAnchor.LeftWall;
+        {
+            facingRight = anchor == TrapAnchor.LeftWall;
+
+            if (firePoint != null)
+            {
+                var lp = firePoint.localPosition;
+                firePoint.localPosition = new Vector3(
+                    Mathf.Abs(lp.x) * (facingRight ? 1f : -1f), lp.y, lp.z);
+            }
+        }
 
         // ── TrapBase 구현 ─────────────────────────────────────────────────────
 

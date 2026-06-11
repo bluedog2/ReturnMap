@@ -75,6 +75,18 @@ namespace ReTrap
         public bool    IsFacingRight   { get; private set; } = true;
         public int     RemainingDashes { get; private set; }
 
+        /// <summary>최대 대시 횟수 (UI 게이지용).</summary>
+        public int     MaxDashCount    => maxDashCount;
+
+        /// <summary>
+        /// 전량 소진 후 재충전 진행도 0~1 (UI 게이지용).
+        /// 충전 중이 아니면 1.
+        /// </summary>
+        public float   DashRechargeProgress01
+            => dashRechargeCounter > 0f && dashRechargeTime > 0f
+                ? 1f - (dashRechargeCounter / dashRechargeTime)
+                : 1f;
+
         // ── 이벤트 (FSM 이 구독) ──────────────────────────────────────────────
 
         public event Action OnJump;

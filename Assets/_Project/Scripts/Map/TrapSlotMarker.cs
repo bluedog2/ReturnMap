@@ -28,7 +28,8 @@ namespace ReTrap
 
         // ── 초기화 / 레지스트리 등록 ─────────────────────────────────────────
 
-        private bool _registered;
+        private bool           _registered;
+        private SpriteRenderer _guideSR;   // 슬롯 가이드 이미지
 
         /// <summary>
         /// MapLoader 에서 생성 직후 호출. 좌표 확정과 동시에
@@ -41,14 +42,40 @@ namespace ReTrap
             GridY  = y;
             Anchor = anchor;
 
+            _guideSR = GetComponent<SpriteRenderer>();
+
             TrapSlotRegistry.Register(this);
             _registered = true;
+
+            RefreshGuideVisible();
         }
+
+        private void OnEnable()  => GamePhaseManager.OnPhaseChanged += HandlePhaseChanged;
+        private void OnDisable() => GamePhaseManager.OnPhaseChanged -= HandlePhaseChanged;
 
         private void OnDestroy()
         {
             if (_registered)
                 TrapSlotRegistry.Unregister(this);
+        }
+
+        // ── 가이드 표시 규칙 ─────────────────────────────────────────────────
+
+        private void HandlePhaseChanged(GamePhase _) => RefreshGuideVisible();
+
+        /// <summary>
+        /// 가이드 이미지 표시 규칙:
+        /// <b>Build 페이즈 + 빈 슬롯</b>일 때만 보임.
+        /// 함정이 설치되면 가이드는 사라지고 함정만 남는다. Play 중엔 전부 숨김.
+        /// </summary>
+        private void RefreshGuideVisible()
+        {
+            if (_guideSR == null) return;
+
+            bool isBuild = GamePhaseManager.Instance == null
+                        || GamePhaseManager.Instance.currentPhase == GamePhase.Build;
+
+            _guideSR.enabled = isBuild && IsEmpty;
         }
 
         // ── 5단계 Build Phase 연동 ────────────────────────────────────────────
@@ -58,6 +85,7 @@ namespace ReTrap
         {
             if (!IsEmpty) return false;
             OccupiedBy = trapObject;
+            RefreshGuideVisible();   // 설치 → 가이드 숨김, 함정만 남음
             TrapSlotRegistry.NotifyOccupancyChanged();
             return true;
         }
@@ -67,6 +95,7 @@ namespace ReTrap
         {
             if (OccupiedBy == null) return;
             OccupiedBy = null;
+            RefreshGuideVisible();   // 철거 → 가이드 복원
             TrapSlotRegistry.NotifyOccupancyChanged();
         }
 

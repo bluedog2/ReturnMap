@@ -36,9 +36,13 @@ namespace ReTrap
         [Tooltip("천장에 설치 시 true — 가시가 아래 방향으로 돌출.")]
         private bool isFlipped = false;
 
-        [Header("SpikeTrap — Critical 진동")]
+        [Header("SpikeTrap — 진동")]
         [SerializeField, Min(0.1f)]
-        [Tooltip("한 사이클(수축 → 돌출 → 수축) 전체 시간(초).")]
+        [Tooltip("Normal 진동 1사이클 시간(초). 사이클의 35%는 수축 상태로 대기 — 통과 타이밍 구간.")]
+        private float normalCycleDuration = 2f;
+
+        [SerializeField, Min(0.1f)]
+        [Tooltip("Critical 진동 1사이클 시간(초). 수축 대기 없이 쉴 새 없이 진동.")]
         private float cycleDuration = 1f;
 
         [Header("SpikeTrap — Beneficial 색상")]
@@ -54,7 +58,7 @@ namespace ReTrap
         private float extendedY;   // 돌출 위치 (타일 표면 위)
         private float retractedY;  // 수축 위치 (타일 내부)
 
-        private Coroutine criticalCoroutine;
+        private Coroutine oscillateCoroutine;
 
         // ── 슬롯 호환 ─────────────────────────────────────────────────────────
 
@@ -93,15 +97,16 @@ namespace ReTrap
 
         protected override void OnNormal()
         {
-            StopCritical();
-            MoveSpikeToY(extendedY);    // 돌출 위치 고정
-            SetDamageAreaEnabled(true);
+            StopOscillate();
             RestoreColor();
+            // 느린 진동 — 사이클의 35% 는 수축 대기 (데미지 OFF, 통과 타이밍)
+            oscillateCoroutine = StartCoroutine(
+                OscillateRoutine(normalCycleDuration, normalCycleDuration * 0.35f));
         }
 
         protected override void OnDud()
         {
-            StopCritical();
+            StopOscillate();
             MoveSpikeToY(retractedY);   // 타일 속으로 수축
             // damageArea 는 TrapBase 가 Dud 판단으로 차단
             RestoreColor();
@@ -109,15 +114,16 @@ namespace ReTrap
 
         protected override void OnCritical()
         {
-            StopCritical();
+            StopOscillate();
             RestoreColor();
-            criticalCoroutine = StartCoroutine(OscillateRoutine());
+            // 빠른 진동 — 수축 대기 없음 (완전 수축 순간만 안전)
+            oscillateCoroutine = StartCoroutine(OscillateRoutine(cycleDuration, 0f));
         }
 
         protected override void OnBeneficial()
         {
-            StopCritical();
-            MoveSpikeToY(extendedY);            // 가시 위치 유지 (발판 역할)
+            StopOscillate();
+            MoveSpikeToY(extendedY);            // 가시 위치 고정 (발판 역할)
             // damageArea OFF, platformArea ON — TrapBase 가 처리
             if (spikeRenderer != null)
                 spikeRenderer.color = beneficialColor;
@@ -129,32 +135,36 @@ namespace ReTrap
                 health.TakeDamage(1);
         }
 
-        // ── Critical 진동 코루틴 ───────────────────────────────────────────────
+        // ── 진동 코루틴 (Normal·Critical 공용) ────────────────────────────────
 
         /// <summary>
         /// 수축 → 돌출 → 수축 무한 반복.
-        /// 완전히 수축된 순간만 damageArea 를 비활성화합니다.
         /// </summary>
-        private IEnumerator OscillateRoutine()
+        /// <param name="cycle">1사이클 전체 시간(초).</param>
+        /// <param name="retractedHold">
+        /// 완전 수축 상태로 대기하는 시간(초) — 이 동안 데미지 OFF (통과 타이밍).
+        /// 0이면 1프레임만 OFF (Critical).
+        /// </param>
+        private IEnumerator OscillateRoutine(float cycle, float retractedHold)
         {
-            float halfCycle = cycleDuration * 0.5f;
+            float moveTime = Mathf.Max(0.05f, (cycle - retractedHold) * 0.5f);
 
             // 초기: 수축 위치에서 시작
             MoveSpikeToY(retractedY);
-            SetDamageAreaEnabled(false);
 
             while (true)
             {
-                // ── 돌출 단계: 데미지 ON ──────────────────────────────────────
-                SetDamageAreaEnabled(true);
-                yield return LerpY(retractedY, extendedY, halfCycle);
-
-                // ── 수축 단계: 수축 중에도 데미지 ON ─────────────────────────
-                yield return LerpY(extendedY, retractedY, halfCycle);
-
-                // ── 완전히 수축: 데미지 OFF (1프레임) ────────────────────────
+                // ── 수축 대기: 안전 구간 (데미지 OFF) ────────────────────────
                 SetDamageAreaEnabled(false);
-                yield return null;
+                if (retractedHold > 0f)
+                    yield return new WaitForSeconds(retractedHold);
+                else
+                    yield return null;
+
+                // ── 돌출 → 수축: 데미지 ON ───────────────────────────────────
+                SetDamageAreaEnabled(true);
+                yield return LerpY(retractedY, extendedY, moveTime);
+                yield return LerpY(extendedY, retractedY, moveTime);
             }
         }
 
@@ -179,11 +189,11 @@ namespace ReTrap
             spikeVisual.localPosition = new Vector3(p.x, y, p.z);
         }
 
-        private void StopCritical()
+        private void StopOscillate()
         {
-            if (criticalCoroutine == null) return;
-            StopCoroutine(criticalCoroutine);
-            criticalCoroutine = null;
+            if (oscillateCoroutine == null) return;
+            StopCoroutine(oscillateCoroutine);
+            oscillateCoroutine = null;
         }
 
         private void RestoreColor()

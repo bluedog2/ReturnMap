@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace ReTrap
@@ -11,17 +12,16 @@ namespace ReTrap
     /// <summary>
     /// Build Phase 동안 함정을 슬롯에 설치/철거합니다.
     ///
-    /// <para><b>조작 (v1 — IMGUI HUD)</b></para>
+    /// <para><b>조작</b></para>
     /// <list type="bullet">
-    ///   <item>1~9: 함정 선택</item>
-    ///   <item>좌클릭: 슬롯에 설치 / 우클릭: 철거 (전액 환불)</item>
+    ///   <item>HUD 버튼 클릭 또는 1~9 키: 함정 선택</item>
+    ///   <item>슬롯 가이드 이미지 좌클릭: 설치 (설치되면 가이드는 숨고 함정만 남음)</item>
+    ///   <item>설치된 함정 우클릭: 철거 (전액 환불, 가이드 복원)</item>
     ///   <item>Enter: 플레이 시작 / (Play 중) B: 빌드로 복귀</item>
     /// </list>
     ///
-    /// <para><b>의존</b>: TrapSlotRegistry(슬롯 조회), MapLoader(예산),
-    /// GamePhaseManager(페이즈), TrapBase.CompatibleAnchors(호환 필터).</para>
-    ///
-    /// <para>HUD 는 임시 IMGUI 입니다 — 아트 확정 후 uGUI Canvas 로 교체 예정.</para>
+    /// <para><b>HUD</b>: <see cref="hudPrefab"/> (uGUI Canvas 프리팹) 을 Awake 에서
+    /// 인스턴스화합니다. HUD 로직은 <see cref="BuildHudController"/> 가 담당.</para>
     /// </summary>
     public class BuildPhaseController : MonoBehaviour
     {
@@ -30,10 +30,17 @@ namespace ReTrap
         [Header("설치 가능한 함정 프리팹 (TrapBase 필수)")]
         [SerializeField] private List<GameObject> trapPrefabs = new List<GameObject>();
 
+        [Header("UI")]
+        [Tooltip("Build HUD 패널 프리팹 (Canvas 없음). Awake 에서 uiRoot 아래에 인스턴스화.")]
+        [SerializeField] private GameObject hudPrefab;
+
+        [Tooltip("HUD 를 붙일 씬의 Canvas 루트. 비워두면 씬에서 Canvas 자동 탐색.")]
+        [SerializeField] private Transform uiRoot;
+
         [Tooltip("설치된 함정의 부모. 비워두면 'PlacedTraps' 오브젝트 자동 생성.")]
         [SerializeField] private Transform trapRoot;
 
-        // ── 공개 상태 ─────────────────────────────────────────────────────────
+        // ── 공개 상태 (HUD 가 읽음) ──────────────────────────────────────────
 
         /// <summary>남은 예산. 맵 로드 시 buildBudget 으로 초기화.</summary>
         public int  RemainingBudget { get; private set; }
@@ -41,12 +48,18 @@ namespace ReTrap
         /// <summary>Build Phase 활성 여부.</summary>
         public bool IsActive        { get; private set; }
 
+        /// <summary>현재 선택된 함정 인덱스.</summary>
+        public int  SelectedIndex   => _selected;
+
+        /// <summary>설치 가능한 함정 프리팹 목록 (읽기 전용).</summary>
+        public IReadOnlyList<GameObject> TrapPrefabs => trapPrefabs;
+
         // ── 내부 상태 ─────────────────────────────────────────────────────────
 
-        private int            _selected;             // trapPrefabs 인덱스
+        private int            _selected;
         private Camera         _cam;
 
-        private GameObject     _ghost;                // 마우스 추적 미리보기
+        private GameObject     _ghost;
         private SpriteRenderer _ghostSR;
 
         private int  _hoverX = int.MinValue, _hoverY;
@@ -61,6 +74,28 @@ namespace ReTrap
         {
             _cam = Camera.main;
             EnsureTrapRoot();
+
+            if (hudPrefab != null)
+            {
+                // 씬의 공유 Canvas 아래에 패널을 로드 (UI 전부 한 캔버스 공유)
+                Transform parent = uiRoot;
+                if (parent == null)
+                {
+                    var canvas = FindFirstObjectByType<Canvas>();
+                    parent = canvas != null ? canvas.transform : null;
+                }
+
+                if (parent != null)
+                    Instantiate(hudPrefab, parent, false);
+                else
+                    Debug.LogWarning("[BuildPhaseController] 씬에 Canvas 가 없습니다 — " +
+                                     "메뉴 'ReTrap → Setup → 함정 프리팹 + Build UI 세팅' 실행 필요");
+            }
+            else
+            {
+                Debug.LogWarning("[BuildPhaseController] HUD 프리팹 미할당 — " +
+                                 "메뉴 'ReTrap → Setup → 함정 프리팹 + Build UI 세팅' 실행 필요");
+            }
         }
 
         private void OnEnable()
@@ -77,7 +112,6 @@ namespace ReTrap
 
         private void Start()
         {
-            // 컨트롤러보다 먼저 맵이 로드된 경우 대비
             if (MapLoader.Instance != null && MapLoader.Instance.CurrentMap != null)
                 HandleMapLoaded(MapLoader.Instance.CurrentMap);
 
@@ -98,12 +132,34 @@ namespace ReTrap
             }
 
             HandleSelectionInput(kb);
-            UpdateHover();
-            HandlePlacementInput();
+
+            // 마우스가 UI 위에 있으면 월드 설치 입력 차단 (버튼 클릭이 설치로 새는 것 방지)
+            bool overUI = EventSystem.current != null &&
+                          EventSystem.current.IsPointerOverGameObject();
+
+            if (overUI)
+            {
+                SetGhostVisible(false);
+            }
+            else
+            {
+                UpdateHover();
+                HandlePlacementInput();
+            }
 
             // Enter → 플레이 시작
             if (kb != null && kb.enterKey.wasPressedThisFrame)
                 GamePhaseManager.Instance?.SetPhase(GamePhase.Play);
+        }
+
+        // ── 공개 API — HUD 버튼이 호출 ───────────────────────────────────────
+
+        /// <summary>함정 선택. HUD 버튼 / 숫자 키 양쪽에서 사용.</summary>
+        public void SelectTrap(int index)
+        {
+            if (index < 0 || index >= trapPrefabs.Count) return;
+            _selected = index;
+            RefreshGhostSprite();
         }
 
         // ── 이벤트 핸들러 ─────────────────────────────────────────────────────
@@ -117,12 +173,11 @@ namespace ReTrap
         private void HandleMapLoaded(MapData map)
         {
             RemainingBudget = map.buildBudget;
-            // 설치물은 맵 언로드 시 trapRoot 정리로 함께 제거
             for (int i = trapRoot.childCount - 1; i >= 0; i--)
                 Destroy(trapRoot.GetChild(i).gameObject);
         }
 
-        // ── 입력 — 함정 선택 ─────────────────────────────────────────────────
+        // ── 입력 — 함정 선택 (키보드 단축키) ─────────────────────────────────
 
         private void HandleSelectionInput(Keyboard kb)
         {
@@ -131,10 +186,7 @@ namespace ReTrap
             for (int i = 0; i < trapPrefabs.Count && i < 9; i++)
             {
                 if (kb[Key.Digit1 + i].wasPressedThisFrame)
-                {
-                    _selected = i;
-                    RefreshGhostSprite();
-                }
+                    SelectTrap(i);
             }
         }
 
@@ -145,7 +197,7 @@ namespace ReTrap
             var mouse = Mouse.current;
             if (mouse == null || _cam == null) return;
 
-            Vector3 world = _cam.ScreenToWorldPoint(mouse.position.ReadValue());
+            Vector3 world  = _cam.ScreenToWorldPoint(mouse.position.ReadValue());
             Vector2 origin = MapLoader.Instance != null ? MapLoader.Instance.MapOrigin : Vector2.zero;
 
             _hoverX = Mathf.FloorToInt(world.x - origin.x);
@@ -154,8 +206,8 @@ namespace ReTrap
             bool hasSlot = TrapSlotRegistry.TryGet(_hoverX, _hoverY, out var slot);
             _hoverValid  = hasSlot && CanPlaceAt(slot, out _);
 
-            // 고스트 위치/색 갱신
-            if (hasSlot)
+            // 빈 슬롯(가이드 보이는 곳) 위에서만 고스트 표시
+            if (hasSlot && slot.IsEmpty)
             {
                 EnsureGhost();
                 _ghost.transform.position = slot.transform.position;
@@ -175,7 +227,7 @@ namespace ReTrap
             _ghost = new GameObject("TrapGhost");
             _ghost.transform.SetParent(transform, false);
             _ghostSR = _ghost.AddComponent<SpriteRenderer>();
-            _ghostSR.sortingOrder = 100; // 항상 위
+            _ghostSR.sortingOrder = 100;
             RefreshGhostSprite();
         }
 
@@ -242,7 +294,7 @@ namespace ReTrap
             var trap = inst.GetComponent<TrapBase>();
             trap.ConfigureForAnchor(slot.Anchor);
 
-            slot.TryOccupy(inst);
+            slot.TryOccupy(inst);   // 가이드 숨김은 마커가 처리
             RemainingBudget -= trap.BaseCost;
 
             Debug.Log($"[Build] 설치: {prefab.name} @({x},{y})  잔여 예산 {RemainingBudget}");
@@ -252,11 +304,11 @@ namespace ReTrap
         {
             if (!TrapSlotRegistry.TryGet(x, y, out var slot) || slot.IsEmpty) return;
 
-            var trap = slot.OccupiedBy.GetComponent<TrapBase>();
+            var trap   = slot.OccupiedBy.GetComponent<TrapBase>();
             int refund = trap != null ? trap.BaseCost : 0;
 
             Destroy(slot.OccupiedBy);
-            slot.Vacate();
+            slot.Vacate();          // 가이드 복원은 마커가 처리
             RemainingBudget += refund;
 
             Debug.Log($"[Build] 철거 @({x},{y})  환불 {refund} → 잔여 예산 {RemainingBudget}");
@@ -272,39 +324,6 @@ namespace ReTrap
             if (trapRoot != null) return;
             var go = new GameObject("PlacedTraps");
             trapRoot = go.transform;
-        }
-
-        // ── 임시 HUD (IMGUI) — 아트 확정 후 uGUI 로 교체 ─────────────────────
-
-        private void OnGUI()
-        {
-            if (!IsActive)
-            {
-                if (GamePhaseManager.Instance != null &&
-                    GamePhaseManager.Instance.currentPhase == GamePhase.Play)
-                    GUI.Label(new Rect(10, 10, 300, 22), "[B] 빌드 페이즈로 돌아가기");
-                return;
-            }
-
-            const float W = 250f;
-            float h = 86f + trapPrefabs.Count * 22f;
-            GUI.Box(new Rect(10, 10, W, h), "🔨 Build Phase");
-
-            float y = 34f;
-            GUI.Label(new Rect(20, y, W - 20, 20), $"예산: {RemainingBudget}");
-            y += 24f;
-
-            for (int i = 0; i < trapPrefabs.Count; i++)
-            {
-                var trap = trapPrefabs[i] != null ? trapPrefabs[i].GetComponent<TrapBase>() : null;
-                string cost = trap != null ? trap.BaseCost.ToString() : "?";
-                string mark = i == _selected ? "▶" : "  ";
-                GUI.Label(new Rect(20, y, W - 20, 20),
-                    $"{mark} [{i + 1}] {(trapPrefabs[i] != null ? trapPrefabs[i].name : "—")}  ({cost})");
-                y += 22f;
-            }
-
-            GUI.Label(new Rect(20, y, W - 20, 20), "좌클릭 설치 · 우클릭 철거 · Enter 시작");
         }
     }
 }
