@@ -55,8 +55,8 @@ namespace ReTrap
         private Color          originalColor;
 
         // 가시 localPosition.y 기준값
-        private float extendedY;   // 돌출 위치 (타일 표면 위)
-        private float retractedY;  // 수축 위치 (타일 내부)
+        private float extendedY;   // 돌출 위치 (셀 표면 밖)
+        private float retractedY;  // 수축 위치 (셀 내부)
 
         private Coroutine oscillateCoroutine;
 
@@ -67,11 +67,11 @@ namespace ReTrap
 
         public override TrapAnchor[] CompatibleAnchors => COMPATIBLE;
 
-        /// <summary>천장 슬롯이면 가시를 아래 방향으로 뒤집고 Y 기준값 재계산.</summary>
-        public override void ConfigureForAnchor(TrapAnchor anchor)
+        /// <summary>천장 슬롯이면 가시를 아래 방향으로 뒤집고 지오메트리 재계산.</summary>
+        protected override void OnConfigureAnchor(TrapAnchor anchor)
         {
-            isFlipped  = anchor == TrapAnchor.Ceiling;
-            retractedY = isFlipped ? extendHeight : -extendHeight; // Awake 계산 갱신
+            isFlipped = anchor == TrapAnchor.Ceiling;
+            RecalcGeometry();
         }
 
         // ── Unity ─────────────────────────────────────────────────────────────
@@ -86,11 +86,32 @@ namespace ReTrap
             if (spikeRenderer != null)
                 originalColor = spikeRenderer.color;
 
-            // 방향에 따른 돌출/수축 Y 계산
-            // isFlipped=false(바닥): 돌출 = 위(+), 수축 = 아래(-)
-            // isFlipped=true(천장) : 돌출 = 아래(-), 수축 = 위(+)
-            extendedY  = 0f;
-            retractedY = isFlipped ? extendHeight : -extendHeight;
+            RecalcGeometry();
+        }
+
+        /// <summary>
+        /// 함정 칸이 솔리드 타일이 된 규칙에 맞춰 가시·트리거를 셀 표면 밖으로 배치.
+        /// <list type="bullet">
+        ///   <item>돌출: 표면(±0.5) 밖으로 extendHeight 만큼 솟음 — 밟으면 데미지</item>
+        ///   <item>수축: 셀 내부로 완전히 숨음 — 표면이 평범한 타일이 됨</item>
+        ///   <item>데미지 트리거: 돌출 구역만 커버 (셀 내부는 솔리드 박스가 차지)</item>
+        /// </list>
+        /// </summary>
+        private void RecalcGeometry()
+        {
+            // isFlipped=false(바닥): 표면 = +0.5, 돌출 = 위쪽
+            // isFlipped=true(천장) : 표면 = -0.5, 돌출 = 아래쪽
+            float sign = isFlipped ? -1f : 1f;
+
+            extendedY  = sign * (0.5f + extendHeight * 0.5f);
+            retractedY = extendedY - sign * extendHeight;
+
+            // 데미지 트리거를 표면 돌출 구역으로 이동
+            if (DamageArea is BoxCollider2D box)
+            {
+                box.size   = new Vector2(0.8f, extendHeight);
+                box.offset = new Vector2(0f, extendedY);
+            }
         }
 
         // ── TrapBase 구현 ──────────────────────────────────────────────────────

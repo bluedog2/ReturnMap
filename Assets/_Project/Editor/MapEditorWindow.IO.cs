@@ -12,20 +12,71 @@ namespace ReTrap.EditorTools
     {
         // ── 저장 ─────────────────────────────────────────────────────────────
 
-        /// <summary>
-        /// 맵을 StreamingAssets/Maps/{mapId}.json 에 저장합니다.
-        /// 검증 실패 시 다이얼로그로 오류를 표시하고 중단합니다.
-        /// </summary>
+        /// <summary>StreamingAssets/Maps/{mapId}.json 에 즉시 저장합니다.</summary>
         private void SaveMap()
+        {
+            if (!ValidateBeforeSave()) return;
+
+            string dir  = Path.Combine(Application.streamingAssetsPath, "Maps");
+            if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
+
+            string path = Path.Combine(dir, $"{_doc.map.mapId}.json");
+            WriteAndRefresh(path);
+        }
+
+        /// <summary>
+        /// 파일 저장 패널을 열어 이름·위치를 선택 후 저장합니다.
+        /// 기본 폴더는 StreamingAssets/Maps, 기본 이름은 현재 mapId.
+        /// 선택한 파일명으로 mapId 도 자동 갱신됩니다.
+        /// </summary>
+        private void SaveMapAs()
+        {
+            if (!ValidateBeforeSave()) return;
+
+            string defaultDir = Path.Combine(Application.streamingAssetsPath, "Maps");
+            if (!Directory.Exists(defaultDir)) Directory.CreateDirectory(defaultDir);
+
+            string path = EditorUtility.SaveFilePanel(
+                "다른 이름으로 저장", defaultDir, _doc.map.mapId, "json");
+            if (string.IsNullOrEmpty(path)) return;
+
+            // StreamingAssets 밖에 저장하면 MapLoader 가 찾을 수 없다 — 확인 후 진행
+            bool insideStreaming = Path.GetFullPath(path).StartsWith(
+                Path.GetFullPath(Application.streamingAssetsPath),
+                System.StringComparison.OrdinalIgnoreCase);
+            if (!insideStreaming && !EditorUtility.DisplayDialog(
+                    "저장 위치 경고",
+                    "StreamingAssets 밖에 저장하면 게임에서 이 맵을 로드할 수 없습니다.\n" +
+                    "(백업·공유 용도라면 계속 진행해도 됩니다)",
+                    "저장", "취소"))
+                return;
+
+            // 파일명 → mapId 동기화
+            string newId = Path.GetFileNameWithoutExtension(path);
+            if (newId != _doc.map.mapId)
+            {
+                Undo.RegisterCompleteObjectUndo(_doc, "Save As – Rename Map ID");
+                _doc.map.mapId = newId;
+            }
+
+            WriteAndRefresh(path);
+        }
+
+        // ── 저장 공통 ─────────────────────────────────────────────────────────
+
+        /// <summary>
+        /// 저장 전 유효성 + 콘텐츠 경고 검사.
+        /// 경고는 저장을 막지 않고 확인만 받는다 (특수 맵 허용).
+        /// </summary>
+        private bool ValidateBeforeSave()
         {
             var map = _doc.map;
             if (!map.Validate(out string err))
             {
                 EditorUtility.DisplayDialog("저장 실패", $"맵 검증 실패:\n\n{err}", "확인");
-                return;
+                return false;
             }
 
-            // 콘텐츠 검증 — 경고는 저장을 막지 않고 확인만 받는다 (특수 맵 허용)
             var warnings = MapAuthoringValidator.Validate(map);
             if (warnings.Count > 0)
             {
@@ -40,20 +91,20 @@ namespace ReTrap.EditorTools
                 sb.AppendLine();
                 sb.Append("그래도 저장할까요?");
 
-                foreach (var warning in warnings)
-                    Debug.LogWarning($"[MapEditor] {warning}");
+                foreach (var w in warnings)
+                    Debug.LogWarning($"[MapEditor] {w}");
 
                 if (!EditorUtility.DisplayDialog("맵 콘텐츠 경고", sb.ToString(), "저장", "취소"))
-                    return;
+                    return false;
             }
+            return true;
+        }
 
-            string dir = Path.Combine(Application.streamingAssetsPath, "Maps");
-            if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
-
-            string path = Path.Combine(dir, $"{map.mapId}.json");
-            File.WriteAllText(path, map.ToJson(), System.Text.Encoding.UTF8);
+        /// <summary>JSON 파일 기록 + AssetDatabase 갱신 + 더티 클리어.</summary>
+        private void WriteAndRefresh(string path)
+        {
+            File.WriteAllText(path, _doc.map.ToJson(), System.Text.Encoding.UTF8);
             AssetDatabase.Refresh();
-
             _isDirty = false;
             Repaint();
             Debug.Log($"[MapEditor] 저장 완료 → {path}");

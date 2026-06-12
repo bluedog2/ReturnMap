@@ -11,9 +11,12 @@ namespace ReTrap
     /// <para><b>역할 분담</b></para>
     /// <list type="bullet">
     ///   <item>ITrap 계약 구현 (상태·코스트·변이·NodeCost)</item>
-    ///   <item>카르마 변이 4단계 시각 힌트 관리 (파티클·Light2D)</item>
+    ///   <item>카르마 변이 4단계 시각 힌트 관리 (파티클·Light2D·스프라이트 틴트)</item>
     ///   <item>플레이어 충돌 감지 → Dud 상태 자동 차단</item>
-    ///   <item>Beneficial 상태의 발판 Collider 자동 토글</item>
+    ///   <item>솔리드 셀 — 함정은 타일처럼 1칸을 차지하며 캐릭터가 밟고 설 수 있음
+    ///         (<see cref="ActsAsSolidTile"/> 로 함정별 opt-out 가능)</item>
+    ///   <item>Beneficial 변이 — anchor 바깥 방향으로 황금 솔리드 블록 +1칸 생성
+    ///         (<see cref="SpawnsBeneficialBlock"/> 로 함정별 opt-out 가능)</item>
     /// </list>
     ///
     /// <para><b>서브클래스 필수 구현</b></para>
@@ -58,6 +61,11 @@ namespace ReTrap
         [Tooltip("상태별 색상·강도가 자동 변경되는 Point Light 2D.")]
         private Light2D stateLight;
 
+        [Header("Visual Hints — 스프라이트 틴트")]
+        [SerializeField]
+        [Tooltip("Beneficial 황금 틴트를 적용할 SpriteRenderer 목록. 비워두면 자식 전체를 자동 수집.")]
+        private SpriteRenderer[] tintTargets;
+
         [Header("Trap — 코스트")]
         [SerializeField]
         [Tooltip("빌드 페이즈 소비 코스트. 역코스트 원칙: 위험할수록 낮게, 안전할수록 높게.")]
@@ -68,6 +76,28 @@ namespace ReTrap
         private static readonly Color LIGHT_DUD        = Color.white;
         private static readonly Color LIGHT_CRITICAL   = new Color(1f, 0.10f, 0.10f);
         private static readonly Color LIGHT_BENEFICIAL = new Color(1f, 0.85f, 0.20f);
+
+        private Color[] _originalSpriteColors;
+
+        // ── 솔리드 셀 / 황금 블록 ─────────────────────────────────────────────
+
+        private BoxCollider2D _solidBody;       // 함정 칸 자체의 지형 콜라이더
+        private GameObject    _beneficialBlock; // Beneficial 시 +1칸 황금 블록
+
+        /// <summary>
+        /// 함정이 지형 타일처럼 자기 칸을 솔리드로 채우는지.
+        /// DropHammer 처럼 이동하는 함정은 false 로 오버라이드.
+        /// </summary>
+        protected virtual bool ActsAsSolidTile => true;
+
+        /// <summary>
+        /// Beneficial 변이 시 anchor 바깥 방향으로 황금 솔리드 블록(+1칸)을 만드는지.
+        /// 자체 보너스가 있는 함정(DropHammer 엘리베이터 등)은 false 로 오버라이드.
+        /// </summary>
+        protected virtual bool SpawnsBeneficialBlock => true;
+
+        /// <summary>설치된 슬롯의 anchor. ConfigureForAnchor 미호출 시 Floor.</summary>
+        public TrapAnchor InstalledAnchor { get; private set; } = TrapAnchor.Floor;
 
         // ── ITrap 프로퍼티 ────────────────────────────────────────────────────
 
@@ -96,11 +126,21 @@ namespace ReTrap
         }
 
         /// <summary>
-        /// 설치 슬롯의 anchor 에 맞게 방향 필드를 설정합니다
-        /// (예: 천장 스파이크 → isFlipped, 좌벽 슈터 → facingRight).
+        /// 설치 슬롯의 anchor 에 맞게 함정을 구성합니다.
+        /// anchor 저장(황금 블록 방향 결정) 후 서브클래스 훅을 호출합니다.
         /// Build UI 가 Instantiate 직후(Start 이전)에 호출합니다.
         /// </summary>
-        public virtual void ConfigureForAnchor(TrapAnchor anchor) { }
+        public void ConfigureForAnchor(TrapAnchor anchor)
+        {
+            InstalledAnchor = anchor;
+            OnConfigureAnchor(anchor);
+        }
+
+        /// <summary>
+        /// 서브클래스 방향 설정 훅
+        /// (예: 천장 스파이크 → isFlipped, 좌벽 슈터 → facingRight).
+        /// </summary>
+        protected virtual void OnConfigureAnchor(TrapAnchor anchor) { }
 
         // ── Unity ─────────────────────────────────────────────────────────────
 
@@ -113,6 +153,19 @@ namespace ReTrap
             // Beneficial 발판은 기본적으로 비활성화
             if (platformArea != null)
                 platformArea.enabled = false;
+
+            // 틴트 대상 수집 + 원본 색 저장
+            if (tintTargets == null || tintTargets.Length == 0)
+                tintTargets = GetComponentsInChildren<SpriteRenderer>(true);
+
+            _originalSpriteColors = new Color[tintTargets.Length];
+            for (int i = 0; i < tintTargets.Length; i++)
+                if (tintTargets[i] != null)
+                    _originalSpriteColors[i] = tintTargets[i].color;
+
+            // 함정 칸 = 지형 타일 (캐릭터가 밟고 설 수 있음)
+            if (ActsAsSolidTile)
+                EnsureSolidBody();
 
             ValidateTriggerRouting();
         }
@@ -234,6 +287,12 @@ namespace ReTrap
             if (platformArea != null) platformArea.enabled = active;
         }
 
+        /// <summary>
+        /// 데미지 트리거 콜라이더 (읽기 전용 접근).
+        /// 서브클래스가 표면 돌출 구역으로 위치·크기를 조정할 때 사용.
+        /// </summary>
+        protected Collider2D DamageArea => damageArea;
+
         // ── 내부 — 콜라이더 토글 ─────────────────────────────────────────────
 
         private void RefreshColliders(TrapState state)
@@ -241,6 +300,91 @@ namespace ReTrap
             bool isBeneficial = (state == TrapState.Beneficial);
             if (damageArea   != null) damageArea.enabled   = !isBeneficial;
             if (platformArea != null) platformArea.enabled  =  isBeneficial;
+
+            // Beneficial = anchor 바깥쪽 +1칸 황금 솔리드 블록 (Dud 는 0칸 — 발사만 정지)
+            SetBeneficialBlockActive(isBeneficial);
+        }
+
+        // ── 내부 — 솔리드 셀 / 황금 블록 ─────────────────────────────────────
+
+        /// <summary>Ground 레이어 인덱스. 없으면 0(Default).</summary>
+        private static int GroundLayerIndex()
+        {
+            int ground = LayerMask.NameToLayer("Ground");
+            return ground >= 0 ? ground : 0;
+        }
+
+        /// <summary>
+        /// 함정 칸 자체의 지형 콜라이더(1칸 솔리드 박스)를 생성합니다.
+        /// 플레이어 ground check 가 인식하도록 Ground 레이어 사용.
+        /// </summary>
+        private void EnsureSolidBody()
+        {
+            if (_solidBody != null) return;
+
+            var go = new GameObject("SolidBody");
+            go.transform.SetParent(transform, false);
+            go.layer = GroundLayerIndex();
+
+            _solidBody      = go.AddComponent<BoxCollider2D>();
+            _solidBody.size = new Vector2(cellSize.x, cellSize.y);
+        }
+
+        /// <summary>anchor 의 부착면 반대(바깥) 방향 단위 벡터.</summary>
+        private static Vector2Int OutwardOf(TrapAnchor anchor) => anchor switch
+        {
+            TrapAnchor.Ceiling   => new Vector2Int( 0, -1),
+            TrapAnchor.LeftWall  => new Vector2Int( 1,  0),
+            TrapAnchor.RightWall => new Vector2Int(-1,  0),
+            _                    => new Vector2Int( 0,  1), // Floor
+        };
+
+        private void SetBeneficialBlockActive(bool active)
+        {
+            if (!SpawnsBeneficialBlock) return;
+
+            if (active)
+            {
+                EnsureBeneficialBlock();
+                Vector2Int o = OutwardOf(InstalledAnchor);
+                _beneficialBlock.transform.localPosition = new Vector3(o.x, o.y, 0f);
+            }
+
+            if (_beneficialBlock != null)
+                _beneficialBlock.SetActive(active);
+        }
+
+        private void EnsureBeneficialBlock()
+        {
+            if (_beneficialBlock != null) return;
+
+            _beneficialBlock = new GameObject("BeneficialBlock");
+            _beneficialBlock.transform.SetParent(transform, false);
+            _beneficialBlock.layer = GroundLayerIndex();
+
+            var col  = _beneficialBlock.AddComponent<BoxCollider2D>();
+            col.size = Vector2.one;
+
+            var sr          = _beneficialBlock.AddComponent<SpriteRenderer>();
+            sr.sprite       = GetUnitSprite();
+            sr.color        = LIGHT_BENEFICIAL;
+            sr.sortingOrder = 20; // 타일(0)·슬롯(10) 위, 함정 Visual 과 동급
+
+            _beneficialBlock.SetActive(false);
+        }
+
+        // 황금 블록·철거 모드 표시 등 공용 1×1 흰 스프라이트 캐시
+        private static Sprite _unitSprite;
+        internal static Sprite GetUnitSprite()
+        {
+            if (_unitSprite != null) return _unitSprite;
+
+            var tex = new Texture2D(1, 1, TextureFormat.RGBA32, false);
+            tex.SetPixel(0, 0, Color.white);
+            tex.Apply();
+            _unitSprite = Sprite.Create(
+                tex, new Rect(0, 0, 1, 1), new Vector2(0.5f, 0.5f), 1f);
+            return _unitSprite;
         }
 
         // ── 내부 — 시각 힌트 ──────────────────────────────────────────────────
@@ -254,19 +398,23 @@ namespace ReTrap
                 case TrapState.Dud:
                     Play(dudParticles);
                     SetLight(LIGHT_DUD, 0.5f);
+                    RestoreTint();
                     break;
 
                 case TrapState.Critical:
                     Play(criticalParticles);
                     SetLight(LIGHT_CRITICAL, 1.5f);
+                    RestoreTint();
                     break;
 
                 case TrapState.Beneficial:
-                    SetLight(LIGHT_BENEFICIAL, 1.0f);
+                    SetLight(LIGHT_BENEFICIAL, 1.2f);
+                    ApplyTint(LIGHT_BENEFICIAL);
                     break;
 
                 default: // Normal
                     SetLight(Color.white, 0f);
+                    RestoreTint();
                     break;
             }
         }
@@ -287,6 +435,24 @@ namespace ReTrap
             if (stateLight == null) return;
             stateLight.color     = color;
             stateLight.intensity = intensity;
+        }
+
+        /// <summary>모든 틴트 대상에 동일한 색을 적용 (Beneficial 황금 등).</summary>
+        private void ApplyTint(Color color)
+        {
+            if (tintTargets == null) return;
+            for (int i = 0; i < tintTargets.Length; i++)
+                if (tintTargets[i] != null)
+                    tintTargets[i].color = color;
+        }
+
+        /// <summary>각 렌더러를 Awake 시점에 저장한 원본 색으로 복원.</summary>
+        private void RestoreTint()
+        {
+            if (tintTargets == null || _originalSpriteColors == null) return;
+            for (int i = 0; i < tintTargets.Length; i++)
+                if (tintTargets[i] != null)
+                    tintTargets[i].color = _originalSpriteColors[i];
         }
 
         // ── 내부 — 동작 디스패치 ──────────────────────────────────────────────

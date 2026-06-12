@@ -59,13 +59,16 @@ namespace ReTrap.EditorTools
         private enum BrushMode  { Tile, Slot, Marker }
         private enum ActiveTool { Pen, Fill, Eraser }
 
+        /// <summary>진행 중인 마우스 스트로크 종류. Brush=좌클릭, Erase=우클릭.</summary>
+        private enum StrokeKind { None, Brush, Erase }
+
         private BrushMode  _brushMode    = BrushMode.Tile;
         private TileType   _brushTile    = TileType.Floor;
         private TrapAnchor _brushAnchor  = TrapAnchor.Floor;
         private ActiveTool _activeTool   = ActiveTool.Pen;
         private bool       _markerIsGoal;
 
-        private bool _isPainting;
+        private StrokeKind _stroke = StrokeKind.None;
         private int  _hoverX = -1, _hoverY = -1;
 
         // ── 크기 변경 입력 ────────────────────────────────────────────────────

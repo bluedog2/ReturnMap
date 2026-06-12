@@ -51,6 +51,9 @@ namespace ReTrap
         /// <summary>현재 선택된 함정 인덱스.</summary>
         public int  SelectedIndex   => _selected;
 
+        /// <summary>철거 모드 — 좌클릭으로 설치된 함정을 제거(전액 환불). HUD 가 읽음.</summary>
+        public bool IsRemoveMode    { get; private set; }
+
         /// <summary>설치 가능한 함정 프리팹 목록 (읽기 전용).</summary>
         public IReadOnlyList<GameObject> TrapPrefabs => trapPrefabs;
 
@@ -67,6 +70,12 @@ namespace ReTrap
 
         private static readonly Color GhostOk  = new Color(0.3f, 1f, 0.4f, 0.55f);
         private static readonly Color GhostBad = new Color(1f, 0.25f, 0.25f, 0.55f);
+
+        /// <summary>선택된 함정을 설치할 수 있는 슬롯의 강조 색 (초록).</summary>
+        private static readonly Color SlotHighlight = new Color(0.3f, 1f, 0.4f, 0.85f);
+
+        /// <summary>철거 모드에서 호버한 설치 함정 위 표시 색 (빨강 반투명).</summary>
+        private static readonly Color RemoveHover = new Color(1f, 0.25f, 0.25f, 0.45f);
 
         // ── Unity ─────────────────────────────────────────────────────────────
 
@@ -102,12 +111,14 @@ namespace ReTrap
         {
             GamePhaseManager.OnPhaseChanged += HandlePhaseChanged;
             MapLoader.OnMapLoaded           += HandleMapLoaded;
+            TrapSlotRegistry.OnChanged      += RefreshSlotHighlights;
         }
 
         private void OnDisable()
         {
             GamePhaseManager.OnPhaseChanged -= HandlePhaseChanged;
             MapLoader.OnMapLoaded           -= HandleMapLoaded;
+            TrapSlotRegistry.OnChanged      -= RefreshSlotHighlights;
         }
 
         private void Start()
@@ -154,12 +165,25 @@ namespace ReTrap
 
         // ── 공개 API — HUD 버튼이 호출 ───────────────────────────────────────
 
-        /// <summary>함정 선택. HUD 버튼 / 숫자 키 양쪽에서 사용.</summary>
+        /// <summary>함정 선택. HUD 버튼 / 숫자 키 양쪽에서 사용. 철거 모드는 자동 해제.</summary>
         public void SelectTrap(int index)
         {
             if (index < 0 || index >= trapPrefabs.Count) return;
-            _selected = index;
+            _selected     = index;
+            IsRemoveMode  = false;
             RefreshGhostSprite();
+            RefreshSlotHighlights();
+        }
+
+        /// <summary>철거 모드 토글. HUD 버튼 / X 키 양쪽에서 사용.</summary>
+        public void ToggleRemoveMode() => SetRemoveMode(!IsRemoveMode);
+
+        public void SetRemoveMode(bool on)
+        {
+            IsRemoveMode = on;
+            RefreshGhostSprite();
+            RefreshSlotHighlights();
+            SetGhostVisible(false); // 다음 UpdateHover 에서 모드에 맞게 다시 표시
         }
 
         // ── 이벤트 핸들러 ─────────────────────────────────────────────────────
@@ -167,7 +191,30 @@ namespace ReTrap
         private void HandlePhaseChanged(GamePhase phase)
         {
             IsActive = phase == GamePhase.Build;
-            if (!IsActive) SetGhostVisible(false);
+            if (!IsActive)
+            {
+                SetGhostVisible(false);
+                IsRemoveMode = false; // 빌드 이탈 시 철거 모드 해제
+            }
+            RefreshSlotHighlights();
+        }
+
+        /// <summary>
+        /// 선택된 함정을 설치할 수 있는 슬롯(호환 anchor + 빈 슬롯 + 예산 내)을
+        /// 초록색으로 강조합니다. 선택·예산·점유·페이즈가 바뀔 때마다 갱신.
+        /// </summary>
+        private void RefreshSlotHighlights()
+        {
+            var prefab = SelectedPrefab();
+            var trap   = prefab != null ? prefab.GetComponent<TrapBase>() : null;
+
+            foreach (var slot in TrapSlotRegistry.All)
+            {
+                bool canInstall = IsActive && !IsRemoveMode && trap != null && slot.IsEmpty
+                               && trap.IsCompatibleWith(slot.Anchor)
+                               && trap.BaseCost <= RemainingBudget;
+                slot.SetGuideHighlight(canInstall, SlotHighlight);
+            }
         }
 
         private void HandleMapLoaded(MapData map)
@@ -175,6 +222,9 @@ namespace ReTrap
             RemainingBudget = map.buildBudget;
             for (int i = trapRoot.childCount - 1; i >= 0; i--)
                 Destroy(trapRoot.GetChild(i).gameObject);
+
+            // 슬롯 마커는 맵 빌드 중 먼저 등록되므로 예산 확정 후 한 번 더 갱신
+            RefreshSlotHighlights();
         }
 
         // ── 입력 — 함정 선택 (키보드 단축키) ─────────────────────────────────
@@ -188,6 +238,10 @@ namespace ReTrap
                 if (kb[Key.Digit1 + i].wasPressedThisFrame)
                     SelectTrap(i);
             }
+
+            // X → 철거 모드 토글
+            if (kb.xKey.wasPressedThisFrame)
+                ToggleRemoveMode();
         }
 
         // ── 호버 / 고스트 ─────────────────────────────────────────────────────
@@ -204,7 +258,27 @@ namespace ReTrap
             _hoverY = Mathf.FloorToInt(world.y - origin.y);
 
             bool hasSlot = TrapSlotRegistry.TryGet(_hoverX, _hoverY, out var slot);
-            _hoverValid  = hasSlot && CanPlaceAt(slot, out _);
+
+            // ── 철거 모드: 설치된 함정 위에서만 빨간 표시 ────────────────────
+            if (IsRemoveMode)
+            {
+                _hoverValid = hasSlot && !slot.IsEmpty;
+                if (_hoverValid)
+                {
+                    EnsureGhost();
+                    _ghost.transform.position = slot.transform.position;
+                    _ghostSR.color = RemoveHover;
+                    SetGhostVisible(true);
+                }
+                else
+                {
+                    SetGhostVisible(false);
+                }
+                return;
+            }
+
+            // ── 설치 모드 ─────────────────────────────────────────────────────
+            _hoverValid = hasSlot && CanPlaceAt(slot, out _);
 
             // 빈 슬롯(가이드 보이는 곳) 위에서만 고스트 표시
             if (hasSlot && slot.IsEmpty)
@@ -234,6 +308,14 @@ namespace ReTrap
         private void RefreshGhostSprite()
         {
             if (_ghostSR == null) return;
+
+            // 철거 모드: 1×1 색상 블록 (빨간 오버레이용)
+            if (IsRemoveMode)
+            {
+                _ghostSR.sprite = TrapBase.GetUnitSprite();
+                return;
+            }
+
             var prefab = SelectedPrefab();
             _ghostSR.sprite = prefab != null
                 ? prefab.GetComponentInChildren<SpriteRenderer>(true)?.sprite
@@ -253,9 +335,14 @@ namespace ReTrap
             if (mouse == null) return;
 
             if (mouse.leftButton.wasPressedThisFrame)
-                TryPlace(_hoverX, _hoverY);
+            {
+                if (IsRemoveMode) TryRemove(_hoverX, _hoverY);
+                else              TryPlace(_hoverX, _hoverY);
+            }
             else if (mouse.rightButton.wasPressedThisFrame)
-                TryRemove(_hoverX, _hoverY);
+            {
+                TryRemove(_hoverX, _hoverY); // 우클릭 철거는 모드 무관 (기존 동작 유지)
+            }
         }
 
         /// <summary>설치 가능 여부 + 불가 사유.</summary>
@@ -296,6 +383,7 @@ namespace ReTrap
 
             slot.TryOccupy(inst);   // 가이드 숨김은 마커가 처리
             RemainingBudget -= trap.BaseCost;
+            RefreshSlotHighlights(); // 예산 변동 반영 (TryOccupy 알림 시점엔 옛 예산)
 
             Debug.Log($"[Build] 설치: {prefab.name} @({x},{y})  잔여 예산 {RemainingBudget}");
         }
@@ -310,6 +398,7 @@ namespace ReTrap
             Destroy(slot.OccupiedBy);
             slot.Vacate();          // 가이드 복원은 마커가 처리
             RemainingBudget += refund;
+            RefreshSlotHighlights(); // 환불 반영 (Vacate 알림 시점엔 옛 예산)
 
             Debug.Log($"[Build] 철거 @({x},{y})  환불 {refund} → 잔여 예산 {RemainingBudget}");
         }

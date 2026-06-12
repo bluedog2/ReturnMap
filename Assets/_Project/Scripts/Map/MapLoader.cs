@@ -297,9 +297,51 @@ namespace ReTrap
                 sr.color = TilePaletteConfig.DefaultSlotTint;
             }
 
+            // 마커 스프라이트 미설정이어도 설치 가능 위치가 항상 보이도록 색상 블록 폴백
+            if (sr.sprite == null)
+                sr.sprite = GetFallbackSprite();
+
             // TrapSlotMarker 컴포넌트 — 5단계 런타임 레지스트리용
             var marker = go.AddComponent<TrapSlotMarker>();
             marker.Init(slot.x, slot.y, slot.Anchor);
+
+            // Play 페이즈에서 빈 슬롯을 막을 봉인 타일 구성
+            // (anchor 방향에 어울리는 타일 외형 — 부착면과 같은 재질로 보이게)
+            TileType sealType = slot.Anchor switch
+            {
+                TrapAnchor.Ceiling   => TileType.Ceiling,
+                TrapAnchor.LeftWall  => TileType.Wall,
+                TrapAnchor.RightWall => TileType.Wall,
+                _                    => TileType.Floor,
+            };
+
+            // 외형 우선순위: 팔레트 봉인 전용 스프라이트 → anchor 타일 스프라이트 → 색상 블록
+            Sprite sealSprite;
+            Color  sealColor;
+            if (_palette != null && _palette.SealSprite != null)
+            {
+                sealSprite = _palette.SealSprite;
+                sealColor  = _palette.SealTint;
+            }
+            else if (_palette != null && _palette.GetSprite(sealType) != null)
+            {
+                sealSprite = _palette.GetSprite(sealType);
+                sealColor  = _palette.SealTint;
+            }
+            else
+            {
+                sealSprite = GetFallbackSprite();
+                sealColor  = _palette != null ? _palette.GetColor(sealType)
+                                              : TilePaletteConfig.FallbackColor(sealType);
+            }
+
+            marker.CreateSeal(
+                sealSprite, sealColor,
+                _palette != null ? _palette.SharedMaterial : null,
+                _palette != null ? _palette.TileSortingLayer : null,
+                _palette != null ? _palette.TileSortingOrder : 0,
+                _palette != null ? _palette.GetCollisionLayerIndex(sealType) : 0,
+                map.tileUnit);
         }
 
         // ── 언로드 ────────────────────────────────────────────────────────────

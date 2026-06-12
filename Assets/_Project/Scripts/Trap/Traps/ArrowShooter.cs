@@ -68,7 +68,7 @@ namespace ReTrap
         /// 발사구(firePoint)도 발사 방향 쪽으로 반전 — 안 하면 우벽 설치 시
         /// 화살이 벽 안에서 생성돼 즉시 소멸한다.
         /// </summary>
-        public override void ConfigureForAnchor(TrapAnchor anchor)
+        protected override void OnConfigureAnchor(TrapAnchor anchor)
         {
             facingRight = anchor == TrapAnchor.LeftWall;
 
@@ -147,6 +147,13 @@ namespace ReTrap
 
             Transform spawnPoint = firePoint != null ? firePoint : transform;
             GameObject arrowGo   = Instantiate(arrowPrefab, spawnPoint.position, Quaternion.identity);
+
+            // 화살이 자기 솔리드 셀·황금 블록에 박혀 즉시 소멸하지 않도록 충돌 무시
+            if (arrowGo.TryGetComponent<Collider2D>(out var arrowCol))
+            {
+                foreach (var ownCol in GetComponentsInChildren<Collider2D>(true))
+                    Physics2D.IgnoreCollision(arrowCol, ownCol);
+            }
 
             if (arrowGo.TryGetComponent<Arrow>(out var arrow))
             {

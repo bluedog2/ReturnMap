@@ -86,6 +86,13 @@ namespace ReTrap
         [Header("슬롯 마커 (TrapAnchor 1개당 1개)")]
         [SerializeField] private List<SlotVisual> slotMarkers = new List<SlotVisual>();
 
+        [Header("슬롯 봉인 타일 (Play 중 빈 슬롯을 막는 타일)")]
+        [Tooltip("봉인 타일 전용 스프라이트. 비워두면 anchor 에 맞는 일반 타일 스프라이트를 사용합니다.")]
+        [SerializeField] private Sprite sealSprite;
+
+        [Tooltip("봉인 타일에 곱할 틴트 색. 기본 흰색 = 스프라이트 원본 색 그대로.")]
+        [SerializeField] private Color sealTint = Color.white;
+
         [Header("렌더 설정 — 배칭 조건")]
         [Tooltip("모든 타일·슬롯 마커가 공유할 머티리얼. Sprites-Default 권장.\n" +
                  "같은 머티리얼 + 같은 아틀라스 = 배칭 자동 성립.")]
@@ -111,6 +118,12 @@ namespace ReTrap
         public string   TileSortingLayer => tileSortingLayer;
         public int      TileSortingOrder => tileSortingOrder;
         public int      SlotSortingOrder => slotSortingOrder;
+
+        /// <summary>봉인 타일 전용 스프라이트. null 이면 일반 타일 스프라이트 폴백.</summary>
+        public Sprite   SealSprite       => sealSprite;
+
+        /// <summary>봉인 타일 틴트 색.</summary>
+        public Color    SealTint         => sealTint;
 
         // ── Unity ─────────────────────────────────────────────────────────────
 

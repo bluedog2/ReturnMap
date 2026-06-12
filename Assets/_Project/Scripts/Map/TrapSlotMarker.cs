@@ -29,7 +29,9 @@ namespace ReTrap
         // ── 초기화 / 레지스트리 등록 ─────────────────────────────────────────
 
         private bool           _registered;
-        private SpriteRenderer _guideSR;   // 슬롯 가이드 이미지
+        private SpriteRenderer _guideSR;       // 슬롯 가이드 이미지
+        private Color          _guideBaseTint = Color.white; // 가이드 원본 색 (하이라이트 복원용)
+        private GameObject     _seal;          // Play 중 빈 슬롯을 막는 봉인 타일
 
         /// <summary>
         /// MapLoader 에서 생성 직후 호출. 좌표 확정과 동시에
@@ -43,11 +45,13 @@ namespace ReTrap
             Anchor = anchor;
 
             _guideSR = GetComponent<SpriteRenderer>();
+            if (_guideSR != null)
+                _guideBaseTint = _guideSR.color;
 
             TrapSlotRegistry.Register(this);
             _registered = true;
 
-            RefreshGuideVisible();
+            RefreshVisualState();
         }
 
         private void OnEnable()  => GamePhaseManager.OnPhaseChanged += HandlePhaseChanged;
@@ -59,9 +63,19 @@ namespace ReTrap
                 TrapSlotRegistry.Unregister(this);
         }
 
-        // ── 가이드 표시 규칙 ─────────────────────────────────────────────────
+        // ── 가이드 / 봉인 표시 규칙 ──────────────────────────────────────────
 
-        private void HandlePhaseChanged(GamePhase _) => RefreshGuideVisible();
+        private void HandlePhaseChanged(GamePhase _) => RefreshVisualState();
+
+        private bool IsBuildPhase
+            => GamePhaseManager.Instance == null
+            || GamePhaseManager.Instance.currentPhase == GamePhase.Build;
+
+        private void RefreshVisualState()
+        {
+            RefreshGuideVisible();
+            RefreshSealActive();
+        }
 
         /// <summary>
         /// 가이드 이미지 표시 규칙:
@@ -71,11 +85,62 @@ namespace ReTrap
         private void RefreshGuideVisible()
         {
             if (_guideSR == null) return;
+            _guideSR.enabled = IsBuildPhase && IsEmpty;
+        }
 
-            bool isBuild = GamePhaseManager.Instance == null
-                        || GamePhaseManager.Instance.currentPhase == GamePhase.Build;
+        /// <summary>
+        /// 봉인 타일 활성 규칙:
+        /// <b>Build 가 아닌 페이즈 + 빈 슬롯</b> = 일반 타일로 막힘.
+        /// 함정이 설치된 슬롯은 함정 자신의 솔리드 셀이 지형 역할을 한다.
+        /// </summary>
+        private void RefreshSealActive()
+        {
+            if (_seal == null) return;
+            _seal.SetActive(!IsBuildPhase && IsEmpty);
+        }
 
-            _guideSR.enabled = isBuild && IsEmpty;
+        // ── 봉인 타일 구성 (MapLoader 가 생성 직후 호출) ─────────────────────
+
+        /// <summary>
+        /// 빈 슬롯을 Play 중 솔리드 타일로 막는 봉인 오브젝트를 구성합니다.
+        /// 콜라이더는 맵 루트의 CompositeCollider2D 로 병합되어 이음새 없이 동작합니다.
+        /// </summary>
+        public void CreateSeal(Sprite sprite, Color color, Material material,
+                               string sortingLayerName, int sortingOrder,
+                               int layerIndex, float size)
+        {
+            if (_seal != null) return;
+
+            _seal = new GameObject("SlotSeal");
+            _seal.transform.SetParent(transform, false);
+            _seal.layer = layerIndex;
+
+            var sr    = _seal.AddComponent<SpriteRenderer>();
+            sr.sprite = sprite;
+            sr.color  = color;
+            if (material != null)
+                sr.sharedMaterial = material; // 일반 타일과 동일 조명·배칭
+            if (!string.IsNullOrEmpty(sortingLayerName))
+                sr.sortingLayerName = sortingLayerName;
+            sr.sortingOrder = sortingOrder;
+
+            var col  = _seal.AddComponent<BoxCollider2D>();
+            col.size = Vector2.one * size;
+            col.compositeOperation = Collider2D.CompositeOperation.Merge;
+
+            RefreshSealActive();
+        }
+
+        // ── 설치 가능 하이라이트 (Build UI 가 호출) ──────────────────────────
+
+        /// <summary>
+        /// 현재 선택된 함정을 설치할 수 있는 슬롯이면 강조 색,
+        /// 아니면 원본 가이드 색으로 복원합니다.
+        /// </summary>
+        public void SetGuideHighlight(bool on, Color highlightColor)
+        {
+            if (_guideSR == null) return;
+            _guideSR.color = on ? highlightColor : _guideBaseTint;
         }
 
         // ── 5단계 Build Phase 연동 ────────────────────────────────────────────
@@ -85,7 +150,7 @@ namespace ReTrap
         {
             if (!IsEmpty) return false;
             OccupiedBy = trapObject;
-            RefreshGuideVisible();   // 설치 → 가이드 숨김, 함정만 남음
+            RefreshVisualState();    // 설치 → 가이드 숨김, 함정만 남음
             TrapSlotRegistry.NotifyOccupancyChanged();
             return true;
         }
@@ -95,7 +160,7 @@ namespace ReTrap
         {
             if (OccupiedBy == null) return;
             OccupiedBy = null;
-            RefreshGuideVisible();   // 철거 → 가이드 복원
+            RefreshVisualState();    // 철거 → 가이드 복원
             TrapSlotRegistry.NotifyOccupancyChanged();
         }
 

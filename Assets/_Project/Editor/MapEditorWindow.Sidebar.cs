@@ -32,7 +32,7 @@ namespace ReTrap.EditorTools
                 if (EditorGUI.EndChangeCheck())
                 {
                     Undo.RegisterCompleteObjectUndo(_doc, "Rename Map ID");
-                    _doc.map.mapId = newId;
+                    _doc.map.mapId = SanitizeMapId(newId);
                     MarkDirty();
                 }
 
@@ -43,8 +43,9 @@ namespace ReTrap.EditorTools
 
                 var prevBg = GUI.backgroundColor;
                 if (_isDirty) GUI.backgroundColor = new Color(1f, 0.72f, 0.15f);
-                if (GUILayout.Button("Save", EditorStyles.toolbarButton, GUILayout.Width(42f))) SaveMap();
+                if (GUILayout.Button("Save",    EditorStyles.toolbarButton, GUILayout.Width(42f))) SaveMap();
                 GUI.backgroundColor = prevBg;
+                if (GUILayout.Button("Save As", EditorStyles.toolbarButton, GUILayout.Width(56f))) SaveMapAs();
 
                 GUILayout.FlexibleSpace();
 
@@ -157,6 +158,16 @@ namespace ReTrap.EditorTools
                 }
             }
             EditorGUILayout.EndVertical();
+        }
+
+        /// <summary>
+        /// mapId 는 곧 저장 파일명이므로 파일명에 쓸 수 없는 문자를 제거한다.
+        /// </summary>
+        private static string SanitizeMapId(string id)
+        {
+            foreach (char c in System.IO.Path.GetInvalidFileNameChars())
+                id = id.Replace(c.ToString(), string.Empty);
+            return id;
         }
 
         // ── 브러시 선택 헬퍼 ─────────────────────────────────────────────────

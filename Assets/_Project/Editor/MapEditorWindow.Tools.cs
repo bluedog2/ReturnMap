@@ -35,30 +35,36 @@ namespace ReTrap.EditorTools
                     break;
 
                 case EventType.MouseDown:
-                    if (e.button == 0 && overCell)
+                    // 이미 다른 버튼으로 스트로크 중이면 무시 (양쪽 버튼 동시 입력 차단)
+                    if (_stroke == StrokeKind.None && overCell
+                        && (e.button == 0 || e.button == 1))
                     {
+                        _stroke = (e.button == 1) ? StrokeKind.Erase : StrokeKind.Brush;
                         BeginStroke();
-                        ApplyBrush(map, cx, cy);
+                        ApplyStroke(map, cx, cy);
+
                         // 채움 도구는 1회성 — 드래그 불필요
-                        _isPainting = (_activeTool != ActiveTool.Fill);
+                        if (_stroke == StrokeKind.Brush && _activeTool == ActiveTool.Fill)
+                            _stroke = StrokeKind.None;
+
                         UpdateHover(true, cx, cy);
                         e.Use();
                     }
                     break;
 
                 case EventType.MouseDrag:
-                    if (e.button == 0 && _isPainting)
+                    if (_stroke != StrokeKind.None && e.button == ButtonOf(_stroke))
                     {
-                        if (overCell) ApplyBrush(map, cx, cy);
+                        if (overCell) ApplyStroke(map, cx, cy);
                         UpdateHover(overCell, cx, cy);
                         e.Use();
                     }
                     break;
 
                 case EventType.MouseUp:
-                    if (e.button == 0 && _isPainting)
+                    if (_stroke != StrokeKind.None && e.button == ButtonOf(_stroke))
                     {
-                        _isPainting = false;
+                        _stroke = StrokeKind.None;
                         e.Use();
                     }
                     break;
@@ -77,18 +83,30 @@ namespace ReTrap.EditorTools
 
         // ── 스트로크 / 브러시 디스패치 ───────────────────────────────────────
 
+        /// <summary>스트로크 종류 → 담당 마우스 버튼 (Brush=좌, Erase=우).</summary>
+        private static int ButtonOf(StrokeKind kind)
+            => kind == StrokeKind.Erase ? 1 : 0;
+
         /// <summary>스트로크 시작 시 1회 전체 스냅샷 → 드래그 1회 = Undo 1회.</summary>
         private void BeginStroke()
         {
-            string label = _activeTool == ActiveTool.Eraser ? "Erase"
-                         : _activeTool == ActiveTool.Fill   ? $"Fill {_brushTile}"
-                         : _brushMode  == BrushMode.Slot    ? $"Slot {_brushAnchor}"
-                         : _brushMode  == BrushMode.Marker  ? (_markerIsGoal ? "Move Goal" : "Move Spawn")
+            string label = _stroke == StrokeKind.Erase          ? "Erase"
+                         : _activeTool == ActiveTool.Eraser     ? "Erase"
+                         : _activeTool == ActiveTool.Fill       ? $"Fill {_brushTile}"
+                         : _brushMode  == BrushMode.Slot        ? $"Slot {_brushAnchor}"
+                         : _brushMode  == BrushMode.Marker      ? (_markerIsGoal ? "Move Goal" : "Move Spawn")
                          : $"Paint {_brushTile}";
             Undo.RegisterCompleteObjectUndo(_doc, label);
         }
 
-        /// <summary>현재 브러시+도구 조합을 셀에 적용.</summary>
+        /// <summary>현재 스트로크 종류에 맞는 동작을 셀에 적용.</summary>
+        private void ApplyStroke(MapData map, int x, int y)
+        {
+            if (_stroke == StrokeKind.Erase) { ApplyEraser(map, x, y); return; }
+            ApplyBrush(map, x, y);
+        }
+
+        /// <summary>현재 브러시+도구 조합을 셀에 적용 (좌클릭 스트로크).</summary>
         private void ApplyBrush(MapData map, int x, int y)
         {
             switch (_activeTool)
