@@ -229,18 +229,20 @@ namespace ReTrap.EditorTools
         private const string HudPrefabPath = "Assets/_Project/Prefabs/UI/BuildHud.prefab";
 
         /// <summary>
-        /// Build HUD <b>패널</b> 프리팹 생성 (Canvas 없음 — 씬의 UICanvas 아래에 로드됨).
-        /// 함정 버튼 자체는 BuildHudController 가 런타임에 동적 생성합니다.
+        /// Build HUD <b>핫바</b> 프리팹 생성 (Canvas 없음 — 씬의 UICanvas 아래에 로드됨).
+        /// 하단 중앙 MMO 핫바 스타일. 슬롯 자체는 BuildHudController 가 런타임에 동적 생성합니다.
         /// </summary>
         private static GameObject BuildHudPrefab()
         {
             var existing = AssetDatabase.LoadAssetAtPath<GameObject>(HudPrefabPath);
             if (existing != null)
             {
-                // 구버전(Canvas 포함 루트) 프리팹이면 재생성
-                if (existing.GetComponent<Canvas>() == null) return existing;
+                // 구버전(Canvas 포함 루트 / 핫바 없는 좌상단 패널형)이면 재생성
+                bool isLegacy = existing.GetComponent<Canvas>() != null
+                             || existing.transform.Find("BuildPanel/Hotbar") == null;
+                if (!isLegacy) return existing;
                 AssetDatabase.DeleteAsset(HudPrefabPath);
-                Debug.Log("[TrapPrefabBuilder] 구버전 HUD(Canvas 포함) 삭제 — 패널형으로 재생성");
+                Debug.Log("[TrapPrefabBuilder] 구버전 HUD 삭제 — 하단 핫바형으로 재생성");
             }
 
             if (!AssetDatabase.IsValidFolder("Assets/_Project/Prefabs/UI"))
@@ -256,51 +258,64 @@ namespace ReTrap.EditorTools
             rootRect.offsetMin = Vector2.zero;
             rootRect.offsetMax = Vector2.zero;
 
-            // ── Build 패널 (좌상단) ──────────────────────────────────────────
-            var panel = new GameObject("Panel",
-                typeof(RectTransform), typeof(Image), typeof(VerticalLayoutGroup));
+            // ── Build 패널 (페이즈 토글 단위 — 전체 스트레치 투명 컨테이너) ──
+            var panel = new GameObject("BuildPanel", typeof(RectTransform));
             panel.transform.SetParent(root.transform, false);
-
             var panelRect = (RectTransform)panel.transform;
-            panelRect.anchorMin        = new Vector2(0f, 1f);
-            panelRect.anchorMax        = new Vector2(0f, 1f);
-            panelRect.pivot            = new Vector2(0f, 1f);
-            panelRect.anchoredPosition = new Vector2(12f, -12f);
-            panelRect.sizeDelta        = new Vector2(300f, 158f);
+            panelRect.anchorMin = Vector2.zero;
+            panelRect.anchorMax = Vector2.one;
+            panelRect.offsetMin = Vector2.zero;
+            panelRect.offsetMax = Vector2.zero;
 
-            panel.GetComponent<Image>().color = new Color(0.08f, 0.08f, 0.1f, 0.75f);
-
-            var vlayout = panel.GetComponent<VerticalLayoutGroup>();
-            vlayout.padding                = new RectOffset(10, 10, 8, 8);
-            vlayout.spacing                = 6f;
-            vlayout.childControlWidth      = true;
-            vlayout.childControlHeight     = true;
-            vlayout.childForceExpandWidth  = true;
-            vlayout.childForceExpandHeight = false;
-
-            // ── 예산 텍스트 ──────────────────────────────────────────────────
-            var budgetText = MakeText(panel.transform, "BudgetText", "예산  100",
-                font, 20, FontStyle.Bold, new Color(1f, 0.9f, 0.4f), 26f);
-
-            // ── 함정 버튼 컨테이너 ───────────────────────────────────────────
-            var buttons = new GameObject("Buttons",
-                typeof(RectTransform), typeof(HorizontalLayoutGroup), typeof(LayoutElement));
+            // ── 핫바 (하단 중앙 — 슬롯 수에 맞춰 가로 자동 확장) ─────────────
+            var buttons = new GameObject("Hotbar",
+                typeof(RectTransform), typeof(Image),
+                typeof(HorizontalLayoutGroup), typeof(ContentSizeFitter));
             buttons.transform.SetParent(panel.transform, false);
 
+            var hotbarRect = (RectTransform)buttons.transform;
+            hotbarRect.anchorMin        = new Vector2(0.5f, 0f);
+            hotbarRect.anchorMax        = new Vector2(0.5f, 0f);
+            hotbarRect.pivot            = new Vector2(0.5f, 0f);
+            hotbarRect.anchoredPosition = new Vector2(0f, 14f);
+
+            buttons.GetComponent<Image>().color = new Color(0.04f, 0.04f, 0.06f, 0.85f);
+
             var hlayout = buttons.GetComponent<HorizontalLayoutGroup>();
-            hlayout.spacing                = 8f;
+            hlayout.padding                = new RectOffset(5, 5, 5, 5);
+            hlayout.spacing                = 4f;
             hlayout.childControlWidth      = false;
             hlayout.childControlHeight     = false;
             hlayout.childForceExpandWidth  = false;
             hlayout.childForceExpandHeight = false;
-            hlayout.childAlignment         = TextAnchor.MiddleLeft;
+            hlayout.childAlignment         = TextAnchor.MiddleCenter;
 
-            buttons.GetComponent<LayoutElement>().preferredHeight = 64f;
+            var fitter = buttons.GetComponent<ContentSizeFitter>();
+            fitter.horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
+            fitter.verticalFit   = ContentSizeFitter.FitMode.PreferredSize;
 
-            // ── 힌트 텍스트 ──────────────────────────────────────────────────
+            // ── 예산 텍스트 (핫바 바로 위 중앙) ──────────────────────────────
+            var budgetText = MakeText(panel.transform, "BudgetText", "예산  100",
+                font, 20, FontStyle.Bold, new Color(1f, 0.9f, 0.4f), 24f);
+            var budgetRect = (RectTransform)budgetText.transform;
+            budgetRect.anchorMin        = new Vector2(0.5f, 0f);
+            budgetRect.anchorMax        = new Vector2(0.5f, 0f);
+            budgetRect.pivot            = new Vector2(0.5f, 0f);
+            budgetRect.anchoredPosition = new Vector2(0f, 88f);
+            budgetRect.sizeDelta        = new Vector2(300f, 24f);
+            budgetText.alignment        = TextAnchor.MiddleCenter;
+
+            // ── 힌트 텍스트 (예산 위 — 흐릿하게) ─────────────────────────────
             var hintText = MakeText(panel.transform, "HintText",
                 "버튼/1~3: 선택 · 슬롯 클릭: 설치", font, 12, FontStyle.Normal,
-                new Color(0.85f, 0.85f, 0.85f), 34f);
+                new Color(0.85f, 0.85f, 0.85f, 0.75f), 18f);
+            var hintRect = (RectTransform)hintText.transform;
+            hintRect.anchorMin        = new Vector2(0.5f, 0f);
+            hintRect.anchorMax        = new Vector2(0.5f, 0f);
+            hintRect.pivot            = new Vector2(0.5f, 0f);
+            hintRect.anchoredPosition = new Vector2(0f, 114f);
+            hintRect.sizeDelta        = new Vector2(760f, 18f);
+            hintText.alignment        = TextAnchor.MiddleCenter;
 
             // ── Play 중 복귀 힌트 (패널 밖, 기본 비활성) ─────────────────────
             var playHint = MakeText(root.transform, "PlayHint",
