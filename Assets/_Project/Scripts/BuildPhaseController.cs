@@ -1,7 +1,10 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace ReTrap
 {
@@ -27,8 +30,10 @@ namespace ReTrap
     {
         // ── Inspector ─────────────────────────────────────────────────────────
 
-        [Header("설치 가능한 함정 프리팹 (TrapBase 필수)")]
-        [SerializeField] private List<GameObject> trapPrefabs = new List<GameObject>();
+        [Header("설치 가능한 함정 프리팹 (Addressable · TrapBase 필수)")]
+        [Tooltip("어드레서블 프리팹 참조. 씬에 직접 임베드되지 않고 Traps 번들에서 로드됩니다 " +
+                 "(빌드 중복 제거). Awake 에서 비동기 로드 → 완료 시 OnTrapsReady 발행.")]
+        [SerializeField] private List<AssetReferenceGameObject> trapRefs = new List<AssetReferenceGameObject>();
 
         [Header("UI")]
         [Tooltip("Build HUD 패널 프리팹 (Canvas 없음). Awake 에서 uiRoot 아래에 인스턴스화.")]
@@ -54,13 +59,26 @@ namespace ReTrap
         /// <summary>철거 모드 — 좌클릭으로 설치된 함정을 제거(전액 환불). HUD 가 읽음.</summary>
         public bool IsRemoveMode    { get; private set; }
 
-        /// <summary>설치 가능한 함정 프리팹 목록 (읽기 전용).</summary>
-        public IReadOnlyList<GameObject> TrapPrefabs => trapPrefabs;
+        /// <summary>설치 가능한 (로드 완료된) 함정 프리팹 목록 (읽기 전용).
+        /// 비동기 로드 전에는 비어 있습니다 — <see cref="TrapsReady"/> / <see cref="OnTrapsReady"/> 참고.</summary>
+        public IReadOnlyList<GameObject> TrapPrefabs => _loadedTrapPrefabs;
+
+        /// <summary>어드레서블 함정 프리팹 로드 완료 여부.</summary>
+        public bool TrapsReady { get; private set; }
+
+        /// <summary>함정 프리팹 비동기 로드가 끝나 <see cref="TrapPrefabs"/> 가 채워졌을 때 발행.
+        /// HUD 가 버튼을 이 시점에 생성합니다.</summary>
+        public event Action OnTrapsReady;
 
         // ── 내부 상태 ─────────────────────────────────────────────────────────
 
         private int            _selected;
         private Camera         _cam;
+
+        // 어드레서블에서 로드한 함정 프리팹 캐시 + 해제용 핸들
+        private readonly List<GameObject> _loadedTrapPrefabs = new List<GameObject>();
+        private readonly List<AsyncOperationHandle<GameObject>> _trapHandles =
+            new List<AsyncOperationHandle<GameObject>>();
 
         private GameObject     _ghost;
         private SpriteRenderer _ghostSR;
@@ -83,6 +101,8 @@ namespace ReTrap
         {
             _cam = Camera.main;
             EnsureTrapRoot();
+
+            LoadTraps();
 
             if (hudPrefab != null)
             {
@@ -119,6 +139,74 @@ namespace ReTrap
             GamePhaseManager.OnPhaseChanged -= HandlePhaseChanged;
             MapLoader.OnMapLoaded           -= HandleMapLoaded;
             TrapSlotRegistry.OnChanged      -= RefreshSlotHighlights;
+        }
+
+        private void OnDestroy()
+        {
+            // 로드한 함정 프리팹 핸들 해제 (씬 종료 시) — 인스턴스는 이미 파괴된 뒤이므로 안전
+            foreach (var h in _trapHandles)
+                if (h.IsValid()) Addressables.Release(h);
+            _trapHandles.Clear();
+            _loadedTrapPrefabs.Clear();
+        }
+
+        // ── 어드레서블 함정 로드 ──────────────────────────────────────────────
+
+        /// <summary>
+        /// <see cref="trapRefs"/> 의 모든 함정 프리팹을 비동기 로드합니다.
+        /// 완료되면 <see cref="_loadedTrapPrefabs"/> 를 채우고 <see cref="OnTrapsReady"/> 를 발행해
+        /// HUD 가 버튼을 생성하도록 합니다. 직접 씬 참조가 없어 빌드 중복이 제거됩니다.
+        /// </summary>
+        private void LoadTraps()
+        {
+            int total = trapRefs != null ? trapRefs.Count : 0;
+            if (total == 0)
+            {
+                FinalizeTrapLoad(new GameObject[0]);
+                return;
+            }
+
+            var results = new GameObject[total];
+            int pending = total;
+
+            for (int i = 0; i < total; i++)
+            {
+                var aref = trapRefs[i];
+                if (aref == null || !aref.RuntimeKeyIsValid())
+                {
+                    Debug.LogWarning($"[BuildPhaseController] trapRefs[{i}] 가 비어있거나 유효하지 않은 어드레서블 참조입니다.");
+                    if (--pending == 0) FinalizeTrapLoad(results);
+                    continue;
+                }
+
+                int index   = i; // 클로저 캡처
+                var handle  = aref.LoadAssetAsync<GameObject>();
+                _trapHandles.Add(handle);
+                handle.Completed += h =>
+                {
+                    if (h.Status == AsyncOperationStatus.Succeeded)
+                        results[index] = h.Result;
+                    else
+                        Debug.LogError($"[BuildPhaseController] 함정 프리팹 로드 실패: trapRefs[{index}]");
+
+                    if (--pending == 0) FinalizeTrapLoad(results);
+                };
+            }
+        }
+
+        /// <summary>로드 결과를 캐시에 반영하고 준비 완료를 알립니다 (null 항목은 제외).</summary>
+        private void FinalizeTrapLoad(GameObject[] results)
+        {
+            _loadedTrapPrefabs.Clear();
+            foreach (var go in results)
+                if (go != null) _loadedTrapPrefabs.Add(go);
+
+            TrapsReady = true;
+            RefreshGhostSprite();
+            RefreshSlotHighlights();
+            OnTrapsReady?.Invoke();
+
+            Debug.Log($"[BuildPhaseController] 함정 프리팹 로드 완료: {_loadedTrapPrefabs.Count}개");
         }
 
         private void Start()
@@ -168,7 +256,7 @@ namespace ReTrap
         /// <summary>함정 선택. HUD 버튼 / 숫자 키 양쪽에서 사용. 철거 모드는 자동 해제.</summary>
         public void SelectTrap(int index)
         {
-            if (index < 0 || index >= trapPrefabs.Count) return;
+            if (index < 0 || index >= _loadedTrapPrefabs.Count) return;
             _selected     = index;
             IsRemoveMode  = false;
             RefreshGhostSprite();
@@ -233,7 +321,7 @@ namespace ReTrap
         {
             if (kb == null) return;
 
-            for (int i = 0; i < trapPrefabs.Count && i < 9; i++)
+            for (int i = 0; i < _loadedTrapPrefabs.Count && i < 9; i++)
             {
                 if (kb[Key.Digit1 + i].wasPressedThisFrame)
                     SelectTrap(i);
@@ -406,7 +494,7 @@ namespace ReTrap
         // ── 유틸 ─────────────────────────────────────────────────────────────
 
         private GameObject SelectedPrefab()
-            => (_selected >= 0 && _selected < trapPrefabs.Count) ? trapPrefabs[_selected] : null;
+            => (_selected >= 0 && _selected < _loadedTrapPrefabs.Count) ? _loadedTrapPrefabs[_selected] : null;
 
         private void EnsureTrapRoot()
         {

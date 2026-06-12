@@ -49,7 +49,11 @@ namespace ReTrap
                 return;
             }
 
-            BuildTrapButtons();
+            // 함정 프리팹은 어드레서블로 비동기 로드되므로, 준비된 뒤 버튼을 생성한다.
+            if (_ctrl.TrapsReady)
+                BuildTrapButtons();
+            else
+                _ctrl.OnTrapsReady += BuildTrapButtons;
 
             if (hintText != null)
                 hintText.text = "버튼/1~3: 선택 · X: 철거 모드 · 슬롯 클릭: 설치 · 우클릭: 철거 · Enter: 시작";
@@ -57,6 +61,11 @@ namespace ReTrap
 
         private void OnEnable()  => GamePhaseManager.OnPhaseChanged += HandlePhaseChanged;
         private void OnDisable() => GamePhaseManager.OnPhaseChanged -= HandlePhaseChanged;
+
+        private void OnDestroy()
+        {
+            if (_ctrl != null) _ctrl.OnTrapsReady -= BuildTrapButtons;
+        }
 
         private void Update()
         {
@@ -87,9 +96,15 @@ namespace ReTrap
 
         // ── 함정 버튼 동적 생성 ──────────────────────────────────────────────
 
+        private bool _buttonsBuilt;
+
         private void BuildTrapButtons()
         {
+            if (_buttonsBuilt) return;          // 중복 생성 방지 (이벤트 재진입 대비)
             if (buttonContainer == null) return;
+            _buttonsBuilt = true;
+
+            if (_ctrl != null) _ctrl.OnTrapsReady -= BuildTrapButtons;
 
             var prefabs = _ctrl.TrapPrefabs;
             for (int i = 0; i < prefabs.Count; i++)

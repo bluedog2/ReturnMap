@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: TilePrefabs
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: TilePrefabs
+  m_GUID: 76d275bc577f6f8429a0e9ceaf81d0b6
+  m_SerializeEntries:
+  - m_GUID: 404972406a4c63a4eafe864943da6455
+    m_Address: Tile/Tlie
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - tile
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 53fa6c3e14a8a4046a70d9cc23035519, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 031aeed8605e5ec4d851db572ff14905, type: 2}
+    - {fileID: 11400000, guid: d2c91981c239cbe49a174a93812579e9, type: 2}

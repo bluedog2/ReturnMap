@@ -817,10 +817,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82fbb2933d46efb488cfb4fffcf23183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReTrap.BuildPhaseController
-  trapPrefabs:
-  - {fileID: 153341084760501597, guid: 6e0e193ef809c9f46a1ae88d028be298, type: 3}
-  - {fileID: 570977386896062070, guid: 4732fea782ed4774fbe9a0da183e5300, type: 3}
-  - {fileID: 2016699982551983012, guid: 6deaf5016c355bb42807b8cef1536064, type: 3}
+  trapRefs:
+  - m_AssetGUID: 6e0e193ef809c9f46a1ae88d028be298
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 4732fea782ed4774fbe9a0da183e5300
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 6deaf5016c355bb42807b8cef1536064
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   hudPrefab: {fileID: 7975125609030527773, guid: 39c233df997506847a9e7008e951c1b9, type: 3}
   uiRoot: {fileID: 82817352}
   trapRoot: {fileID: 95114752}
