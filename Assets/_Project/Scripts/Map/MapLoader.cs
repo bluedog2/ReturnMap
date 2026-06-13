@@ -61,6 +61,9 @@ namespace ReTrap
         /// <summary>타일 시각 에셋(스프라이트·프리팹)을 어드레서블에서 로드하는 전담 로더.</summary>
         private readonly AddressableLoader _assetLoader = new AddressableLoader();
 
+        /// <summary>현재 <see cref="_assetLoader"/> 에 로드돼 있는 팔레트. 같은 팔레트 재로드 시 중복 로드 방지.</summary>
+        private TilePaletteConfig _loadedPalette;
+
         // ── 이벤트 ────────────────────────────────────────────────────────────
 
         /// <summary>맵 빌드 완료 후 발행. MapData 를 인자로 전달합니다.</summary>
@@ -95,7 +98,8 @@ namespace ReTrap
 
             // 어드레서블 핸들 해제 + 팔레트 캐시 비우기 (씬 종료 시)
             _assetLoader.ReleaseAll();
-            if (_palette != null) _palette.ClearCache();
+            if (_loadedPalette != null) _loadedPalette.ClearCache();
+            _loadedPalette = null;
         }
 
         // ── 공개 API ──────────────────────────────────────────────────────────
@@ -142,11 +146,16 @@ namespace ReTrap
             // ── 빌드 ──────────────────────────────────────────────────────────
             EnsureMapRoot();
 
-            // 타일 시각 에셋(스프라이트·프리팹)을 전담 로더로 어드레서블에서 로드 → 캐시
-            if (_palette != null)
+            // 타일 시각 에셋(스프라이트·프리팹)을 전담 로더로 어드레서블에서 로드 → 캐시.
+            // 팔레트가 바뀐 경우에만 재로드 — 같은 팔레트(맵 리트라이·재로드)는 캐시 재사용.
+            if (_palette != null && _palette != _loadedPalette)
             {
+                _assetLoader.ReleaseAll();                       // 이전 팔레트 핸들 해제
+                if (_loadedPalette != null) _loadedPalette.ClearCache();
+
                 _palette.BeginLoad(_assetLoader);
                 yield return StartCoroutine(_assetLoader.WaitAll());
+                _loadedPalette = _palette;
             }
 
             BuildMap(map);
