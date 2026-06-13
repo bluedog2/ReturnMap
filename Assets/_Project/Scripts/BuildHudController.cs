@@ -33,9 +33,14 @@ namespace ReTrap
         private readonly List<Image> _buttonFrames = new List<Image>();
         private Image                _removeFrame;   // 철거 모드 버튼 프레임
 
-        private static readonly Color FrameSelected   = new Color(1f, 0.85f, 0.2f, 1f);
-        private static readonly Color FrameUnselected = new Color(0f, 0f, 0f, 0.45f);
-        private static readonly Color FrameRemove     = new Color(1f, 0.3f, 0.3f, 1f);
+        // 핫바 슬롯 룩
+        private const float SlotSize   = 56f;   // 정사각 슬롯 한 변
+        private const float FrameInset = 3f;    // 바깥 테두리 두께
+
+        private static readonly Color FrameSelected   = new Color(1f, 0.85f, 0.2f, 1f);     // 선택 = 금색 테두리
+        private static readonly Color FrameUnselected = new Color(0.32f, 0.33f, 0.40f, 1f); // 평소 = 회색 테두리
+        private static readonly Color FrameRemove     = new Color(1f, 0.3f, 0.3f, 1f);      // 철거 = 빨간 테두리
+        private static readonly Color SlotBackground  = new Color(0.09f, 0.09f, 0.12f, 0.95f);
 
         // ── Unity ─────────────────────────────────────────────────────────────
 
@@ -113,58 +118,23 @@ namespace ReTrap
                 var prefab = prefabs[i];
                 if (prefab == null) continue;
 
-                var trap   = prefab.GetComponent<TrapBase>();
-                var srcSR  = prefab.GetComponentInChildren<SpriteRenderer>(true);
+                var trap  = prefab.GetComponent<TrapBase>();
+                var srcSR = prefab.GetComponentInChildren<SpriteRenderer>(true);
 
-                // ── 버튼 루트 (프레임 배경 = 선택 하이라이트) ────────────────
-                var btnGo = new GameObject($"TrapButton_{prefab.name}",
-                    typeof(RectTransform), typeof(Image), typeof(Button), typeof(LayoutElement));
-                btnGo.transform.SetParent(buttonContainer, false);
+                // 키번호는 1~9 까지만 표시 (그 이상은 숫자 키 매핑 없음)
+                string keyLabel = index < 9 ? (index + 1).ToString() : "";
 
-                var frame = btnGo.GetComponent<Image>();
-                frame.color = FrameUnselected;
+                var slot = CreateSlot($"TrapSlot_{prefab.name}", keyLabel, out var frame);
                 _buttonFrames.Add(frame);
+                slot.GetComponent<Button>().onClick.AddListener(() => _ctrl.SelectTrap(index));
 
-                var layout = btnGo.GetComponent<LayoutElement>();
-                layout.preferredWidth  = 64f;
-                layout.preferredHeight = 64f;
+                AddSpriteIcon(slot.transform,
+                              srcSR != null ? srcSR.sprite : null,
+                              srcSR != null ? srcSR.color  : Color.white);
 
-                var button = btnGo.GetComponent<Button>();
-                button.targetGraphic = frame;
-                button.onClick.AddListener(() => _ctrl.SelectTrap(index));
-
-                // ── 함정 아이콘 ──────────────────────────────────────────────
-                var iconGo = new GameObject("Icon", typeof(RectTransform), typeof(Image));
-                iconGo.transform.SetParent(btnGo.transform, false);
-                var iconRect = (RectTransform)iconGo.transform;
-                iconRect.anchorMin = new Vector2(0.1f, 0.25f);
-                iconRect.anchorMax = new Vector2(0.9f, 0.95f);
-                iconRect.offsetMin = Vector2.zero;
-                iconRect.offsetMax = Vector2.zero;
-
-                var icon = iconGo.GetComponent<Image>();
-                icon.sprite         = srcSR != null ? srcSR.sprite : null;
-                icon.color          = srcSR != null ? srcSR.color  : Color.white;
-                icon.preserveAspect = true;
-                icon.raycastTarget  = false;
-
-                // ── 코스트 라벨 ──────────────────────────────────────────────
-                var costGo = new GameObject("Cost", typeof(RectTransform), typeof(Text));
-                costGo.transform.SetParent(btnGo.transform, false);
-                var costRect = (RectTransform)costGo.transform;
-                costRect.anchorMin = new Vector2(0f, 0f);
-                costRect.anchorMax = new Vector2(1f, 0.28f);
-                costRect.offsetMin = Vector2.zero;
-                costRect.offsetMax = Vector2.zero;
-
-                var cost = costGo.GetComponent<Text>();
-                cost.text          = trap != null ? trap.BaseCost.ToString() : "?";
-                cost.font          = BuiltinFont();
-                cost.fontSize      = 14;
-                cost.fontStyle     = FontStyle.Bold;
-                cost.alignment     = TextAnchor.MiddleCenter;
-                cost.color         = new Color(1f, 0.9f, 0.4f);
-                cost.raycastTarget = false;
+                AddCornerCost(slot.transform,
+                              trap != null ? trap.BaseCost.ToString() : "?",
+                              new Color(1f, 0.9f, 0.4f));
             }
 
             BuildRemoveModeButton();
@@ -172,59 +142,136 @@ namespace ReTrap
 
         // ── 철거 모드 버튼 ───────────────────────────────────────────────────
 
-        /// <summary>함정 버튼 뒤에 ✕ 철거 모드 토글 버튼을 추가합니다 (X 키와 동일).</summary>
+        /// <summary>핫바 끝에 ✕ 철거 모드 토글 슬롯을 추가합니다 (X 키와 동일).</summary>
         private void BuildRemoveModeButton()
         {
-            var btnGo = new GameObject("RemoveModeButton",
+            var slot = CreateSlot("RemoveModeSlot", "X", out _removeFrame);
+            slot.GetComponent<Button>().onClick.AddListener(() => _ctrl.ToggleRemoveMode());
+
+            AddTextIcon(slot.transform, "✕", 30, new Color(1f, 0.45f, 0.45f));
+            AddCornerCost(slot.transform, "철거", new Color(0.9f, 0.9f, 0.9f));
+        }
+
+        // ── 슬롯 빌딩 헬퍼 ────────────────────────────────────────────────────
+
+        /// <summary>
+        /// MMO 핫바 슬롯 한 칸 생성: 바깥 테두리(frame) + 안쪽 배경(Inner) 2겹,
+        /// 좌상단 키번호. 아이콘·코스트는 호출 측에서 덧붙입니다.
+        /// </summary>
+        private GameObject CreateSlot(string name, string keyLabel, out Image frame)
+        {
+            var slotGo = new GameObject(name,
                 typeof(RectTransform), typeof(Image), typeof(Button), typeof(LayoutElement));
-            btnGo.transform.SetParent(buttonContainer, false);
+            slotGo.transform.SetParent(buttonContainer, false);
 
-            _removeFrame       = btnGo.GetComponent<Image>();
-            _removeFrame.color = FrameUnselected;
+            frame       = slotGo.GetComponent<Image>();
+            frame.color = FrameUnselected;
 
-            var layout = btnGo.GetComponent<LayoutElement>();
-            layout.preferredWidth  = 64f;
-            layout.preferredHeight = 64f;
+            var layout = slotGo.GetComponent<LayoutElement>();
+            layout.preferredWidth  = SlotSize;
+            layout.preferredHeight = SlotSize;
 
-            var button = btnGo.GetComponent<Button>();
-            button.targetGraphic = _removeFrame;
-            button.onClick.AddListener(() => _ctrl.ToggleRemoveMode());
+            var button = slotGo.GetComponent<Button>();
+            button.targetGraphic = frame;
 
-            // ✕ 아이콘 텍스트
+            // 안쪽 배경 — 테두리 두께만큼 inset 해서 베벨 느낌
+            var innerGo = new GameObject("Inner", typeof(RectTransform), typeof(Image));
+            innerGo.transform.SetParent(slotGo.transform, false);
+            var innerRect = (RectTransform)innerGo.transform;
+            innerRect.anchorMin = Vector2.zero;
+            innerRect.anchorMax = Vector2.one;
+            innerRect.offsetMin = new Vector2(FrameInset, FrameInset);
+            innerRect.offsetMax = new Vector2(-FrameInset, -FrameInset);
+
+            var inner = innerGo.GetComponent<Image>();
+            inner.color         = SlotBackground;
+            inner.raycastTarget = false;
+
+            // 좌상단 키번호
+            if (!string.IsNullOrEmpty(keyLabel))
+            {
+                var keyGo = new GameObject("Key", typeof(RectTransform), typeof(Text));
+                keyGo.transform.SetParent(slotGo.transform, false);
+                var keyRect = (RectTransform)keyGo.transform;
+                keyRect.anchorMin        = new Vector2(0f, 1f);
+                keyRect.anchorMax        = new Vector2(0f, 1f);
+                keyRect.pivot            = new Vector2(0f, 1f);
+                keyRect.anchoredPosition = new Vector2(4f, -2f);
+                keyRect.sizeDelta        = new Vector2(20f, 16f);
+
+                var key = keyGo.GetComponent<Text>();
+                key.text          = keyLabel;
+                key.font          = BuiltinFont();
+                key.fontSize      = 13;
+                key.fontStyle     = FontStyle.Bold;
+                key.alignment     = TextAnchor.UpperLeft;
+                key.color         = new Color(1f, 1f, 1f, 0.85f);
+                key.raycastTarget = false;
+            }
+
+            return slotGo;
+        }
+
+        /// <summary>슬롯 중앙에 스프라이트 아이콘을 채웁니다.</summary>
+        private static void AddSpriteIcon(Transform slot, Sprite sprite, Color tint)
+        {
+            var iconGo = new GameObject("Icon", typeof(RectTransform), typeof(Image));
+            iconGo.transform.SetParent(slot, false);
+            FillCenter((RectTransform)iconGo.transform, 0.14f);
+
+            var icon = iconGo.GetComponent<Image>();
+            icon.sprite         = sprite;
+            icon.color          = tint;
+            icon.preserveAspect = true;
+            icon.raycastTarget  = false;
+        }
+
+        /// <summary>슬롯 중앙에 텍스트 아이콘(✕ 등)을 채웁니다.</summary>
+        private static void AddTextIcon(Transform slot, string glyph, int size, Color color)
+        {
             var iconGo = new GameObject("Icon", typeof(RectTransform), typeof(Text));
-            iconGo.transform.SetParent(btnGo.transform, false);
-            var iconRect = (RectTransform)iconGo.transform;
-            iconRect.anchorMin = new Vector2(0f, 0.25f);
-            iconRect.anchorMax = new Vector2(1f, 0.95f);
-            iconRect.offsetMin = Vector2.zero;
-            iconRect.offsetMax = Vector2.zero;
+            iconGo.transform.SetParent(slot, false);
+            FillCenter((RectTransform)iconGo.transform, 0.1f);
 
             var icon = iconGo.GetComponent<Text>();
-            icon.text          = "✕";
+            icon.text          = glyph;
             icon.font          = BuiltinFont();
-            icon.fontSize      = 32;
+            icon.fontSize      = size;
             icon.fontStyle     = FontStyle.Bold;
             icon.alignment     = TextAnchor.MiddleCenter;
-            icon.color         = new Color(1f, 0.4f, 0.4f);
+            icon.color         = color;
             icon.raycastTarget = false;
+        }
 
-            // "철거" 라벨 (코스트 라벨 자리)
-            var labelGo = new GameObject("Label", typeof(RectTransform), typeof(Text));
-            labelGo.transform.SetParent(btnGo.transform, false);
-            var labelRect = (RectTransform)labelGo.transform;
-            labelRect.anchorMin = new Vector2(0f, 0f);
-            labelRect.anchorMax = new Vector2(1f, 0.28f);
-            labelRect.offsetMin = Vector2.zero;
-            labelRect.offsetMax = Vector2.zero;
+        /// <summary>슬롯 우하단 코스트(또는 라벨) 표시.</summary>
+        private static void AddCornerCost(Transform slot, string text, Color color)
+        {
+            var costGo = new GameObject("Cost", typeof(RectTransform), typeof(Text));
+            costGo.transform.SetParent(slot, false);
+            var costRect = (RectTransform)costGo.transform;
+            costRect.anchorMin        = new Vector2(1f, 0f);
+            costRect.anchorMax        = new Vector2(1f, 0f);
+            costRect.pivot            = new Vector2(1f, 0f);
+            costRect.anchoredPosition = new Vector2(-4f, 2f);
+            costRect.sizeDelta        = new Vector2(40f, 16f);
 
-            var label = labelGo.GetComponent<Text>();
-            label.text          = "철거";
-            label.font          = BuiltinFont();
-            label.fontSize      = 13;
-            label.fontStyle     = FontStyle.Bold;
-            label.alignment     = TextAnchor.MiddleCenter;
-            label.color         = new Color(0.9f, 0.9f, 0.9f);
-            label.raycastTarget = false;
+            var cost = costGo.GetComponent<Text>();
+            cost.text          = text;
+            cost.font          = BuiltinFont();
+            cost.fontSize      = 13;
+            cost.fontStyle     = FontStyle.Bold;
+            cost.alignment     = TextAnchor.LowerRight;
+            cost.color         = color;
+            cost.raycastTarget = false;
+        }
+
+        /// <summary>부모를 꽉 채우되 percent 만큼 사방 여백을 둔 RectTransform 설정.</summary>
+        private static void FillCenter(RectTransform r, float marginPercent)
+        {
+            r.anchorMin = new Vector2(marginPercent, marginPercent);
+            r.anchorMax = new Vector2(1f - marginPercent, 1f - marginPercent);
+            r.offsetMin = Vector2.zero;
+            r.offsetMax = Vector2.zero;
         }
 
         /// <summary>Unity 내장 기본 폰트.</summary>

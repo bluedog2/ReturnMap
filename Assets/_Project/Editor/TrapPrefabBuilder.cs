@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.AddressableAssets;
+using UnityEditor.AddressableAssets.Settings;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -430,17 +432,63 @@ namespace ReTrap.EditorTools
             var ctrl = managers.GetComponent<BuildPhaseController>();
             if (ctrl == null) ctrl = managers.AddComponent<BuildPhaseController>();
 
-            var so   = new SerializedObject(ctrl);
-            var list = so.FindProperty("trapPrefabs");
-            list.arraySize = prefabs.Count;
+            var so = new SerializedObject(ctrl);
+
+            // 함정 프리팹 → 어드레서블 등록(Traps 그룹) 후 trapRefs[i] 에 GUID 배선
+            var trapArr = so.FindProperty("trapRefs");
+            trapArr.arraySize = prefabs.Count;
             for (int i = 0; i < prefabs.Count; i++)
-                list.GetArrayElementAtIndex(i).objectReferenceValue = prefabs[i];
-            so.FindProperty("hudPrefab").objectReferenceValue = hudPrefab;
-            so.FindProperty("uiRoot").objectReferenceValue    = uiCanvas != null ? uiCanvas.transform : null;
+            {
+                string path = AssetDatabase.GetAssetPath(prefabs[i]);
+                string guid = RegisterAddressable(path, "Traps", $"Trap/{prefabs[i].name}");
+                SetAssetReferenceGuid(trapArr.GetArrayElementAtIndex(i), guid);
+            }
+
+            // HUD 프리팹 → 어드레서블 등록(UI 그룹) 후 hudRef 에 GUID 배선
+            string hudPath = AssetDatabase.GetAssetPath(hudPrefab);
+            string hudGuid = RegisterAddressable(hudPath, "UI", "UI/BuildHud");
+            SetAssetReferenceGuid(so.FindProperty("hudRef"), hudGuid);
+
+            so.FindProperty("uiRoot").objectReferenceValue = uiCanvas != null ? uiCanvas.transform : null;
             so.ApplyModifiedPropertiesWithoutUndo();
 
             EditorSceneManager.MarkSceneDirty(managers.scene);
-            Debug.Log($"[TrapPrefabBuilder] BuildPhaseController 배선 완료 — 함정 {prefabs.Count}종");
+            Debug.Log($"[TrapPrefabBuilder] BuildPhaseController 배선 완료 — 함정 {prefabs.Count}종 (어드레서블)");
+        }
+
+        // ── 어드레서블 헬퍼 ──────────────────────────────────────────────────
+
+        /// <summary>
+        /// 에셋을 지정 그룹에 어드레서블 등록하고 주소를 설정합니다. 그룹이 없으면 생성.
+        /// 이미 등록돼 있으면 그룹·주소만 갱신(멱등). 등록한 에셋의 GUID 반환.
+        /// </summary>
+        private static string RegisterAddressable(string assetPath, string groupName, string address)
+        {
+            var settings = AddressableAssetSettingsDefaultObject.Settings;
+            if (settings == null)
+            {
+                Debug.LogError("[TrapPrefabBuilder] AddressableAssetSettings 가 없습니다 — " +
+                               "Window → Asset Management → Addressables → Groups 에서 초기화하세요.");
+                return string.Empty;
+            }
+
+            var group = settings.FindGroup(groupName);
+            if (group == null)
+                group = settings.CreateGroup(groupName, false, false, false, null,
+                                             typeof(UnityEditor.AddressableAssets.Settings.GroupSchemas.BundledAssetGroupSchema),
+                                             typeof(UnityEditor.AddressableAssets.Settings.GroupSchemas.ContentUpdateGroupSchema));
+
+            string guid  = AssetDatabase.AssetPathToGUID(assetPath);
+            var    entry = settings.CreateOrMoveEntry(guid, group);
+            entry.address = address;
+            return guid;
+        }
+
+        /// <summary>AssetReference SerializedProperty 의 m_AssetGUID 를 설정.</summary>
+        private static void SetAssetReferenceGuid(SerializedProperty refProp, string guid)
+        {
+            var guidProp = refProp.FindPropertyRelative("m_AssetGUID");
+            if (guidProp != null) guidProp.stringValue = guid;
         }
     }
 }

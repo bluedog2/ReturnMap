@@ -58,6 +58,9 @@ namespace ReTrap
         /// <summary>맵의 월드 좌표 원점. <see cref="MapData.CellToWorld"/> 의 origin 인자로 사용.</summary>
         public Vector2  MapOrigin  => _mapRoot != null ? (Vector2)_mapRoot.position : Vector2.zero;
 
+        /// <summary>타일 시각 에셋(스프라이트·프리팹)을 어드레서블에서 로드하는 전담 로더.</summary>
+        private readonly AddressableLoader _assetLoader = new AddressableLoader();
+
         // ── 이벤트 ────────────────────────────────────────────────────────────
 
         /// <summary>맵 빌드 완료 후 발행. MapData 를 인자로 전달합니다.</summary>
@@ -89,6 +92,10 @@ namespace ReTrap
         private void OnDestroy()
         {
             if (Instance == this) Instance = null;
+
+            // 어드레서블 핸들 해제 + 팔레트 캐시 비우기 (씬 종료 시)
+            _assetLoader.ReleaseAll();
+            if (_palette != null) _palette.ClearCache();
         }
 
         // ── 공개 API ──────────────────────────────────────────────────────────
@@ -134,6 +141,14 @@ namespace ReTrap
 
             // ── 빌드 ──────────────────────────────────────────────────────────
             EnsureMapRoot();
+
+            // 타일 시각 에셋(스프라이트·프리팹)을 전담 로더로 어드레서블에서 로드 → 캐시
+            if (_palette != null)
+            {
+                _palette.BeginLoad(_assetLoader);
+                yield return StartCoroutine(_assetLoader.WaitAll());
+            }
+
             BuildMap(map);
 
             CurrentMap = map;

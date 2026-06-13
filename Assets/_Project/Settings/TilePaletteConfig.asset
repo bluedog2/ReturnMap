@@ -14,51 +14,116 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ReTrap.TilePaletteConfig
   tiles:
   - type: 0
-    sprite: {fileID: 0}
+    spriteRef:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
     fallbackColor: {r: 0.18, g: 0.18, b: 0.2, a: 1}
     isSolid: 0
     collisionLayer:
       serializedVersion: 2
       m_Bits: 0
-    prefabOverride: {fileID: 0}
+    prefabRef:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   - type: 1
-    sprite: {fileID: 21300000, guid: c007ad3e8a88f9c43b459aca9ca4bf50, type: 3}
+    spriteRef:
+      m_AssetGUID: c007ad3e8a88f9c43b459aca9ca4bf50
+      m_SubObjectName: CorruptedCastleTile
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
     fallbackColor: {r: 0.55, g: 0.38, b: 0.24, a: 1}
     isSolid: 1
     collisionLayer:
       serializedVersion: 2
       m_Bits: 512
-    prefabOverride: {fileID: 0}
+    prefabRef:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   - type: 2
-    sprite: {fileID: 21300000, guid: c007ad3e8a88f9c43b459aca9ca4bf50, type: 3}
+    spriteRef:
+      m_AssetGUID: c007ad3e8a88f9c43b459aca9ca4bf50
+      m_SubObjectName: CorruptedCastleTile
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
     fallbackColor: {r: 0.45, g: 0.45, b: 0.48, a: 1}
     isSolid: 1
     collisionLayer:
       serializedVersion: 2
       m_Bits: 512
-    prefabOverride: {fileID: 0}
+    prefabRef:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   - type: 3
-    sprite: {fileID: 21300000, guid: c007ad3e8a88f9c43b459aca9ca4bf50, type: 3}
+    spriteRef:
+      m_AssetGUID: c007ad3e8a88f9c43b459aca9ca4bf50
+      m_SubObjectName: CorruptedCastleTile
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
     fallbackColor: {r: 0.28, g: 0.28, b: 0.32, a: 1}
     isSolid: 1
     collisionLayer:
       serializedVersion: 2
       m_Bits: 512
-    prefabOverride: {fileID: 0}
+    prefabRef:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   slotMarkers:
   - anchor: 0
-    markerSprite: {fileID: 0}
+    markerRef:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
     tint: {r: 1, g: 0.5, b: 0, a: 0.6}
   - anchor: 1
-    markerSprite: {fileID: 0}
+    markerRef:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
     tint: {r: 1, g: 0.5, b: 0, a: 0.6}
   - anchor: 2
-    markerSprite: {fileID: 0}
+    markerRef:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
     tint: {r: 1, g: 0.5, b: 0, a: 0.6}
   - anchor: 3
-    markerSprite: {fileID: 0}
+    markerRef:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
     tint: {r: 1, g: 0.5, b: 0, a: 0.6}
-  sealSprite: {fileID: 0}
+  sealRef:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   sealTint: {r: 0.5960785, g: 0.9843138, b: 0.5960785, a: 1}
   sharedMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   tileSortingLayer: Map

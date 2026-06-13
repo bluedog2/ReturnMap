@@ -163,7 +163,7 @@ namespace ReTrap.EditorTools
                 tiles.Add(new TileVisual
                 {
                     type           = t,
-                    sprite         = null, // 아트 준비되면 할당
+                    // spriteRef / prefabRef 는 어드레서블 — Inspector 또는 마이그레이션에서 할당
                     fallbackColor  = TilePaletteConfig.FallbackColor(t),
                     isSolid        = t != TileType.Empty,
                     collisionLayer = t != TileType.Empty ? groundMask : (LayerMask)0,
@@ -175,9 +175,9 @@ namespace ReTrap.EditorTools
             {
                 slots.Add(new SlotVisual
                 {
-                    anchor       = a,
-                    markerSprite = null,
-                    tint         = TilePaletteConfig.DefaultSlotTint,
+                    anchor = a,
+                    // markerRef 는 어드레서블 — Inspector 에서 할당
+                    tint   = TilePaletteConfig.DefaultSlotTint,
                 });
             }
 

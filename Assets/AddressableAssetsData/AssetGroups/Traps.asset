@@ -15,11 +15,21 @@ MonoBehaviour:
   m_GroupName: Traps
   m_GUID: 8e02cd1593b1f614e85ead7e3f7fa5fe
   m_SerializeEntries:
+  - m_GUID: 02867beb11054d64ca5cc2fcc86a4360
+    m_Address: Trap/SpikeTrap
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0aabc45719df2bf469ea66bb45e630d0
     m_Address: Trap/Arrow
     m_ReadOnly: 0
     m_SerializedLabels:
     - trap
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 107e13d43e793444ba2fa6baa34076e9
+    m_Address: Trap/ArrowShooter
+    m_ReadOnly: 0
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4732fea782ed4774fbe9a0da183e5300
     m_Address: Trap/ArrowShooter
@@ -38,6 +48,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - trap
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a09c91c854191cb4896870e7ff46cd41
+    m_Address: Trap/DropHammer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 53fa6c3e14a8a4046a70d9cc23035519, type: 2}

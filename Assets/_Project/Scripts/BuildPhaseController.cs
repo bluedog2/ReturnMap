@@ -23,8 +23,8 @@ namespace ReTrap
     ///   <item>Enter: 플레이 시작 / (Play 중) B: 빌드로 복귀</item>
     /// </list>
     ///
-    /// <para><b>HUD</b>: <see cref="hudPrefab"/> (uGUI Canvas 프리팹) 을 Awake 에서
-    /// 인스턴스화합니다. HUD 로직은 <see cref="BuildHudController"/> 가 담당.</para>
+    /// <para><b>HUD</b>: <see cref="hudRef"/> (어드레서블 uGUI 프리팹) 을 Awake 에서
+    /// 비동기 인스턴스화합니다. HUD 로직은 <see cref="BuildHudController"/> 가 담당.</para>
     /// </summary>
     public class BuildPhaseController : MonoBehaviour
     {
@@ -36,8 +36,9 @@ namespace ReTrap
         [SerializeField] private List<AssetReferenceGameObject> trapRefs = new List<AssetReferenceGameObject>();
 
         [Header("UI")]
-        [Tooltip("Build HUD 패널 프리팹 (Canvas 없음). Awake 에서 uiRoot 아래에 인스턴스화.")]
-        [SerializeField] private GameObject hudPrefab;
+        [Tooltip("Build HUD 패널 프리팹 (Addressable). 씬에 임베드되지 않고 UI 번들에서 로드 후 " +
+                 "uiRoot 아래에 인스턴스화합니다.")]
+        [SerializeField] private AssetReferenceGameObject hudRef;
 
         [Tooltip("HUD 를 붙일 씬의 Canvas 루트. 비워두면 씬에서 Canvas 자동 탐색.")]
         [SerializeField] private Transform uiRoot;
@@ -80,6 +81,10 @@ namespace ReTrap
         private readonly List<AsyncOperationHandle<GameObject>> _trapHandles =
             new List<AsyncOperationHandle<GameObject>>();
 
+        // HUD 어드레서블 인스턴스 핸들 (해제용)
+        private AsyncOperationHandle<GameObject> _hudHandle;
+        private bool _hudHandleValid;
+
         private GameObject     _ghost;
         private SpriteRenderer _ghostSR;
 
@@ -103,28 +108,45 @@ namespace ReTrap
             EnsureTrapRoot();
 
             LoadTraps();
+            LoadHud();
+        }
 
-            if (hudPrefab != null)
-            {
-                // 씬의 공유 Canvas 아래에 패널을 로드 (UI 전부 한 캔버스 공유)
-                Transform parent = uiRoot;
-                if (parent == null)
-                {
-                    var canvas = FindFirstObjectByType<Canvas>();
-                    parent = canvas != null ? canvas.transform : null;
-                }
+        // ── 어드레서블 HUD 로드 ───────────────────────────────────────────────
 
-                if (parent != null)
-                    Instantiate(hudPrefab, parent, false);
-                else
-                    Debug.LogWarning("[BuildPhaseController] 씬에 Canvas 가 없습니다 — " +
-                                     "메뉴 'ReTrap → Setup → 함정 프리팹 + Build UI 세팅' 실행 필요");
-            }
-            else
+        /// <summary>
+        /// <see cref="hudRef"/> 를 비동기 인스턴스화해 씬 공유 Canvas 아래에 붙입니다.
+        /// InstantiateAsync 는 핸들 해제 시 인스턴스도 함께 파괴되므로 OnDestroy 에서 정리합니다.
+        /// </summary>
+        private void LoadHud()
+        {
+            if (hudRef == null || !hudRef.RuntimeKeyIsValid())
             {
-                Debug.LogWarning("[BuildPhaseController] HUD 프리팹 미할당 — " +
+                Debug.LogWarning("[BuildPhaseController] HUD 어드레서블 참조 미할당/무효 — " +
                                  "메뉴 'ReTrap → Setup → 함정 프리팹 + Build UI 세팅' 실행 필요");
+                return;
             }
+
+            Transform parent = uiRoot;
+            if (parent == null)
+            {
+                var canvas = FindFirstObjectByType<Canvas>();
+                parent = canvas != null ? canvas.transform : null;
+            }
+
+            if (parent == null)
+            {
+                Debug.LogWarning("[BuildPhaseController] 씬에 Canvas 가 없습니다 — " +
+                                 "메뉴 'ReTrap → Setup → 함정 프리팹 + Build UI 세팅' 실행 필요");
+                return;
+            }
+
+            _hudHandle      = hudRef.InstantiateAsync(parent, false);
+            _hudHandleValid = true;
+            _hudHandle.Completed += h =>
+            {
+                if (h.Status != AsyncOperationStatus.Succeeded)
+                    Debug.LogError("[BuildPhaseController] HUD 어드레서블 로드 실패");
+            };
         }
 
         private void OnEnable()
@@ -148,6 +170,11 @@ namespace ReTrap
                 if (h.IsValid()) Addressables.Release(h);
             _trapHandles.Clear();
             _loadedTrapPrefabs.Clear();
+
+            // HUD 인스턴스 핸들 해제 (InstantiateAsync → ReleaseInstance 로 인스턴스까지 정리)
+            if (_hudHandleValid && _hudHandle.IsValid())
+                Addressables.ReleaseInstance(_hudHandle);
+            _hudHandleValid = false;
         }
 
         // ── 어드레서블 함정 로드 ──────────────────────────────────────────────

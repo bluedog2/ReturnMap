@@ -10,23 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: UI
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
-  m_GroupName: Default Local Group
-  m_GUID: 0cbd661044affa7479f475468fcf7938
+  m_GroupName: UI
+  m_GUID: dc4049ad9a90f774f93956eb734daf82
   m_SerializeEntries:
-  - m_GUID: 001862df6c45f53419d7c721fc8a9783
-    m_Address: Lord_Animations
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c007ad3e8a88f9c43b459aca9ca4bf50
-    m_Address: Tile/CorruptedCastleTile
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: cd802ae0df1e09248bafadfaeac7e14d
-    m_Address: Lord_Common
+  - m_GUID: d75da884cf756884d94a5aa19c5d3aa5
+    m_Address: UI/BuildHud
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -34,5 +24,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 53fa6c3e14a8a4046a70d9cc23035519, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 77acf8eea3f3c8540991a42fd4f1b3bf, type: 2}
-    - {fileID: 11400000, guid: be9412d30e04a3c4b88e6c109a81552f, type: 2}
+    - {fileID: 11400000, guid: ce3777157d0b9a943874f05f26e8119c, type: 2}
+    - {fileID: 11400000, guid: 68001665b2cd0e246959137493dfcd22, type: 2}
