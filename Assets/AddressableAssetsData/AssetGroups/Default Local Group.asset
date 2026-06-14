@@ -20,6 +20,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2aff06f90b5e8e5408bb7877ae22b940
+    m_Address: Environment_BuildPhase
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aeb6610b8e2a43c48af0b4b62cc3fb31
+    m_Address: Environment_PlayPhase
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c007ad3e8a88f9c43b459aca9ca4bf50
     m_Address: Tile/CorruptedCastleTile
     m_ReadOnly: 0
