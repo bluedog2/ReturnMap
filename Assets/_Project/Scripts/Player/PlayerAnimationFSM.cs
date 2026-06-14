@@ -14,7 +14,8 @@ namespace ReTrap
         JumpLoop,   // 3  — 하강 중 루프 (Char_Fall_Loop)
         Land,       // 4
         Dash,       // 5
-        Knockback   // 6  — 피격 넉백 (Lord_Hit)
+        Knockback,  // 6  — 피격 넉백 (Lord_Hit)
+        Death       // 7  — 사망 (Death)
     }
 
     public interface IPlayerAnimState
@@ -41,6 +42,7 @@ namespace ReTrap
         public static readonly int HASH_LAND       = Animator.StringToHash("Land");
         public static readonly int HASH_DASH       = Animator.StringToHash("Dash");
         public static readonly int HASH_KNOCKBACK  = Animator.StringToHash("Lord_Hit");
+        public static readonly int HASH_DEATH      = Animator.StringToHash("Death");
 
         // ── 내부 참조 ────────────────────────────────────────────────────────
         public PlayerController Controller { get; private set; }
@@ -51,6 +53,9 @@ namespace ReTrap
         private IPlayerAnimState   current;
 
         public PlayerAnimState CurrentState { get; private set; }
+
+        /// <summary>사망 상태 진입 여부. true 이면 다른 모든 전이를 차단합니다.</summary>
+        public bool IsDead { get; private set; }
 
         // ── Unity ─────────────────────────────────────────────────────────────
 
@@ -69,6 +74,7 @@ namespace ReTrap
                 new LandState(this),      // 4 Land
                 new DashState(this),      // 5 Dash
                 new KnockbackState(this), // 6 Knockback
+                new DeathState(this),     // 7 Death
             };
         }
 
@@ -118,8 +124,19 @@ namespace ReTrap
 
         // ── 공개 API ──────────────────────────────────────────────────────────
 
+        /// <summary>사망 모션을 재생합니다. 호출 후에는 다른 상태로 전이되지 않습니다.</summary>
+        public void PlayDeath()
+        {
+            if (IsDead) return;
+            TransitionTo(PlayerAnimState.Death);
+            IsDead = true;
+        }
+
         public void TransitionTo(PlayerAnimState next)
         {
+            // 사망 후에는 어떤 상태로도 전이하지 않음
+            if (IsDead) return;
+
             if (current == states[(int)next]) return;
 
             current?.OnExit();
@@ -295,6 +312,22 @@ namespace ReTrap
                 fsm.TransitionTo(c.IsFalling
                     ? PlayerAnimState.JumpLoop : PlayerAnimState.JumpStart);
         }
+
+        public void OnExit() { }
+    }
+
+    /// <summary>
+    /// Death — 사망 모션 (Death). 한 번 재생 후 마지막 프레임에서 정지.
+    /// <see cref="PlayerAnimationFSM.PlayDeath"/> 로 진입하며, 다른 상태로 자동 전이하지 않습니다.
+    /// </summary>
+    internal class DeathState : IPlayerAnimState
+    {
+        private readonly PlayerAnimationFSM fsm;
+        internal DeathState(PlayerAnimationFSM fsm) => this.fsm = fsm;
+
+        public void OnEnter() => fsm.Play(PlayerAnimationFSM.HASH_DEATH);
+
+        public void OnUpdate() { } // 사망 후에는 전이하지 않음
 
         public void OnExit() { }
     }
