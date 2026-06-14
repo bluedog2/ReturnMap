@@ -20,13 +20,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2aff06f90b5e8e5408bb7877ae22b940
-    m_Address: Environment_BuildPhase
+  - m_GUID: 2fd948604309a0e42975f014615d0e58
+    m_Address: Environment_PlayPhase_Chapter1
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: aeb6610b8e2a43c48af0b4b62cc3fb31
-    m_Address: Environment_PlayPhase
+  - m_GUID: 48435ba72e4d5b74db0fad6f688b8f0a
+    m_Address: Environment_PlayPhase_Chapter2
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -37,6 +37,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cd802ae0df1e09248bafadfaeac7e14d
     m_Address: Lord_Common
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e258e801584b7b0459e6d2909c82bc45
+    m_Address: Environment_BuildPhase_Chapter2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ff63cf9a87097a54086358ae7950e00f
+    m_Address: Environment_BuildPhase_Chapter1
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
