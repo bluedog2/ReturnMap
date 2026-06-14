@@ -36,6 +36,14 @@ namespace ReTrap
 
         public static CameraConfinerSync Instance { get; private set; }
 
+        // ── 경계 공유 (빌드 카메라가 같은 경계를 사용) ───────────────────────
+
+        /// <summary>경계 박스가 유효하게 설정됐는지 (SetFromMap 이후 true).</summary>
+        public bool HasBounds => _col != null && _col.size.sqrMagnitude > 0.0001f;
+
+        /// <summary>경계 박스의 월드 AABB. 빌드 카메라 fit·clamp 가 이 값을 기준으로 삼습니다.</summary>
+        public Bounds WorldBounds => _col != null ? _col.bounds : new Bounds();
+
         // ── Unity ─────────────────────────────────────────────────────────────
 
         private void Awake()

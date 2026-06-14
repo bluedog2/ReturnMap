@@ -13,7 +13,8 @@ namespace ReTrap
         JumpStart,  // 2  — 상승 중 루프 (Char_Jump_Start)
         JumpLoop,   // 3  — 하강 중 루프 (Char_Fall_Loop)
         Land,       // 4
-        Dash        // 5
+        Dash,       // 5
+        Knockback   // 6  — 피격 넉백 (Lord_Hit)
     }
 
     public interface IPlayerAnimState
@@ -39,6 +40,7 @@ namespace ReTrap
         public static readonly int HASH_JUMP_LOOP  = Animator.StringToHash("Jump_Loop");
         public static readonly int HASH_LAND       = Animator.StringToHash("Land");
         public static readonly int HASH_DASH       = Animator.StringToHash("Dash");
+        public static readonly int HASH_KNOCKBACK  = Animator.StringToHash("Lord_Hit");
 
         // ── 내부 참조 ────────────────────────────────────────────────────────
         public PlayerController Controller { get; private set; }
@@ -66,6 +68,7 @@ namespace ReTrap
                 new JumpLoopState(this),  // 3 JumpLoop
                 new LandState(this),      // 4 Land
                 new DashState(this),      // 5 Dash
+                new KnockbackState(this), // 6 Knockback
             };
         }
 
@@ -75,6 +78,7 @@ namespace ReTrap
             Controller.OnLand      += HandleLand;
             Controller.OnDashStart += HandleDashStart;
             Controller.OnDashEnd   += HandleDashEnd;
+            Controller.OnKnockback += HandleKnockback;
         }
 
         private void OnDisable()
@@ -83,6 +87,7 @@ namespace ReTrap
             Controller.OnLand      -= HandleLand;
             Controller.OnDashStart -= HandleDashStart;
             Controller.OnDashEnd   -= HandleDashEnd;
+            Controller.OnKnockback -= HandleKnockback;
         }
 
         private void Start() => TransitionTo(PlayerAnimState.Idle);
@@ -92,8 +97,15 @@ namespace ReTrap
         // ── 이벤트 핸들러 (PlayerController → FSM) ────────────────────────────
 
         private void HandleJump()      => TransitionTo(PlayerAnimState.JumpStart);
-        private void HandleLand()      => TransitionTo(PlayerAnimState.Land);
         private void HandleDashStart() => TransitionTo(PlayerAnimState.Dash);
+        private void HandleKnockback() => TransitionTo(PlayerAnimState.Knockback);
+
+        private void HandleLand()
+        {
+            // 넉백 경직 중 착지는 Hit 모션을 유지 (넉백 종료 후 KnockbackState 가 복귀 처리)
+            if (Controller.IsKnockedBack) return;
+            TransitionTo(PlayerAnimState.Land);
+        }
         private void HandleDashEnd()
         {
             if (Controller.IsGrounded)
@@ -257,5 +269,33 @@ namespace ReTrap
         public void OnEnter()  => fsm.Play(PlayerAnimationFSM.HASH_DASH);
         public void OnUpdate() { }
         public void OnExit()   { }
+    }
+
+    /// <summary>
+    /// Knockback — 피격 넉백 경직 (Lord_Hit).
+    /// <see cref="PlayerController.IsKnockedBack"/> 가 false 가 되면 현재 상황에 맞는 상태로 복귀.
+    /// </summary>
+    internal class KnockbackState : IPlayerAnimState
+    {
+        private readonly PlayerAnimationFSM fsm;
+        internal KnockbackState(PlayerAnimationFSM fsm) => this.fsm = fsm;
+
+        public void OnEnter() => fsm.Play(PlayerAnimationFSM.HASH_KNOCKBACK);
+
+        public void OnUpdate()
+        {
+            var c = fsm.Controller;
+            if (c.IsKnockedBack) return; // 넉백 경직 지속 중 — Hit 모션 유지
+
+            // 넉백 종료 → 지면/공중 상황에 맞게 복귀 (HandleDashEnd 와 동일 규칙)
+            if (c.IsGrounded)
+                fsm.TransitionTo(Mathf.Abs(c.MoveInput.x) > 0.01f
+                    ? PlayerAnimState.Run : PlayerAnimState.Idle);
+            else
+                fsm.TransitionTo(c.IsFalling
+                    ? PlayerAnimState.JumpLoop : PlayerAnimState.JumpStart);
+        }
+
+        public void OnExit() { }
     }
 }

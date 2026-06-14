@@ -26,7 +26,7 @@ namespace ReTrap.EditorTools
     /// </summary>
     public static class TrapPrefabBuilder
     {
-        private const string PrefabDir   = "Assets/_Project/Prefabs/Traps";
+        private const string PrefabDir   = "Assets/_Project/ResourcceEX/Prefabs/Traps";
         private const string TileSprite  = "Assets/_Project/ResourcceEX/Sprites/Environment/CorruptedCastleTile.png";
 
         [MenuItem("ReTrap/Setup/함정 프리팹 + Build UI 세팅")]
@@ -61,10 +61,10 @@ namespace ReTrap.EditorTools
 
         private static void EnsureFolder()
         {
-            if (!AssetDatabase.IsValidFolder("Assets/_Project/Prefabs"))
-                AssetDatabase.CreateFolder("Assets/_Project", "Prefabs");
+            if (!AssetDatabase.IsValidFolder("Assets/_Project/ResourcceEX/Prefabs"))
+                AssetDatabase.CreateFolder("Assets/_Project/ResourcceEX", "Prefabs");
             if (!AssetDatabase.IsValidFolder(PrefabDir))
-                AssetDatabase.CreateFolder("Assets/_Project/Prefabs", "Traps");
+                AssetDatabase.CreateFolder("Assets/_Project/ResourcceEX/Prefabs", "Traps");
         }
 
         private static Sprite LoadPlaceholderSprite()
@@ -228,7 +228,7 @@ namespace ReTrap.EditorTools
 
         // ── Build HUD 프리팹 (uGUI Canvas) ───────────────────────────────────
 
-        private const string HudPrefabPath = "Assets/_Project/Prefabs/UI/BuildHud.prefab";
+        private const string HudPrefabPath = "Assets/_Project/ResourcceEX/Prefabs/UI/BuildHud.prefab";
 
         /// <summary>
         /// Build HUD <b>핫바</b> 프리팹 생성 (Canvas 없음 — 씬의 UICanvas 아래에 로드됨).
@@ -247,8 +247,8 @@ namespace ReTrap.EditorTools
                 Debug.Log("[TrapPrefabBuilder] 구버전 HUD 삭제 — 하단 핫바형으로 재생성");
             }
 
-            if (!AssetDatabase.IsValidFolder("Assets/_Project/Prefabs/UI"))
-                AssetDatabase.CreateFolder("Assets/_Project/Prefabs", "UI");
+            if (!AssetDatabase.IsValidFolder("Assets/_Project/ResourcceEX/Prefabs/UI"))
+                AssetDatabase.CreateFolder("Assets/_Project/ResourcceEX/Prefabs", "UI");
 
             Font font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
 

@@ -75,6 +75,9 @@ namespace ReTrap
         public bool    IsFacingRight   { get; private set; } = true;
         public int     RemainingDashes { get; private set; }
 
+        /// <summary>넉백 경직 중 여부 (knockbackTimer 진행 중). FSM 이 Hit 모션 유지에 사용.</summary>
+        public bool    IsKnockedBack   => knockbackTimer > 0f;
+
         /// <summary>최대 대시 횟수 (UI 게이지용).</summary>
         public int     MaxDashCount    => maxDashCount;
 
@@ -93,6 +96,9 @@ namespace ReTrap
         public event Action OnLand;
         public event Action OnDashStart;
         public event Action OnDashEnd;
+
+        /// <summary>넉백 시작 시 발행. FSM 이 Hit 모션으로 전이합니다.</summary>
+        public event Action OnKnockback;
 
         // ── Private — 컴포넌트 참조 ──────────────────────────────────────────
 
@@ -351,6 +357,7 @@ namespace ReTrap
             if (IsDashing) return; // 대시 무적 중 넉백 면역
             rb.linearVelocity = velocity;
             knockbackTimer    = duration;
+            OnKnockback?.Invoke();
         }
 
         // ── Movement / Gravity ────────────────────────────────────────────────

@@ -156,6 +156,11 @@ namespace ReTrap
                 _palette.BeginLoad(_assetLoader);
                 yield return StartCoroutine(_assetLoader.WaitAll());
                 _loadedPalette = _palette;
+                Debug.Log($"[MapLoader] 팔레트 어드레서블 로드: {_palette.name} (핸들 {_assetLoader.Count}개)");
+            }
+            else if (_palette != null)
+            {
+                Debug.Log($"[MapLoader] 팔레트 캐시 재사용 — 어드레서블 재로드 생략 ({_palette.name})");
             }
 
             BuildMap(map);
