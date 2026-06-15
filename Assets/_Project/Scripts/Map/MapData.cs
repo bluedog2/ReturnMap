@@ -97,6 +97,14 @@ namespace ReTrap
         // ── 타일 데이터 (length == width*height) ─────────────────────────────
         public int[] grid;
 
+        /// <summary>
+        /// 배경 레이어 — 충돌 없는 장식 타일의 <b>인덱스</b> 그리드 (0=없음, 1~N=배경 타일).
+        /// 지형 <see cref="grid"/> 와 독립이며 같은 셀에 공존합니다.
+        /// <para>인덱스 기반이라 배경 타일 종류를 코드 수정 없이 늘릴 수 있고,
+        /// 향후 다중 레이어(패럴랙스)로 확장 시 이 필드를 레이어 배열로 마이그레이션합니다.</para>
+        /// </summary>
+        public int[] background;
+
         // ── 함정 슬롯 (오버레이) ─────────────────────────────────────────────
         public List<TrapSlotData> trapSlots = new List<TrapSlotData>();
 
@@ -113,6 +121,7 @@ namespace ReTrap
                 width      = width,
                 height     = height,
                 grid       = new int[width * height],          // 전부 Empty(0)
+                background = new int[width * height],          // 배경 전부 없음(0)
                 spawnPoint = new GridCoord(1, 1),
                 goalPoint  = new GridCoord(width - 2, height - 2),
                 trapSlots  = new List<TrapSlotData>(),
@@ -133,6 +142,35 @@ namespace ReTrap
         {
             if (InBounds(x, y))
                 grid[Index(x, y)] = (int)type;
+        }
+
+        // ── 배경 레이어 접근 ──────────────────────────────────────────────────
+
+        /// <summary>배경 타일 인덱스 (0=없음). 범위 밖/미초기화면 0.</summary>
+        public int GetBackground(int x, int y)
+            => (background != null && InBounds(x, y)) ? background[Index(x, y)] : 0;
+
+        /// <summary>배경 타일 인덱스 설정 (0=지움). 범위 밖이면 무시.</summary>
+        public void SetBackground(int x, int y, int tileIndex)
+        {
+            EnsureBackground();
+            if (InBounds(x, y))
+                background[Index(x, y)] = tileIndex;
+        }
+
+        /// <summary>배경 배열이 grid 와 같은 길이를 갖도록 보장 (구버전 맵·null 대비).</summary>
+        public void EnsureBackground()
+        {
+            if (background == null || background.Length != width * height)
+            {
+                var old = background;
+                background = new int[width * height];
+                if (old != null)
+                {
+                    int n = Mathf.Min(old.Length, background.Length);
+                    System.Array.Copy(old, background, n);
+                }
+            }
         }
 
         // ── 함정 슬롯 ─────────────────────────────────────────────────────────
@@ -181,12 +219,17 @@ namespace ReTrap
             newH = Mathf.Max(1, newH);
 
             var newGrid = new int[newW * newH];
+            var newBg   = new int[newW * newH];
             int copyW   = Mathf.Min(width,  newW);
             int copyH   = Mathf.Min(height, newH);
 
+            EnsureBackground();
             for (int y = 0; y < copyH; y++)
                 for (int x = 0; x < copyW; x++)
+                {
                     newGrid[y * newW + x] = grid[y * width + x];
+                    newBg[y * newW + x]   = background[y * width + x];
+                }
 
             // 범위 밖 슬롯 제거
             trapSlots.RemoveAll(s => s.x >= newW || s.y >= newH);
@@ -197,9 +240,10 @@ namespace ReTrap
             goalPoint  = new GridCoord(Mathf.Clamp(goalPoint.x,  0, newW - 1),
                                        Mathf.Clamp(goalPoint.y,  0, newH - 1));
 
-            grid   = newGrid;
-            width  = newW;
-            height = newH;
+            grid       = newGrid;
+            background = newBg;
+            width      = newW;
+            height     = newH;
         }
 
         // ── 검증 ──────────────────────────────────────────────────────────────

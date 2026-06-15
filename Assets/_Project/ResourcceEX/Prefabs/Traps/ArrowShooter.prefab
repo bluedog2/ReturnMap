@@ -128,6 +128,7 @@ MonoBehaviour:
   dudParticles: {fileID: 0}
   criticalParticles: {fileID: 0}
   stateLight: {fileID: 0}
+  tintTargets: []
   baseCost: 25
   facingRight: 1
   arrowPrefab: {fileID: 5529692169157957084, guid: 0aabc45719df2bf469ea66bb45e630d0, type: 3}
@@ -212,9 +213,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 20
+  m_SortingLayerID: 311294878
+  m_SortingLayer: 1
+  m_SortingOrder: 10
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: c007ad3e8a88f9c43b459aca9ca4bf50, type: 3}
   m_Color: {r: 0.3, g: 0.5, b: 0.9, a: 1}

@@ -365,10 +365,11 @@ namespace ReTrap
             var col  = _beneficialBlock.AddComponent<BoxCollider2D>();
             col.size = Vector2.one;
 
-            var sr          = _beneficialBlock.AddComponent<SpriteRenderer>();
-            sr.sprite       = GetUnitSprite();
-            sr.color        = LIGHT_BENEFICIAL;
-            sr.sortingOrder = 20; // 타일(0)·슬롯(10) 위, 함정 Visual 과 동급
+            var sr              = _beneficialBlock.AddComponent<SpriteRenderer>();
+            sr.sprite           = GetUnitSprite();
+            sr.color            = LIGHT_BENEFICIAL;
+            sr.sortingLayerName = "Map";  // 타일과 같은 레이어라야 가려지지 않음
+            sr.sortingOrder     = 15;     // 타일(0)·함정(10) 위, 캐릭터(20) 아래
 
             _beneficialBlock.SetActive(false);
         }

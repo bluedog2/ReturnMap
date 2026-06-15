@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
@@ -146,21 +147,22 @@ namespace ReTrap
             // ── 빌드 ──────────────────────────────────────────────────────────
             EnsureMapRoot();
 
-            // 타일 시각 에셋(스프라이트·프리팹)을 전담 로더로 어드레서블에서 로드 → 캐시.
-            // 팔레트가 바뀐 경우에만 재로드 — 같은 팔레트(맵 리트라이·재로드)는 캐시 재사용.
-            if (_palette != null && _palette != _loadedPalette)
+            // 타일 시각 에셋을 전담 로더로 어드레서블에서 로드 → 캐시.
+            if (_palette != null)
             {
-                _assetLoader.ReleaseAll();                       // 이전 팔레트 핸들 해제
-                if (_loadedPalette != null) _loadedPalette.ClearCache();
+                // 타일·슬롯·봉인: 팔레트가 바뀐 경우에만 재로드 (같은 팔레트는 캐시 재사용)
+                if (_palette != _loadedPalette)
+                {
+                    _assetLoader.ReleaseAll();                       // 이전 팔레트 핸들 해제
+                    if (_loadedPalette != null) _loadedPalette.ClearCache();
+                    _palette.BeginLoad(_assetLoader);
+                    _loadedPalette = _palette;
+                }
 
-                _palette.BeginLoad(_assetLoader);
+                // 배경: 이 맵이 실제 사용하는 인덱스만 로드 (종류가 수백 개여도 화면에 쓰는 것만)
+                _palette.LoadBackgrounds(_assetLoader, CollectUsedBackgrounds(map));
+
                 yield return StartCoroutine(_assetLoader.WaitAll());
-                _loadedPalette = _palette;
-                Debug.Log($"[MapLoader] 팔레트 어드레서블 로드: {_palette.name} (핸들 {_assetLoader.Count}개)");
-            }
-            else if (_palette != null)
-            {
-                Debug.Log($"[MapLoader] 팔레트 캐시 재사용 — 어드레서블 재로드 생략 ({_palette.name})");
             }
 
             BuildMap(map);
@@ -180,6 +182,9 @@ namespace ReTrap
 
             // ── 1. 지형 물리 준비 (Rigidbody2D + CompositeCollider2D) ────────
             SetupTerrainPhysics();
+
+            // ── 1.5. 배경 레이어 (충돌 없는 장식, 소팅 뒤) ───────────────────
+            BuildBackground(map, origin);
 
             // ── 2. 타일 생성 ─────────────────────────────────────────────────
             for (int y = 0; y < map.height; y++)
@@ -271,8 +276,12 @@ namespace ReTrap
             go.transform.SetParent(_mapRoot, false);
             go.transform.position = worldPos;
 
-            // SpriteRenderer
-            var sr     = go.AddComponent<SpriteRenderer>();
+            // 스프라이트는 자식 "Visual" 에 분리한다. 셀 크기에 맞춰 스케일해도
+            // 부모(콜라이더)는 스케일 1 을 유지해 물리 크기가 틀어지지 않는다.
+            var visual = new GameObject("Visual");
+            visual.transform.SetParent(go.transform, false);
+
+            var sr     = visual.AddComponent<SpriteRenderer>();
             Sprite sp  = _palette != null ? _palette.GetSprite(type) : null;
             sr.sprite  = sp;
             sr.color   = sp != null ? Color.white
@@ -292,13 +301,67 @@ namespace ReTrap
             if (sp == null)
                 sr.sprite = GetFallbackSprite();
 
-            // 솔리드 타일 → BoxCollider2D (루트의 CompositeCollider2D 로 병합)
+            // PPU·해상도가 제각각인 스프라이트도 정확히 1셀(tileUnit)을 채우도록 스케일 보정
+            Vector2 spriteWorld = sr.sprite.bounds.size;
+            if (spriteWorld.x > 0.0001f && spriteWorld.y > 0.0001f)
+                visual.transform.localScale = new Vector3(
+                    map.tileUnit / spriteWorld.x, map.tileUnit / spriteWorld.y, 1f);
+
+            // 솔리드 타일 → BoxCollider2D (부모 go, 스케일 1 → 루트 CompositeCollider2D 로 병합)
             if (_palette != null && _palette.IsSolid(type))
             {
                 var col  = go.AddComponent<BoxCollider2D>();
                 col.size = Vector2.one * map.tileUnit;
                 col.compositeOperation = Collider2D.CompositeOperation.Merge;
                 go.layer = _palette.GetCollisionLayerIndex(type);
+            }
+        }
+
+        /// <summary>맵의 배경 그리드에 실제 등장하는 타일 인덱스 집합 (0=없음 제외).</summary>
+        private static HashSet<int> CollectUsedBackgrounds(MapData map)
+        {
+            var set = new HashSet<int>();
+            if (map.background != null)
+                foreach (int b in map.background)
+                    if (b > 0) set.Add(b);
+            return set;
+        }
+
+        /// <summary>
+        /// 배경 레이어를 빌드합니다. 충돌 없는 SpriteRenderer 를 타일보다 뒤 소팅 순서로 배치.
+        /// </summary>
+        private void BuildBackground(MapData map, Vector2 origin)
+        {
+            if (_palette == null) return;
+            map.EnsureBackground();
+
+            for (int y = 0; y < map.height; y++)
+            {
+                for (int x = 0; x < map.width; x++)
+                {
+                    int bg = map.GetBackground(x, y);
+                    if (bg <= 0) continue;
+
+                    Sprite sp = _palette.GetBackgroundSprite(bg);
+                    if (sp == null) continue;
+
+                    var go = new GameObject($"Bg_{bg}_{x}_{y}");
+                    go.transform.SetParent(_mapRoot, false);
+                    go.transform.position = map.CellToWorld(x, y, origin);
+
+                    var sr    = go.AddComponent<SpriteRenderer>();
+                    sr.sprite = sp;
+                    if (!string.IsNullOrEmpty(_palette.TileSortingLayer))
+                        sr.sortingLayerName = _palette.TileSortingLayer;
+                    sr.sortingOrder = _palette.TileSortingOrder - 10; // 지형 타일보다 뒤
+                    if (_palette.SharedMaterial != null)
+                        sr.sharedMaterial = _palette.SharedMaterial;
+
+                    // 1셀(tileUnit)에 맞춰 스케일 보정 (PPU·해상도 무관)
+                    Vector2 b = sp.bounds.size;
+                    if (b.x > 0.0001f && b.y > 0.0001f)
+                        go.transform.localScale = new Vector3(map.tileUnit / b.x, map.tileUnit / b.y, 1f);
+                }
             }
         }
 

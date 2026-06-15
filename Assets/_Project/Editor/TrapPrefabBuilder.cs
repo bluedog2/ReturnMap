@@ -99,9 +99,10 @@ namespace ReTrap.EditorTools
             visual.transform.localScale    = new Vector3(scale.x, scale.y, 1f);
 
             var sr = visual.AddComponent<SpriteRenderer>();
-            sr.sprite       = sprite;
-            sr.color        = tint;
-            sr.sortingOrder = 20; // 타일(0)·슬롯(10) 위
+            sr.sprite           = sprite;
+            sr.color            = tint;
+            sr.sortingLayerName = "Map"; // 타일과 같은 레이어라야 가려지지 않음
+            sr.sortingOrder     = 10;    // 배경(-10)·타일(0) 위, 캐릭터(20) 아래
             return sr;
         }
 

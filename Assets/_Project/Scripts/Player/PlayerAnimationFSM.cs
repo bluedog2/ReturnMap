@@ -46,7 +46,8 @@ namespace ReTrap
 
         // ── 내부 참조 ────────────────────────────────────────────────────────
         public PlayerController Controller { get; private set; }
-        private Animator anim;
+        private Animator     anim;
+        private PlayerHealth _health;
 
         // ── 상태 인스턴스 ─────────────────────────────────────────────────────
         private IPlayerAnimState[] states;
@@ -63,6 +64,7 @@ namespace ReTrap
         {
             Controller = GetComponent<PlayerController>();
             anim       = GetComponentInChildren<Animator>();
+            _health    = GetComponent<PlayerHealth>();
 
             // 상태 인스턴스 생성 (enum 인덱스와 배열 순서를 맞춥니다)
             states = new IPlayerAnimState[]
@@ -85,6 +87,9 @@ namespace ReTrap
             Controller.OnDashStart += HandleDashStart;
             Controller.OnDashEnd   += HandleDashEnd;
             Controller.OnKnockback += HandleKnockback;
+
+            if (_health != null) _health.OnDeath += PlayDeath;
+            RespawnManager.OnRespawn += HandleRespawn;
         }
 
         private void OnDisable()
@@ -94,6 +99,16 @@ namespace ReTrap
             Controller.OnDashStart -= HandleDashStart;
             Controller.OnDashEnd   -= HandleDashEnd;
             Controller.OnKnockback -= HandleKnockback;
+
+            if (_health != null) _health.OnDeath -= PlayDeath;
+            RespawnManager.OnRespawn -= HandleRespawn;
+        }
+
+        /// <summary>리스폰 완료 시 사망 상태를 풀고 Idle 로 복귀.</summary>
+        private void HandleRespawn()
+        {
+            IsDead = false;
+            TransitionTo(PlayerAnimState.Idle);
         }
 
         private void Start() => TransitionTo(PlayerAnimState.Idle);

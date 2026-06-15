@@ -109,12 +109,71 @@ namespace ReTrap.EditorTools
         /// <summary>현재 브러시+도구 조합을 셀에 적용 (좌클릭 스트로크).</summary>
         private void ApplyBrush(MapData map, int x, int y)
         {
+            // 배경 레이어는 배경 타일만 칠한다 (지형/슬롯/마커 무관)
+            if (_editLayer == EditLayer.Background)
+            {
+                ApplyBackgroundBrush(map, x, y);
+                return;
+            }
+
             switch (_activeTool)
             {
                 case ActiveTool.Eraser: ApplyEraser(map, x, y); break;
                 case ActiveTool.Fill:   ApplyFill(map, x, y);   break;
                 default:                ApplyPen(map, x, y);    break;
             }
+        }
+
+        // ── 배경 레이어 브러시 ────────────────────────────────────────────────
+
+        private void ApplyBackgroundBrush(MapData map, int x, int y)
+        {
+            switch (_activeTool)
+            {
+                case ActiveTool.Eraser: SetBackgroundCell(map, x, y, 0);               break;
+                case ActiveTool.Fill:   BackgroundFill(map, x, y);                     break;
+                default:                SetBackgroundCell(map, x, y, _brushBackground); break;
+            }
+        }
+
+        private void SetBackgroundCell(MapData map, int x, int y, int idx)
+        {
+            if (map.GetBackground(x, y) == idx) return;
+            map.SetBackground(x, y, idx);
+            MarkDirty();
+        }
+
+        /// <summary>배경 채움(Flood Fill): 클릭 지점과 같은 배경 인덱스 영역을 현재 선택 배경으로 교체.</summary>
+        private void BackgroundFill(MapData map, int startX, int startY)
+        {
+            int target = map.GetBackground(startX, startY);
+            if (target == _brushBackground) return;
+
+            var queue   = new System.Collections.Generic.Queue<(int, int)>();
+            var visited = new System.Collections.Generic.HashSet<int>();
+            queue.Enqueue((startX, startY));
+            visited.Add(map.Index(startX, startY));
+
+            int[] dx = {  0,  0, -1, 1 };
+            int[] dy = {  1, -1,  0, 0 };
+
+            while (queue.Count > 0)
+            {
+                var (x, y) = queue.Dequeue();
+                map.SetBackground(x, y, _brushBackground);
+
+                for (int i = 0; i < 4; i++)
+                {
+                    int nx = x + dx[i], ny = y + dy[i];
+                    if (!map.InBounds(nx, ny)) continue;
+                    int idx = map.Index(nx, ny);
+                    if (visited.Contains(idx)) continue;
+                    if (map.GetBackground(nx, ny) != target) continue;
+                    visited.Add(idx);
+                    queue.Enqueue((nx, ny));
+                }
+            }
+            MarkDirty();
         }
 
         // ── 도구별 적용 ───────────────────────────────────────────────────────
@@ -155,9 +214,15 @@ namespace ReTrap.EditorTools
             }
         }
 
-        /// <summary>지우개: 타일 Empty 화 + 해당 셀 슬롯 제거.</summary>
+        /// <summary>지우개: 타일 Empty 화 + 해당 셀 슬롯 제거. (배경 레이어면 배경만 지움)</summary>
         private void ApplyEraser(MapData map, int x, int y)
         {
+            if (_editLayer == EditLayer.Background)
+            {
+                SetBackgroundCell(map, x, y, 0);
+                return;
+            }
+
             bool changed = false;
             if (map.GetTile(x, y) != TileType.Empty)
             {

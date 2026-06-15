@@ -66,6 +66,22 @@ namespace ReTrap.EditorTools
         {
             EditorGUILayout.BeginVertical(GUILayout.Width(SidebarWidth));
             {
+                // ── 편집 레이어 토글 (지형 / 배경) ────────────────────────────
+                EditorGUILayout.LabelField("편집 레이어", EditorStyles.boldLabel);
+                EditorGUILayout.BeginHorizontal();
+                {
+                    DrawLayerButton("지형", EditLayer.Foreground);
+                    DrawLayerButton("배경", EditLayer.Background);
+                }
+                EditorGUILayout.EndHorizontal();
+                GUILayout.Space(8f);
+
+                if (_editLayer == EditLayer.Background)
+                {
+                    DrawBackgroundPalette();
+                }
+                else
+                {
                 // ── WHAT: 타일 ────────────────────────────────────────────────
                 EditorGUILayout.LabelField("타일", EditorStyles.boldLabel);
                 DrawBrushButton("Empty",   () => SetTileBrush(TileType.Empty),
@@ -103,6 +119,7 @@ namespace ReTrap.EditorTools
                     _brushMode == BrushMode.Marker && !_markerIsGoal, ColSpawn);
                 DrawBrushButton("G  Goal",  () => SetMarkerBrush(true),
                     _brushMode == BrushMode.Marker &&  _markerIsGoal, ColGoal);
+                }
 
                 GUILayout.Space(8f);
 
@@ -129,19 +146,50 @@ namespace ReTrap.EditorTools
 
                 // ── 크기 변경 ─────────────────────────────────────────────────
                 EditorGUILayout.LabelField("크기 변경", EditorStyles.boldLabel);
-                EditorGUILayout.LabelField($"현재  {_doc.map.width} × {_doc.map.height}",
+
+                // 현재 맵 크기 + 비율 표시 (목표 비율과 일치하면 ✓)
+                int curW = _doc.map.width, curH = _doc.map.height;
+                EditorGUILayout.LabelField(
+                    $"현재  {curW} × {curH}  ({RatioText(curW, curH)}){AspectMatchMark(curW, curH)}",
                     EditorStyles.miniLabel);
+
+                // 화면 비율 프리셋 — 빌드 카메라가 맵에 딱 맞으려면 화면과 같은 비율로 제작
+                EditorGUI.BeginChangeCheck();
+                _aspect = (AspectPreset)EditorGUILayout.Popup("비율", (int)_aspect, AspectLabels);
+                bool aspectChanged = EditorGUI.EndChangeCheck();
+
+                float ratio = AspectValue(_aspect);
+
                 EditorGUILayout.BeginHorizontal();
                 {
                     EditorGUILayout.LabelField("W", GUILayout.Width(14f));
+                    EditorGUI.BeginChangeCheck();
                     _resizeW = EditorGUILayout.IntField(_resizeW, GUILayout.Width(38f));
+                    bool wEdited = EditorGUI.EndChangeCheck();
+
                     GUILayout.Space(4f);
+
+                    // 비율 잠금(Free 아님) 시 H 는 자동 계산되므로 비활성 표시
                     EditorGUILayout.LabelField("H", GUILayout.Width(14f));
-                    _resizeH = EditorGUILayout.IntField(_resizeH, GUILayout.Width(38f));
+                    using (new EditorGUI.DisabledScope(ratio > 0f))
+                    {
+                        EditorGUI.BeginChangeCheck();
+                        _resizeH = EditorGUILayout.IntField(_resizeH, GUILayout.Width(38f));
+                        if (EditorGUI.EndChangeCheck() && ratio <= 0f) { /* Free: 수동 H */ }
+                    }
+
+                    // 비율 잠금: W 또는 비율이 바뀌면 H = round(W ÷ ratio)
+                    if (ratio > 0f && (aspectChanged || wEdited))
+                        _resizeH = Mathf.RoundToInt(_resizeW / ratio);
                 }
                 EditorGUILayout.EndHorizontal();
+
                 _resizeW = Mathf.Clamp(_resizeW, 4, 256);
                 _resizeH = Mathf.Clamp(_resizeH, 4, 256);
+
+                if (ratio > 0f)
+                    EditorGUILayout.LabelField($"→ {_resizeW} × {_resizeH} ({AspectLabels[(int)_aspect]})",
+                        EditorStyles.miniLabel);
 
                 if (GUILayout.Button("크기 적용", EditorStyles.miniButton))
                     ApplyResize();
@@ -158,6 +206,98 @@ namespace ReTrap.EditorTools
                 }
             }
             EditorGUILayout.EndVertical();
+        }
+
+        // ── 편집 레이어 / 배경 팔레트 ────────────────────────────────────────
+
+        private void DrawLayerButton(string label, EditLayer layer)
+        {
+            var prevBg = GUI.backgroundColor;
+            if (_editLayer == layer) GUI.backgroundColor = new Color(0.4f, 0.7f, 1f);
+            if (GUILayout.Button(label, EditorStyles.miniButton))
+            {
+                _editLayer = layer;
+                Repaint();
+            }
+            GUI.backgroundColor = prevBg;
+        }
+
+        /// <summary>배경 타일 썸네일 팔레트. 팔레트의 Background Tiles 를 그리드로 표시·선택.</summary>
+        private void DrawBackgroundPalette()
+        {
+            EditorGUILayout.LabelField("배경 타일", EditorStyles.boldLabel);
+
+            int count = _palette != null ? _palette.BackgroundTileCount : 0;
+            if (count == 0)
+            {
+                EditorGUILayout.HelpBox(
+                    "배경 타일이 없습니다.\nTilePaletteConfig 의 Background Tiles 에 스프라이트를 추가하세요.",
+                    MessageType.Info);
+                return;
+            }
+
+            const int   cols = 4;
+            const float cell = 38f;
+
+            // 타일이 많으면 세로 스크롤 (고정 높이 영역 안에서 스크롤)
+            _bgPaletteScroll = EditorGUILayout.BeginScrollView(
+                _bgPaletteScroll, GUILayout.Height(220f));
+            {
+                for (int i = 1; i <= count; i++) // 1-base (맵 background 인덱스)
+                {
+                    if ((i - 1) % cols == 0) EditorGUILayout.BeginHorizontal();
+
+                    var r = GUILayoutUtility.GetRect(cell, cell, GUILayout.Width(cell), GUILayout.Height(cell));
+
+                    // 선택 하이라이트 배경
+                    EditorGUI.DrawRect(r, _brushBackground == i
+                        ? new Color(0.4f, 0.7f, 1f, 0.6f)
+                        : new Color(0f, 0f, 0f, 0.25f));
+
+                    // 썸네일 (스프라이트 UV 그리기 — DrawSpriteCell 재사용)
+                    var sp = _palette.GetBackgroundSprite(i);
+                    if (sp != null)
+                    {
+                        var inner = new Rect(r.x + 3, r.y + 3, r.width - 6, r.height - 6);
+                        DrawSpriteCell(inner, sp);
+                    }
+
+                    if (GUI.Button(r, GUIContent.none, GUIStyle.none))
+                    {
+                        _brushBackground = i;
+                        Repaint();
+                    }
+
+                    if ((i - 1) % cols == cols - 1 || i == count) EditorGUILayout.EndHorizontal();
+                }
+            }
+            EditorGUILayout.EndScrollView();
+
+            EditorGUILayout.LabelField($"선택: #{_brushBackground} / {count}", EditorStyles.miniLabel);
+        }
+
+        // ── 비율 표시 헬퍼 ────────────────────────────────────────────────────
+
+        /// <summary>W:H 를 기약분수로 표시 (예: 24×16 → "3:2").</summary>
+        private static string RatioText(int w, int h)
+        {
+            if (w <= 0 || h <= 0) return "-";
+            int g = Gcd(w, h);
+            return $"{w / g}:{h / g}";
+        }
+
+        /// <summary>현재 크기가 선택한 목표 비율과 일치하면 " ✓", 아니면 빈 문자열.</summary>
+        private string AspectMatchMark(int w, int h)
+        {
+            float ratio = AspectValue(_aspect);
+            if (ratio <= 0f || h <= 0) return string.Empty;
+            return Mathf.Abs((float)w / h - ratio) < 0.01f ? "  ✓" : string.Empty;
+        }
+
+        private static int Gcd(int a, int b)
+        {
+            while (b != 0) { (a, b) = (b, a % b); }
+            return Mathf.Abs(a);
         }
 
         /// <summary>

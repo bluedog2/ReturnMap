@@ -123,6 +123,26 @@ namespace ReTrap.EditorTools
 
         private void DrawGridCells(MapData map, Vector2 origin)
         {
+            // ── 배경 레이어 (지형 뒤). 지형 편집 중이면 흐리게 ──────────────────
+            if (_palette != null && _palette.BackgroundTileCount > 0)
+            {
+                var prevColor = GUI.color;
+                if (_editLayer != EditLayer.Background) GUI.color = new Color(1f, 1f, 1f, 0.45f);
+
+                for (int y = 0; y < map.height; y++)
+                    for (int x = 0; x < map.width; x++)
+                    {
+                        int bg = map.GetBackground(x, y);
+                        if (bg <= 0) continue;
+                        var bgSp = _palette.GetBackgroundSprite(bg);
+                        if (bgSp != null) DrawSpriteCell(CellRect(map, origin, x, y), bgSp);
+                    }
+
+                GUI.color = prevColor;
+            }
+
+            // ── 지형 레이어. 배경 편집 중이면 흐리게 ────────────────────────────
+            bool dimFg = _editLayer == EditLayer.Background;
             for (int y = 0; y < map.height; y++)
             {
                 for (int x = 0; x < map.width; x++)
@@ -131,13 +151,21 @@ namespace ReTrap.EditorTools
                     Rect     rect = CellRect(map, origin, x, y);
 
                     // ① 폴백 색상 블록
-                    EditorGUI.DrawRect(rect, PaletteColor(type));
+                    Color c = PaletteColor(type);
+                    if (dimFg) c.a *= 0.35f;
+                    EditorGUI.DrawRect(rect, c);
 
                     // ② 스프라이트 오버레이
                     if (_palette != null)
                     {
                         Sprite sp = _palette.GetSprite(type);
-                        if (sp != null) DrawSpriteCell(rect, sp);
+                        if (sp != null)
+                        {
+                            var prev = GUI.color;
+                            if (dimFg) GUI.color = new Color(1f, 1f, 1f, 0.35f);
+                            DrawSpriteCell(rect, sp);
+                            GUI.color = prev;
+                        }
                     }
                 }
             }

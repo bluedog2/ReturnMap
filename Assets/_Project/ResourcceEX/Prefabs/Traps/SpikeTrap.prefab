@@ -127,10 +127,12 @@ MonoBehaviour:
   dudParticles: {fileID: 0}
   criticalParticles: {fileID: 0}
   stateLight: {fileID: 0}
+  tintTargets: []
   baseCost: 10
   spikeVisual: {fileID: 8136893130560315858}
   extendHeight: 0.4
   isFlipped: 0
+  normalCycleDuration: 2
   cycleDuration: 1
   beneficialColor: {r: 1, g: 0.85, b: 0.2, a: 1}
 --- !u!1 &2101781549562703111
@@ -210,9 +212,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 20
+  m_SortingLayerID: 311294878
+  m_SortingLayer: 1
+  m_SortingOrder: 10
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: c007ad3e8a88f9c43b459aca9ca4bf50, type: 3}
   m_Color: {r: 0.85, g: 0.2, b: 0.2, a: 1}

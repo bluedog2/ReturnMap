@@ -37,6 +37,7 @@ namespace ReTrap.EditorTools
 
         private float   _cellSize    = 24f;          // 셀 한 변 픽셀
         private Vector2 _canvasScroll;               // 스크롤 위치
+        private Vector2 _bgPaletteScroll;            // 배경 타일 팔레트 스크롤
 
         private const float GridLinePadding = 8f;
         private const float MinCellSize     = 8f;
@@ -62,19 +63,40 @@ namespace ReTrap.EditorTools
         /// <summary>진행 중인 마우스 스트로크 종류. Brush=좌클릭, Erase=우클릭.</summary>
         private enum StrokeKind { None, Brush, Erase }
 
+        /// <summary>편집 대상 레이어. 지형(타일·슬롯·마커) vs 배경(장식 타일).</summary>
+        private enum EditLayer  { Foreground, Background }
+
         private BrushMode  _brushMode    = BrushMode.Tile;
         private TileType   _brushTile    = TileType.Floor;
         private TrapAnchor _brushAnchor  = TrapAnchor.Floor;
         private ActiveTool _activeTool   = ActiveTool.Pen;
         private bool       _markerIsGoal;
 
+        private EditLayer  _editLayer       = EditLayer.Foreground;
+        private int        _brushBackground = 1; // 선택된 배경 타일 인덱스 (1-base)
+
         private StrokeKind _stroke = StrokeKind.None;
         private int  _hoverX = -1, _hoverY = -1;
 
         // ── 크기 변경 입력 ────────────────────────────────────────────────────
 
-        private int _resizeW = 24;
-        private int _resizeH = 16;
+        private int _resizeW = 32;
+        private int _resizeH = 18;
+
+        /// <summary>맵 종횡비 프리셋. 빌드 페이즈 카메라가 맵에 정확히 맞도록 화면 비율과 일치시킨다.</summary>
+        private enum AspectPreset { Free, R16_9, R16_10, R4_3 }
+
+        private static readonly string[] AspectLabels = { "자유", "16:9", "16:10", "4:3" };
+        private AspectPreset _aspect = AspectPreset.R16_9;
+
+        /// <summary>가로/세로 비율(W÷H). Free 는 0 반환.</summary>
+        private static float AspectValue(AspectPreset a) => a switch
+        {
+            AspectPreset.R16_9  => 16f / 9f,
+            AspectPreset.R16_10 => 16f / 10f,
+            AspectPreset.R4_3   => 4f  / 3f,
+            _                   => 0f,
+        };
 
         // ── 진입점 ────────────────────────────────────────────────────────────
 

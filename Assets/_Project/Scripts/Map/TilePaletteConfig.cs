@@ -89,6 +89,11 @@ namespace ReTrap
         [Header("슬롯 마커 (TrapAnchor 1개당 1개)")]
         [SerializeField] private List<SlotVisual> slotMarkers = new List<SlotVisual>();
 
+        [Header("배경 타일 (충돌 없는 장식 — 인덱스 기반, 종류 무제한)")]
+        [Tooltip("배경 레이어에 칠할 스프라이트 목록 (Addressable). " +
+                 "맵 데이터의 background 인덱스 = 이 목록 인덱스+1 (0=없음). 순서를 바꾸면 기존 맵이 어긋나니 끝에 추가만 권장.")]
+        [SerializeField] private List<AssetReferenceSprite> backgroundTiles = new List<AssetReferenceSprite>();
+
         [Header("슬롯 봉인 타일 (Play 중 빈 슬롯을 막는 타일)")]
         [Tooltip("봉인 타일 전용 스프라이트 (Addressable). 비워두면 anchor 에 맞는 일반 타일 스프라이트를 사용합니다.")]
         [SerializeField] private AssetReferenceSprite sealRef;
@@ -120,6 +125,7 @@ namespace ReTrap
         private Dictionary<TileType,   Sprite>     _loadedSprites;
         private Dictionary<TileType,   GameObject> _loadedPrefabs;
         private Dictionary<TrapAnchor, Sprite>     _loadedSlotSprites;
+        private Dictionary<int,        Sprite>     _loadedBackgrounds;
         private Sprite                             _loadedSeal;
         private bool _preloaded;
 
@@ -159,6 +165,7 @@ namespace ReTrap
             _loadedSprites     = new Dictionary<TileType, Sprite>();
             _loadedPrefabs     = new Dictionary<TileType, GameObject>();
             _loadedSlotSprites = new Dictionary<TrapAnchor, Sprite>();
+            _loadedBackgrounds = new Dictionary<int, Sprite>();
             _loadedSeal        = null;
 
             if (tiles != null)
@@ -176,9 +183,30 @@ namespace ReTrap
                     if (RefValid(s.markerRef)) loader.Load(s.markerRef, sp => _loadedSlotSprites[a] = sp);
                 }
 
+            // 배경 타일은 종류가 많을 수 있어 전부 로드하지 않는다.
+            // 맵이 실제 사용하는 인덱스만 LoadBackgrounds 로 따로 로드한다.
+
             if (RefValid(sealRef)) loader.Load(sealRef, sp => _loadedSeal = sp);
 
             _preloaded = true;
+        }
+
+        /// <summary>
+        /// 맵이 실제 사용하는 배경 타일 인덱스만 어드레서블 로드합니다(누적 — 이미 로드된 건 건너뜀).
+        /// MapLoader 가 맵 빌드 직전 호출하며, 종류가 수백 개여도 화면에 쓰는 것만 메모리에 올립니다.
+        /// </summary>
+        public void LoadBackgrounds(AddressableLoader loader, HashSet<int> usedIndices)
+        {
+            if (loader == null || usedIndices == null || backgroundTiles == null) return;
+            _loadedBackgrounds ??= new Dictionary<int, Sprite>();
+
+            foreach (int idx in usedIndices)
+            {
+                if (idx < 1 || idx > backgroundTiles.Count) continue;
+                if (_loadedBackgrounds.ContainsKey(idx)) continue; // 이미 로드됨
+                if (RefValid(backgroundTiles[idx - 1]))
+                    loader.Load(backgroundTiles[idx - 1], sp => _loadedBackgrounds[idx] = sp);
+            }
         }
 
         /// <summary>런타임 캐시를 비웁니다 (핸들 해제는 AddressableLoader.ReleaseAll 이 담당).</summary>
@@ -187,6 +215,7 @@ namespace ReTrap
             _loadedSprites?.Clear();
             _loadedPrefabs?.Clear();
             _loadedSlotSprites?.Clear();
+            _loadedBackgrounds?.Clear();
             _loadedSeal = null;
             _preloaded  = false;
         }
@@ -200,10 +229,66 @@ namespace ReTrap
         {
 #if UNITY_EDITOR
             if (!Application.isPlaying)
-                return (r != null) ? r.editorAsset as Sprite : null;
+                return EditorResolveSprite(r);
 #endif
             return cached;
         }
+
+#if UNITY_EDITOR
+        // OnGUI 가 매 프레임 호출하므로 해석 결과(특히 SpriteAtlas.GetSprite 클론)를 캐시한다.
+        private static readonly Dictionary<string, Sprite> _editorSpriteCache
+            = new Dictionary<string, Sprite>();
+
+        /// <summary>
+        /// 에디터 미리보기용 스프라이트 해석 (캐시).
+        /// <para>① editorAsset 이 Sprite → 그대로. ② editorAsset 이 <b>SpriteAtlas</b> →
+        /// SubObjectName 으로 아틀라스에서 추출. ③ 그 외 GUID 경로의 Sprite 서브에셋 폴백.</para>
+        /// </summary>
+        private static Sprite EditorResolveSprite(AssetReferenceSprite r)
+        {
+            if (r == null || !r.RuntimeKeyIsValid()) return null;
+
+            string key = r.AssetGUID + "|" + r.SubObjectName;
+            if (_editorSpriteCache.TryGetValue(key, out var cached) && cached != null)
+                return cached;
+
+            Sprite resolved = ResolveEditorSpriteUncached(r);
+            if (resolved != null) _editorSpriteCache[key] = resolved;
+            return resolved;
+        }
+
+        private static Sprite ResolveEditorSpriteUncached(AssetReferenceSprite r)
+        {
+            var ea = r.editorAsset;
+
+            // ① 곧장 스프라이트
+            if (ea is Sprite s) return s;
+
+            // ② SpriteAtlas + SubObjectName → 아틀라스에서 스프라이트 추출
+            if (ea is UnityEngine.U2D.SpriteAtlas atlas && !string.IsNullOrEmpty(r.SubObjectName))
+            {
+                var sp = atlas.GetSprite(r.SubObjectName); // 패킹된 미리보기 스프라이트
+                if (sp != null) return sp;
+            }
+
+            // ③ GUID 경로의 Sprite 서브에셋 폴백 (단일/Multiple 텍스처)
+            string path = UnityEditor.AssetDatabase.GUIDToAssetPath(r.AssetGUID);
+            if (string.IsNullOrEmpty(path)) return null;
+
+            string sub = r.SubObjectName;
+            Sprite first = null;
+            foreach (var rep in UnityEditor.AssetDatabase.LoadAllAssetRepresentationsAtPath(path))
+            {
+                if (rep is not Sprite sp2) continue;
+                if (!string.IsNullOrEmpty(sub) && sp2.name == sub) return sp2;
+                first ??= sp2;
+            }
+            return first != null ? first : UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite>(path);
+        }
+
+        /// <summary>에디터 스프라이트 캐시를 비웁니다 (팔레트 수정·아틀라스 재패킹 시).</summary>
+        private static void ClearEditorSpriteCache() => _editorSpriteCache.Clear();
+#endif
 
         // ── 공개 API — 타일 ───────────────────────────────────────────────────
 
@@ -273,6 +358,23 @@ namespace ReTrap
             return v != null ? v.tint : DefaultSlotTint;
         }
 
+        // ── 공개 API — 배경 타일 ─────────────────────────────────────────────
+
+        /// <summary>배경 타일 종류 수 (에디터 팔레트 UI 용).</summary>
+        public int BackgroundTileCount => backgroundTiles != null ? backgroundTiles.Count : 0;
+
+        /// <summary>
+        /// 배경 타일 스프라이트. <paramref name="index"/> 는 맵 background 값(1-base, 0=없음).
+        /// 런타임은 Preload 캐시, 에디터는 editorAsset/아틀라스 해석.
+        /// </summary>
+        public Sprite GetBackgroundSprite(int index)
+        {
+            if (backgroundTiles == null || index <= 0 || index > backgroundTiles.Count)
+                return null;
+            return ResolveSprite(backgroundTiles[index - 1],
+                _loadedBackgrounds != null && _loadedBackgrounds.TryGetValue(index, out var s) ? s : null);
+        }
+
         // ── 내부 — 캐시 ──────────────────────────────────────────────────────
 
         private void BuildCache()
@@ -316,6 +418,7 @@ namespace ReTrap
         private void OnValidate()
         {
             BuildCache();
+            ClearEditorSpriteCache(); // 스프라이트 참조 변경 시 미리보기 캐시 무효화
 
             // TileType 엔트리 누락 검사
             var seenTypes = new HashSet<TileType>();
