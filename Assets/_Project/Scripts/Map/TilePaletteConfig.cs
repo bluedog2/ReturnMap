@@ -195,7 +195,7 @@ namespace ReTrap
         /// 맵이 실제 사용하는 배경 타일 인덱스만 어드레서블 로드합니다(누적 — 이미 로드된 건 건너뜀).
         /// MapLoader 가 맵 빌드 직전 호출하며, 종류가 수백 개여도 화면에 쓰는 것만 메모리에 올립니다.
         /// </summary>
-        public void LoadBackgrounds(AddressableLoader loader, HashSet<int> usedIndices)
+        public void LoadBackgrounds(AddressableLoader loader, IEnumerable<int> usedIndices)
         {
             if (loader == null || usedIndices == null || backgroundTiles == null) return;
             _loadedBackgrounds ??= new Dictionary<int, Sprite>();
