@@ -119,7 +119,7 @@ namespace ReTrap
                 if (prefab == null) continue;
 
                 var trap  = prefab.GetComponent<TrapBase>();
-                var srcSR = prefab.GetComponentInChildren<SpriteRenderer>(true);
+                var srcSR = ResolveIconRenderer(prefab);
 
                 // 키번호는 1~9 까지만 표시 (그 이상은 숫자 키 매핑 없음)
                 string keyLabel = index < 9 ? (index + 1).ToString() : "";
@@ -138,6 +138,29 @@ namespace ReTrap
             }
 
             BuildRemoveModeButton();
+        }
+
+        /// <summary>
+        /// 핫바 아이콘으로 쓸 함정의 대표 SpriteRenderer 를 찾습니다.
+        /// <para>"Visual" 자식(함정 본체 아트)을 우선 사용합니다. 함정 셀 뒤에 깔리는
+        /// "TileBackground"(지형 타일)는 아이콘에서 제외해야 함정 그림이 보입니다.</para>
+        /// </summary>
+        private static SpriteRenderer ResolveIconRenderer(GameObject prefab)
+        {
+            // 1순위: "Visual" 명명 자식
+            var visual = prefab.transform.Find("Visual");
+            if (visual != null && visual.TryGetComponent<SpriteRenderer>(out var vsr) && vsr.sprite != null)
+                return vsr;
+
+            // 2순위: TileBackground 가 아닌 첫 스프라이트 (스프라이트가 있는 것 우선)
+            SpriteRenderer fallback = null;
+            foreach (var sr in prefab.GetComponentsInChildren<SpriteRenderer>(true))
+            {
+                if (sr.gameObject.name == "TileBackground") continue;
+                if (sr.sprite != null) return sr;
+                fallback ??= sr;
+            }
+            return fallback;
         }
 
         // ── 철거 모드 버튼 ───────────────────────────────────────────────────

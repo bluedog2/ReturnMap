@@ -66,6 +66,23 @@ namespace ReTrap
         [Tooltip("Beneficial 황금 틴트를 적용할 SpriteRenderer 목록. 비워두면 자식 전체를 자동 수집.")]
         private SpriteRenderer[] tintTargets;
 
+        [Header("Tile Background — 벽/바닥에 박힌 느낌")]
+        [SerializeField]
+        [Tooltip("함정 셀 뒤에 깔리는 타일 배경 SpriteRenderer. 설치된 anchor 의 부착면(바닥/벽/천장) " +
+                 "타일과 같은 외형으로 자동 설정되어 함정이 지형에 박혀 있는 것처럼 보이게 합니다.")]
+        private SpriteRenderer tileBackground;
+
+        [SerializeField] [Tooltip("Floor anchor 부착면 타일 스프라이트.")]
+        private Sprite bgFloorSprite;
+        [SerializeField] [Tooltip("LeftWall/RightWall anchor 부착면 타일 스프라이트.")]
+        private Sprite bgWallSprite;
+        [SerializeField] [Tooltip("Ceiling anchor 부착면 타일 스프라이트.")]
+        private Sprite bgCeilingSprite;
+
+        [SerializeField, Min(0.01f)]
+        [Tooltip("배경 타일이 채워야 할 셀 크기(유닛). 보통 1.")]
+        private float backgroundCellSize = 1f;
+
         [Header("Trap — 코스트")]
         [SerializeField]
         [Tooltip("빌드 페이즈 소비 코스트. 역코스트 원칙: 위험할수록 낮게, 안전할수록 높게.")]
@@ -134,6 +151,7 @@ namespace ReTrap
         {
             InstalledAnchor = anchor;
             OnConfigureAnchor(anchor);
+            RefreshTileBackground();
         }
 
         /// <summary>
@@ -166,6 +184,9 @@ namespace ReTrap
             // 함정 칸 = 지형 타일 (캐릭터가 밟고 설 수 있음)
             if (ActsAsSolidTile)
                 EnsureSolidBody();
+
+            // 기본 배경 타일 적용 (ConfigureForAnchor 미호출 — 수동/프리뷰 배치 대비)
+            RefreshTileBackground();
 
             ValidateTriggerRouting();
         }
@@ -386,6 +407,38 @@ namespace ReTrap
             _unitSprite = Sprite.Create(
                 tex, new Rect(0, 0, 1, 1), new Vector2(0.5f, 0.5f), 1f);
             return _unitSprite;
+        }
+
+        // ── 내부 — 타일 배경 (벽/바닥에 박힌 느낌) ────────────────────────────
+
+        /// <summary>
+        /// 설치된 anchor 의 부착면(바닥/벽/천장)에 맞는 타일 스프라이트를 배경에 깔고
+        /// 1셀 크기에 맞게 스케일을 보정합니다. 함정이 지형에 박혀 보이도록 합니다.
+        /// </summary>
+        private void RefreshTileBackground()
+        {
+            if (tileBackground == null) return;
+
+            Sprite sp = InstalledAnchor switch
+            {
+                TrapAnchor.Ceiling   => bgCeilingSprite,
+                TrapAnchor.LeftWall  => bgWallSprite,
+                TrapAnchor.RightWall => bgWallSprite,
+                _                    => bgFloorSprite,
+            };
+
+            // 해당 anchor 스프라이트가 비어 있으면 사용 가능한 것으로 폴백
+            if (sp == null) sp = bgFloorSprite ?? bgWallSprite ?? bgCeilingSprite;
+
+            tileBackground.sprite = sp;
+            tileBackground.enabled = sp != null;
+            if (sp == null) return;
+
+            // PPU·해상도가 제각각이어도 정확히 1셀(backgroundCellSize)을 채우도록 스케일 보정
+            Vector2 b = sp.bounds.size;
+            if (b.x > 0.0001f && b.y > 0.0001f)
+                tileBackground.transform.localScale =
+                    new Vector3(backgroundCellSize / b.x, backgroundCellSize / b.y, 1f);
         }
 
         // ── 내부 — 시각 힌트 ──────────────────────────────────────────────────
