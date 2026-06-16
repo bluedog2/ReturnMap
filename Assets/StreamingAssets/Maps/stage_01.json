@@ -141,7 +141,7 @@
         0,
         0,
         2,
-        2,
+        0,
         0,
         0,
         0,
@@ -721,11 +721,6 @@
     ],
     "trapSlots": [
         {
-            "x": 1,
-            "y": 8,
-            "anchor": "LeftWall"
-        },
-        {
             "x": 10,
             "y": 3,
             "anchor": "Floor"
@@ -739,6 +734,11 @@
             "x": 18,
             "y": 0,
             "anchor": "Floor"
+        },
+        {
+            "x": 0,
+            "y": 5,
+            "anchor": "RightWall"
         }
     ]
 }

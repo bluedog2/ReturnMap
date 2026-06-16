@@ -29,10 +29,6 @@ namespace ReTrap
 
         [Header("ArrowShooter — 발사 설정")]
         [SerializeField]
-        [Tooltip("true = 오른쪽 발사 (왼쪽 벽 설치). false = 왼쪽 발사 (오른쪽 벽 설치).")]
-        private bool facingRight = true;
-
-        [SerializeField]
         [Tooltip("화살 프리팹 (Arrow 컴포넌트 포함 필수).")]
         private GameObject arrowPrefab;
 
@@ -56,27 +52,41 @@ namespace ReTrap
 
         private Coroutine firingCoroutine;
 
+        /// <summary>발사 방향 (슬롯이 붙은 면의 바깥 = 맵 안쪽). 기본 오른쪽.</summary>
+        private Vector2 _fireDir = Vector2.right;
+
         // ── 슬롯 호환 ─────────────────────────────────────────────────────────
 
+        // 4방향 모두 설치 가능 — 슬롯이 붙은 면의 바깥으로 발사한다.
         private static readonly TrapAnchor[] COMPATIBLE =
-            { TrapAnchor.LeftWall, TrapAnchor.RightWall };
+            { TrapAnchor.Floor, TrapAnchor.Ceiling, TrapAnchor.LeftWall, TrapAnchor.RightWall };
 
         public override TrapAnchor[] CompatibleAnchors => COMPATIBLE;
 
+        /// <summary>anchor 가 붙은 면의 바깥 방향 (Floor=위, Ceiling=아래, 벽=반대쪽).</summary>
+        private static Vector2 OutwardDir(TrapAnchor anchor) => anchor switch
+        {
+            TrapAnchor.Floor     => Vector2.up,
+            TrapAnchor.Ceiling   => Vector2.down,
+            TrapAnchor.LeftWall  => Vector2.right,
+            TrapAnchor.RightWall => Vector2.left,
+            _                    => Vector2.right,
+        };
+
         /// <summary>
-        /// 좌벽 슬롯 = 오른쪽 발사, 우벽 슬롯 = 왼쪽 발사.
-        /// 발사구(firePoint)도 발사 방향 쪽으로 반전 — 안 하면 우벽 설치 시
-        /// 화살이 벽 안에서 생성돼 즉시 소멸한다.
+        /// 슬롯 방향(anchor 바깥)으로 발사하도록 방향·발사구를 설정합니다.
+        /// 발사구(firePoint)도 발사 방향 쪽으로 옮겨 — 안 하면 벽/바닥 안에서
+        /// 화살이 생성돼 즉시 소멸한다.
         /// </summary>
         protected override void OnConfigureAnchor(TrapAnchor anchor)
         {
-            facingRight = anchor == TrapAnchor.LeftWall;
+            _fireDir = OutwardDir(anchor);
 
             if (firePoint != null)
             {
-                var lp = firePoint.localPosition;
-                firePoint.localPosition = new Vector3(
-                    Mathf.Abs(lp.x) * (facingRight ? 1f : -1f), lp.y, lp.z);
+                float dist = firePoint.localPosition.magnitude;
+                if (dist < 0.01f) dist = 0.45f;
+                firePoint.localPosition = (Vector3)(_fireDir * dist);
             }
         }
 
@@ -157,8 +167,7 @@ namespace ReTrap
 
             if (arrowGo.TryGetComponent<Arrow>(out var arrow))
             {
-                Vector2 dir = facingRight ? Vector2.right : Vector2.left;
-                arrow.Initialize(dir, arrowSpeed, isBeneficial);
+                arrow.Initialize(_fireDir, arrowSpeed, isBeneficial);
             }
             else
             {
@@ -174,9 +183,8 @@ namespace ReTrap
 
             // 발사 방향 화살표 표시
             Transform origin = firePoint != null ? firePoint : transform;
-            Vector3   dir    = facingRight ? Vector3.right : Vector3.left;
             Gizmos.color = Color.yellow;
-            Gizmos.DrawRay(origin.position, dir * 2f);
+            Gizmos.DrawRay(origin.position, (Vector3)(_fireDir == Vector2.zero ? Vector2.right : _fireDir) * 2f);
         }
 #endif
     }

@@ -35,10 +35,10 @@ MonoBehaviour:
   - type: 1
     spriteRef:
       m_AssetGUID: 2fd948604309a0e42975f014615d0e58
-      m_SubObjectName: Play_C1_r03_c08
+      m_SubObjectName: Play_C1_r01_c03
       m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-      m_SubObjectGUID: 6cf6b04699dafbc4eb42e8274b8a67cb
+      m_SubObjectGUID: 5ca3c53d6eb591848987e7240cd02fda
       m_EditorAssetChanged: 1
     fallbackColor: {r: 0.55, g: 0.38, b: 0.24, a: 1}
     isSolid: 1
@@ -54,10 +54,10 @@ MonoBehaviour:
   - type: 2
     spriteRef:
       m_AssetGUID: 2fd948604309a0e42975f014615d0e58
-      m_SubObjectName: Play_C1_r01_c01
+      m_SubObjectName: Play_C1_r01_c04
       m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-      m_SubObjectGUID: d3609ce097b6e864989d5de723a0e11e
+      m_SubObjectGUID: d1b3c17f28191134fa20a89724e2fe9b
       m_EditorAssetChanged: 1
     fallbackColor: {r: 0.45, g: 0.45, b: 0.48, a: 1}
     isSolid: 1
@@ -73,10 +73,10 @@ MonoBehaviour:
   - type: 3
     spriteRef:
       m_AssetGUID: 2fd948604309a0e42975f014615d0e58
-      m_SubObjectName: Play_C1_r01_c04
+      m_SubObjectName: Play_C1_r01_c05
       m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-      m_SubObjectGUID: d1b3c17f28191134fa20a89724e2fe9b
+      m_SubObjectGUID: 5034b54cba5b97d4d9b60eb7b7251635
       m_EditorAssetChanged: 1
     fallbackColor: {r: 0.28, g: 0.28, b: 0.32, a: 1}
     isSolid: 1
