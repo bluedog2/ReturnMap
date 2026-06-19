@@ -82,11 +82,21 @@ namespace ReTrap
         {
             _fireDir = OutwardDir(anchor);
 
+            // 발사구를 발사 방향으로 (벽/바닥 안에서 화살이 생기지 않도록)
             if (firePoint != null)
             {
                 float dist = firePoint.localPosition.magnitude;
                 if (dist < 0.01f) dist = 0.45f;
                 firePoint.localPosition = (Vector3)(_fireDir * dist);
+            }
+
+            // 활 본체(Visual)를 발사 방향으로 회전.
+            // 활 스프라이트가 왼쪽을 향한 기본이라 +180° 보정해야 발사 방향과 맞는다.
+            var vis = transform.Find("Visual");
+            if (vis != null)
+            {
+                float angle = Mathf.Atan2(_fireDir.y, _fireDir.x) * Mathf.Rad2Deg + 180f;
+                vis.localRotation = Quaternion.Euler(0f, 0f, angle);
             }
         }
 
