@@ -63,13 +63,17 @@ namespace ReTrap
 
         public override TrapAnchor[] CompatibleAnchors => COMPATIBLE;
 
-        /// <summary>anchor 가 붙은 면의 바깥 방향 (Floor=위, Ceiling=아래, 벽=반대쪽).</summary>
+        /// <summary>
+        /// anchor 슬롯이 발사하는 방향. Floor=위, Ceiling=아래.
+        /// 벽 규약(맵 데이터 기준): RightWall 슬롯은 왼쪽 가장자리 벽에 붙어 오른쪽(맵 안)으로,
+        /// LeftWall 슬롯은 오른쪽 가장자리 벽에 붙어 왼쪽(맵 안)으로 발사한다.
+        /// </summary>
         private static Vector2 OutwardDir(TrapAnchor anchor) => anchor switch
         {
             TrapAnchor.Floor     => Vector2.up,
             TrapAnchor.Ceiling   => Vector2.down,
-            TrapAnchor.LeftWall  => Vector2.right,
-            TrapAnchor.RightWall => Vector2.left,
+            TrapAnchor.LeftWall  => Vector2.left,
+            TrapAnchor.RightWall => Vector2.right,
             _                    => Vector2.right,
         };
 
@@ -90,12 +94,13 @@ namespace ReTrap
                 firePoint.localPosition = (Vector3)(_fireDir * dist);
             }
 
-            // 활 본체(Visual)를 발사 방향으로 회전.
-            // 활 스프라이트가 왼쪽을 향한 기본이라 +180° 보정해야 발사 방향과 맞는다.
+            // 활 본체(Visual) 회전. 실제 발사 방향(_fireDir)·화살 비행은 건드리지 않고
+            // 스프라이트만 돌린다. 위아래는 y 반전, 좌우는 스프라이트가 발사 방향과
+            // 반대로 그려져 x 도 반전한다(x=0 인 상하 발사엔 영향 없음).
             var vis = transform.Find("Visual");
             if (vis != null)
             {
-                float angle = Mathf.Atan2(_fireDir.y, _fireDir.x) * Mathf.Rad2Deg + 180f;
+                float angle = Mathf.Atan2(-_fireDir.y, -_fireDir.x) * Mathf.Rad2Deg + 180f;
                 vis.localRotation = Quaternion.Euler(0f, 0f, angle);
             }
         }
