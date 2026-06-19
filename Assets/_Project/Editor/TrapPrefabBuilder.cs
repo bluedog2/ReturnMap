@@ -124,7 +124,9 @@ namespace ReTrap.EditorTools
             if (existing != null) return existing;
 
             var go = new GameObject("Arrow");
-            AddVisual(go, sprite, new Color(0.9f, 0.9f, 0.3f), new Vector2(0.5f, 0.15f), Vector2.zero);
+            var arrowSr = AddVisual(go, sprite, new Color(0.9f, 0.9f, 0.3f), new Vector2(0.5f, 0.15f), Vector2.zero);
+            // 슈터(10)·황금블록(15) 위, 캐릭터(20) 아래 — 활/배경 스프라이트에 가려지지 않게.
+            arrowSr.sortingOrder = 18;
 
             var col = go.AddComponent<BoxCollider2D>();
             col.isTrigger = true;

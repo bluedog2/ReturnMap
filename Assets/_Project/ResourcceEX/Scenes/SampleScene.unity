@@ -331,7 +331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ReTrap.MapLoader
   _palette: {fileID: 11400000, guid: 70f10683ba3aa2e4a9c2f059b7b9b22e, type: 2}
   _mapRoot: {fileID: 1929613291}
-  _autoLoadMapId: stage_01
+  _autoLoadMapId: stage_03
 --- !u!4 &394809661
 Transform:
   m_ObjectHideFlags: 0

@@ -91,8 +91,9 @@ namespace ReTrap
             canvasGo.transform.SetParent(transform, false);
 
             var canvas = canvasGo.GetComponent<Canvas>();
-            canvas.renderMode = RenderMode.WorldSpace;
-            canvas.sortingOrder = 60; // 타일·함정 위
+            canvas.renderMode       = RenderMode.WorldSpace;
+            canvas.sortingLayerName = "Map";  // Default 로 두면 Map(타일·배경) 에 가려진다
+            canvas.sortingOrder     = 100;    // 배경 -10 < 타일 0 < 함정 10 < 캐릭터 20 < UI 100
 
             _canvasRect = (RectTransform)canvasGo.transform;
             _canvasRect.sizeDelta     = new Vector2(100f, 100f);
