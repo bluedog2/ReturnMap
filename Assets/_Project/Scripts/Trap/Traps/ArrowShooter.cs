@@ -8,12 +8,13 @@ namespace ReTrap
     // ═══════════════════════════════════════════════════════════════════════════
 
     /// <summary>
-    /// 설치 위치: 좌/우 벽 타일.
+    /// 설치 위치: 슬롯 anchor 4방향 (Floor·Ceiling·LeftWall·RightWall).
     /// 코스트: 25 / 데미지: 화살 1 + 1칸 넉백
     ///
     /// <para><b>발사 방향 규칙</b></para>
-    /// 왼쪽 벽 = 오른쪽으로만 발사, 오른쪽 벽 = 왼쪽으로만 발사.
-    /// (<see cref="facingRight"/> 로 Inspector 에서 설정.)
+    /// 슬롯 anchor 가 결정한다 (OnConfigureAnchor → OutwardDir).
+    /// 벽 규약: RightWall 슬롯(왼쪽 가장자리 벽)=오른쪽 발사,
+    /// LeftWall 슬롯(오른쪽 가장자리 벽)=왼쪽 발사.
     ///
     /// <para><b>변이별 동작</b></para>
     /// <list type="table">

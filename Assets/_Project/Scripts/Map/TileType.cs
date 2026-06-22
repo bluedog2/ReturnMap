@@ -21,14 +21,14 @@ namespace ReTrap
     /// 함정 설치 슬롯이 어느 면에 부착되는지를 나타냅니다.
     /// <para>
     /// Build UI 가 이 값으로 (1) 슬롯에 놓을 수 있는 함정 필터링,
-    /// (2) 함정 방향(<c>isFlipped</c> / <c>facingRight</c>) 자동 설정을 수행합니다.
+    /// (2) 함정 방향(<c>isFlipped</c> / 화살 발사 방향) 자동 설정을 수행합니다.
     /// </para>
     /// </summary>
     public enum TrapAnchor
     {
         Floor,      // 바닥 위쪽 면   — SpikeTrap(정방향)
         Ceiling,    // 천장 아래쪽 면 — SpikeTrap(반전), DropHammer
-        LeftWall,   // 좌벽 오른쪽 면 — ArrowShooter(오른쪽 발사)
-        RightWall,  // 우벽 왼쪽 면   — ArrowShooter(왼쪽 발사)
+        LeftWall,   // 오른쪽 가장자리 벽 — ArrowShooter(왼쪽 발사)
+        RightWall,  // 왼쪽 가장자리 벽   — ArrowShooter(오른쪽 발사)
     }
 }

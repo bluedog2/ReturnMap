@@ -156,7 +156,7 @@ namespace ReTrap
 
         /// <summary>
         /// 서브클래스 방향 설정 훅
-        /// (예: 천장 스파이크 → isFlipped, 좌벽 슈터 → facingRight).
+        /// (예: 천장 스파이크 → isFlipped, 화살 슈터 → 발사 방향 _fireDir).
         /// </summary>
         protected virtual void OnConfigureAnchor(TrapAnchor anchor) { }
 
