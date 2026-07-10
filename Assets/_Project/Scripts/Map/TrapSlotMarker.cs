@@ -57,6 +57,14 @@ namespace ReTrap
         private void OnEnable()  => GamePhaseManager.OnPhaseChanged += HandlePhaseChanged;
         private void OnDisable() => GamePhaseManager.OnPhaseChanged -= HandlePhaseChanged;
 
+        private void Start()
+        {
+            // 초기 동기화 규약: 구독자는 초기 상태를 이벤트가 아니라 currentPhase 직접 읽기로 동기화한다.
+            // (Init() 이 MapLoader 에 의해 더 이른 시점에 RefreshVisualState 를 호출하지만,
+            //  규약을 명시적으로 통일하기 위해 Start 에서도 재동기화한다.)
+            RefreshVisualState();
+        }
+
         private void OnDestroy()
         {
             if (_registered)

@@ -34,7 +34,7 @@ Unity 6 (6000.3.10f1) URP 2D 게임. 2D 샌드박스 퍼즐 플랫포머 + 로�
   - `GamePhaseManager.cs`, `BuildPhaseController.cs`, `BuildHudController.cs`, `RespawnManager.cs`
 - `Assets/_Project/Editor/` — 에디터 전용 (`MapEditorWindow.*`, `TrapPrefabBuilder`, `MapAuthoringValidator`, Addressables/SpriteAtlas 빌드)
 - `Assets/_Project/ResourcceEX/` — **모든 프리팹·스프라이트·씬·애니메이션의 단일 위치** (오타 폴더명 그대로 사용). 프리팹은 여기 `Prefabs/`에만 둔다.
-- `Assets/StreamingAssets/Maps/` — JSON 맵 데이터 (`stage_01.json`, `Stage_2.json`)
+- `Assets/StreamingAssets/Maps/` — JSON 맵 데이터 (`stage_01.json`, `stage_02.json`, `stage_03.json`)
 - asmdef 없음 → 전부 `Assembly-CSharp` / `Assembly-CSharp-Editor`.
 
 ## 코드 컨벤션 (기존 코드와 일치시킬 것)

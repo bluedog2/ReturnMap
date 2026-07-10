@@ -56,13 +56,19 @@ namespace ReTrap
         /// <summary>발사 방향 (슬롯이 붙은 면의 바깥 = 맵 안쪽). 기본 오른쪽.</summary>
         private Vector2 _fireDir = Vector2.right;
 
+        /// <summary>
+        /// 이 슈터 전용 화살 풀. 슈터별 소유인 이유: 스폰 시 거는
+        /// Physics2D.IgnoreCollision(자기 몸 통과)이 콜라이더 쌍 단위로 영구 저장되므로,
+        /// 화살을 슈터 간 공유하면 다른 슈터의 솔리드 셀을 통과하는 버그가 생긴다.
+        /// </summary>
+        private ComponentPool<Arrow> _arrowPool;
+
+        /// <summary>화살 반납 콜백 (매 발사 델리게이트 할당 방지용 캐시).</summary>
+        private System.Action<Arrow> _releaseArrow;
+
         // ── 슬롯 호환 ─────────────────────────────────────────────────────────
-
         // 4방향 모두 설치 가능 — 슬롯이 붙은 면의 바깥으로 발사한다.
-        private static readonly TrapAnchor[] COMPATIBLE =
-            { TrapAnchor.Floor, TrapAnchor.Ceiling, TrapAnchor.LeftWall, TrapAnchor.RightWall };
-
-        public override TrapAnchor[] CompatibleAnchors => COMPATIBLE;
+        // CompatibleAnchors 는 TrapBase 기본 구현(TrapDefinition 참조)을 그대로 사용.
 
         /// <summary>
         /// anchor 슬롯이 발사하는 방향. Floor=위, Ceiling=아래.
@@ -165,31 +171,53 @@ namespace ReTrap
 
         private void SpawnArrow(bool isBeneficial)
         {
+            if (!EnsureArrowPool()) return;
+
+            Transform spawnPoint = firePoint != null ? firePoint : transform;
+            Arrow arrow = _arrowPool.Get(spawnPoint.position, Quaternion.identity);
+            arrow.SetReleaseCallback(_releaseArrow);
+
+            // 화살이 자기 솔리드 셀·황금 블록에 박혀 즉시 소멸하지 않도록 충돌 무시.
+            // 풀 화살이 자식으로 붙어 있으므로 다른 화살의 콜라이더는 건너뛴다.
+            if (arrow.TryGetComponent<Collider2D>(out var arrowCol))
+            {
+                foreach (var ownCol in GetComponentsInChildren<Collider2D>(true))
+                {
+                    if (ownCol.GetComponentInParent<Arrow>() != null) continue;
+                    Physics2D.IgnoreCollision(arrowCol, ownCol);
+                }
+            }
+
+            arrow.Initialize(_fireDir, arrowSpeed, isBeneficial);
+        }
+
+        /// <summary>화살 풀 지연 생성. 프리팹 미지정/Arrow 누락 시 false.</summary>
+        private bool EnsureArrowPool()
+        {
+            if (_arrowPool != null) return true;
+
             if (arrowPrefab == null)
             {
                 Debug.LogWarning($"[ArrowShooter] arrowPrefab 이 설정되지 않았습니다: {name}");
-                return;
+                return false;
             }
 
-            Transform spawnPoint = firePoint != null ? firePoint : transform;
-            GameObject arrowGo   = Instantiate(arrowPrefab, spawnPoint.position, Quaternion.identity);
-
-            // 화살이 자기 솔리드 셀·황금 블록에 박혀 즉시 소멸하지 않도록 충돌 무시
-            if (arrowGo.TryGetComponent<Collider2D>(out var arrowCol))
-            {
-                foreach (var ownCol in GetComponentsInChildren<Collider2D>(true))
-                    Physics2D.IgnoreCollision(arrowCol, ownCol);
-            }
-
-            if (arrowGo.TryGetComponent<Arrow>(out var arrow))
-            {
-                arrow.Initialize(_fireDir, arrowSpeed, isBeneficial);
-            }
-            else
+            if (!arrowPrefab.TryGetComponent<Arrow>(out var prefabArrow))
             {
                 Debug.LogWarning($"[ArrowShooter] Arrow 컴포넌트를 찾을 수 없습니다: {arrowPrefab.name}");
-                Destroy(arrowGo);
+                return false;
             }
+
+            // 슈터 자식으로 보관 — 슈터 철거 시 대기/비행 중 화살이 함께 정리된다
+            _arrowPool    = new ComponentPool<Arrow>(prefabArrow, transform);
+            _releaseArrow = _arrowPool.Release;
+            return true;
+        }
+
+        private void OnDestroy()
+        {
+            // 자식이라 GameObject 는 함께 파괴되지만, 풀 내부 참조를 명시적으로 비운다
+            _arrowPool?.Clear();
         }
 
 #if UNITY_EDITOR

@@ -50,6 +50,9 @@ namespace ReTrap
         [Tooltip("씬 시작 시 자동으로 로드할 맵 ID. 비워두면 수동 호출 대기.")]
         [SerializeField] private string _autoLoadMapId = "";
 
+        [Tooltip("스테이지 순서의 단일 소스. 자동 로드 mapId가 비어 있으면 카탈로그 첫 스테이지를 로드")]
+        [SerializeField] private StageCatalog _stageCatalog;
+
         // ── 런타임 상태 ───────────────────────────────────────────────────────
 
         /// <summary>현재 로드된 맵 데이터. 로드 전/언로드 후 null.</summary>
@@ -73,6 +76,13 @@ namespace ReTrap
         /// <summary>언로드(타일 제거) 완료 후 발행.</summary>
         public static event Action OnMapUnloaded;
 
+        /// <summary>
+        /// 맵 로드 실패 시 발행: (mapId, 실패 사유).
+        /// 파일 없음 / JSON 파싱 실패 / 검증 실패 경로 전부에서 호출됩니다.
+        /// 발행 후 <see cref="IsLoaded"/> 는 항상 재시도 가능한 상태로 복귀합니다.
+        /// </summary>
+        public static event Action<string, string> OnMapLoadFailed;
+
         // ── 싱글턴 ────────────────────────────────────────────────────────────
 
         public static MapLoader Instance { get; private set; }
@@ -89,8 +99,14 @@ namespace ReTrap
 
         private void Start()
         {
-            if (!string.IsNullOrEmpty(_autoLoadMapId))
-                LoadMap(_autoLoadMapId);
+            string mapId = _autoLoadMapId;
+
+            // _autoLoadMapId 가 비어 있으면 카탈로그의 첫 스테이지로 폴백 (하위 호환 유지)
+            if (string.IsNullOrEmpty(mapId) && _stageCatalog != null && _stageCatalog.Count > 0)
+                mapId = _stageCatalog.GetByIndex(0)?.mapId;
+
+            if (!string.IsNullOrEmpty(mapId))
+                LoadMap(mapId);
         }
 
         private void OnDestroy()
@@ -125,22 +141,37 @@ namespace ReTrap
 
             if (!File.Exists(path))
             {
-                Debug.LogError($"[MapLoader] 파일 없음: {path}");
+                string reason = $"파일 없음: {path}";
+                Debug.LogError($"[MapLoader] {reason}");
+                FailLoad(mapId, reason);
                 yield break;
             }
 
-            string  json = File.ReadAllText(path, System.Text.Encoding.UTF8);
-            MapData map  = MapData.FromJson(json);
-
-            if (map == null)
+            MapData map = null;
+            string  parseError = null;
+            try
             {
-                Debug.LogError($"[MapLoader] JSON 파싱 실패: {mapId}");
+                string json = File.ReadAllText(path, System.Text.Encoding.UTF8);
+                map = MapData.FromJson(json);
+                if (map == null)
+                    parseError = "JsonUtility.FromJson 결과 null";
+            }
+            catch (Exception e)
+            {
+                parseError = e.Message;
+            }
+
+            if (parseError != null)
+            {
+                Debug.LogError($"[MapLoader] JSON 파싱 실패: {mapId} — {parseError}");
+                FailLoad(mapId, $"JSON 파싱 실패: {parseError}");
                 yield break;
             }
 
             if (!map.Validate(out string err))
             {
                 Debug.LogError($"[MapLoader] 맵 검증 실패 ({mapId}): {err}");
+                FailLoad(mapId, $"검증 실패: {err}");
                 yield break;
             }
 
@@ -172,6 +203,18 @@ namespace ReTrap
 
             OnMapLoaded?.Invoke(map);
             Debug.Log($"[MapLoader] 로드 완료: {mapId}  ({map.width}×{map.height})");
+        }
+
+        /// <summary>
+        /// 로드 실패 공통 처리. 상태를 재시도 가능하게 정리한 뒤 실패 이벤트를 발행합니다.
+        /// (실패 시점에는 이미 <see cref="UnloadRoutine"/> 을 거쳐 CurrentMap/IsLoaded 가
+        /// 정리된 상태이지만, 방어적으로 한 번 더 보장합니다.)
+        /// </summary>
+        private void FailLoad(string mapId, string reason)
+        {
+            CurrentMap = null;
+            IsLoaded   = false;
+            OnMapLoadFailed?.Invoke(mapId, reason);
         }
 
         // ── 빌드 내부 ─────────────────────────────────────────────────────────

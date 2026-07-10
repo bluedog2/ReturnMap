@@ -34,10 +34,7 @@ namespace ReTrap
     public class DropHammer : TrapBase
     {
         // ── 슬롯 호환 ─────────────────────────────────────────────────────────
-
-        private static readonly TrapAnchor[] COMPATIBLE = { TrapAnchor.Ceiling };
-
-        public override TrapAnchor[] CompatibleAnchors => COMPATIBLE;
+        // CompatibleAnchors 는 TrapBase 기본 구현(TrapDefinition 참조)을 그대로 사용.
 
         /// <summary>해머는 낙하·복귀로 이동하는 함정 — 고정 솔리드 셀을 만들지 않는다.
         /// (만들면 낙하 시 솔리드가 함께 움직여 플레이어를 밀어내는 물리 문제 발생)</summary>

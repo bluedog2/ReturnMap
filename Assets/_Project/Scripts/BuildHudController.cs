@@ -62,6 +62,10 @@ namespace ReTrap
 
             if (hintText != null)
                 hintText.text = "버튼/1~3: 선택 · X: 철거 모드 · 슬롯 클릭: 설치 · 우클릭: 철거 · Enter: 시작";
+
+            // 초기 동기화 규약: 구독자는 초기 상태를 이벤트가 아니라 currentPhase 직접 읽기로 동기화한다.
+            if (GamePhaseManager.Instance != null)
+                HandlePhaseChanged(GamePhaseManager.Instance.currentPhase);
         }
 
         private void OnEnable()  => GamePhaseManager.OnPhaseChanged += HandlePhaseChanged;
@@ -111,15 +115,31 @@ namespace ReTrap
 
             if (_ctrl != null) _ctrl.OnTrapsReady -= BuildTrapButtons;
 
-            var prefabs = _ctrl.TrapPrefabs;
+            var prefabs     = _ctrl.TrapPrefabs;
+            var definitions = _ctrl.TrapDefinitions;
             for (int i = 0; i < prefabs.Count; i++)
             {
                 int index = i; // 클로저 캡처
                 var prefab = prefabs[i];
                 if (prefab == null) continue;
 
+                var def   = i < definitions.Count ? definitions[i] : null;
                 var trap  = prefab.GetComponent<TrapBase>();
-                var srcSR = ResolveIconRenderer(prefab);
+
+                // 아이콘: definition.icon 우선, 없으면 기존 방식대로 프리팹 스프라이트에서 추출(fallback)
+                Sprite iconSprite;
+                Color  iconColor;
+                if (def != null && def.Icon != null)
+                {
+                    iconSprite = def.Icon;
+                    iconColor  = Color.white;
+                }
+                else
+                {
+                    var srcSR  = ResolveIconRenderer(prefab);
+                    iconSprite = srcSR != null ? srcSR.sprite : null;
+                    iconColor  = srcSR != null ? srcSR.color  : Color.white;
+                }
 
                 // 키번호는 1~9 까지만 표시 (그 이상은 숫자 키 매핑 없음)
                 string keyLabel = index < 9 ? (index + 1).ToString() : "";
@@ -128,13 +148,10 @@ namespace ReTrap
                 _buttonFrames.Add(frame);
                 slot.GetComponent<Button>().onClick.AddListener(() => _ctrl.SelectTrap(index));
 
-                AddSpriteIcon(slot.transform,
-                              srcSR != null ? srcSR.sprite : null,
-                              srcSR != null ? srcSR.color  : Color.white);
+                AddSpriteIcon(slot.transform, iconSprite, iconColor);
 
-                AddCornerCost(slot.transform,
-                              trap != null ? trap.BaseCost.ToString() : "?",
-                              new Color(1f, 0.9f, 0.4f));
+                int cost = def != null ? def.BaseCost : (trap != null ? trap.BaseCost : 0);
+                AddCornerCost(slot.transform, cost.ToString(), new Color(1f, 0.9f, 0.4f));
             }
 
             BuildRemoveModeButton();

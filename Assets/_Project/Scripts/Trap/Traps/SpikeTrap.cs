@@ -61,11 +61,7 @@ namespace ReTrap
         private Coroutine oscillateCoroutine;
 
         // ── 슬롯 호환 ─────────────────────────────────────────────────────────
-
-        private static readonly TrapAnchor[] COMPATIBLE =
-            { TrapAnchor.Floor, TrapAnchor.Ceiling };
-
-        public override TrapAnchor[] CompatibleAnchors => COMPATIBLE;
+        // CompatibleAnchors 는 TrapBase 기본 구현(TrapDefinition 참조)을 그대로 사용.
 
         /// <summary>천장 슬롯이면 가시를 아래 방향으로 뒤집고 지오메트리 재계산.</summary>
         protected override void OnConfigureAnchor(TrapAnchor anchor)

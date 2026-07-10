@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -28,9 +29,15 @@ namespace ReTrap
     {
         // ── Inspector ─────────────────────────────────────────────────────────
 
-        [Header("Trap — 기본 설정")]
+        [Header("Trap — 스펙 정의 (권장)")]
+        [SerializeField]
+        [Tooltip("함정 스펙(코스트·위험도·호환 anchor·HUD 아이콘·프리팹 참조)을 중앙화한 SO. " +
+                 "지정하면 아래 dangerLevel/baseCost 필드 대신 이 값을 사용합니다.")]
+        private TrapDefinition definition;
+
+        [Header("Trap — 기본 설정 (TrapDefinition 미지정 시 fallback)")]
         [SerializeField, Range(0, 10)]
-        [Tooltip("위험도. 높을수록 BaseCost 가 낮아진다 (역코스트).")]
+        [Tooltip("위험도. 높을수록 BaseCost 가 낮아진다 (역코스트). TrapDefinition 미지정 시 fallback.")]
         private int dangerLevel = 5;
 
         [SerializeField]
@@ -83,9 +90,9 @@ namespace ReTrap
         [Tooltip("배경 타일이 채워야 할 셀 크기(유닛). 보통 1.")]
         private float backgroundCellSize = 1f;
 
-        [Header("Trap — 코스트")]
+        [Header("Trap — 코스트 (TrapDefinition 미지정 시 fallback)")]
         [SerializeField]
-        [Tooltip("빌드 페이즈 소비 코스트. 역코스트 원칙: 위험할수록 낮게, 안전할수록 높게.")]
+        [Tooltip("빌드 페이즈 소비 코스트. 역코스트 원칙: 위험할수록 낮게, 안전할수록 높게. TrapDefinition 미지정 시 fallback.")]
         private int baseCost = 10;
 
         // ── 조명 프리셋 ───────────────────────────────────────────────────────
@@ -116,11 +123,27 @@ namespace ReTrap
         /// <summary>설치된 슬롯의 anchor. ConfigureForAnchor 미호출 시 Floor.</summary>
         public TrapAnchor InstalledAnchor { get; private set; } = TrapAnchor.Floor;
 
+        // ── 정적 레지스트리 — FindObjectsByType 씬 스캔 대체 ─────────────────
+
+        private static readonly List<TrapBase> _activeTraps = new List<TrapBase>();
+
+        /// <summary>
+        /// 씬에서 활성화된 모든 함정. TrapMutationManager 등이 씬 전체 검색 없이 순회.
+        /// <para><b>주의</b>: 라이브 목록이므로 순회 중 함정이 파괴/비활성화될 수 있는
+        /// 작업은 역순 for 루프로 돌 것 (foreach 금지).</para>
+        /// </summary>
+        public static IReadOnlyList<TrapBase> ActiveTraps => _activeTraps;
+
+        // ── 스펙 정의 (TrapDefinition) ────────────────────────────────────────
+
+        /// <summary>중앙화된 함정 스펙 SO. 미지정이면 null — 이 경우 직렬화 필드로 fallback.</summary>
+        public TrapDefinition Definition => definition;
+
         // ── ITrap 프로퍼티 ────────────────────────────────────────────────────
 
         public TrapState  CurrentState { get; private set; } = TrapState.Normal;
-        public int        DangerLevel  => dangerLevel;
-        public int        BaseCost     => baseCost;
+        public int        DangerLevel  => definition != null ? definition.DangerLevel : dangerLevel;
+        public int        BaseCost     => definition != null ? definition.BaseCost    : baseCost;
 
         /// <summary>타일맵 그리드에서 차지하는 셀 크기.</summary>
         public Vector2Int CellSize     => cellSize;
@@ -130,8 +153,10 @@ namespace ReTrap
         /// <summary>
         /// 이 함정을 설치할 수 있는 슬롯 anchor 목록.
         /// Build UI 가 설치 가능 슬롯 필터링에 사용합니다.
+        /// 기본 구현은 <see cref="Definition"/> 을 읽으며, 필요 시 서브클래스가 오버라이드 가능합니다.
         /// </summary>
-        public abstract TrapAnchor[] CompatibleAnchors { get; }
+        public virtual TrapAnchor[] CompatibleAnchors
+            => definition != null ? definition.CompatibleAnchors : System.Array.Empty<TrapAnchor>();
 
         /// <summary>해당 anchor 슬롯에 설치 가능한지.</summary>
         public bool IsCompatibleWith(TrapAnchor anchor)
@@ -162,8 +187,21 @@ namespace ReTrap
 
         // ── Unity ─────────────────────────────────────────────────────────────
 
+        /// <summary>레지스트리 자기 등록. 서브클래스 오버라이드 시 base 호출 필수.</summary>
+        protected virtual void OnEnable()  => _activeTraps.Add(this);
+
+        /// <summary>레지스트리 등록 해제. 서브클래스 오버라이드 시 base 호출 필수.</summary>
+        protected virtual void OnDisable() => _activeTraps.Remove(this);
+
         protected virtual void Awake()
         {
+            // TrapDefinition 미지정 시 기존 직렬화 필드(dangerLevel/baseCost/CompatibleAnchors)로
+            // fallback 하되, 튜닝 누락을 놓치지 않도록 경고 1회.
+            if (definition == null)
+                Debug.LogWarning($"[TrapBase] {name}: TrapDefinition 미지정 — " +
+                                 "인스펙터 직렬화 필드(dangerLevel/baseCost)로 fallback합니다. " +
+                                 "메뉴 'ReTrap → Setup → 함정 프리팹 + Build UI 세팅' 재실행을 권장합니다.", this);
+
             // damageArea 가 지정되지 않으면 자신의 Collider2D 를 사용
             if (damageArea == null)
                 damageArea = GetComponent<Collider2D>();
@@ -241,7 +279,7 @@ namespace ReTrap
 
 #if UNITY_EDITOR
             Debug.Log($"[TrapBase] {name} → {newState}  " +
-                      $"(DangerLevel={dangerLevel}, BaseCost={BaseCost})");
+                      $"(DangerLevel={DangerLevel}, BaseCost={BaseCost})");
 #endif
         }
 
@@ -252,7 +290,7 @@ namespace ReTrap
         /// A* NodeCost 가중치.
         /// 기본값 = DangerLevel. 특수 동작이 필요한 함정은 오버라이드.
         /// </summary>
-        public virtual float GetNodeCostWeight() => dangerLevel;
+        public virtual float GetNodeCostWeight() => DangerLevel;
 
         // ── 충돌 감지 ─────────────────────────────────────────────────────────
 
@@ -528,7 +566,7 @@ namespace ReTrap
         protected virtual void OnDrawGizmosSelected()
         {
             // 상태 & 코스트 정보 표시
-            string info = $"Cost:{BaseCost}  Danger:{dangerLevel}  [{CurrentState}]";
+            string info = $"Cost:{BaseCost}  Danger:{DangerLevel}  [{CurrentState}]";
             UnityEditor.Handles.Label(transform.position + Vector3.up * 0.7f, info);
 
             // 차지하는 그리드 셀 영역 표시 (TilemapGridManager 와 맞추기 위해 1셀 = 1unit 가정)

@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Reflection;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -15,15 +18,17 @@ namespace ReTrap.EditorTools
     /// <list type="number">
     ///   <item>'Map' Sorting Layer 추가 (없으면)</item>
     ///   <item>TilePaletteConfig 에셋 생성 + 기본값 채움 (없으면)</item>
-    ///   <item>씬에 MapLoader 오브젝트 생성 + 팔레트/자동로드 연결</item>
+    ///   <item>StageCatalog 에셋 생성 + StreamingAssets/Maps 스캔 시드 (없으면)</item>
+    ///   <item>씬에 MapLoader 오브젝트 생성 + 팔레트/자동로드/카탈로그 연결</item>
     ///   <item>씬 저장</item>
     /// </list>
     /// 이미 세팅된 항목은 건너뛰므로 여러 번 실행해도 안전합니다.
     /// </summary>
     public static class MapSystemSetup
     {
-        private const string PaletteAssetPath = "Assets/_Project/Settings/TilePaletteConfig.asset";
-        private const string AutoLoadMapId    = "stage_01";
+        private const string PaletteAssetPath      = "Assets/_Project/Settings/TilePaletteConfig.asset";
+        private const string StageCatalogAssetPath = "Assets/_Project/Settings/StageCatalog.asset";
+        private const string AutoLoadMapId         = "stage_01";
 
         [MenuItem("ReTrap/Setup/맵 시스템 세팅")]
         public static void Run()
@@ -37,10 +42,11 @@ namespace ReTrap.EditorTools
 
             EnsureSortingLayer("Map");
             var palette = EnsurePaletteAsset();
-            EnsureMapLoaderInScene(palette);
+            var catalog = EnsureStageCatalogAsset();
+            EnsureMapLoaderInScene(palette, catalog);
 
             EditorSceneManager.SaveOpenScenes();
-            Debug.Log("[MapSystemSetup] ✅ 세팅 완료 — 플레이하면 stage_01 이 자동 로드됩니다.");
+            Debug.Log("[MapSystemSetup] ✅ 세팅 완료 — 플레이하면 MapLoader 의 자동 로드 맵이 로드됩니다.");
         }
 
         // ── 플레이어 벽 마찰 제거 ─────────────────────────────────────────────
@@ -210,7 +216,7 @@ namespace ReTrap.EditorTools
 
         // ── 3. MapLoader 씬 오브젝트 ─────────────────────────────────────────
 
-        private static void EnsureMapLoaderInScene(TilePaletteConfig palette)
+        private static void EnsureMapLoaderInScene(TilePaletteConfig palette, StageCatalog catalog)
         {
             var loader = UnityEngine.Object.FindFirstObjectByType<MapLoader>();
             if (loader == null)
@@ -228,10 +234,95 @@ namespace ReTrap.EditorTools
             // private [SerializeField] → SerializedObject 로 안전하게 주입
             var so = new SerializedObject(loader);
             so.FindProperty("_palette").objectReferenceValue = palette;
-            so.FindProperty("_autoLoadMapId").stringValue    = AutoLoadMapId;
+
+            // 씬에 이미 값이 있으면 보존(재실행 시 자동 로드 맵이 조용히 바뀌는 것 방지).
+            // 비어있을 때만 기본값을 채운다.
+            var autoLoadProp = so.FindProperty("_autoLoadMapId");
+            if (string.IsNullOrEmpty(autoLoadProp.stringValue))
+                autoLoadProp.stringValue = AutoLoadMapId;
+            else
+                Debug.Log($"[MapSystemSetup] _autoLoadMapId 기존 값 유지: {autoLoadProp.stringValue}");
+
+            // 카탈로그도 비어있을 때만 배선 (기존 배선 보존)
+            var catalogProp = so.FindProperty("_stageCatalog");
+            if (catalogProp.objectReferenceValue == null)
+                catalogProp.objectReferenceValue = catalog;
+
             so.ApplyModifiedProperties();
 
             EditorSceneManager.MarkSceneDirty(loader.gameObject.scene);
+        }
+
+        // ── 4. StageCatalog 에셋 ─────────────────────────────────────────────
+
+        /// <summary>
+        /// StageCatalog 에셋이 없으면 생성하고 StreamingAssets/Maps 의 JSON 을 스캔해
+        /// mapId 순으로 시드합니다. 이미 존재하면 내용을 덮어쓰지 않고 그대로 반환합니다(멱등).
+        /// </summary>
+        private static StageCatalog EnsureStageCatalogAsset()
+        {
+            var existing = AssetDatabase.LoadAssetAtPath<StageCatalog>(StageCatalogAssetPath);
+            if (existing != null)
+            {
+                Debug.Log("[MapSystemSetup] StageCatalog 이미 존재 — 건너뜀");
+                return existing;
+            }
+
+            if (!AssetDatabase.IsValidFolder("Assets/_Project/Settings"))
+                AssetDatabase.CreateFolder("Assets/_Project", "Settings");
+
+            var catalog = ScriptableObject.CreateInstance<StageCatalog>();
+            var entries = ScanStreamingAssetsMaps();
+            SetPrivateField(catalog, "_stages", entries);
+
+            AssetDatabase.CreateAsset(catalog, StageCatalogAssetPath);
+            AssetDatabase.SaveAssets();
+
+            Debug.Log($"[MapSystemSetup] StageCatalog 생성 완료 → {StageCatalogAssetPath} " +
+                      $"({entries.Count}개 스테이지 시드)");
+            return catalog;
+        }
+
+        /// <summary>StreamingAssets/Maps 의 *.json 을 mapId 순으로 스캔해 카탈로그 엔트리로 변환합니다.</summary>
+        private static List<StageCatalog.StageEntry> ScanStreamingAssetsMaps()
+        {
+            var entries = new List<StageCatalog.StageEntry>();
+
+            string mapsDir = Path.Combine(Application.streamingAssetsPath, "Maps");
+            if (!Directory.Exists(mapsDir))
+            {
+                Debug.LogWarning($"[MapSystemSetup] StreamingAssets/Maps 폴더 없음: {mapsDir}");
+                return entries;
+            }
+
+            var files = Directory.GetFiles(mapsDir, "*.json");
+            var parsed = new List<(string mapId, string displayName)>();
+
+            foreach (var file in files)
+            {
+                try
+                {
+                    string json = File.ReadAllText(file, System.Text.Encoding.UTF8);
+                    var    map  = MapData.FromJson(json);
+                    if (map != null && !string.IsNullOrEmpty(map.mapId))
+                        parsed.Add((map.mapId, map.displayName));
+                }
+                catch (Exception e)
+                {
+                    Debug.LogWarning($"[MapSystemSetup] 맵 스캔 실패 ({file}): {e.Message}");
+                }
+            }
+
+            foreach (var (mapId, displayName) in parsed.OrderBy(p => p.mapId, StringComparer.Ordinal))
+            {
+                entries.Add(new StageCatalog.StageEntry
+                {
+                    mapId       = mapId,
+                    displayName = displayName,
+                });
+            }
+
+            return entries;
         }
     }
 }

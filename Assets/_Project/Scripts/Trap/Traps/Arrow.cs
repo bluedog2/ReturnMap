@@ -7,14 +7,16 @@ namespace ReTrap
     // ═══════════════════════════════════════════════════════════════════════════
 
     /// <summary>
-    /// ArrowShooter 가 Instantiate 후 <see cref="Initialize"/> 를 호출해 설정합니다.
+    /// ArrowShooter 가 풀(<see cref="ComponentPool{T}"/>)에서 꺼낸 뒤
+    /// <see cref="Initialize"/> 를 호출해 설정합니다. 소멸 시 Destroy 대신
+    /// 반납 콜백(<see cref="SetReleaseCallback"/>)으로 소유 풀에 되돌아갑니다.
     ///
     /// <para><b>Normal / Critical 화살</b>: 1 데미지 + 수평 넉백</para>
     /// <para><b>Beneficial 화살</b>: 데미지 없음 + 1초 무적 부여 (피격마다 갱신)</para>
     /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Collider2D))]
-    public class Arrow : MonoBehaviour
+    public class Arrow : MonoBehaviour, IPoolable
     {
         // ── Inspector ─────────────────────────────────────────────────────────
 
@@ -39,12 +41,17 @@ namespace ReTrap
         private Rigidbody2D    rb;
         private SpriteRenderer sr;
 
+        private Color _originalColor;              // Beneficial 황금 틴트 복원용
+        private System.Action<Arrow> _release;     // 풀 반납 콜백 (미지정 시 Destroy 폴백)
+        private bool _despawned;                   // 같은 프레임 이중 소멸 방지
+
         // ── Unity ─────────────────────────────────────────────────────────────
 
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
             sr = GetComponentInChildren<SpriteRenderer>();
+            if (sr != null) _originalColor = sr.color;
         }
 
         private void Update()
@@ -53,7 +60,7 @@ namespace ReTrap
             if (Vector3.SqrMagnitude(transform.position - spawnPosition) >
                 maxRange * maxRange)
             {
-                Destroy(gameObject);
+                Despawn();
             }
         }
 
@@ -63,19 +70,25 @@ namespace ReTrap
             if (other.TryGetComponent<PlayerController>(out var player))
             {
                 HitPlayer(player);
-                Destroy(gameObject);
+                Despawn();
                 return;
             }
 
             // 지형(비-트리거 콜라이더) 충돌 시 소멸
             if (!other.isTrigger)
-                Destroy(gameObject);
+                Despawn();
         }
 
         // ── 공개 API ──────────────────────────────────────────────────────────
 
         /// <summary>
-        /// ArrowShooter 가 Instantiate 직후 호출.
+        /// 소멸 시 자신을 되돌릴 풀 반납 콜백. 소유자(ArrowShooter)가 스폰 직후 지정.
+        /// 미지정 상태(수동 배치 등)에서는 기존처럼 Destroy 로 폴백합니다.
+        /// </summary>
+        public void SetReleaseCallback(System.Action<Arrow> release) => _release = release;
+
+        /// <summary>
+        /// ArrowShooter 가 풀에서 꺼낸 직후 호출.
         /// </summary>
         /// <param name="dir">발사 방향 (정규화된 벡터).</param>
         /// <param name="speed">비행 속도(유닛/초).</param>
@@ -99,7 +112,32 @@ namespace ReTrap
                 sr.color = beneficialColor;
         }
 
+        // ── IPoolable — ComponentPool 재사용 훅 ──────────────────────────────
+
+        /// <summary>풀에서 꺼내질 때 — Beneficial 황금 틴트 등 이전 상태 잔류 제거.</summary>
+        public void OnSpawned()
+        {
+            _despawned = false;
+            if (sr != null) sr.color = _originalColor;
+        }
+
+        /// <summary>풀로 반납될 때 — 물리 잔여 속도 정리.</summary>
+        public void OnDespawned()
+        {
+            if (rb != null) rb.linearVelocity = Vector2.zero;
+        }
+
         // ── 내부 ──────────────────────────────────────────────────────────────
+
+        /// <summary>Destroy 대신 소유 풀로 반납. 풀이 없으면(수동 배치) Destroy 폴백.</summary>
+        private void Despawn()
+        {
+            if (_despawned) return;
+            _despawned = true;
+
+            if (_release != null) _release(this);
+            else                  Destroy(gameObject);
+        }
 
         private void HitPlayer(PlayerController player)
         {

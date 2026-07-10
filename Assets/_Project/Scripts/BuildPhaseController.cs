@@ -30,10 +30,10 @@ namespace ReTrap
     {
         // ── Inspector ─────────────────────────────────────────────────────────
 
-        [Header("설치 가능한 함정 프리팹 (Addressable · TrapBase 필수)")]
-        [Tooltip("어드레서블 프리팹 참조. 씬에 직접 임베드되지 않고 Traps 번들에서 로드됩니다 " +
+        [Header("설치 가능한 함정 (TrapDefinition · 스펙+프리팹 참조 중앙화)")]
+        [Tooltip("함정 스펙 SO 목록. 각 정의의 prefabRef 로 Addressable 프리팹을 비동기 로드합니다 " +
                  "(빌드 중복 제거). Awake 에서 비동기 로드 → 완료 시 OnTrapsReady 발행.")]
-        [SerializeField] private List<AssetReferenceGameObject> trapRefs = new List<AssetReferenceGameObject>();
+        [SerializeField] private List<TrapDefinition> trapDefinitions = new List<TrapDefinition>();
 
         [Header("UI")]
         [Tooltip("Build HUD 패널 프리팹 (Addressable). 씬에 임베드되지 않고 UI 번들에서 로드 후 " +
@@ -64,6 +64,11 @@ namespace ReTrap
         /// 비동기 로드 전에는 비어 있습니다 — <see cref="TrapsReady"/> / <see cref="OnTrapsReady"/> 참고.</summary>
         public IReadOnlyList<GameObject> TrapPrefabs => _loadedTrapPrefabs;
 
+        /// <summary>설치 가능한 (로드 완료된) 함정의 스펙 정의 목록 (읽기 전용).
+        /// <see cref="TrapPrefabs"/> 와 인덱스가 1:1 로 대응합니다.
+        /// 비동기 로드 전에는 비어 있습니다 — <see cref="TrapsReady"/> / <see cref="OnTrapsReady"/> 참고.</summary>
+        public IReadOnlyList<TrapDefinition> TrapDefinitions => _loadedTrapDefinitions;
+
         /// <summary>어드레서블 함정 프리팹 로드 완료 여부.</summary>
         public bool TrapsReady { get; private set; }
 
@@ -78,6 +83,8 @@ namespace ReTrap
 
         // 어드레서블에서 로드한 함정 프리팹 캐시 + 해제용 핸들
         private readonly List<GameObject> _loadedTrapPrefabs = new List<GameObject>();
+        // TrapPrefabs 와 인덱스가 1:1 대응하는 definition 캐시 (null 필터링 후)
+        private readonly List<TrapDefinition> _loadedTrapDefinitions = new List<TrapDefinition>();
         private readonly List<AsyncOperationHandle<GameObject>> _trapHandles =
             new List<AsyncOperationHandle<GameObject>>();
 
@@ -170,6 +177,7 @@ namespace ReTrap
                 if (h.IsValid()) Addressables.Release(h);
             _trapHandles.Clear();
             _loadedTrapPrefabs.Clear();
+            _loadedTrapDefinitions.Clear();
 
             // HUD 인스턴스 핸들 해제 (InstantiateAsync → ReleaseInstance 로 인스턴스까지 정리)
             if (_hudHandleValid && _hudHandle.IsValid())
@@ -180,13 +188,13 @@ namespace ReTrap
         // ── 어드레서블 함정 로드 ──────────────────────────────────────────────
 
         /// <summary>
-        /// <see cref="trapRefs"/> 의 모든 함정 프리팹을 비동기 로드합니다.
+        /// <see cref="trapDefinitions"/> 각각의 prefabRef 로 함정 프리팹을 비동기 로드합니다.
         /// 완료되면 <see cref="_loadedTrapPrefabs"/> 를 채우고 <see cref="OnTrapsReady"/> 를 발행해
         /// HUD 가 버튼을 생성하도록 합니다. 직접 씬 참조가 없어 빌드 중복이 제거됩니다.
         /// </summary>
         private void LoadTraps()
         {
-            int total = trapRefs != null ? trapRefs.Count : 0;
+            int total = trapDefinitions != null ? trapDefinitions.Count : 0;
             if (total == 0)
             {
                 FinalizeTrapLoad(new GameObject[0]);
@@ -198,10 +206,12 @@ namespace ReTrap
 
             for (int i = 0; i < total; i++)
             {
-                var aref = trapRefs[i];
+                var def   = trapDefinitions[i];
+                var aref  = def != null ? def.PrefabRef : null;
                 if (aref == null || !aref.RuntimeKeyIsValid())
                 {
-                    Debug.LogWarning($"[BuildPhaseController] trapRefs[{i}] 가 비어있거나 유효하지 않은 어드레서블 참조입니다.");
+                    Debug.LogWarning($"[BuildPhaseController] trapDefinitions[{i}] 의 prefabRef 가 " +
+                                     "비어있거나 유효하지 않은 어드레서블 참조입니다.");
                     if (--pending == 0) FinalizeTrapLoad(results);
                     continue;
                 }
@@ -214,19 +224,29 @@ namespace ReTrap
                     if (h.Status == AsyncOperationStatus.Succeeded)
                         results[index] = h.Result;
                     else
-                        Debug.LogError($"[BuildPhaseController] 함정 프리팹 로드 실패: trapRefs[{index}]");
+                        Debug.LogError($"[BuildPhaseController] 함정 프리팹 로드 실패: trapDefinitions[{index}]");
 
                     if (--pending == 0) FinalizeTrapLoad(results);
                 };
             }
         }
 
-        /// <summary>로드 결과를 캐시에 반영하고 준비 완료를 알립니다 (null 항목은 제외).</summary>
+        /// <summary>
+        /// 로드 결과를 캐시에 반영하고 준비 완료를 알립니다 (null 항목은 제외).
+        /// <see cref="_loadedTrapDefinitions"/> 도 같은 기준으로 필터링해 <see cref="TrapPrefabs"/> 와
+        /// 인덱스가 항상 1:1 로 맞도록 유지합니다 (HUD·설치 로직이 인덱스로 양쪽을 참조).
+        /// </summary>
         private void FinalizeTrapLoad(GameObject[] results)
         {
             _loadedTrapPrefabs.Clear();
-            foreach (var go in results)
-                if (go != null) _loadedTrapPrefabs.Add(go);
+            _loadedTrapDefinitions.Clear();
+
+            for (int i = 0; i < results.Length; i++)
+            {
+                if (results[i] == null) continue;
+                _loadedTrapPrefabs.Add(results[i]);
+                _loadedTrapDefinitions.Add(trapDefinitions[i]);
+            }
 
             TrapsReady = true;
             RefreshGhostSprite();
@@ -273,9 +293,9 @@ namespace ReTrap
                 HandlePlacementInput();
             }
 
-            // Enter → 플레이 시작
+            // Enter → 빌드 완료 (검증 페이즈 사용 여부는 GamePhaseManager 가 결정)
             if (kb != null && kb.enterKey.wasPressedThisFrame)
-                GamePhaseManager.Instance?.SetPhase(GamePhase.Play);
+                GamePhaseManager.Instance?.AdvanceFromBuild();
         }
 
         // ── 공개 API — HUD 버튼이 호출 ───────────────────────────────────────
@@ -317,17 +337,17 @@ namespace ReTrap
         /// <summary>
         /// 선택된 함정을 설치할 수 있는 슬롯(호환 anchor + 빈 슬롯 + 예산 내)을
         /// 초록색으로 강조합니다. 선택·예산·점유·페이즈가 바뀔 때마다 갱신.
+        /// 프리팹 로드 여부와 무관하게 definition 값만으로 판단합니다.
         /// </summary>
         private void RefreshSlotHighlights()
         {
-            var prefab = SelectedPrefab();
-            var trap   = prefab != null ? prefab.GetComponent<TrapBase>() : null;
+            var def = SelectedDefinition();
 
             foreach (var slot in TrapSlotRegistry.All)
             {
-                bool canInstall = IsActive && !IsRemoveMode && trap != null && slot.IsEmpty
-                               && trap.IsCompatibleWith(slot.Anchor)
-                               && trap.BaseCost <= RemainingBudget;
+                bool canInstall = IsActive && !IsRemoveMode && def != null && slot.IsEmpty
+                               && def.IsCompatibleWith(slot.Anchor)
+                               && def.BaseCost <= RemainingBudget;
                 slot.SetGuideHighlight(canInstall, SlotHighlight);
             }
         }
@@ -460,22 +480,26 @@ namespace ReTrap
             }
         }
 
-        /// <summary>설치 가능 여부 + 불가 사유.</summary>
+        /// <summary>
+        /// 설치 가능 여부 + 불가 사유.
+        /// 코스트/anchor 호환 검사는 프리팹 로드 여부와 무관하게 definition 에서 직접 읽습니다.
+        /// </summary>
         private bool CanPlaceAt(TrapSlotMarker slot, out string reason)
         {
             reason = null;
 
-            var prefab = SelectedPrefab();
-            if (prefab == null)                { reason = "선택된 함정 없음";  return false; }
+            var def = SelectedDefinition();
+            if (def == null)                   { reason = "선택된 함정 없음";  return false; }
             if (slot == null)                  { reason = "슬롯 아님";        return false; }
             if (!slot.IsEmpty)                 { reason = "이미 설치됨";      return false; }
 
-            var trap = prefab.GetComponent<TrapBase>();
-            if (trap == null)                  { reason = "TrapBase 없는 프리팹"; return false; }
-            if (!trap.IsCompatibleWith(slot.Anchor))
+            if (!def.IsCompatibleWith(slot.Anchor))
                                                { reason = $"{slot.Anchor} 슬롯과 비호환"; return false; }
-            if (trap.BaseCost > RemainingBudget)
+            if (def.BaseCost > RemainingBudget)
                                                { reason = "예산 부족";        return false; }
+
+            var prefab = SelectedPrefab();
+            if (prefab == null)                { reason = "함정 프리팹 로드 중"; return false; }
             return true;
         }
 
@@ -488,6 +512,7 @@ namespace ReTrap
                 return;
             }
 
+            var def    = SelectedDefinition();
             var prefab = SelectedPrefab();
             var inst   = Instantiate(prefab, slot.transform.position, Quaternion.identity, trapRoot);
             inst.name  = $"{prefab.name}_{x}_{y}";
@@ -497,7 +522,7 @@ namespace ReTrap
             trap.ConfigureForAnchor(slot.Anchor);
 
             slot.TryOccupy(inst);   // 가이드 숨김은 마커가 처리
-            RemainingBudget -= trap.BaseCost;
+            RemainingBudget -= def.BaseCost;
             RefreshSlotHighlights(); // 예산 변동 반영 (TryOccupy 알림 시점엔 옛 예산)
 
             Debug.Log($"[Build] 설치: {prefab.name} @({x},{y})  잔여 예산 {RemainingBudget}");
@@ -522,6 +547,10 @@ namespace ReTrap
 
         private GameObject SelectedPrefab()
             => (_selected >= 0 && _selected < _loadedTrapPrefabs.Count) ? _loadedTrapPrefabs[_selected] : null;
+
+        /// <summary>현재 선택된 함정의 스펙 정의. 프리팹 로드 여부와 무관하게 조회 가능.</summary>
+        private TrapDefinition SelectedDefinition()
+            => (_selected >= 0 && _selected < _loadedTrapDefinitions.Count) ? _loadedTrapDefinitions[_selected] : null;
 
         private void EnsureTrapRoot()
         {

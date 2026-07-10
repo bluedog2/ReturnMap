@@ -19,7 +19,8 @@ namespace ReTrap
     ///   → deathDelay 대기 (사망 연출)
     ///   → 리스폰 지점 이동 + 물리 초기화
     ///   → HP 전체 회복 + 리스폰 무적 부여
-    ///   → TrapMutationManager.OnPlayerRespawn() (시드/변이 처리)
+    ///   → 페이즈 처리: 빌드 복귀 설정이면 SetPhase(Build),
+    ///     Play 유지 + 현재 Play 페이즈일 때만 TrapMutationManager.OnPlayerRespawn() (시드/변이)
     ///   → 입력 재활성화
     ///   → OnRespawn 이벤트 발행
     /// </code>
@@ -87,6 +88,9 @@ namespace ReTrap
         private PlayerHealth playerHealth;
         private PlayerInput  playerInput;
 
+        /// <summary>OnDeath 구독 여부(중복 구독 방지 플래그).</summary>
+        private bool isDeathSubscribed;
+
         // ── Unity ─────────────────────────────────────────────────────────────
 
         private void Awake()
@@ -99,38 +103,62 @@ namespace ReTrap
                 return;
             }
 
-            // PlayerController 자동 탐색
-            if (playerController == null)
-                playerController = FindFirstObjectByType<PlayerController>();
-
-            if (playerController != null)
-            {
-                playerHealth = playerController.GetComponent<PlayerHealth>();
-                playerInput  = playerController.GetComponent<PlayerInput>();
-            }
-            else
-            {
-                Debug.LogWarning("[RespawnManager] PlayerController 를 찾지 못했습니다. " +
-                                 "Inspector 에서 직접 할당해 주세요.");
-            }
-
             RespawnPoint = defaultRespawnPoint;
         }
 
         private void OnEnable()
         {
-            if (playerHealth != null)
-                playerHealth.OnDeath += HandleDeath;
+            EnsurePlayerRefs();
 
             MapLoader.OnMapLoaded += HandleMapLoaded;
         }
 
         private void OnDisable()
         {
-            if (playerHealth != null)
+            if (isDeathSubscribed && playerHealth != null)
+            {
                 playerHealth.OnDeath -= HandleDeath;
+                isDeathSubscribed = false;
+            }
 
             MapLoader.OnMapLoaded -= HandleMapLoaded;
+        }
+
+        // ── 참조 확보 ─────────────────────────────────────────────────────────
+
+        /// <summary>
+        /// PlayerController/PlayerHealth/PlayerInput 참조를 확보하고
+        /// PlayerHealth.OnDeath 구독을 보장합니다.
+        /// 플레이어가 아직 씬에 없으면(늦은 스폰 등) 조용히 실패하고,
+        /// 이후 재호출 시점(OnEnable, 맵 로드 완료, 공개 API 사용 직전)에 재시도합니다.
+        /// 매 프레임 폴링은 하지 않습니다.
+        /// </summary>
+        private void EnsurePlayerRefs()
+        {
+            // PlayerController 자동 탐색 (Inspector 미할당 시)
+            if (playerController == null)
+                playerController = FindFirstObjectByType<PlayerController>();
+
+            if (playerController != null)
+            {
+                if (playerHealth == null)
+                    playerHealth = playerController.GetComponent<PlayerHealth>();
+                if (playerInput == null)
+                    playerInput = playerController.GetComponent<PlayerInput>();
+            }
+
+            // OnDeath 구독 보장 (중복 구독 방지)
+            if (!isDeathSubscribed && playerHealth != null)
+            {
+                playerHealth.OnDeath += HandleDeath;
+                isDeathSubscribed = true;
+            }
+
+            if (playerController == null)
+            {
+                Debug.LogWarning("[RespawnManager] PlayerController 를 찾지 못했습니다. " +
+                                 "Inspector 에서 직접 할당하거나, 플레이어 스폰 이후 재시도됩니다.");
+            }
         }
 
         // ── 맵 연동 ───────────────────────────────────────────────────────────
@@ -141,6 +169,9 @@ namespace ReTrap
         /// </summary>
         private void HandleMapLoaded(MapData map)
         {
+            // 맵 로드 시점에 플레이어가 새로 스폰됐을 수 있으므로 참조 재확보 시도
+            EnsurePlayerRefs();
+
             Vector2 origin = MapLoader.Instance != null ? MapLoader.Instance.MapOrigin : Vector2.zero;
             Vector2 spawn  = map.CellToWorld(map.spawnPoint.x, map.spawnPoint.y, origin);
 
@@ -162,6 +193,8 @@ namespace ReTrap
         /// </summary>
         public void SetRespawnPoint(Vector2 point)
         {
+            EnsurePlayerRefs();
+
             RespawnPoint = point;
 #if UNITY_EDITOR
             Debug.Log($"[RespawnManager] 리스폰 지점 갱신 → {point}");
@@ -209,13 +242,18 @@ namespace ReTrap
                     playerHealth.SetInvincible(respawnInvincibleDuration);
             }
 
-            // ── 6. 함정 재변이 (시드/난이도 정책은 TrapMutationManager 내부) ───
-            TrapMutationManager.Instance?.OnPlayerRespawn();
+            // ── 6. 페이즈 처리 + 함정 재변이 ──────────────────────────────────
+            // 재변이는 "Play 페이즈를 유지한 채 재도전"할 때만 수행한다.
+            // - 빌드 복귀 시: SetPhase(Build) 가 ResetAll 로 초기화하므로 변이 호출은 낭비
+            // - Play 외 페이즈에서의 사망(빌드/검증 중 함정 접촉 등): 변이를 실행하면
+            //   "검증은 원본(Normal) 검증" 불변식이 깨진다 — 위치/HP 복구만 하고 변이는 금지
+            var phaseManager = GamePhaseManager.Instance;
 
-            // ── 7. 페이즈 처리 ─────────────────────────────────────────────────
             if (respawnGoesToBuild)
-                GamePhaseManager.Instance?.SetPhase(GamePhase.Build);
-            // else: 플레이 페이즈 유지 — 함정은 6번에서 이미 재변이 완료
+                phaseManager?.SetPhase(GamePhase.Build);
+            else if (phaseManager == null || phaseManager.currentPhase == GamePhase.Play)
+                TrapMutationManager.Instance?.OnPlayerRespawn();
+            // else: Build/Verification 중 사망 — 페이즈 변이 정책은 ApplyPhase 가 관장
 
             // ── 8. 입력 재활성화 ───────────────────────────────────────────────
             playerInput?.ActivateInput();

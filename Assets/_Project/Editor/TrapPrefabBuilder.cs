@@ -18,16 +18,20 @@ namespace ReTrap.EditorTools
     /// 메뉴 <b>ReTrap → Setup → 함정 프리팹 + Build UI 세팅</b>:
     /// <list type="number">
     ///   <item>SpikeTrap / ArrowShooter(+Arrow) / DropHammer 플레이스홀더 프리팹 생성</item>
+    ///   <item>함정별 TrapDefinition SO 생성(신규 시만 매직넘버로 시드) + 프리팹에 배선</item>
     ///   <item>Managers 에 BuildPhaseController + TrapMutationManager 추가</item>
-    ///   <item>프리팹 리스트 자동 할당 + 씬 저장</item>
+    ///   <item>TrapDefinition 리스트 자동 할당 + 씬 저장</item>
     /// </list>
     /// 이미 있는 항목은 건너뛰므로 여러 번 실행해도 안전합니다.
+    /// <b>멱등성</b>: TrapDefinition 이 이미 존재하면 baseCost/dangerLevel/compatibleAnchors 등
+    /// 밸런스 값은 절대 덮어쓰지 않습니다(사용자가 튜닝한 값 보존) — prefabRef 등 참조 필드만 비어있을 때 채웁니다.
     /// 아트 확정 후 프리팹의 Visual 스프라이트만 교체하면 됩니다.
     /// </summary>
     public static class TrapPrefabBuilder
     {
-        private const string PrefabDir   = "Assets/_Project/ResourcceEX/Prefabs/Traps";
-        private const string TileSprite  = "Assets/_Project/ResourcceEX/Sprites/Environment/CorruptedCastleTile.png";
+        private const string PrefabDir     = "Assets/_Project/ResourcceEX/Prefabs/Traps";
+        private const string TileSprite    = "Assets/_Project/ResourcceEX/Sprites/Environment/CorruptedCastleTile.png";
+        private const string DefinitionDir = "Assets/_Project/Settings/TrapDefinitions";
 
         [MenuItem("ReTrap/Setup/함정 프리팹 + Build UI 세팅")]
         public static void Run()
@@ -51,7 +55,20 @@ namespace ReTrap.EditorTools
             var uiCanvas = EnsureUiCanvas();
             EnsureEventSystem();
 
-            WireScene(new List<GameObject> { spike, shooter, hammer }, hud, uiCanvas);
+            // 함정별 TrapDefinition SO 확보(신규 시 매직넘버 시드) + 프리팹 배선
+            var spikeDef   = EnsureTrapDefinition("Spike", spike,
+                displayName: "스파이크", baseCost: 10, dangerLevel: 3,
+                anchors: new[] { TrapAnchor.Floor, TrapAnchor.Ceiling });
+            var shooterDef = EnsureTrapDefinition("ArrowShooter", shooter,
+                displayName: "화살 슈터", baseCost: 25, dangerLevel: 5,
+                anchors: new[] { TrapAnchor.Floor, TrapAnchor.Ceiling, TrapAnchor.LeftWall, TrapAnchor.RightWall });
+            var hammerDef  = EnsureTrapDefinition("DropHammer", hammer,
+                displayName: "드롭 해머", baseCost: 50, dangerLevel: 8,
+                anchors: new[] { TrapAnchor.Ceiling });
+
+            var definitions = new List<TrapDefinition> { spikeDef, shooterDef, hammerDef };
+
+            WireScene(definitions, hud, uiCanvas);
 
             EditorSceneManager.SaveOpenScenes();
             Debug.Log("[TrapPrefabBuilder] ✅ 함정 프리팹 + Build UI 세팅 완료");
@@ -160,9 +177,9 @@ namespace ReTrap.EditorTools
             var trap = go.AddComponent<SpikeTrap>();
             var so   = new SerializedObject(trap);
             so.FindProperty("spikeVisual").objectReferenceValue = sr.transform;
-            so.FindProperty("baseCost").intValue                = 10;
-            so.FindProperty("dangerLevel").intValue             = 3;
             so.ApplyModifiedPropertiesWithoutUndo();
+            // baseCost/dangerLevel/CompatibleAnchors 는 TrapDefinition SO 가 원천 —
+            // EnsureTrapDefinition() 이 신규 생성 시에만 시드하고 프리팹에 배선한다.
 
             return SavePrefab(go, "SpikeTrap");
         }
@@ -192,9 +209,9 @@ namespace ReTrap.EditorTools
             var so   = new SerializedObject(trap);
             so.FindProperty("arrowPrefab").objectReferenceValue = arrowPrefab;
             so.FindProperty("firePoint").objectReferenceValue   = firePoint.transform;
-            so.FindProperty("baseCost").intValue                = 25;
-            so.FindProperty("dangerLevel").intValue             = 5;
             so.ApplyModifiedPropertiesWithoutUndo();
+            // baseCost/dangerLevel/CompatibleAnchors 는 TrapDefinition SO 가 원천 —
+            // EnsureTrapDefinition() 이 신규 생성 시에만 시드하고 프리팹에 배선한다.
 
             return SavePrefab(go, "ArrowShooter");
         }
@@ -222,9 +239,9 @@ namespace ReTrap.EditorTools
             var so   = new SerializedObject(trap);
             so.FindProperty("groundLayer").intValue   = groundLayer >= 0 ? (1 << groundLayer) : 0;
             so.FindProperty("detectionMask").intValue = playerLayer >= 0 ? (1 << playerLayer) : ~0;
-            so.FindProperty("baseCost").intValue      = 50;
-            so.FindProperty("dangerLevel").intValue   = 8;
             so.ApplyModifiedPropertiesWithoutUndo();
+            // baseCost/dangerLevel/CompatibleAnchors 는 TrapDefinition SO 가 원천 —
+            // EnsureTrapDefinition() 이 신규 생성 시에만 시드하고 프리팹에 배선한다.
 
             return SavePrefab(go, "DropHammer");
         }
@@ -412,9 +429,86 @@ namespace ReTrap.EditorTools
             Debug.Log("[TrapPrefabBuilder] EventSystem (InputSystemUIInputModule) 추가");
         }
 
+        // ── TrapDefinition SO 생성/배선 ──────────────────────────────────────
+
+        /// <summary>
+        /// 함정별 TrapDefinition SO 를 확보합니다.
+        /// <para><b>멱등성</b>: 이미 존재하면 baseCost/dangerLevel/compatibleAnchors 등
+        /// 밸런스 값은 절대 덮어쓰지 않습니다(사용자 튜닝 보존) — prefabRef 등 참조 필드만
+        /// 비어 있을 때 채웁니다. 신규 생성 시에만 인자로 받은 값으로 시드합니다.</para>
+        /// 프리팹의 <c>TrapBase.definition</c> 필드에도 배선합니다.
+        /// </summary>
+        private static TrapDefinition EnsureTrapDefinition(
+            string assetName, GameObject prefab,
+            string displayName, int baseCost, int dangerLevel, TrapAnchor[] anchors)
+        {
+            EnsureDefinitionFolder();
+            string path = $"{DefinitionDir}/TrapDefinition_{assetName}.asset";
+
+            var def = AssetDatabase.LoadAssetAtPath<TrapDefinition>(path);
+            bool isNew = def == null;
+
+            if (isNew)
+            {
+                def = ScriptableObject.CreateInstance<TrapDefinition>();
+                var newSo = new SerializedObject(def);
+                newSo.FindProperty("displayName").stringValue = displayName;
+                newSo.FindProperty("baseCost").intValue        = baseCost;
+                newSo.FindProperty("dangerLevel").intValue     = dangerLevel;
+
+                var anchorsProp = newSo.FindProperty("compatibleAnchors");
+                anchorsProp.arraySize = anchors.Length;
+                for (int i = 0; i < anchors.Length; i++)
+                    anchorsProp.GetArrayElementAtIndex(i).enumValueIndex = (int)anchors[i];
+
+                newSo.ApplyModifiedPropertiesWithoutUndo();
+                AssetDatabase.CreateAsset(def, path);
+                Debug.Log($"[TrapPrefabBuilder] TrapDefinition 생성 → {path}");
+            }
+
+            // prefabRef 는 참조 필드 — 비어 있을 때만 채운다(멱등성: 사용자가 다른 프리팹으로
+            // 바꿔뒀다면 덮어쓰지 않음). 어드레서블 등록 자체는 그룹/주소 정합성 유지를 위해 항상 수행.
+            string prefabPath = AssetDatabase.GetAssetPath(prefab);
+            string prefabGuid = RegisterAddressable(prefabPath, "Traps", $"Trap/{prefab.name}");
+
+            var so       = new SerializedObject(def);
+            var refProp  = so.FindProperty("prefabRef");
+            var guidProp = refProp.FindPropertyRelative("m_AssetGUID");
+            bool refEmpty = guidProp == null || string.IsNullOrEmpty(guidProp.stringValue);
+            if (refEmpty)
+            {
+                SetAssetReferenceGuid(refProp, prefabGuid);
+                so.ApplyModifiedPropertiesWithoutUndo();
+            }
+
+            // 프리팹의 TrapBase.definition 필드 배선
+            var trapBase = prefab.GetComponent<TrapBase>();
+            if (trapBase != null)
+            {
+                var trapSo = new SerializedObject(trapBase);
+                var defProp = trapSo.FindProperty("definition");
+                if (defProp.objectReferenceValue != def)
+                {
+                    defProp.objectReferenceValue = def;
+                    trapSo.ApplyModifiedPropertiesWithoutUndo();
+                }
+            }
+
+            EditorUtility.SetDirty(def);
+            return def;
+        }
+
+        private static void EnsureDefinitionFolder()
+        {
+            if (!AssetDatabase.IsValidFolder("Assets/_Project/Settings"))
+                AssetDatabase.CreateFolder("Assets/_Project", "Settings");
+            if (!AssetDatabase.IsValidFolder(DefinitionDir))
+                AssetDatabase.CreateFolder("Assets/_Project/Settings", "TrapDefinitions");
+        }
+
         // ── 씬 배선 ───────────────────────────────────────────────────────────
 
-        private static void WireScene(List<GameObject> prefabs, GameObject hudPrefab,
+        private static void WireScene(List<TrapDefinition> definitions, GameObject hudPrefab,
                                       GameObject uiCanvas)
         {
             var managers = GameObject.Find("Managers");
@@ -431,21 +525,17 @@ namespace ReTrap.EditorTools
                 Debug.Log("[TrapPrefabBuilder] TrapMutationManager 추가");
             }
 
-            // BuildPhaseController + 프리팹 리스트
+            // BuildPhaseController + TrapDefinition 리스트
             var ctrl = managers.GetComponent<BuildPhaseController>();
             if (ctrl == null) ctrl = managers.AddComponent<BuildPhaseController>();
 
             var so = new SerializedObject(ctrl);
 
-            // 함정 프리팹 → 어드레서블 등록(Traps 그룹) 후 trapRefs[i] 에 GUID 배선
-            var trapArr = so.FindProperty("trapRefs");
-            trapArr.arraySize = prefabs.Count;
-            for (int i = 0; i < prefabs.Count; i++)
-            {
-                string path = AssetDatabase.GetAssetPath(prefabs[i]);
-                string guid = RegisterAddressable(path, "Traps", $"Trap/{prefabs[i].name}");
-                SetAssetReferenceGuid(trapArr.GetArrayElementAtIndex(i), guid);
-            }
+            // TrapDefinition 목록 배선 (프리팹 어드레서블 등록은 EnsureTrapDefinition 에서 완료)
+            var defArr = so.FindProperty("trapDefinitions");
+            defArr.arraySize = definitions.Count;
+            for (int i = 0; i < definitions.Count; i++)
+                defArr.GetArrayElementAtIndex(i).objectReferenceValue = definitions[i];
 
             // HUD 프리팹 → 어드레서블 등록(UI 그룹) 후 hudRef 에 GUID 배선
             string hudPath = AssetDatabase.GetAssetPath(hudPrefab);
@@ -456,7 +546,7 @@ namespace ReTrap.EditorTools
             so.ApplyModifiedPropertiesWithoutUndo();
 
             EditorSceneManager.MarkSceneDirty(managers.scene);
-            Debug.Log($"[TrapPrefabBuilder] BuildPhaseController 배선 완료 — 함정 {prefabs.Count}종 (어드레서블)");
+            Debug.Log($"[TrapPrefabBuilder] BuildPhaseController 배선 완료 — 함정 {definitions.Count}종 (TrapDefinition)");
         }
 
         // ── 어드레서블 헬퍼 ──────────────────────────────────────────────────

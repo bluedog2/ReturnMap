@@ -57,19 +57,14 @@ namespace ReTrap
             RollNewSeed();
         }
 
-        private void OnEnable()
-        {
-            GamePhaseManager.OnPhaseChanged += HandlePhaseChange;
-        }
-
-        private void OnDisable()
-        {
-            GamePhaseManager.OnPhaseChanged -= HandlePhaseChange;
-        }
-
         // ── 페이즈 연동 ───────────────────────────────────────────────────────
 
-        private void HandlePhaseChange(GamePhase phase)
+        /// <summary>
+        /// GamePhaseManager.SetPhase 가 이벤트 발행 이전에 <b>직접 호출</b>하는 진입점.
+        /// 변이 적용은 이후 로직(AI 검증 등)이 최신 상태를 참조해야 하므로
+        /// 이벤트 구독이 아니라 순서가 보장되는 직접 호출로 처리합니다.
+        /// </summary>
+        public void ApplyPhase(GamePhase phase)
         {
             switch (phase)
             {
@@ -87,6 +82,12 @@ namespace ReTrap
                     ResetAll();
                     hasMutated = false;
                     break;
+
+                case GamePhase.Verification:
+                    // 검증 페이즈: AI 는 원본(Normal) 배치를 검증한다는 설계 결정 — 변이 미적용
+                    ResetAll();
+                    hasMutated = false;
+                    break;
             }
         }
 
@@ -100,21 +101,23 @@ namespace ReTrap
         /// </summary>
         public void MutateAll()
         {
-            var traps = FindObjectsByType<TrapBase>(FindObjectsSortMode.None);
-            foreach (var trap in traps)
-                trap.Mutate(RollStateFor(trap));
+            // TrapBase 정적 레지스트리 순회 — 씬 전체 스캔(FindObjectsByType) 대체.
+            // 라이브 목록이라 순회 중 제거에 안전하도록 역순으로 돈다.
+            var traps = TrapBase.ActiveTraps;
+            for (int i = traps.Count - 1; i >= 0; i--)
+                traps[i].Mutate(RollStateFor(traps[i]));
 
 #if UNITY_EDITOR
-            Debug.Log($"[MutationManager] MutateAll — Seed:{currentSeed}  Traps:{traps.Length}");
+            Debug.Log($"[MutationManager] MutateAll — Seed:{currentSeed}  Traps:{traps.Count}");
 #endif
         }
 
         /// <summary>모든 함정을 Normal 로 초기화.</summary>
         public void ResetAll()
         {
-            var traps = FindObjectsByType<TrapBase>(FindObjectsSortMode.None);
-            foreach (var trap in traps)
-                trap.ResetToNormal();
+            var traps = TrapBase.ActiveTraps;
+            for (int i = traps.Count - 1; i >= 0; i--)
+                traps[i].ResetToNormal();
         }
 
         /// <summary>
