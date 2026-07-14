@@ -44,6 +44,15 @@ namespace ReTrap
         [Tooltip("씬에 스폰할 검증 AI 캐릭터 프리팹 (VerificationAgent 포함)")]
         private VerificationAgent agentPrefab;
 
+        [SerializeField]
+        [Tooltip("태그 적용 전 기본 스펙 (null 허용 — 기본값 사용)")]
+        private AgentArchetype archetype;
+
+        [SerializeField]
+        [Tooltip("임시 테스트용 — 4단계 StageAgentRoster 도입 시 제거 예정. " +
+                 "스폰되는 에이전트에 이 태그를 부여한다.")]
+        private AITagDefinition[] debugTags;
+
         [Header("판정")]
         [SerializeField]
         [Tooltip("이 시간(초) 안에 못 뚫으면 방어 성공 (GDD: 제한 시간 버티기)")]
@@ -53,6 +62,11 @@ namespace ReTrap
         [SerializeField, Min(1)]
         [Tooltip("에이전트 풀 예열 개수. 다중 에이전트/웨이브 확장 시 늘릴 것")]
         private int poolPrewarm = 1;
+
+        [Header("연출")]
+        [SerializeField, Min(0f)]
+        [Tooltip("AI 사망 후 사망 애니메이션을 보여줄 시간(초). 0이면 즉시 회수")]
+        private float deathLingerTime = 0.6f;
 
         // ── 결과 — VerificationPhaseController 가 읽음 ───────────────────────
 
@@ -117,6 +131,15 @@ namespace ReTrap
                 Vector2 spawnPos = map.CellToWorld(map.spawnPoint.x, map.spawnPoint.y, origin);
                 _activeAgent = _agentPool.Get(spawnPos, Quaternion.identity);
 
+                // 태그 배선 (임시 테스트용 — 4단계 StageAgentRoster 도입 시 debugTags 는 제거)
+                if (_activeAgent.TryGetComponent<AgentContext>(out var ctx))
+                {
+                    TagSet tags = (debugTags == null || debugTags.Length == 0)
+                        ? TagSet.Empty
+                        : new TagSet(debugTags);
+                    ctx.Initialize(archetype, tags);
+                }
+
                 _activeAgent.StartCoroutine(_activeAgent.FollowPath(path, map, origin, p));
                 while (_activeAgent != null && !_activeAgent.IsDone && Time.time < deadline)
                     yield return null;
@@ -128,6 +151,13 @@ namespace ReTrap
 
                 bool breached  = _activeAgent.ReachedGoal;
                 var  deathCell = _activeAgent.CurrentCell;
+
+                // 사망 애니메이션이 보이도록 잠시 유지 후 회수 (Cancel 시 즉시 회수됨)
+                if (!breached && deathLingerTime > 0f)
+                {
+                    yield return new WaitForSeconds(deathLingerTime);
+                    if (_activeAgent == null) yield break; // 유지 중 외부 중단
+                }
                 ReleaseActiveAgent();
 
                 if (breached)

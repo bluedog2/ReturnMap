@@ -44,6 +44,7 @@ namespace ReTrap
         private Color _originalColor;              // Beneficial 황금 틴트 복원용
         private System.Action<Arrow> _release;     // 풀 반납 콜백 (미지정 시 Destroy 폴백)
         private bool _despawned;                   // 같은 프레임 이중 소멸 방지
+        private TrapBase _sourceTrap;               // 발사한 ArrowShooter (함정 혐오 등 부수효과용, null 허용)
 
         // ── Unity ─────────────────────────────────────────────────────────────
 
@@ -74,6 +75,34 @@ namespace ReTrap
                 return;
             }
 
+            // 검증 AI 피격 — 황금 화살은 무해 (소멸만)
+            if (other.TryGetComponent<VerificationAgent>(out var agent))
+            {
+                if (isBeneficial)
+                {
+                    Despawn();
+                    return;
+                }
+
+                // AgentDamageSystem 게이트웨이 경유 (면역/플래그 판정)
+                var ctx = agent.GetComponent<AgentContext>(); // null 허용 (미배선 프리팹 하위 호환)
+                if (ctx == null)
+                {
+                    agent.Kill(); // 미배선 프리팹 — 기존 즉사 동작 보존
+                    Despawn();
+                    return;
+                }
+
+                DamageResult result = AgentDamageSystem.TryDamage(
+                    ctx, DamageType.Arrow, transform.position, 1, _sourceTrap);
+
+                // Immune(철벽 방패 등) 은 화살이 몸을 스쳐 관통 — 뒤의 동료를 못 지킴.
+                // Absorbed/Damaged/Killed 는 화살 소멸 (스펀지 몸은 흡수로 소멸 — 탱커 역할).
+                if (result != DamageResult.Immune)
+                    Despawn();
+                return;
+            }
+
             // 지형(비-트리거 콜라이더) 충돌 시 소멸
             if (!other.isTrigger)
                 Despawn();
@@ -93,11 +122,13 @@ namespace ReTrap
         /// <param name="dir">발사 방향 (정규화된 벡터).</param>
         /// <param name="speed">비행 속도(유닛/초).</param>
         /// <param name="beneficial">true = 황금 화살 (무적 부여).</param>
-        public void Initialize(Vector2 dir, float speed, bool beneficial)
+        /// <param name="sourceTrap">발사한 ArrowShooter (함정 혐오 등 부수효과용, null 허용).</param>
+        public void Initialize(Vector2 dir, float speed, bool beneficial, TrapBase sourceTrap = null)
         {
             direction    = dir.normalized;
             isBeneficial = beneficial;
             spawnPosition = transform.position;
+            _sourceTrap  = sourceTrap;
 
             // 중력 무시 (수평 직선 비행)
             rb.gravityScale   = 0f;

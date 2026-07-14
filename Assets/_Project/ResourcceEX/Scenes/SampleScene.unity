@@ -332,6 +332,7 @@ MonoBehaviour:
   _palette: {fileID: 11400000, guid: 70f10683ba3aa2e4a9c2f059b7b9b22e, type: 2}
   _mapRoot: {fileID: 1929613291}
   _autoLoadMapId: stage_03
+  _stageCatalog: {fileID: 0}
 --- !u!4 &394809661
 Transform:
   m_ObjectHideFlags: 0
@@ -757,6 +758,8 @@ GameObject:
   - component: {fileID: 984637847}
   - component: {fileID: 984637849}
   - component: {fileID: 984637848}
+  - component: {fileID: 984637851}
+  - component: {fileID: 984637850}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -780,6 +783,7 @@ MonoBehaviour:
   playVolume: {fileID: 34030258}
   transitionDuration: 1
   currentPhase: 0
+  useVerificationPhase: 1
 --- !u!4 &984637845
 Transform:
   m_ObjectHideFlags: 0
@@ -836,22 +840,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82fbb2933d46efb488cfb4fffcf23183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReTrap.BuildPhaseController
-  trapRefs:
-  - m_AssetGUID: 6e0e193ef809c9f46a1ae88d028be298
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
-  - m_AssetGUID: 4732fea782ed4774fbe9a0da183e5300
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
-  - m_AssetGUID: 6deaf5016c355bb42807b8cef1536064
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
+  trapDefinitions:
+  - {fileID: 11400000, guid: 3ccb7ad94faae994fa9c4caa7aeb8b3b, type: 2}
+  - {fileID: 11400000, guid: a5b7b2fc516fd0142b8a6087bbcd42f6, type: 2}
+  - {fileID: 11400000, guid: f4595d609141e0c4cac84e43340241c3, type: 2}
   hudRef:
     m_AssetGUID: d75da884cf756884d94a5aa19c5d3aa5
     m_SubObjectName: 
@@ -876,6 +868,37 @@ MonoBehaviour:
   dudChance: 0.2
   criticalChance: 0.2
   hardMode: 0
+--- !u!114 &984637850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984637843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b981cbda32cbec49ab99277e20a43d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReTrap.VerificationPhaseController
+  director: {fileID: 984637851}
+  stubDuration: 1
+--- !u!114 &984637851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984637843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810b9eedef82d69409c1a2b17487665d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReTrap.VerificationDirector
+  personality: {fileID: 11400000, guid: 9c31f5a7e2d84b6f8a4d0c7b1e5a2f38, type: 2}
+  agentPrefab: {fileID: 7100000000000000001, guid: 2f988ac2cde5bed43a1ceb90ffca658d, type: 3}
+  timeLimit: 60
+  poolPrewarm: 1
+  deathLingerTime: 0.6
 --- !u!1 &1156230311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1039,7 +1062,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4

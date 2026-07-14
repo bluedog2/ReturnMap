@@ -188,7 +188,7 @@ namespace ReTrap
                 }
             }
 
-            arrow.Initialize(_fireDir, arrowSpeed, isBeneficial);
+            arrow.Initialize(_fireDir, arrowSpeed, isBeneficial, this);
         }
 
         /// <summary>화살 풀 지연 생성. 프리팹 미지정/Arrow 누락 시 false.</summary>

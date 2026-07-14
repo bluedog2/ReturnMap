@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a473835ca6456a4c8fbf368c675ce9d, type: 3}
+  m_Name: "Tag_S11_\uC2A4\uD504\uB9B0\uD130"
+  m_EditorClassIdentifier: Assembly-CSharp::ReTrap.AITagDefinition
+  tagId: S-11
+  category: 2
+  displayName: "\uC2A4\uD504\uB9B0\uD130"
+  icon: {fileID: 0}
+  shortDescription: "\uC2A4\uD3F0 \uD6C4 5\uCE78 +100% \uC9C8\uC8FC, \uC774\uD6C4
+    -50%"
+  exclusionGroup: 1
+  statModifiers: []
+  immunities: 0
+  flags: 0
+  movementTrait: {fileID: 0}
+  eventHooks: []

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab13eee5de106447b7520ef45be8ce1, type: 3}
+  m_Name: TrapDefinition_ArrowShooter
+  m_EditorClassIdentifier: Assembly-CSharp::ReTrap.TrapDefinition
+  displayName: "\uD654\uC0B4 \uC288\uD130"
+  icon: {fileID: 0}
+  baseCost: 25
+  dangerLevel: 5
+  damageType: 2
+  compatibleAnchors: 00000000010000000200000003000000
+  prefabRef:
+    m_AssetGUID: 4732fea782ed4774fbe9a0da183e5300
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0

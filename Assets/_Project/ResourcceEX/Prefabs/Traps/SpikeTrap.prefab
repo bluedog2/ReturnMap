@@ -4960,6 +4960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9807c53372a1f942ac763ad60e53232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReTrap.SpikeTrap
+  definition: {fileID: 11400000, guid: 3ccb7ad94faae994fa9c4caa7aeb8b3b, type: 2}
   dangerLevel: 3
   cellSize: {x: 1, y: 1}
   damageArea: {fileID: 0}

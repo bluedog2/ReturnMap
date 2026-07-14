@@ -32,6 +32,16 @@ namespace ReTrap
         [Tooltip("기준 이동속도 (칸/초). 성향의 moveSpeedMultiplier 가 곱해진다")]
         private float baseMoveSpeed = 4f;
 
+        // ── 애니메이션 — Enemy_*.controller 의 상태 이름과 일치해야 함 ──────────
+
+        private static readonly int StateIdle  = Animator.StringToHash("Idle");
+        private static readonly int StateRun   = Animator.StringToHash("Run");
+        private static readonly int StateDeath = Animator.StringToHash("Death");
+
+        private Animator       _animator; // 없어도 동작 (선택 구성)
+        private SpriteRenderer _sprite;   // 좌우 반전용
+        private AgentContext   _ctx;      // 태그/스탯 조회 (null 허용 — 미배선 프리팹 하위 호환)
+
         // ── 결과 상태 — Director 가 읽음 ─────────────────────────────────────
 
         /// <summary>경로 수행이 끝났는가 (골 도달 또는 사망).</summary>
@@ -42,6 +52,27 @@ namespace ReTrap
 
         /// <summary>마지막으로 지나던 셀 — 사망 시 AIMemory 기록용.</summary>
         public GridCoord CurrentCell { get; private set; }
+
+        // ── Unity ─────────────────────────────────────────────────────────────
+
+        private void Awake()
+        {
+            _animator = GetComponent<Animator>();
+            _sprite   = GetComponentInChildren<SpriteRenderer>();
+            _ctx      = GetComponent<AgentContext>();
+
+            // 자리표시자 이동은 transform 직접 제어 — Dynamic 물리와 싸우지 않게
+            // 키네마틱으로 강제. useFullKinematicContacts 는 함정 루트 RB(키네마틱)와의
+            // 트리거 이벤트가 누락되지 않게 하기 위해 필수.
+            if (TryGetComponent<Rigidbody2D>(out var rb))
+            {
+                rb.bodyType                 = RigidbodyType2D.Kinematic;
+                rb.useFullKinematicContacts = true;
+                // 보간이 켜져 있으면 물리 보간 포즈가 transform 직접 이동을 매 프레임
+                // 되돌려 제자리걸음이 된다 — 반드시 꺼야 함.
+                rb.interpolation            = RigidbodyInterpolation2D.None;
+            }
+        }
 
         // ── 실행 ──────────────────────────────────────────────────────────────
 
@@ -54,13 +85,28 @@ namespace ReTrap
             IsDone      = false;
             ReachedGoal = false;
 
-            float speed = baseMoveSpeed * p.moveSpeedMultiplier;
+            // ctx 가 있으면 태그가 접힌 스탯을 기준으로, 없으면 기존 baseMoveSpeed 로.
+            // 어느 경로든 성향(personality)의 moveSpeedMultiplier 는 항상 곱해진다(개체별 성향 유지).
+            float speed = (_ctx != null)
+                ? _ctx.Stats.MoveSpeed * p.moveSpeedMultiplier
+                : baseMoveSpeed        * p.moveSpeedMultiplier;
+
+            if (_animator != null) _animator.Play(StateRun);
 
             // TODO(실행 본체): 아래 직선 이동은 파이프라인 검증용 자리표시자.
             foreach (var cell in path)
             {
                 CurrentCell = cell;
                 Vector2 target = map.CellToWorld(cell.x, cell.y, origin);
+
+                // 진행 방향으로 좌우 반전 (기본 스프라이트는 오른쪽을 봄)
+                float dx = target.x - transform.position.x;
+                if (_sprite != null && Mathf.Abs(dx) > 0.01f)
+                    _sprite.flipX = dx < 0f;
+
+                // 철벽 방패(FrontShieldOnly) 방향 판정용 — 진행 방향이 바뀔 때만 갱신
+                if (_ctx != null && Mathf.Abs(dx) > 0.01f)
+                    _ctx.FacingSign = dx < 0f ? -1 : 1;
 
                 while (!IsDone && ((Vector2)transform.position - target).sqrMagnitude > 0.001f)
                 {
@@ -74,17 +120,19 @@ namespace ReTrap
 
             ReachedGoal = true;
             IsDone      = true;
+            if (_animator != null) _animator.Play(StateIdle);
         }
 
         /// <summary>
         /// 함정 피격 등으로 사망 처리. 진행 중인 FollowPath 를 중단시킵니다.
-        /// TODO(함정 연동): TrapBase 피격 판정에서 이 메서드를 호출하도록 배선.
+        /// TrapBase/Arrow/DropHammer 의 트리거 판정에서 호출됩니다.
         /// </summary>
         public void Kill()
         {
             if (IsDone) return;
             IsDone      = true;
             ReachedGoal = false;
+            if (_animator != null) _animator.Play(StateDeath);
         }
 
         // ── IPoolable — ComponentPool 재사용 훅 ──────────────────────────────
@@ -95,12 +143,20 @@ namespace ReTrap
             IsDone      = false;
             ReachedGoal = false;
             CurrentCell = default;
+
+            if (_sprite   != null) _sprite.flipX = false;
+            if (_animator != null) _animator.Play(StateIdle);
+
+            // ComponentPool 은 풀링 대상 타입(VerificationAgent)의 IPoolable 만 호출하므로
+            // 같은 개체의 AgentContext 훅은 여기서 명시적으로 전달(forwarding)한다.
+            _ctx?.OnSpawned();
         }
 
         /// <summary>풀로 반납될 때 잔여 코루틴 정리 (비활성화로도 멎지만 명시적으로).</summary>
         public void OnDespawned()
         {
             StopAllCoroutines();
+            _ctx?.OnDespawned();
         }
     }
 }

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab13eee5de106447b7520ef45be8ce1, type: 3}
+  m_Name: TrapDefinition_Spike
+  m_EditorClassIdentifier: Assembly-CSharp::ReTrap.TrapDefinition
+  displayName: "\uC2A4\uD30C\uC774\uD06C"
+  icon: {fileID: 0}
+  baseCost: 10
+  dangerLevel: 3
+  damageType: 1
+  compatibleAnchors: 0000000001000000
+  prefabRef:
+    m_AssetGUID: 6e0e193ef809c9f46a1ae88d028be298
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0

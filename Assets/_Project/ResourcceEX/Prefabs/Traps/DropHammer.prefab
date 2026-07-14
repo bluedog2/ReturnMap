@@ -4960,6 +4960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 355d7a88f1b943e47a62203f681166a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReTrap.DropHammer
+  definition: {fileID: 11400000, guid: f4595d609141e0c4cac84e43340241c3, type: 2}
   dangerLevel: 8
   cellSize: {x: 1, y: 1}
   damageArea: {fileID: 0}

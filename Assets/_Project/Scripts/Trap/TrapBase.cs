@@ -44,6 +44,11 @@ namespace ReTrap
         [Tooltip("타일맵 그리드에서 차지하는 셀 크기 (TilemapGridManager 참조용).")]
         private Vector2Int cellSize = Vector2Int.one;
 
+        [SerializeField]
+        [Tooltip("이 함정이 가하는 피해 타입. AI 태그의 면역(DamageType 마스크) 판정에 사용됨. " +
+                 "TrapDefinition 미지정 시 fallback.")]
+        private DamageType damageType = DamageType.None;
+
         [Header("Colliders")]
         [SerializeField]
         [Tooltip("플레이어 피격을 감지하는 Trigger Collider. " +
@@ -144,6 +149,9 @@ namespace ReTrap
         public TrapState  CurrentState { get; private set; } = TrapState.Normal;
         public int        DangerLevel  => definition != null ? definition.DangerLevel : dangerLevel;
         public int        BaseCost     => definition != null ? definition.BaseCost    : baseCost;
+
+        /// <summary>이 함정이 가하는 피해 타입 (AI 태그 면역 판정용).</summary>
+        public DamageType DamageType   => definition != null ? definition.DamageType  : damageType;
 
         /// <summary>타일맵 그리드에서 차지하는 셀 크기.</summary>
         public Vector2Int CellSize     => cellSize;
@@ -299,6 +307,18 @@ namespace ReTrap
             if (CurrentState == TrapState.Dud) return;
             if (other.TryGetComponent<PlayerController>(out var player))
                 OnPlayerContact(player);
+            // 검증 AI 피격 — AgentDamageSystem 게이트웨이 경유 (면역/플래그 판정).
+            // Beneficial 은 무해하므로 통과.
+            else if (CurrentState != TrapState.Beneficial &&
+                     other.TryGetComponent<VerificationAgent>(out var agentBody))
+            {
+                // GetComponent 는 트리거 진입 시 1회뿐이라 프레임 비용 허용.
+                var ctx = agentBody.GetComponent<AgentContext>(); // null 허용 (미배선 프리팹 하위 호환)
+                if (ctx != null)
+                    AgentDamageSystem.TryDamage(ctx, DamageType, transform.position, 1, this);
+                else
+                    agentBody.Kill(); // 미배선 프리팹 — 기존 즉사 동작 보존
+            }
         }
 
         // ── 추상 메서드 ───────────────────────────────────────────────────────

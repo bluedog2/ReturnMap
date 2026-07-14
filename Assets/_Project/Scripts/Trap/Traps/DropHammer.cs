@@ -194,10 +194,18 @@ namespace ReTrap
         protected override void OnTriggerEnter2D(Collider2D other)
         {
             // 낙하 중에만 데미지
-            if (hammerState == HammerState.Falling &&
-                other.TryGetComponent<PlayerController>(out var player))
-            {
+            if (hammerState != HammerState.Falling) return;
+
+            if (other.TryGetComponent<PlayerController>(out var player))
                 OnPlayerContact(player);
+            // 검증 AI 피격 — AgentDamageSystem 게이트웨이 경유 (면역/플래그 판정)
+            else if (other.TryGetComponent<VerificationAgent>(out var agentBody))
+            {
+                var ctx = agentBody.GetComponent<AgentContext>(); // null 허용 (미배선 프리팹 하위 호환)
+                if (ctx != null)
+                    AgentDamageSystem.TryDamage(ctx, DamageType.Hammer, transform.position, 1, this);
+                else
+                    agentBody.Kill(); // 미배선 프리팹 — 기존 즉사 동작 보존
             }
         }
 

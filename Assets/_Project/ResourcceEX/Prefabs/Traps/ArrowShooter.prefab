@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b6dee6e2ac6a94cab429e2fe420d9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReTrap.ArrowShooter
+  definition: {fileID: 11400000, guid: a5b7b2fc516fd0142b8a6087bbcd42f6, type: 2}
   dangerLevel: 5
   cellSize: {x: 1, y: 1}
   damageArea: {fileID: 0}

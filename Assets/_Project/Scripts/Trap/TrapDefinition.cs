@@ -38,6 +38,11 @@ namespace ReTrap
         [Tooltip("위험도. 높을수록 BaseCost 가 낮아진다 (역코스트).")]
         private int dangerLevel = 5;
 
+        [Header("피해 타입")]
+        [SerializeField]
+        [Tooltip("이 함정이 가하는 피해 타입. AI 태그의 면역(DamageType 마스크) 판정에 사용됨.")]
+        private DamageType damageType = DamageType.None;
+
         [Header("슬롯 호환")]
         [SerializeField]
         [Tooltip("이 함정을 설치할 수 있는 슬롯 anchor 목록. Build UI 가 설치 가능 슬롯 필터링에 사용.")]
@@ -61,6 +66,9 @@ namespace ReTrap
 
         /// <summary>위험도 0(안전) ~ 10(치명).</summary>
         public int DangerLevel => dangerLevel;
+
+        /// <summary>이 함정이 가하는 피해 타입 (AI 태그 면역 판정용).</summary>
+        public DamageType DamageType => damageType;
 
         /// <summary>이 함정을 설치할 수 있는 슬롯 anchor 목록.</summary>
         public TrapAnchor[] CompatibleAnchors => compatibleAnchors;
