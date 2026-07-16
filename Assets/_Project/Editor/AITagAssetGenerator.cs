@@ -13,14 +13,18 @@ namespace ReTrap.EditorTools
     /// <see cref="AgentArchetype"/>("지구둥글론자") 에셋도 함께 확보합니다.
     /// <para>
     /// 멱등 실행: 이미 있는 에셋은 로드하여 <c>EditorInit</c>로 값을 덮어쓰고,
-    /// 없으면 새로 만듭니다. icon/movementTrait/eventHooks 등 수동/후속 단계에서
-    /// 배선할 참조 필드는 건드리지 않습니다.
+    /// 없으면 새로 만듭니다. 이동 태그의 <c>movementTrait</c>·<c>eventHooks</c> 는
+    /// <see cref="TagTable"/> 의 traitType/hookTypes 매핑에 따라 Trait/Hook SO 에셋을
+    /// 멱등 생성/배선합니다(<c>EditorSetBehaviors</c>). <c>icon</c> 등 아직 매핑이 없는
+    /// 참조 필드만 건드리지 않습니다.
     /// </para>
     /// </summary>
     public static class AITagAssetGenerator
     {
         private const string TAG_DIR        = "Assets/_Project/Settings/AI/Tags";
         private const string ARCHETYPE_DIR  = "Assets/_Project/Settings/AI/Archetypes";
+        private const string TRAIT_DIR      = "Assets/_Project/Settings/AI/Traits";
+        private const string HOOK_DIR       = "Assets/_Project/Settings/AI/Hooks";
         private const string GOBLIN_PREFAB  = "Assets/_Project/ResourcceEX/Prefabs/Enemies/Enemy_Goblin_Raider.prefab";
 
         // 배타 그룹 상수 — 같은 그룹 번호끼리는 동시 부여 금지
@@ -41,9 +45,16 @@ namespace ReTrap.EditorTools
             public DamageType    immunities;
             public SpecialFlag   flags;
 
+            /// <summary>이동 태그의 런타임 로직 SO 타입 (null = 이동 태그 아님).</summary>
+            public System.Type traitType;
+
+            /// <summary>수명주기 이벤트 훅 SO 타입 목록 (null/빈 배열 = 훅 없음).</summary>
+            public System.Type[] hookTypes;
+
             public TagRow(string id, AITagCategory category, string name, string desc,
                           int group = 0, StatModifier[] mods = null,
-                          DamageType immunities = DamageType.None, SpecialFlag flags = SpecialFlag.None)
+                          DamageType immunities = DamageType.None, SpecialFlag flags = SpecialFlag.None,
+                          System.Type traitType = null, System.Type[] hookTypes = null)
             {
                 this.id         = id;
                 this.category   = category;
@@ -53,6 +64,8 @@ namespace ReTrap.EditorTools
                 this.mods       = mods ?? NoMods;
                 this.immunities = immunities;
                 this.flags      = flags;
+                this.traitType  = traitType;
+                this.hookTypes  = hookTypes;
             }
         }
 
@@ -66,27 +79,35 @@ namespace ReTrap.EditorTools
         {
             // ── 이동(Movement) 11종 ──────────────────────────────────────────
             new TagRow("M-01", AITagCategory.Movement, "천진난만",
-                "착지 즉시 쿨타임 없이 점프(가로 2칸)"),
+                "착지 즉시 쿨타임 없이 점프(가로 2칸)",
+                traitType: typeof(AutoHopTrait)),
             new TagRow("M-02", AITagCategory.Movement, "과속/직진",
                 "기본 이동 속도 +50%", GROUP_SPEED,
                 new[] { Mod(AgentStatType.MoveSpeed, StatModifierOp.Multiply, 1.5f) }),
             new TagRow("M-03", AITagCategory.Movement, "신중함",
-                "전방 2칸 내 함정 감지 시 1초 정지 후 이동"),
+                "전방 2칸 내 함정 감지 시 1초 정지 후 이동",
+                traitType: typeof(CautiousPauseTrait)),
             new TagRow("M-04", AITagCategory.Movement, "안전제일",
-                "전방 낭떠러지 감지 시 낙하하지 않고 반전"),
+                "전방 낭떠러지 감지 시 낙하하지 않고 반전",
+                traitType: typeof(CliffReverseTrait)),
             new TagRow("M-05", AITagCategory.Movement, "태평함",
                 "기본 이동 속도 -30%", GROUP_SPEED,
                 new[] { Mod(AgentStatType.MoveSpeed, StatModifierOp.Multiply, 0.7f) }),
             new TagRow("M-06", AITagCategory.Movement, "갈지자",
-                "2칸 전진마다 뒤로 1칸 무빙"),
+                "2칸 전진마다 뒤로 1칸 무빙",
+                traitType: typeof(ZigzagTrait)),
             new TagRow("M-07", AITagCategory.Movement, "겁쟁이",
-                "수평 라인 화살 슈터 감지 시 0.5초 엎드린 후 전진"),
+                "수평 라인 화살 슈터 감지 시 0.5초 엎드린 후 전진",
+                traitType: typeof(CowardTrait)),
             new TagRow("M-08", AITagCategory.Movement, "높이뛰기",
-                "점프 가로 짧고 세로 3칸 비상", GROUP_JUMP),
+                "점프 가로 짧고 세로 3칸 비상", GROUP_JUMP,
+                traitType: typeof(HighJumpTrait)),
             new TagRow("M-09", AITagCategory.Movement, "멀리뛰기",
-                "점프 높이 낮고 가로 4칸 주파", GROUP_JUMP),
+                "점프 높이 낮고 가로 4칸 주파", GROUP_JUMP,
+                traitType: typeof(LongJumpTrait)),
             new TagRow("M-10", AITagCategory.Movement, "잠만보",
-                "3칸 전진마다 1초 수면 정지"),
+                "3칸 전진마다 1초 수면 정지",
+                traitType: typeof(SleepwalkerTrait)),
             new TagRow("M-11", AITagCategory.Movement, "스피드스타",
                 "기본 이동속도 2배", GROUP_SPEED,
                 new[] { Mod(AgentStatType.MoveSpeed, StatModifierOp.Multiply, 2.0f) }),
@@ -111,7 +132,8 @@ namespace ReTrap.EditorTools
             new TagRow("D-09", AITagCategory.Defense, "함정 혐오",
                 "피격 시 해당 함정 기능 영구 정지", flags: SpecialFlag.DestroyTrapOnHit),
             new TagRow("D-10", AITagCategory.Defense, "등산가",
-                "오르막 +100%, 평지 -30%"),
+                "오르막 +100%, 평지 -30%",
+                traitType: typeof(MountaineerTrait)),
             new TagRow("D-11", AITagCategory.Defense, "지름길 중독",
                 "아래 가시 유무 무관 최단 경로로 즉시 낙하"),
             new TagRow("D-12", AITagCategory.Defense, "저주부르미",
@@ -129,7 +151,8 @@ namespace ReTrap.EditorTools
             new TagRow("S-04", AITagCategory.Stat, "도둑",
                 "처치 시 재화 획득, 실패 시 재화 도난"),
             new TagRow("S-05", AITagCategory.Stat, "가속",
-                "이동속도 무한 증가 (상한 수치 기획 확인 필요)", GROUP_SPEED),
+                "이동속도 무한 증가 (상한 수치 기획 확인 필요)", GROUP_SPEED,
+                traitType: typeof(AccelerateTrait)),
             new TagRow("S-06", AITagCategory.Stat, "거대화",
                 "크기 2배, 체력 3",
                 mods: new[]
@@ -138,15 +161,18 @@ namespace ReTrap.EditorTools
                     Mod(AgentStatType.MaxHP, StatModifierOp.Add, 2f),
                 }),
             new TagRow("S-07", AITagCategory.Stat, "기사단",
-                "사망 시 가장 가까운 아군에게 쉴드 1 부여"),
+                "사망 시 가장 가까운 아군에게 쉴드 1 부여",
+                hookTypes: new[] { typeof(KnightShieldHook) }),
             new TagRow("S-08", AITagCategory.Stat, "가성비 타파",
                 "스폰 시 유저 보유 코스트 5 차감"),
             new TagRow("S-09", AITagCategory.Stat, "백스텝",
-                "함정 피격 시 뒤로 2칸 강제 반동"),
+                "함정 피격 시 뒤로 2칸 강제 반동",
+                hookTypes: new[] { typeof(BackstepOnHitHook) }),
             new TagRow("S-10", AITagCategory.Stat, "뒷걸음질",
                 "플레이어 감지 시 2칸 후퇴 후 전진", flags: SpecialFlag.RetreatFromPlayer),
             new TagRow("S-11", AITagCategory.Stat, "스프린터",
-                "스폰 후 5칸 +100% 질주, 이후 -50%", GROUP_SPEED),
+                "스폰 후 5칸 +100% 질주, 이후 -50%", GROUP_SPEED,
+                traitType: typeof(SprinterTrait)),
             new TagRow("S-12", AITagCategory.Stat, "유연함",
                 "착지 경직 1초 면역", flags: SpecialFlag.NoLandingStun),
         };
@@ -160,6 +186,8 @@ namespace ReTrap.EditorTools
             EnsureFolder("Assets/_Project/Settings", "AI");
             EnsureFolder("Assets/_Project/Settings/AI", "Tags");
             EnsureFolder("Assets/_Project/Settings/AI", "Archetypes");
+            EnsureFolder("Assets/_Project/Settings/AI", "Traits");
+            EnsureFolder("Assets/_Project/Settings/AI", "Hooks");
 
             int created = 0, updated = 0;
             GenerateTags(ref created, ref updated);
@@ -188,6 +216,11 @@ namespace ReTrap.EditorTools
                 def.EditorInit(row.id, row.category, row.name, row.desc, row.group,
                                 row.mods, row.immunities, row.flags);
 
+                // 이동 Trait/이벤트 훅 배선 — 테이블이 진실 소스이므로 null/빈 배열도 그대로 대입.
+                MovementTrait trait = GetOrCreateAsset<MovementTrait>(TRAIT_DIR, row.traitType, ref created, ref updated);
+                TagEventHook[] hooks = BuildHooks(row.hookTypes, ref created, ref updated);
+                def.EditorSetBehaviors(trait, hooks);
+
                 if (isNew)
                 {
                     AssetDatabase.CreateAsset(def, assetPath);
@@ -199,6 +232,42 @@ namespace ReTrap.EditorTools
                     updated++;
                 }
             }
+        }
+
+        /// <summary>지정 타입의 Trait/Hook SO 에셋을 멱등 생성/로드합니다 (null 타입 → null 반환).</summary>
+        private static T GetOrCreateAsset<T>(string dir, System.Type type, ref int created, ref int updated)
+            where T : ScriptableObject
+        {
+            if (type == null) return null;
+
+            string assetPath = $"{dir}/{type.Name}.asset";
+            var obj = AssetDatabase.LoadAssetAtPath<T>(assetPath);
+            bool isNew = obj == null;
+            if (isNew)
+            {
+                obj = (T)ScriptableObject.CreateInstance(type);
+                AssetDatabase.CreateAsset(obj, assetPath);
+                created++;
+            }
+            else
+            {
+                updated++;
+            }
+
+            return obj;
+        }
+
+        /// <summary>훅 타입 배열로부터 SO 에셋 배열을 멱등 생성/로드합니다.</summary>
+        private static TagEventHook[] BuildHooks(System.Type[] hookTypes, ref int created, ref int updated)
+        {
+            if (hookTypes == null || hookTypes.Length == 0)
+                return System.Array.Empty<TagEventHook>();
+
+            var result = new TagEventHook[hookTypes.Length];
+            for (int i = 0; i < hookTypes.Length; i++)
+                result[i] = GetOrCreateAsset<TagEventHook>(HOOK_DIR, hookTypes[i], ref created, ref updated);
+
+            return result;
         }
 
         private static void GenerateDefaultArchetype(ref int created, ref int updated)

@@ -11,8 +11,10 @@ namespace ReTrap
     /// <see cref="NavGrid.Build"/> 가 다음 시도의 노드 비용에 반영합니다
     /// (반영 강도는 성향 스텟 '학습력' → <see cref="AIBehaviorParams.memoryPenaltyWeight"/>).
     ///
-    /// <para>수명: <see cref="VerificationDirector"/> 가 검증 1회(Run)마다 새로 생성.
-    /// 스테이지를 넘어 기억을 유지하려면 이 객체를 밖에서 보존하도록 확장할 것.</para>
+    /// <para>수명: <see cref="AgentWaveController"/> 가 개체(러너)마다 1개씩 새로 생성해
+    /// 소유합니다 — 각 개체는 자기가 죽은 자리만 기억하고, 다른 개체의 사망 경험을
+    /// 공유하지 않습니다. 스테이지를 넘어 기억을 유지하려면 이 객체를 밖에서
+    /// 보존하도록 확장할 것.</para>
     /// </summary>
     public class AIMemory
     {

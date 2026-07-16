@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ReTrap
@@ -27,6 +28,16 @@ namespace ReTrap
 
         private AgentHealth _health; // GetComponent 캐시 (Initialize/OnSpawned 전달용)
 
+        // ── 정적 레지스트리 — FindObjectsByType 씬 스캔 대체 (TrapBase._activeTraps 패턴) ──
+
+        private static readonly List<AgentContext> _activeAgents = new List<AgentContext>();
+
+        /// <summary>
+        /// 씬에서 활성화된 모든 검증 AI 개체. 기사단(S-07) 최근접 탐색 등이
+        /// 씬 전체 검색 없이 순회. 풀링(SetActive)에 맞춰 OnEnable/OnDisable 로 갱신된다.
+        /// </summary>
+        public static IReadOnlyList<AgentContext> ActiveAgents => _activeAgents;
+
         // ── 공개 프로퍼티 ─────────────────────────────────────────────────────
 
         /// <summary>부여된 태그 묶음.</summary>
@@ -55,6 +66,12 @@ namespace ReTrap
             _originalScaleCaptured = true;
             _health                = GetComponent<AgentHealth>();
         }
+
+        /// <summary>레지스트리 자기 등록 (풀에서 SetActive(true) 될 때마다 호출됨).</summary>
+        private void OnEnable()  => _activeAgents.Add(this);
+
+        /// <summary>레지스트리 등록 해제 (풀로 반납되어 SetActive(false) 될 때마다 호출됨).</summary>
+        private void OnDisable() => _activeAgents.Remove(this);
 
         // ── 초기화 ────────────────────────────────────────────────────────────
 

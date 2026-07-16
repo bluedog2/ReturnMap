@@ -79,5 +79,18 @@ namespace ReTrap
 
             return new StageAgentRoster(table, seed, plans);
         }
+
+        /// <summary>
+        /// 폴백 전용 — <see cref="StageSpawnTable"/> 없이 아키타입 + 태그 1개체만으로
+        /// 로스터를 구성한다. 4단계 이전 <see cref="VerificationDirector"/> 의
+        /// archetype+debugTags 단일 에이전트 테스트 경로를 유지하기 위한 진입점.
+        /// <para><see cref="Table"/> 이 null 이 되므로, 소비하는 쪽(AgentWaveController)이
+        /// BreachThreshold/SpawnInterval 기본값(1 / 1.5f)을 대신 적용해야 한다.</para>
+        /// </summary>
+        public static StageAgentRoster BuildSingle(AgentArchetype archetype, TagSet tags)
+        {
+            var plans = new List<AgentSpawnPlan> { new AgentSpawnPlan(archetype, tags ?? TagSet.Empty) };
+            return new StageAgentRoster(null, 0, plans);
+        }
     }
 }

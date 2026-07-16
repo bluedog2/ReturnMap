@@ -119,6 +119,17 @@ namespace ReTrap
             this.immunities       = immunities;
             this.flags            = flags;
         }
+
+        /// <summary>
+        /// 에셋 생성기 전용 — 런타임 호출 금지. 이동 태그의 Trait/이벤트 훅 배선.
+        /// null 인자도 그대로 대입한다(해당 필드 유지가 아니라 테이블이 진실 소스이므로,
+        /// 이동/훅이 없는 태그는 null/빈 배열로 명시적으로 비운다).
+        /// </summary>
+        internal void EditorSetBehaviors(MovementTrait trait, TagEventHook[] hooks)
+        {
+            this.movementTrait = trait;
+            this.eventHooks     = hooks;
+        }
 #endif
     }
 }

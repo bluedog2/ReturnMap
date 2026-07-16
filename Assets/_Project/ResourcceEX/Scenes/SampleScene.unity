@@ -896,6 +896,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ReTrap.VerificationDirector
   personality: {fileID: 11400000, guid: 9c31f5a7e2d84b6f8a4d0c7b1e5a2f38, type: 2}
   agentPrefab: {fileID: 7100000000000000001, guid: 2f988ac2cde5bed43a1ceb90ffca658d, type: 3}
+  archetype: {fileID: 11400000, guid: f6559fde43659ed4293f7ade8604a951, type: 2}
+  debugTags:
+  - {fileID: 11400000, guid: b5942f26fe8d6e74596e2902b65427fe, type: 2}
+  - {fileID: 11400000, guid: 9d7e91085c4ced44687ebd19e5d8a1cf, type: 2}
   timeLimit: 60
   poolPrewarm: 1
   deathLingerTime: 0.6

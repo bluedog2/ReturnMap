@@ -22,5 +22,5 @@ MonoBehaviour:
   statModifiers: []
   immunities: 0
   flags: 0
-  movementTrait: {fileID: 0}
+  movementTrait: {fileID: 11400000, guid: 3365efd97637eb8459f80badfad8db72, type: 2}
   eventHooks: []

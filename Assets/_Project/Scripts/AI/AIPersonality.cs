@@ -93,5 +93,20 @@ namespace ReTrap
 
         /// <summary>함정 앞에서 안전 타이밍을 기다려 줄 최대 시간(초) (침착함).</summary>
         public float trapWaitTolerance;
+
+        /// <summary>
+        /// 성향 에셋(<see cref="AIPersonality"/>)이 없는 개체(아키타입 미배선 등)를 위한
+        /// 합리적 기본값. 위험 가중·재시도·학습·실수 모두 "성향 없음 = 평범하게 1회 시도"로
+        /// 동작하게 한다.
+        /// </summary>
+        public static AIBehaviorParams Default => new AIBehaviorParams
+        {
+            dangerCostMultiplier = 1f,
+            maxAttempts          = 1,
+            memoryPenaltyWeight  = 0f,
+            mistakeChance        = 0f,
+            moveSpeedMultiplier  = 1f,
+            trapWaitTolerance    = 0f,
+        };
     }
 }

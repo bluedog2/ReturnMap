@@ -16,12 +16,15 @@ namespace ReTrap
     /// 이 클래스는 "그 경로를 몸으로 얼마나 잘 수행하나"만 담당합니다.
     /// 성향 스텟 중 민첩함(실수율·속도)과 침착함(함정 대기)이 여기서 소비됩니다.</para>
     ///
+    /// <para><b>로코모션 FSM(3단계)</b>: 여전히 물리 없는 키네마틱 웨이포인트 이동이지만,
+    /// 셀 1칸 전진마다 <see cref="MovementTrait"/> 파이프라인(OnBeforeMove → 이동 →
+    /// 착지 경직 → OnCellAdvanced)을 거친다. Trait 가 없는(태그 미배선) 개체는 파이프라인이
+    /// 사실상 빈 배열이라 기존 직선 이동과 동일하게 동작한다.</para>
+    ///
     /// <para>TODO(실행 본체):
-    /// 1) 지금은 웨이포인트 직선 이동(자리표시자) — 실제로는 Rigidbody2D 기반
-    ///    플랫포머 이동(점프/낙하)으로 교체. PlayerController 물리 상수 재사용 검토.
-    /// 2) 함정 히트 판정: TrapBase 충돌 감지가 플레이어만 인지한다면
-    ///    VerificationAgent 도 대상에 포함하도록 확장하고, 피격 시 <see cref="Kill"/> 호출.
-    /// 3) mistakeChance 로 점프 타이밍 오차, trapWaitTolerance 로 함정 앞 대기 구현.</para>
+    /// 1) 지금은 웨이포인트 직선/아크 이동(자리표시자) — 실제로는 Rigidbody2D 기반
+    ///    플랫포머 이동(점프/낙하)으로 교체 검토. 점프 링크/A* 확장은 5단계.
+    /// 2) mistakeChance 로 점프 타이밍 오차 구현(미착수).</para>
     /// </summary>
     public class VerificationAgent : MonoBehaviour, IPoolable
     {
@@ -29,7 +32,8 @@ namespace ReTrap
 
         [Header("이동 (자리표시자)")]
         [SerializeField]
-        [Tooltip("기준 이동속도 (칸/초). 성향의 moveSpeedMultiplier 가 곱해진다")]
+        [Tooltip("기준 이동속도 (칸/초). 성향의 moveSpeedMultiplier 가 곱해진다. " +
+                 "AgentContext 가 배선돼 있으면 ctx.Stats.MoveSpeed 로 대체된다.")]
         private float baseMoveSpeed = 4f;
 
         // ── 애니메이션 — Enemy_*.controller 의 상태 이름과 일치해야 함 ──────────
@@ -41,6 +45,24 @@ namespace ReTrap
         private Animator       _animator; // 없어도 동작 (선택 구성)
         private SpriteRenderer _sprite;   // 좌우 반전용
         private AgentContext   _ctx;      // 태그/스탯 조회 (null 허용 — 미배선 프리팹 하위 호환)
+
+        // ── 로코모션 FSM 상태 ─────────────────────────────────────────────────
+
+        /// <summary>로코모션 진행 상태 — 연출·디버그 구분용 (분기 대부분은 코루틴 흐름이 담당).</summary>
+        private enum LocomotionState { Moving, Paused, SteppingBack, Arcing, Stunned, Dead }
+
+        private LocomotionState _locomotionState = LocomotionState.Moving;
+
+        // ── Trait 파이프라인 — 개체별 상태는 배열로 분리(플라이웨이트 SO 는 무상태) ──
+
+        private readonly List<MovementTrait> _traitList   = new List<MovementTrait>(TagSet.MaxTagsPerAgent);
+        private readonly TraitState[]        _traitStates = new TraitState[TagSet.MaxTagsPerAgent];
+
+        private AIBehaviorParams _params;
+        private float            _baseSpeed;
+
+        /// <summary>백스텝 태그 훅 등 외부(피격)에서 요청한 후퇴 칸수. 다음 셀 루프에서 소비.</summary>
+        private int _pendingStepBackCells;
 
         // ── 결과 상태 — Director 가 읽음 ─────────────────────────────────────
 
@@ -74,6 +96,19 @@ namespace ReTrap
             }
         }
 
+        // ── 외부 요청 API ─────────────────────────────────────────────────────
+
+        /// <summary>
+        /// 함정 피격 등 <see cref="TagEventHook.OnTrapHit"/> 에서 호출. 물리 콜백 도중
+        /// 코루틴을 직접 건드리지 않고 플래그만 세워 다음 셀 루프에서 안전하게 처리한다.
+        /// 여러 번 요청되면 최댓값을 취한다(합성 규칙과 동일).
+        /// </summary>
+        public void RequestStepBack(int cells)
+        {
+            if (cells <= 0) return;
+            _pendingStepBackCells = Mathf.Max(_pendingStepBackCells, cells);
+        }
+
         // ── 실행 ──────────────────────────────────────────────────────────────
 
         /// <summary>
@@ -82,44 +117,152 @@ namespace ReTrap
         public IEnumerator FollowPath(IReadOnlyList<GridCoord> path, MapData map, Vector2 origin,
                                       AIBehaviorParams p)
         {
-            IsDone      = false;
-            ReachedGoal = false;
+            IsDone                = false;
+            ReachedGoal           = false;
+            _pendingStepBackCells = 0;
+            _params               = p;
 
             // ctx 가 있으면 태그가 접힌 스탯을 기준으로, 없으면 기존 baseMoveSpeed 로.
             // 어느 경로든 성향(personality)의 moveSpeedMultiplier 는 항상 곱해진다(개체별 성향 유지).
-            float speed = (_ctx != null)
-                ? _ctx.Stats.MoveSpeed * p.moveSpeedMultiplier
-                : baseMoveSpeed        * p.moveSpeedMultiplier;
+            _baseSpeed = (_ctx != null) ? _ctx.Stats.MoveSpeed : baseMoveSpeed;
+
+            BuildTraitCache();
+
+            if (path == null || path.Count == 0)
+            {
+                IsDone = true; // 계획 실패 방어 — Director 는 보통 빈 경로를 넘기지 않음
+                yield break;
+            }
+
+            int committedIndex = 0;
+            CurrentCell      = path[0];
+            _locomotionState = LocomotionState.Moving;
 
             if (_animator != null) _animator.Play(StateRun);
 
-            // TODO(실행 본체): 아래 직선 이동은 파이프라인 검증용 자리표시자.
-            foreach (var cell in path)
+            while (true)
             {
-                CurrentCell = cell;
-                Vector2 target = map.CellToWorld(cell.x, cell.y, origin);
+                if (IsDone) { _locomotionState = LocomotionState.Dead; yield break; }
 
-                // 진행 방향으로 좌우 반전 (기본 스프라이트는 오른쪽을 봄)
-                float dx = target.x - transform.position.x;
-                if (_sprite != null && Mathf.Abs(dx) > 0.01f)
-                    _sprite.flipX = dx < 0f;
-
-                // 철벽 방패(FrontShieldOnly) 방향 판정용 — 진행 방향이 바뀔 때만 갱신
-                if (_ctx != null && Mathf.Abs(dx) > 0.01f)
-                    _ctx.FacingSign = dx < 0f ? -1 : 1;
-
-                while (!IsDone && ((Vector2)transform.position - target).sqrMagnitude > 0.001f)
+                // ── 외부(피격) 백스텝 요청 우선 처리 ────────────────────────────
+                if (_pendingStepBackCells > 0)
                 {
-                    transform.position = Vector2.MoveTowards(
-                        transform.position, target, speed * Time.deltaTime);
+                    int cells = _pendingStepBackCells;
+                    _pendingStepBackCells = 0;
+
+                    int newIndex = Mathf.Max(0, committedIndex - cells);
+                    _locomotionState = LocomotionState.SteppingBack;
+                    yield return WalkBackward(path, committedIndex, newIndex, map, origin);
+                    if (IsDone) yield break;
+
+                    committedIndex   = newIndex;
+                    CurrentCell      = path[newIndex];
+                    _locomotionState = LocomotionState.Moving;
+
+                    // WalkBackward 가 0칸 이동(이미 index 0)으로 끝났을 수 있으므로,
+                    // 무브먼트 없이 continue 만 반복해 프레임을 소비 안 하는 무한루프를 방지.
                     yield return null;
+                    continue;
                 }
 
-                if (IsDone) yield break; // 이동 중 사망(Kill)
+                if (committedIndex >= path.Count - 1)
+                    break; // 골 도달
+
+                int       nextIndex = committedIndex + 1;
+                GridCoord from      = path[committedIndex];
+                GridCoord to        = path[nextIndex];
+                var       q         = new MoveQuery(from, to, _ctx != null ? _ctx.FacingSign : 1);
+
+                // ── OnBeforeMove 합성 (pause=최댓값, stepBack=최댓값, veto=OR) ──
+                TraitAction before = ComposeBeforeMove(in q);
+
+                if (before.pauseSeconds > 0f)
+                {
+                    _locomotionState = LocomotionState.Paused;
+                    yield return PauseFor(before.pauseSeconds);
+                    if (IsDone) yield break;
+                }
+
+                if (before.stepBackCells > 0)
+                {
+                    int newIndex = Mathf.Max(0, committedIndex - before.stepBackCells);
+                    _locomotionState = LocomotionState.SteppingBack;
+                    yield return WalkBackward(path, committedIndex, newIndex, map, origin);
+                    if (IsDone) yield break;
+
+                    committedIndex   = newIndex;
+                    CurrentCell      = path[newIndex];
+                    _locomotionState = LocomotionState.Moving;
+
+                    // WalkBackward 가 0칸 이동(이미 index 0)으로 끝났을 수 있으므로,
+                    // 무브먼트 없이 continue 만 반복해 프레임을 소비 안 하는 무한루프를 방지.
+                    yield return null;
+                    continue; // 이번 이동 예정지는 무효 — 다음 루프에서 새 목표로 재평가
+                }
+
+                if (before.vetoMove)
+                {
+                    _locomotionState = LocomotionState.Moving;
+                    // 정지·후퇴 없이 순수 veto 만 온 경우도 프레임을 반드시 소비한다
+                    // (안전제일은 stepBack 과 함께 오므로 위에서 이미 처리되고 여기 도달하지 않음).
+                    yield return null;
+                    continue; // 이동 스킵
+                }
+
+                // ── 실제 이동 ──────────────────────────────────────────────────
+                Vector2 target = map.CellToWorld(to.x, to.y, origin);
+                UpdateFacing(target);
+
+                ArcSpec arc = new ArcSpec { height = 0.5f, horizontalCells = 1, useArc = q.IsAscending };
+                for (int i = 0; i < _traitList.Count; i++)
+                    _traitList[i].ModifyArc(ref arc);
+
+                _locomotionState = arc.useArc ? LocomotionState.Arcing : LocomotionState.Moving;
+
+                if (arc.useArc) yield return MoveArc(target, q, arc);
+                else            yield return MoveStraight(target, q);
+
+                if (IsDone) yield break; // 이동 중 사망
+
+                committedIndex = nextIndex;
+                CurrentCell    = to;
+
+                // ── 착지 경직 (하강 2칸 이상, 유연함 태그 면제) ─────────────────
+                bool immuneToStun = _ctx != null && _ctx.HasFlag(SpecialFlag.NoLandingStun);
+                if (q.DropHeight >= 2 && !immuneToStun)
+                {
+                    _locomotionState = LocomotionState.Stunned;
+                    yield return PauseFor(1f);
+                    if (IsDone) yield break;
+                }
+
+                // ── OnCellAdvanced 합성 ──────────────────────────────────────────
+                TraitAction after = ComposeCellAdvanced();
+
+                if (after.pauseSeconds > 0f)
+                {
+                    _locomotionState = LocomotionState.Paused;
+                    yield return PauseFor(after.pauseSeconds);
+                    if (IsDone) yield break;
+                }
+
+                if (after.stepBackCells > 0)
+                {
+                    int newIndex = Mathf.Max(0, committedIndex - after.stepBackCells);
+                    _locomotionState = LocomotionState.SteppingBack;
+                    yield return WalkBackward(path, committedIndex, newIndex, map, origin);
+                    if (IsDone) yield break;
+
+                    committedIndex = newIndex;
+                    CurrentCell    = path[newIndex];
+                }
+
+                _locomotionState = LocomotionState.Moving;
             }
 
-            ReachedGoal = true;
-            IsDone      = true;
+            ReachedGoal      = true;
+            IsDone           = true;
+            _locomotionState = LocomotionState.Moving;
             if (_animator != null) _animator.Play(StateIdle);
         }
 
@@ -135,14 +278,175 @@ namespace ReTrap
             if (_animator != null) _animator.Play(StateDeath);
         }
 
+        // ── Trait 파이프라인 내부 ────────────────────────────────────────────
+
+        /// <summary>
+        /// ctx 의 태그 중 movementTrait 가 있는 것만 캐시한다. FollowPath 시작 시(스폰당)
+        /// 1회만 호출 — 프레임 루프에서는 재사용만 한다.
+        /// </summary>
+        private void BuildTraitCache()
+        {
+            _traitList.Clear();
+
+            if (_ctx != null)
+            {
+                var tags = _ctx.Tags.Tags;
+                for (int i = 0; i < tags.Count; i++)
+                {
+                    MovementTrait trait = tags[i]?.MovementTrait;
+                    if (trait != null) _traitList.Add(trait);
+                }
+            }
+
+            for (int i = 0; i < _traitStates.Length; i++)
+                _traitStates[i] = default;
+        }
+
+        /// <summary>합성 규칙: pause=최댓값, stepBack=최댓값, veto=OR.</summary>
+        private TraitAction ComposeBeforeMove(in MoveQuery q)
+        {
+            TraitAction combined = TraitAction.None;
+            for (int i = 0; i < _traitList.Count; i++)
+            {
+                TraitAction a = _traitList[i].OnBeforeMove(ref _traitStates[i], in q);
+                combined.pauseSeconds  = Mathf.Max(combined.pauseSeconds, a.pauseSeconds);
+                combined.stepBackCells = Mathf.Max(combined.stepBackCells, a.stepBackCells);
+                combined.vetoMove      = combined.vetoMove || a.vetoMove;
+            }
+            return combined;
+        }
+
+        /// <summary>합성 규칙: pause=최댓값, stepBack=최댓값, veto=OR (동일 규칙).</summary>
+        private TraitAction ComposeCellAdvanced()
+        {
+            TraitAction combined = TraitAction.None;
+            for (int i = 0; i < _traitList.Count; i++)
+            {
+                TraitAction a = _traitList[i].OnCellAdvanced(ref _traitStates[i]);
+                combined.pauseSeconds  = Mathf.Max(combined.pauseSeconds, a.pauseSeconds);
+                combined.stepBackCells = Mathf.Max(combined.stepBackCells, a.stepBackCells);
+                combined.vetoMove      = combined.vetoMove || a.vetoMove;
+            }
+            return combined;
+        }
+
+        /// <summary>
+        /// 이번 프레임 이동 속도. ctx.Stats.MoveSpeed × p.moveSpeedMultiplier × Π(Trait 배율).
+        /// 하강 이동 + Glide 플래그(낙하산) 보유 시 추가로 ×0.3.
+        /// 매 프레임 호출되므로 할당 없이 for 루프만 사용한다.
+        /// </summary>
+        private float ComputeFrameSpeed(in MoveQuery q)
+        {
+            float speed = _baseSpeed * _params.moveSpeedMultiplier;
+            for (int i = 0; i < _traitList.Count; i++)
+                speed *= _traitList[i].GetSpeedMultiplier(ref _traitStates[i], in q);
+
+            if (q.IsDescending && _ctx != null && _ctx.HasFlag(SpecialFlag.Glide))
+                speed *= 0.3f;
+
+            return speed;
+        }
+
+        // ── 이동 세그먼트 ─────────────────────────────────────────────────────
+
+        private void UpdateFacing(Vector2 target)
+        {
+            float dx = target.x - transform.position.x;
+            if (Mathf.Abs(dx) <= 0.01f) return;
+
+            if (_sprite != null) _sprite.flipX = dx < 0f;
+            if (_ctx    != null) _ctx.FacingSign = dx < 0f ? -1 : 1;
+        }
+
+        private IEnumerator MoveStraight(Vector2 target, MoveQuery q)
+        {
+            while (!IsDone && ((Vector2)transform.position - target).sqrMagnitude > 0.0001f)
+            {
+                float speed = ComputeFrameSpeed(in q);
+                transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
+                yield return null;
+            }
+        }
+
+        /// <summary>
+        /// 연출용 포물선 이동(물리 없음). 시작→끝 lerp 위치에 sin 높이를 얹는다.
+        /// 진행도(t)는 (누적 이동거리 / 전체 거리)로 계산해 Trait 의 GetSpeedMultiplier
+        /// (가속 등 시간 가변 배율)가 직선 이동과 동일하게 반영되도록 한다.
+        /// <para><see cref="ArcSpec.horizontalCells"/> 는 현재 연출에 소비되지 않는
+        /// 메타데이터(점프 링크 도입 5단계에서 다중 셀 도약에 사용 예정)이다.</para>
+        /// </summary>
+        private IEnumerator MoveArc(Vector2 target, MoveQuery q, ArcSpec arc)
+        {
+            Vector2 start = transform.position;
+            float   dist  = Vector2.Distance(start, target);
+            if (dist < 0.0001f) yield break;
+
+            float traveled = 0f;
+            while (!IsDone && traveled < dist)
+            {
+                traveled += ComputeFrameSpeed(in q) * Time.deltaTime;
+                float t = Mathf.Clamp01(traveled / dist);
+
+                Vector2 pos = Vector2.Lerp(start, target, t);
+                pos.y += arc.height * Mathf.Sin(t * Mathf.PI);
+                transform.position = pos;
+
+                yield return null;
+            }
+
+            if (!IsDone) transform.position = target; // 보간 오차 보정 — 정확히 착지
+        }
+
+        // ── 되돌아가기 (걸어서, 아크 없음) ────────────────────────────────────
+
+        /// <summary>
+        /// path[fromIndex] 위치에서 path[toIndex] 위치까지 경로 역방향으로 한 칸씩 걸어서
+        /// 되돌아간다. toIndex &lt; fromIndex 가정.
+        /// </summary>
+        private IEnumerator WalkBackward(IReadOnlyList<GridCoord> path, int fromIndex, int toIndex,
+                                          MapData map, Vector2 origin)
+        {
+            for (int i = fromIndex - 1; i >= toIndex; i--)
+            {
+                if (IsDone) yield break;
+
+                GridCoord cur  = path[i + 1];
+                GridCoord dest = path[i];
+                Vector2   target = map.CellToWorld(dest.x, dest.y, origin);
+                UpdateFacing(target);
+
+                var q = new MoveQuery(cur, dest, _ctx != null ? _ctx.FacingSign : -1);
+                yield return MoveStraight(target, q);
+                if (IsDone) yield break;
+            }
+        }
+
+        // ── 정지 대기 ─────────────────────────────────────────────────────────
+
+        private IEnumerator PauseFor(float seconds)
+        {
+            if (_animator != null) _animator.Play(StateIdle);
+
+            float t = 0f;
+            while (t < seconds && !IsDone)
+            {
+                t += Time.deltaTime;
+                yield return null;
+            }
+
+            if (!IsDone && _animator != null) _animator.Play(StateRun);
+        }
+
         // ── IPoolable — ComponentPool 재사용 훅 ──────────────────────────────
 
         /// <summary>풀에서 스폰될 때 새 개체처럼 초기화 (Awake 는 재사용 시 안 불림).</summary>
         public void OnSpawned()
         {
-            IsDone      = false;
-            ReachedGoal = false;
-            CurrentCell = default;
+            IsDone                = false;
+            ReachedGoal           = false;
+            CurrentCell           = default;
+            _pendingStepBackCells = 0;
+            _locomotionState      = LocomotionState.Moving;
 
             if (_sprite   != null) _sprite.flipX = false;
             if (_animator != null) _animator.Play(StateIdle);
