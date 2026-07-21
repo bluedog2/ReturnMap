@@ -14,9 +14,12 @@ namespace ReTrap
     public interface IPathPlanner
     {
         /// <summary>
-        /// start → goal 경로를 탐색합니다.
+        /// start → goal 경로를 탐색합니다. 반환되는 경로는 <b>grounded 칸만</b> 포함하며,
+        /// 점프·낙하 링크로 인접하지 않은 칸이 연속으로 나올 수 있습니다(소비자가 처리).
         /// </summary>
+        /// <param name="profile">개체의 이동 능력(점프 높이/거리, 낙하 허용치, 지름길 중독 등).</param>
         /// <returns>셀 좌표 웨이포인트 목록. 경로가 없으면 null.</returns>
-        List<GridCoord> FindPath(NavGrid grid, GridCoord start, GridCoord goal, in AIBehaviorParams p);
+        List<GridCoord> FindPath(NavGrid grid, GridCoord start, GridCoord goal, in AIBehaviorParams p,
+                                 in TraversalProfile profile);
     }
 }

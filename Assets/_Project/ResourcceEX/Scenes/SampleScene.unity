@@ -894,12 +894,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810b9eedef82d69409c1a2b17487665d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReTrap.VerificationDirector
+  spawnTable: {fileID: 0}
+  rosterSeed: 0
   personality: {fileID: 11400000, guid: 9c31f5a7e2d84b6f8a4d0c7b1e5a2f38, type: 2}
   agentPrefab: {fileID: 7100000000000000001, guid: 2f988ac2cde5bed43a1ceb90ffca658d, type: 3}
   archetype: {fileID: 11400000, guid: f6559fde43659ed4293f7ade8604a951, type: 2}
   debugTags:
   - {fileID: 11400000, guid: b5942f26fe8d6e74596e2902b65427fe, type: 2}
-  - {fileID: 11400000, guid: 9d7e91085c4ced44687ebd19e5d8a1cf, type: 2}
   timeLimit: 60
   poolPrewarm: 1
   deathLingerTime: 0.6
@@ -970,6 +971,7 @@ GameObject:
   - component: {fileID: 1250373947}
   - component: {fileID: 1250373949}
   - component: {fileID: 1250373948}
+  - component: {fileID: 1250373950}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -1206,6 +1208,18 @@ MonoBehaviour:
   emptyColor: {r: 0, g: 0, b: 0, a: 0.45}
   rechargeColor: {r: 1, g: 0.85, b: 0.2, a: 0.9}
   ringSprite: {fileID: 0}
+--- !u!114 &1250373950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250373938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59ca1880c32b9064ca68fdf2de2784fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReTrap.PlayerPhaseVisibility
 --- !u!1 &1333959615
 GameObject:
   m_ObjectHideFlags: 0

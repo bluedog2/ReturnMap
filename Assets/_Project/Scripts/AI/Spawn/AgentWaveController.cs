@@ -34,6 +34,7 @@ namespace ReTrap
         {
             public readonly StageAgentRoster.AgentSpawnPlan Plan;
             public readonly AIMemory Memory;
+            public readonly TraversalProfile Profile;  // 태그에서 파생된 이동 능력 — 러너당 1회 계산
 
             public int AttemptsLeft;
             public NavGrid Grid;               // 개체별 재사용 — 시도마다 배열 재할당 방지
@@ -43,9 +44,10 @@ namespace ReTrap
 
             public AgentRunner(StageAgentRoster.AgentSpawnPlan plan, int mapWidth)
             {
-                Plan   = plan;
-                Memory = new AIMemory(mapWidth);
-                State  = RunnerState.Pending;
+                Plan    = plan;
+                Memory  = new AIMemory(mapWidth);
+                Profile = TraversalProfile.From(plan.Tags);
+                State   = RunnerState.Pending;
 
                 AIPersonality personality = plan.Archetype != null ? plan.Archetype.Personality : null;
                 AttemptsLeft = personality != null ? personality.ToBehaviorParams().maxAttempts : 1;
@@ -211,9 +213,12 @@ namespace ReTrap
 
             while (runner.AttemptsLeft > 0 && Time.time < deadline)
             {
-                // 1) 계획 — 시도마다 이 개체의 학습(memory)이 반영된 그리드로 다시 세운다
-                runner.Grid = NavGrid.Build(map, p, runner.Memory, runner.Grid);
-                var path = _planner.FindPath(runner.Grid, map.spawnPoint, map.goalPoint, p);
+                // 1) 계획 — 시도마다 이 개체의 학습(memory)이 반영된 그리드로 다시 세운다.
+                //    ⚠ 그리드는 러너(개체)별로만 재사용한다 — dangerCost 에 개체별 AIMemory
+                //    학습 페널티가 섞여 있어 프로파일이 같아도 여러 개체가 그리드를 공유할
+                //    수 없다(NavGrid 상단 TODO 참고).
+                runner.Grid = NavGrid.Build(map, p, runner.Profile, runner.Memory, runner.Grid);
+                var path = _planner.FindPath(runner.Grid, map.spawnPoint, map.goalPoint, p, runner.Profile);
 
                 if (path == null || path.Count == 0)
                 {

@@ -4,21 +4,31 @@ using UnityEngine;
 namespace ReTrap
 {
     // ═══════════════════════════════════════════════════════════════════════════
-    //  AStarPathPlanner — A* 경로 탐색
+    //  AStarPathPlanner — A* 경로 탐색 (중력 인지 · 링크 기반)
     // ═══════════════════════════════════════════════════════════════════════════
 
     /// <summary>
-    /// 타일 그리드 표준 A* 구현체.
+    /// 타일 그리드 A* 구현체. <b>핵심 원칙: 노드는 grounded 칸만.</b> 공중 칸은 노드가
+    /// 아니며, 점프/낙하는 grounded → grounded 를 잇는 "링크"로 취급합니다. 이것이
+    /// 과거 4방향 확장이 공중을 사다리처럼 오르내리던 문제의 근본 해결입니다.
     /// <para>
-    /// 이동 비용 = 기본 1 + <see cref="NavNode.dangerCost"/>
-    /// (위험 배율·학습 페널티는 NavGrid.Build 에서 이미 반영됨 — 여기서 재가공하지 않음).
-    /// 휴리스틱 = 맨해튼 거리, 이웃 확장 = 상하좌우 4방향.
+    /// 이웃 확장 3종:
+    /// <list type="bullet">
+    ///   <item><b>걷기</b>: 좌우 인접 칸이 grounded 면 비용 1 + dangerCost.</item>
+    ///   <item><b>낙하</b>: 좌우 인접 칸이 공중이면 <see cref="NavGrid.TryFindLanding"/> 으로
+    ///         착지점을 찾아 링크. 비용 = 1 + 낙차*0.5(지름길 중독은 0) + 착지칸 dangerCost.</item>
+    ///   <item><b>점프</b>: <see cref="TraversalProfile.MaxJumpDistance"/> × <see cref="TraversalProfile.MaxJumpHeight"/>
+    ///         범위의 grounded 후보에 대해 ㄱ자 3구간 통과 검사(벽 뚫기 방지) 후 링크.
+    ///         비용 = 1 + dx*0.5 + dy*0.5 + 도착칸 dangerCost (걷기보다 비싸 불필요한 점프 억제).</item>
+    /// </list>
     /// </para>
+    /// <para>휴리스틱 = 맨해튼 거리.</para>
     /// <para><b>리소스 정책</b>: 탐색 버퍼(g비용/부모/상태)와 결과 리스트는 멤버로
     /// 재사용해 시도 루프에서 반복 할당이 생기지 않게 합니다. 반환된 경로 리스트는
     /// <b>다음 FindPath 호출 시 덮어써지므로</b> 호출자가 보관하려면 복사할 것.</para>
-    /// <para>TODO(플랫포머 이동 모델): 4방향 이동은 공중을 자유 통행하는 근사 모델.
-    /// NavGrid 의 점프 링크가 생기면 이웃 확장을 링크 기반으로 대체할 것.</para>
+    /// <para><b>결과 경로의 형태</b>: grounded 칸들의 목록이며, 점프·낙하 링크로 인해
+    /// 인접하지 않은 칸이 연속으로 나올 수 있습니다 — 소비자(<see cref="VerificationAgent"/>)가
+    /// From→To 다중 칸 이동으로 처리합니다.</para>
     /// </summary>
     public class AStarPathPlanner : IPathPlanner
     {
@@ -36,7 +46,8 @@ namespace ReTrap
         private readonly List<int>       _openList = new List<int>(128);
         private readonly List<GridCoord> _path     = new List<GridCoord>(64);
 
-        public List<GridCoord> FindPath(NavGrid grid, GridCoord start, GridCoord goal, in AIBehaviorParams p)
+        public List<GridCoord> FindPath(NavGrid grid, GridCoord start, GridCoord goal, in AIBehaviorParams p,
+                                        in TraversalProfile profile)
         {
             int w = grid.Width, h = grid.Height, count = w * h;
 
@@ -45,19 +56,29 @@ namespace ReTrap
                 Debug.LogWarning($"[AStarPathPlanner] 시작/골 좌표가 그리드 밖: {start} → {goal}");
                 return null;
             }
-            if (!grid.Get(start.x, start.y).walkable || !grid.Get(goal.x, goal.y).walkable)
+
+            // ── 시작/골 정규화 — grounded 가 아니면 아래 착지점으로 스냅 ──────────
+            // 스폰 지점이 공중일 수 있고(맵 제작 편의), goal 이 정확히 발판이 아닐 수도
+            // 있다. 규약: 원래 goal 이 공중이면 그 아래 착지점 도달 = 골 도달로 간주한다
+            // (낙차 제한 없이 스냅 — 방어 판정을 낙하 가능 여부로 좌우하지 않기 위함).
+            if (!TrySnapToGround(grid, start, out GridCoord snappedStart))
             {
-                Debug.LogWarning($"[AStarPathPlanner] 시작/골 칸이 통행 불가: {start} → {goal}");
+                Debug.LogWarning($"[AStarPathPlanner] 시작 지점이 고립됨(착지 불가): {start}");
+                return null;
+            }
+            if (!TrySnapToGround(grid, goal, out GridCoord snappedGoal))
+            {
+                Debug.LogWarning($"[AStarPathPlanner] 골 지점이 고립됨(착지 불가): {goal}");
                 return null;
             }
 
             EnsureBuffers(count);
 
-            int startIdx = start.y * w + start.x;
-            int goalIdx  = goal.y  * w + goal.x;
+            int startIdx = snappedStart.y * w + snappedStart.x;
+            int goalIdx  = snappedGoal.y  * w + snappedGoal.x;
 
             _gCost[startIdx] = 0f;
-            _fCost[startIdx] = Manhattan(start.x, start.y, goal.x, goal.y);
+            _fCost[startIdx] = Manhattan(snappedStart.x, snappedStart.y, snappedGoal.x, snappedGoal.y);
             _state[startIdx] = Open;
             _openList.Clear();
             _openList.Add(startIdx);
@@ -80,29 +101,131 @@ namespace ReTrap
                 _state[current] = Closed;
 
                 int cx = current % w, cy = current / w;
-                ExpandNeighbor(grid, cx + 1, cy, current, goal, w);
-                ExpandNeighbor(grid, cx - 1, cy, current, goal, w);
-                ExpandNeighbor(grid, cx, cy + 1, current, goal, w);
-                ExpandNeighbor(grid, cx, cy - 1, current, goal, w);
+                ExpandNeighbors(grid, in profile, cx, cy, current, snappedGoal, w);
             }
 
             return null; // 골까지 이어지는 경로 없음
         }
 
-        // ── 내부 ──────────────────────────────────────────────────────────────
+        // ── 내부 — 시작/골 스냅 ──────────────────────────────────────────────
 
-        private void ExpandNeighbor(NavGrid grid, int nx, int ny, int current, GridCoord goal, int w)
+        /// <summary>이미 grounded 면 그대로, 아니면 낙차 제한 없이 아래 착지점으로 스냅.</summary>
+        private static bool TrySnapToGround(NavGrid grid, GridCoord cell, out GridCoord snapped)
         {
-            if (!grid.InBounds(nx, ny)) return;
+            if (grid.IsGrounded(cell.x, cell.y))
+            {
+                snapped = cell;
+                return true;
+            }
+
+            if (grid.TryFindLanding(cell.x, cell.y, int.MaxValue, out int landY))
+            {
+                snapped = new GridCoord(cell.x, landY);
+                return true;
+            }
+
+            snapped = cell;
+            return false;
+        }
+
+        // ── 내부 — 이웃 확장 (걷기 / 낙하 / 점프) ────────────────────────────
+
+        private void ExpandNeighbors(NavGrid grid, in TraversalProfile profile, int cx, int cy,
+                                     int current, GridCoord goal, int w)
+        {
+            // 1) 걷기 — 좌우 인접 grounded 칸
+            ExpandWalk(grid, cx + 1, cy, current, goal, w);
+            ExpandWalk(grid, cx - 1, cy, current, goal, w);
+
+            // 2) 낙하 — 좌우 인접이 공중이면 착지점까지 링크
+            ExpandFall(grid, in profile, cx + 1, cy, current, goal, w);
+            ExpandFall(grid, in profile, cx - 1, cy, current, goal, w);
+
+            // 3) 점프 — dx: 1..MaxJumpDistance, dy: 0..MaxJumpHeight (하강 점프는 낙하가 담당)
+            for (int dx = 1; dx <= profile.MaxJumpDistance; dx++)
+            for (int dy = 0; dy <= profile.MaxJumpHeight; dy++)
+            {
+                if (dx == 1 && dy == 0) continue; // 걷기와 완전히 동일한 링크라 스킵
+                ExpandJump(grid, cx, cy, cx + dx, cy + dy, current, goal, w);
+                ExpandJump(grid, cx, cy, cx - dx, cy + dy, current, goal, w);
+            }
+        }
+
+        private void ExpandWalk(NavGrid grid, int nx, int ny, int current, GridCoord goal, int w)
+        {
+            if (!grid.InBounds(nx, ny) || !grid.IsGrounded(nx, ny)) return;
 
             int idx = ny * w + nx;
             if (_state[idx] == Closed) return;
 
-            var node = grid.Get(nx, ny);
-            if (!node.walkable) return;
+            float cost = 1f + grid.Get(nx, ny).dangerCost;
+            RelaxNeighbor(idx, current, cost, nx, ny, goal, w);
+        }
 
-            // 이동 비용: 기본 1 + 위험/학습 비용 (NavGrid.Build 에서 합산 완료)
-            float g = _gCost[current] + 1f + node.dangerCost;
+        private void ExpandFall(NavGrid grid, in TraversalProfile profile, int nx, int cy,
+                                int current, GridCoord goal, int w)
+        {
+            if (!grid.InBounds(nx, cy)) return;
+            if (grid.IsSolid(nx, cy)) return;     // 옆이 막혀 있으면 낙하 불가
+            if (grid.IsGrounded(nx, cy)) return;  // 이미 grounded 면 걷기 링크가 담당
+
+            if (!grid.TryFindLanding(nx, cy, profile.MaxFallHeight, out int landY)) return;
+
+            int idx = landY * w + nx;
+            if (_state[idx] == Closed) return;
+
+            int   fallCells = cy - landY;
+            float cost = 1f + fallCells * (profile.RecklessDrop ? 0f : 0.5f) + grid.Get(nx, landY).dangerCost;
+
+            RelaxNeighbor(idx, current, cost, nx, landY, goal, w);
+        }
+
+        private void ExpandJump(NavGrid grid, int cx, int cy, int tx, int ty, int current, GridCoord goal, int w)
+        {
+            if (!grid.InBounds(tx, ty) || !grid.IsGrounded(tx, ty)) return;
+
+            int idx = ty * w + tx;
+            if (_state[idx] == Closed) return;
+
+            if (!IsJumpPathClear(grid, cx, cy, tx, ty)) return;
+
+            int   dx   = Mathf.Abs(tx - cx);
+            int   dy   = ty - cy; // 호출부가 dy>=0 범위만 넘김 (하강 점프는 낙하 링크가 담당)
+            float cost = 1f + dx * 0.5f + dy * 0.5f + grid.Get(tx, ty).dangerCost;
+
+            RelaxNeighbor(idx, current, cost, tx, ty, goal, w);
+        }
+
+        /// <summary>
+        /// 점프 궤적이 지형을 뚫지 않는지 검사하는 안전한 근사(ㄱ자 3구간):
+        /// (1) 출발 열에서 정점 높이까지 수직, (2) 정점 높이에서 도착 열까지 수평,
+        /// (3) 도착 열에서 도착 높이까지 수직 하강. 한 칸이라도 solid 면 무효.
+        /// </summary>
+        private static bool IsJumpPathClear(NavGrid grid, int cx, int cy, int tx, int ty)
+        {
+            int apexY = Mathf.Max(cy, ty) + 1;
+
+            // (1) 출발점 머리 위 수직 구간: cx 열, cy+1 ~ apexY
+            for (int y = cy + 1; y <= apexY; y++)
+                if (!grid.InBounds(cx, y) || grid.IsSolid(cx, y)) return false;
+
+            // (2) 정점 높이 수평 구간: apexY 행, cx ~ tx
+            int xLo = Mathf.Min(cx, tx), xHi = Mathf.Max(cx, tx);
+            for (int x = xLo; x <= xHi; x++)
+                if (!grid.InBounds(x, apexY) || grid.IsSolid(x, apexY)) return false;
+
+            // (3) 도착점 수직 하강 구간: tx 열, apexY-1 ~ ty
+            for (int y = apexY - 1; y >= ty; y--)
+                if (!grid.InBounds(tx, y) || grid.IsSolid(tx, y)) return false;
+
+            return true;
+        }
+
+        private void RelaxNeighbor(int idx, int current, float stepCost, int nx, int ny, GridCoord goal, int w)
+        {
+            if (_state[idx] == Closed) return;
+
+            float g = _gCost[current] + stepCost;
             if (_state[idx] == Open && g >= _gCost[idx]) return;
 
             _gCost[idx]  = g;

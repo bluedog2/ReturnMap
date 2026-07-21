@@ -116,8 +116,10 @@ namespace ReTrap
         /// <summary>
         /// 함정이 지형 타일처럼 자기 칸을 솔리드로 채우는지.
         /// DropHammer 처럼 이동하는 함정은 false 로 오버라이드.
+        /// <para>NavGrid(검증 AI 길찾기)가 "슬롯=지형" 불변식을 반영하려면 외부에서
+        /// 이 값을 읽어야 하므로 public 으로 노출한다.</para>
         /// </summary>
-        protected virtual bool ActsAsSolidTile => true;
+        public virtual bool ActsAsSolidTile => true;
 
         /// <summary>
         /// Beneficial 변이 시 anchor 바깥 방향으로 황금 솔리드 블록(+1칸)을 만드는지.
@@ -409,8 +411,12 @@ namespace ReTrap
             _solidBody.size = new Vector2(cellSize.x, cellSize.y);
         }
 
-        /// <summary>anchor 의 부착면 반대(바깥) 방향 단위 벡터.</summary>
-        private static Vector2Int OutwardOf(TrapAnchor anchor) => anchor switch
+        /// <summary>
+        /// anchor 의 부착면 반대(바깥) 방향 단위 벡터.
+        /// NavGrid 가 함정별 위험 셀(설치 칸 바깥 1칸)을 계산할 때도 재사용하므로
+        /// internal 로 노출한다(같은 어셈블리인 NavGrid 에서 참조).
+        /// </summary>
+        internal static Vector2Int OutwardOf(TrapAnchor anchor) => anchor switch
         {
             TrapAnchor.Ceiling   => new Vector2Int( 0, -1),
             TrapAnchor.LeftWall  => new Vector2Int( 1,  0),

@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 7100000000000000002}
   - component: {fileID: 4212509851855890962}
   - component: {fileID: 7682402220056005835}
+  - component: {fileID: 1701934402618534532}
   m_Layer: 10
   m_Name: Enemy_Orc_Brute
   m_TagString: Untagged
@@ -253,6 +254,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 578df2f4356c51c41ada391dad0feb59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReTrap.AgentHealth
+  invulnerabilityDuration: 0.6
+--- !u!114 &1701934402618534532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8839926950713096812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28d4518f2fb377e4da9f49892f5f148a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReTrap.AgentHitFlash
+  target: {fileID: 0}
+  flashColor: {r: 1, g: 0.35, b: 0.35, a: 1}
+  blinkInterval: 0.08
 --- !u!1 &8982448995822309000
 GameObject:
   m_ObjectHideFlags: 0

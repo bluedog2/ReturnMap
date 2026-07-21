@@ -12,12 +12,19 @@ namespace ReTrap
     /// <summary>
     /// <b>Main Camera</b>(CinemachineBrain 동거)에 부착합니다.
     ///
+    /// <para><b>3페이즈 규칙</b> (기획서 「3. 카메라」 참조):</para>
     /// <para><b>빌드 페이즈</b>: CinemachineBrain 을 끄고 카메라를 직접 제어 —
     /// <see cref="CameraConfinerSync"/> 의 경계 박스(맵 영역)를 기준으로
     /// 맵 밖이 보이지 않는 단일 고정 뷰. 휠 줌(커서 기준), 중간버튼 드래그 패닝,
-    /// 화면 가장자리 엣지 패닝.</para>
+    /// 화면 가장자리 엣지 패닝 — 유저 입력을 받습니다.</para>
     ///
-    /// <para><b>플레이 / 검증 페이즈</b>: CinemachineBrain 을 다시 켜서
+    /// <para><b>검증 페이즈</b>: "AI 관망 뷰(Fixed View)". CinemachineBrain 은 계속 꺼진 채
+    /// 직접 제어를 유지하지만, 유저가 빌드에서 확대했던 스케일과 무관하게
+    /// 카메라 뷰포트를 <b>무조건 전체 화면(FitToBounds)</b>으로 즉각 환원하고
+    /// 이후 마우스 줌/패닝/엣지팬 등 <b>유저 조작을 일체 차단</b>합니다.
+    /// AI 10마리의 동선과 함정 작동을 한눈에 조망하는 관전 전용 고정 뷰입니다.</para>
+    ///
+    /// <para><b>플레이 페이즈</b>: CinemachineBrain 을 다시 켜서
     /// 기존 PlayerFollowCamera(플레이어 추적) 로 복원합니다.</para>
     ///
     /// <para><b>경계 정책</b>: 줌아웃 상한을 "맵 밖이 보이지 않는 최대 size"(크롭)로
@@ -50,7 +57,10 @@ namespace ReTrap
         private Camera           _cam;
         private CinemachineBrain _brain;
 
-        private bool    _active;
+        /// <summary>Brain 을 끄고 카메라를 직접 제어하는가 (Build + Verification).</summary>
+        private bool    _directControl;
+        /// <summary>마우스 줌/패닝 입력을 받는가 (Build 전용). 검증 페이즈는 관망 전용 고정 뷰라 false.</summary>
+        private bool    _inputEnabled;
         private bool    _panning;
         private Vector2 _lastPanScreenPos;
 
@@ -82,8 +92,11 @@ namespace ReTrap
 
         private void Update()
         {
-            if (!_active) return;
+            if (!_directControl) return;
             if (!TryGetBounds(out Bounds b)) return;
+
+            // 검증 페이즈(관전 전용 고정 뷰): 입력 자체를 받지 않는다.
+            if (!_inputEnabled) return;
 
             // UI(HUD 핫바 등) 위에서는 줌·엣지팬을 막아 오조작 방지
             bool overUI = EventSystem.current != null &&
@@ -98,27 +111,55 @@ namespace ReTrap
 
         private void HandlePhase(GamePhase phase)
         {
-            if (phase == GamePhase.Build) EnterBuildView();
-            else                          ExitBuildView();
+            switch (phase)
+            {
+                case GamePhase.Build:
+                    EnterBuildView();
+                    break;
+                case GamePhase.Verification:
+                    EnterSpectatorView();
+                    break;
+                default: // GamePhase.Play
+                    ExitDirectControl();
+                    break;
+            }
         }
 
         private void HandleMapLoaded(MapData map)
         {
-            if (_active) FitToBounds();
+            if (_directControl) FitToBounds();
         }
 
         private void EnterBuildView()
         {
-            _active = true;
+            _directControl = true;
+            _inputEnabled  = true;
             if (_brain != null) _brain.enabled = false; // Cinemachine 제어 중단 → 직접 제어
             _cam.orthographic = true;
             FitToBounds();
         }
 
-        private void ExitBuildView()
+        /// <summary>
+        /// 검증 페이즈 진입 — "AI 관망 뷰"(기획서 「3. 카메라」 2.2).
+        /// 유저가 빌드 페이즈에서 확대한 스케일과 무관하게 카메라 뷰포트를
+        /// 무조건 전체 화면으로 즉각 환원하고, 이후 유저 조작 일체를 차단한다.
+        /// </summary>
+        private void EnterSpectatorView()
         {
-            _active  = false;
-            _panning = false;
+            _directControl = true;
+            _inputEnabled  = false;
+            _panning       = false;
+            if (_brain != null) _brain.enabled = false; // 계속 직접 제어 유지 (플레이어 추적 X)
+            _cam.orthographic = true;
+            FitToBounds();                              // 전체 화면 강제 리셋
+        }
+
+        /// <summary>직접 제어를 해제하고 Brain 을 켜서 플레이어 추적 카메라로 복원 (Play 페이즈).</summary>
+        private void ExitDirectControl()
+        {
+            _directControl = false;
+            _inputEnabled  = false;
+            _panning       = false;
             if (_brain != null) _brain.enabled = true;  // 플레이어 추적 카메라 복원
         }
 

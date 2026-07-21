@@ -135,7 +135,7 @@ namespace ReTrap.EditorTools
                 "오르막 +100%, 평지 -30%",
                 traitType: typeof(MountaineerTrait)),
             new TagRow("D-11", AITagCategory.Defense, "지름길 중독",
-                "아래 가시 유무 무관 최단 경로로 즉시 낙하"),
+                "아래 가시 유무 무관 최단 경로로 즉시 낙하", flags: SpecialFlag.RecklessDrop),
             new TagRow("D-12", AITagCategory.Defense, "저주부르미",
                 "피격 시 해당 함정 저주 (효과 기획 미정)", flags: SpecialFlag.CurseTrapOnHit),
 
@@ -300,7 +300,7 @@ namespace ReTrap.EditorTools
                 personality = AssetDatabase.LoadAssetAtPath<AIPersonality>(personalityPath);
             }
 
-            archetype.EditorInit("지구둥글론자", agentPrefab, 4f, 1, 1f, personality);
+            archetype.EditorInit("지구둥글론자", agentPrefab, 4f, 3, 1f, personality);
 
             if (isNew)
             {

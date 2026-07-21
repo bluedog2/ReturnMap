@@ -60,7 +60,9 @@ namespace ReTrap
         private AgentArchetype archetype;
 
         [SerializeField]
-        [Tooltip("spawnTable 미지정 시 폴백 경로 전용 — 스폰되는 에이전트에 이 태그를 부여한다.")]
+        [Tooltip("spawnTable 미지정 시 폴백 경로 전용 — 스폰되는 에이전트에 이 태그를 부여한다. " +
+                 "면역 태그(둥글둥글 등)를 꽂으면 해당 함정에 데미지를 입지 않는 것이 정상 동작이다 — " +
+                 "NavGrid 가 dangerCost 를 0으로 계산해 그 함정 위를 최단 경로로 그대로 통과한다.")]
         private AITagDefinition[] debugTags;
 
         [Header("판정")]

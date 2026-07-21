@@ -19,5 +19,11 @@ namespace ReTrap
             arc.height          = 1.5f;
             arc.horizontalCells = 1;
         }
+
+        /// <summary>세로 3칸까지 점프로 오를 수 있게 한다 (가로 사거리는 손대지 않음).</summary>
+        public override void ModifyTraversal(ref int maxJumpHeight, ref int maxJumpDistance)
+        {
+            maxJumpHeight = Mathf.Max(maxJumpHeight, 3);
+        }
     }
 }

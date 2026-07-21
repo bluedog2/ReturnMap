@@ -26,7 +26,8 @@ namespace ReTrap
         private Vector3 _originalScale;
         private bool    _originalScaleCaptured;
 
-        private AgentHealth _health; // GetComponent 캐시 (Initialize/OnSpawned 전달용)
+        private AgentHealth   _health;   // GetComponent 캐시 (Initialize/OnSpawned 전달용)
+        private AgentHitFlash _hitFlash; // GetComponent 캐시 (OnSpawned/OnDespawned 전달용, null 허용)
 
         // ── 정적 레지스트리 — FindObjectsByType 씬 스캔 대체 (TrapBase._activeTraps 패턴) ──
 
@@ -65,6 +66,7 @@ namespace ReTrap
             _originalScale         = transform.localScale;
             _originalScaleCaptured = true;
             _health                = GetComponent<AgentHealth>();
+            _hitFlash              = GetComponent<AgentHitFlash>();
         }
 
         /// <summary>레지스트리 자기 등록 (풀에서 SetActive(true) 될 때마다 호출됨).</summary>
@@ -169,6 +171,7 @@ namespace ReTrap
             FacingSign = 1;
             if (_originalScaleCaptured) transform.localScale = _originalScale;
             _health?.OnSpawned();
+            _hitFlash?.OnSpawned();
         }
 
         /// <summary>풀로 반납될 때 스케일 원복.</summary>
@@ -176,6 +179,7 @@ namespace ReTrap
         {
             if (_originalScaleCaptured) transform.localScale = _originalScale;
             _health?.OnDespawned();
+            _hitFlash?.OnDespawned();
         }
     }
 }

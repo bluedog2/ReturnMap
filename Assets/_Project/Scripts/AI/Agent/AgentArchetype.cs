@@ -30,8 +30,9 @@ namespace ReTrap
         private float baseMoveSpeed = 4f;
 
         [SerializeField]
-        [Tooltip("최대 체력.")]
-        private int baseMaxHP = 1;
+        [Tooltip("최대 체력. 태그(뚱뚱이 +1, 거대화 3 등)가 여기에 얹힌다. " +
+                 "함정 1대에 즉사하지 않고 데미지를 받으며 전진하는 그림을 위해 기본 3.")]
+        private int baseMaxHP = 3;
 
         [SerializeField]
         [Tooltip("피격 넉백 배율.")]

@@ -23,7 +23,9 @@ namespace ReTrap
     ///
     /// <para>TODO(실행 본체):
     /// 1) 지금은 웨이포인트 직선/아크 이동(자리표시자) — 실제로는 Rigidbody2D 기반
-    ///    플랫포머 이동(점프/낙하)으로 교체 검토. 점프 링크/A* 확장은 5단계.
+    ///    플랫포머 이동(점프/낙하)으로 교체 검토. 점프/낙하 <b>링크</b>는 5단계에서
+    ///    NavGrid·AStarPathPlanner 가 이미 생성하며(<see cref="TraversalProfile"/>),
+    ///    이 클래스는 From→To 가 인접하지 않은 다중 셀 이동을 아크/직선으로 소비한다.
     /// 2) mistakeChance 로 점프 타이밍 오차 구현(미착수).</para>
     /// </summary>
     public class VerificationAgent : MonoBehaviour, IPoolable
@@ -213,7 +215,14 @@ namespace ReTrap
                 Vector2 target = map.CellToWorld(to.x, to.y, origin);
                 UpdateFacing(target);
 
-                ArcSpec arc = new ArcSpec { height = 0.5f, horizontalCells = 1, useArc = q.IsAscending };
+                // 상승(점프) 또는 가로 2칸 이상 이동(다중 셀 링크)이면 아크로 연출한다.
+                // 아크 높이는 상승 칸수에 비례 — 계단 오르듯 낮게, 높이 점프는 크게.
+                ArcSpec arc = new ArcSpec
+                {
+                    height          = 0.5f + q.AscendCells * 0.3f,
+                    horizontalCells = q.HorizontalCells,
+                    useArc          = q.IsAscending || q.HorizontalCells >= 2,
+                };
                 for (int i = 0; i < _traitList.Count; i++)
                     _traitList[i].ModifyArc(ref arc);
 

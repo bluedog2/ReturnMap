@@ -38,7 +38,7 @@ namespace ReTrap
 
         /// <summary>해머는 낙하·복귀로 이동하는 함정 — 고정 솔리드 셀을 만들지 않는다.
         /// (만들면 낙하 시 솔리드가 함께 움직여 플레이어를 밀어내는 물리 문제 발생)</summary>
-        protected override bool ActsAsSolidTile => false;
+        public override bool ActsAsSolidTile => false;
 
         /// <summary>Beneficial 보너스는 황금 블록 대신 엘리베이터(platformArea 왕복)로 제공.</summary>
         protected override bool SpawnsBeneficialBlock => false;

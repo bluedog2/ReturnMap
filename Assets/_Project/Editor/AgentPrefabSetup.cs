@@ -9,16 +9,16 @@ namespace ReTrap.EditorTools
 
     /// <summary>
     /// Enemies 폴더의 모든 적 프리팹(VerificationAgent 보유)에
-    /// <see cref="AgentContext"/> 와 <see cref="AgentHealth"/> 를 추가합니다.
+    /// <see cref="AgentContext"/>·<see cref="AgentHealth"/>·<see cref="AgentHitFlash"/> 를 추가합니다.
     /// AI 태그 시스템(2단계)이 요구하는 배선 — 미배선 프리팹은 기존 즉사 동작으로
-    /// 폴백하지만, 태그(면역·HP·쉴드)가 동작하려면 두 컴포넌트가 필요합니다.
+    /// 폴백하지만, 태그(면역·HP·쉴드)와 피격 연출(무적 점멸)이 동작하려면 세 컴포넌트가 필요합니다.
     /// 이미 배선된 프리팹은 건너뛰므로 반복 실행해도 안전합니다.
     /// </summary>
     public static class AgentPrefabSetup
     {
         private const string ENEMIES_FOLDER = "Assets/_Project/ResourcceEX/Prefabs/Enemies";
 
-        [MenuItem("ReTrap/Setup/검증 AI 프리팹 세팅 (AgentContext + Health)")]
+        [MenuItem("ReTrap/Setup/검증 AI 프리팹 세팅 (AgentContext + Health + HitFlash)")]
         public static void SetupAgentPrefabs()
         {
             string[] guids = AssetDatabase.FindAssets("t:Prefab", new[] { ENEMIES_FOLDER });
@@ -46,6 +46,11 @@ namespace ReTrap.EditorTools
                     if (root.GetComponent<AgentHealth>() == null)
                     {
                         root.AddComponent<AgentHealth>();
+                        changed = true;
+                    }
+                    if (root.GetComponent<AgentHitFlash>() == null)
+                    {
+                        root.AddComponent<AgentHitFlash>();
                         changed = true;
                     }
 

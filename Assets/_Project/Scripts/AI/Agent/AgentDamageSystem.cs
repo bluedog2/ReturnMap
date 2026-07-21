@@ -59,15 +59,20 @@ namespace ReTrap
                 return DamageResult.Killed;
             }
 
-            // 2) 공중부양(Hover) — 가시 센서가 미작동하므로 가시 피해는 아예 무시
+            // 2) 무적(i-frame) — 직전 피격의 무적 시간 중이면 피해·훅·부수효과 전부 없음.
+            //    가시 진동 사이클마다 트리거가 재발동하는 연타사를 막는다.
+            if (health.IsInvulnerable)
+                return DamageResult.Immune;
+
+            // 3) 공중부양(Hover) — 가시 센서가 미작동하므로 가시 피해는 아예 무시
             if (type == DamageType.Spike && agent.HasFlag(SpecialFlag.Hover))
                 return DamageResult.Immune;
 
-            // 3) 면역 마스크 — 태그가 선언한 면역 피해 타입
+            // 4) 면역 마스크 — 태그가 선언한 면역 피해 타입
             if (agent.IsImmuneTo(type))
                 return DamageResult.Immune;
 
-            // 4) 철벽 방패(FrontShieldOnly) — 화살이 전방(바라보는 방향)에서 오면 면역,
+            // 5) 철벽 방패(FrontShieldOnly) — 화살이 전방(바라보는 방향)에서 오면 면역,
             //    후방에서 오면 그대로 통과시켜 피해를 받는다.
             if (type == DamageType.Arrow && agent.HasFlag(SpecialFlag.FrontShieldOnly))
             {
@@ -77,15 +82,15 @@ namespace ReTrap
                     return DamageResult.Immune;
             }
 
-            // 5) 스펀지 몸(AbsorbProjectile) — 화살을 데미지 없이 흡수(소멸). 호출측이
+            // 6) 스펀지 몸(AbsorbProjectile) — 화살을 데미지 없이 흡수(소멸). 호출측이
             //    투사체 소멸 처리를 담당 — 뒤따르는 동료에게 갈 화살을 대신 지워주는 탱커.
             if (type == DamageType.Arrow && agent.HasFlag(SpecialFlag.AbsorbProjectile))
                 return DamageResult.Absorbed;
 
-            // 6) 피해 적용
+            // 7) 피해 적용
             bool killed = health.TakeDamage(amount);
 
-            // 7) 피격 훅 + 특수 플래그 후처리 — 여기 도달했다는 것 자체가 실제 피해가
+            // 8) 피격 훅 + 특수 플래그 후처리 — 여기 도달했다는 것 자체가 실제 피해가
             //    들어갔다는 뜻(면역/흡수는 이미 위에서 반환됨)이므로 조건 없이 실행한다.
             agent.DispatchTrapHitHooks(sourceTrap);
 

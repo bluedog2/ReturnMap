@@ -15,6 +15,6 @@ MonoBehaviour:
   displayName: "\uC9C0\uAD6C\uB465\uAE00\uB860\uC790"
   agentPrefab: {fileID: 7100000000000000001, guid: 2f988ac2cde5bed43a1ceb90ffca658d, type: 3}
   baseMoveSpeed: 4
-  baseMaxHP: 1
+  baseMaxHP: 3
   baseKnockbackMultiplier: 1
   personality: {fileID: 11400000, guid: 9c31f5a7e2d84b6f8a4d0c7b1e5a2f38, type: 2}

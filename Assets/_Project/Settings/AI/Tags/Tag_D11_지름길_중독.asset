@@ -21,6 +21,6 @@ MonoBehaviour:
   exclusionGroup: 0
   statModifiers: []
   immunities: 0
-  flags: 0
+  flags: 512
   movementTrait: {fileID: 0}
   eventHooks: []

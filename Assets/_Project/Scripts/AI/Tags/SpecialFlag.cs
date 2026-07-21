@@ -21,5 +21,6 @@ namespace ReTrap
         RetreatFromPlayer = 1 << 6, // 뒷걸음질 — 플레이어 감지 시 2칸 후퇴
         LightningRod      = 1 << 7, // 피뢰침 — 광역 피해를 자신에게 흡수 (전기/마법 함정용 예약)
         Glide             = 1 << 8, // 낙하산 — 낙하 시 활공(저속 하강)
+        RecklessDrop      = 1 << 9, // 지름길 중독 — 아래 위험 무관 최단 경로로 즉시 낙하(낙하 비용 페널티 없음)
     }
 }

@@ -69,10 +69,18 @@ namespace ReTrap
         /// <summary>하강 칸 수 (하강이 아니면 0).</summary>
         public readonly int DropHeight;
 
+        /// <summary>상승 칸 수 (상승이 아니면 0). 점프 링크의 아크 높이 산출에 사용.</summary>
+        public readonly int AscendCells;
+
+        /// <summary>가로 이동 칸수 (|To.x - From.x|). 다중 셀 점프/낙하 링크에서 1보다 클 수 있다.</summary>
+        public readonly int HorizontalCells;
+
         /// <summary>
         /// From→To 이동 1건을 표현합니다. <paramref name="fallbackDirX"/> 는 수평 변위가
         /// 없는 순수 수직 이동(제자리 상승/하강)일 때 DirX 를 대신 채울 현재 진행 방향
         /// (보통 에이전트의 FacingSign)입니다.
+        /// <para>A* 가 링크(점프/낙하) 기반으로 확장하므로 From→To 가 인접하지 않은
+        /// 다중 칸 이동일 수 있다 — DropHeight/AscendCells/HorizontalCells 모두 이를 반영한다.</para>
         /// </summary>
         public MoveQuery(GridCoord from, GridCoord to, int fallbackDirX)
         {
@@ -82,9 +90,11 @@ namespace ReTrap
             int dx = to.x - from.x;
             DirX = dx != 0 ? (dx > 0 ? 1 : -1) : (fallbackDirX >= 0 ? 1 : -1);
 
-            IsAscending  = to.y > from.y;
-            IsDescending = to.y < from.y;
-            DropHeight   = IsDescending ? (from.y - to.y) : 0;
+            IsAscending     = to.y > from.y;
+            IsDescending    = to.y < from.y;
+            DropHeight      = IsDescending ? (from.y - to.y) : 0;
+            AscendCells     = IsAscending  ? (to.y - from.y) : 0;
+            HorizontalCells = Mathf.Abs(dx);
         }
     }
 
@@ -123,6 +133,13 @@ namespace ReTrap
 
         /// <summary>점프/호핑 아크 파라미터 수정 (높이뛰기·멀리뛰기·천진난만).</summary>
         public virtual void ModifyArc(ref ArcSpec arc) { }
+
+        /// <summary>
+        /// <see cref="TraversalProfile"/> 파생 시 점프 스펙을 질의한다. 여러 Trait 가 동시에
+        /// 부여되면(이론상 배타 그룹으로 대부분 막히지만) 각자 Mathf.Max 로 상향 조정하는
+        /// 방식으로 합성한다. 기본 구현은 아무것도 하지 않음(점프 스펙에 영향 없는 태그).
+        /// </summary>
+        public virtual void ModifyTraversal(ref int maxJumpHeight, ref int maxJumpDistance) { }
 
         // ── 공용 유틸 — 월드 좌표 → 셀 좌표 ──────────────────────────────────
 
