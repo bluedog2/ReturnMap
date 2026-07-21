@@ -77,7 +77,8 @@ namespace ReTrap
         {
             if (IsDead) return false; // 이미 사망 처리된 개체 — 중복 처리 방지
 
-            int prevHp = CurrentHP;
+            // 무적 부여/이벤트 발행 판단 기준 — 쉴드가 전량 흡수해 HP 변화가 없어도 이 값을 쓴다.
+            int originalAmount = amount;
 
             // 쉴드 우선 차감
             if (Shield > 0)
@@ -103,13 +104,15 @@ namespace ReTrap
                 return true;
             }
 
-            // 실제로 HP 가 깎이고 생존한 경우에만 무적 부여 + 피격 이벤트 발행
-            // (쉴드가 전부 흡수해 HP 변화가 없으면 무적/연출을 켤 필요가 없다)
-            int actualDamage = prevHp - CurrentHP;
-            if (actualDamage > 0)
+            // 피해 시도가 (쉴드로 전량 차단되었든 HP 에 실제로 적용되었든) 처리되고 생존한
+            // 모든 경우에 무적 부여 + 피격 이벤트 발행. 쉴드가 전부 흡수해 HP 변화가 없다고
+            // 무적을 켜지 않으면 진동 가시 등이 매 사이클 쉴드를 연속으로 깎아 연타 방지 취지가
+            // 무력화된다. damage 인자는 쉴드 흡수분+HP 감소분을 합친 "총 피해 시도량"
+            // (originalAmount) — HitFlash 등 연출이 쉴드 흡수 히트에도 반응하도록 한다.
+            if (originalAmount > 0)
             {
                 _invulnerableUntil = Time.time + invulnerabilityDuration;
-                OnDamageTaken?.Invoke(CurrentHP, actualDamage);
+                OnDamageTaken?.Invoke(CurrentHP, originalAmount);
             }
 
             return false;

@@ -15,13 +15,12 @@ namespace ReTrap
     {
         public override void ModifyArc(ref ArcSpec arc)
         {
-            arc.useArc          = true;
-            arc.height          = 1.5f;
-            arc.horizontalCells = 1;
+            arc.useArc = true;
+            arc.height = Mathf.Max(arc.height, 1.5f); // 덮어쓰기 금지 — 상향만(규약 참고)
         }
 
-        /// <summary>세로 3칸까지 점프로 오를 수 있게 한다 (가로 사거리는 손대지 않음).</summary>
-        public override void ModifyTraversal(ref int maxJumpHeight, ref int maxJumpDistance)
+        /// <summary>세로 3칸까지 점프로 오를 수 있게 한다 (가로 사거리·낙하는 손대지 않음).</summary>
+        public override void ModifyTraversal(ref int maxJumpHeight, ref int maxJumpDistance, ref int maxFallHeight)
         {
             maxJumpHeight = Mathf.Max(maxJumpHeight, 3);
         }

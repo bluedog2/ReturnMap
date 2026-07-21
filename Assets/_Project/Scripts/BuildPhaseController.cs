@@ -76,6 +76,10 @@ namespace ReTrap
         /// HUD 가 버튼을 이 시점에 생성합니다.</summary>
         public event Action OnTrapsReady;
 
+        /// <summary><see cref="RemainingBudget"/> 이 외부(예: 가성비 타파 훅)에 의해 변경됐을 때 발행.
+        /// 인자는 변경 후 잔여 예산. HUD 는 매 프레임 폴링하므로 구독은 선택.</summary>
+        public event Action<int> OnBudgetChanged;
+
         // ── 내부 상태 ─────────────────────────────────────────────────────────
 
         private int            _selected;
@@ -319,6 +323,19 @@ namespace ReTrap
             RefreshGhostSprite();
             RefreshSlotHighlights();
             SetGhostVisible(false); // 다음 UpdateHover 에서 모드에 맞게 다시 표시
+        }
+
+        /// <summary>
+        /// 외부(가성비 타파 S-08 훅 등)에서 빌드 예산을 차감합니다. 0 미만으로는 내려가지
+        /// 않으며(클램프), 변경 시 <see cref="OnBudgetChanged"/> 를 발행합니다.
+        /// </summary>
+        public void DrainBudget(int amount)
+        {
+            if (amount <= 0) return;
+
+            RemainingBudget = Mathf.Max(0, RemainingBudget - amount);
+            RefreshSlotHighlights();
+            OnBudgetChanged?.Invoke(RemainingBudget);
         }
 
         // ── 이벤트 핸들러 ─────────────────────────────────────────────────────

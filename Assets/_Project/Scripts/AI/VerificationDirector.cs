@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ReTrap
@@ -45,12 +46,13 @@ namespace ReTrap
         [Tooltip("로스터 확정 시드. 0 = 실행 시 랜덤 시드. 같은 시드는 같은 태그 구성을 재현한다.")]
         private int rosterSeed = 0;
 
-        [Header("AI 구성 (폴백 전용)")]
         [SerializeField]
-        [Tooltip("4단계 이전 단일 에이전트 테스트용 성향 — spawnTable 이 있으면 미사용" +
-                 "(각 개체의 AgentArchetype.Personality 가 우선 적용된다).")]
-        private AIPersonality personality;
+        [Tooltip("연구소(아웃게임) 가중치 보정을 반영할 연구 노드 목록. " +
+                 "비워두면 스폰 테이블의 기본 가중치를 그대로 사용한다. " +
+                 "진입 전 미리보기(StagePreviewPanel)와 같은 노드 목록을 꽂아야 표기 확률과 실제 스폰이 일치한다.")]
+        private ResearchNodeDefinition[] researchNodes;
 
+        [Header("AI 구성 (폴백 전용)")]
         [SerializeField]
         [Tooltip("씬에 스폰할 검증 AI 캐릭터 프리팹 (VerificationAgent 포함)")]
         private VerificationAgent agentPrefab;
@@ -99,6 +101,10 @@ namespace ReTrap
         private ComponentPool<VerificationAgent> _agentPool;
         private AgentWaveController              _wave;
         private StageAgentRoster                 _roster; // 스테이지 진입 시 1회 확정, 재검증에도 재사용
+
+        // 연구 보정이 반영된 최종 가중치 버퍼 — 로스터 확정 시 1회 계산, 리스트 재사용
+        private readonly List<StageSpawnTable.TagWeightEntry> _finalWeights
+            = new List<StageSpawnTable.TagWeightEntry>();
 
         // ── Unity ─────────────────────────────────────────────────────────────
 
@@ -176,7 +182,19 @@ namespace ReTrap
             if (spawnTable != null)
             {
                 int seed = rosterSeed != 0 ? rosterSeed : System.Environment.TickCount;
-                _roster  = StageAgentRoster.Build(spawnTable, seed);
+
+                if (researchNodes != null && researchNodes.Length > 0)
+                {
+                    // 아웃게임 연구 보정이 반영된 최종 가중치로 굴린다.
+                    // TagWeightService 가 공식의 유일한 진실 소스이므로
+                    // 진입 전 UI 의 표기 확률과 실제 스폰 확률이 항상 일치한다.
+                    TagWeightService.ComputeFinalWeights(spawnTable, researchNodes, _finalWeights);
+                    _roster = StageAgentRoster.Build(spawnTable, seed, _finalWeights);
+                }
+                else
+                {
+                    _roster = StageAgentRoster.Build(spawnTable, seed);
+                }
             }
             else
             {

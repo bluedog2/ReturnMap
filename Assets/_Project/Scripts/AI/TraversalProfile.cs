@@ -45,15 +45,23 @@ namespace ReTrap
             new TraversalProfile(1, 2, 4, DamageType.None, false);
 
         /// <summary>
-        /// 개체의 <see cref="TagSet"/> 에서 이동 능력 프로파일을 파생시킵니다.
-        /// 각 태그의 <see cref="MovementTrait"/> 가 있으면 <see cref="MovementTrait.ModifyTraversal"/>
-        /// 로 점프 스펙을 질의하고(여러 개면 각 Trait 이 Mathf.Max 로 상향), 면역/지름길 중독은
-        /// <see cref="TagSet"/> 의 접힌 결과를 그대로 사용합니다.
+        /// 개체의 <see cref="TagSet"/> 에서 이동 능력 프로파일을 파생시킵니다. 로컬 초기값은
+        /// <see cref="Default"/> 에서 시작해(단일 소스 — 하드코딩 중복 방지) 각 태그의
+        /// <see cref="MovementTrait"/> 가 있으면 <see cref="MovementTrait.ModifyTraversal"/> 로
+        /// 점프/낙하 스펙을 질의합니다(점프계는 여러 개면 각 Trait 이 Mathf.Max 로 상향,
+        /// 낙하 허용치는 Mathf.Min 으로 하향). 면역은 <see cref="TagSet"/> 의 접힌 결과를
+        /// 그대로 사용합니다.
+        /// <para><b>낙하 허용치 우선순위</b>: 지름길 중독(RecklessDrop)이 기본값을
+        /// int.MaxValue 로 올려놔도, 안전제일(<see cref="CliffReverseTrait"/>)의
+        /// ModifyTraversal 은 Mathf.Min 으로 하향 클램프하므로 순서와 무관하게 항상 더
+        /// 작은 값(=안전제일)이 이긴다 — 두 태그가 동시 부여돼도 "낙사 메타 차단"이 우선.</para>
         /// </summary>
         public static TraversalProfile From(TagSet tags)
         {
-            int maxJumpHeight   = 1;
-            int maxJumpDistance = 2;
+            int  maxJumpHeight   = Default.MaxJumpHeight;
+            int  maxJumpDistance = Default.MaxJumpDistance;
+            bool recklessDrop    = tags != null && tags.HasFlag(SpecialFlag.RecklessDrop);
+            int  maxFallHeight   = recklessDrop ? int.MaxValue : Default.MaxFallHeight;
 
             if (tags != null)
             {
@@ -61,12 +69,10 @@ namespace ReTrap
                 for (int i = 0; i < list.Count; i++)
                 {
                     MovementTrait trait = list[i] != null ? list[i].MovementTrait : null;
-                    trait?.ModifyTraversal(ref maxJumpHeight, ref maxJumpDistance);
+                    trait?.ModifyTraversal(ref maxJumpHeight, ref maxJumpDistance, ref maxFallHeight);
                 }
             }
 
-            bool recklessDrop = tags != null && tags.HasFlag(SpecialFlag.RecklessDrop);
-            int  maxFallHeight = recklessDrop ? int.MaxValue : 4;
             DamageType immunities = tags != null ? tags.ImmunityMask : DamageType.None;
 
             return new TraversalProfile(maxJumpHeight, maxJumpDistance, maxFallHeight, immunities, recklessDrop);

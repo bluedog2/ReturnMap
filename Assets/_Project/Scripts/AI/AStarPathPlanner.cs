@@ -17,9 +17,11 @@ namespace ReTrap
     ///   <item><b>걷기</b>: 좌우 인접 칸이 grounded 면 비용 1 + dangerCost.</item>
     ///   <item><b>낙하</b>: 좌우 인접 칸이 공중이면 <see cref="NavGrid.TryFindLanding"/> 으로
     ///         착지점을 찾아 링크. 비용 = 1 + 낙차*0.5(지름길 중독은 0) + 착지칸 dangerCost.</item>
-    ///   <item><b>점프</b>: <see cref="TraversalProfile.MaxJumpDistance"/> × <see cref="TraversalProfile.MaxJumpHeight"/>
-    ///         범위의 grounded 후보에 대해 ㄱ자 3구간 통과 검사(벽 뚫기 방지) 후 링크.
-    ///         비용 = 1 + dx*0.5 + dy*0.5 + 도착칸 dangerCost (걷기보다 비싸 불필요한 점프 억제).</item>
+    ///   <item><b>점프</b>: <see cref="TraversalProfile.MaxJumpDistance"/>(가로) × <see cref="TraversalProfile.MaxJumpHeight"/>
+    ///         (상승) ~ <see cref="TraversalProfile.MaxFallHeight"/>(하강, dx≥2 만 — dx=1 하강은
+    ///         낙하 링크가 이미 커버) 범위의 grounded 후보에 대해 ㄱ자 3구간 통과 검사(벽 뚫기
+    ///         방지) 후 링크. 비용 = 1 + dx*0.5 + 수직분*0.5(상승은 그대로, 하강은 낙하 링크와
+    ///         동일하게 지름길 중독이면 0) + 도착칸 dangerCost (걷기보다 비싸 불필요한 점프 억제).</item>
     /// </list>
     /// </para>
     /// <para>휴리스틱 = 맨해튼 거리.</para>
@@ -141,13 +143,19 @@ namespace ReTrap
             ExpandFall(grid, in profile, cx + 1, cy, current, goal, w);
             ExpandFall(grid, in profile, cx - 1, cy, current, goal, w);
 
-            // 3) 점프 — dx: 1..MaxJumpDistance, dy: 0..MaxJumpHeight (하강 점프는 낙하가 담당)
+            // 3) 점프 — dx: 1..MaxJumpDistance, dy: -maxDescend..MaxJumpHeight.
+            //    dy<0(하강 점프)은 dx≥2 원거리 도약만 대상으로 한다 — dx=1 하강은 위의
+            //    낙하 링크(2)가 이미 커버하므로 여기서 중복 생성하지 않는다.
+            //    maxDescend 는 RecklessDrop(MaxFallHeight=int.MaxValue) 폭주를 막기 위해
+            //    그리드 높이로 클램프한다.
+            int maxDescend = Mathf.Min(profile.MaxFallHeight, grid.Height);
             for (int dx = 1; dx <= profile.MaxJumpDistance; dx++)
-            for (int dy = 0; dy <= profile.MaxJumpHeight; dy++)
+            for (int dy = -maxDescend; dy <= profile.MaxJumpHeight; dy++)
             {
                 if (dx == 1 && dy == 0) continue; // 걷기와 완전히 동일한 링크라 스킵
-                ExpandJump(grid, cx, cy, cx + dx, cy + dy, current, goal, w);
-                ExpandJump(grid, cx, cy, cx - dx, cy + dy, current, goal, w);
+                if (dx == 1 && dy < 0)  continue; // 낙하 링크(ExpandFall)와 중복 방지
+                ExpandJump(grid, in profile, cx, cy, cx + dx, cy + dy, current, goal, w);
+                ExpandJump(grid, in profile, cx, cy, cx - dx, cy + dy, current, goal, w);
             }
         }
 
@@ -180,7 +188,8 @@ namespace ReTrap
             RelaxNeighbor(idx, current, cost, nx, landY, goal, w);
         }
 
-        private void ExpandJump(NavGrid grid, int cx, int cy, int tx, int ty, int current, GridCoord goal, int w)
+        private void ExpandJump(NavGrid grid, in TraversalProfile profile, int cx, int cy, int tx, int ty,
+                                int current, GridCoord goal, int w)
         {
             if (!grid.InBounds(tx, ty) || !grid.IsGrounded(tx, ty)) return;
 
@@ -189,9 +198,12 @@ namespace ReTrap
 
             if (!IsJumpPathClear(grid, cx, cy, tx, ty)) return;
 
-            int   dx   = Mathf.Abs(tx - cx);
-            int   dy   = ty - cy; // 호출부가 dy>=0 범위만 넘김 (하강 점프는 낙하 링크가 담당)
-            float cost = 1f + dx * 0.5f + dy * 0.5f + grid.Get(tx, ty).dangerCost;
+            int dx = Mathf.Abs(tx - cx);
+            int dy = ty - cy; // 상승(+)/평행(0)/하강(-) — 호출부가 -maxDescend..MaxJumpHeight 범위로 넘김
+
+            // 하강분은 낙하 링크(ExpandFall)와 동일한 계수 규칙을 적용(지름길 중독이면 0).
+            float verticalCost = dy >= 0 ? dy * 0.5f : Mathf.Abs(dy) * (profile.RecklessDrop ? 0f : 0.5f);
+            float cost = 1f + dx * 0.5f + verticalCost + grid.Get(tx, ty).dangerCost;
 
             RelaxNeighbor(idx, current, cost, tx, ty, goal, w);
         }
@@ -200,6 +212,8 @@ namespace ReTrap
         /// 점프 궤적이 지형을 뚫지 않는지 검사하는 안전한 근사(ㄱ자 3구간):
         /// (1) 출발 열에서 정점 높이까지 수직, (2) 정점 높이에서 도착 열까지 수평,
         /// (3) 도착 열에서 도착 높이까지 수직 하강. 한 칸이라도 solid 면 무효.
+        /// <para>정점(apexY = Max(cy, ty) + 1)이 출발/도착 두 높이보다 항상 높으므로 하강
+        /// 점프(ty &lt; cy)에도 그대로 유효하다 — 별도 분기 불필요.</para>
         /// </summary>
         private static bool IsJumpPathClear(NavGrid grid, int cx, int cy, int tx, int ty)
         {

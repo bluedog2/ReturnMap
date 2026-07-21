@@ -23,4 +23,5 @@ MonoBehaviour:
   immunities: 0
   flags: 0
   movementTrait: {fileID: 0}
-  eventHooks: []
+  eventHooks:
+  - {fileID: 11400000, guid: 05eb7000b61e70d48b5621753fd28852, type: 2}

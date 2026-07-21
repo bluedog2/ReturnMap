@@ -229,7 +229,12 @@ namespace ReTrap
                 }
 
                 // 2) 실행 — 풀에서 에이전트를 꺼내 경로 수행을 지켜본다
-                Vector2 spawnPos = map.CellToWorld(map.spawnPoint.x, map.spawnPoint.y, origin);
+                //    ⚠ 스폰 좌표는 map.spawnPoint 원본이 아니라 path[0] 기준으로 계산한다.
+                //    플래너(AStarPathPlanner.TrySnapToGround)가 공중 스폰 셀을 아래 착지 셀로
+                //    스냅해 path[0]이 원본 스폰 셀과 달라질 수 있는데, 원본 좌표로 스폰하면
+                //    에이전트가 착지 지점을 건너뛰고 path[1]로 바로 이동하는 시각 관통이 생긴다.
+                //    path 는 플래너의 재사용 버퍼라 다음 FindPath 호출 시 덮이므로 여기서 즉시 계산한다.
+                Vector2 spawnPos = map.CellToWorld(path[0].x, path[0].y, origin);
                 VerificationAgent agent = _pool.Get(spawnPos, Quaternion.identity);
                 runner.ActiveAgent = agent;
 

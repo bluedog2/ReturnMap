@@ -59,20 +59,15 @@ namespace ReTrap
                 return DamageResult.Killed;
             }
 
-            // 2) 무적(i-frame) — 직전 피격의 무적 시간 중이면 피해·훅·부수효과 전부 없음.
-            //    가시 진동 사이클마다 트리거가 재발동하는 연타사를 막는다.
-            if (health.IsInvulnerable)
-                return DamageResult.Immune;
-
-            // 3) 공중부양(Hover) — 가시 센서가 미작동하므로 가시 피해는 아예 무시
+            // 2) 공중부양(Hover) — 가시 센서가 미작동하므로 가시 피해는 아예 무시
             if (type == DamageType.Spike && agent.HasFlag(SpecialFlag.Hover))
                 return DamageResult.Immune;
 
-            // 4) 면역 마스크 — 태그가 선언한 면역 피해 타입
+            // 3) 면역 마스크 — 태그가 선언한 면역 피해 타입
             if (agent.IsImmuneTo(type))
                 return DamageResult.Immune;
 
-            // 5) 철벽 방패(FrontShieldOnly) — 화살이 전방(바라보는 방향)에서 오면 면역,
+            // 4) 철벽 방패(FrontShieldOnly) — 화살이 전방(바라보는 방향)에서 오면 면역,
             //    후방에서 오면 그대로 통과시켜 피해를 받는다.
             if (type == DamageType.Arrow && agent.HasFlag(SpecialFlag.FrontShieldOnly))
             {
@@ -82,10 +77,18 @@ namespace ReTrap
                     return DamageResult.Immune;
             }
 
-            // 6) 스펀지 몸(AbsorbProjectile) — 화살을 데미지 없이 흡수(소멸). 호출측이
+            // 5) 스펀지 몸(AbsorbProjectile) — 화살을 데미지 없이 흡수(소멸). 호출측이
             //    투사체 소멸 처리를 담당 — 뒤따르는 동료에게 갈 화살을 대신 지워주는 탱커.
             if (type == DamageType.Arrow && agent.HasFlag(SpecialFlag.AbsorbProjectile))
                 return DamageResult.Absorbed;
+
+            // 6) 무적(i-frame) — 위의 면역/철벽방패/흡수 같은 "수동적 상성" 판정은 무적 여부와
+            //    무관하게 항상 먼저 성립해야 한다(예: 무적 중에도 스펀지 몸은 화살을 흡수해
+            //    소멸시켜야지, 그냥 관통시켜 뒤의 동료를 맞히면 안 된다). 무적은 오직
+            //    "실제로 HP 가 깎일 뻔한" 피해만 막는 마지막 관문이다.
+            //    가시 진동 사이클마다 트리거가 재발동하는 연타사를 막는다.
+            if (health.IsInvulnerable)
+                return DamageResult.Immune;
 
             // 7) 피해 적용
             bool killed = health.TakeDamage(amount);

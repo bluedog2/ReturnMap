@@ -86,7 +86,7 @@ namespace ReTrap
             }
 
             // 1) 지형 solid + 학습 페널티 초기화. grounded 는 함정 solid 마킹이 끝난 뒤
-            //    2패스에서 계산한다(함정이 점유한 칸도 solid 로 반영되어야 그 위 칸이
+            //    3) 패스에서 계산한다(함정이 점유한 칸도 solid 로 반영되어야 그 위 칸이
             //    grounded 로 잡히기 때문 — "슬롯=지형" 불변식).
             for (int y = 0; y < g.Height; y++)
             for (int x = 0; x < g.Width; x++)
@@ -99,15 +99,40 @@ namespace ReTrap
                 };
             }
 
-            // 2) 설치된 함정 칸 → 솔리드 마킹 (슬롯=지형 불변식).
-            //    이동형 함정(DropHammer 등, ActsAsSolidTile=false)은 opt-out.
+            // 2) 설치된 함정 1회 순회 — 솔리드 마킹 + 위험 비용을 함께 처리.
+            //    (TrapSlotRegistry.GetOccupied() 는 yield 이터레이터라 순회할 때마다 열거자가
+            //    새로 할당된다 — 2회 순회하지 않도록 여기서 한 번에 끝낸다. GetComponent 도
+            //    TrapSlotMarker.OccupiedTrap 캐시를 써서 슬롯당 1회조차 호출하지 않는다.)
             foreach (var slot in TrapSlotRegistry.GetOccupied())
             {
-                TrapBase trap = slot.OccupiedBy != null ? slot.OccupiedBy.GetComponent<TrapBase>() : null;
-                if (trap == null || !trap.ActsAsSolidTile) continue;
-                if (!g.InBounds(slot.GridX, slot.GridY)) continue;
+                TrapBase trap = slot.OccupiedTrap;
+                if (trap == null) continue;
 
-                g._nodes[slot.GridY * g.Width + slot.GridX].solid = true;
+                // 2-a) 솔리드 마킹 (슬롯=지형 불변식) — 이동형 함정(DropHammer 등,
+                //      ActsAsSolidTile=false)은 opt-out. 함정 상태(Dud 등)와 무관하게 항상 지형.
+                if (trap.ActsAsSolidTile && g.InBounds(slot.GridX, slot.GridY))
+                    g._nodes[slot.GridY * g.Width + slot.GridX].solid = true;
+
+                // 2-b) 위험 비용 — anchor 별 위험 칸(밟고 지나가는 바깥쪽 1칸)에 부여.
+                //      Floor→(x,y+1) / Ceiling→(x,y-1) / LeftWall→(x+1,y) / RightWall→(x-1,y)
+                //      (TrapBase.OutwardOf 와 동일 규약 — 중복 구현하지 않고 그대로 재사용)
+                //      Dud(발사 정지)/Beneficial(무해 통과) 상태인 함정은 TrapBase.OnTriggerEnter2D
+                //      에서도 이미 무해하게 통과시키므로 회피 대상에서 제외한다 — 그렇지 않으면
+                //      함정 혐오로 Mutate(Dud) 된 무해 함정을 다음 시도가 계속 회피하게 된다.
+                if (trap.CurrentState == TrapState.Dud || trap.CurrentState == TrapState.Beneficial)
+                    continue;
+
+                // 면역 반영: profile.Immunities 에 포함된 피해 타입의 함정은 위험 비용 0
+                // (예: 둥글둥글이 가시밭을 최단거리로 지나는 것이 올바른 행동).
+                if ((trap.DamageType & profile.Immunities) != DamageType.None) continue;
+
+                Vector2Int outward = TrapBase.OutwardOf(slot.Anchor);
+                int dx = slot.GridX + outward.x;
+                int dy = slot.GridY + outward.y;
+                if (!g.InBounds(dx, dy)) continue;
+
+                g._nodes[dy * g.Width + dx].dangerCost
+                    += trap.GetNodeCostWeight() * p.dangerCostMultiplier;
             }
 
             // 3) grounded 계산 — solid 확정 후 1패스. y==0 은 맵 바닥 밖이라 grounded 아님.
@@ -117,26 +142,6 @@ namespace ReTrap
                 int  idx         = y * g.Width + x;
                 bool solidBelow  = y > 0 && g._nodes[idx - g.Width].solid;
                 g._nodes[idx].grounded = !g._nodes[idx].solid && solidBelow;
-            }
-
-            // 4) 설치된 함정의 위험 비용 — anchor 별 위험 칸(밟고 지나가는 바깥쪽 1칸)에 부여.
-            //    Floor→(x,y+1) / Ceiling→(x,y-1) / LeftWall→(x+1,y) / RightWall→(x-1,y)
-            //    (TrapBase.OutwardOf 와 동일 규약 — 중복 구현하지 않고 그대로 재사용)
-            //    면역 반영: profile.Immunities 에 포함된 피해 타입의 함정은 위험 비용 0
-            //    (예: 둥글둥글이 가시밭을 최단거리로 지나는 것이 올바른 행동).
-            foreach (var slot in TrapSlotRegistry.GetOccupied())
-            {
-                TrapBase trap = slot.OccupiedBy != null ? slot.OccupiedBy.GetComponent<TrapBase>() : null;
-                if (trap == null) continue;
-                if ((trap.DamageType & profile.Immunities) != DamageType.None) continue;
-
-                Vector2Int outward = TrapBase.OutwardOf(slot.Anchor);
-                int x = slot.GridX + outward.x;
-                int y = slot.GridY + outward.y;
-                if (!g.InBounds(x, y)) continue;
-
-                g._nodes[y * g.Width + x].dangerCost
-                    += trap.GetNodeCostWeight() * p.dangerCostMultiplier;
             }
 
             return g;

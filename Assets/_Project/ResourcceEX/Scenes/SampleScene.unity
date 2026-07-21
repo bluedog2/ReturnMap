@@ -760,6 +760,7 @@ GameObject:
   - component: {fileID: 984637848}
   - component: {fileID: 984637851}
   - component: {fileID: 984637850}
+  - component: {fileID: 984637852}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -894,9 +895,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810b9eedef82d69409c1a2b17487665d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReTrap.VerificationDirector
-  spawnTable: {fileID: 0}
+  spawnTable: {fileID: 11400000, guid: 9e6ccb5abc6dded4e876be62f935721d, type: 2}
   rosterSeed: 0
-  personality: {fileID: 11400000, guid: 9c31f5a7e2d84b6f8a4d0c7b1e5a2f38, type: 2}
+  researchNodes:
+  - {fileID: 11400000, guid: 07554329f10669746827648c897f7c4b, type: 2}
+  - {fileID: 11400000, guid: d0a47bfe03eac7645b49e3a2f874deb6, type: 2}
+  - {fileID: 11400000, guid: 93e6b7dfff2765542a05bfe7cd9a4f7c, type: 2}
+  - {fileID: 11400000, guid: 428a2524ab87f114a86bccd8be84682d, type: 2}
+  - {fileID: 11400000, guid: 45ce6602f09856a4d9ec221b10970a7e, type: 2}
+  - {fileID: 11400000, guid: ad1e40ad25ec7fc48a1ed231a008f555, type: 2}
   agentPrefab: {fileID: 7100000000000000001, guid: 2f988ac2cde5bed43a1ceb90ffca658d, type: 3}
   archetype: {fileID: 11400000, guid: f6559fde43659ed4293f7ade8604a951, type: 2}
   debugTags:
@@ -904,6 +911,23 @@ MonoBehaviour:
   timeLimit: 60
   poolPrewarm: 1
   deathLingerTime: 0.6
+--- !u!114 &984637852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984637843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10df0890701b7c54a9ab1bfa1de91093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReTrap.VerificationSpeedController
+  speedSteps:
+  - 1
+  - 2
+  - 4
+  skipSpeed: 10
 --- !u!1 &1156230311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,7 +1196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20950b705104ec9478745d04c0403151, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReTrap.PlayerHealth
-  maxHp: 3
+  maxHp: 1
   iFrameDuration: 0.5
 --- !u!114 &1250373948
 MonoBehaviour:
@@ -1188,8 +1212,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ReTrap.PlayerHitFlash
   target: {fileID: 0}
   flashColor: {r: 1, g: 0.25, b: 0.25, a: 1}
-  blinkCount: 2
   blinkInterval: 0.08
+  blinkCount: 2
 --- !u!114 &1250373949
 MonoBehaviour:
   m_ObjectHideFlags: 0

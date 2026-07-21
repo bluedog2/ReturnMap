@@ -14,11 +14,12 @@ namespace ReTrap
     [CreateAssetMenu(menuName = "ReTrap/AI Trait/천진난만 (Auto Hop)", fileName = "Trait_AutoHop")]
     public class AutoHopTrait : MovementTrait
     {
+        // 천진난만은 "항상 이렇게 보이게 강제"가 태그 의도이므로 예외적으로 고정값을
+        // 덮어쓴다(ModifyArc 의 기본 규약인 Mathf.Max 상향/보정과 다름 — 의도적 예외).
         public override void ModifyArc(ref ArcSpec arc)
         {
-            arc.useArc          = true;
-            arc.horizontalCells = 2;
-            arc.height          = 0.6f;
+            arc.useArc = true;
+            arc.height = 0.6f;
         }
     }
 }

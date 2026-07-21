@@ -19,7 +19,9 @@ namespace ReTrap
     /// <para><b>로코모션 FSM(3단계)</b>: 여전히 물리 없는 키네마틱 웨이포인트 이동이지만,
     /// 셀 1칸 전진마다 <see cref="MovementTrait"/> 파이프라인(OnBeforeMove → 이동 →
     /// 착지 경직 → OnCellAdvanced)을 거친다. Trait 가 없는(태그 미배선) 개체는 파이프라인이
-    /// 사실상 빈 배열이라 기존 직선 이동과 동일하게 동작한다.</para>
+    /// 사실상 빈 배열이라 기존 직선 이동과 동일하게 동작한다.
+    /// (과거 있던 <c>LocomotionState</c> enum 은 대입만 되고 아무도 읽지 않는 write-only
+    /// 상태라 제거했다 — 애니메이터와 연동한 실제 상태 전이가 필요해지면 그때 재도입할 것.)</para>
     ///
     /// <para>TODO(실행 본체):
     /// 1) 지금은 웨이포인트 직선/아크 이동(자리표시자) — 실제로는 Rigidbody2D 기반
@@ -48,13 +50,6 @@ namespace ReTrap
         private SpriteRenderer _sprite;   // 좌우 반전용
         private AgentContext   _ctx;      // 태그/스탯 조회 (null 허용 — 미배선 프리팹 하위 호환)
 
-        // ── 로코모션 FSM 상태 ─────────────────────────────────────────────────
-
-        /// <summary>로코모션 진행 상태 — 연출·디버그 구분용 (분기 대부분은 코루틴 흐름이 담당).</summary>
-        private enum LocomotionState { Moving, Paused, SteppingBack, Arcing, Stunned, Dead }
-
-        private LocomotionState _locomotionState = LocomotionState.Moving;
-
         // ── Trait 파이프라인 — 개체별 상태는 배열로 분리(플라이웨이트 SO 는 무상태) ──
 
         private readonly List<MovementTrait> _traitList   = new List<MovementTrait>(TagSet.MaxTagsPerAgent);
@@ -65,6 +60,19 @@ namespace ReTrap
 
         /// <summary>백스텝 태그 훅 등 외부(피격)에서 요청한 후퇴 칸수. 다음 셀 루프에서 소비.</summary>
         private int _pendingStepBackCells;
+
+        /// <summary>
+        /// <see cref="DoStepBack"/> 완료 후 결과 committedIndex. 코루틴(이터레이터) 메서드는
+        /// ref/out 매개변수를 가질 수 없어 인스턴스 필드로 결과를 전달한다 — 호출부가
+        /// yield 완료 직후 이 값을 읽어 committedIndex/CurrentCell 을 갱신한다.
+        /// </summary>
+        private int _stepBackResultIndex;
+
+        /// <summary>안전제일 등 veto 무한 왕복 방지용 — 마지막으로 veto 가 발생한 committedIndex.</summary>
+        private int _lastVetoIndex = -1;
+
+        /// <summary>같은 committedIndex 에서 연속으로 veto 가 발생한 횟수.</summary>
+        private int _vetoStreak;
 
         // ── 결과 상태 — Director 가 읽음 ─────────────────────────────────────
 
@@ -122,6 +130,8 @@ namespace ReTrap
             IsDone                = false;
             ReachedGoal           = false;
             _pendingStepBackCells = 0;
+            _lastVetoIndex        = -1;
+            _vetoStreak           = 0;
             _params               = p;
 
             // ctx 가 있으면 태그가 접힌 스탯을 기준으로, 없으면 기존 baseMoveSpeed 로.
@@ -137,14 +147,13 @@ namespace ReTrap
             }
 
             int committedIndex = 0;
-            CurrentCell      = path[0];
-            _locomotionState = LocomotionState.Moving;
+            CurrentCell = path[0];
 
             if (_animator != null) _animator.Play(StateRun);
 
             while (true)
             {
-                if (IsDone) { _locomotionState = LocomotionState.Dead; yield break; }
+                if (IsDone) yield break;
 
                 // ── 외부(피격) 백스텝 요청 우선 처리 ────────────────────────────
                 if (_pendingStepBackCells > 0)
@@ -152,17 +161,14 @@ namespace ReTrap
                     int cells = _pendingStepBackCells;
                     _pendingStepBackCells = 0;
 
-                    int newIndex = Mathf.Max(0, committedIndex - cells);
-                    _locomotionState = LocomotionState.SteppingBack;
-                    yield return WalkBackward(path, committedIndex, newIndex, map, origin);
+                    yield return DoStepBack(path, committedIndex, cells, map, origin);
                     if (IsDone) yield break;
 
-                    committedIndex   = newIndex;
-                    CurrentCell      = path[newIndex];
-                    _locomotionState = LocomotionState.Moving;
+                    committedIndex = _stepBackResultIndex;
+                    CurrentCell    = path[committedIndex];
 
-                    // WalkBackward 가 0칸 이동(이미 index 0)으로 끝났을 수 있으므로,
-                    // 무브먼트 없이 continue 만 반복해 프레임을 소비 안 하는 무한루프를 방지.
+                    // 링크 경계에 막혀 0칸 이동으로 끝났을 수 있으므로, 무브먼트 없이
+                    // continue 만 반복해 프레임을 소비 안 하는 무한루프를 방지.
                     yield return null;
                     continue;
                 }
@@ -180,35 +186,32 @@ namespace ReTrap
 
                 if (before.pauseSeconds > 0f)
                 {
-                    _locomotionState = LocomotionState.Paused;
                     yield return PauseFor(before.pauseSeconds);
                     if (IsDone) yield break;
                 }
 
-                if (before.stepBackCells > 0)
+                if (before.vetoMove || before.stepBackCells > 0)
                 {
-                    int newIndex = Mathf.Max(0, committedIndex - before.stepBackCells);
-                    _locomotionState = LocomotionState.SteppingBack;
-                    yield return WalkBackward(path, committedIndex, newIndex, map, origin);
-                    if (IsDone) yield break;
+                    // 같은 지점에서 veto 가 3연속 발생하면(안전제일의 낙차 왕복 등) 이번엔
+                    // veto/stepBack 을 모두 무시하고 강행 통과시켜 무한 왕복을 끊는다.
+                    bool forceThrough = before.vetoMove && RegisterVetoAndCheckForce(committedIndex);
 
-                    committedIndex   = newIndex;
-                    CurrentCell      = path[newIndex];
-                    _locomotionState = LocomotionState.Moving;
+                    if (!forceThrough)
+                    {
+                        if (before.stepBackCells > 0)
+                        {
+                            yield return DoStepBack(path, committedIndex, before.stepBackCells, map, origin);
+                            if (IsDone) yield break;
 
-                    // WalkBackward 가 0칸 이동(이미 index 0)으로 끝났을 수 있으므로,
-                    // 무브먼트 없이 continue 만 반복해 프레임을 소비 안 하는 무한루프를 방지.
-                    yield return null;
-                    continue; // 이번 이동 예정지는 무효 — 다음 루프에서 새 목표로 재평가
-                }
+                            committedIndex = _stepBackResultIndex;
+                            CurrentCell    = path[committedIndex];
+                        }
 
-                if (before.vetoMove)
-                {
-                    _locomotionState = LocomotionState.Moving;
-                    // 정지·후퇴 없이 순수 veto 만 온 경우도 프레임을 반드시 소비한다
-                    // (안전제일은 stepBack 과 함께 오므로 위에서 이미 처리되고 여기 도달하지 않음).
-                    yield return null;
-                    continue; // 이동 스킵
+                        // 정지·후퇴 없이 순수 veto 만 온 경우도 프레임을 반드시 소비한다.
+                        yield return null;
+                        continue; // 이동 스킵(veto) 또는 후퇴 후 재평가
+                    }
+                    // forceThrough == true — 아래로 흘러 내려가 이번엔 그대로 이동한다.
                 }
 
                 // ── 실제 이동 ──────────────────────────────────────────────────
@@ -219,17 +222,15 @@ namespace ReTrap
                 // 아크 높이는 상승 칸수에 비례 — 계단 오르듯 낮게, 높이 점프는 크게.
                 ArcSpec arc = new ArcSpec
                 {
-                    height          = 0.5f + q.AscendCells * 0.3f,
-                    horizontalCells = q.HorizontalCells,
-                    useArc          = q.IsAscending || q.HorizontalCells >= 2,
+                    height = 0.5f + q.AscendCells * 0.3f,
+                    useArc = q.IsAscending || q.HorizontalCells >= 2,
                 };
                 for (int i = 0; i < _traitList.Count; i++)
                     _traitList[i].ModifyArc(ref arc);
 
-                _locomotionState = arc.useArc ? LocomotionState.Arcing : LocomotionState.Moving;
-
-                if (arc.useArc) yield return MoveArc(target, q, arc);
-                else            yield return MoveStraight(target, q);
+                if      (arc.useArc)     yield return MoveArc(target, q, arc);
+                else if (q.IsDescending) yield return MoveFall(target, q);
+                else                     yield return MoveStraight(target, q);
 
                 if (IsDone) yield break; // 이동 중 사망
 
@@ -240,38 +241,31 @@ namespace ReTrap
                 bool immuneToStun = _ctx != null && _ctx.HasFlag(SpecialFlag.NoLandingStun);
                 if (q.DropHeight >= 2 && !immuneToStun)
                 {
-                    _locomotionState = LocomotionState.Stunned;
                     yield return PauseFor(1f);
                     if (IsDone) yield break;
                 }
 
                 // ── OnCellAdvanced 합성 ──────────────────────────────────────────
-                TraitAction after = ComposeCellAdvanced();
+                TraitAction after = ComposeCellAdvanced(in q);
 
                 if (after.pauseSeconds > 0f)
                 {
-                    _locomotionState = LocomotionState.Paused;
                     yield return PauseFor(after.pauseSeconds);
                     if (IsDone) yield break;
                 }
 
                 if (after.stepBackCells > 0)
                 {
-                    int newIndex = Mathf.Max(0, committedIndex - after.stepBackCells);
-                    _locomotionState = LocomotionState.SteppingBack;
-                    yield return WalkBackward(path, committedIndex, newIndex, map, origin);
+                    yield return DoStepBack(path, committedIndex, after.stepBackCells, map, origin);
                     if (IsDone) yield break;
 
-                    committedIndex = newIndex;
-                    CurrentCell    = path[newIndex];
+                    committedIndex = _stepBackResultIndex;
+                    CurrentCell    = path[committedIndex];
                 }
-
-                _locomotionState = LocomotionState.Moving;
             }
 
-            ReachedGoal      = true;
-            IsDone           = true;
-            _locomotionState = LocomotionState.Moving;
+            ReachedGoal = true;
+            IsDone      = true;
             if (_animator != null) _animator.Play(StateIdle);
         }
 
@@ -326,17 +320,69 @@ namespace ReTrap
         }
 
         /// <summary>합성 규칙: pause=최댓값, stepBack=최댓값, veto=OR (동일 규칙).</summary>
-        private TraitAction ComposeCellAdvanced()
+        private TraitAction ComposeCellAdvanced(in MoveQuery q)
         {
             TraitAction combined = TraitAction.None;
             for (int i = 0; i < _traitList.Count; i++)
             {
-                TraitAction a = _traitList[i].OnCellAdvanced(ref _traitStates[i]);
+                TraitAction a = _traitList[i].OnCellAdvanced(ref _traitStates[i], in q);
                 combined.pauseSeconds  = Mathf.Max(combined.pauseSeconds, a.pauseSeconds);
                 combined.stepBackCells = Mathf.Max(combined.stepBackCells, a.stepBackCells);
                 combined.vetoMove      = combined.vetoMove || a.vetoMove;
             }
             return combined;
+        }
+
+        /// <summary>
+        /// 같은 committedIndex 에서 veto 가 연속 3회 발생했는지 추적한다. 안전제일
+        /// (CliffReverse)이 정상적으로는 플래너 단계(<see cref="TraversalProfile.MaxFallHeight"/>
+        /// 클램프)에서 낙차 2+ 링크 자체를 배제하므로 이 가드는 예외 상황(다른 이동 태그
+        /// 조합 등)에 대비한 안전망이다 — 무한 왕복을 끊기 위해 3회째에 강행 통과(true)를
+        /// 반환하고 스트릭을 리셋한다.
+        /// </summary>
+        private bool RegisterVetoAndCheckForce(int committedIndex)
+        {
+            if (committedIndex == _lastVetoIndex) _vetoStreak++;
+            else { _lastVetoIndex = committedIndex; _vetoStreak = 1; }
+
+            if (_vetoStreak < 3) return false;
+
+            _vetoStreak    = 0;
+            _lastVetoIndex = -1;
+            return true;
+        }
+
+        /// <summary>같은 y, |dx|==1 인 걷기 세그먼트인가 (점프/낙하 링크는 역행 불가).</summary>
+        private static bool IsWalkSegment(GridCoord a, GridCoord b)
+            => a.y == b.y && Mathf.Abs(a.x - b.x) == 1;
+
+        /// <summary>
+        /// 후퇴 요청 처리 공용 헬퍼(외부 피격 요청 / OnBeforeMove / OnCellAdvanced 3곳에서
+        /// 공용으로 사용). 경로를 역방향으로 순회하며 <b>걷기 세그먼트만</b> 소비해
+        /// <paramref name="requestedCells"/> 칸만큼 후퇴한다 — 점프/낙하 링크(역행 불가:
+        /// 낙하를 거슬러 오르거나 점프를 역재생하면 지형을 관통하는 시각 버그가 난다)
+        /// 경계에 닿으면 요청 칸수를 다 채우지 못했어도 즉시 중단한다.
+        /// <para>이터레이터 메서드는 ref/out 매개변수를 가질 수 없으므로 결과 인덱스는
+        /// <see cref="_stepBackResultIndex"/> 에 저장한다 — 호출부가 yield 완료 직후
+        /// 이 값으로 committedIndex/CurrentCell 을 갱신할 것.</para>
+        /// </summary>
+        private IEnumerator DoStepBack(IReadOnlyList<GridCoord> path, int fromIndex, int requestedCells,
+                                        MapData map, Vector2 origin)
+        {
+            int toIndex   = fromIndex;
+            int remaining = requestedCells;
+
+            while (remaining > 0 && toIndex > 0 && IsWalkSegment(path[toIndex], path[toIndex - 1]))
+            {
+                toIndex--;
+                remaining--;
+            }
+
+            _stepBackResultIndex = toIndex;
+
+            if (toIndex == fromIndex) yield break; // 바로 앞이 링크 경계 — 후퇴할 걷기 구간 없음
+
+            yield return WalkBackward(path, fromIndex, toIndex, map, origin);
         }
 
         /// <summary>
@@ -378,11 +424,44 @@ namespace ReTrap
         }
 
         /// <summary>
+        /// 하강(아크 아님) 세그먼트 전용 이동 — 낙하의 중력가속 연출. 수평(x)은 등속,
+        /// 수직(y)은 진행도 t 를 t² 로 보간해 가속하는 느낌을 낸다(할당 없는 ease-in).
+        /// 다만 Glide(낙하산) 보유 시에는 <see cref="ComputeFrameSpeed"/> 가 이미 하강
+        /// 속도를 ×0.3 로 늦추고 있고, 활공은 가속 없이 등속 하강이 자연스러우므로 y 도
+        /// t 그대로(선형) 사용한다. MoveArc(점프 포물선)와 혼동하지 않도록 별도 메서드로
+        /// 분리했다 — 아크가 적용되는 세그먼트(점프 링크)는 MoveArc 가 우선 처리한다.
+        /// </summary>
+        private IEnumerator MoveFall(Vector2 target, MoveQuery q)
+        {
+            Vector2 start = transform.position;
+            float   dist  = Vector2.Distance(start, target);
+            if (dist < 0.0001f) yield break;
+
+            bool gliding = _ctx != null && _ctx.HasFlag(SpecialFlag.Glide);
+
+            float traveled = 0f;
+            while (!IsDone && traveled < dist)
+            {
+                traveled += ComputeFrameSpeed(in q) * Time.deltaTime;
+                float t = Mathf.Clamp01(traveled / dist);
+
+                float ty = gliding ? t : t * t; // 일반 낙하만 가속(ease-in), 활공은 등속
+
+                Vector2 pos;
+                pos.x = Mathf.Lerp(start.x, target.x, t);
+                pos.y = Mathf.Lerp(start.y, target.y, ty);
+                transform.position = pos;
+
+                yield return null;
+            }
+
+            if (!IsDone) transform.position = target; // 보간 오차 보정 — 정확히 착지
+        }
+
+        /// <summary>
         /// 연출용 포물선 이동(물리 없음). 시작→끝 lerp 위치에 sin 높이를 얹는다.
         /// 진행도(t)는 (누적 이동거리 / 전체 거리)로 계산해 Trait 의 GetSpeedMultiplier
         /// (가속 등 시간 가변 배율)가 직선 이동과 동일하게 반영되도록 한다.
-        /// <para><see cref="ArcSpec.horizontalCells"/> 는 현재 연출에 소비되지 않는
-        /// 메타데이터(점프 링크 도입 5단계에서 다중 셀 도약에 사용 예정)이다.</para>
         /// </summary>
         private IEnumerator MoveArc(Vector2 target, MoveQuery q, ArcSpec arc)
         {
@@ -455,7 +534,8 @@ namespace ReTrap
             ReachedGoal           = false;
             CurrentCell           = default;
             _pendingStepBackCells = 0;
-            _locomotionState      = LocomotionState.Moving;
+            _lastVetoIndex        = -1;
+            _vetoStreak           = 0;
 
             if (_sprite   != null) _sprite.flipX = false;
             if (_animator != null) _animator.Play(StateIdle);

@@ -76,6 +76,15 @@ namespace ReTrap
         public readonly int HorizontalCells;
 
         /// <summary>
+        /// 이번 세그먼트가 실제로 몇 칸을 전진한 셈인지(칸 단위 카운트 태그용). 정의:
+        /// <c>Max(1, HorizontalCells + AscendCells + DropHeight)</c>. 걷기 링크(인접 1칸)는
+        /// 항상 1이고, 점프·낙하 링크는 From→To 가 여러 칸 떨어져 있을 수 있으므로(A* 가
+        /// grounded 노드만 잇는 링크 기반이라 경로 인덱스 1 = 그리드 1칸이 아님) 갈지자·
+        /// 잠만보·스프린터 등이 "인덱스 수"가 아니라 이 값을 누적해야 한다.
+        /// </summary>
+        public readonly int EffectiveCells;
+
+        /// <summary>
         /// From→To 이동 1건을 표현합니다. <paramref name="fallbackDirX"/> 는 수평 변위가
         /// 없는 순수 수직 이동(제자리 상승/하강)일 때 DirX 를 대신 채울 현재 진행 방향
         /// (보통 에이전트의 FacingSign)입니다.
@@ -95,6 +104,7 @@ namespace ReTrap
             DropHeight      = IsDescending ? (from.y - to.y) : 0;
             AscendCells     = IsAscending  ? (to.y - from.y) : 0;
             HorizontalCells = Mathf.Abs(dx);
+            EffectiveCells  = Mathf.Max(1, HorizontalCells + AscendCells + DropHeight);
         }
     }
 
@@ -103,10 +113,6 @@ namespace ReTrap
     {
         /// <summary>포물선 최고 높이(유닛).</summary>
         public float height;
-
-        /// <summary>가로로 몇 칸 규모의 도약처럼 보이게 할지 (현재는 연출 메타데이터 —
-        /// 실제 다중 셀 도약은 점프 링크가 도입되는 5단계에서 소비할 예정).</summary>
-        public int horizontalCells;
 
         /// <summary>true 면 직선 이동 대신 포물선 보간으로 이동.</summary>
         public bool useArc;
@@ -122,8 +128,13 @@ namespace ReTrap
     /// </summary>
     public abstract class MovementTrait : ScriptableObject
     {
-        /// <summary>셀 1칸 전진을 완료할 때마다 호출. 반환으로 특수 행동 요청.</summary>
-        public virtual TraitAction OnCellAdvanced(ref TraitState s) => TraitAction.None;
+        /// <summary>
+        /// 셀 세그먼트 1건 전진을 완료할 때마다 호출. 반환으로 특수 행동 요청.
+        /// <paramref name="q"/> 는 방금 완료한 이동 세그먼트 — 갈지자·잠만보·스프린터 등
+        /// 칸 단위 카운트 태그는 <b>1이 아니라</b> <see cref="MoveQuery.EffectiveCells"/> 를
+        /// 누적해야 한다(점프/낙하 링크는 경로 인덱스 1건이 여러 칸일 수 있음).
+        /// </summary>
+        public virtual TraitAction OnCellAdvanced(ref TraitState s, in MoveQuery q) => TraitAction.None;
 
         /// <summary>다음 셀로 이동을 시작하기 전에 호출. 위험 감지·정지 요청 지점.</summary>
         public virtual TraitAction OnBeforeMove(ref TraitState s, in MoveQuery q) => TraitAction.None;
@@ -131,15 +142,24 @@ namespace ReTrap
         /// <summary>이번 프레임 이동 속도에 곱할 배율 (기본 1). 매 프레임 호출되므로 할당 금지.</summary>
         public virtual float GetSpeedMultiplier(ref TraitState s, in MoveQuery q) => 1f;
 
-        /// <summary>점프/호핑 아크 파라미터 수정 (높이뛰기·멀리뛰기·천진난만).</summary>
+        /// <summary>
+        /// 점프/호핑 아크 파라미터 수정 (높이뛰기·멀리뛰기·천진난만). <b>규약</b>: 이미
+        /// 계산된 <paramref name="arc"/> 값을 고정값으로 덮어쓰지 말 것 — 다른 Trait 나
+        /// 기본 산출값(상승 칸수 비례 높이 등)을 지워버린다. <c>Mathf.Max</c> 등으로
+        /// 상향/보정만 하는 것이 원칙(천진난만처럼 "항상 이 모양으로 보이게 강제"하는
+        /// 의도적 예외는 주석으로 명시할 것).
+        /// </summary>
         public virtual void ModifyArc(ref ArcSpec arc) { }
 
         /// <summary>
-        /// <see cref="TraversalProfile"/> 파생 시 점프 스펙을 질의한다. 여러 Trait 가 동시에
-        /// 부여되면(이론상 배타 그룹으로 대부분 막히지만) 각자 Mathf.Max 로 상향 조정하는
-        /// 방식으로 합성한다. 기본 구현은 아무것도 하지 않음(점프 스펙에 영향 없는 태그).
+        /// <see cref="TraversalProfile"/> 파생 시 점프/낙하 스펙을 질의한다. 여러 Trait 가
+        /// 동시에 부여되면(이론상 배타 그룹으로 대부분 막히지만) 점프 관련 값은 각자
+        /// Mathf.Max 로 상향, <paramref name="maxFallHeight"/>(낙하 허용치)는 반대로
+        /// Mathf.Min 으로 하향 조정하는 방식으로 합성한다(안전제일이 지름길 중독을 항상
+        /// 이겨야 하므로 — <see cref="TraversalProfile.From"/> 참고). 기본 구현은 아무것도
+        /// 하지 않음(이동 스펙에 영향 없는 태그).
         /// </summary>
-        public virtual void ModifyTraversal(ref int maxJumpHeight, ref int maxJumpDistance) { }
+        public virtual void ModifyTraversal(ref int maxJumpHeight, ref int maxJumpDistance, ref int maxFallHeight) { }
 
         // ── 공용 유틸 — 월드 좌표 → 셀 좌표 ──────────────────────────────────
 

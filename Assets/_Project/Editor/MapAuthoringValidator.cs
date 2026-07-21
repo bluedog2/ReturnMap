@@ -62,14 +62,26 @@ namespace ReTrap.EditorTools
             // 스폰 아래로 내려가며 바닥 탐색 (슬롯 칸도 Play 중 솔리드이므로 바닥 인정)
             if (!IsTerrain(map, slots, s.x, s.y))
             {
-                bool hasFloor = false;
-                for (int y = s.y - 1; y >= 0; y--)
-                {
-                    if (IsTerrain(map, slots, s.x, y)) { hasFloor = true; break; }
-                }
-                if (!hasFloor)
+                if (!HasFloorBelow(map, slots, s.x, s.y))
                     w.Add($"스폰 {s} 아래에 바닥이 없습니다 — 시작하자마자 추락");
             }
+
+            // 골도 동일 검사 — 골이 착지 불가능한 공중이면 검증 AI 의 A* 가
+            // 시작/골 스냅(TrySnapToGround)에 실패해 경로가 영영 없고,
+            // 그 맵은 항상 '방어 성공'으로 오판된다 (조용한 저작 실수 조기 차단).
+            if (!IsTerrain(map, slots, g.x, g.y))
+            {
+                if (!HasFloorBelow(map, slots, g.x, g.y))
+                    w.Add($"골 {g} 아래에 바닥이 없습니다 — 검증 AI 가 도달 판정을 받을 수 없어 항상 방어 성공이 됩니다");
+            }
+        }
+
+        /// <summary>해당 칸에서 아래로 내려가며 지형(타일·슬롯)이 있는지 탐색.</summary>
+        private static bool HasFloorBelow(MapData map, HashSet<int> slots, int x, int startY)
+        {
+            for (int y = startY - 1; y >= 0; y--)
+                if (IsTerrain(map, slots, x, y)) return true;
+            return false;
         }
 
         // ── 3. 테두리 ─────────────────────────────────────────────────────────

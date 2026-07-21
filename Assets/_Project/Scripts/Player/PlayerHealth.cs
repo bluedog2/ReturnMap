@@ -17,8 +17,9 @@ namespace ReTrap
 
         [Header("체력")]
         [SerializeField, Min(1)]
-        [Tooltip("최대 HP. 캐릭터·스테이지 설정에 따라 조정.")]
-        private int maxHp = 3;
+        [Tooltip("최대 HP. 기획 확정(기획 리뷰 7/13): 초기값 1 — 클리어로 획득하는 재화로 " +
+                 "최대값을 늘리는 성장 요소는 추후 메타(연구소) 연동 예정.")]
+        private int maxHp = 1;
 
         [Header("무적 프레임")]
         [SerializeField, Min(0f)]

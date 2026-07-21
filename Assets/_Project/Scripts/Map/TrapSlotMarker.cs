@@ -23,6 +23,12 @@ namespace ReTrap
         /// <summary>현재 이 슬롯에 설치된 함정 GameObject. null 이면 비어있음.</summary>
         public GameObject OccupiedBy { get; private set; }
 
+        /// <summary>
+        /// <see cref="OccupiedBy"/> 의 TrapBase 캐시 — TryOccupy 시 1회 GetComponent 로 저장해
+        /// NavGrid 등 매 순회마다 GetComponent 를 다시 호출하지 않도록 한다. 비어있으면 null.
+        /// </summary>
+        public TrapBase OccupiedTrap { get; private set; }
+
         /// <summary>슬롯이 비어있는지 여부.</summary>
         public bool IsEmpty => OccupiedBy == null;
 
@@ -157,7 +163,8 @@ namespace ReTrap
         public bool TryOccupy(GameObject trapObject)
         {
             if (!IsEmpty) return false;
-            OccupiedBy = trapObject;
+            OccupiedBy   = trapObject;
+            OccupiedTrap = trapObject != null ? trapObject.GetComponent<TrapBase>() : null;
             RefreshVisualState();    // 설치 → 가이드 숨김, 함정만 남음
             TrapSlotRegistry.NotifyOccupancyChanged();
             return true;
@@ -167,7 +174,8 @@ namespace ReTrap
         public void Vacate()
         {
             if (OccupiedBy == null) return;
-            OccupiedBy = null;
+            OccupiedBy   = null;
+            OccupiedTrap = null;
             RefreshVisualState();    // 철거 → 가이드 복원
             TrapSlotRegistry.NotifyOccupancyChanged();
         }
