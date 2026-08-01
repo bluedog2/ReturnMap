@@ -15,7 +15,7 @@ namespace ReTrap.EditorTools
     // ═══════════════════════════════════════════════════════════════════════════
 
     /// <summary>
-    /// 메뉴 <b>ReTrap → Setup → 함정 프리팹 + Build UI 세팅</b>:
+    /// 메뉴 <b>ReTrap → Setup → 3. 함정 프리팹 + Build UI 세팅</b>:
     /// <list type="number">
     ///   <item>SpikeTrap / ArrowShooter(+Arrow) / DropHammer 플레이스홀더 프리팹 생성</item>
     ///   <item>함정별 TrapDefinition SO 생성(신규 시만 매직넘버로 시드) + 프리팹에 배선</item>
@@ -33,7 +33,7 @@ namespace ReTrap.EditorTools
         private const string TileSprite    = "Assets/_Project/ResourcceEX/Sprites/Environment/CorruptedCastleTile.png";
         private const string DefinitionDir = "Assets/_Project/Settings/TrapDefinitions";
 
-        [MenuItem("ReTrap/Setup/함정 프리팹 + Build UI 세팅")]
+        [MenuItem("ReTrap/Setup/3. 함정 프리팹 + Build UI 세팅", false, 3)]
         public static void Run()
         {
             if (EditorApplication.isPlaying)

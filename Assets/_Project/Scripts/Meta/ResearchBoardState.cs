@@ -35,6 +35,18 @@ namespace ReTrap
         // nodeId → 투자 레벨. 지연 초기화 (최초 접근 시 파일에서 로드).
         private static Dictionary<string, int> _levels;
 
+        /// <summary>
+        /// 플레이 진입마다(도메인 리로드 여부 무관) 캐시를 무효화한다. "Fast Play(Reload Domain
+        /// 끄기)" 반복 재생 시 이전 세션의 _levels 잔상이 남아 외부 파일 수정(또는 ResetAll)이
+        /// 반영되지 않는 문제를 막는다 — EnsureLoaded 지연 로드 구조 덕분에 null 로만 만들면
+        /// 다음 접근 시 자동으로 디스크에서 재로드된다.
+        /// </summary>
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void ReloadOnPlayEnter()
+        {
+            _levels = null;
+        }
+
         private static string SavePath =>
             Path.Combine(Application.persistentDataPath, "research_board.json");
 
@@ -61,6 +73,15 @@ namespace ReTrap
             if (next > node.MaxLevel) return false;
 
             int cost = node.GetCost(next);
+            // 방어: costPerLevel 이 weightDeltaPerLevel 과 길이가 안 맞아 GetCost 가 범위 밖으로
+            // 0 을 반환하면 TrySpend(0) 이 항상 성공해 "무료 업그레이드" 버그가 생긴다 — 비용이
+            // 0 이하면 데이터 설정 오류로 간주하고 업그레이드 자체를 거부한다.
+            if (cost <= 0)
+            {
+                Debug.LogWarning($"[ResearchBoardState] '{node.NodeId}' 레벨 {next} 비용이 " +
+                                  $"{cost} 입니다(costPerLevel 배열 길이 확인 필요) — 업그레이드를 거부합니다.");
+                return false;
+            }
             if (!CurrencyService.TrySpend(cost)) return false;
 
             _levels[node.NodeId] = next;

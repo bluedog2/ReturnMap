@@ -30,6 +30,10 @@ namespace ReTrap
 
         [Header("표시 UI")]
         [SerializeField]
+        [Tooltip("배경·제목을 포함한 패널 전체 표시/숨김 대상. 비워두면 previewText 오브젝트만 토글(하위 호환).")]
+        private GameObject panelRoot;
+
+        [SerializeField]
         [Tooltip("이번 웨이브 구성을 표시할 텍스트 (BuildHudController 와 동일하게 uGUI legacy Text).")]
         private Text previewText;
 
@@ -67,7 +71,9 @@ namespace ReTrap
         {
             bool show = phase == GamePhase.Build;
 
-            if (previewText != null)
+            if (panelRoot != null)
+                panelRoot.SetActive(show);
+            else if (previewText != null)
                 previewText.gameObject.SetActive(show);
 
             if (show)

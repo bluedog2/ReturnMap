@@ -14,7 +14,7 @@ namespace ReTrap
     /// 화면. Build 페이즈 중에만 R 키(또는 <see cref="TogglePanel"/> 버튼)로 열고 닫을 수 있으며,
     /// 다른 페이즈로 넘어가면 강제로 닫힌다.
     /// <para>씬 오브젝트 자동 생성/배선은 하지 않는다 — 컴포넌트 부착과 필드 배선은
-    /// <c>ReTrap → Setup → 메타 UI 세팅</c>(MetaUiSetup) 또는 수동/MCP.</para>
+    /// <c>ReTrap → Setup → 6. 메타 UI 세팅 (미리보기 + 연구소)</c>(MetaUiSetup) 또는 수동/MCP.</para>
     /// </summary>
     public class ResearchBoardPanel : MonoBehaviour
     {

@@ -47,10 +47,24 @@ namespace ReTrap
 
         private void OnEnable() => GamePhaseManager.OnPhaseChanged += HandlePhaseChanged;
 
+        private void Start()
+        {
+            // 초기 동기화 규약: 구독자는 초기 상태를 이벤트가 아니라 currentPhase 직접 읽기로
+            // 동기화한다 (StagePreviewPanel/PlayerPhaseVisibility 와 동일 패턴). 재활성화/씬 시작
+            // 시점에 검증 페이즈가 이미 진행 중이면 배속·스킵 입력이 먹통이 되는 것을 방지.
+            if (GamePhaseManager.Instance != null)
+                HandlePhaseChanged(GamePhaseManager.Instance.currentPhase);
+        }
+
         private void OnDisable()
         {
             GamePhaseManager.OnPhaseChanged -= HandlePhaseChanged;
-            RestoreSpeed(); // 검증 중 비활성화돼도 timeScale 오염 방지
+
+            // _active(검증 페이즈 중)일 때만 복원 — 일시정지 메뉴 등 외부가 이미 timeScale=0 을
+            // 걸어둔 상태에서 이 컴포넌트가 비활성화될 때 의도치 않게 1x 로 재개시키지 않는다.
+            // 단 검증 페이즈 중 비활성화되는 경우는 timeScale 오염 방지가 최우선이므로 반드시 복원.
+            if (_active)
+                RestoreSpeed();
         }
 
         private void Update()

@@ -14,7 +14,7 @@ namespace ReTrap.EditorTools
     // ═══════════════════════════════════════════════════════════════════════════
 
     /// <summary>
-    /// 메뉴 <b>ReTrap → Setup → 맵 시스템 세팅</b> 한 번으로:
+    /// 메뉴 <b>ReTrap → Setup → 5. 맵 시스템 세팅</b> 한 번으로:
     /// <list type="number">
     ///   <item>'Map' Sorting Layer 추가 (없으면)</item>
     ///   <item>TilePaletteConfig 에셋 생성 + 기본값 채움 (없으면)</item>
@@ -30,7 +30,7 @@ namespace ReTrap.EditorTools
         private const string StageCatalogAssetPath = "Assets/_Project/Settings/StageCatalog.asset";
         private const string AutoLoadMapId         = "stage_01";
 
-        [MenuItem("ReTrap/Setup/맵 시스템 세팅")]
+        [MenuItem("ReTrap/Setup/5. 맵 시스템 세팅", false, 5)]
         public static void Run()
         {
             if (EditorApplication.isPlaying)
@@ -59,7 +59,7 @@ namespace ReTrap.EditorTools
         /// <para>공중에서 벽에 이동키를 누르고 있으면 마찰이 중력을 상쇄해
         /// 벽에 매달리는 현상(wall stick)을 제거합니다.</para>
         /// </summary>
-        [MenuItem("ReTrap/Setup/플레이어 벽 마찰 제거")]
+        [MenuItem("ReTrap/Setup/기타/플레이어 벽 마찰 제거", false, 101)]
         public static void SetupPlayerFrictionless()
         {
             if (EditorApplication.isPlaying)

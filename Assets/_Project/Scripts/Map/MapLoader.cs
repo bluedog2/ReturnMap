@@ -53,6 +53,13 @@ namespace ReTrap
         [Tooltip("스테이지 순서의 단일 소스. 자동 로드 mapId가 비어 있으면 카탈로그 첫 스테이지를 로드")]
         [SerializeField] private StageCatalog _stageCatalog;
 
+        [Header("클리어")]
+        [Tooltip("스테이지 클리어(Play 페이즈 골 도달) 시 지급할 박살 난 지구본. 기획 미확정 — 임시값.")]
+        [SerializeField] private int _stageClearReward = 10;
+
+        [Tooltip("골 지점에 생성할 프리팹 오버라이드. 비워두면 절차적으로 생성(색상 블록 + 트리거).")]
+        [SerializeField] private GameObject _goalMarkerPrefab;
+
         // ── 런타임 상태 ───────────────────────────────────────────────────────
 
         /// <summary>현재 로드된 맵 데이터. 로드 전/언로드 후 null.</summary>
@@ -249,8 +256,72 @@ namespace ReTrap
 
             // (렌더 배칭은 공유 머티리얼+아틀라스 조건으로 SRP Batcher 가 자동 처리)
 
+            // ── 3.5. 골 트리거 생성 (Play 페이즈 클리어 감지) ──────────────────
+            BuildGoal(map, origin);
+
             // ── 4. 카메라 경계 동기화 ─────────────────────────────────────────
             CameraConfinerSync.Instance?.SetFromMap(map, origin);
+        }
+
+        /// <summary>
+        /// <see cref="MapData.goalPoint"/> 위치에 <see cref="StageGoalTrigger"/> 를 생성합니다.
+        /// _goalMarkerPrefab 이 지정돼 있으면 그 프리팹을 사용하고(있어야 할 컴포넌트/콜라이더는
+        /// 프리팹이 직접 갖춰야 함), 없으면 슬롯 마커와 같은 방식으로 절차적 생성합니다.
+        /// mapRoot 의 자식이므로 <see cref="UnloadRoutine"/> 이 자동으로 정리합니다.
+        /// </summary>
+        private void BuildGoal(MapData map, Vector2 origin)
+        {
+            Vector2 worldPos = map.CellToWorld(map.goalPoint.x, map.goalPoint.y, origin);
+
+            GameObject go;
+            StageGoalTrigger trigger;
+
+            if (_goalMarkerPrefab != null)
+            {
+                go = Instantiate(_goalMarkerPrefab, worldPos, Quaternion.identity, _mapRoot);
+                go.name = "Goal";
+
+                // StageGoalTrigger 는 [RequireComponent(typeof(Collider2D))] (추상 타입) —
+                // 콜라이더가 없는 상태로 먼저 컴포넌트를 추가하면 자동 추가가 불가능해 실패한다.
+                // 반드시 콜라이더를 먼저 보장한 뒤 트리거 컴포넌트를 붙인다.
+                if (go.GetComponent<Collider2D>() == null)
+                {
+                    var box  = go.AddComponent<BoxCollider2D>();
+                    box.isTrigger = true;
+                    box.size = Vector2.one * map.tileUnit;
+                }
+
+                trigger = go.GetComponent<StageGoalTrigger>();
+                if (trigger == null)
+                    trigger = go.AddComponent<StageGoalTrigger>();
+            }
+            else
+            {
+                go = new GameObject("Goal");
+                go.transform.SetParent(_mapRoot, false);
+                go.transform.position = worldPos;
+
+                var sr    = go.AddComponent<SpriteRenderer>();
+                sr.sprite = GetFallbackSprite();
+                sr.color  = new Color(1f, 0.95f, 0.3f, 0.6f); // 밝은 반투명 노랑 — 골 표식
+
+                if (_palette != null)
+                {
+                    if (!string.IsNullOrEmpty(_palette.TileSortingLayer))
+                        sr.sortingLayerName = _palette.TileSortingLayer;
+                    if (_palette.SharedMaterial != null)
+                        sr.sharedMaterial = _palette.SharedMaterial;
+                }
+                sr.sortingOrder = 15; // 타일(0)·함정(10) 위, 캐릭터(20) 아래 — 황금블록과 동일선
+
+                var col       = go.AddComponent<BoxCollider2D>();
+                col.isTrigger = true;
+                col.size      = Vector2.one * map.tileUnit;
+
+                trigger = go.AddComponent<StageGoalTrigger>();
+            }
+
+            trigger.Init(_stageClearReward);
         }
 
         /// <summary>
@@ -504,18 +575,7 @@ namespace ReTrap
             _mapRoot = child.transform;
         }
 
-        // 스프라이트 없을 때 색상 블록 표시용 1×1 흰 스프라이트 캐시
-        private static Sprite _fallbackSprite;
-        private static Sprite GetFallbackSprite()
-        {
-            if (_fallbackSprite != null) return _fallbackSprite;
-
-            var tex = new Texture2D(1, 1, TextureFormat.RGBA32, false);
-            tex.SetPixel(0, 0, Color.white);
-            tex.Apply();
-            _fallbackSprite = Sprite.Create(
-                tex, new Rect(0, 0, 1, 1), new Vector2(0.5f, 0.5f), 1f);
-            return _fallbackSprite;
-        }
+        /// <summary>스프라이트 없을 때 색상 블록 표시용 1×1 흰 스프라이트. <see cref="SpriteUtil"/> 위임.</summary>
+        private static Sprite GetFallbackSprite() => SpriteUtil.UnitWhite();
     }
 }

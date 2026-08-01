@@ -29,6 +29,17 @@ namespace ReTrap
             _globes = PlayerPrefs.GetInt(PrefsKey, 0);
         }
 
+        /// <summary>
+        /// 플레이 진입마다(도메인 리로드 여부 무관) 디스크에서 강제로 재조회한다.
+        /// "Fast Play(Reload Domain 끄기)"로 반복 재생하면 정적 필드가 이전 세션 값을 그대로
+        /// 들고 있어 잔액 갱신이 반영되지 않는데, 이 훅으로 매 플레이 시작 시 최신 값을 보장한다.
+        /// </summary>
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void ReloadOnPlayEnter()
+        {
+            _globes = PlayerPrefs.GetInt(PrefsKey, 0);
+        }
+
         /// <summary>지구본을 획득한다. amount 가 0 이하면 무시한다.</summary>
         public static void Add(int amount)
         {

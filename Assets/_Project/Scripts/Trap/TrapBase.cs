@@ -210,7 +210,7 @@ namespace ReTrap
             if (definition == null)
                 Debug.LogWarning($"[TrapBase] {name}: TrapDefinition 미지정 — " +
                                  "인스펙터 직렬화 필드(dangerLevel/baseCost)로 fallback합니다. " +
-                                 "메뉴 'ReTrap → Setup → 함정 프리팹 + Build UI 세팅' 재실행을 권장합니다.", this);
+                                 "메뉴 'ReTrap → Setup → 3. 함정 프리팹 + Build UI 세팅' 재실행을 권장합니다.", this);
 
             // damageArea 가 지정되지 않으면 자신의 Collider2D 를 사용
             if (damageArea == null)
@@ -459,19 +459,8 @@ namespace ReTrap
             _beneficialBlock.SetActive(false);
         }
 
-        // 황금 블록·철거 모드 표시 등 공용 1×1 흰 스프라이트 캐시
-        private static Sprite _unitSprite;
-        internal static Sprite GetUnitSprite()
-        {
-            if (_unitSprite != null) return _unitSprite;
-
-            var tex = new Texture2D(1, 1, TextureFormat.RGBA32, false);
-            tex.SetPixel(0, 0, Color.white);
-            tex.Apply();
-            _unitSprite = Sprite.Create(
-                tex, new Rect(0, 0, 1, 1), new Vector2(0.5f, 0.5f), 1f);
-            return _unitSprite;
-        }
+        /// <summary>황금 블록·철거 모드 표시 등에 쓰이는 공용 1×1 흰 스프라이트. <see cref="SpriteUtil"/> 위임.</summary>
+        internal static Sprite GetUnitSprite() => SpriteUtil.UnitWhite();
 
         // ── 내부 — 타일 배경 (벽/바닥에 박힌 느낌) ────────────────────────────
 

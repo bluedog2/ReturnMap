@@ -14,7 +14,7 @@ namespace ReTrap.EditorTools
     /// <see cref="AITagAssetGenerator"/> 와 동일한 멱등 생성 패턴 — 이미 있는 에셋은
     /// 로드하여 EditorInit 으로 값을 덮어쓰고, 없으면 새로 만듭니다.
     /// <para>대상 태그는 <see cref="AITagDefinition.TagId"/> 로 매칭합니다
-    /// (프로젝트에 <c>ReTrap/Setup/AI 태그 에셋 생성 (35종)</c> 이 먼저 실행되어 있어야 함).</para>
+    /// (프로젝트에 <c>ReTrap/Setup/1. AI 태그 에셋 생성 (35종)</c> 이 먼저 실행되어 있어야 함).</para>
     /// </summary>
     public static class ResearchAssetGenerator
     {
@@ -92,7 +92,7 @@ namespace ReTrap.EditorTools
 
         // ── 메뉴 ──────────────────────────────────────────────────────────────
 
-        [MenuItem("ReTrap/Setup/연구소 노드 에셋 생성 (6종)")]
+        [MenuItem("ReTrap/Setup/2. 연구소 노드 에셋 생성 (6종)", false, 2)]
         public static void GenerateAll()
         {
             EnsureFolder("Assets/_Project", "Settings");
@@ -163,7 +163,7 @@ namespace ReTrap.EditorTools
                 if (!tagsById.TryGetValue(tagIds[i], out AITagDefinition tag))
                 {
                     Debug.LogWarning($"[ResearchAssetGenerator] {nodeId}: 태그 '{tagIds[i]}' 를 찾지 못했습니다. " +
-                                      "'ReTrap/Setup/AI 태그 에셋 생성 (35종)' 을 먼저 실행했는지 확인하세요.");
+                                      "'ReTrap/Setup/1. AI 태그 에셋 생성 (35종)' 을 먼저 실행했는지 확인하세요.");
                 }
                 result[i] = tag; // 못 찾으면 null — 이후 EditorInit 값 그대로 저장 (재실행 시 갱신됨)
             }

@@ -16,7 +16,7 @@ namespace ReTrap
     /// 다음 스테이지를 찾거나(<see cref="GetNextMapId"/>), 스테이지 선택 UI에서
     /// 목록을 순회할 때(<see cref="GetByIndex"/>) 사용합니다.</para>
     ///
-    /// <para>에디터에서 <b>ReTrap → Setup → 맵 시스템 세팅</b> 실행 시
+    /// <para>에디터에서 <b>ReTrap → Setup → 5. 맵 시스템 세팅</b> 실행 시
     /// StreamingAssets/Maps 를 스캔해 자동으로 시드됩니다(멱등 — 이미 있으면 덮어쓰지 않음).</para>
     /// </summary>
     [CreateAssetMenu(menuName = "ReTrap/Stage Catalog", fileName = "StageCatalog")]

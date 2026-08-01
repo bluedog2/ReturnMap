@@ -12,7 +12,7 @@ namespace ReTrap.EditorTools
     // ═══════════════════════════════════════════════════════════════════════════
 
     /// <summary>
-    /// 메뉴 <b>ReTrap → Setup → 배경 타일 일괄 등록 (폴더)</b>:
+    /// 메뉴 <b>ReTrap → Setup → 기타 → 배경 타일 일괄 등록 (폴더)</b>:
     /// 선택한 폴더 안의 모든 스프라이트를 어드레서블 그룹 'Backgrounds' 에 등록하고
     /// <see cref="TilePaletteConfig"/> 의 backgroundTiles 에 추가합니다.
     /// 챕터 타일셋(Environment/.../ChapterN)을 통째로 배경 팔레트에 넣을 때 사용합니다.
@@ -22,7 +22,7 @@ namespace ReTrap.EditorTools
     {
         private const string PalettePath = "Assets/_Project/Settings/TilePaletteConfig.asset";
 
-        [MenuItem("ReTrap/Setup/배경 타일 일괄 등록 (폴더)")]
+        [MenuItem("ReTrap/Setup/기타/배경 타일 일괄 등록 (폴더)", false, 100)]
         public static void Run()
         {
             string abs = EditorUtility.OpenFolderPanel(

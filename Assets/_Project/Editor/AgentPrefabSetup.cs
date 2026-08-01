@@ -18,7 +18,7 @@ namespace ReTrap.EditorTools
     {
         private const string ENEMIES_FOLDER = "Assets/_Project/ResourcceEX/Prefabs/Enemies";
 
-        [MenuItem("ReTrap/Setup/검증 AI 프리팹 세팅 (AgentContext + Health + HitFlash)")]
+        [MenuItem("ReTrap/Setup/4. 검증 AI 프리팹 세팅 (AgentContext + Health + HitFlash)", false, 4)]
         public static void SetupAgentPrefabs()
         {
             string[] guids = AssetDatabase.FindAssets("t:Prefab", new[] { ENEMIES_FOLDER });

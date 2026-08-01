@@ -181,7 +181,7 @@ namespace ReTrap.EditorTools
 
         // ── 메뉴 ──────────────────────────────────────────────────────────────
 
-        [MenuItem("ReTrap/Setup/AI 태그 에셋 생성 (35종)")]
+        [MenuItem("ReTrap/Setup/1. AI 태그 에셋 생성 (35종)", false, 1)]
         public static void GenerateAll()
         {
             EnsureFolder("Assets/_Project", "Settings");

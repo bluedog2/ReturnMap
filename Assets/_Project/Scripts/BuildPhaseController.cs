@@ -133,7 +133,7 @@ namespace ReTrap
             if (hudRef == null || !hudRef.RuntimeKeyIsValid())
             {
                 Debug.LogWarning("[BuildPhaseController] HUD 어드레서블 참조 미할당/무효 — " +
-                                 "메뉴 'ReTrap → Setup → 함정 프리팹 + Build UI 세팅' 실행 필요");
+                                 "메뉴 'ReTrap → Setup → 3. 함정 프리팹 + Build UI 세팅' 실행 필요");
                 return;
             }
 
@@ -147,7 +147,7 @@ namespace ReTrap
             if (parent == null)
             {
                 Debug.LogWarning("[BuildPhaseController] 씬에 Canvas 가 없습니다 — " +
-                                 "메뉴 'ReTrap → Setup → 함정 프리팹 + Build UI 세팅' 실행 필요");
+                                 "메뉴 'ReTrap → Setup → 3. 함정 프리팹 + Build UI 세팅' 실행 필요");
                 return;
             }
 
