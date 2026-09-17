@@ -25,6 +25,9 @@ namespace ReTrap
         /// <summary>
         /// 스테이지 클리어(Play 페이즈 골 도달) 완료 후 발행. 인자는 (mapId, 지급된 보상량).
         /// 향후 클리어 연출 UI·다음 스테이지 전환 로직이 이 이벤트를 구독할 지점.
+        /// <para>재클리어(이미 최초 클리어를 완료한 스테이지)는 보상량 0 으로 발행됩니다 —
+        /// 클리어 자체는 유효하되(다음 스테이지 진행 등은 재도전에도 동작해야 함)
+        /// 재화만 최초 1회로 게이트되기 때문입니다. <see cref="StageProgressService"/> 참조.</para>
         /// </summary>
         public static event Action<string, int> OnStageCleared;
 
@@ -45,12 +48,17 @@ namespace ReTrap
         // ── 트리거 ────────────────────────────────────────────────────────────
 
         /// <summary>
-        /// <b>중복 지급 정책 주의</b>: <see cref="_cleared"/> 플래그는 이 맵 인스턴스(오브젝트)
-        /// 수명 동안만 유효합니다. 현재는 영속 클리어 기록(세이브)이 없어서, 맵을 리로드
-        /// (재도전)하면 플래그가 리셋되어 같은 스테이지를 다시 깨면 또 지급됩니다.
-        /// 스테이지 전환 로직 자체가 아직 미구현이라 실질적 문제는 없으나,
-        /// TODO: 영속 클리어 기록(PlayerPrefs/세이브) 도입 시 mapId 별 최초 클리어만
-        /// 지급하도록 게이트를 추가할 것.
+        /// <b>중복 지급 방지 — 2단 게이트</b>:
+        /// <list type="number">
+        ///   <item>인스턴스 플래그(<see cref="_cleared"/>): 이 맵 인스턴스 수명 동안 트리거를
+        ///         한 번만 처리 (콜라이더 재진입 방지).</item>
+        ///   <item>영속 기록(<see cref="StageProgressService"/>): mapId 별 <b>최초 클리어에만
+        ///         재화를 지급</b>. 맵 리로드(재도전)로 인스턴스 플래그가 리셋돼도, 이미 클리어한
+        ///         스테이지를 다시 깨면 재화는 재지급되지 않아 무한 파밍을 막습니다.</item>
+        /// </list>
+        /// 클리어 <b>이벤트</b>(<see cref="OnStageCleared"/>)는 최초/재클리어 모두 발행하되,
+        /// 재클리어는 보상량 0 으로 알립니다 — 클리어 자체(다음 스테이지 진행 등)는 재도전에도
+        /// 유효해야 하지만 재화만 1회로 제한하기 위함입니다.
         /// </summary>
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -69,14 +77,21 @@ namespace ReTrap
 
             _cleared = true;
 
-            CurrencyService.Add(_rewardGlobes);
-
             string mapId = MapLoader.Instance != null && MapLoader.Instance.CurrentMap != null
                 ? MapLoader.Instance.CurrentMap.mapId
                 : "";
-            OnStageCleared?.Invoke(mapId, _rewardGlobes);
 
-            Debug.Log($"[StageGoalTrigger] 스테이지 클리어: {mapId} — 지구본 +{_rewardGlobes}");
+            // 최초 클리어에만 재화 지급 (mapId 별 영속 게이트) — 재클리어는 파밍 방지로 미지급
+            bool firstClear    = StageProgressService.MarkCleared(mapId);
+            int  rewardGranted = firstClear ? _rewardGlobes : 0;
+            if (firstClear)
+                CurrencyService.Add(_rewardGlobes);
+
+            OnStageCleared?.Invoke(mapId, rewardGranted);
+
+            Debug.Log(firstClear
+                ? $"[StageGoalTrigger] 스테이지 최초 클리어: {mapId} — 지구본 +{rewardGranted}"
+                : $"[StageGoalTrigger] 스테이지 재클리어: {mapId} — 보상 이미 수령(재지급 없음)");
         }
     }
 }
