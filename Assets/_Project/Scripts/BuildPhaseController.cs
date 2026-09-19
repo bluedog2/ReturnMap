@@ -271,6 +271,15 @@ namespace ReTrap
 
         private void Update()
         {
+            // 스테이지 전환(클리어 → 다음 맵 로드) 진행 중에는 B/Enter/설치 입력을 일괄 차단한다.
+            // B 키는 Keyboard.current 직접 폴링이라 모달 UI(EventSystem)로는 못 막는다 —
+            // 클리어 패널이 뜬 Play 상태에서 B를 누르면 방금 깬 맵이 구 예산 그대로 Build로
+            // 돌아오는 버그가 생긴다.
+            // ⚠️ 이 컴포넌트를 enabled=false 로 끄는 방식은 금지 — OnDisable 이
+            // GamePhaseManager.OnPhaseChanged/MapLoader.OnMapLoaded 구독을 해제해
+            // 예산 리셋과 Build 복귀 반응을 통째로 놓친다. 그래서 early-return 으로 막는다.
+            if (StageFlowController.IsTransitioning) return;
+
             var kb = Keyboard.current;
 
             // Play 중 B 키 → 빌드 복귀 (개발 편의)

@@ -61,6 +61,20 @@ namespace ReTrap
             SetPlayerVisible(phase != GamePhase.Verification);
         }
 
+        // ── 외부 공개 API (StageFlowController 등) ───────────────────────────
+
+        /// <summary>
+        /// 페이즈와 무관하게 플레이어를 강제로 얼리거나 푼다(<see cref="SetPlayerVisible"/> 재사용).
+        /// 스테이지 전환(클리어 → 다음 맵 로드) 중 플레이어가 낙하/피격되는 것을 막는 용도.
+        ///
+        /// <para><b>핸드셰이크</b>: 프리즈 해제는 보통 Build 페이즈 전환 시
+        /// <see cref="HandlePhaseChanged"/> → <see cref="SetPlayerVisible"/>(true) 가 자동으로
+        /// 수행한다. 단, 마지막 스테이지에서 [닫기]를 누르는 경로는 페이즈 전환이 없으므로
+        /// 호출부(<see cref="StageFlowController.DismissClear"/>)가 명시적으로
+        /// <c>SetFrozen(false)</c> 를 호출해 해제해야 한다.</para>
+        /// </summary>
+        public void SetFrozen(bool frozen) => SetPlayerVisible(!frozen);
+
         // ── 내부 ──────────────────────────────────────────────────────────────
 
         /// <summary>

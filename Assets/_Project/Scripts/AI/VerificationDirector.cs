@@ -108,10 +108,44 @@ namespace ReTrap
 
         // ── Unity ─────────────────────────────────────────────────────────────
 
+        private void OnEnable()
+        {
+            MapLoader.OnMapLoaded += HandleMapLoaded;
+        }
+
+        private void OnDisable()
+        {
+            MapLoader.OnMapLoaded -= HandleMapLoaded;
+        }
+
         private void OnDestroy()
         {
             Cancel();
             _agentPool?.Clear();
+        }
+
+        /// <summary>
+        /// 맵 로드 완료 시 카탈로그에 이 스테이지 전용 스폰테이블이 지정돼 있으면 교체한다.
+        /// 지정이 없으면(null) 기존 인스펙터 값을 그대로 둔다 — 카탈로그 미배선/Fast Play 등
+        /// 하위 호환 경로 유지.
+        ///
+        /// <para>⚠️ <b>테이블이 바뀌면 반드시 캐시된 로스터(<see cref="_roster"/>)를 버려야 한다.</b>
+        /// <see cref="EnsureRoster"/> 는 최초 확정된 로스터를 계속 재사용하도록 설계돼 있어서
+        /// (같은 스테이지 재검증 시 UI 미리보기와 실제 스폰이 일치해야 하므로), 스폰테이블 참조만
+        /// 바꾸고 로스터를 그대로 두면 <b>새 스테이지에 진입했는데 이전 스테이지에서 확정한
+        /// 로스터가 그대로 재생되는 버그</b>가 발생한다. 그래서 교체 시 반드시 <see cref="RerollRoster"/>
+        /// 를 호출해 다음 <see cref="Run"/> 이 새 테이블로 새로 굴리게 한다.</para>
+        /// </summary>
+        private void HandleMapLoaded(MapData map)
+        {
+            StageSpawnTable table = MapLoader.Instance != null && MapLoader.Instance.Catalog != null
+                ? MapLoader.Instance.Catalog.GetSpawnTable(map.mapId)
+                : null;
+
+            if (table == null || table == spawnTable) return;
+
+            spawnTable = table;
+            RerollRoster();
         }
 
         // ── 오케스트레이션 ────────────────────────────────────────────────────

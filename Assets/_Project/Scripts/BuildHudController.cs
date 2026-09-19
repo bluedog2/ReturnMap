@@ -24,8 +24,12 @@ namespace ReTrap
         [SerializeField] private GameObject panel;            // Build 패널 루트
         [SerializeField] private Text       budgetText;
         [SerializeField] private Transform  buttonContainer;  // 함정 버튼 부모
+
+        // [미사용] 조작 안내는 전 페이즈 공용 하단바 PhaseControlsGuide 로 이관됨.
+        // TrapPrefabBuilder 는 더 이상 이 오브젝트들을 프리팹에 생성하지 않으므로 항상 null —
+        // 널 가드로 안전하게 무시되며, 필드 자체는 과거 씬/프리팹과의 하위 호환을 위해 남겨둔다.
         [SerializeField] private Text       hintText;
-        [SerializeField] private GameObject playHint;         // Play 중 "[B] 빌드 복귀"
+        [SerializeField] private GameObject playHint;         // Play 중 "[B] 빌드 복귀" (하단바로 이관)
 
         // ── 내부 ─────────────────────────────────────────────────────────────
 

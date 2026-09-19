@@ -18,7 +18,8 @@ namespace ReTrap.EditorTools
     /// <list type="number">
     ///   <item>'Map' Sorting Layer 추가 (없으면)</item>
     ///   <item>TilePaletteConfig 에셋 생성 + 기본값 채움 (없으면)</item>
-    ///   <item>StageCatalog 에셋 생성 + StreamingAssets/Maps 스캔 시드 (없으면)</item>
+    ///   <item>StageCatalog 에셋 생성 + StreamingAssets/Maps 스캔 시드 (없으면) +
+    ///         이름 규약(stage_01→SpawnTable_Stage01)으로 스폰테이블 자동 연결(이미 배선된 엔트리는 보존)</item>
     ///   <item>씬에 MapLoader 오브젝트 생성 + 팔레트/자동로드/카탈로그 연결</item>
     ///   <item>씬 저장</item>
     /// </list>
@@ -257,14 +258,17 @@ namespace ReTrap.EditorTools
 
         /// <summary>
         /// StageCatalog 에셋이 없으면 생성하고 StreamingAssets/Maps 의 JSON 을 스캔해
-        /// mapId 순으로 시드합니다. 이미 존재하면 내용을 덮어쓰지 않고 그대로 반환합니다(멱등).
+        /// mapId 순으로 시드합니다(스폰테이블도 이름 규약으로 자동 연결). 이미 존재하면
+        /// <b>엔트리 목록은 덮어쓰지 않고</b>, 스폰테이블만 비어있는 기존 엔트리에 대해서만
+        /// 자동 연결을 시도합니다(멱등 — 수동 배선 보호).
         /// </summary>
         private static StageCatalog EnsureStageCatalogAsset()
         {
             var existing = AssetDatabase.LoadAssetAtPath<StageCatalog>(StageCatalogAssetPath);
             if (existing != null)
             {
-                Debug.Log("[MapSystemSetup] StageCatalog 이미 존재 — 건너뜀");
+                Debug.Log("[MapSystemSetup] StageCatalog 이미 존재 — 엔트리는 유지하고 스폰테이블만 보강 시도");
+                LinkSpawnTables(existing);
                 return existing;
             }
 
@@ -278,9 +282,85 @@ namespace ReTrap.EditorTools
             AssetDatabase.CreateAsset(catalog, StageCatalogAssetPath);
             AssetDatabase.SaveAssets();
 
+            LinkSpawnTables(catalog);
+            AssetDatabase.SaveAssets();
+
             Debug.Log($"[MapSystemSetup] StageCatalog 생성 완료 → {StageCatalogAssetPath} " +
                       $"({entries.Count}개 스테이지 시드)");
             return catalog;
+        }
+
+        /// <summary>
+        /// 이름 규약으로 스테이지 스폰테이블을 자동 연결합니다: <c>stage_01</c> → <c>SpawnTable_Stage01</c>
+        /// (언더스코어 제거 + PascalCase). <see cref="AssetDatabase.FindAssets"/> 로 모든
+        /// StageSpawnTable 에셋을 찾아 파일명으로 매칭하고, 못 찾으면 비워두고 경고 로그만 남깁니다
+        /// (스폰테이블 에셋이 아직 1개뿐이라 다른 스테이지가 비는 것은 정상이며 에러가 아닙니다).
+        /// <b>이미 값이 있는 엔트리는 건드리지 않습니다</b>(멱등 — 수동 배선 보호).
+        /// </summary>
+        private static void LinkSpawnTables(StageCatalog catalog)
+        {
+            var so = new SerializedObject(catalog);
+            var stagesProp = so.FindProperty("_stages");
+            if (stagesProp == null)
+            {
+                Debug.LogError("[MapSystemSetup] StageCatalog._stages 필드를 찾지 못함");
+                return;
+            }
+
+            // 이름(파일명, 확장자 없이) → StageSpawnTable 에셋
+            var tablesByName = new Dictionary<string, StageSpawnTable>(StringComparer.OrdinalIgnoreCase);
+            foreach (var guid in AssetDatabase.FindAssets("t:StageSpawnTable"))
+            {
+                string path  = AssetDatabase.GUIDToAssetPath(guid);
+                string name  = Path.GetFileNameWithoutExtension(path);
+                var    table = AssetDatabase.LoadAssetAtPath<StageSpawnTable>(path);
+                if (table != null)
+                    tablesByName[name] = table;
+            }
+
+            int linked = 0;
+            for (int i = 0; i < stagesProp.arraySize; i++)
+            {
+                var entry = stagesProp.GetArrayElementAtIndex(i);
+                var spawnTableProp = entry.FindPropertyRelative("spawnTable");
+                if (spawnTableProp.objectReferenceValue != null)
+                    continue; // 이미 배선됨 — 보존(멱등)
+
+                string mapId = entry.FindPropertyRelative("mapId").stringValue;
+                string expectedName = MapIdToSpawnTableName(mapId);
+
+                if (tablesByName.TryGetValue(expectedName, out var table))
+                {
+                    spawnTableProp.objectReferenceValue = table;
+                    linked++;
+                }
+                else
+                {
+                    Debug.LogWarning($"[MapSystemSetup] '{mapId}' 용 스폰테이블('{expectedName}')을 찾지 못함 — " +
+                                      "비워둠(해당 스테이지는 소비자의 기본 테이블을 사용). 에셋이 아직 없다면 정상입니다.");
+                }
+            }
+
+            so.ApplyModifiedProperties();
+
+            if (linked > 0)
+                Debug.Log($"[MapSystemSetup] 스폰테이블 자동 연결: {linked}건");
+        }
+
+        /// <summary>mapId → 기대하는 StageSpawnTable 에셋 파일명. "stage_01" → "SpawnTable_Stage01".</summary>
+        private static string MapIdToSpawnTableName(string mapId)
+        {
+            if (string.IsNullOrEmpty(mapId)) return "SpawnTable_";
+
+            var parts = mapId.Split('_');
+            var sb = new System.Text.StringBuilder("SpawnTable_");
+            foreach (var part in parts)
+            {
+                if (part.Length == 0) continue;
+                sb.Append(char.ToUpperInvariant(part[0]));
+                if (part.Length > 1) sb.Append(part.Substring(1));
+            }
+            return sb.ToString();
         }
 
         /// <summary>StreamingAssets/Maps 의 *.json 을 mapId 순으로 스캔해 카탈로그 엔트리로 변환합니다.</summary>

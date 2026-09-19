@@ -55,6 +55,7 @@ namespace ReTrap
         private void OnEnable()
         {
             GamePhaseManager.OnPhaseChanged += HandlePhaseChanged;
+            MapLoader.OnMapLoaded           += HandleMapLoaded;
 
             if (GamePhaseManager.Instance != null)
                 HandlePhaseChanged(GamePhaseManager.Instance.currentPhase);
@@ -63,6 +64,30 @@ namespace ReTrap
         private void OnDisable()
         {
             GamePhaseManager.OnPhaseChanged -= HandlePhaseChanged;
+            MapLoader.OnMapLoaded           -= HandleMapLoaded;
+        }
+
+        // ── 맵 연동 ───────────────────────────────────────────────────────────
+
+        /// <summary>
+        /// 맵 로드 완료 시 카탈로그에 이 스테이지 전용 스폰테이블이 지정돼 있으면 교체한다.
+        /// 지정이 없으면(null) 기존 인스펙터 값을 그대로 둔다(하위 호환). 교체됐고 현재
+        /// 빌드 페이즈로 패널이 표시 중이면 즉시 다시 그린다 — 그러지 않으면 교체 전 테이블
+        /// 기준 확률이 그대로 화면에 남아 <see cref="VerificationDirector"/> 의 실제 스폰과
+        /// 표기가 어긋난다.
+        /// </summary>
+        private void HandleMapLoaded(MapData map)
+        {
+            StageSpawnTable table = MapLoader.Instance != null && MapLoader.Instance.Catalog != null
+                ? MapLoader.Instance.Catalog.GetSpawnTable(map.mapId)
+                : null;
+
+            if (table == null || table == spawnTable) return;
+
+            spawnTable = table;
+
+            if (GamePhaseManager.Instance != null && GamePhaseManager.Instance.currentPhase == GamePhase.Build)
+                RefreshText();
         }
 
         // ── 페이즈 ────────────────────────────────────────────────────────────

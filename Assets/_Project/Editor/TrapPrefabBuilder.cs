@@ -250,28 +250,93 @@ namespace ReTrap.EditorTools
 
         private const string HudPrefabPath = "Assets/_Project/ResourcceEX/Prefabs/UI/BuildHud.prefab";
 
+        // 하단 PhaseControlsGuide 바(높이 44 + 화면 여백 16 = 60)와 겹치지 않도록,
+        // Hotbar 를 그 위로 8px 여백을 두고 배치한다 (MetaUiSetup.GuideBarHeight/ScreenMargin 참조).
+        private const float HotbarBottomOffset = 68f;
+
         /// <summary>
-        /// Build HUD <b>핫바</b> 프리팹 생성 (Canvas 없음 — 씬의 UICanvas 아래에 로드됨).
+        /// Build HUD <b>핫바</b> 프리팹 생성/갱신 (Canvas 없음 — 씬의 UICanvas 아래에 로드됨).
         /// 하단 중앙 MMO 핫바 스타일. 슬롯 자체는 BuildHudController 가 런타임에 동적 생성합니다.
+        /// 이미 있는 프리팹은 <see cref="UpdateExistingHudPrefab"/> 로 구조만 갱신하고
+        /// 사용자가 직접 튜닝한 값(폰트 크기 등)은 보존합니다.
         /// </summary>
         private static GameObject BuildHudPrefab()
         {
-            var existing = AssetDatabase.LoadAssetAtPath<GameObject>(HudPrefabPath);
-            if (existing != null)
-            {
-                // 구버전(Canvas 포함 루트 / 핫바 없는 좌상단 패널형)이면 재생성
-                bool isLegacy = existing.GetComponent<Canvas>() != null
-                             || existing.transform.Find("BuildPanel/Hotbar") == null;
-                if (!isLegacy) return existing;
-                AssetDatabase.DeleteAsset(HudPrefabPath);
-                Debug.Log("[TrapPrefabBuilder] 구버전 HUD 삭제 — 하단 핫바형으로 재생성");
-            }
-
             if (!AssetDatabase.IsValidFolder("Assets/_Project/ResourcceEX/Prefabs/UI"))
                 AssetDatabase.CreateFolder("Assets/_Project/ResourcceEX/Prefabs", "UI");
 
             Font font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
 
+            var existing = AssetDatabase.LoadAssetAtPath<GameObject>(HudPrefabPath);
+            if (existing != null)
+            {
+                // 구버전(Canvas 포함 루트 / 핫바 없는 좌상단 패널형)이면 완전 재생성
+                bool isLegacy = existing.GetComponent<Canvas>() != null
+                             || existing.transform.Find("BuildPanel/Hotbar") == null;
+                if (isLegacy)
+                {
+                    AssetDatabase.DeleteAsset(HudPrefabPath);
+                    Debug.Log("[TrapPrefabBuilder] 구버전 HUD 삭제 — 하단 핫바형으로 재생성");
+                }
+                else
+                {
+                    return UpdateExistingHudPrefab(existing);
+                }
+            }
+
+            return CreateHudPrefabFromScratch(font);
+        }
+
+        /// <summary>
+        /// 이미 있는(v2 하단 핫바형) BuildHud 프리팹을 열어 구조만 갱신한다:
+        /// <list type="bullet">
+        ///   <item>HintText 제거 — 조작 안내는 PhaseControlsGuide(하단바)로 일원화</item>
+        ///   <item>PlayHint 제거 — StagePreviewPanel 과 겹치고 내용도 하단바와 중복</item>
+        ///   <item>Hotbar 위치를 하단바 위로 재조정(겹침 방지)</item>
+        /// </list>
+        /// BudgetText 등 나머지 요소는 손대지 않으므로 사용자가 직접 튜닝한 값(폰트 크기 등)이
+        /// 보존됩니다. 이미 갱신됐다면(HintText/PlayHint 가 없으면) 위치 재조정만 재적용되는
+        /// 멱등 동작입니다.
+        /// </summary>
+        private static GameObject UpdateExistingHudPrefab(GameObject existingAsset)
+        {
+            string path = AssetDatabase.GetAssetPath(existingAsset);
+            GameObject contents = PrefabUtility.LoadPrefabContents(path);
+
+            Transform panelTf = contents.transform.Find("BuildPanel");
+
+            Transform hintTf = panelTf != null ? panelTf.Find("HintText") : null;
+            if (hintTf != null) Object.DestroyImmediate(hintTf.gameObject);
+
+            Transform playHintTf = contents.transform.Find("PlayHint");
+            if (playHintTf != null) Object.DestroyImmediate(playHintTf.gameObject);
+
+            Transform hotbarTf = panelTf != null ? panelTf.Find("Hotbar") : null;
+            if (hotbarTf != null)
+            {
+                var hotbarRect = (RectTransform)hotbarTf;
+                hotbarRect.anchoredPosition = new Vector2(hotbarRect.anchoredPosition.x, HotbarBottomOffset);
+            }
+
+            // 삭제된 오브젝트를 가리키던 컨트롤러 참조를 비운다(널 가드가 있어 안전하지만 정리).
+            var hudCtrl = contents.GetComponent<BuildHudController>();
+            if (hudCtrl != null)
+            {
+                var so = new SerializedObject(hudCtrl);
+                so.FindProperty("hintText").objectReferenceValue = null;
+                so.FindProperty("playHint").objectReferenceValue = null;
+                so.ApplyModifiedPropertiesWithoutUndo();
+            }
+
+            var saved = PrefabUtility.SaveAsPrefabAsset(contents, path);
+            PrefabUtility.UnloadPrefabContents(contents);
+            Debug.Log("[TrapPrefabBuilder] BuildHud 프리팹 갱신 — HintText/PlayHint 제거, Hotbar 위치 조정");
+            return saved;
+        }
+
+        /// <summary>신규 BuildHud 프리팹을 처음부터 생성한다(HintText/PlayHint 없이).</summary>
+        private static GameObject CreateHudPrefabFromScratch(Font font)
+        {
             // ── 패널 루트 (RectTransform 전체 스트레치 — 부모 Canvas 에 맞춤) ──
             var root = new GameObject("BuildHud", typeof(RectTransform));
             var rootRect = (RectTransform)root.transform;
@@ -299,7 +364,7 @@ namespace ReTrap.EditorTools
             hotbarRect.anchorMin        = new Vector2(0.5f, 0f);
             hotbarRect.anchorMax        = new Vector2(0.5f, 0f);
             hotbarRect.pivot            = new Vector2(0.5f, 0f);
-            hotbarRect.anchoredPosition = new Vector2(0f, 14f);
+            hotbarRect.anchoredPosition = new Vector2(0f, HotbarBottomOffset);
 
             buttons.GetComponent<Image>().color = new Color(0.04f, 0.04f, 0.06f, 0.85f);
 
@@ -327,29 +392,10 @@ namespace ReTrap.EditorTools
             budgetRect.sizeDelta        = new Vector2(300f, 24f);
             budgetText.alignment        = TextAnchor.MiddleCenter;
 
-            // ── 힌트 텍스트 (예산 위 — 흐릿하게) ─────────────────────────────
-            var hintText = MakeText(panel.transform, "HintText",
-                "버튼/1~3: 선택 · 슬롯 클릭: 설치", font, 12, FontStyle.Normal,
-                new Color(0.85f, 0.85f, 0.85f, 0.75f), 18f);
-            var hintRect = (RectTransform)hintText.transform;
-            hintRect.anchorMin        = new Vector2(0.5f, 0f);
-            hintRect.anchorMax        = new Vector2(0.5f, 0f);
-            hintRect.pivot            = new Vector2(0.5f, 0f);
-            hintRect.anchoredPosition = new Vector2(0f, 114f);
-            hintRect.sizeDelta        = new Vector2(760f, 18f);
-            hintText.alignment        = TextAnchor.MiddleCenter;
-
-            // ── Play 중 복귀 힌트 (패널 밖, 기본 비활성) ─────────────────────
-            var playHint = MakeText(root.transform, "PlayHint",
-                "[B] 빌드 페이즈로 돌아가기", font, 16, FontStyle.Bold,
-                new Color(1f, 1f, 1f, 0.7f), 24f);
-            var playRect = (RectTransform)playHint.transform;
-            playRect.anchorMin        = new Vector2(0f, 1f);
-            playRect.anchorMax        = new Vector2(0f, 1f);
-            playRect.pivot            = new Vector2(0f, 1f);
-            playRect.anchoredPosition = new Vector2(12f, -12f);
-            playRect.sizeDelta        = new Vector2(360f, 26f);
-            playHint.gameObject.SetActive(false);
+            // ⚠️ HintText/PlayHint 는 더 이상 만들지 않는다 — 조작 안내(선택/설치/철거/시작,
+            // Play 중 [B] 복귀)는 전 페이즈 공용 하단바 PhaseControlsGuide 로 일원화됐다
+            // (MetaUiSetup.BuildPhaseControlsGuide 참조). BuildHudController 의
+            // hintText/playHint 필드는 하위 호환을 위해 남아있고 널 가드로 안전하게 무시된다.
 
             // ── 컨트롤러 연결 ────────────────────────────────────────────────
             var hudCtrl = root.AddComponent<BuildHudController>();
@@ -357,8 +403,6 @@ namespace ReTrap.EditorTools
             so.FindProperty("panel").objectReferenceValue           = panel;
             so.FindProperty("budgetText").objectReferenceValue      = budgetText;
             so.FindProperty("buttonContainer").objectReferenceValue = buttons.transform;
-            so.FindProperty("hintText").objectReferenceValue        = hintText;
-            so.FindProperty("playHint").objectReferenceValue        = playHint.gameObject;
             so.ApplyModifiedPropertiesWithoutUndo();
 
             var prefab = PrefabUtility.SaveAsPrefabAsset(root, HudPrefabPath);

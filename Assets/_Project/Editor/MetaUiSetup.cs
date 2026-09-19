@@ -19,6 +19,11 @@ namespace ReTrap.EditorTools
     ///   <item>씬 공유 UICanvas 확보(없으면 <see cref="TrapPrefabBuilder"/> 와 동일 규격으로 생성)</item>
     ///   <item><see cref="StagePreviewPanel"/> 오브젝트 생성/배선 (좌상단, Build 페이즈에만 표시)</item>
     ///   <item><see cref="ResearchBoardPanel"/> 오브젝트 생성/배선 (화면 중앙, R 키로 토글)</item>
+    ///   <item><see cref="PhaseControlsGuide"/> 오브젝트 생성/배선 (화면 하단, 전 페이즈 상시 표시 +
+    ///         Build 전용 "시작" 버튼)</item>
+    ///   <item><see cref="StageClearPanel"/> 오브젝트 생성/배선 (화면 중앙, 스테이지 클리어 시
+    ///         <see cref="StageFlowController"/> 이벤트로 표시) + <see cref="StageFlowController"/>
+    ///         로직 오브젝트 보장</item>
     /// </list>
     /// 이미 생성돼 있으면 참조만 재배선하므로 여러 번 실행해도 안전합니다(멱등).
     /// 씬 저장은 하지 않습니다 — 호출자가 직접 저장할 것.
@@ -62,6 +67,26 @@ namespace ReTrap.EditorTools
         private const float DebugButtonWidth    = 170f;
         private const float DebugButtonHeight   = 32f;
 
+        private const float GuideBarHeight       = 44f;
+        private const float GuideBarSideMargin   = 220f; // 좌우 여백 (시작 버튼과 겹치지 않도록)
+        private const int   GuideTextSize        = 14;
+        private const float StartButtonWidth     = 160f;
+        private const float StartButtonHeight    = 40f;
+        private static readonly Color GuideBarBackground = new Color(0.05f, 0.05f, 0.07f, 0.75f);
+        private static readonly Color StartButtonColor   = new Color(0.2f, 0.5f, 0.28f, 1f); // 초록 — 진행
+
+        private const float ClearPanelWidth      = 460f;
+        private const float ClearPanelHeight     = 300f;
+        private const float ClearTitleBarHeight  = 44f;
+        private const int   ClearTitleSize       = 22;
+        private const int   ClearBodySize        = 16;
+        private const int   ClearErrorSize       = 14;
+        private const float ClearButtonWidth     = 170f;
+        private const float ClearButtonHeight    = 40f;
+        private const float ClearButtonSpacing   = 16f;
+        private static readonly Color ClearErrorColor       = new Color(0.95f, 0.35f, 0.3f, 1f);
+        private static readonly Color ClearCloseButtonColor = new Color(0.3f, 0.3f, 0.34f, 1f); // 회색 — 중립(닫기)
+
         [MenuItem("ReTrap/Setup/6. 메타 UI 세팅 (미리보기 + 연구소)", false, 6)]
         public static void Run()
         {
@@ -85,8 +110,10 @@ namespace ReTrap.EditorTools
 
             BuildStagePreviewPanel(uiCanvas.transform, table, nodes);
             BuildResearchBoardPanel(uiCanvas.transform, nodes);
+            BuildPhaseControlsGuide(uiCanvas.transform);
+            BuildStageClearPanel(uiCanvas.transform);
 
-            Debug.Log("[MetaUiSetup] ✅ 메타 UI 세팅 완료 (미리보기 + 연구소)");
+            Debug.Log("[MetaUiSetup] ✅ 메타 UI 세팅 완료 (미리보기 + 연구소 + 조작 안내 + 스테이지 클리어)");
         }
 
         // ── 데이터 로드 ──────────────────────────────────────────────────────
@@ -252,6 +279,17 @@ namespace ReTrap.EditorTools
                 child.SetParent(newParent, false);
         }
 
+        /// <summary>
+        /// <paramref name="parent"/> 직속에 <paramref name="name"/> 자식이 있으면 파괴한다
+        /// (과거 버전 씬 구조 잔재 정리용, 대상이 없으면 no-op).
+        /// </summary>
+        private static void RemoveStaleDirectChild(Transform parent, string name)
+        {
+            Transform child = parent.Find(name);
+            if (child != null)
+                Object.DestroyImmediate(child.gameObject);
+        }
+
         // ── ResearchBoardPanel ───────────────────────────────────────────────
 
         private static void BuildResearchBoardPanel(Transform canvasTransform, ResearchNodeDefinition[] nodes)
@@ -280,6 +318,14 @@ namespace ReTrap.EditorTools
             rect.anchoredPosition = Vector2.zero;
             rect.sizeDelta        = new Vector2(BoardWidth, BoardHeight);
             rootGo.GetComponent<Image>().color = PanelBackground;
+
+            // 마이그레이션: TitleBar 도입 이전 버전은 패널 직속에 "Title"/"CurrencyText" 를
+            // 만들었다. 지금 코드는 TitleBar 하위에만 같은 이름으로 만들기 때문에(아래 참조),
+            // 과거 씬에 남은 패널 직속 잔재가 있으면 TitleBar 밖이라 그대로 겹쳐 보인다 —
+            // 이름으로 패널 직속 자식만 찾아 제거한다(TitleBar 하위는 Find 가 직계만 보므로
+            // 대상이 아니라 안전, 이미 정리됐다면 대상이 없어 no-op).
+            RemoveStaleDirectChild(rootGo.transform, "Title");
+            RemoveStaleDirectChild(rootGo.transform, "CurrencyText");
 
             // ── 제목 바 (상단 강조색 띠) ───────────────────────────────────────
             Transform titleBarTf = rootGo.transform.Find("TitleBar");
@@ -473,6 +519,285 @@ namespace ReTrap.EditorTools
             Debug.Log(isNew
                 ? "[MetaUiSetup] ResearchBoardPanel 생성 및 배선 완료"
                 : "[MetaUiSetup] ResearchBoardPanel 참조 재배선 완료");
+        }
+
+        // ── PhaseControlsGuide ───────────────────────────────────────────────
+
+        /// <summary>
+        /// 화면 하단 조작 안내 바 + Build 전용 "시작" 버튼을 생성/배선한다.
+        /// StagePreviewPanel/ResearchBoardPanel 과 달리 이 바는 전 페이즈에서 항상 표시되므로
+        /// (표시 여부는 <see cref="PhaseControlsGuide"/> 가 내부적으로 텍스트/버튼만 갈아끼움),
+        /// rootGo 자체를 SetActive 로 끄지 않고 컴포넌트를 직접 붙인다.
+        /// </summary>
+        private static void BuildPhaseControlsGuide(Transform canvasTransform)
+        {
+            Transform existing = canvasTransform.Find("PhaseControlsGuide");
+            bool isNew = existing == null;
+
+            GameObject rootGo;
+            if (isNew)
+            {
+                rootGo = new GameObject("PhaseControlsGuide", typeof(RectTransform));
+                rootGo.transform.SetParent(canvasTransform, false);
+            }
+            else
+            {
+                rootGo = existing.gameObject;
+            }
+
+            // 하단 중앙, 좌우로 넓게 배치 (재실행 시에도 값 갱신).
+            var rect = (RectTransform)rootGo.transform;
+            rect.anchorMin        = new Vector2(0f, 0f);
+            rect.anchorMax        = new Vector2(1f, 0f);
+            rect.pivot            = new Vector2(0.5f, 0f);
+            rect.anchoredPosition = new Vector2(0f, ScreenMargin);
+            rect.sizeDelta        = new Vector2(-ScreenMargin * 2f, GuideBarHeight);
+
+            // ── 반투명 배경 ────────────────────────────────────────────────
+            Transform bgTf = rootGo.transform.Find("Background");
+            GameObject bgGo = bgTf != null
+                ? bgTf.gameObject
+                : new GameObject("Background", typeof(RectTransform), typeof(Image));
+            if (bgTf == null) bgGo.transform.SetParent(rootGo.transform, false);
+
+            var bgRect = (RectTransform)bgGo.transform;
+            bgRect.anchorMin = Vector2.zero;
+            bgRect.anchorMax = Vector2.one;
+            bgRect.offsetMin = Vector2.zero;
+            bgRect.offsetMax = Vector2.zero;
+
+            var bgImage = bgGo.GetComponent<Image>();
+            bgImage.color         = GuideBarBackground;
+            bgImage.raycastTarget = false;
+
+            // ── 조작 안내 텍스트 (중앙 정렬, 우측에 시작 버튼 자리 확보) ────
+            Text guideText = FindOrCreateText(rootGo.transform, "GuideText", "",
+                GuideTextSize, FontStyle.Normal, TextPrimaryColor, TextAnchor.MiddleCenter);
+            var guideRect = (RectTransform)guideText.transform;
+            guideRect.anchorMin = Vector2.zero;
+            guideRect.anchorMax = Vector2.one;
+            guideRect.offsetMin = new Vector2(20f, 0f);
+            guideRect.offsetMax = new Vector2(-GuideBarSideMargin, 0f);
+            guideText.horizontalOverflow = HorizontalWrapMode.Overflow;
+            guideText.verticalOverflow   = VerticalWrapMode.Overflow;
+
+            // ── 시작 버튼 (Build 페이즈에만 표시 — startButtonRoot 로 감쌈) ──
+            Transform startRootTf = rootGo.transform.Find("StartButtonRoot");
+            GameObject startRootGo = startRootTf != null
+                ? startRootTf.gameObject
+                : new GameObject("StartButtonRoot", typeof(RectTransform));
+            if (startRootTf == null) startRootGo.transform.SetParent(rootGo.transform, false);
+
+            var startRootRect = (RectTransform)startRootGo.transform;
+            startRootRect.anchorMin        = new Vector2(1f, 0.5f);
+            startRootRect.anchorMax        = new Vector2(1f, 0.5f);
+            startRootRect.pivot            = new Vector2(1f, 0.5f);
+            startRootRect.anchoredPosition = new Vector2(-16f, 0f);
+            startRootRect.sizeDelta        = new Vector2(StartButtonWidth, StartButtonHeight);
+
+            Button startButton = FindOrCreateButton(startRootGo.transform, "StartButton",
+                "▶ 검증 시작", StartButtonWidth, StartButtonHeight, StartButtonColor);
+            var startButtonRect = (RectTransform)startButton.transform;
+            startButtonRect.anchorMin = Vector2.zero;
+            startButtonRect.anchorMax = Vector2.one;
+            startButtonRect.offsetMin = Vector2.zero;
+            startButtonRect.offsetMax = Vector2.zero;
+
+            // ── 컴포넌트 부착 + 배선 ─────────────────────────────────────────
+            var guide = rootGo.GetComponent<PhaseControlsGuide>();
+            if (guide == null) guide = rootGo.AddComponent<PhaseControlsGuide>();
+
+            var so = new SerializedObject(guide);
+            so.FindProperty("guideText").objectReferenceValue       = guideText;
+            so.FindProperty("startButton").objectReferenceValue     = startButton;
+            so.FindProperty("startButtonRoot").objectReferenceValue = startRootGo;
+            so.ApplyModifiedPropertiesWithoutUndo();
+
+            EditorSceneManager.MarkSceneDirty(rootGo.scene);
+            Debug.Log(isNew
+                ? "[MetaUiSetup] PhaseControlsGuide 생성 및 배선 완료"
+                : "[MetaUiSetup] PhaseControlsGuide 참조 재배선 완료");
+        }
+
+        // ── StageClearPanel ──────────────────────────────────────────────────
+
+        /// <summary>
+        /// 화면 중앙 스테이지 클리어 결과 패널을 생성/배선하고, 씬에
+        /// <see cref="StageFlowController"/>(로직 전담, UI 참조 없음) 오브젝트를 보장한다.
+        /// ⚠️ 직전 세션에 구 레이아웃 잔재로 중복 위젯이 생긴 사고가 있었으므로, 컴포넌트는
+        /// 반드시 항상 활성 상태인 rootGo 에 붙이고 실제 표시/숨김은 자식 "PanelContent"
+        /// 로만 제어한다(ResearchBoardPanel/StagePreviewPanel 과 동일한 구조 규약).
+        /// </summary>
+        private static void BuildStageClearPanel(Transform canvasTransform)
+        {
+            Transform existing = canvasTransform.Find("StageClearPanel");
+            bool isNew = existing == null;
+
+            GameObject rootGo;
+            if (isNew)
+            {
+                rootGo = new GameObject("StageClearPanel", typeof(RectTransform));
+                rootGo.transform.SetParent(canvasTransform, false);
+            }
+            else
+            {
+                rootGo = existing.gameObject;
+            }
+
+            // 루트 자신은 캔버스 전체를 덮는 앵커만 담당 — 실제 배경/내용은 PanelContent 자식.
+            var rootRect = (RectTransform)rootGo.transform;
+            rootRect.anchorMin = Vector2.zero;
+            rootRect.anchorMax = Vector2.one;
+            rootRect.offsetMin = Vector2.zero;
+            rootRect.offsetMax = Vector2.zero;
+
+            // ── 콘텐츠 컨테이너 (표시/숨김 대상, panelRoot 로 배선됨) ────────
+            Transform contentTf = rootGo.transform.Find("PanelContent");
+            GameObject contentGo;
+            if (contentTf == null)
+            {
+                contentGo = new GameObject("PanelContent", typeof(RectTransform), typeof(Image));
+                contentGo.transform.SetParent(rootGo.transform, false);
+            }
+            else
+            {
+                contentGo = contentTf.gameObject;
+            }
+
+            var contentRect = (RectTransform)contentGo.transform;
+            contentRect.anchorMin        = new Vector2(0.5f, 0.5f);
+            contentRect.anchorMax        = new Vector2(0.5f, 0.5f);
+            contentRect.pivot            = new Vector2(0.5f, 0.5f);
+            contentRect.anchoredPosition = Vector2.zero;
+            contentRect.sizeDelta        = new Vector2(ClearPanelWidth, ClearPanelHeight);
+            contentGo.GetComponent<Image>().color = PanelBackground;
+
+            // ── 제목 바 ────────────────────────────────────────────────────
+            Transform titleBarTf = contentGo.transform.Find("TitleBar");
+            GameObject titleBarGo = titleBarTf != null
+                ? titleBarTf.gameObject
+                : new GameObject("TitleBar", typeof(RectTransform), typeof(Image));
+            if (titleBarTf == null) titleBarGo.transform.SetParent(contentGo.transform, false);
+
+            var titleBarRect = (RectTransform)titleBarGo.transform;
+            titleBarRect.anchorMin = new Vector2(0f, 1f);
+            titleBarRect.anchorMax = new Vector2(1f, 1f);
+            titleBarRect.pivot     = new Vector2(0.5f, 1f);
+            titleBarRect.offsetMin = new Vector2(0f, -ClearTitleBarHeight);
+            titleBarRect.offsetMax = Vector2.zero;
+            titleBarGo.GetComponent<Image>().color = AccentColor;
+
+            Text titleText = FindOrCreateText(titleBarGo.transform, "TitleText", "스테이지 클리어",
+                ClearTitleSize, FontStyle.Bold, new Color(0.1f, 0.08f, 0.02f, 1f), TextAnchor.MiddleCenter);
+            var titleRect = (RectTransform)titleText.rectTransform;
+            titleRect.anchorMin = Vector2.zero;
+            titleRect.anchorMax = Vector2.one;
+            titleRect.offsetMin = Vector2.zero;
+            titleRect.offsetMax = Vector2.zero;
+
+            // ── 본문 텍스트 (보상 / 상태(전 스테이지 완주) / 오류) ───────────
+            Text rewardText = FindOrCreateText(contentGo.transform, "RewardText", "",
+                ClearBodySize, FontStyle.Bold, TextTitleColor, TextAnchor.MiddleCenter);
+            var rewardRect = (RectTransform)rewardText.rectTransform;
+            rewardRect.anchorMin        = new Vector2(0f, 1f);
+            rewardRect.anchorMax        = new Vector2(1f, 1f);
+            rewardRect.pivot            = new Vector2(0.5f, 1f);
+            rewardRect.anchoredPosition = new Vector2(0f, -(ClearTitleBarHeight + 26f));
+            rewardRect.sizeDelta        = new Vector2(-40f, 28f);
+
+            Text statusText = FindOrCreateText(contentGo.transform, "StatusText", "",
+                ClearBodySize, FontStyle.Normal, TextMutedColor, TextAnchor.MiddleCenter);
+            var statusRect = (RectTransform)statusText.rectTransform;
+            statusRect.anchorMin        = new Vector2(0f, 1f);
+            statusRect.anchorMax        = new Vector2(1f, 1f);
+            statusRect.pivot            = new Vector2(0.5f, 1f);
+            statusRect.anchoredPosition = new Vector2(0f, -(ClearTitleBarHeight + 62f));
+            statusRect.sizeDelta        = new Vector2(-40f, 26f);
+
+            Text errorText = FindOrCreateText(contentGo.transform, "ErrorText", "",
+                ClearErrorSize, FontStyle.Normal, ClearErrorColor, TextAnchor.MiddleCenter);
+            var errorRect = (RectTransform)errorText.rectTransform;
+            errorRect.anchorMin        = new Vector2(0f, 1f);
+            errorRect.anchorMax        = new Vector2(1f, 1f);
+            errorRect.pivot            = new Vector2(0.5f, 1f);
+            errorRect.anchoredPosition = new Vector2(0f, -(ClearTitleBarHeight + 98f));
+            errorRect.sizeDelta        = new Vector2(-40f, 44f);
+            errorText.horizontalOverflow = HorizontalWrapMode.Wrap;
+            errorText.verticalOverflow   = VerticalWrapMode.Overflow;
+
+            // ── 버튼 행 (하단 중앙, 가로 정렬) ────────────────────────────
+            Transform buttonRowTf = contentGo.transform.Find("ButtonRow");
+            GameObject buttonRowGo;
+            if (buttonRowTf == null)
+            {
+                buttonRowGo = new GameObject("ButtonRow",
+                    typeof(RectTransform), typeof(HorizontalLayoutGroup));
+                buttonRowGo.transform.SetParent(contentGo.transform, false);
+
+                var hlayout = buttonRowGo.GetComponent<HorizontalLayoutGroup>();
+                hlayout.spacing                = ClearButtonSpacing;
+                hlayout.childControlWidth      = false;
+                hlayout.childControlHeight     = false;
+                hlayout.childForceExpandWidth  = false;
+                hlayout.childForceExpandHeight = false;
+                hlayout.childAlignment         = TextAnchor.MiddleCenter;
+            }
+            else
+            {
+                buttonRowGo = buttonRowTf.gameObject;
+            }
+
+            var buttonRowRect = (RectTransform)buttonRowGo.transform;
+            buttonRowRect.anchorMin        = new Vector2(0.5f, 0f);
+            buttonRowRect.anchorMax        = new Vector2(0.5f, 0f);
+            buttonRowRect.pivot            = new Vector2(0.5f, 0f);
+            buttonRowRect.anchoredPosition = new Vector2(0f, 20f);
+            buttonRowRect.sizeDelta        = new Vector2(ClearPanelWidth - 40f, ClearButtonHeight);
+
+            Button nextButton    = FindOrCreateButton(buttonRowGo.transform, "NextButton", "다음 스테이지",
+                ClearButtonWidth, ClearButtonHeight, StartButtonColor);
+            Button restartButton = FindOrCreateButton(buttonRowGo.transform, "RestartButton", "처음부터",
+                ClearButtonWidth, ClearButtonHeight, StartButtonColor);
+            Button closeButton   = FindOrCreateButton(buttonRowGo.transform, "CloseButton", "닫기",
+                ClearButtonWidth, ClearButtonHeight, ClearCloseButtonColor);
+
+            // ── 컴포넌트 부착 + 배선 (항상 활성인 rootGo 에 부착 — panelRoot 만 토글) ──
+            var panel = rootGo.GetComponent<StageClearPanel>();
+            if (panel == null) panel = rootGo.AddComponent<StageClearPanel>();
+
+            var so = new SerializedObject(panel);
+            so.FindProperty("panelRoot").objectReferenceValue     = contentGo;
+            so.FindProperty("titleText").objectReferenceValue     = titleText;
+            so.FindProperty("rewardText").objectReferenceValue    = rewardText;
+            so.FindProperty("statusText").objectReferenceValue    = statusText;
+            so.FindProperty("errorText").objectReferenceValue     = errorText;
+            so.FindProperty("nextButton").objectReferenceValue    = nextButton;
+            so.FindProperty("restartButton").objectReferenceValue = restartButton;
+            so.FindProperty("closeButton").objectReferenceValue   = closeButton;
+            so.ApplyModifiedPropertiesWithoutUndo();
+
+            // 시작 시 비활성 (StageClearPanel.Start 가 방어적으로도 강제하지만 에디터에서도 반영).
+            contentGo.SetActive(false);
+
+            EditorSceneManager.MarkSceneDirty(rootGo.scene);
+            Debug.Log(isNew
+                ? "[MetaUiSetup] StageClearPanel 생성 및 배선 완료"
+                : "[MetaUiSetup] StageClearPanel 참조 재배선 완료");
+
+            EnsureStageFlowController();
+        }
+
+        /// <summary>
+        /// <see cref="StageFlowController"/> 는 UI 참조가 없는 순수 로직 싱글턴이므로
+        /// 별도 오브젝트로 존재하면 충분하다 — 없으면 하나 생성한다(멱등, 이미 있으면 no-op).
+        /// </summary>
+        private static void EnsureStageFlowController()
+        {
+            if (Object.FindFirstObjectByType<StageFlowController>() != null) return;
+
+            var go = new GameObject("StageFlowController", typeof(StageFlowController));
+            EditorSceneManager.MarkSceneDirty(go.scene);
+            Debug.Log("[MetaUiSetup] StageFlowController 오브젝트 생성");
         }
 
         // ── UI 생성 헬퍼 ─────────────────────────────────────────────────────

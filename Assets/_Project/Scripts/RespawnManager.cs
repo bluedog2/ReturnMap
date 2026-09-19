@@ -66,8 +66,15 @@ namespace ReTrap
 
         // ── 공개 상태 ─────────────────────────────────────────────────────────
 
-        /// <summary>총 사망 횟수.</summary>
+        /// <summary>
+        /// <b>현재 스테이지</b>에서의 사망 횟수. 맵 로드(스테이지 전환/재시작) 시 0으로 리셋된다 —
+        /// 스테이지별 진행 데이터(클리어 기록)에 쓰기 위함(<see cref="StageProgressService.RecordClear"/>).
+        /// 전체 누적 사망 수는 <see cref="TotalDeathCount"/> 참조.
+        /// </summary>
         public int     DeathCount    { get; private set; }
+
+        /// <summary>세션 전체 누적 사망 횟수. 스테이지 전환에도 리셋되지 않는다.</summary>
+        public int     TotalDeathCount { get; private set; }
 
         /// <summary>리스폰 시퀀스 진행 중 여부.</summary>
         public bool    IsRespawning  { get; private set; }
@@ -172,6 +179,10 @@ namespace ReTrap
             // 맵 로드 시점에 플레이어가 새로 스폰됐을 수 있으므로 참조 재확보 시도
             EnsurePlayerRefs();
 
+            // 새 스테이지(또는 재시작)에서는 "이번 스테이지 사망 수"를 0부터 다시 센다.
+            // 전체 누적은 TotalDeathCount 가 별도로 계속 유지한다.
+            DeathCount = 0;
+
             Vector2 origin = MapLoader.Instance != null ? MapLoader.Instance.MapOrigin : Vector2.zero;
             Vector2 spawn  = map.CellToWorld(map.spawnPoint.x, map.spawnPoint.y, origin);
 
@@ -213,6 +224,7 @@ namespace ReTrap
         {
             IsRespawning = true;
             DeathCount++;
+            TotalDeathCount++;
 
             // ── 1. 사망 이벤트 (사망 UI·사운드 트리거용) ──────────────────────
             OnDeath?.Invoke();

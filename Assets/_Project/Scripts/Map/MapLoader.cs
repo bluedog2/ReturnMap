@@ -66,6 +66,13 @@ namespace ReTrap
         public MapData  CurrentMap { get; private set; }
         public bool     IsLoaded   { get; private set; }
 
+        /// <summary><see cref="LoadMapRoutine"/> 진행 중 여부. 재진입 가드용 — 로드 중 재호출되면
+        /// 언로드와 빌드가 교차해 타일/슬롯이 중복·유실될 수 있다.</summary>
+        public bool     IsLoading  { get; private set; }
+
+        /// <summary>스테이지 순서 단일 소스 — 외부는 읽기만 한다(<see cref="StageFlowController"/> 등).</summary>
+        public StageCatalog Catalog => _stageCatalog;
+
         /// <summary>맵의 월드 좌표 원점. <see cref="MapData.CellToWorld"/> 의 origin 인자로 사용.</summary>
         public Vector2  MapOrigin  => _mapRoot != null ? (Vector2)_mapRoot.position : Vector2.zero;
 
@@ -139,77 +146,93 @@ namespace ReTrap
         /// </summary>
         public IEnumerator LoadMapRoutine(string mapId)
         {
-            // 기존 맵 제거
-            if (IsLoaded)
-                yield return StartCoroutine(UnloadRoutine());
-
-            // ── JSON 읽기 ──────────────────────────────────────────────────────
-            string path = Path.Combine(Application.streamingAssetsPath, "Maps", $"{mapId}.json");
-
-            if (!File.Exists(path))
+            // 재진입 가드 — 로드 중 다시 호출되면 언로드와 빌드가 교차해
+            // 타일/슬롯이 중복·유실될 수 있다 (StageFlowController 등 외부 중복 호출 방지).
+            if (IsLoading)
             {
-                string reason = $"파일 없음: {path}";
-                Debug.LogError($"[MapLoader] {reason}");
-                FailLoad(mapId, reason);
+                Debug.LogWarning($"[MapLoader] 이미 로딩 중 — 재진입 요청 무시: {mapId}");
                 yield break;
             }
 
-            MapData map = null;
-            string  parseError = null;
+            IsLoading = true;
             try
             {
-                string json = File.ReadAllText(path, System.Text.Encoding.UTF8);
-                map = MapData.FromJson(json);
-                if (map == null)
-                    parseError = "JsonUtility.FromJson 결과 null";
-            }
-            catch (Exception e)
-            {
-                parseError = e.Message;
-            }
+                // 기존 맵 제거
+                if (IsLoaded)
+                    yield return StartCoroutine(UnloadRoutine());
 
-            if (parseError != null)
-            {
-                Debug.LogError($"[MapLoader] JSON 파싱 실패: {mapId} — {parseError}");
-                FailLoad(mapId, $"JSON 파싱 실패: {parseError}");
-                yield break;
-            }
+                // ── JSON 읽기 ──────────────────────────────────────────────────────
+                string path = Path.Combine(Application.streamingAssetsPath, "Maps", $"{mapId}.json");
 
-            if (!map.Validate(out string err))
-            {
-                Debug.LogError($"[MapLoader] 맵 검증 실패 ({mapId}): {err}");
-                FailLoad(mapId, $"검증 실패: {err}");
-                yield break;
-            }
-
-            // ── 빌드 ──────────────────────────────────────────────────────────
-            EnsureMapRoot();
-
-            // 타일 시각 에셋을 전담 로더로 어드레서블에서 로드 → 캐시.
-            if (_palette != null)
-            {
-                // 타일·슬롯·봉인: 팔레트가 바뀐 경우에만 재로드 (같은 팔레트는 캐시 재사용)
-                if (_palette != _loadedPalette)
+                if (!File.Exists(path))
                 {
-                    _assetLoader.ReleaseAll();                       // 이전 팔레트 핸들 해제
-                    if (_loadedPalette != null) _loadedPalette.ClearCache();
-                    _palette.BeginLoad(_assetLoader);
-                    _loadedPalette = _palette;
+                    string reason = $"파일 없음: {path}";
+                    Debug.LogError($"[MapLoader] {reason}");
+                    FailLoad(mapId, reason);
+                    yield break;
                 }
 
-                // 배경: 이 맵이 실제 사용하는 인덱스만 로드 (종류가 수백 개여도 화면에 쓰는 것만)
-                _palette.LoadBackgrounds(_assetLoader, CollectUsedBackgrounds(map));
+                MapData map = null;
+                string  parseError = null;
+                try
+                {
+                    string json = File.ReadAllText(path, System.Text.Encoding.UTF8);
+                    map = MapData.FromJson(json);
+                    if (map == null)
+                        parseError = "JsonUtility.FromJson 결과 null";
+                }
+                catch (Exception e)
+                {
+                    parseError = e.Message;
+                }
 
-                yield return StartCoroutine(_assetLoader.WaitAll());
+                if (parseError != null)
+                {
+                    Debug.LogError($"[MapLoader] JSON 파싱 실패: {mapId} — {parseError}");
+                    FailLoad(mapId, $"JSON 파싱 실패: {parseError}");
+                    yield break;
+                }
+
+                if (!map.Validate(out string err))
+                {
+                    Debug.LogError($"[MapLoader] 맵 검증 실패 ({mapId}): {err}");
+                    FailLoad(mapId, $"검증 실패: {err}");
+                    yield break;
+                }
+
+                // ── 빌드 ──────────────────────────────────────────────────────────
+                EnsureMapRoot();
+
+                // 타일 시각 에셋을 전담 로더로 어드레서블에서 로드 → 캐시.
+                if (_palette != null)
+                {
+                    // 타일·슬롯·봉인: 팔레트가 바뀐 경우에만 재로드 (같은 팔레트는 캐시 재사용)
+                    if (_palette != _loadedPalette)
+                    {
+                        _assetLoader.ReleaseAll();                       // 이전 팔레트 핸들 해제
+                        if (_loadedPalette != null) _loadedPalette.ClearCache();
+                        _palette.BeginLoad(_assetLoader);
+                        _loadedPalette = _palette;
+                    }
+
+                    // 배경: 이 맵이 실제 사용하는 인덱스만 로드 (종류가 수백 개여도 화면에 쓰는 것만)
+                    _palette.LoadBackgrounds(_assetLoader, CollectUsedBackgrounds(map));
+
+                    yield return StartCoroutine(_assetLoader.WaitAll());
+                }
+
+                BuildMap(map);
+
+                CurrentMap = map;
+                IsLoaded   = true;
+
+                OnMapLoaded?.Invoke(map);
+                Debug.Log($"[MapLoader] 로드 완료: {mapId}  ({map.width}×{map.height})");
             }
-
-            BuildMap(map);
-
-            CurrentMap = map;
-            IsLoaded   = true;
-
-            OnMapLoaded?.Invoke(map);
-            Debug.Log($"[MapLoader] 로드 완료: {mapId}  ({map.width}×{map.height})");
+            finally
+            {
+                IsLoading = false;
+            }
         }
 
         /// <summary>

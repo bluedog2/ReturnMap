@@ -31,6 +31,9 @@ namespace ReTrap
 
             [Tooltip("스테이지 선택 UI 등에 표시할 이름. 비워두면 mapId 로 대체.")]
             public string displayName;
+
+            [Tooltip("이 스테이지의 AI 웨이브 구성. 비우면 소비자의 기본 테이블을 사용")]
+            public StageSpawnTable spawnTable;
         }
 
         [Header("스테이지 순서")]
@@ -62,6 +65,17 @@ namespace ReTrap
             int idx = IndexOf(currentMapId);
             if (idx < 0 || idx + 1 >= _stages.Count) return null;
             return _stages[idx + 1].mapId;
+        }
+
+        /// <summary>
+        /// mapId 에 지정된 AI 웨이브 스폰 테이블을 반환합니다. 엔트리가 없거나
+        /// 해당 엔트리에 스폰 테이블이 비어있으면 null — 호출부는 null 을
+        /// "이 스테이지 전용 지정 없음"으로 해석해 자신의 기본값을 유지해야 합니다.
+        /// </summary>
+        public StageSpawnTable GetSpawnTable(string mapId)
+        {
+            int idx = IndexOf(mapId);
+            return idx >= 0 ? _stages[idx].spawnTable : null;
         }
     }
 }
