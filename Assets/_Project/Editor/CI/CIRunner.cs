@@ -208,7 +208,14 @@ namespace ReTrap.EditorTools
             {
                 string file = Path.GetFileName(path);
                 string json = File.ReadAllText(path, Encoding.UTF8);
-                MapData map = MapData.FromJson(json);
+                // JsonUtility 는 문법 오류 시 예외를 던진다 — 파일 단위로 잡아야 나머지 맵 검사가 계속된다
+                MapData map;
+                try { map = MapData.FromJson(json); }
+                catch (Exception e)
+                {
+                    c.errors.Add($"{file}: JSON 파싱 실패 — {e.Message}");
+                    continue;
+                }
                 if (map == null)
                 {
                     c.errors.Add($"{file}: JSON 파싱 실패");

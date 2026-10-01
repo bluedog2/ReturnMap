@@ -42,6 +42,8 @@ function Invoke-Git {
 $RepoRoot = (Invoke-Git -C $PSScriptRoot rev-parse --show-toplevel).Trim().Replace('/', '\')
 if (-not $CiPath) { $CiPath = Join-Path (Split-Path $RepoRoot -Parent) 'ReturnMap-ci' }
 if (-not $OutDir) { $OutDir = Join-Path $RepoRoot 'Logs\ci' }
+# Unity 는 상대경로를 자기 프로젝트(CI worktree) 기준으로 해석하므로 반드시 절대경로로 넘긴다
+$OutDir = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($OutDir)
 New-Item -ItemType Directory -Force -Path $OutDir | Out-Null
 
 $summary = [ordered]@{
