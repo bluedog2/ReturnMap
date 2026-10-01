@@ -22,6 +22,19 @@ Unity 6 (6000.3.10f1) URP 2D 게임. 2D 샌드박스 퍼즐 플랫포머 + 로�
 - 구현 전, 비자명한 설계 결정은 `design-reviewer`(Opus)에게 먼저 검토받는다. 자명한 수정은 바로 `code-implementer`(Sonnet)로 보낸다.
 - 한 작업에 여러 각도가 필요하면 서브에이전트를 병렬로 띄운다.
 
+## 작업 원칙 (Karpathy)
+
+- 가정 명시: 불확실하면 보고의 `가정:` 섹션에 적고, 판단이 갈리면 구현 전 멈추고 보고.
+- 최소 구현: 요청·승인되지 않은 기능·추상화 금지.
+- 국소 변경: 인접 코드 "개선" 금지, 기존 스타일 유지, 데드 코드/잠재 버그는 언급만.
+- 목표 우선: 시작 전 성공 기준(컴파일 + 확인 시나리오)을 정의하고, 완료 보고 때 충족 여부를 명시.
+
+---
+
+## 기획 → 개발 사이클
+
+Notion 기획안 DB의 `개발 상태`(개발요청/답변완료)를 감지해 설계·질문을 수행하는 스킬: `/spec-cycle` (`.claude/skills/spec-cycle/SKILL.md`). 운영 규칙은 Notion「🔁 개발 사이클 운영 가이드」. 현재 1단계(설계·질문) + 2단계(Unity CLI CI) 구축 — 사이클에 구현·CI 연결은 3단계.
+
 ---
 
 ## 프로젝트 구조
@@ -48,6 +61,8 @@ Unity 6 (6000.3.10f1) URP 2D 게임. 2D 샌드박스 퍼즐 플랫포머 + 로�
 ## 검증 (Unity)
 
 - 코드 변경은 컴파일 가능해야 한다. Unity 에디터에서 컴파일/플레이로 확인하는 흐름.
+- **무인 검증 = Unity CLI**: `powershell -ExecutionPolicy Bypass -File tools\ci\unity-ci.ps1 [-Ref <branch>] [-Tests]` → `Logs/ci/ci-summary.json` (exit 0 PASS / 1 FAIL / 2 COMPILE_ERROR / 3 INFRA). 별도 worktree `..\ReturnMap-ci`에서 돌아 에디터를 열어둬도 된다. 상세는 `tools/ci/README.md`.
+- **대화형 확인 = Unity MCP** (에디터 켜져 있을 때). 에디터 안에서는 `ReTrap → Dev → CI 검증 실행 (에디터)`로 같은 검사 가능.
 - Unity MCP 연결은 컴파일/도메인 리로드/승인 만료로 자주 끊김 → Project Settings→AI→Unity MCP 승인 상시 허용. MCP 검증 시 `ReTrap/Dev/Fast Play (Reload Domain 끄기)` 사용 권장(static 오염 주의).
 - 함정/HUD/타일 배선은 메뉴 `ReTrap → Setup → 함정 프리팹+Build UI 세팅`(TrapPrefabBuilder)가 자동 처리.
 
