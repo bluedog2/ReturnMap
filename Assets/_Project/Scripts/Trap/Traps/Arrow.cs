@@ -138,6 +138,10 @@ namespace ReTrap
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
+            // 풀 재사용 시 보간이 이전 소멸 위치에서 시작하지 않도록 바디 포즈를 즉시 맞춘다
+            rb.position = transform.position;
+            rb.rotation = angle;
+
             // Beneficial = 황금색
             if (isBeneficial && sr != null)
                 sr.color = beneficialColor;

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ReTrap
@@ -65,6 +66,9 @@ namespace ReTrap
 
         /// <summary>화살 반납 콜백 (매 발사 델리게이트 할당 방지용 캐시).</summary>
         private System.Action<Arrow> _releaseArrow;
+
+        /// <summary>비행 중인 화살 (씬 루트로 분리돼 있으므로 슈터 철거 시 직접 정리).</summary>
+        private readonly List<Arrow> _activeArrows = new List<Arrow>();
 
         // ── 슬롯 호환 ─────────────────────────────────────────────────────────
         // 4방향 모두 설치 가능 — 슬롯이 붙은 면의 바깥으로 발사한다.
@@ -177,6 +181,11 @@ namespace ReTrap
             Arrow arrow = _arrowPool.Get(spawnPoint.position, Quaternion.identity);
             arrow.SetReleaseCallback(_releaseArrow);
 
+            // 비행 중엔 슈터 계층에서 분리 — 자식으로 두면 다음 발사(형제 생성/활성화) 때
+            // 계층 변경으로 비행 중 화살의 물리 포즈가 다시 동기화돼 발사 타이밍에 화살이 튄다.
+            arrow.transform.SetParent(null, true);
+            _activeArrows.Add(arrow);
+
             // 화살이 자기 솔리드 셀·황금 블록에 박혀 즉시 소멸하지 않도록 충돌 무시.
             // 풀 화살이 자식으로 붙어 있으므로 다른 화살의 콜라이더는 건너뛴다.
             if (arrow.TryGetComponent<Collider2D>(out var arrowCol))
@@ -208,15 +217,28 @@ namespace ReTrap
                 return false;
             }
 
-            // 슈터 자식으로 보관 — 슈터 철거 시 대기/비행 중 화살이 함께 정리된다
+            // 대기 중 화살은 슈터 자식으로 보관 — 슈터 철거 시 함께 정리된다
             _arrowPool    = new ComponentPool<Arrow>(prefabArrow, transform);
-            _releaseArrow = _arrowPool.Release;
+            _releaseArrow = ReleaseArrow;
             return true;
+        }
+
+        /// <summary>화살 반납 — 슈터 자식으로 되돌린 뒤 풀에 보관.</summary>
+        private void ReleaseArrow(Arrow arrow)
+        {
+            _activeArrows.Remove(arrow);
+            if (arrow != null) arrow.transform.SetParent(transform, true);
+            _arrowPool.Release(arrow);
         }
 
         private void OnDestroy()
         {
-            // 자식이라 GameObject 는 함께 파괴되지만, 풀 내부 참조를 명시적으로 비운다
+            // 비행 중 화살은 씬 루트에 있으므로 직접 파괴 (반납 콜백이 파괴된 슈터를 부르지 않도록)
+            foreach (var arrow in _activeArrows)
+                if (arrow != null) Destroy(arrow.gameObject);
+            _activeArrows.Clear();
+
+            // 대기 중 화살은 자식이라 함께 파괴되지만, 풀 내부 참조를 명시적으로 비운다
             _arrowPool?.Clear();
         }
 
