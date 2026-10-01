@@ -33,7 +33,7 @@ Unity 6 (6000.3.10f1) URP 2D 게임. 2D 샌드박스 퍼즐 플랫포머 + 로�
 
 ## 기획 → 개발 사이클
 
-Notion 기획안 DB의 `개발 상태`(개발요청/답변완료)를 감지해 설계·질문을 수행하는 스킬: `/spec-cycle` (`.claude/skills/spec-cycle/SKILL.md`). 운영 규칙은 Notion「🔁 개발 사이클 운영 가이드」. 현재 1단계(설계·질문) + 2단계(Unity CLI CI) 구축 — 사이클에 구현·CI 연결은 3단계.
+Notion 기획안 DB의 `개발 상태`(개발요청/답변완료)를 감지해 설계·질문을 수행하는 스킬: `/spec-cycle` (`.claude/skills/spec-cycle/SKILL.md`). 운영 규칙은 Notion「🔁 개발 사이클 운영 가이드」. 1단계(설계·질문) + 2단계(Unity CLI CI) + 3단계(승인된 설계 → spec 브랜치 구현 → CI → 자동 수정 → Notion 리포트) 구축됨. 남은 것: 4단계 예약 실행·알림, 5단계 asmdef/테스트·수치 동기화.
 
 ---
 
@@ -72,3 +72,4 @@ Notion 기획안 DB의 `개발 상태`(개발요청/답변완료)를 감지해 �
 - **슬롯=지형 불변식**: 설치된 함정 칸 = 솔리드 지형(밟고 섬), 빈 슬롯은 Play에서 봉인. Dud=발사정지(0칸), Beneficial=바깥 +1칸 황금블록. DropHammer는 이동형이라 opt-out.
 - **어드레서블 코루틴**: `AsyncOperationHandle`를 코루틴에서 직접 yield 금지 → `AddressableLoader.WaitAll`(IsDone 폴링) 사용.
 - 커밋/푸시는 사용자가 요청할 때만. 커밋 메시지·UI 텍스트는 한글 톤 유지.
+  - **예외 (2026-10-02 사용자 승인)**: `/spec-cycle` 구현 트랙은 `spec/SPEC-n` 브랜치(별도 worktree `..\ReturnMap-spec\SPEC-n`)에 한해 **로컬 커밋만** 자동으로 한다. push·main 병합·리베이스·브랜치 삭제는 하지 않는다 — 병합은 사람이.

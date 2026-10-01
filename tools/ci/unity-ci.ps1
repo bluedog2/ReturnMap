@@ -23,7 +23,10 @@ param(
     [string]$UnityPath = '',
     [string]$OutDir = '',
     [int]$TimeoutMinutes = 40,
-    [switch]$Tests
+    [switch]$Tests,
+    # 지정하면 Unity 가 CI worktree 에 새로 만든 .meta(미추적)를 이 경로(같은 저장소의 다른 worktree)로 복사한다.
+    # 새 스크립트·에셋의 GUID 를 spec 브랜치에 고정시키기 위함.
+    [string]$HarvestMetaTo = ''
 )
 
 $ErrorActionPreference = 'Stop'
@@ -59,6 +62,7 @@ $summary = [ordered]@{
     errorCount    = 0
     warningCount  = 0
     tests         = $null
+    harvestedMeta = @()
     logFile       = ''
 }
 
@@ -181,6 +185,24 @@ try {
 
     $code = Invoke-Unity @('-quit', '-executeMethod', 'ReTrap.EditorTools.CIRunner.RunAll', '-ciOutput', $resultJson) $log
     $issues = Get-LogIssues $log
+
+    # ── (선택) 생성된 .meta 회수 ─────────────────────────────────
+    $summary.harvestedMeta = @()
+    if ($HarvestMetaTo) {
+        $metas = @(Invoke-Git -C $CiPath ls-files --others --exclude-standard -- '*.meta')
+        foreach ($m in $metas) {
+            if (-not $m) { continue }
+            $rel = $m.Replace('/', '\')
+            $dst = Join-Path $HarvestMetaTo $rel
+            # 대응하는 원본 파일/폴더가 대상 worktree 에 있을 때만 (CI 쪽 부산물 제외)
+            $owner = $dst.Substring(0, $dst.Length - 5)
+            if ((Test-Path $owner) -and -not (Test-Path $dst)) {
+                Copy-Item (Join-Path $CiPath $rel) $dst
+                $summary.harvestedMeta += $m
+            }
+        }
+        if ($summary.harvestedMeta.Count -gt 0) { Write-Host "[ci] .meta 회수 $($summary.harvestedMeta.Count)개 → $HarvestMetaTo" }
+    }
     $summary.compileErrors = $issues.compile
 
     if ($code -eq -999) { Finish 'INFRA_ERROR' 3 "Unity 타임아웃 (${TimeoutMinutes}분)" }

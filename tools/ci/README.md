@@ -31,6 +31,16 @@ powershell -ExecutionPolicy Bypass -File tools\ci\unity-ci.ps1 -Ref spec/SPEC-9 
 작업트리 스냅샷은 **임시 인덱스**로 커밋 객체만 만들어 CI worktree에 체크아웃한다. 메인 작업트리·인덱스·브랜치는 건드리지 않는다.
 CI worktree는 전용 공간이라 매 실행마다 `checkout --force` + `clean -fd`로 초기화된다(직접 작업하지 말 것).
 
+| `-HarvestMetaTo` | (없음) | Unity가 CI worktree에 새로 만든 `.meta`를 지정 worktree로 복사 (spec 브랜치 GUID 고정용) |
+
+## 기획별 구현 worktree (spec-cycle 3단계)
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools\ci\spec-worktree.ps1 -Spec SPEC-9          # ..\ReturnMap-spec\SPEC-9 (spec/SPEC-9, main 기준)
+powershell -ExecutionPolicy Bypass -File tools\ci\spec-worktree.ps1 -Spec SPEC-9 -Remove  # worktree만 제거, 브랜치 유지
+```
+코드 편집 전용이라 Unity로 열지 않는다. 검증은 `unity-ci.ps1 -Ref spec/SPEC-9 -HarvestMetaTo ..\ReturnMap-spec\SPEC-9`.
+
 ## 결과
 
 | 파일 | 내용 |
