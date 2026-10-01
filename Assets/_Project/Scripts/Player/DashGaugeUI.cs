@@ -83,7 +83,7 @@ namespace ReTrap
 
         private void BuildGauge()
         {
-            Sprite ring = ringSprite != null ? ringSprite : GeneratedRingSprite();
+            Sprite ring = ringSprite != null ? ringSprite : SpriteUtil.Ring();
 
             // ── 월드 스페이스 캔버스 (플레이어 자식) ─────────────────────────
             var canvasGo = new GameObject("DashGauge",
@@ -148,45 +148,6 @@ namespace ReTrap
             img.fillClockwise = true;
             img.raycastTarget = false;
             return img;
-        }
-
-        // ── 코드 생성 링 스프라이트 (아트 전 임시) ───────────────────────────
-
-        private static Sprite _generatedRing;
-
-        private static Sprite GeneratedRingSprite()
-        {
-            if (_generatedRing != null) return _generatedRing;
-
-            const int   texSize = 128;
-            const float outerR  = 60f;
-            const float innerR  = 44f;
-            const float center  = texSize * 0.5f;
-
-            var tex = new Texture2D(texSize, texSize, TextureFormat.RGBA32, false);
-            var pixels = new Color32[texSize * texSize];
-
-            for (int y = 0; y < texSize; y++)
-            {
-                for (int x = 0; x < texSize; x++)
-                {
-                    float dist = Vector2.Distance(new Vector2(x + 0.5f, y + 0.5f),
-                                                  new Vector2(center, center));
-
-                    // 링 경계 1px 부드럽게 (안티앨리어싱)
-                    float alpha = Mathf.Clamp01(outerR - dist) * Mathf.Clamp01(dist - innerR);
-                    pixels[y * texSize + x] = new Color32(255, 255, 255,
-                        (byte)(Mathf.Clamp01(alpha) * 255f));
-                }
-            }
-
-            tex.SetPixels32(pixels);
-            tex.Apply();
-
-            _generatedRing = Sprite.Create(tex,
-                new Rect(0, 0, texSize, texSize),
-                new Vector2(0.5f, 0.5f), 100f);
-            return _generatedRing;
         }
     }
 }

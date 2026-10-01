@@ -53,6 +53,19 @@ namespace ReTrap
 
         private Coroutine firingCoroutine;
 
+        /// <summary>현재 발사 사이클 시작 시각 (Time.time, 스케일 시간).</summary>
+        private float _cycleStartTime;
+
+        /// <summary>현재 발사 사이클 길이(초). 0 이면 사이클 없음(정지).</summary>
+        private float _cycleInterval;
+
+        /// <summary>발사 사이클이 진행 중인지 (코루틴 동작 + 간격 &gt; 0). 쿨다운 게이지 표시용.</summary>
+        public bool IsCycleActive => firingCoroutine != null && _cycleInterval > 0f;
+
+        /// <summary>현재 사이클 진행도 0~1 (발사 직후 0 → 다음 발사 직전 1).</summary>
+        public float CycleProgress01
+            => TrapCooldownGauge.Progress(_cycleStartTime, _cycleInterval, Time.time);
+
         /// <summary>발사 방향 (슬롯이 붙은 면의 바깥 = 맵 안쪽). 기본 오른쪽.</summary>
         private Vector2 _fireDir = Vector2.right;
 
@@ -65,6 +78,17 @@ namespace ReTrap
 
         /// <summary>화살 반납 콜백 (매 발사 델리게이트 할당 방지용 캐시).</summary>
         private System.Action<Arrow> _releaseArrow;
+
+        // ── Unity ─────────────────────────────────────────────────────────────
+
+        protected override void Awake()
+        {
+            base.Awake();
+
+            // 쿨다운 게이지는 표시 전용 — 프리팹 수정 없이 런타임에 부착
+            if (!TryGetComponent<TrapCooldownGauge>(out _))
+                gameObject.AddComponent<TrapCooldownGauge>();
+        }
 
         // ── 슬롯 호환 ─────────────────────────────────────────────────────────
         // 4방향 모두 설치 가능 — 슬롯이 붙은 면의 바깥으로 발사한다.
@@ -155,16 +179,21 @@ namespace ReTrap
                 StopCoroutine(firingCoroutine);
                 firingCoroutine = null;
             }
+            _cycleInterval = 0f;
         }
 
         private IEnumerator FireRoutine(float interval, bool isBeneficial)
         {
             // 첫 발사 전 1사이클 대기 (배치 직후 즉발 방지)
+            _cycleStartTime = Time.time;
+            _cycleInterval  = interval;
             yield return new WaitForSeconds(interval);
 
             while (true)
             {
                 SpawnArrow(isBeneficial);
+                _cycleStartTime = Time.time;
+                _cycleInterval  = interval;
                 yield return new WaitForSeconds(interval);
             }
         }
