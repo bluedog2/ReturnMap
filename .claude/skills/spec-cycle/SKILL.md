@@ -157,6 +157,8 @@ powershell -ExecutionPolicy Bypass -File tools\ci\unity-ci.ps1 -Ref spec/SPEC-n 
 | `COMPILE_ERROR` / `FAIL` | 시도 횟수 < 3 이면: `compileErrors`·실패 check 의 `errors`(경고 말고 오류만)를 같은 code-implementer 에게 SendMessage 로 전달해 수정 → 커밋 `[SPEC-n] CI 수정 (시도 k)` → 재실행. 3회째도 실패면 상태 `실패` → ⑭ (실패 리포트) |
 | `INFRA_ERROR` | 코드 문제 아님 → 재시도하지 않음. 상태 `보류`, 메모 `CI 인프라 오류: <message>` → ⑭ (부분 리포트) |
 
+- **Play 검증 프로브 (권장)**: CI PASS 후, 수용 기준을 실제 Play 모드에서 측정하는 임시 프로브(`Editor/CI/SpecProbeN.cs`, 커밋 안 함 — spec 커밋 위에 plumbing 커밋으로만 얹어 CI worktree 에서 실행)를 돌린다. 참고 구현: SPEC-9 프로브(19항목). 실행: `Unity.exe -batchmode -projectPath ..\ReturnMap-ci -executeMethod ReTrap.EditorTools.SpecProbeN.Run -probeOutput <txt> -logFile <log>` (`-nographics` 빼기 — UI Canvas 초기화 필요). Play 진입은 `EnterPlayModeOptions.DisableDomainReload` 로 static 상태 유지.
+- **시각 요소가 있는 기획은 "보이는가"까지 검증한다** (SPEC-9 교훈: 로직 19/19 PASS 였지만 게이지가 0.4칸·흰색이라 실제로는 안 보였음). 프로브에서 메인 카메라를 RenderTexture(1920×1080)로 렌더해 PNG 로 저장하고, 설계안의 객관 기준(화면상 최소 크기 px, 배경 대비 색/밝기 차, 겹침 여부)을 픽셀로 판정한다. PNG 는 리포트에 첨부하고, 판정 기준이 설계안에 없으면 설계 단계에서 가정으로 명시한다.
 - 경고(warn)는 실패가 아니다. 단 main 기준(`Logs\ci\ci-summary.json` 이 있으면) 대비 **새로 생긴 경고**는 리포트에 따로 적는다.
 - `.meta` 회수 커밋 후 CI 를 다시 돌릴 필요는 없다(같은 파일, GUID 만 고정).
 
