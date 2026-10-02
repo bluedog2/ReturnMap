@@ -40,7 +40,7 @@ namespace ReTrap
         [SerializeField] private Color beneficialColor = new Color(1f, 0.85f, 0.2f, 1f);
 
         [Tooltip("배경 링(빈 게이지) 색.")]
-        [SerializeField] private Color backgroundColor = new Color(0f, 0f, 0f, 0.65f);
+        [SerializeField] private Color backgroundColor = new Color(0f, 0f, 0f, 0.8f);
 
         // ── 내부 ─────────────────────────────────────────────────────────────
 
