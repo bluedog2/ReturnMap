@@ -10,3 +10,4 @@ using System.Runtime.CompilerServices;
 // (예: AITagDefinition.EditorInit, AgentArchetype.EditorInit)를 internal 로
 // 유지하면서 Editor 어셈블리에서 직접 호출할 수 있도록 친구 어셈블리로 선언한다.
 [assembly: InternalsVisibleTo("Assembly-CSharp-Editor")]
+[assembly: InternalsVisibleTo("ReTrap.Tests.EditMode")]

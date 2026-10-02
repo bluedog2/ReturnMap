@@ -80,10 +80,14 @@ powershell -ExecutionPolicy Bypass -File tools\ci\run-probe.ps1 -Ref spec/SPEC-9
 | trapDefinitions | 에셋 0개, 로드 실패 | 누락 참조 |
 | prefabs | Missing Script | 누락 참조 |
 | scenes | Missing Script, 씬 열기 실패 | 누락 참조 |
+| sortingLayers | — | Map 레이어가 아닌 비주얼 |
+| scriptFolders | `Scripts/`·`Editor/`·`Tests/` 밖의 `.cs`, `Scripts/`에서 `#if UNITY_EDITOR` 밖 `using UnityEditor` | — |
+| balance | `Settings/BalanceConfig.asset` 없음, 확률 [0,1] 밖·합 > 1, 제한 시간 ≤ 0, 보상 < 0, 빌드 씬 3개 컴포넌트(TrapMutationManager·VerificationDirector·MapLoader)의 `balance` 미지정 | — |
 
 에디터에서도 `ReTrap → Dev → CI 검증 실행 (에디터)` 메뉴로 같은 검사를 돌릴 수 있다(종료 없음, Unity MCP에서도 호출 가능).
 
-## 아직 없는 것
 
-- **PlayMode 스모크(실제 맵 로드·페이즈 전환)** — 플레이 모드가 필요해 PlayMode 테스트로 할 예정. 런타임 asmdef 도입 결정이 선행돼야 함(설계 리뷰 필요).
-- **EditMode 테스트 어셈블리** — 아직 테스트가 없어 `-Tests`는 0건으로 끝날 수 있다.
+## 테스트
+
+- **EditMode**: `Assets/_Project/Tests/EditMode`(asmdef `ReTrap.Tests.EditMode` → `ReTrap.Runtime` 참조). 순수 로직(카르마 굴림·맵 데이터·태그 선택·경로 탐색 등)만. `-Tests`로 실행.
+- **Play 동작**: PlayMode 테스트 대신 프로브(`run-probe.ps1`) — 실제 맵 로드·페이즈 전환은 `SmokeProbe`.

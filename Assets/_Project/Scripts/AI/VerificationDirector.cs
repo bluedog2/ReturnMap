@@ -69,8 +69,15 @@ namespace ReTrap
 
         [Header("판정")]
         [SerializeField]
-        [Tooltip("이 시간(초) 안에 못 뚫으면 방어 성공 (GDD: 제한 시간 버티기)")]
+        [Tooltip("이 시간(초) 안에 못 뚫으면 방어 성공 (GDD: 제한 시간 버티기) (BalanceConfig 미지정 시 폴백)")]
         private float timeLimit = 60f;
+
+        [Header("밸런스")]
+        [SerializeField]
+        [Tooltip("미지정 시 위 제한 시간 필드를 폴백으로 사용 (BalanceConfig 미지정 시 폴백)")]
+        private BalanceConfig balance;
+
+        private float TimeLimit => balance != null ? balance.VerificationTimeLimit : timeLimit;
 
         [Header("풀링")]
         [SerializeField, Min(1)]
@@ -107,6 +114,13 @@ namespace ReTrap
             = new List<StageSpawnTable.TagWeightEntry>();
 
         // ── Unity ─────────────────────────────────────────────────────────────
+
+        private void Awake()
+        {
+            if (balance == null)
+                Debug.LogWarning($"[VerificationDirector] {name}: BalanceConfig 미지정 — " +
+                                 "인스펙터의 폴백 제한 시간 값을 사용합니다.");
+        }
 
         private void OnEnable()
         {
@@ -178,7 +192,7 @@ namespace ReTrap
             EnsurePool(roster.Plans.Count);
             _wave ??= new AgentWaveController(_agentPool, _planner);
 
-            yield return _wave.Run(roster, timeLimit, deathLingerTime, this);
+            yield return _wave.Run(roster, TimeLimit, deathLingerTime, this);
 
             LastRunBreached  = _wave.Breached;
             LastReachedCount = _wave.ReachedCount;
@@ -202,6 +216,16 @@ namespace ReTrap
         /// 구독해 자동 호출하도록 연결할 것 (지금은 수동 호출 전용).
         /// </summary>
         public void RerollRoster() => _roster = null;
+
+        /// <summary>
+        /// 로스터 시드를 지정하고 캐시된 로스터를 버립니다. 에디터 자동 플레이테스트
+        /// (PlaytestProbe)가 시드별로 재현 가능한 로스터를 굴리기 위한 훅 — 0 은 랜덤 시드이므로 쓰지 말 것.
+        /// </summary>
+        internal void SetRosterSeed(int seed)
+        {
+            rosterSeed = seed;
+            RerollRoster();
+        }
 
         // ── 내부 ──────────────────────────────────────────────────────────────
 

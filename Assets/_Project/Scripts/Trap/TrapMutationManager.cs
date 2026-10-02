@@ -37,6 +37,15 @@ namespace ReTrap
         [SerializeField, Range(0f, 1f)] private float criticalChance   = 0.20f;
         // beneficialChance = 1 - (normal + dud + critical) 으로 자동 계산
 
+        [Header("밸런스")]
+        [SerializeField]
+        [Tooltip("미지정 시 위 확률 필드를 폴백으로 사용 (BalanceConfig 미지정 시 폴백)")]
+        private BalanceConfig balance;
+
+        private float NormalChance   => balance != null ? balance.NormalChance   : normalChance;
+        private float DudChance      => balance != null ? balance.DudChance      : dudChance;
+        private float CriticalChance => balance != null ? balance.CriticalChance : criticalChance;
+
         [Header("난이도")]
         [SerializeField]
         [Tooltip("true = 하드 모드: 사망마다 시드 리롤. false = 초보 모드: 시드 고정.")]
@@ -53,6 +62,10 @@ namespace ReTrap
         {
             if (Instance == null) Instance = this;
             else { Destroy(gameObject); return; }
+
+            if (balance == null)
+                Debug.LogWarning($"[TrapMutationManager] {name}: BalanceConfig 미지정 — " +
+                                 "인스펙터의 폴백 확률 값을 사용합니다.");
 
             RollNewSeed();
         }
@@ -161,22 +174,33 @@ namespace ReTrap
             int gy = Mathf.FloorToInt(local.y);
 
             // 시드 × 좌표 해시 (소수 곱 XOR — 인접 칸 상관성 제거)
-            int hash = unchecked(currentSeed
-                                 ^ (gx * 73856093)
-                                 ^ (gy * 19349663));
+            int hash = CellHash(currentSeed, gx, gy);
+            return RollState(hash, NormalChance, DudChance, CriticalChance);
+        }
 
+        /// <summary>시드 × 그리드 좌표 해시 (소수 곱 XOR). 순수 함수.</summary>
+        internal static int CellHash(int seed, int gx, int gy)
+        {
+            return unchecked(seed
+                             ^ (gx * 73856093)
+                             ^ (gy * 19349663));
+        }
+
+        /// <summary>해시로 변이 상태를 결정합니다. 순수 함수 (같은 입력 = 같은 결과).</summary>
+        internal static TrapState RollState(int hash, float normal, float dud, float critical)
+        {
             var localRng = new System.Random(hash);
             float r = (float)localRng.NextDouble();
 
-            if (r < normalChance)
+            if (r < normal)
                 return TrapState.Normal;
 
-            r -= normalChance;
-            if (r < dudChance)
+            r -= normal;
+            if (r < dud)
                 return TrapState.Dud;
 
-            r -= dudChance;
-            if (r < criticalChance)
+            r -= dud;
+            if (r < critical)
                 return TrapState.Critical;
 
             return TrapState.Beneficial;

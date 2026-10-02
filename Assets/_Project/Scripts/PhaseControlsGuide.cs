@@ -11,7 +11,7 @@ namespace ReTrap
     /// 화면 하단에 현재 <see cref="GamePhase"/> 에 맞는 조작법을 안내하고,
     /// Build 페이즈에서만 검증/플레이로 넘어가는 "시작" 버튼(Enter 키와 동일 기능)을 노출합니다.
     ///
-    /// <para><b>씬 배선</b>: <see cref="ReTrap.EditorTools.MetaUiSetup"/> 이 UICanvas 아래에
+    /// <para><b>씬 배선</b>: <c>ReTrap.EditorTools.MetaUiSetup</c> 이 UICanvas 아래에
     /// 하단 바 UI를 생성하고 <see cref="guideText"/>/<see cref="startButton"/>/
     /// <see cref="startButtonRoot"/> 를 SerializedObject 로 배선합니다. 수동 배선도 가능.</para>
     ///

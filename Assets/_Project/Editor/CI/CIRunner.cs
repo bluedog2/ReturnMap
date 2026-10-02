@@ -23,7 +23,7 @@ namespace ReTrap.EditorTools
     /// -executeMethod ReTrap.EditorTools.CIRunner.RunAll -ciOutput &lt;json 절대경로&gt; -logFile &lt;log&gt;</c></para>
     ///
     /// <para>종료 코드: 0 = 통과(경고 허용), 1 = 오류 있음, 3 = 러너 자체 예외.</para>
-    /// <para>검사 항목: compile / maps / stageCatalog / trapDefinitions / prefabs / scenes / sortingLayers.</para>
+    /// <para>검사 항목: compile / maps / stageCatalog / trapDefinitions / prefabs / scenes / sortingLayers / scriptFolders / balance.</para>
     /// </summary>
     public static class CIRunner
     {
@@ -137,6 +137,8 @@ namespace ReTrap.EditorTools
             report.checks.Add(RunCheck("prefabs",         CheckPrefabs));
             report.checks.Add(RunCheck("scenes",          CheckScenes));
             report.checks.Add(RunCheck("sortingLayers",   CheckSortingLayers));
+            report.checks.Add(RunCheck("scriptFolders",   CheckScriptFolders));
+            report.checks.Add(RunCheck("balance",         CheckBalance));
 
             foreach (var c in report.checks)
             {
@@ -343,6 +345,119 @@ namespace ReTrap.EditorTools
         }
 
         // 7) sortingLayers ────────────────────────────────────────────────────
+        // ── 스크립트 폴더 경계 (asmdef) ──────────────────────────────────────
+
+        private const string ScriptsRoot = "Assets/_Project/Scripts/";
+        private static readonly string[] AllowedScriptRoots =
+        {
+            "Assets/_Project/Scripts/",
+            "Assets/_Project/Editor/",
+            "Assets/_Project/Tests/",
+        };
+
+        /// <summary>
+        /// Assets/ 아래 .cs 가 허용 폴더(Scripts·Editor·Tests) 안에 있는지, 런타임(Scripts)
+        /// 코드가 #if UNITY_EDITOR 밖에서 UnityEditor 를 using 하지 않는지 검사합니다.
+        /// </summary>
+        private static void CheckScriptFolders(CICheck c)
+        {
+            string assetsDir = Application.dataPath;
+            foreach (string full in Directory.GetFiles(assetsDir, "*.cs", SearchOption.AllDirectories))
+            {
+                string rel = "Assets/" + full.Substring(assetsDir.Length).TrimStart('\\', '/').Replace('\\', '/');
+
+                bool allowed = false;
+                foreach (string root in AllowedScriptRoots)
+                    if (rel.StartsWith(root, StringComparison.Ordinal)) { allowed = true; break; }
+
+                if (!allowed)
+                {
+                    c.errors.Add($"{rel}: 허용 폴더 밖 스크립트 — Scripts(런타임)·Editor·Tests 중 하나에 둘 것 (asmdef 경계)");
+                    continue;
+                }
+
+                if (!rel.StartsWith(ScriptsRoot, StringComparison.Ordinal)) continue;
+
+                // 단순 휴리스틱: 줄 단위로 #if/#endif 깊이를 추적, UNITY_EDITOR 블록 안 여부 판정
+                int depth = 0;
+                var editorDepths = new Stack<int>(); // UNITY_EDITOR #if 가 열린 시점의 깊이
+                string[] lines = File.ReadAllLines(full);
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    string t = lines[i].Trim();
+                    if (t.StartsWith("#if", StringComparison.Ordinal))
+                    {
+                        depth++;
+                        if (t.StartsWith("#if UNITY_EDITOR", StringComparison.Ordinal)) editorDepths.Push(depth);
+                    }
+                    else if (t.StartsWith("#endif", StringComparison.Ordinal))
+                    {
+                        if (editorDepths.Count > 0 && editorDepths.Peek() == depth) editorDepths.Pop();
+                        depth--;
+                    }
+                    else if (editorDepths.Count == 0
+                          && t.StartsWith("using UnityEditor", StringComparison.Ordinal))
+                    {
+                        c.errors.Add($"{rel}:{i + 1}: 런타임 스크립트가 #if UNITY_EDITOR 밖에서 UnityEditor 를 using (asmdef 경계)");
+                    }
+                }
+            }
+        }
+
+        // 9) balance ──────────────────────────────────────────────────────────
+        private const string BalanceConfigPath = "Assets/_Project/Settings/BalanceConfig.asset";
+
+        /// <summary>BalanceConfig 에셋 값 범위 + 빌드 씬 3개 컴포넌트의 balance 배선 검사.</summary>
+        private static void CheckBalance(CICheck c)
+        {
+            var cfg = AssetDatabase.LoadAssetAtPath<BalanceConfig>(BalanceConfigPath);
+            if (cfg == null)
+            {
+                c.errors.Add($"BalanceConfig 에셋을 찾을 수 없습니다: {BalanceConfigPath}");
+                return;
+            }
+
+            void Prob(string n, float v)
+            {
+                if (v < 0f || v > 1f) c.errors.Add($"{n}={v} — [0,1] 범위 밖");
+            }
+            Prob("normalChance", cfg.NormalChance);
+            Prob("dudChance", cfg.DudChance);
+            Prob("criticalChance", cfg.CriticalChance);
+            float sum = cfg.NormalChance + cfg.DudChance + cfg.CriticalChance;
+            if (sum > 1f + 1e-4f) c.errors.Add($"변이 확률 합 {sum} > 1");
+            if (cfg.VerificationTimeLimit <= 0f) c.errors.Add($"verificationTimeLimit={cfg.VerificationTimeLimit} — 0 보다 커야 함");
+            if (cfg.StageClearReward < 0) c.errors.Add($"stageClearReward={cfg.StageClearReward} — 0 이상이어야 함");
+
+            if (!Application.isBatchMode && HasDirtyScene())
+            {
+                c.warnings.Add("저장되지 않은 씬 변경이 있어 balance 씬 배선 검사를 건너뜀 (저장 후 재실행)");
+                return;
+            }
+
+            foreach (EditorBuildSettingsScene s in EditorBuildSettings.scenes)
+            {
+                if (!s.enabled) continue;
+                Scene scene = EditorSceneManager.OpenScene(s.path, OpenSceneMode.Single);
+                foreach (GameObject root in scene.GetRootGameObjects())
+                {
+                    CheckBalanceRef<TrapMutationManager>(root, s.path, c);
+                    CheckBalanceRef<VerificationDirector>(root, s.path, c);
+                    CheckBalanceRef<MapLoader>(root, s.path, c);
+                }
+            }
+        }
+
+        private static void CheckBalanceRef<T>(GameObject root, string scenePath, CICheck c) where T : Component
+        {
+            foreach (T comp in root.GetComponentsInChildren<T>(true))
+            {
+                SerializedProperty p = new SerializedObject(comp).FindProperty("balance");
+                if (p == null || p.objectReferenceValue == null)
+                    c.errors.Add($"{scenePath}/{HierarchyPath(comp.transform)} ({typeof(T).Name}): balance(BalanceConfig) 참조가 비어 있음");
+            }
+        }
+
         /// <summary>소팅 레이어 위반을 경고로만 처리할 프리팹 (미사용 잔재 추정).</summary>
         private const string SortingAllowlistPrefab = "Assets/_Project/ResourcceEX/Prefabs/Tlie/Tlie.prefab";
         private const string RequiredSortingLayer   = "Map";

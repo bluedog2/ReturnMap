@@ -1336,6 +1336,7 @@ MonoBehaviour:
   _autoLoadMapId: stage_03
   _stageCatalog: {fileID: 11400000, guid: 530f486d108981f4e915c2680f9d30a5, type: 2}
   _stageClearReward: 10
+  balance: {fileID: 11400000, guid: 3659cbf2d5b04b54c8641c478532ca86, type: 2}
   _goalMarkerPrefab: {fileID: 0}
 --- !u!4 &394809661
 Transform:
@@ -3705,6 +3706,7 @@ MonoBehaviour:
   normalChance: 0.5
   dudChance: 0.2
   criticalChance: 0.2
+  balance: {fileID: 11400000, guid: 3659cbf2d5b04b54c8641c478532ca86, type: 2}
   hardMode: 0
 --- !u!114 &984637850
 MonoBehaviour:
@@ -3746,6 +3748,7 @@ MonoBehaviour:
   debugTags:
   - {fileID: 11400000, guid: b5942f26fe8d6e74596e2902b65427fe, type: 2}
   timeLimit: 60
+  balance: {fileID: 11400000, guid: 3659cbf2d5b04b54c8641c478532ca86, type: 2}
   poolPrewarm: 1
   deathLingerTime: 0.6
 --- !u!114 &984637852

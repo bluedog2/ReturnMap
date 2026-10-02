@@ -27,7 +27,7 @@ powershell -ExecutionPolicy Bypass -File tools\ci\spec-worktree.ps1 -Spec SPEC-n
 
 ## ⑪ 구현 — `code-implementer`
 넘길 것: 작업 루트 `<wt>`(밖은 읽기만, **메인 `C:\Users\Owner\work\ReturnMap` 수정 금지**) · 승인된 설계안 rev 전문 · 수용 기준 · 가정.
-제약: CLAUDE.md 컨벤션 · **git 명령 금지** · `.meta` 생성 금지 · 프리팹/씬/SO 신규 필요 시 멈추고 보고 · 설계 밖 변경 금지 · EditMode 테스트는 asmdef 도입 전 작성 안 함.
+제약: CLAUDE.md 컨벤션 · **git 명령 금지** · `.meta` 생성 금지 · 프리팹/씬/SO 신규 필요 시 멈추고 보고 · 설계 밖 변경 금지 · 순수 로직이 바뀌면 `Assets/_Project/Tests/EditMode` 에 EditMode 테스트 추가(정적 상태는 SetUp/TearDown 초기화, 상수 재확인 금지).
 반환: 변경 파일, 설계 대비 편차, 발견한 설계 문제.
 - "설계로 해결 불가" 보고 → `spec-worktree.ps1 -Spec SPEC-n -Stash -Message "rev N 중단: <사유>"` → 질문 DB 에 `설계안 피드백` 질문(`대기`) → `질문대기`, 메모. 이후 단계 생략.
 
@@ -44,8 +44,9 @@ powershell -ExecutionPolicy Bypass -File tools\ci\spec-worktree.ps1 -Spec SPEC-n
 
 ### ⑬-1 CI
 ```powershell
-powershell -ExecutionPolicy Bypass -File tools\ci\unity-ci.ps1 -Ref spec/SPEC-n -OutDir Logs\ci-spec\SPEC-n -HarvestMetaTo <wt> -TimeoutMinutes 9
+powershell -ExecutionPolicy Bypass -File tools\ci\unity-ci.ps1 -Ref spec/SPEC-n -OutDir Logs\ci-spec\SPEC-n -HarvestMetaTo <wt> -Tests -TimeoutMinutes 9
 ```
+(`-Tests` = EditMode 테스트 포함. 테스트 실패는 `FAIL` 로 아래와 같이 처리.)
 `ci-summary.json` 판정:
 | result | 처리 |
 |---|---|

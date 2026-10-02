@@ -13,7 +13,7 @@ namespace ReTrap
     /// 호출하고 직접 페이즈/맵 로직을 수행하지 않습니다(<see cref="PhaseControlsGuide"/> 와
     /// 동일 패턴).
     ///
-    /// <para><b>씬 배선</b>: <see cref="ReTrap.EditorTools.MetaUiSetup"/> 이 UICanvas 아래에
+    /// <para><b>씬 배선</b>: <c>ReTrap.EditorTools.MetaUiSetup</c> 이 UICanvas 아래에
     /// 생성/배선합니다. 이 컴포넌트는 항상 활성 상태인 루트에 붙고, 실제 표시/숨김은 자식
     /// <see cref="panelRoot"/>(콘텐츠 컨테이너)로 제어합니다 — 루트 자체를 SetActive(false)로
     /// 끄면 OnDisable 이 <see cref="StageFlowController"/> 의 전역 이벤트 구독을 해제해

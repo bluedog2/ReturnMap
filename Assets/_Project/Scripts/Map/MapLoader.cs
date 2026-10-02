@@ -54,8 +54,14 @@ namespace ReTrap
         [SerializeField] private StageCatalog _stageCatalog;
 
         [Header("클리어")]
-        [Tooltip("스테이지 클리어(Play 페이즈 골 도달) 시 지급할 박살 난 지구본. 기획 미확정 — 임시값.")]
+        [Tooltip("스테이지 클리어(Play 페이즈 골 도달) 시 지급할 박살 난 지구본. 기획 미확정 — 임시값. (BalanceConfig 미지정 시 폴백)")]
         [SerializeField] private int _stageClearReward = 10;
+
+        [Header("밸런스")]
+        [Tooltip("미지정 시 위 클리어 보상 필드를 폴백으로 사용 (BalanceConfig 미지정 시 폴백)")]
+        [SerializeField] private BalanceConfig balance;
+
+        private int StageClearReward => balance != null ? balance.StageClearReward : _stageClearReward;
 
         [Tooltip("골 지점에 생성할 프리팹 오버라이드. 비워두면 절차적으로 생성(색상 블록 + 트리거).")]
         [SerializeField] private GameObject _goalMarkerPrefab;
@@ -107,6 +113,10 @@ namespace ReTrap
         {
             if (Instance == null) Instance = this;
             else { Destroy(gameObject); return; }
+
+            if (balance == null)
+                Debug.LogWarning($"[MapLoader] {name}: BalanceConfig 미지정 — " +
+                                 "인스펙터의 폴백 클리어 보상 값을 사용합니다.");
 
             EnsureMapRoot();
         }
@@ -344,7 +354,7 @@ namespace ReTrap
                 trigger = go.AddComponent<StageGoalTrigger>();
             }
 
-            trigger.Init(_stageClearReward);
+            trigger.Init(StageClearReward);
         }
 
         /// <summary>
