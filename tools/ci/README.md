@@ -41,6 +41,24 @@ powershell -ExecutionPolicy Bypass -File tools\ci\spec-worktree.ps1 -Spec SPEC-9
 ```
 코드 편집 전용이라 Unity로 열지 않는다. 검증은 `unity-ci.ps1 -Ref spec/SPEC-9 -HarvestMetaTo ..\ReturnMap-spec\SPEC-9`.
 
+## spec-cycle 보조 스크립트
+
+| 스크립트 | 용도 |
+|---|---|
+| `cycle-guard.ps1` | 실행 단위 잠금 — `-Acquire`(TOKEN/SKIP) · `-Touch -Token`(heartbeat) · `-Release -Token`(소유자만 해제), 마지막 활동 4시간 후 만료 |
+| `spec-worktree.ps1` | 기획별 worktree 생성·재사용(DIRTY/PROBES/COMMIT 출력) · `-Commit [-AutoMeta]` · `-Stash` · `-Status`(main 대비 AHEAD/BEHIND/CONFLICT) · `-Remove [-DeleteBranch]` |
+| `section-hash.ps1` | 기획 문서 `🛠 개발 설계안` 섹션 지문 — 승인 후 설계안 변경 감지 |
+| `run-probe.ps1` | Play 검증 프로브 실행(`-Probe <파일>` 또는 커밋된 `"<ref>:<경로>"`) |
+
+자동화는 git 을 직접 쓰지 않고 이 스크립트들만 쓴다(권한 설정 `.claude/settings.json` 의 allow 목록과 일치).
+
+## Play 검증 프로브
+
+CI 는 실제 플레이 동작을 못 본다. 기획별 프로브로 Play 모드에서 수용 기준을 측정한다 — 작성 규칙·참고 구현은 [`probes/README.md`](probes/README.md).
+```powershell
+powershell -ExecutionPolicy Bypass -File tools\ci\run-probe.ps1 -Ref spec/SPEC-9 -Probe tools\ci\probes\SpecProbe9b.cs
+```
+
 ## 결과
 
 | 파일 | 내용 |

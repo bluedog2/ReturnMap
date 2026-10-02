@@ -12,7 +12,44 @@
       "Bash(cat:*)",
       "Bash(head:*)",
       "Bash(tail:*)",
-      "Bash(wc:*)"
+      "Bash(wc:*)",
+      "Skill(spec-cycle)",
+      "mcp__plugin_Notion_notion__notion-query-data-sources",
+      "mcp__plugin_Notion_notion__notion-fetch",
+      "mcp__plugin_Notion_notion__notion-search",
+      "mcp__plugin_Notion_notion__notion-update-page",
+      "mcp__plugin_Notion_notion__notion-create-pages",
+      "Bash(powershell -ExecutionPolicy Bypass -File tools/ci/cycle-guard.ps1:*)",
+      "Bash(powershell -ExecutionPolicy Bypass -File tools/ci/spec-worktree.ps1:*)",
+      "Bash(powershell -ExecutionPolicy Bypass -File tools/ci/unity-ci.ps1:*)",
+      "Bash(powershell -ExecutionPolicy Bypass -File tools/ci/run-probe.ps1:*)",
+      "Bash(powershell -ExecutionPolicy Bypass -File tools/ci/section-hash.ps1:*)",
+      "PowerShell(powershell -ExecutionPolicy Bypass -File tools\\ci\\cycle-guard.ps1:*)",
+      "PowerShell(powershell -ExecutionPolicy Bypass -File tools\\ci\\spec-worktree.ps1:*)",
+      "PowerShell(powershell -ExecutionPolicy Bypass -File tools\\ci\\unity-ci.ps1:*)",
+      "PowerShell(powershell -ExecutionPolicy Bypass -File tools\\ci\\run-probe.ps1:*)",
+      "PowerShell(powershell -ExecutionPolicy Bypass -File tools\\ci\\section-hash.ps1:*)"
+    ],
+    "ask": [
+      "Bash(git push:*)",
+      "Bash(git reset:*)",
+      "Bash(git rebase:*)",
+      "Bash(git merge:*)",
+      "Bash(git branch -D:*)",
+      "Bash(git clean:*)",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(rm -rf:*)",
+      "PowerShell(Invoke-WebRequest:*)",
+      "PowerShell(Invoke-RestMethod:*)",
+      "PowerShell(iwr:*)",
+      "PowerShell(irm:*)",
+      "PowerShell(Remove-Item -Recurse:*)"
+    ],
+    "deny": [
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git push --force-with-lease:*)"
     ]
   }
 }

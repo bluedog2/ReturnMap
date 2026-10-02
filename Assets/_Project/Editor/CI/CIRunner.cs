@@ -23,7 +23,7 @@ namespace ReTrap.EditorTools
     /// -executeMethod ReTrap.EditorTools.CIRunner.RunAll -ciOutput &lt;json 절대경로&gt; -logFile &lt;log&gt;</c></para>
     ///
     /// <para>종료 코드: 0 = 통과(경고 허용), 1 = 오류 있음, 3 = 러너 자체 예외.</para>
-    /// <para>검사 항목: compile / maps / stageCatalog / trapDefinitions / prefabs / scenes.</para>
+    /// <para>검사 항목: compile / maps / stageCatalog / trapDefinitions / prefabs / scenes / sortingLayers.</para>
     /// </summary>
     public static class CIRunner
     {
@@ -136,6 +136,7 @@ namespace ReTrap.EditorTools
             report.checks.Add(RunCheck("trapDefinitions", CheckTrapDefinitions));
             report.checks.Add(RunCheck("prefabs",         CheckPrefabs));
             report.checks.Add(RunCheck("scenes",          CheckScenes));
+            report.checks.Add(RunCheck("sortingLayers",   CheckSortingLayers));
 
             foreach (var c in report.checks)
             {
@@ -339,6 +340,46 @@ namespace ReTrap.EditorTools
                     c.errors.Add($"{s.path}: 씬 검사 실패 — {e.Message}");
                 }
             }
+        }
+
+        // 7) sortingLayers ────────────────────────────────────────────────────
+        /// <summary>소팅 레이어 위반을 경고로만 처리할 프리팹 (미사용 잔재 추정).</summary>
+        private const string SortingAllowlistPrefab = "Assets/_Project/ResourcceEX/Prefabs/Tlie/Tlie.prefab";
+        private const string RequiredSortingLayer   = "Map";
+
+        private static void CheckSortingLayers(CICheck c)
+        {
+            if (!AssetDatabase.IsValidFolder(PrefabsFolder))
+            {
+                c.errors.Add($"프리팹 폴더 없음: {PrefabsFolder}");
+                return;
+            }
+            string[] guids = AssetDatabase.FindAssets("t:Prefab", new[] { PrefabsFolder });
+            foreach (string guid in guids)
+            {
+                string path = AssetDatabase.GUIDToAssetPath(guid);
+                GameObject root = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+                if (root == null) continue; // 로드 실패는 prefabs 검사에서 보고
+
+                bool allowlisted = path == SortingAllowlistPrefab;
+                foreach (SpriteRenderer sr in root.GetComponentsInChildren<SpriteRenderer>(true))
+                    ReportSortingLayer(c, allowlisted, path, sr.transform, "SpriteRenderer", sr.sortingLayerName);
+
+                foreach (Canvas cv in root.GetComponentsInChildren<Canvas>(true))
+                {
+                    if (!cv.isRootCanvas && !cv.overrideSorting) continue;
+                    ReportSortingLayer(c, allowlisted, path, cv.transform, "Canvas", cv.sortingLayerName);
+                }
+            }
+        }
+
+        private static void ReportSortingLayer(CICheck c, bool allowlisted, string prefabPath,
+                                               Transform t, string kind, string layerName)
+        {
+            if (layerName == RequiredSortingLayer) return;
+            string msg = $"{prefabPath}/{HierarchyPath(t)} ({kind}): 소팅 레이어 '{layerName}' — Map 이어야 함 (CLAUDE.md 소팅 규칙)";
+            if (allowlisted) c.warnings.Add(msg + " (미사용 잔재 추정 — 확인 필요)");
+            else             c.errors.Add(msg);
         }
 
         private static bool HasDirtyScene()

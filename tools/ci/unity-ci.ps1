@@ -63,6 +63,7 @@ $summary = [ordered]@{
     warningCount  = 0
     tests         = $null
     harvestedMeta = @()
+    pendingMeta   = @()
     logFile       = ''
 }
 
@@ -162,7 +163,8 @@ try {
         Write-Host "[ci] Unity 실행: $argLine"
         $p = Start-Process -FilePath $UnityPath -ArgumentList $argLine -PassThru -WindowStyle Hidden
         if (-not $p.WaitForExit($TimeoutMinutes * 60 * 1000)) {
-            try { $p.Kill() } catch {}
+            # 본체만 죽이면 AssetImportWorker·ShaderCompiler 가 고아로 남아 다음 실행이 막힌다 → 트리째 종료
+            & taskkill /T /F /PID $p.Id 2>$null | Out-Null
             return -999
         }
         return $p.ExitCode
@@ -186,9 +188,10 @@ try {
     $code = Invoke-Unity @('-quit', '-executeMethod', 'ReTrap.EditorTools.CIRunner.RunAll', '-ciOutput', $resultJson) $log
     $issues = Get-LogIssues $log
 
-    # ── (선택) 생성된 .meta 회수 ─────────────────────────────────
+    # .meta 회수는 PASS 일 때만(아래). 실패 회차에 회수하면 자동 수정 커밋의 add -A 에 섞여 규칙이 깨진다.
     $summary.harvestedMeta = @()
-    if ($HarvestMetaTo) {
+    $summary.pendingMeta = @()
+    function Invoke-HarvestMeta {
         $metas = @(Invoke-Git -C $CiPath ls-files --others --exclude-standard -- '*.meta')
         foreach ($m in $metas) {
             if (-not $m) { continue }
@@ -201,7 +204,9 @@ try {
                 $summary.harvestedMeta += $m
             }
         }
-        if ($summary.harvestedMeta.Count -gt 0) { Write-Host "[ci] .meta 회수 $($summary.harvestedMeta.Count)개 → $HarvestMetaTo" }
+        # 판정 기준: 대상 worktree 에 지금 미추적 상태인 .meta 전체 (이전 회차에 이미 복사된 것 포함)
+        $summary.pendingMeta = @(Invoke-Git -C $HarvestMetaTo ls-files --others --exclude-standard -- '*.meta' | Where-Object { $_ })
+        if ($summary.pendingMeta.Count -gt 0) { Write-Host "[ci] 미추적 .meta $($summary.pendingMeta.Count)개 (이번 회수 $($summary.harvestedMeta.Count)) → $HarvestMetaTo" }
     }
     $summary.compileErrors = $issues.compile
 
@@ -245,7 +250,9 @@ try {
         }
     }
 
-    if ($failed) { Finish 'FAIL' 1 '' } else { Finish 'PASS' 0 '' }
+    if ($failed) { Finish 'FAIL' 1 '' }
+    if ($HarvestMetaTo) { Invoke-HarvestMeta }
+    Finish 'PASS' 0 ''
 }
 catch {
     Finish 'INFRA_ERROR' 3 ("스크립트 예외: " + $_.Exception.Message)
