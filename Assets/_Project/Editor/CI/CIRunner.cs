@@ -407,9 +407,97 @@ namespace ReTrap.EditorTools
         // 9) balance ──────────────────────────────────────────────────────────
         private const string BalanceConfigPath = "Assets/_Project/Settings/BalanceConfig.asset";
 
+        // ── balance 스키마 2차 검사 (tools/balance/balance-schema.json) ─────────
+        [Serializable] private class BalanceSchemaKey
+        {
+            public string key, file, kind, field, type;
+            public float min, max;
+        }
+        [Serializable] private class BalanceSchemaConstraint
+        {
+            public string id;
+            public string[] sumOf;
+            public float max;
+        }
+        [Serializable] private class BalanceSchemaFile
+        {
+            public int version;
+            public BalanceSchemaKey[] keys;
+            public BalanceSchemaConstraint[] constraints;
+        }
+
+        /// <summary>
+        /// apply-balance.ps1 과 같은 스키마·정규식으로 각 키의 현재 파일값을 읽어 min/max·constraints 를 검사한다.
+        /// 스키마 파일이 없으면 경고만(구버전 브랜치 호환).
+        /// </summary>
+        private static void CheckBalanceSchema(CICheck c)
+        {
+            string root = ProjectRoot();
+            string schemaPath = Path.Combine(root, "tools", "balance", "balance-schema.json");
+            if (!File.Exists(schemaPath))
+            {
+                c.warnings.Add("tools/balance/balance-schema.json 없음 — 스키마 2차 검사 건너뜀");
+                return;
+            }
+
+            BalanceSchemaFile schema;
+            try { schema = JsonUtility.FromJson<BalanceSchemaFile>(File.ReadAllText(schemaPath)); }
+            catch (Exception e)
+            {
+                c.errors.Add($"balance-schema.json 파싱 실패: {e.Message}");
+                return;
+            }
+            if (schema == null || schema.keys == null)
+            {
+                c.errors.Add("balance-schema.json 형식 오류 (keys 없음)");
+                return;
+            }
+
+            var values = new Dictionary<string, double>();
+            foreach (BalanceSchemaKey k in schema.keys)
+            {
+                string full = Path.Combine(root, k.file.Replace('/', Path.DirectorySeparatorChar));
+                if (!File.Exists(full)) { c.errors.Add($"balance 스키마 {k.key}: 파일 없음 {k.file}"); continue; }
+
+                string text = File.ReadAllText(full);
+                string field = System.Text.RegularExpressions.Regex.Escape(k.field);
+                string rx = k.kind == "unityYaml"
+                    ? "(?m)^  " + field + ": ([^\r\n]+)$"
+                    : "\"" + field + @"""\s*:\s*(-?\d+(\.\d+)?)";
+                var ms = System.Text.RegularExpressions.Regex.Matches(text, rx);
+                if (ms.Count != 1)
+                {
+                    c.errors.Add($"balance 스키마 {k.key}: 필드 '{k.field}' 매치 {ms.Count}회 (정확히 1회 필요) — {k.file}");
+                    continue;
+                }
+                if (!double.TryParse(ms[0].Groups[1].Value, System.Globalization.NumberStyles.Float,
+                        System.Globalization.CultureInfo.InvariantCulture, out double v))
+                {
+                    c.errors.Add($"balance 스키마 {k.key}: 값 '{ms[0].Groups[1].Value}' 숫자 파싱 실패");
+                    continue;
+                }
+                values[k.key] = v;
+                if (v < k.min || v > k.max) c.errors.Add($"balance 스키마 {k.key}={v} — 범위 [{k.min},{k.max}] 밖");
+            }
+
+            if (schema.constraints == null) return;
+            foreach (BalanceSchemaConstraint cs in schema.constraints)
+            {
+                double sum = 0;
+                bool ok = true;
+                foreach (string key in cs.sumOf)
+                {
+                    if (values.TryGetValue(key, out double v)) sum += v; else ok = false;
+                }
+                if (ok && sum > cs.max + 1e-4) c.errors.Add($"balance 제약 {cs.id} 위반: 합 {sum} > {cs.max}");
+            }
+        }
+
         /// <summary>BalanceConfig 에셋 값 범위 + 빌드 씬 3개 컴포넌트의 balance 배선 검사.</summary>
         private static void CheckBalance(CICheck c)
         {
+            CheckBalanceSchema(c);
+
             var cfg = AssetDatabase.LoadAssetAtPath<BalanceConfig>(BalanceConfigPath);
             if (cfg == null)
             {

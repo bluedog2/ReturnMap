@@ -27,7 +27,7 @@
 
 [CmdletBinding()]
 param(
-    [Parameter(Mandatory = $true)][ValidatePattern('^SPEC-\d+$')][string]$Spec,
+    [Parameter(Mandatory = $true)][ValidatePattern('^(SPEC|BAL)-\d+$')][string]$Spec,
     [string]$Base = 'main',
     [string]$Root = '',
     [switch]$Remove,

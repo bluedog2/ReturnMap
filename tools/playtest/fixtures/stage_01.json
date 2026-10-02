@@ -1,0 +1,6 @@
+{"mapId":"stage_01","seedCount":5,"seedBase":1001,"placements":[
+{"trap":"TrapDefinition_Spike","x":10,"y":3},
+{"trap":"TrapDefinition_Spike","x":5,"y":0},
+{"trap":"TrapDefinition_ArrowShooter","x":18,"y":0},
+{"trap":"TrapDefinition_ArrowShooter","x":0,"y":5}
+]}

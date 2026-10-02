@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "keys": [
+    {"key": "mutation.normalChance", "file": "Assets/_Project/Settings/BalanceConfig.asset", "kind": "unityYaml", "field": "normalChance", "type": "float", "min": 0, "max": 1},
+    {"key": "mutation.dudChance", "file": "Assets/_Project/Settings/BalanceConfig.asset", "kind": "unityYaml", "field": "dudChance", "type": "float", "min": 0, "max": 1},
+    {"key": "mutation.criticalChance", "file": "Assets/_Project/Settings/BalanceConfig.asset", "kind": "unityYaml", "field": "criticalChance", "type": "float", "min": 0, "max": 1},
+    {"key": "verification.timeLimit", "file": "Assets/_Project/Settings/BalanceConfig.asset", "kind": "unityYaml", "field": "verificationTimeLimit", "type": "float", "min": 10, "max": 600},
+    {"key": "stage.clearReward", "file": "Assets/_Project/Settings/BalanceConfig.asset", "kind": "unityYaml", "field": "stageClearReward", "type": "int", "min": 0, "max": 1000},
+    {"key": "trap.ArrowShooter.baseCost", "file": "Assets/_Project/Settings/TrapDefinitions/TrapDefinition_ArrowShooter.asset", "kind": "unityYaml", "field": "baseCost", "type": "int", "min": 1, "max": 500},
+    {"key": "trap.ArrowShooter.dangerLevel", "file": "Assets/_Project/Settings/TrapDefinitions/TrapDefinition_ArrowShooter.asset", "kind": "unityYaml", "field": "dangerLevel", "type": "int", "min": 0, "max": 10},
+    {"key": "trap.DropHammer.baseCost", "file": "Assets/_Project/Settings/TrapDefinitions/TrapDefinition_DropHammer.asset", "kind": "unityYaml", "field": "baseCost", "type": "int", "min": 1, "max": 500},
+    {"key": "trap.DropHammer.dangerLevel", "file": "Assets/_Project/Settings/TrapDefinitions/TrapDefinition_DropHammer.asset", "kind": "unityYaml", "field": "dangerLevel", "type": "int", "min": 0, "max": 10},
+    {"key": "trap.Spike.baseCost", "file": "Assets/_Project/Settings/TrapDefinitions/TrapDefinition_Spike.asset", "kind": "unityYaml", "field": "baseCost", "type": "int", "min": 1, "max": 500},
+    {"key": "trap.Spike.dangerLevel", "file": "Assets/_Project/Settings/TrapDefinitions/TrapDefinition_Spike.asset", "kind": "unityYaml", "field": "dangerLevel", "type": "int", "min": 0, "max": 10},
+    {"key": "stage_01.buildBudget", "file": "Assets/StreamingAssets/Maps/stage_01.json", "kind": "json", "field": "buildBudget", "type": "int", "min": 0, "max": 2000},
+    {"key": "stage_02.buildBudget", "file": "Assets/StreamingAssets/Maps/stage_02.json", "kind": "json", "field": "buildBudget", "type": "int", "min": 0, "max": 2000},
+    {"key": "stage_03.buildBudget", "file": "Assets/StreamingAssets/Maps/stage_03.json", "kind": "json", "field": "buildBudget", "type": "int", "min": 0, "max": 2000},
+    {"key": "spawn.Stage01.spawnInterval", "file": "Assets/_Project/Settings/AI/SpawnTables/SpawnTable_Stage01.asset", "kind": "unityYaml", "field": "spawnInterval", "type": "float", "min": 0.1, "max": 30},
+    {"key": "spawn.Stage01.breachThreshold", "file": "Assets/_Project/Settings/AI/SpawnTables/SpawnTable_Stage01.asset", "kind": "unityYaml", "field": "breachThreshold", "type": "int", "min": 1, "max": 50}
+  ],
+  "constraints": [
+    {"id": "mutationSum", "sumOf": ["mutation.normalChance", "mutation.dudChance", "mutation.criticalChance"], "max": 1.0}
+  ]
+}

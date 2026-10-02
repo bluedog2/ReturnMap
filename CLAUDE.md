@@ -33,7 +33,7 @@ Unity 6 (6000.3.10f1) URP 2D 게임. 2D 샌드박스 퍼즐 플랫포머 + 로�
 
 ## 기획 → 개발 사이클
 
-Notion 기획안 DB의 `개발 상태`(개발요청/답변완료)를 감지해 설계·질문을 수행하는 스킬: `/spec-cycle` (`.claude/skills/spec-cycle/SKILL.md`). 운영 규칙은 Notion「🔁 개발 사이클 운영 가이드」. 1단계(설계·질문) + 2단계(Unity CLI CI) + 3단계(승인된 설계 → spec 브랜치 구현 → CI → 자동 수정 → Notion 리포트) + 4단계(데스크톱 앱 예약 작업 `spec-cycle-auto` 주기 실행 · 실행 가드 `Logs/spec-cycle.lock` · 사람 할 일 생길 때만 푸시 알림 · 완료+병합된 spec 브랜치 자동 정리) 구축됨. 스킬은 디스패처 `SKILL.md` + `design-track.md` · `impl-track.md`(대상 있을 때만 읽음). 검증 = CI(정적·소팅 레이어) + 기획별 Play 프로브(구현과 분리된 작성자) + 공통 `SmokeProbe`(전 스테이지 회귀). 보조 스크립트·권한 경계는 `tools/ci/README.md`. 남은 것: 5단계 asmdef/테스트·수치 동기화.
+Notion 기획안 DB의 `개발 상태`(개발요청/답변완료)를 감지해 설계·질문을 수행하는 스킬: `/spec-cycle` (`.claude/skills/spec-cycle/SKILL.md`). 운영 규칙은 Notion「🔁 개발 사이클 운영 가이드」. 1단계(설계·질문) + 2단계(Unity CLI CI) + 3단계(승인된 설계 → spec 브랜치 구현 → CI → 자동 수정 → Notion 리포트) + 4단계(데스크톱 앱 예약 작업 `spec-cycle-auto` 주기 실행 · 실행 가드 `Logs/spec-cycle.lock` · 사람 할 일 생길 때만 푸시 알림 · 완료+병합된 spec 브랜치 자동 정리) 구축됨. 스킬은 디스패처 `SKILL.md` + `design-track.md` · `impl-track.md`(대상 있을 때만 읽음). 검증 = CI(정적·소팅 레이어) + 기획별 Play 프로브(구현과 분리된 작성자) + 공통 `SmokeProbe`(전 스테이지 회귀). 보조 스크립트·권한 경계는 `tools/ci/README.md`. 5단계(2026-10-03): EditMode 테스트(`-Tests` 기본) · `BalanceConfig` SO(`Assets/_Project/Settings`) · Notion「밸런스 수치」→ `balance-track.md`(`tools/balance/apply-balance.ps1`, 스키마 화이트리스트, `spec/BAL-n`) · Notion「플레이테스트」→ `playtest-track.md`(`tools/playtest/PlaytestProbe.cs`).
 
 ---
 
