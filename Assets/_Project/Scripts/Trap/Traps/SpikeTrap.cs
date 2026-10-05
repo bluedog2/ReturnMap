@@ -180,6 +180,7 @@ namespace ReTrap
 
                 // ── 돌출 → 수축: 데미지 ON ───────────────────────────────────
                 SetDamageAreaEnabled(true);
+                RaiseActivated();
                 yield return LerpY(retractedY, extendedY, moveTime);
                 yield return LerpY(extendedY, retractedY, moveTime);
             }

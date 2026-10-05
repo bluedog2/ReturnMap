@@ -38,6 +38,9 @@ namespace ReTrap
         /// <summary>피격 후 남은 HP 전달. (남은HP, 받은데미지)</summary>
         public event Action<int, int> OnDamageTaken;
 
+        /// <summary>어느 PlayerHealth 든 피격 시 발행(리스폰 후 재구독 불필요). 인자 = (피격자, 실제 깎인 HP).</summary>
+        public static event Action<PlayerHealth, int> OnAnyDamageTaken;
+
         /// <summary>HP 가 0 이 되는 순간 발행.</summary>
         public event Action OnDeath;
 
@@ -58,6 +61,7 @@ namespace ReTrap
             int prev  = CurrentHp;
             CurrentHp = Mathf.Max(0, CurrentHp - amount);
             OnDamageTaken?.Invoke(CurrentHp, prev - CurrentHp);
+            OnAnyDamageTaken?.Invoke(this, prev - CurrentHp);
 
             if (CurrentHp <= 0)
             {
