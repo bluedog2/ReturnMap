@@ -307,13 +307,19 @@ namespace ReTrap.EditorTools
                     Next(); return;
 
                 case 16: // AC5 Dud → 0 (거리 3)
-                    if (!_init) { _init = true; _near = Spawn(3f); _near.Mutate(TrapState.Dud); }
+                    if (!_init) { _init = true; _near = Spawn(3f); }
                     Place(_near, 3f);
-                    if (!_armed) { if (tr < 0.5f) return; Arm(_nearAct); }
-                    if (tr < 3.0f) return;
+                    if (!_fb)
+                    {
+                        // TrapBase.Start() 가 Mutate(Normal) 을 호출하므로 Start 완료 후(0.3초) Dud 를 건다
+                        if (tr < 0.3f) return;
+                        _near.Mutate(TrapState.Dud); _fb = true; _fbT = tr; return;
+                    }
+                    if (!_armed) { if (tr < _fbT + 0.2f) return; Arm(_nearAct); _tLast = tr; }
+                    if (tr < _tLast + 3.0f) return;
                     {
                         int delta = sm.SfxPlayCount - _base, dmgD = _dmg - _dmg0, act = _nearAct - _act0;
-                        Check("AC5 Dud 함정 → +0 (발행 없음)", act == 0 && delta - dmgD == 0, $"delta={delta} 발동={act} 피격={dmgD} phase={gpm.currentPhase}");
+                        Check("AC5 Dud 함정 → +0 (발행 없음)", act == 0 && delta - dmgD == 0 && _near.CurrentState == TrapState.Dud, $"delta={delta} 발동={act} 피격={dmgD} state={_near.CurrentState} phase={gpm.currentPhase}");
                     }
                     _near.Mutate(TrapState.Normal);
                     Next(); return;
