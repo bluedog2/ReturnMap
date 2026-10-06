@@ -69,6 +69,7 @@ namespace ReTrap.EditorTools
             var definitions = new List<TrapDefinition> { spikeDef, shooterDef, hammerDef };
 
             WireScene(definitions, hud, uiCanvas);
+            EnsureSoundManager();
 
             EditorSceneManager.SaveOpenScenes();
             Debug.Log("[TrapPrefabBuilder] ✅ 함정 프리팹 + Build UI 세팅 완료");
@@ -591,6 +592,59 @@ namespace ReTrap.EditorTools
 
             EditorSceneManager.MarkSceneDirty(managers.scene);
             Debug.Log($"[TrapPrefabBuilder] BuildPhaseController 배선 완료 — 함정 {definitions.Count}종 (TrapDefinition)");
+        }
+
+        // ── 사운드 ───────────────────────────────────────────────────────────
+
+        private const string AudioConfigPath = "Assets/_Project/Settings/AudioConfig.asset";
+        private const string AudioMixerPath  = "Assets/_Project/ResourcceEX/Audio/ReTrapMixer.mixer";
+
+        /// <summary>
+        /// SoundManager GO(없으면 생성) + AudioConfig.asset(없으면 생성, 믹서 연결·기본 엔트리 2개) 배선. 멱등.
+        /// 이미 있는 AudioConfig 의 값은 덮어쓰지 않고, 믹서가 비어 있을 때만 연결한다.
+        /// </summary>
+        private static void EnsureSoundManager()
+        {
+            var mixer  = AssetDatabase.LoadAssetAtPath<UnityEngine.Audio.AudioMixer>(AudioMixerPath);
+            var config = AssetDatabase.LoadAssetAtPath<AudioConfig>(AudioConfigPath);
+            if (config == null)
+            {
+                System.IO.Directory.CreateDirectory(System.IO.Path.GetDirectoryName(AudioConfigPath));
+                config = ScriptableObject.CreateInstance<AudioConfig>();
+                AssetDatabase.CreateAsset(config, AudioConfigPath);
+            }
+
+            if (mixer != null)
+            {
+                var cso = new SerializedObject(config);
+                var mixerProp = cso.FindProperty("mixer");
+                if (mixerProp.objectReferenceValue == null)
+                {
+                    mixerProp.objectReferenceValue = mixer;
+                    cso.ApplyModifiedPropertiesWithoutUndo();
+                    EditorUtility.SetDirty(config);
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"[TrapPrefabBuilder] 믹서를 찾지 못했습니다({AudioMixerPath}) — AudioConfig.mixer 는 비워 두고 폴백 모드로 진행합니다.");
+            }
+
+            var sm = Object.FindFirstObjectByType<SoundManager>(FindObjectsInactive.Include);
+            if (sm == null)
+            {
+                var go = new GameObject("SoundManager");
+                sm = go.AddComponent<SoundManager>();
+                Debug.Log("[TrapPrefabBuilder] SoundManager 추가");
+            }
+
+            var so = new SerializedObject(sm);
+            so.FindProperty("config").objectReferenceValue = config;
+            so.ApplyModifiedPropertiesWithoutUndo();
+            EditorUtility.SetDirty(sm);
+
+            AssetDatabase.SaveAssets();
+            EditorSceneManager.MarkSceneDirty(sm.gameObject.scene);
         }
 
         // ── 어드레서블 헬퍼 ──────────────────────────────────────────────────

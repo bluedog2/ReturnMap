@@ -141,6 +141,18 @@ namespace ReTrap
         /// </summary>
         public static IReadOnlyList<TrapBase> ActiveTraps => _activeTraps;
 
+        // ── 발동 이벤트 (사운드 등 표현 계층 구독) ────────────────────────────
+
+        /// <summary>함정이 실제로 발동(가시 돌출·화살 발사·해머 낙하)할 때 발행. Dud 는 발행하지 않는다.</summary>
+        public static event System.Action<TrapBase> OnTrapActivated;
+
+        /// <summary>서브클래스가 발동 시점에 호출. Dud 상태면 내부에서 무시(이중 안전장치).</summary>
+        protected void RaiseActivated()
+        {
+            if (CurrentState == TrapState.Dud) return;
+            OnTrapActivated?.Invoke(this);
+        }
+
         // ── 스펙 정의 (TrapDefinition) ────────────────────────────────────────
 
         /// <summary>중앙화된 함정 스펙 SO. 미지정이면 null — 이 경우 직렬화 필드로 fallback.</summary>

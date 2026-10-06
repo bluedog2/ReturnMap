@@ -247,6 +247,7 @@ namespace ReTrap
                 ? criticalFallSpeed : normalFallSpeed;
 
             activeCoroutine = StartCoroutine(DropRoutine(delay, speed));
+            RaiseActivated();
         }
 
         // ── 코루틴 ────────────────────────────────────────────────────────────
