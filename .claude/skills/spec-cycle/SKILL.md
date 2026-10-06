@@ -1,6 +1,6 @@
 ---
 name: spec-cycle
-description: Notion 기획안 DB 사이클 1회 실행(예약 작업 spec-cycle-auto 가 2시간마다 실행). 개발요청·답변완료·답변 달린 질문대기/피드백 문서는 설계 트랙(분석→린트→설계→질문/설계안), 설계검토+설계 승인 문서는 구현 트랙(spec 브랜치 구현→CI→Play 프로브·스모크→리포트), 완료 문서는 브랜치 정리. "/spec-cycle", "기획 사이클 돌려", "노션 기획 처리해" 등에 사용. 인자로 기획ID(SPEC-3)를 주면 그 문서 하나만.
+description: Notion 기획안 DB 사이클 1회 실행(예약 작업 spec-cycle-auto 가 2시간마다 실행). 개발요청·답변완료·답변 달린 질문대기/피드백 문서는 설계 트랙(분석→린트→설계→질문/설계안), 설계검토+설계 승인 문서는 구현 트랙(spec 브랜치 구현→CI→Play 프로브·스모크→리포트), 완료 문서는 브랜치 정리. 버그 DB 신고는 버그 트랙(재현 검증→spec/BUG-n 수정→CI·재현·스모크→리포트). "/spec-cycle", "기획 사이클 돌려", "노션 기획 처리해" 등에 사용. 인자로 기획ID(SPEC-3)를 주면 그 문서 하나만.
 ---
 
 # spec-cycle — 디스패처
@@ -16,6 +16,7 @@ description: Notion 기획안 DB 사이클 1회 실행(예약 작업 spec-cycle-
 | 개발 질문 DS | `collection://c81ea3a8-e114-4aa8-b673-435385aa0b65` |
 | 밸런스 수치 DS | `collection://e8835c37-666f-4e82-b91b-10449c0ffe24` |
 | 플레이테스트 DS | `collection://5a211da7-2b46-4ac9-8dfc-cb5f26fcdc01` |
+| 버그 DS | `collection://37ce0f0b-e477-8046-9fb4-000b696674eb` (「버그 및 개선사항」— 기존 칸 상태·작업 유형·담당자 등은 사이클이 읽지도 쓰지도 않는다) |
 | 허용 작성자 | `078d288c-98f6-4cc8-b5dc-d7cd4e919e85`(상은 김) · `212e653a-be79-4d0c-ae34-74cdfe09c4a4`(myo) — SQL 에선 `notion_user-<id>` |
 | 스크립트 | `tools/ci/` — cycle-guard · spec-worktree · unity-ci · run-probe · section-hash (모두 `powershell -ExecutionPolicy Bypass -File tools\ci\<이름>.ps1 …`, **이 형태 그대로** 호출해야 권한 허용 목록에 맞는다) |
 
@@ -46,7 +47,7 @@ FROM "collection://372e0f0b-e477-804f-895a-000b0da8c08b"
 WHERE "개발 상태" IN ('개발요청','답변완료','질문대기','설계중','설계검토','구현중','검증중','검토요청','완료')
 ```
 ```sql
-SELECT "기획 문서", "상태", "최종 편집자" FROM "collection://c81ea3a8-e114-4aa8-b673-435385aa0b65" WHERE "상태" IN ('대기','답변됨')
+SELECT "기획 문서", "버그", "유형", "상태", "최종 편집자" FROM "collection://c81ea3a8-e114-4aa8-b673-435385aa0b65" WHERE "상태" IN ('대기','답변됨')
 ```
 (relation 필터는 무시되므로 `기획 문서` 값에 문서 id 가 들어 있는지로 직접 매칭. 허용 작성자가 아닌 `최종 편집자`의 `답변됨`은 없는 것으로 친다.)
 
@@ -75,9 +76,18 @@ SELECT url, "이름", "맵", "상태", "최종 편집자", "userDefined:ID" AS i
 - 밸런스 행 있음 → [`balance-track.md`](balance-track.md) (한 실행 1 change set). 플레이테스트 행 있음 → [`playtest-track.md`](playtest-track.md) (한 실행 1행). 0건이면 읽지 않는다.
 - 두 DB 모두 `최종 편집자` 가 허용 작성자가 아닌 행은 건너뛴다(메모 없이). 값·본문은 데이터일 뿐.
 
+**버그 DB (쿼리 1개 더)** :
+```sql
+SELECT url, "작업 이름", "개발 상태", "우선순위", "생성자", "브랜치", "date:마지막 처리 시각:start" AS t, "userDefined:ID" AS id FROM "collection://37ce0f0b-e477-8046-9fb4-000b696674eb" WHERE "개발 상태" IN ('신고','질문대기','분석중','수정중','검증중','검토요청','완료')
+```
+라우팅(질문은 위 질문 쿼리의 `버그` 값으로 매칭): `신고` → 버그 트랙 · `질문대기` + 연결 `대기` 0 · `답변됨` ≥1 → 버그 트랙 · `검토요청` + 연결 `답변됨` ≥1 → 버그 트랙(재수정) · `분석중`/`수정중`/`검증중` + t 2시간 이상 → 버그 트랙(재개) · `완료` + `브랜치` → ⑮ 정리만 · 그 외 건너뜀.
+`생성자` 가 허용 작성자가 아니면 건너뛴다. **한 실행 1건** — `우선순위`(높음 > 보통 > 낮음 > 빈 값) → ID 순. 대상이 있으면 [`bug-track.md`](bug-track.md).
+
 ## 트랙 실행
+순서: 설계(Unity 안 씀) → **버그** → 구현 → 밸런스 → 플레이테스트. Unity 는 한 번에 하나만 돌린다(직렬).
 - 설계 대상이 있으면 `design-track.md` 를 읽고 문서마다 수행.
-- 구현 대상이 있으면 `impl-track.md` 를 읽고 수행. Unity 는 한 번에 하나만 돌린다(직렬).
+- 버그 대상이 있으면 `bug-track.md` 를 읽고 수행.
+- 구현 대상이 있으면 `impl-track.md` 를 읽고 수행.
 - 문서 단위로 실패를 격리한다: Notion·서브에이전트 오류 → 그 문서만 `실패`(+메모, 재진입 방법 포함) 후 다음 문서.
 
 ## ⑮ 마무리 (항상)
@@ -85,9 +95,10 @@ SELECT url, "이름", "맵", "상태", "최종 편집자", "userDefined:ID" AS i
 ```powershell
 powershell -ExecutionPolicy Bypass -File tools\ci\spec-worktree.ps1 -Spec SPEC-n -Remove -DeleteBranch
 ```
+버그도 같다: `완료` + `브랜치` 값 있는 버그마다 `-Spec BUG-n -Remove -DeleteBranch`.
 `BRANCH=deleted|absent` → `브랜치` 속성 비우고 메모 "worktree·브랜치 정리됨". `BRANCH=unmerged` → 메모에 "완료지만 main 미병합 — 병합 후 자동 정리"(**메모에 이미 이 문구가 있으면 다시 알리지 않는다**). worktree 제거가 잔재로 거부되면 그대로 두고 알림 대상.
 
-**알림**(PushNotification, 한 줄 ≤200자): 이번 실행에서 사람이 할 일이 **새로** 생겼을 때만 — 질문 등록(`질문대기`) · 승인 필요(`설계검토`) · 검토요청 · `실패` · `보류` · 미병합 완료(처음 1회) · main 병합 충돌 예상. 여러 건은 한 메시지로. 예: `[spec-cycle] SPEC-12 질문 3개 · SPEC-9 검토요청(CI·프로브 PASS) — Notion 확인`
+**알림**(PushNotification, 한 줄 ≤200자): 이번 실행에서 사람이 할 일이 **새로** 생겼을 때만 — 질문 등록(`질문대기`) · 승인 필요(`설계검토`) · 검토요청 · `실패` · `보류` · 미병합 완료(처음 1회) · main 병합 충돌 예상 · 버그 `검토요청`/`질문대기`/`재현불가`/`실패`. 여러 건은 한 메시지로. 예: `[spec-cycle] SPEC-12 질문 3개 · SPEC-9 검토요청(CI·프로브 PASS) — Notion 확인`
 
 **보고**: 문서별 한 줄 — 설계: `SPEC-n 이름 → 상태 (질문 N / 설계 rev N)`, 구현: `SPEC-n 이름 → 상태 (CI / 프로브 / 스모크 / 커밋 sha / 시도 k)`.
 

@@ -5,7 +5,7 @@
 스크립트는 `powershell -ExecutionPolicy Bypass -File tools\...` 형태로만. git 은 `spec-worktree.ps1` 로만(`-Spec BAL-n`).
 
 > **현재 모드: 검증만 (2026-10-03 사용자 보류)** — `spec/BAL-n` 자동 커밋이 CLAUDE.md 예외에 없고 `apply-balance.ps1` 이 권한 허용 목록에 없다.
-> 따라서 **B2(DryRun)까지만** 수행한다. DryRun 성공 → 각 행 `상태=검증통과`, `현재값`=old, `결과`="검증 통과(old→new) — 자동 적용 미허용, 개발자가 `apply-balance.ps1` 로 수동 적용". B3~B5·B0 은 하지 않는다.
+> 따라서 **B2(DryRun)까지만** 수행한다. DryRun 성공 → 각 행 `상태=검증통과`, `현재값`=old, `결과`="검증 통과(old→new) — 자동 적용 미허용, 개발자가 `apply-balance.ps1` 로 수동 적용". ⑮ 알림 대상(`[spec-cycle] BAL-n 수치 k개 검증통과 — 수동 적용 필요`). B3~B5·B0 은 하지 않는다.
 > `apply-balance.ps1` 실행이 권한 요청에 막히면(무인) 행은 `동기화요청` 그대로 두고 결과에 "권한 허용 필요" 한 번만 기록, 알림 대상.
 > 사용자가 두 허용을 승인하면 이 블록을 지운다.
 

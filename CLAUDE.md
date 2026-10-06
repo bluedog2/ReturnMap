@@ -33,7 +33,7 @@ Unity 6 (6000.3.10f1) URP 2D 게임. 2D 샌드박스 퍼즐 플랫포머 + 로�
 
 ## 기획 → 개발 사이클
 
-Notion 기획안 DB의 `개발 상태`(개발요청/답변완료)를 감지해 설계·질문을 수행하는 스킬: `/spec-cycle` (`.claude/skills/spec-cycle/SKILL.md`). 운영 규칙은 Notion「🔁 개발 사이클 운영 가이드」. 1단계(설계·질문) + 2단계(Unity CLI CI) + 3단계(승인된 설계 → spec 브랜치 구현 → CI → 자동 수정 → Notion 리포트) + 4단계(데스크톱 앱 예약 작업 `spec-cycle-auto` 주기 실행 · 실행 가드 `Logs/spec-cycle.lock` · 사람 할 일 생길 때만 푸시 알림 · 완료+병합된 spec 브랜치 자동 정리) 구축됨. 스킬은 디스패처 `SKILL.md` + `design-track.md` · `impl-track.md`(대상 있을 때만 읽음). 검증 = CI(정적·소팅 레이어) + 기획별 Play 프로브(구현과 분리된 작성자) + 공통 `SmokeProbe`(전 스테이지 회귀). 보조 스크립트·권한 경계는 `tools/ci/README.md`. 5단계(2026-10-03): EditMode 테스트(`-Tests` 기본) · `BalanceConfig` SO(`Assets/_Project/Settings`) · Notion「밸런스 수치」→ `balance-track.md`(`tools/balance/apply-balance.ps1`, 스키마 화이트리스트, `spec/BAL-n`) · Notion「플레이테스트」→ `playtest-track.md`(`tools/playtest/PlaytestProbe.cs`).
+Notion 기획안 DB의 `개발 상태`(개발요청/답변완료)를 감지해 설계·질문을 수행하는 스킬: `/spec-cycle` (`.claude/skills/spec-cycle/SKILL.md`). 운영 규칙은 Notion「🔁 개발 사이클 운영 가이드」. 1단계(설계·질문) + 2단계(Unity CLI CI) + 3단계(승인된 설계 → spec 브랜치 구현 → CI → 자동 수정 → Notion 리포트) + 4단계(데스크톱 앱 예약 작업 `spec-cycle-auto` 주기 실행 · 실행 가드 `Logs/spec-cycle.lock` · 사람 할 일 생길 때만 푸시 알림 · 완료+병합된 spec 브랜치 자동 정리) 구축됨. 스킬은 디스패처 `SKILL.md` + `design-track.md` · `impl-track.md`(대상 있을 때만 읽음). 검증 = CI(정적·소팅 레이어) + 기획별 Play 프로브(구현과 분리된 작성자) + 공통 `SmokeProbe`(전 스테이지 회귀). 보조 스크립트·권한 경계는 `tools/ci/README.md`. 5단계(2026-10-03): EditMode 테스트(`-Tests` 기본) · `BalanceConfig` SO(`Assets/_Project/Settings`) · Notion「밸런스 수치」→ `balance-track.md`(`tools/balance/apply-balance.ps1`, 스키마 화이트리스트, `spec/BAL-n`) · Notion「플레이테스트」→ `playtest-track.md`(`tools/playtest/PlaytestProbe.cs`). 버그 사이클(2026-10-06): Notion「버그」→ `bug-track.md`(수정 전 재현 검증 커밋 → `spec/BUG-n` 수정 → CI·재현·스모크).
 
 ---
 
@@ -73,3 +73,4 @@ Notion 기획안 DB의 `개발 상태`(개발요청/답변완료)를 감지해 �
 - **어드레서블 코루틴**: `AsyncOperationHandle`를 코루틴에서 직접 yield 금지 → `AddressableLoader.WaitAll`(IsDone 폴링) 사용.
 - 커밋/푸시는 사용자가 요청할 때만. 커밋 메시지·UI 텍스트는 한글 톤 유지.
   - **예외 (2026-10-02 사용자 승인)**: `/spec-cycle` 구현 트랙은 `spec/SPEC-n` 브랜치(별도 worktree `..\ReturnMap-spec\SPEC-n`)에 한해 **로컬 커밋만** 자동으로 한다. push·main 병합·리베이스는 하지 않는다 — 병합은 사람이. 브랜치 삭제는 `완료` + main 에 완전히 병합된 `spec/SPEC-n` 만 `spec-worktree.ps1 -Remove -DeleteBranch`로 (2026-10-03 승인).
+  - **버그 트랙 (2026-10-06 사용자 승인)**: `/spec-cycle` 버그 트랙은 `spec/BUG-n` 브랜치(worktree `..\ReturnMap-spec\BUG-n`)에 위와 같은 규칙(로컬 커밋만, push·병합 금지, `완료`+병합된 것만 삭제)으로 자동 커밋한다. 재현이 확인된 버그는 수정 전 승인 없이 수정까지 진행한다.
