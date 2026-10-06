@@ -14,6 +14,8 @@
       "Bash(tail:*)",
       "Bash(wc:*)",
       "Skill(spec-cycle)",
+      "Write(./Logs/**)",
+      "Edit(./Logs/**)",
       "mcp__plugin_Notion_notion__notion-query-data-sources",
       "mcp__plugin_Notion_notion__notion-fetch",
       "mcp__plugin_Notion_notion__notion-search",

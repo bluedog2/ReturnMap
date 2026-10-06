@@ -29,6 +29,7 @@ description: Notion 기획안 DB 사이클 1회 실행(예약 작업 spec-cycle-
 - 기획 본문은 수정하지 않는다. Claude 가 쓰는 곳: 속성 + 맨 아래 `## 🛠 개발 설계안 (Claude)` · `## 📋 구현 리포트 (Claude)` 섹션.
 - 코드 변경은 구현 트랙에서 `..\ReturnMap-spec\SPEC-n` 안에서만. 메인 작업트리는 읽기 전용.
 - git 은 **`spec-worktree.ps1`(-Commit/-Stash/-Remove/-Status)로만**. 직접 `git commit/push/reset/merge/rebase` 금지(권한 설정에서도 ask/deny). push·main 병합은 사람이. 브랜치 삭제는 `완료`+main 병합된 것만(⑮).
+- `Logs\` 아래 파일(캐시·요청 JSON·커밋 메시지 등)은 **Write/Edit 도구로** 쓴다 — 셸 리디렉션(`>`, `Set-Content`, `Out-File`, heredoc)으로 쓰면 자동 모드가 막는다.
 - 무인 실행: 사람에게 묻는 도구(AskUserQuestion) 금지. 판단 필요 → `보류` + 메모 + ⑮ 알림. 권한 요청에 막힌 단계는 건너뛰고 `보류`.
 
 ## ⓪ 실행 가드
