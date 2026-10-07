@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 namespace ReTrap
 {
     // ═══════════════════════════════════════════════════════════════════════════
-    //  PlayerPhaseVisibility — 검증 페이즈 동안 플레이어를 완전히 숨김
+    //  PlayerPhaseVisibility — 플레이 페이즈에서만 플레이어를 표시 (빌드/검증은 숨김)
     // ═══════════════════════════════════════════════════════════════════════════
 
     /// <summary>
@@ -13,8 +13,9 @@ namespace ReTrap
     /// <para><b>기획 근거</b>: 검증 페이즈는 "캐릭터 없이 카메라로만 관전"하는
     /// AI 관망 뷰(기획서 「3. 카메라」 2.2)다. 플레이어 캐릭터가 검증 중에도 씬에
     /// 남아 있으면 함정에 걸리거나 AI 동선의 시야를 방해하므로, 이 컴포넌트가
-    /// 검증 페이즈 진입 시 플레이어를 완전히 비활성 상태로 만들고
-    /// 검증을 벗어나면(Build/Play) 다시 복원한다.</para>
+    /// 검증 페이즈 진입 시 플레이어를 완전히 비활성 상태로 만든다.
+    /// 빌드 페이즈도 카메라만 움직이는 뷰라 캐릭터·대시 게이지를 숨기고 조작을 막으며,
+    /// 플레이 페이즈 진입 시에만 복원한다.</para>
     ///
     /// <para><b>왜 SetActive(false) 를 쓰지 않는가</b>: 오브젝트 자체를 끄면
     /// 이 컴포넌트도 함께 비활성화되어 <see cref="GamePhaseManager.OnPhaseChanged"/>
@@ -58,7 +59,7 @@ namespace ReTrap
 
         private void HandlePhaseChanged(GamePhase phase)
         {
-            SetPlayerVisible(phase != GamePhase.Verification);
+            SetPlayerVisible(phase == GamePhase.Play);
         }
 
         // ── 외부 공개 API (StageFlowController 등) ───────────────────────────
@@ -85,6 +86,11 @@ namespace ReTrap
         {
             foreach (var sr in _spriteRenderers)
                 sr.enabled = visible;
+
+            // 대시 게이지는 DashGaugeUI 가 Awake 에서 런타임 생성하는 월드 스페이스 Canvas 라
+            // Awake 캐시 시점과 순서가 얽힐 수 있어 토글 시점에 조회한다.
+            foreach (var canvas in GetComponentsInChildren<Canvas>(true))
+                canvas.enabled = visible;
 
             foreach (var col in _colliders)
                 col.enabled = visible; // 검증 중 함정에 걸리지 않도록
