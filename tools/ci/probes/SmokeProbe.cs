@@ -221,7 +221,8 @@ namespace ReTrap.EditorTools
                 else
                 {
                     float dist = Vector2.Distance(_player.transform.position, RespawnManager.Instance.RespawnPoint);
-                    spawnOk = rb.simulated && dist <= 1.5f;
+                    // BUG-3: Build 페이즈에서는 플레이어가 숨김(simulated=false)이 정상 — simulated 는 플레이 페이즈 항목에서 검사
+                    spawnOk = dist <= 1.5f;
                     spawnDetail = $"simulated={rb.simulated} 리스폰점 거리 {dist:F2}";
                 }
                 Check($"[{id}] 플레이어 스폰", spawnOk, spawnDetail);
