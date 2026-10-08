@@ -3,7 +3,7 @@
 Unity 6 (6000.3.10f1) URP 2D 게임. 2D 샌드박스 퍼즐 플랫포머 + 로그라이트.
 핵심 루프: **빌드 페이즈**(함정 배치) → **검증 페이즈**(AI 돌파 시도) → **플레이 페이즈**(변이 함정 직접 돌파).
 
-상세 설계·진행 상황은 작성자의 메모리(`retrap-project-overview`, `retrap-progress-2026-06`)와 GDD(`C:\Users\Owner\Desktop\리트랩.docx`) 참조.
+상세 설계·진행 상황은 작성자의 메모리(`retrap-project-overview`, `retrap-progress-2026-06`)와 GDD(작성자 로컬 문서 `리트랩.docx`, 저장소 미포함) 참조.
 
 ---
 
