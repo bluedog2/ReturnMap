@@ -112,8 +112,9 @@ namespace ReTrap.EditorTools
             BuildResearchBoardPanel(uiCanvas.transform, nodes);
             BuildPhaseControlsGuide(uiCanvas.transform);
             BuildStageClearPanel(uiCanvas.transform);
+            BuildSettingsPanel(uiCanvas.transform);   // 항상 마지막 sibling 이 되도록 맨 끝에 호출
 
-            Debug.Log("[MetaUiSetup] ✅ 메타 UI 세팅 완료 (미리보기 + 연구소 + 조작 안내 + 스테이지 클리어)");
+            Debug.Log("[MetaUiSetup] ✅ 메타 UI 세팅 완료 (미리보기 + 연구소 + 조작 안내 + 스테이지 클리어 + 설정)");
         }
 
         // ── 데이터 로드 ──────────────────────────────────────────────────────
@@ -798,6 +799,232 @@ namespace ReTrap.EditorTools
             var go = new GameObject("StageFlowController", typeof(StageFlowController));
             EditorSceneManager.MarkSceneDirty(go.scene);
             Debug.Log("[MetaUiSetup] StageFlowController 오브젝트 생성");
+        }
+
+        // ── SettingsPanel ────────────────────────────────────────────────────
+
+        private const float SettingsWidth        = 560f;
+        private const float SettingsHeight       = 380f;
+        private const int   SettingsTextSize     = 20;
+        private const float SettingsLabelX       = 24f;
+        private const float SettingsLabelWidth   = 120f;
+        private const float SettingsControlX     = 150f;
+        private const float SettingsSliderWidth  = 320f;
+        private const float SettingsSliderHeight = 24f;
+        private const float SettingsPercentX     = 480f;
+        private const float SettingsPercentWidth = 70f;
+        private const float SettingsRowHeight    = 36f;
+        private const float SettingsDropdownWidth  = 240f;
+        private const float SettingsDropdownHeight = 36f;
+        private const float SettingsToggleSize   = 28f;
+        private const float SettingsCloseWidth   = 140f;
+        private const float SettingsCloseHeight  = 40f;
+        private static readonly Color SettingsBackground = new Color(0.10f, 0.10f, 0.12f, 0.95f);
+        private static readonly Color SettingsControlBackground = new Color(0.22f, 0.22f, 0.26f, 1f);
+
+        /// <summary>
+        /// 설정 패널(음량 슬라이더 3 · 해상도 드롭다운 · 전체화면 토글 · 닫기)을 생성/배선한다(Find-or-Create, 멱등).
+        /// 컨트롤러 오브젝트(<c>SettingsPanelController</c>)는 항상 활성, <c>SettingsPanel</c> 루트만 토글.
+        /// 루트는 UICanvas 의 마지막 sibling 으로 둔다. 씬 저장은 호출자가 한다.
+        /// </summary>
+        /// <param name="canvasTransform">UICanvas(Canvas 보유 오브젝트)의 Transform.</param>
+        public static void BuildSettingsPanel(Transform canvasTransform)
+        {
+            Transform existing = canvasTransform.Find("SettingsPanel");
+            bool isNew = existing == null;
+
+            GameObject rootGo;
+            if (isNew)
+            {
+                rootGo = new GameObject("SettingsPanel", typeof(RectTransform), typeof(Image));
+                rootGo.transform.SetParent(canvasTransform, false);
+            }
+            else
+            {
+                rootGo = existing.gameObject;
+            }
+
+            var rect = (RectTransform)rootGo.transform;
+            rect.anchorMin        = new Vector2(0.5f, 0.5f);
+            rect.anchorMax        = new Vector2(0.5f, 0.5f);
+            rect.pivot            = new Vector2(0.5f, 0.5f);
+            rect.anchoredPosition = Vector2.zero;
+            rect.sizeDelta        = new Vector2(SettingsWidth, SettingsHeight);
+            rootGo.GetComponent<Image>().color = SettingsBackground;
+
+            var res = new DefaultControls.Resources
+            {
+                standard   = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UISprite.psd"),
+                background = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Background.psd"),
+                inputField = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/InputFieldBackground.psd"),
+                knob       = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Knob.psd"),
+                checkmark  = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Checkmark.psd"),
+                dropdown   = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/DropdownArrow.psd"),
+                mask       = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UIMask.psd"),
+            };
+
+            // ── 제목 ───────────────────────────────────────────────────────
+            Text title = FindOrCreateText(rootGo.transform, "Title", "설정",
+                SettingsTextSize, FontStyle.Bold, TextTitleColor, TextAnchor.MiddleLeft);
+            PlaceTopLeft((RectTransform)title.transform, SettingsLabelX, 14f, 200f, 34f);
+
+            // ── 음량 슬라이더 3행 (마스터/BGM/효과음 = SoundBus 순서) ─────────
+            string[] busNames = { "마스터 음량", "BGM 음량", "효과음 음량" };
+            string[] busIds   = { "Master", "Bgm", "Sfx" };
+            var sliders = new Slider[3];
+            var percents = new Text[3];
+            for (int i = 0; i < 3; i++)
+            {
+                float top = 64f + i * 48f;
+
+                Text label = FindOrCreateText(rootGo.transform, busIds[i] + "Label", busNames[i],
+                    SettingsTextSize, FontStyle.Normal, TextPrimaryColor, TextAnchor.MiddleLeft);
+                PlaceTopLeft((RectTransform)label.transform, SettingsLabelX, top, SettingsLabelWidth, SettingsRowHeight);
+
+                Transform sliderTf = rootGo.transform.Find(busIds[i] + "Slider");
+                GameObject sliderGo = sliderTf != null ? sliderTf.gameObject : DefaultControls.CreateSlider(res);
+                if (sliderTf == null)
+                {
+                    sliderGo.name = busIds[i] + "Slider";
+                    sliderGo.transform.SetParent(rootGo.transform, false);
+                }
+                var slider = sliderGo.GetComponent<Slider>();
+                slider.minValue = 0f;
+                slider.maxValue = SettingsService.VolumeSteps;
+                slider.wholeNumbers = true;
+                if (sliderTf == null) slider.SetValueWithoutNotify(SettingsService.VolumeSteps);
+                // 슬라이더 중앙을 행 중앙에 맞춘다(행 높이 36, 슬라이더 24 → 위로 6px 내림).
+                PlaceTopLeft((RectTransform)sliderGo.transform, SettingsControlX,
+                    top + (SettingsRowHeight - SettingsSliderHeight) * 0.5f, SettingsSliderWidth, SettingsSliderHeight);
+                var handleRect = slider.handleRect;
+                if (handleRect != null) handleRect.sizeDelta = new Vector2(24f, 0f);   // 세로는 24px 슬라이드 영역에 맞춰 늘어남
+                if (slider.fillRect != null) slider.fillRect.GetComponent<Image>().color = StartButtonColor;
+                var bgImage = sliderGo.transform.Find("Background");
+                if (bgImage != null) bgImage.GetComponent<Image>().color = SettingsControlBackground;
+
+                Text pct = FindOrCreateText(rootGo.transform, busIds[i] + "Percent", "100%",
+                    SettingsTextSize, FontStyle.Normal, TextPrimaryColor, TextAnchor.MiddleRight);
+                PlaceTopLeft((RectTransform)pct.transform, SettingsPercentX, top, SettingsPercentWidth, SettingsRowHeight);
+
+                sliders[i]  = slider;
+                percents[i] = pct;
+            }
+
+            // ── 해상도 드롭다운 ────────────────────────────────────────────
+            float resTop = 64f + 3 * 48f;   // 208
+            Text resLabel = FindOrCreateText(rootGo.transform, "ResolutionLabel", "해상도",
+                SettingsTextSize, FontStyle.Normal, TextPrimaryColor, TextAnchor.MiddleLeft);
+            PlaceTopLeft((RectTransform)resLabel.transform, SettingsLabelX, resTop, SettingsLabelWidth, SettingsRowHeight);
+
+            Transform ddTf = rootGo.transform.Find("ResolutionDropdown");
+            GameObject ddGo = ddTf != null ? ddTf.gameObject : DefaultControls.CreateDropdown(res);
+            if (ddTf == null)
+            {
+                ddGo.name = "ResolutionDropdown";
+                ddGo.transform.SetParent(rootGo.transform, false);
+            }
+            PlaceTopLeft((RectTransform)ddGo.transform, SettingsControlX, resTop, SettingsDropdownWidth, SettingsDropdownHeight);
+            foreach (var t in ddGo.GetComponentsInChildren<Text>(true))
+            {
+                t.font      = BuildHudController.BuiltinFont();
+                t.fontSize  = SettingsTextSize;
+                t.color     = TextPrimaryColor;
+            }
+            ddGo.GetComponent<Image>().color = SettingsControlBackground;
+            var template = ddGo.transform.Find("Template");
+            if (template != null) template.GetComponent<Image>().color = SettingsControlBackground;
+            foreach (var img in ddGo.GetComponentsInChildren<Image>(true))
+                if (img.gameObject.name == "Item Background") img.color = SettingsControlBackground;
+            var dropdown = ddGo.GetComponent<Dropdown>();
+
+            // ── 전체화면 토글 ──────────────────────────────────────────────
+            float fsTop = resTop + 48f;     // 256
+            Text fsLabel = FindOrCreateText(rootGo.transform, "FullscreenLabel", "전체화면",
+                SettingsTextSize, FontStyle.Normal, TextPrimaryColor, TextAnchor.MiddleLeft);
+            PlaceTopLeft((RectTransform)fsLabel.transform, SettingsLabelX, fsTop, SettingsLabelWidth, SettingsRowHeight);
+
+            Transform tgTf = rootGo.transform.Find("FullscreenToggle");
+            GameObject tgGo = tgTf != null ? tgTf.gameObject : DefaultControls.CreateToggle(res);
+            if (tgTf == null)
+            {
+                tgGo.name = "FullscreenToggle";
+                tgGo.transform.SetParent(rootGo.transform, false);
+                var defaultLabel = tgGo.transform.Find("Label");   // 라벨은 왼쪽 별도 텍스트가 대신한다
+                if (defaultLabel != null) Object.DestroyImmediate(defaultLabel.gameObject);
+            }
+            PlaceTopLeft((RectTransform)tgGo.transform, SettingsControlX,
+                fsTop + (SettingsRowHeight - SettingsToggleSize) * 0.5f, SettingsToggleSize, SettingsToggleSize);
+            var tgBg = tgGo.transform.Find("Background") as RectTransform;
+            if (tgBg != null)
+            {
+                tgBg.anchorMin = Vector2.zero;
+                tgBg.anchorMax = Vector2.one;
+                tgBg.offsetMin = Vector2.zero;
+                tgBg.offsetMax = Vector2.zero;
+            }
+            var toggle = tgGo.GetComponent<Toggle>();
+            if (tgTf == null) toggle.SetIsOnWithoutNotify(true);
+
+            // ── 닫기 버튼 ──────────────────────────────────────────────────
+            Button close = FindOrCreateButton(rootGo.transform, "CloseButton", "닫기",
+                SettingsCloseWidth, SettingsCloseHeight, ClearCloseButtonColor);
+            close.GetComponentInChildren<Text>().fontSize = SettingsTextSize;
+            var closeRect = (RectTransform)close.transform;
+            closeRect.anchorMin        = new Vector2(0.5f, 0f);
+            closeRect.anchorMax        = new Vector2(0.5f, 0f);
+            closeRect.pivot            = new Vector2(0.5f, 0f);
+            closeRect.anchoredPosition = new Vector2(0f, 20f);
+            closeRect.sizeDelta        = new Vector2(SettingsCloseWidth, SettingsCloseHeight);
+
+            // ── 컨트롤러(항상 활성) + 배선 ────────────────────────────────
+            // ⚠️ SettingsPanel 은 panelRoot 를 껐다 켜므로, 컴포넌트는 항상 활성인 별도 오브젝트에 둔다.
+            Transform controllerTf = canvasTransform.Find("SettingsPanelController");
+            GameObject controllerGo = controllerTf != null
+                ? controllerTf.gameObject
+                : new GameObject("SettingsPanelController", typeof(RectTransform));
+            if (controllerTf == null) controllerGo.transform.SetParent(canvasTransform, false);
+
+            var panel = controllerGo.GetComponent<SettingsPanel>();
+            if (panel == null) panel = controllerGo.AddComponent<SettingsPanel>();
+
+            var so = new SerializedObject(panel);
+            so.FindProperty("panelRoot").objectReferenceValue = rootGo;
+
+            var slidersProp = so.FindProperty("volumeSliders");
+            slidersProp.arraySize = 3;
+            var textsProp = so.FindProperty("volumeTexts");
+            textsProp.arraySize = 3;
+            for (int i = 0; i < 3; i++)
+            {
+                slidersProp.GetArrayElementAtIndex(i).objectReferenceValue = sliders[i];
+                textsProp.GetArrayElementAtIndex(i).objectReferenceValue   = percents[i];
+            }
+            so.FindProperty("resolutionDropdown").objectReferenceValue = dropdown;
+            so.FindProperty("fullscreenToggle").objectReferenceValue   = toggle;
+            so.FindProperty("closeButton").objectReferenceValue        = close;
+            so.ApplyModifiedPropertiesWithoutUndo();
+
+            // 컨트롤러·패널 순으로 배치해 패널 루트가 UICanvas 마지막 sibling 이 되게 한다.
+            controllerGo.transform.SetAsLastSibling();
+            rootGo.transform.SetAsLastSibling();
+
+            // 시작 시 비활성 (Build 페이즈에서 Esc 로 열림)
+            rootGo.SetActive(false);
+
+            EditorSceneManager.MarkSceneDirty(rootGo.scene);
+            Debug.Log(isNew
+                ? "[MetaUiSetup] SettingsPanel 생성 및 배선 완료"
+                : "[MetaUiSetup] SettingsPanel 참조 재배선 완료");
+        }
+
+        /// <summary>좌상단 기준 배치(앵커·피벗 좌상단, 부모 좌상단에서 (x, -top)).</summary>
+        private static void PlaceTopLeft(RectTransform rt, float x, float top, float width, float height)
+        {
+            rt.anchorMin        = new Vector2(0f, 1f);
+            rt.anchorMax        = new Vector2(0f, 1f);
+            rt.pivot            = new Vector2(0f, 1f);
+            rt.anchoredPosition = new Vector2(x, -top);
+            rt.sizeDelta        = new Vector2(width, height);
         }
 
         // ── UI 생성 헬퍼 ─────────────────────────────────────────────────────

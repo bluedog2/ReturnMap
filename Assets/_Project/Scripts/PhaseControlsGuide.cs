@@ -38,7 +38,7 @@ namespace ReTrap
 
         // Build: BuildPhaseController 조작(1~9 선택/X 철거/좌클릭 설치/우클릭 철거/Enter 시작)
         private const string BuildGuideText =
-            "1~3 함정 선택 · X 철거 모드 · 좌클릭 설치 · 우클릭 철거 · [시작] 또는 Enter";
+            "1~3 함정 선택 · X 철거 모드 · 좌클릭 설치 · 우클릭 철거 · Esc 설정 · [시작] 또는 Enter";
 
         // Verification: VerificationSpeedController 조작(Space 배속 순환/Enter 스킵)
         private const string VerificationGuideText =
