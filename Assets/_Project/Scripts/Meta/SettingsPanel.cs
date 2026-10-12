@@ -110,6 +110,7 @@ namespace ReTrap
                 return;
 
             panelRoot.SetActive(true);
+            panelRoot.transform.SetAsLastSibling();   // 런타임에 뒤늦게 생긴 UI 위로
             RefreshAll();
         }
 
@@ -117,6 +118,17 @@ namespace ReTrap
         {
             if (panelRoot != null && panelRoot.activeSelf)
                 panelRoot.SetActive(false);
+
+            // 닫을 때 세 버스 값을 모두 기록(슬라이더 값 기준) — 안 건드린 버스도 키가 생기도록.
+            if (volumeSliders != null)
+            {
+                for (int i = 0; i < volumeSliders.Length && i < BusCount; i++)
+                {
+                    if (volumeSliders[i] == null) continue;
+                    SettingsService.SetVolume((SoundBus)i,
+                        SettingsService.LinearFromStep(Mathf.RoundToInt(volumeSliders[i].value)));
+                }
+            }
             SettingsService.Flush();
         }
 

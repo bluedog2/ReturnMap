@@ -219,58 +219,62 @@ namespace ReTrap.EditorTools
             Check("AC2 요소가 패널 안에 위치", outside.Count == 0, $"밖으로 나간 요소 [{string.Join(", ", outside)}]");
         }
 
-        // ── 픽셀 가시성: 캔버스를 카메라 렌더 모드로 임시 전환해 패널 on/off 두 번 렌더 → 차이 영역 ──
-        static void PixelAc1()
+        // ── 픽셀 가시성: Game 뷰 실화면(오버레이 UI 포함)을 프레임 끝에 패널 on/off 각각 캡처해 차이 영역을 비교 ──
+        // (cam.Render 는 URP 2D 에서 오버레이 UI 를 못 찍어 차이 0 이 나왔다 → ScreenCapture 로 교체)
+        public class ProbeHost : MonoBehaviour { }
+
+        static int _pixelState; // 0 미시작 · 1 진행 중 · 2 완료
+        static ProbeHost _host;
+
+        static void StartPixel()
         {
-            var cam = Camera.main;
-            if (cam == null || _canvas == null) { Check("AC1 픽셀 패널 영역", false, "Camera.main/Canvas 없음"); return; }
-            const int W = 1920, H = 1080;
+            _pixelState = 1;
+            if (_host == null) { var go = new GameObject("SpecProbe16_Host"); _host = go.AddComponent<ProbeHost>(); }
+            _host.StartCoroutine(PixelRoutine());
+        }
+
+        static System.Collections.IEnumerator PixelRoutine()
+        {
             var root = _panel.PanelRoot;
-            var prevMode = _canvas.renderMode; var prevCam = _canvas.worldCamera; float prevDist = _canvas.planeDistance;
-            var prevTarget = cam.targetTexture;
-            var rt = new RenderTexture(W, H, 24);
-            Texture2D on = null, off = null; float sf = 1f;
+            Texture2D on = null, off = null; string err = null;
+            yield return new WaitForEndOfFrame();
+            try { on = ScreenCapture.CaptureScreenshotAsTexture(); } catch (Exception e) { err = e.Message; }
+            root.SetActive(false);
+            yield return null;
+            yield return new WaitForEndOfFrame();
+            try { off = ScreenCapture.CaptureScreenshotAsTexture(); } catch (Exception e) { err = e.Message; }
+            root.SetActive(true);
             try
             {
-                _canvas.renderMode = RenderMode.ScreenSpaceCamera; _canvas.worldCamera = cam;
-                _canvas.planeDistance = Mathf.Clamp(1f, cam.nearClipPlane + 0.01f, Mathf.Max(cam.nearClipPlane + 0.02f, cam.farClipPlane - 0.01f));
-                Texture2D Render()
+                if (on == null || off == null || on.width != off.width || on.height != off.height) { Check("AC1 픽셀: 패널 on/off 차이 영역", false, "캡처 실패: " + err); }
+                else
                 {
-                    Canvas.ForceUpdateCanvases();
-                    cam.targetTexture = rt; cam.Render();
-                    RenderTexture.active = rt;
-                    var t = new Texture2D(W, H, TextureFormat.RGB24, false); t.ReadPixels(new Rect(0, 0, W, H), 0, 0); t.Apply();
-                    RenderTexture.active = null; return t;
+                    int W = on.width, H = on.height; float sf = _canvas.scaleFactor;
+                    File.WriteAllBytes(Path.Combine(_dir, "probe16_panel.png"), on.EncodeToPNG());
+                    Rect er = ScreenRect((RectTransform)root.transform); // 실측 위치 주변만 비교(다른 게임 움직임 배제)
+                    int x0 = Mathf.Max(0, Mathf.FloorToInt(er.xMin) - 30), x1 = Mathf.Min(W, Mathf.CeilToInt(er.xMax) + 30);
+                    int y0 = Mathf.Max(0, Mathf.FloorToInt(er.yMin) - 30), y1 = Mathf.Min(H, Mathf.CeilToInt(er.yMax) + 30);
+                    var pa = on.GetPixels(); var pb = off.GetPixels();
+                    int minX = int.MaxValue, maxX = int.MinValue, minY = int.MaxValue, maxY = int.MinValue, n = 0;
+                    for (int y = y0; y < y1; y++)
+                        for (int x = x0; x < x1; x++)
+                        {
+                            Color A = pa[y * W + x], B = pb[y * W + x];
+                            if (Mathf.Abs(A.r - B.r) + Mathf.Abs(A.g - B.g) + Mathf.Abs(A.b - B.b) < 0.08f) continue;
+                            n++; minX = Mathf.Min(minX, x); maxX = Mathf.Max(maxX, x); minY = Mathf.Min(minY, y); maxY = Mathf.Max(maxY, y);
+                        }
+                    int w = n > 0 ? maxX - minX + 1 : 0, h = n > 0 ? maxY - minY + 1 : 0;
+                    float ew = PanelW * sf, eh = PanelH * sf;
+                    Check("AC1 픽셀: 패널 on/off 차이 영역 ≈ 560x380(×스케일)", n > 0 && Near(w, ew, 4f) && Near(h, eh, 4f),
+                        $"차이 영역 {w}x{h}px (차이 픽셀 {n}) 기대 {ew:F0}x{eh:F0} ±4 (캡처 {W}x{H}, scale {sf:F3}, ScreenCapture)");
                 }
-                on = Render(); sf = _canvas.scaleFactor;
-                root.SetActive(false);
-                off = Render();
-                root.SetActive(true);
-                File.WriteAllBytes(Path.Combine(_dir, "probe16_panel.png"), on.EncodeToPNG());
-                var pa = on.GetPixels(); var pb = off.GetPixels();
-                int minX = int.MaxValue, maxX = int.MinValue, minY = int.MaxValue, maxY = int.MinValue, n = 0;
-                for (int y = 0; y < H; y++)
-                    for (int x = 0; x < W; x++)
-                    {
-                        Color A = pa[y * W + x], B = pb[y * W + x];
-                        if (Mathf.Abs(A.r - B.r) + Mathf.Abs(A.g - B.g) + Mathf.Abs(A.b - B.b) < 0.08f) continue;
-                        n++; minX = Mathf.Min(minX, x); maxX = Mathf.Max(maxX, x); minY = Mathf.Min(minY, y); maxY = Mathf.Max(maxY, y);
-                    }
-                int w = n > 0 ? maxX - minX + 1 : 0, h = n > 0 ? maxY - minY + 1 : 0;
-                float ew = PanelW * sf, eh = PanelH * sf;
-                Check("AC1 픽셀: 패널 on/off 차이 영역 ≈ 560x380(×스케일)", n > 0 && Near(w, ew, 4f) && Near(h, eh, 4f),
-                    $"차이 영역 {w}x{h}px (차이 픽셀 {n}) 기대 {ew:F0}x{eh:F0} ±4 (RT 1920x1080, scale {sf:F3})");
             }
             catch (Exception e) { Check("AC1 픽셀: 패널 on/off 차이 영역", false, "예외: " + e.Message); }
             finally
             {
-                cam.targetTexture = prevTarget;
-                if (!root.activeSelf) root.SetActive(true);
-                _canvas.renderMode = prevMode; _canvas.worldCamera = prevCam; _canvas.planeDistance = prevDist;
-                Canvas.ForceUpdateCanvases();
                 if (on != null) UnityEngine.Object.Destroy(on);
                 if (off != null) UnityEngine.Object.Destroy(off);
-                rt.Release();
+                _pixelState = 2;
             }
         }
 
@@ -320,6 +324,8 @@ namespace ReTrap.EditorTools
                     Next(); return;
 
                 case 3: // 레이아웃 반영 후 AC1·AC2·AC5·픽셀
+                    if (_pixelState == 1) return;
+                    if (_pixelState == 2) { Next(); return; }
                     if (frames < 3 || tr < 0.3f) return;
                     MeasureAc1Ac2(gpm);
                     {
@@ -330,8 +336,7 @@ namespace ReTrap.EditorTools
                         Check("AC5 저장값 없음 → 슬라이더 20/12/16", vm == 20 && vb == 12 && vs == 16, $"slider={vm}/{vb}/{vs}");
                         Check("AC5 저장값 없음 → dB 0/-4.44/-1.94 (±0.1)", Near(dm, 0f, 0.1f) && Near(db, -4.44f, 0.1f) && Near(ds, -1.94f, 0.1f), $"master={dm:F2} bgm={db:F2} sfx={ds:F2}{note}");
                     }
-                    PixelAc1();
-                    Next(); return;
+                    StartPixel(); return;
 
                 case 4: // AC6: BGM 슬라이더 10 (UI 이벤트 경로)
                     if (!_init) { _init = true; _panel.GetVolumeSlider(SoundBus.Bgm).value = 10f; return; }
