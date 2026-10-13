@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace ReTrap
@@ -64,6 +65,8 @@ namespace ReTrap
             else
                 _ctrl.OnTrapsReady += BuildTrapButtons;
 
+            BuildExtraButtons();
+
             if (hintText != null)
                 hintText.text = "버튼/1~3: 선택 · X: 철거 모드 · 슬롯 클릭: 설치 · 우클릭: 철거 · Enter: 시작";
 
@@ -83,6 +86,11 @@ namespace ReTrap
         private void Update()
         {
             if (_ctrl == null) return;
+
+            // Tab: 핫바 접기/펼치기 (Build 페이즈 한정)
+            var kb = Keyboard.current;
+            if (kb != null && kb.tabKey.wasPressedThisFrame && _hotbarToggle != null && _hotbarToggle.activeInHierarchy)
+                SetHotbarCollapsed(!_hotbarCollapsed);
 
             // 예산
             if (budgetText != null)
@@ -105,6 +113,70 @@ namespace ReTrap
             bool build = phase == GamePhase.Build;
             if (panel    != null) panel.SetActive(build);
             if (playHint != null) playHint.SetActive(!build);
+            if (_researchButton != null) _researchButton.SetActive(build);
+            if (_hotbarToggle   != null) _hotbarToggle.SetActive(build);
+
+            // Build 진입(스테이지 시작 포함)마다 핫바는 펼친 상태로 초기화
+            if (build) SetHotbarCollapsed(false);
+        }
+
+        // ── 연구소 버튼 / 핫바 접기 토글 (런타임 생성) ───────────────────────
+
+        private GameObject _researchButton;
+        private GameObject _hotbarToggle;
+        private Text       _hotbarToggleLabel;
+        private bool       _hotbarCollapsed;
+
+        /// <summary>우상단 연구소 버튼과 핫바 위 접기/펼치기 토글을 만듭니다 (HUD 루트 직속 — 핫바 접어도 클릭 가능).</summary>
+        private void BuildExtraButtons()
+        {
+            _researchButton = CreateHudButton("ResearchOpenButton", "연구소 (R)",
+                new Vector2(1f, 1f), new Vector2(-10f, -10f), new Vector2(130f, 36f), out _);
+            _researchButton.GetComponent<Button>().onClick.AddListener(() =>
+            {
+                var research = FindFirstObjectByType<ResearchBoardPanel>(FindObjectsInactive.Include);
+                if (research != null) research.TogglePanel();
+            });
+
+            _hotbarToggle = CreateHudButton("HotbarToggleButton", "접기",
+                new Vector2(0.5f, 0f), new Vector2(0f, 68f + SlotSize * 0.5f + 8f), new Vector2(70f, 24f),
+                out _hotbarToggleLabel);
+            _hotbarToggle.GetComponent<Button>().onClick.AddListener(() => SetHotbarCollapsed(!_hotbarCollapsed));
+        }
+
+        /// <summary>핫바 슬롯(buttonContainer)만 숨기거나 보입니다. 예산 텍스트는 유지됩니다.</summary>
+        private void SetHotbarCollapsed(bool collapsed)
+        {
+            _hotbarCollapsed = collapsed;
+            if (buttonContainer != null) buttonContainer.gameObject.SetActive(!collapsed);
+            if (_hotbarToggleLabel != null) _hotbarToggleLabel.text = collapsed ? "펼치기" : "접기";
+        }
+
+        private GameObject CreateHudButton(string name, string label, Vector2 anchor, Vector2 pos, Vector2 size,
+                                           out Text labelText)
+        {
+            var go = new GameObject(name, typeof(RectTransform), typeof(Image), typeof(Button));
+            go.transform.SetParent(transform, false);
+            var rt = (RectTransform)go.transform;
+            rt.anchorMin = rt.anchorMax = rt.pivot = anchor;
+            rt.anchoredPosition = pos;
+            rt.sizeDelta        = size;
+
+            var img = go.GetComponent<Image>();
+            img.color = SlotBackground;
+            go.GetComponent<Button>().targetGraphic = img;
+
+            var txtGo = new GameObject("Label", typeof(RectTransform), typeof(Text));
+            txtGo.transform.SetParent(go.transform, false);
+            FillCenter((RectTransform)txtGo.transform, 0f);
+            labelText = txtGo.GetComponent<Text>();
+            labelText.text          = label;
+            labelText.font          = BuiltinFont();
+            labelText.fontSize      = 15;
+            labelText.alignment     = TextAnchor.MiddleCenter;
+            labelText.color         = Color.white;
+            labelText.raycastTarget = false;
+            return go;
         }
 
         // ── 함정 버튼 동적 생성 ──────────────────────────────────────────────
