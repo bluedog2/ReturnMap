@@ -28,30 +28,6 @@ TextureImporter:
   - first:
       213: -2286719911893484299
     second: Enemy_Goblin_Raider_Death_7
-  - first:
-      213: -8636822239832798628
-    second: Enemy_Goblin_Raider_Death_8
-  - first:
-      213: -6660956744450304635
-    second: Enemy_Goblin_Raider_Death_9
-  - first:
-      213: -3130615736434126678
-    second: Enemy_Goblin_Raider_Death_10
-  - first:
-      213: 4244072660827632759
-    second: Enemy_Goblin_Raider_Death_11
-  - first:
-      213: -4219144653376332890
-    second: Enemy_Goblin_Raider_Death_12
-  - first:
-      213: 7271043579057784645
-    second: Enemy_Goblin_Raider_Death_13
-  - first:
-      213: -2413813199966348801
-    second: Enemy_Goblin_Raider_Death_14
-  - first:
-      213: -8473340366301674790
-    second: Enemy_Goblin_Raider_Death_15
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -98,7 +74,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 256
+  spritePixelsToUnits: 258.74
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -151,13 +127,13 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 768
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 384
+        width: 384
+        height: 384
+      alignment: 9
+      pivot: {x: 0.48676, y: 0.3961}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
@@ -165,21 +141,21 @@ TextureImporter:
       spriteID: e5eadd454ffe6a480800000000000000
       internalID: -8888152981894222242
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: Enemy_Goblin_Raider_Death_1
       rect:
         serializedVersion: 2
-        x: 256
-        y: 768
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 384
+        y: 384
+        width: 384
+        height: 384
+      alignment: 9
+      pivot: {x: 0.48676, y: 0.3961}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
@@ -187,21 +163,21 @@ TextureImporter:
       spriteID: afdfb82e43588b5d0800000000000000
       internalID: -3046538685730521606
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: Enemy_Goblin_Raider_Death_2
       rect:
         serializedVersion: 2
-        x: 512
-        y: 768
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 768
+        y: 384
+        width: 384
+        height: 384
+      alignment: 9
+      pivot: {x: 0.48676, y: 0.3961}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
@@ -209,21 +185,21 @@ TextureImporter:
       spriteID: dce469319fbe60d70800000000000000
       internalID: 9009147559609257677
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: Enemy_Goblin_Raider_Death_3
       rect:
         serializedVersion: 2
-        x: 768
-        y: 768
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 1152
+        y: 384
+        width: 384
+        height: 384
+      alignment: 9
+      pivot: {x: 0.48676, y: 0.3961}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
@@ -231,7 +207,7 @@ TextureImporter:
       spriteID: 1329da0a6ae82efe0800000000000000
       internalID: -1161208907596721615
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
@@ -239,13 +215,13 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 512
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 0
+        width: 384
+        height: 384
+      alignment: 9
+      pivot: {x: 0.48676, y: 0.3961}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
@@ -253,21 +229,21 @@ TextureImporter:
       spriteID: 9ff8267c607a41010800000000000000
       internalID: 1158734651697827833
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: Enemy_Goblin_Raider_Death_5
       rect:
         serializedVersion: 2
-        x: 256
-        y: 512
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 384
+        y: 0
+        width: 384
+        height: 384
+      alignment: 9
+      pivot: {x: 0.48676, y: 0.3961}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
@@ -275,21 +251,21 @@ TextureImporter:
       spriteID: 7e280637393b27220800000000000000
       internalID: 2482243790511833831
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: Enemy_Goblin_Raider_Death_6
       rect:
         serializedVersion: 2
-        x: 512
-        y: 512
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 768
+        y: 0
+        width: 384
+        height: 384
+      alignment: 9
+      pivot: {x: 0.48676, y: 0.3961}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
@@ -297,21 +273,21 @@ TextureImporter:
       spriteID: 2b26dfef378431520800000000000000
       internalID: 2671558666997293746
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: Enemy_Goblin_Raider_Death_7
       rect:
         serializedVersion: 2
-        x: 768
-        y: 512
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 1152
+        y: 0
+        width: 384
+        height: 384
+      alignment: 9
+      pivot: {x: 0.48676, y: 0.3961}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
@@ -319,183 +295,7 @@ TextureImporter:
       spriteID: 5fcb6ce0b50f340e0800000000000000
       internalID: -2286719911893484299
       vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Goblin_Raider_Death_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 256
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c5a8296cee7d32880800000000000000
-      internalID: -8636822239832798628
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Goblin_Raider_Death_9
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 256
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5851cc6d1278f83a0800000000000000
-      internalID: -6660956744450304635
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Goblin_Raider_Death_10
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 256
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: aa0989d0391dd84d0800000000000000
-      internalID: -3130615736434126678
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Goblin_Raider_Death_11
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 256
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 774f3955999f5ea30800000000000000
-      internalID: 4244072660827632759
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Goblin_Raider_Death_12
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6abd38faa469275c0800000000000000
-      internalID: -4219144653376332890
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Goblin_Raider_Death_13
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 547cf1c8c9fe7e460800000000000000
-      internalID: 7271043579057784645
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Goblin_Raider_Death_14
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ff95bddfea9608ed0800000000000000
-      internalID: -2413813199966348801
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Goblin_Raider_Death_15
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ad24c9d94d5a86a80800000000000000
-      internalID: -8473340366301674790
-      vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     outline: []
@@ -512,38 +312,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Enemy_Goblin_Raider_Death_0: -8888152981894222242
-      Enemy_Goblin_Raider_Death_1: -3046538685730521606
-      Enemy_Goblin_Raider_Death_10: -3130615736434126678
-      Enemy_Goblin_Raider_Death_11: 4244072660827632759
-      Enemy_Goblin_Raider_Death_12: -4219144653376332890
-      Enemy_Goblin_Raider_Death_13: 7271043579057784645
-      Enemy_Goblin_Raider_Death_14: -2413813199966348801
-      Enemy_Goblin_Raider_Death_15: -8473340366301674790
-      Enemy_Goblin_Raider_Death_2: 9009147559609257677
-      Enemy_Goblin_Raider_Death_3: -1161208907596721615
-      Enemy_Goblin_Raider_Death_4: 1158734651697827833
       Enemy_Goblin_Raider_Death_5: 2482243790511833831
-      Enemy_Goblin_Raider_Death_6: 2671558666997293746
+      Enemy_Goblin_Raider_Death_4: 1158734651697827833
       Enemy_Goblin_Raider_Death_7: -2286719911893484299
-      Enemy_Goblin_Raider_Death_8: -8636822239832798628
-      Enemy_Goblin_Raider_Death_9: -6660956744450304635
-      frame_0: -1450881552
-      frame_1: -243701393
-      frame_10: -253910508
-      frame_11: 1370604746
-      frame_12: 198152928
-      frame_13: 1708765526
-      frame_14: -242924021
-      frame_15: 1755839967
-      frame_2: -921081210
-      frame_3: 1456416432
-      frame_4: 1951189873
-      frame_5: -1798078633
-      frame_6: 1444762401
-      frame_7: 260174742
-      frame_8: -1059080708
-      frame_9: -1281004769
+      Enemy_Goblin_Raider_Death_6: 2671558666997293746
+      Enemy_Goblin_Raider_Death_1: -3046538685730521606
+      Enemy_Goblin_Raider_Death_0: -8888152981894222242
+      Enemy_Goblin_Raider_Death_3: -1161208907596721615
+      Enemy_Goblin_Raider_Death_2: 9009147559609257677
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

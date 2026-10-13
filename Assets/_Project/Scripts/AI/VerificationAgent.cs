@@ -45,6 +45,7 @@ namespace ReTrap
         private static readonly int StateIdle  = Animator.StringToHash("Idle");
         private static readonly int StateRun   = Animator.StringToHash("Run");
         private static readonly int StateDeath = Animator.StringToHash("Death");
+        private static readonly int StateHit   = Animator.StringToHash("Hit");
 
         private Animator       _animator; // 없어도 동작 (선택 구성)
         private SpriteRenderer _sprite;   // 좌우 반전용
@@ -161,8 +162,12 @@ namespace ReTrap
                     int cells = _pendingStepBackCells;
                     _pendingStepBackCells = 0;
 
+                    // 피격 백스텝 동안 피격 모션 재생 (컨트롤러에 Hit 상태가 없으면 생략)
+                    if (_animator != null && _animator.HasState(0, StateHit)) _animator.Play(StateHit, 0, 0f);
+
                     yield return DoStepBack(path, committedIndex, cells, map, origin);
                     if (IsDone) yield break;
+                    if (_animator != null) _animator.Play(StateRun);
 
                     committedIndex = _stepBackResultIndex;
                     CurrentCell    = path[committedIndex];

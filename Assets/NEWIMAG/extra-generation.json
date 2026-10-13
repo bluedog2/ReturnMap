@@ -1,0 +1,65 @@
+{
+  "traps": [
+    {
+      "id": "spike",
+      "source": "C:/Users/Owner/.codex/generated_images/01a13030-48d9-79d2-bbe5-d2544038885d/exec-935733c1-b350-412e-8617-d217bdba6af7.png",
+      "parts": [
+        "base",
+        "spikes",
+        "glow",
+        "platform"
+      ],
+      "states": [
+        "Normal",
+        "Dud",
+        "Critical",
+        "Beneficial"
+      ],
+      "prompt": "Four by four isolated pixel trap parts. Columns base, spikes cartridge, glow, safe platform. Rows Normal, Dud, Critical, Beneficial. Transparent background."
+    },
+    {
+      "id": "arrow_shooter",
+      "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a13030-48d9-79d2-bbe5-d2544038885d\\exec-48f10909-ffa3-447c-b6ed-e98b181c4c0b.png",
+      "prompt": "Use case: stylized-concept. Asset type: modular transparent pixel-art game parts atlas, Re:Trap side-view medieval castle platformer. Reference image style reference ONLY; no characters in result. Draw wall-mounted arrow launcher aiming RIGHT. EXACT 4 columns x 4 rows with equal cells on square canvas. Column1 launcher BODY with small visible bow mechanism, one solid square wall-mounted unit, no wall. Column2 separate small trigger lever. Column3 separate horizontal ARROW projectile pointing RIGHT, complete shaft, feathers and tip. Column4 muzzle flash / sparks ONLY. Rows are four mutation SKINS, not motion frames: Normal (blue-gray steel, brass, warm wood); Dud (broken inactive dull gray, cracked, small sparks); Critical (black demonic steel, red/violet runes); Beneficial (safe gold and emerald, flat smooth edges). Each cell contains ONLY the indicated isolated part. Maintain same component scale and geometry across four rows, crisp 16-bit hand-pixelled clusters, dark outlines, no anti-aliased painting, side-view orthographic NOT isometric. Every object/effect fits inside central 65% of cell with at least 15% fully transparent gutter on all sides. No cell overlaps, no labels, text, grid, watermark, backdrop or ground shadows. True transparent alpha. Parts must be ready for independent SpriteRenderer replacement.",
+      "parts": [
+        "body",
+        "trigger",
+        "arrow",
+        "muzzle_flash"
+      ],
+      "states": [
+        "Normal",
+        "Dud",
+        "Critical",
+        "Beneficial"
+      ]
+    },
+    {
+      "id": "drop_hammer",
+      "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a13030-48d9-79d2-bbe5-d2544038885d\\exec-6aae0f2d-7971-4188-b960-04a5043680ba.png",
+      "prompt": "Use case: stylized-concept. Asset type: modular transparent pixel-art game parts atlas, Re:Trap side-view medieval castle platformer. Reference image style reference ONLY; no characters in result. Draw ceiling mounted falling crushing hammer. EXACT 4 columns x 4 rows with equal cells on square canvas. Column1 fixed ceiling MOUNT bracket only. Column2 straight vertical CHAIN segment only, no bracket no hammer. Column3 heavy rectangular moving HAMMER HEAD only, flat crushing bottom and flat top, NO chain attached. Column4 isolated impact dust / magic sparks ONLY. Rows are four mutation SKINS, not motion frames: Normal (blue-gray steel, brass, warm wood); Dud (broken inactive dull gray, cracked, small sparks); Critical (black demonic steel, red/violet runes); Beneficial (safe gold and emerald, flat smooth edges). Each cell contains ONLY the indicated isolated part. Maintain same component scale and geometry across four rows, crisp 16-bit hand-pixelled clusters, dark outlines, no anti-aliased painting, side-view orthographic NOT isometric. Every object/effect fits inside central 65% of cell with at least 15% fully transparent gutter on all sides. No cell overlaps, no labels, text, grid, watermark, backdrop or ground shadows. True transparent alpha. Parts must be ready for independent SpriteRenderer replacement.",
+      "parts": [
+        "mount",
+        "chain",
+        "head",
+        "impact"
+      ],
+      "states": [
+        "Normal",
+        "Dud",
+        "Critical",
+        "Beneficial"
+      ]
+    }
+  ],
+  "effects": {
+    "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a13030-48d9-79d2-bbe5-d2544038885d\\exec-3c164420-f5a1-4051-a976-2f332561b4f2.png",
+    "prompt": "Use case: stylized-concept. Asset type: animated game VFX sprite sheet ONLY, for Re:Trap 2D side-view medieval castle pixel-art platformer. Reference STYLE ONLY, no characters or weapons in result. TRUE transparent background. EXACT 4 columns x 4 rows, equally spaced identical cells on square 1024 canvas, 16 separate frames with generous transparent margins. Row1 DASH: 4-frame sequence of short horizontal golden speed streaks and small square particles trailing left, motion direction right, energy builds then trails dissipate. Row2 HIT: 4-frame brief ivory/gold starburst with a few tiny red pixel sparks, expands then dissipates, NO gore. Row3 DEATH: 4-frame golden soul dissolve, short upward swirl and square particles, grows then dissipates, no body no skull. Row4 RESPAWN: 4-frame emerald/gold circular magic burst around a small vertical light pillar, coalesces then settles. Each row a temporal animation left to right, NOT four unrelated illustrations; stable centered pivot and scale. Keep complete effects inside middle 70% of each cell, no bleed across cells. Clean 16-bit hand-pixeled hard square pixels, discrete brightness bands, NO soft blurred smoky painting. No background, labels, borders, text, characters, scenery, floor, watermarks.",
+    "states": [
+      "Dash",
+      "Hit",
+      "Death",
+      "Respawn"
+    ]
+  }
+}

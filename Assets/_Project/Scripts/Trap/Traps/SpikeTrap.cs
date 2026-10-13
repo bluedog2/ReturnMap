@@ -36,6 +36,11 @@ namespace ReTrap
         [Tooltip("천장에 설치 시 true — 가시가 아래 방향으로 돌출.")]
         private bool isFlipped = false;
 
+        [SerializeField]
+        [Tooltip("천장 설치 시 spikeVisual 과 함께 flipY 를 적용할 정적 렌더러(Housing·Glow 등). " +
+                 "가시 Visual 은 위치만 위/아래로 움직이므로, 스프라이트 상하 반전은 여기서 맞춘다.")]
+        private SpriteRenderer[] flipWithAnchor;
+
         [Header("SpikeTrap — 진동")]
         [SerializeField, Min(0.1f)]
         [Tooltip("Normal 진동 1사이클 시간(초). 사이클의 35%는 수축 상태로 대기 — 통과 타이밍 구간.")]
@@ -101,6 +106,12 @@ namespace ReTrap
 
             extendedY  = sign * (0.5f + extendHeight * 0.5f);
             retractedY = extendedY - sign * extendHeight;
+
+            // 천장이면 가시·하우징·글로우 스프라이트를 상하 반전 (프리팹 루트는 회전/스케일하지 않음)
+            if (spikeRenderer != null) spikeRenderer.flipY = isFlipped;
+            if (flipWithAnchor != null)
+                for (int i = 0; i < flipWithAnchor.Length; i++)
+                    if (flipWithAnchor[i] != null) flipWithAnchor[i].flipY = isFlipped;
 
             // 데미지 트리거를 표면 돌출 구역으로 이동
             if (DamageArea is BoxCollider2D box)

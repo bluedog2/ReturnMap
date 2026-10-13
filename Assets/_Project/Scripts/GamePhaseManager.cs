@@ -55,6 +55,15 @@ namespace ReTrap
         }
 
         /// <summary>
+        /// [테스트용] 빌드 페이즈에서 검증(AI) 페이즈를 건너뛰고 곧바로 플레이 페이즈로 진입합니다.
+        /// 정식 흐름(빌드 → AI → 플레이)은 <see cref="AdvanceFromBuild"/>. 하단 바 "플레이 페이즈" 버튼용 진입점.
+        /// </summary>
+        public void SkipToPlayFromBuild()
+        {
+            SetPhase(GamePhase.Play);
+        }
+
+        /// <summary>
         /// 페이즈를 전환합니다.
         /// <para><b>실행 순서 정책</b>: (a) 순서가 보장되어야 하는 게임플레이 계층은
         /// 이벤트가 아니라 <b>직접 호출</b>로 처리합니다 (예: TrapMutationManager 의 변이 적용/리셋 —

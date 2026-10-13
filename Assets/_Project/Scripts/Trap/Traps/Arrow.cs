@@ -41,7 +41,8 @@ namespace ReTrap
         private Rigidbody2D    rb;
         private SpriteRenderer sr;
 
-        private Color _originalColor;              // Beneficial 황금 틴트 복원용
+        private Color  _originalColor;             // Beneficial 황금 틴트 복원용
+        private Sprite _originalSprite;            // 상태별 스프라이트 스왑 복원용
         private System.Action<Arrow> _release;     // 풀 반납 콜백 (미지정 시 Destroy 폴백)
         private bool _despawned;                   // 같은 프레임 이중 소멸 방지
         private TrapBase _sourceTrap;               // 발사한 ArrowShooter (함정 혐오 등 부수효과용, null 허용)
@@ -52,7 +53,11 @@ namespace ReTrap
         {
             rb = GetComponent<Rigidbody2D>();
             sr = GetComponentInChildren<SpriteRenderer>();
-            if (sr != null) _originalColor = sr.color;
+            if (sr != null)
+            {
+                _originalColor  = sr.color;
+                _originalSprite = sr.sprite;
+            }
         }
 
         private void Update()
@@ -116,6 +121,13 @@ namespace ReTrap
         /// </summary>
         public void SetReleaseCallback(System.Action<Arrow> release) => _release = release;
 
+        /// <summary>발사 상태에 맞는 화살 스프라이트 지정. null 이면 무시(현재 스프라이트 유지).</summary>
+        public void SetSprite(Sprite s)
+        {
+            if (s == null || sr == null) return;
+            sr.sprite = s;
+        }
+
         /// <summary>
         /// ArrowShooter 가 풀에서 꺼낸 직후 호출.
         /// </summary>
@@ -153,7 +165,11 @@ namespace ReTrap
         public void OnSpawned()
         {
             _despawned = false;
-            if (sr != null) sr.color = _originalColor;
+            if (sr != null)
+            {
+                sr.color  = _originalColor;
+                sr.sprite = _originalSprite;
+            }
         }
 
         /// <summary>풀로 반납될 때 — 물리 잔여 속도 정리.</summary>

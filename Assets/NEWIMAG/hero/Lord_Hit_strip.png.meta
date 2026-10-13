@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: ad649aca57493f04ca76a9b4a3aefb9c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8450573436215495515
+    second: Lord_Hit_strip_0
+  - first:
+      213: 8588643820966803349
+    second: Lord_Hit_strip_1
+  - first:
+      213: -7948896475251137593
+    second: Lord_Hit_strip_2
+  - first:
+      213: -3180691136570911309
+    second: Lord_Hit_strip_3
+  - first:
+      213: -7051521677989690268
+    second: Lord_Hit_strip_4
+  - first:
+      213: -1833203787502326750
+    second: Lord_Hit_strip_5
+  - first:
+      213: -5153796681320263702
+    second: Lord_Hit_strip_6
+  - first:
+      213: -1307121488333386920
+    second: Lord_Hit_strip_7
+  - first:
+      213: -7640993224663868342
+    second: Lord_Hit_strip_8
+  - first:
+      213: -1675547009106242690
+    second: Lord_Hit_strip_9
+  - first:
+      213: 4018752516628428193
+    second: Lord_Hit_strip_10
+  - first:
+      213: -600116763544727199
+    second: Lord_Hit_strip_11
+  - first:
+      213: -907086189044331510
+    second: Lord_Hit_strip_12
+  - first:
+      213: -7672582256345140549
+    second: Lord_Hit_strip_13
+  - first:
+      213: -7783829786229992819
+    second: Lord_Hit_strip_14
+  - first:
+      213: -7400520438384390350
+    second: Lord_Hit_strip_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Lord_Hit_strip_0
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 47
+        width: 187
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5b0af564c7764570800000000000000
+      internalID: 8450573436215495515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lord_Hit_strip_1
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 193
+        width: 32
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5977413fc0ef03770800000000000000
+      internalID: 8588643820966803349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lord_Hit_strip_2
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 48
+        width: 307
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c32d4455c8dfa190800000000000000
+      internalID: -7948896475251137593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lord_Hit_strip_3
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 48
+        width: 226
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b51578634aebd3d0800000000000000
+      internalID: -3180691136570911309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lord_Hit_strip_4
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 47
+        width: 192
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4644579f466f32e90800000000000000
+      internalID: -7051521677989690268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lord_Hit_strip_5
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 134
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22ce5053ed62f86e0800000000000000
+      internalID: -1833203787502326750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lord_Hit_strip_6
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 131
+        width: 27
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aef815d69390a78b0800000000000000
+      internalID: -5153796681320263702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lord_Hit_strip_7
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 150
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85bcb998eeb2cdde0800000000000000
+      internalID: -1307121488333386920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lord_Hit_strip_8
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 97
+        width: 35
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4c5eb8552db5f590800000000000000
+      internalID: -7640993224663868342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lord_Hit_strip_9
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 47
+        width: 42
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7311c56fd24fb8e0800000000000000
+      internalID: -1675547009106242690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lord_Hit_strip_10
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 98
+        width: 26
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a538d12f1a75c730800000000000000
+      internalID: 4018752516628428193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lord_Hit_strip_11
+      rect:
+        serializedVersion: 2
+        x: 1393
+        y: 106
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 161d82dabf4fba7f0800000000000000
+      internalID: -600116763544727199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lord_Hit_strip_12
+      rect:
+        serializedVersion: 2
+        x: 1407
+        y: 96
+        width: 22
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0c8951cae16963f0800000000000000
+      internalID: -907086189044331510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lord_Hit_strip_13
+      rect:
+        serializedVersion: 2
+        x: 1432
+        y: 54
+        width: 55
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb23594c613858590800000000000000
+      internalID: -7672582256345140549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lord_Hit_strip_14
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 48
+        width: 43
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8218a7cc084af390800000000000000
+      internalID: -7783829786229992819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lord_Hit_strip_15
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 47
+        width: 60
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23f8415fed11c4990800000000000000
+      internalID: -7400520438384390350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Lord_Hit_strip_0: 8450573436215495515
+      Lord_Hit_strip_1: 8588643820966803349
+      Lord_Hit_strip_10: 4018752516628428193
+      Lord_Hit_strip_11: -600116763544727199
+      Lord_Hit_strip_12: -907086189044331510
+      Lord_Hit_strip_13: -7672582256345140549
+      Lord_Hit_strip_14: -7783829786229992819
+      Lord_Hit_strip_15: -7400520438384390350
+      Lord_Hit_strip_2: -7948896475251137593
+      Lord_Hit_strip_3: -3180691136570911309
+      Lord_Hit_strip_4: -7051521677989690268
+      Lord_Hit_strip_5: -1833203787502326750
+      Lord_Hit_strip_6: -5153796681320263702
+      Lord_Hit_strip_7: -1307121488333386920
+      Lord_Hit_strip_8: -7640993224663868342
+      Lord_Hit_strip_9: -1675547009106242690
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

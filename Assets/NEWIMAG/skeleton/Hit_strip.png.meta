@@ -1,0 +1,1001 @@
+fileFormatVersion: 2
+guid: 4e2764057cda02e4eaaf7c0fadc39eb6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -9197596633853989949
+    second: Hit_strip_0
+  - first:
+      213: 5232250804095578372
+    second: Hit_strip_1
+  - first:
+      213: 8344745207900787715
+    second: Hit_strip_2
+  - first:
+      213: -4840156829020552046
+    second: Hit_strip_3
+  - first:
+      213: -4589293236126626559
+    second: Hit_strip_4
+  - first:
+      213: -5773064126785440724
+    second: Hit_strip_5
+  - first:
+      213: -5083528235119766398
+    second: Hit_strip_6
+  - first:
+      213: 173142418329968874
+    second: Hit_strip_7
+  - first:
+      213: -7929205713375317893
+    second: Hit_strip_8
+  - first:
+      213: -4590662799096736236
+    second: Hit_strip_9
+  - first:
+      213: 1803223344973744811
+    second: Hit_strip_10
+  - first:
+      213: -6878410939524227304
+    second: Hit_strip_11
+  - first:
+      213: 8895905433675399428
+    second: Hit_strip_12
+  - first:
+      213: -7449752860073159197
+    second: Hit_strip_13
+  - first:
+      213: 660156791297779338
+    second: Hit_strip_14
+  - first:
+      213: -4841774838567543600
+    second: Hit_strip_15
+  - first:
+      213: -6413917503862949238
+    second: Hit_strip_16
+  - first:
+      213: -7542046575242594276
+    second: Hit_strip_17
+  - first:
+      213: 1844256490719856054
+    second: Hit_strip_18
+  - first:
+      213: 960306326702884012
+    second: Hit_strip_19
+  - first:
+      213: -1887477887651896183
+    second: Hit_strip_20
+  - first:
+      213: -5987709419958150833
+    second: Hit_strip_21
+  - first:
+      213: 3435190195687010827
+    second: Hit_strip_22
+  - first:
+      213: 3816824387667922951
+    second: Hit_strip_23
+  - first:
+      213: 1898843116217312482
+    second: Hit_strip_24
+  - first:
+      213: 1642666564719256159
+    second: Hit_strip_25
+  - first:
+      213: -7388287210068631411
+    second: Hit_strip_26
+  - first:
+      213: -3455208000243222319
+    second: Hit_strip_27
+  - first:
+      213: 5023605322957489345
+    second: Hit_strip_28
+  - first:
+      213: 6586886823510470592
+    second: Hit_strip_29
+  - first:
+      213: 1013483220257402171
+    second: Hit_strip_30
+  - first:
+      213: -6501255094704997706
+    second: Hit_strip_31
+  - first:
+      213: 3719391986336708851
+    second: Hit_strip_32
+  - first:
+      213: 3138056242045909164
+    second: Hit_strip_33
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Hit_strip_0
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 9
+        width: 313
+        height: 316
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cbedcba7929b5080800000000000000
+      internalID: -9197596633853989949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_1
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 311
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4017ed97260bc9840800000000000000
+      internalID: 5232250804095578372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_2
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 315
+        width: 19
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 304d112ed8d7ec370800000000000000
+      internalID: 8344745207900787715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_3
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 299
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2948c0d120f44dcb0800000000000000
+      internalID: -4840156829020552046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_4
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 9
+        width: 303
+        height: 315
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10dc19aed1e8f40c0800000000000000
+      internalID: -4589293236126626559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_5
+      rect:
+        serializedVersion: 2
+        x: 874
+        y: 299
+        width: 38
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c24376183c4f1efa0800000000000000
+      internalID: -5773064126785440724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_6
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 301
+        width: 57
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 284940cf00ea379b0800000000000000
+      internalID: -5083528235119766398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_7
+      rect:
+        serializedVersion: 2
+        x: 1067
+        y: 269
+        width: 64
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae02c14bc10276200800000000000000
+      internalID: 173142418329968874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_8
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 315
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7034471a6dc5f190800000000000000
+      internalID: -7929205713375317893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_9
+      rect:
+        serializedVersion: 2
+        x: 1197
+        y: 9
+        width: 274
+        height: 316
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4161d30b180ba40c0800000000000000
+      internalID: -4590662799096736236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_10
+      rect:
+        serializedVersion: 2
+        x: 1393
+        y: 313
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: baa0adf0416560910800000000000000
+      internalID: 1803223344973744811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_11
+      rect:
+        serializedVersion: 2
+        x: 1402
+        y: 315
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81f5f72a1b9fa80a0800000000000000
+      internalID: -6878410939524227304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_12
+      rect:
+        serializedVersion: 2
+        x: 1410
+        y: 314
+        width: 17
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40180b10cda947b70800000000000000
+      internalID: 8895905433675399428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_13
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 271
+        width: 25
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e593e68e392d9890800000000000000
+      internalID: -7449752860073159197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_14
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 277
+        width: 78
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a86ad51aa19592900800000000000000
+      internalID: 660156791297779338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_15
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 297
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dcd1c8ef6f8eccb0800000000000000
+      internalID: -4841774838567543600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_16
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 303
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8ab69b33003df6a0800000000000000
+      internalID: -6413917503862949238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_17
+      rect:
+        serializedVersion: 2
+        x: 1391
+        y: 291
+        width: 8
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c18b63b6994455790800000000000000
+      internalID: -7542046575242594276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_18
+      rect:
+        serializedVersion: 2
+        x: 1398
+        y: 291
+        width: 11
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b5c01cc18d189910800000000000000
+      internalID: 1844256490719856054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_19
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 283
+        width: 8
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca48fa62481b35d00800000000000000
+      internalID: 960306326702884012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_20
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 282
+        width: 17
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 984aa198cd45ec5e0800000000000000
+      internalID: -1887477887651896183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_21
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 9
+        width: 341
+        height: 279
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f49522db10267eca0800000000000000
+      internalID: -5987709419958150833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_22
+      rect:
+        serializedVersion: 2
+        x: 1117
+        y: 234
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0234d5584f3caf20800000000000000
+      internalID: 3435190195687010827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_23
+      rect:
+        serializedVersion: 2
+        x: 1401
+        y: 250
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7009ef4ee8518f430800000000000000
+      internalID: 3816824387667922951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_24
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 202
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e42452f0cb0a5a10800000000000000
+      internalID: 1898843116217312482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_25
+      rect:
+        serializedVersion: 2
+        x: 1091
+        y: 194
+        width: 40
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f52a082998cebc610800000000000000
+      internalID: 1642666564719256159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_26
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 120
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d802c416de7877990800000000000000
+      internalID: -7388287210068631411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_27
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 116
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d83a6851a2ac00d0800000000000000
+      internalID: -3455208000243222319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_28
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 90
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c484aecc6e67b540800000000000000
+      internalID: 5023605322957489345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_29
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 17
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cfea0bcaa2596b50800000000000000
+      internalID: 6586886823510470592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_30
+      rect:
+        serializedVersion: 2
+        x: 1019
+        y: 9
+        width: 19
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3de2418e9d901e00800000000000000
+      internalID: 1013483220257402171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_31
+      rect:
+        serializedVersion: 2
+        x: 1067
+        y: 23
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6baf8edbfe6e6c5a0800000000000000
+      internalID: -6501255094704997706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_32
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 19
+        width: 7
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f8b80e2e4fed9330800000000000000
+      internalID: 3719391986336708851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_strip_33
+      rect:
+        serializedVersion: 2
+        x: 1418
+        y: 9
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca8f758a68d9c8b20800000000000000
+      internalID: 3138056242045909164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Hit_strip_0: -9197596633853989949
+      Hit_strip_1: 5232250804095578372
+      Hit_strip_10: 1803223344973744811
+      Hit_strip_11: -6878410939524227304
+      Hit_strip_12: 8895905433675399428
+      Hit_strip_13: -7449752860073159197
+      Hit_strip_14: 660156791297779338
+      Hit_strip_15: -4841774838567543600
+      Hit_strip_16: -6413917503862949238
+      Hit_strip_17: -7542046575242594276
+      Hit_strip_18: 1844256490719856054
+      Hit_strip_19: 960306326702884012
+      Hit_strip_2: 8344745207900787715
+      Hit_strip_20: -1887477887651896183
+      Hit_strip_21: -5987709419958150833
+      Hit_strip_22: 3435190195687010827
+      Hit_strip_23: 3816824387667922951
+      Hit_strip_24: 1898843116217312482
+      Hit_strip_25: 1642666564719256159
+      Hit_strip_26: -7388287210068631411
+      Hit_strip_27: -3455208000243222319
+      Hit_strip_28: 5023605322957489345
+      Hit_strip_29: 6586886823510470592
+      Hit_strip_3: -4840156829020552046
+      Hit_strip_30: 1013483220257402171
+      Hit_strip_31: -6501255094704997706
+      Hit_strip_32: 3719391986336708851
+      Hit_strip_33: 3138056242045909164
+      Hit_strip_4: -4589293236126626559
+      Hit_strip_5: -5773064126785440724
+      Hit_strip_6: -5083528235119766398
+      Hit_strip_7: 173142418329968874
+      Hit_strip_8: -7929205713375317893
+      Hit_strip_9: -4590662799096736236
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

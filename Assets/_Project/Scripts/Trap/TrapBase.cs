@@ -95,6 +95,12 @@ namespace ReTrap
         [Tooltip("배경 타일이 채워야 할 셀 크기(유닛). 보통 1.")]
         private float backgroundCellSize = 1f;
 
+        [Header("황금 블록")]
+        [SerializeField]
+        [Tooltip("Beneficial 황금 블록 스프라이트. 지정하면 흰색 틴트 + 1×1 셀에 맞춘 스케일로 사용하고, " +
+                 "비워두면 기존처럼 흰 사각형에 황금 틴트를 입힙니다.")]
+        private Sprite beneficialBlockSprite;
+
         [Header("Trap — 코스트 (TrapDefinition 미지정 시 fallback)")]
         [SerializeField]
         [Tooltip("빌드 페이즈 소비 코스트. 역코스트 원칙: 위험할수록 낮게, 안전할수록 높게. TrapDefinition 미지정 시 fallback.")]
@@ -107,6 +113,8 @@ namespace ReTrap
         private static readonly Color LIGHT_BENEFICIAL = new Color(1f, 0.85f, 0.20f);
 
         private Color[] _originalSpriteColors;
+
+        private TrapStateVisuals _stateVisuals; // 상태별 스프라이트 스왑 (없으면 null)
 
         // ── 솔리드 셀 / 황금 블록 ─────────────────────────────────────────────
 
@@ -235,6 +243,17 @@ namespace ReTrap
             // 틴트 대상 수집 + 원본 색 저장
             if (tintTargets == null || tintTargets.Length == 0)
                 tintTargets = GetComponentsInChildren<SpriteRenderer>(true);
+
+            // 상태 전용 스프라이트가 바인딩된 렌더러는 황금 틴트 대상에서 제외 (원본 색 저장 전에 수행)
+            _stateVisuals = GetComponent<TrapStateVisuals>();
+            if (_stateVisuals != null)
+            {
+                var filtered = new List<SpriteRenderer>(tintTargets.Length);
+                for (int i = 0; i < tintTargets.Length; i++)
+                    if (tintTargets[i] != null && !_stateVisuals.Owns(tintTargets[i]))
+                        filtered.Add(tintTargets[i]);
+                tintTargets = filtered.ToArray();
+            }
 
             _originalSpriteColors = new Color[tintTargets.Length];
             for (int i = 0; i < tintTargets.Length; i++)
@@ -463,10 +482,24 @@ namespace ReTrap
             col.size = Vector2.one;
 
             var sr              = _beneficialBlock.AddComponent<SpriteRenderer>();
-            sr.sprite           = GetUnitSprite();
-            sr.color            = LIGHT_BENEFICIAL;
             sr.sortingLayerName = "Map";  // 타일과 같은 레이어라야 가려지지 않음
             sr.sortingOrder     = 15;     // 타일(0)·함정(10) 위, 캐릭터(20) 아래
+
+            if (beneficialBlockSprite != null)
+            {
+                // 전용 스프라이트 — 틴트 없이, 1×1 셀을 정확히 채우도록 스케일 보정
+                sr.sprite = beneficialBlockSprite;
+                sr.color  = Color.white;
+
+                Vector2 b = beneficialBlockSprite.bounds.size;
+                if (b.x > 0.0001f && b.y > 0.0001f)
+                    _beneficialBlock.transform.localScale = new Vector3(1f / b.x, 1f / b.y, 1f);
+            }
+            else
+            {
+                sr.sprite = GetUnitSprite();
+                sr.color  = LIGHT_BENEFICIAL;
+            }
 
             _beneficialBlock.SetActive(false);
         }
@@ -536,6 +569,10 @@ namespace ReTrap
                     RestoreTint();
                     break;
             }
+
+            // 상태별 스프라이트 스왑 (틴트 처리 이후 — 전용 스프라이트는 틴트 대상이 아님)
+            if (_stateVisuals != null)
+                _stateVisuals.Apply(state);
         }
 
         private void StopAllParticles()

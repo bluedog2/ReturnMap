@@ -213,4 +213,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ReTrap.Arrow
   maxRange: 20
   knockbackSpeed: 10
-  beneficialColor: {r: 1, g: 0.85, b: 0.2, a: 1}
+  beneficialColor: {r: 1, g: 1, b: 1, a: 1}

@@ -50,9 +50,23 @@ namespace ReTrap
         [Tooltip("Critical 상태 발사 간격(초).")]
         private float criticalFireInterval = 0.5f;
 
+        [Header("ArrowShooter — 비주얼")]
+        [SerializeField]
+        [Tooltip("상태별 화살 스프라이트. 발사 시 현재 상태에 맞는 스프라이트가 화살에 적용된다.")]
+        private TrapStateSprites arrowSprites;
+
+        [SerializeField]
+        [Tooltip("발사 순간 잠깐 켜지는 머즐 플래시 렌더러 (평상시 비활성).")]
+        private SpriteRenderer muzzleFlash;
+
+        [SerializeField, Min(0.01f)]
+        [Tooltip("머즐 플래시 표시 시간(초).")]
+        private float muzzleFlashDuration = 0.08f;
+
         // ── 내부 상태 ─────────────────────────────────────────────────────────
 
         private Coroutine firingCoroutine;
+        private Coroutine _flashCoroutine;
 
         /// <summary>현재 발사 사이클 시작 시각 (Time.time, 스케일 시간).</summary>
         private float _cycleStartTime;
@@ -184,6 +198,34 @@ namespace ReTrap
                 firingCoroutine = null;
             }
             _cycleInterval = 0f;
+            HideMuzzleFlash();
+        }
+
+        /// <summary>머즐 플래시를 즉시 끄고 진행 중인 표시 코루틴을 정리.</summary>
+        private void HideMuzzleFlash()
+        {
+            if (_flashCoroutine != null)
+            {
+                StopCoroutine(_flashCoroutine);
+                _flashCoroutine = null;
+            }
+            if (muzzleFlash != null) muzzleFlash.enabled = false;
+        }
+
+        /// <summary>머즐 플래시를 duration 동안 표시 (재발사 시 타이머 재시작).</summary>
+        private void ShowMuzzleFlash()
+        {
+            if (muzzleFlash == null) return;
+            if (_flashCoroutine != null) StopCoroutine(_flashCoroutine);
+            _flashCoroutine = StartCoroutine(MuzzleFlashRoutine());
+        }
+
+        private IEnumerator MuzzleFlashRoutine()
+        {
+            muzzleFlash.enabled = true;
+            yield return new WaitForSeconds(muzzleFlashDuration);
+            muzzleFlash.enabled = false;
+            _flashCoroutine = null;
         }
 
         private IEnumerator FireRoutine(float interval, bool isBeneficial)
@@ -227,6 +269,8 @@ namespace ReTrap
             }
 
             arrow.Initialize(_fireDir, arrowSpeed, isBeneficial, this);
+            arrow.SetSprite(arrowSprites.Get(CurrentState));
+            ShowMuzzleFlash();
             RaiseActivated();
         }
 

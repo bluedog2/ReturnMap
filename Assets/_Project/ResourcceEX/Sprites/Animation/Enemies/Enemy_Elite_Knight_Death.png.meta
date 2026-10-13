@@ -28,30 +28,6 @@ TextureImporter:
   - first:
       213: 4833749355135145626
     second: Enemy_Elite_Knight_Death_7
-  - first:
-      213: 1343302907839211608
-    second: Enemy_Elite_Knight_Death_8
-  - first:
-      213: -1332732647359876380
-    second: Enemy_Elite_Knight_Death_9
-  - first:
-      213: 7530389878217107526
-    second: Enemy_Elite_Knight_Death_10
-  - first:
-      213: 977643677930944602
-    second: Enemy_Elite_Knight_Death_11
-  - first:
-      213: -3768251139081689545
-    second: Enemy_Elite_Knight_Death_12
-  - first:
-      213: -7294825857687699677
-    second: Enemy_Elite_Knight_Death_13
-  - first:
-      213: 8450669386906925648
-    second: Enemy_Elite_Knight_Death_14
-  - first:
-      213: -8461341880388329560
-    second: Enemy_Elite_Knight_Death_15
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -98,7 +74,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 256
+  spritePixelsToUnits: 232.83
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -151,13 +127,13 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 768
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 384
+        width: 384
+        height: 384
+      alignment: 9
+      pivot: {x: 0.49171, y: 0.40211}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
@@ -165,21 +141,21 @@ TextureImporter:
       spriteID: 9f4241d7dc61e9f20800000000000000
       internalID: 3431205037925475577
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: Enemy_Elite_Knight_Death_1
       rect:
         serializedVersion: 2
-        x: 256
-        y: 768
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 384
+        y: 384
+        width: 384
+        height: 384
+      alignment: 9
+      pivot: {x: 0.49171, y: 0.40211}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
@@ -187,21 +163,21 @@ TextureImporter:
       spriteID: 302321aa9f4d3a630800000000000000
       internalID: 3937224668017209859
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: Enemy_Elite_Knight_Death_2
       rect:
         serializedVersion: 2
-        x: 512
-        y: 768
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 768
+        y: 384
+        width: 384
+        height: 384
+      alignment: 9
+      pivot: {x: 0.49171, y: 0.40211}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
@@ -209,21 +185,21 @@ TextureImporter:
       spriteID: 8ca7dd760f7130ad0800000000000000
       internalID: -2737317827208971576
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: Enemy_Elite_Knight_Death_3
       rect:
         serializedVersion: 2
-        x: 768
-        y: 768
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 1152
+        y: 384
+        width: 384
+        height: 384
+      alignment: 9
+      pivot: {x: 0.49171, y: 0.40211}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
@@ -231,7 +207,7 @@ TextureImporter:
       spriteID: 84949f1f369709800800000000000000
       internalID: 617126619118127432
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
@@ -239,13 +215,13 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 512
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 0
+        width: 384
+        height: 384
+      alignment: 9
+      pivot: {x: 0.49171, y: 0.40211}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
@@ -253,21 +229,21 @@ TextureImporter:
       spriteID: 6c3ad6d47e7481ee0800000000000000
       internalID: -1290202234479598650
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: Enemy_Elite_Knight_Death_5
       rect:
         serializedVersion: 2
-        x: 256
-        y: 512
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 384
+        y: 0
+        width: 384
+        height: 384
+      alignment: 9
+      pivot: {x: 0.49171, y: 0.40211}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
@@ -275,21 +251,21 @@ TextureImporter:
       spriteID: 7e175d242818d9080800000000000000
       internalID: -9179038069044186649
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: Enemy_Elite_Knight_Death_6
       rect:
         serializedVersion: 2
-        x: 512
-        y: 512
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 768
+        y: 0
+        width: 384
+        height: 384
+      alignment: 9
+      pivot: {x: 0.49171, y: 0.40211}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
@@ -297,21 +273,21 @@ TextureImporter:
       spriteID: af9576aedcf6d2970800000000000000
       internalID: 8731758182732880378
       vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     - serializedVersion: 2
       name: Enemy_Elite_Knight_Death_7
       rect:
         serializedVersion: 2
-        x: 768
-        y: 512
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 1152
+        y: 0
+        width: 384
+        height: 384
+      alignment: 9
+      pivot: {x: 0.49171, y: 0.40211}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
@@ -319,183 +295,7 @@ TextureImporter:
       spriteID: a969a1e9d6de41340800000000000000
       internalID: 4833749355135145626
       vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Elite_Knight_Death_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 256
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8586187a0ee54a210800000000000000
-      internalID: 1343302907839211608
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Elite_Knight_Death_9
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 256
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4e27c85e7be218de0800000000000000
-      internalID: -1332732647359876380
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Elite_Knight_Death_10
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 256
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 648e35f42b1518860800000000000000
-      internalID: 7530389878217107526
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Elite_Knight_Death_11
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 256
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a58fafbceb9419d00800000000000000
-      internalID: 977643677930944602
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Elite_Knight_Death_12
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7362396dd8b74bbc0800000000000000
-      internalID: -3768251139081689545
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Elite_Knight_Death_13
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 32fb036388293ca90800000000000000
-      internalID: -7294825857687699677
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Elite_Knight_Death_14
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 05afad8a80fc64570800000000000000
-      internalID: 8450669386906925648
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Elite_Knight_Death_15
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8af5150d366439a80800000000000000
-      internalID: -8461341880388329560
-      vertices: []
-      indices: 
+      indices:
       edges: []
       weights: []
     outline: []
@@ -512,38 +312,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Enemy_Elite_Knight_Death_0: 3431205037925475577
-      Enemy_Elite_Knight_Death_1: 3937224668017209859
-      Enemy_Elite_Knight_Death_10: 7530389878217107526
-      Enemy_Elite_Knight_Death_11: 977643677930944602
-      Enemy_Elite_Knight_Death_12: -3768251139081689545
-      Enemy_Elite_Knight_Death_13: -7294825857687699677
-      Enemy_Elite_Knight_Death_14: 8450669386906925648
-      Enemy_Elite_Knight_Death_15: -8461341880388329560
-      Enemy_Elite_Knight_Death_2: -2737317827208971576
-      Enemy_Elite_Knight_Death_3: 617126619118127432
-      Enemy_Elite_Knight_Death_4: -1290202234479598650
       Enemy_Elite_Knight_Death_5: -9179038069044186649
-      Enemy_Elite_Knight_Death_6: 8731758182732880378
+      Enemy_Elite_Knight_Death_4: -1290202234479598650
       Enemy_Elite_Knight_Death_7: 4833749355135145626
-      Enemy_Elite_Knight_Death_8: 1343302907839211608
-      Enemy_Elite_Knight_Death_9: -1332732647359876380
-      frame_0: -905805698
-      frame_1: 2023627353
-      frame_10: 774086194
-      frame_11: -172981822
-      frame_12: -69381223
-      frame_13: 639781578
-      frame_14: 1985752252
-      frame_15: -1303826950
-      frame_2: 2021700092
-      frame_3: 1354919568
-      frame_4: 1777352587
-      frame_5: -881769086
-      frame_6: 1083289796
-      frame_7: -67066200
-      frame_8: 1693339724
-      frame_9: -81397495
+      Enemy_Elite_Knight_Death_6: 8731758182732880378
+      Enemy_Elite_Knight_Death_1: 3937224668017209859
+      Enemy_Elite_Knight_Death_0: 3431205037925475577
+      Enemy_Elite_Knight_Death_3: 617126619118127432
+      Enemy_Elite_Knight_Death_2: -2737317827208971576
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

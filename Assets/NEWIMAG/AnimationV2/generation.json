@@ -1,0 +1,88 @@
+[
+  {
+    "id": "hero",
+    "name": "왕좌를 되찾는 영주",
+    "states": [
+      "Idle",
+      "Run",
+      "Jump_Start",
+      "Jump_Loop",
+      "Dash",
+      "Hit",
+      "Death"
+    ],
+    "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a13030-48d9-79d2-bbe5-d2544038885d\\exec-a12513a6-890c-4f31-bcad-77ef01df4af9.png",
+    "prompt": "Use case: stylized-concept. Asset type: NEW coherent production animation sprite sheet, natural temporal motion for Re:Trap side-view 2D platformer. Input image: IDENTITY AND STYLE REFERENCE; retain character design but redraw naturally linked animation frames. Subject the medieval displaced lord: small gold crown, short dark hair, blue-steel armor, gold trim, burgundy short cape, NO weapon. EXACT GRID: EIGHT columns x 8 rows, 64 distinct chronological sprites. Canvas 2048x2048 pixels if possible. ALL cells identical rectangles, absolutely evenly distributed; every row has exactly eight sprites left to right. Row1 IDLE: continuous subtle breathing, cape settles, eight gently distinct phases, no foot translation. Row2 RUN: full eight-frame locomotion, contact/recoil/passing/highpoint/contact mirrored legs/recoil/passing/highpoint, clear alternating legs, torso stable, cape delayed secondary motion. Row3 JUMP_START: crouch anticipation, push-off, rising stretch, tuck legs, rise, rise settle, near-apex, apex. Row4 FALL: eight-frame airborne descent with knees and cape changing smoothly, stable center. Row5 LAND: feet contact, deep knee compression, cape overshoot, partial recovery, recovery, stand, settle, idle. Row6 DASH: crouch coil, launch forward with compact pose, body stretch, sustained dash, cape lag, brake, recover, idle; tiny golden streaks stay within cell. Row7 HIT: contact recoil, torso pushed backward, peak recoil, stagger, begin recovery, recover, settle, idle; small optional spark. Row8 DEATH: knees buckle, one knee down, crouch, side collapse, lies down, golden particles release, particles dissipate, tiny last particle. No gore. Each frame same camera side-view, facing RIGHT, same costume proportions, silhouette scale and anchor; feet on common baseline at 82% of each cell for grounded frames. Movement performed IN PLACE: do not shift character across cells. Each character including cape, weapon and effects completely fits within central 72% of cell, with at least 12% empty transparent padding all around; do not overlap or clip cells. Smooth believable motion made of intentionally different poses, not copied still pictures, no randomly varying anatomy. Clean readable 16-bit hand-pixelled aesthetic, square pixel clusters, limited palette, strong dark outlines, no smooth illustrated anti-aliasing. True alpha transparent background, no matte, scenery, ground shadow, floor, text, labels, grid lines or watermark. Weapons remain INTEGRATED in monster frames where present; do not separate or add extra weapons. Final death cell still has a tiny pixel particle so it isn't empty."
+  },
+  {
+    "id": "goblin",
+    "name": "고블린 약탈자",
+    "states": [
+      "Idle",
+      "Run",
+      "Hit",
+      "Death"
+    ],
+    "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a13030-48d9-79d2-bbe5-d2544038885d\\exec-47461e06-c04a-494d-90ef-2251eb5c8fb5.png",
+    "prompt": "Use case: stylized-concept. Asset type: NEW coherent production animation sprite sheet, natural temporal motion for Re:Trap side-view 2D platformer. Input image: IDENTITY AND STYLE REFERENCE; retain character design but redraw naturally linked animation frames. Subject small green goblin raider, long ears, ochre scarf, leather tunic, crooked steel dagger held in right hand. EXACT GRID: EIGHT columns x 4 rows, 32 distinct chronological sprites. Canvas 2048x1024 pixels if possible. ALL cells identical rectangles, absolutely evenly distributed; every row has exactly eight sprites left to right. Row1 IDLE: eight subtle breathing phases, no leg reposition drift. Row2 RUN: full eight-frame run cycle with distinct contact, compression, passing and flight for EACH alternating leg; stable torso, natural delayed scarf/cape motion; weapon stays attached to hand and follows arm without changing identity. Row3 HIT: eight sequential poses from impact recoil to peak backward stagger to gradual recovery and idle, no identity changes. Row4 DEATH: eight sequential poses buckling, lowering, collapse, still fallen body, violet corruption particles, dissolving, fewer particles, last small particle; no gore. Each frame same camera side-view, facing RIGHT, same costume proportions, silhouette scale and anchor; feet on common baseline at 82% of each cell for grounded frames. Movement performed IN PLACE: do not shift character across cells. Each character including cape, weapon and effects completely fits within central 72% of cell, with at least 12% empty transparent padding all around; do not overlap or clip cells. Smooth believable motion made of intentionally different poses, not copied still pictures, no randomly varying anatomy. Clean readable 16-bit hand-pixelled aesthetic, square pixel clusters, limited palette, strong dark outlines, no smooth illustrated anti-aliasing. True alpha transparent background, no matte, scenery, ground shadow, floor, text, labels, grid lines or watermark. Weapons remain INTEGRATED in monster frames where present; do not separate or add extra weapons. Final death cell still has a tiny pixel particle so it isn't empty."
+  },
+  {
+    "id": "orc",
+    "name": "오크 투사",
+    "states": [
+      "Idle",
+      "Run",
+      "Hit",
+      "Death"
+    ],
+    "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a13030-48d9-79d2-bbe5-d2544038885d\\exec-51727f0e-b38a-46e0-b9b9-fb583a70e120.png",
+    "prompt": "Use case: stylized-concept. Asset type: NEW coherent production animation sprite sheet, natural temporal motion for Re:Trap side-view 2D platformer. Input image: IDENTITY AND STYLE REFERENCE; retain character design but redraw naturally linked animation frames. Subject large stocky olive-green orc brute, brown leather armor, dark iron shoulder guards, iron studded club. EXACT GRID: EIGHT columns x 4 rows, 32 distinct chronological sprites. Canvas 2048x1024 pixels if possible. ALL cells identical rectangles, absolutely evenly distributed; every row has exactly eight sprites left to right. Row1 IDLE: eight subtle breathing phases, no leg reposition drift. Row2 RUN: full eight-frame run cycle with distinct contact, compression, passing and flight for EACH alternating leg; stable torso, natural delayed scarf/cape motion; weapon stays attached to hand and follows arm without changing identity. Row3 HIT: eight sequential poses from impact recoil to peak backward stagger to gradual recovery and idle, no identity changes. Row4 DEATH: eight sequential poses buckling, lowering, collapse, still fallen body, violet corruption particles, dissolving, fewer particles, last small particle; no gore. Each frame same camera side-view, facing RIGHT, same costume proportions, silhouette scale and anchor; feet on common baseline at 82% of each cell for grounded frames. Movement performed IN PLACE: do not shift character across cells. Each character including cape, weapon and effects completely fits within central 72% of cell, with at least 12% empty transparent padding all around; do not overlap or clip cells. Smooth believable motion made of intentionally different poses, not copied still pictures, no randomly varying anatomy. Clean readable 16-bit hand-pixelled aesthetic, square pixel clusters, limited palette, strong dark outlines, no smooth illustrated anti-aliasing. True alpha transparent background, no matte, scenery, ground shadow, floor, text, labels, grid lines or watermark. Weapons remain INTEGRATED in monster frames where present; do not separate or add extra weapons. Final death cell still has a tiny pixel particle so it isn't empty."
+  },
+  {
+    "id": "skeleton",
+    "name": "해골 궁수",
+    "states": [
+      "Idle",
+      "Run",
+      "Hit",
+      "Death"
+    ],
+    "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a13030-48d9-79d2-bbe5-d2544038885d\\exec-ce7cb4a7-c425-43b4-b3e8-154548aa2ced.png",
+    "prompt": "Use case: stylized-concept. Asset type: NEW coherent production animation sprite sheet, natural temporal motion for Re:Trap side-view 2D platformer. Input image: IDENTITY AND STYLE REFERENCE; retain character design but redraw naturally linked animation frames. Subject ivory skeleton archer, worn purple hood and scarf, wooden bow held low, violet glowing eyes. EXACT GRID: EIGHT columns x 4 rows, 32 distinct chronological sprites. Canvas 2048x1024 pixels if possible. ALL cells identical rectangles, absolutely evenly distributed; every row has exactly eight sprites left to right. Row1 IDLE: eight subtle breathing phases, no leg reposition drift. Row2 RUN: full eight-frame run cycle with distinct contact, compression, passing and flight for EACH alternating leg; stable torso, natural delayed scarf/cape motion; weapon stays attached to hand and follows arm without changing identity. Row3 HIT: eight sequential poses from impact recoil to peak backward stagger to gradual recovery and idle, no identity changes. Row4 DEATH: eight sequential poses buckling, lowering, collapse, still fallen body, violet corruption particles, dissolving, fewer particles, last small particle; no gore. Each frame same camera side-view, facing RIGHT, same costume proportions, silhouette scale and anchor; feet on common baseline at 82% of each cell for grounded frames. Movement performed IN PLACE: do not shift character across cells. Each character including cape, weapon and effects completely fits within central 72% of cell, with at least 12% empty transparent padding all around; do not overlap or clip cells. Smooth believable motion made of intentionally different poses, not copied still pictures, no randomly varying anatomy. Clean readable 16-bit hand-pixelled aesthetic, square pixel clusters, limited palette, strong dark outlines, no smooth illustrated anti-aliasing. True alpha transparent background, no matte, scenery, ground shadow, floor, text, labels, grid lines or watermark. Weapons remain INTEGRATED in monster frames where present; do not separate or add extra weapons. Final death cell still has a tiny pixel particle so it isn't empty."
+  },
+  {
+    "id": "imp",
+    "name": "비행 임프",
+    "states": [
+      "Idle",
+      "Run",
+      "Hit",
+      "Death"
+    ],
+    "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a13030-48d9-79d2-bbe5-d2544038885d\\exec-bc1a9599-54aa-4318-a581-daba1193b610.png",
+    "prompt": "Use case: stylized-concept. Asset type: NEW coherent production animation sprite sheet, natural temporal motion for Re:Trap side-view 2D platformer. Input image: IDENTITY AND STYLE REFERENCE; retain character design but redraw naturally linked animation frames. Subject small crimson flying imp, short horns, purple bat wings, orange eyes, curled tail, NO weapon. EXACT GRID: EIGHT columns x 4 rows, 32 distinct chronological sprites. Canvas 2048x1024 pixels if possible. ALL cells identical rectangles, absolutely evenly distributed; every row has exactly eight sprites left to right. Row1 IDLE: eight subtle breathing phases, no leg reposition drift. Row2 FLY: full eight-phase wing flap loop, wings high, downstroke, wings horizontal, fully low, upstroke, folded, rise, high; stable body center and subtly following tail. Row3 HIT: eight sequential poses from impact recoil to peak backward stagger to gradual recovery and idle, no identity changes. Row4 DEATH: eight sequential poses buckling, lowering, collapse, still fallen body, violet corruption particles, dissolving, fewer particles, last small particle; no gore. Each frame same camera side-view, facing RIGHT, same costume proportions, silhouette scale and anchor; feet on common baseline at 82% of each cell for grounded frames. Movement performed IN PLACE: do not shift character across cells. Each character including cape, weapon and effects completely fits within central 72% of cell, with at least 12% empty transparent padding all around; do not overlap or clip cells. Smooth believable motion made of intentionally different poses, not copied still pictures, no randomly varying anatomy. Clean readable 16-bit hand-pixelled aesthetic, square pixel clusters, limited palette, strong dark outlines, no smooth illustrated anti-aliasing. True alpha transparent background, no matte, scenery, ground shadow, floor, text, labels, grid lines or watermark. Weapons remain INTEGRATED in monster frames where present; do not separate or add extra weapons. Final death cell still has a tiny pixel particle so it isn't empty."
+  },
+  {
+    "id": "knight",
+    "name": "타락 기사",
+    "states": [
+      "Idle",
+      "Run",
+      "Hit",
+      "Death"
+    ],
+    "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a13030-48d9-79d2-bbe5-d2544038885d\\exec-ea09f5c1-de3f-499d-b87b-9ef15ac7fc23.png",
+    "prompt": "Use case: stylized-concept. Asset type: NEW coherent production animation sprite sheet, natural temporal motion for Re:Trap side-view 2D platformer. Input image: IDENTITY AND STYLE REFERENCE; retain character design but redraw naturally linked animation frames. Subject corrupted elite knight, closed dark steel helmet, pointed crest, violet eyes slit, dark steel plate, torn purple cape, low held violet steel sword. EXACT GRID: EIGHT columns x 4 rows, 32 distinct chronological sprites. Canvas 2048x1024 pixels if possible. ALL cells identical rectangles, absolutely evenly distributed; every row has exactly eight sprites left to right. Row1 IDLE: eight subtle breathing phases, no leg reposition drift. Row2 RUN: full eight-frame run cycle with distinct contact, compression, passing and flight for EACH alternating leg; stable torso, natural delayed scarf/cape motion; weapon stays attached to hand and follows arm without changing identity. Row3 HIT: eight sequential poses from impact recoil to peak backward stagger to gradual recovery and idle, no identity changes. Row4 DEATH: eight sequential poses buckling, lowering, collapse, still fallen body, violet corruption particles, dissolving, fewer particles, last small particle; no gore. Each frame same camera side-view, facing RIGHT, same costume proportions, silhouette scale and anchor; feet on common baseline at 82% of each cell for grounded frames. Movement performed IN PLACE: do not shift character across cells. Each character including cape, weapon and effects completely fits within central 72% of cell, with at least 12% empty transparent padding all around; do not overlap or clip cells. Smooth believable motion made of intentionally different poses, not copied still pictures, no randomly varying anatomy. Clean readable 16-bit hand-pixelled aesthetic, square pixel clusters, limited palette, strong dark outlines, no smooth illustrated anti-aliasing. True alpha transparent background, no matte, scenery, ground shadow, floor, text, labels, grid lines or watermark. Weapons remain INTEGRATED in monster frames where present; do not separate or add extra weapons. Final death cell still has a tiny pixel particle so it isn't empty."
+  },
+  {
+    "id": "hero_air_land",
+    "name": "영주 낙하·착지 보완",
+    "states": [
+      "Jump_Loop",
+      "Land"
+    ],
+    "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a13030-48d9-79d2-bbe5-d2544038885d\\exec-be9979d0-f958-462c-92cc-3a62c6432481.png",
+    "prompt": "Use case: stylized-concept. Asset type: two precise animation strips for the referenced lord protagonist in Re:Trap. Keep identical crown, blue-steel light armor, burgundy cape, face, proportions and pixel style. EXACT 8 columns x 2 rows, sixteen sprites, wide rectangular canvas 2048x512 if possible. Row1 FALL LOOP, 8 successive airborne frames ONLY: facing right, feet tucked or pointed down, knees sway subtly, cape flowing upward, no standing or landing frames, fixed center, last loops into first. Row2 LAND, 8 sequential ground landing frames: frame1 boots touch ground crouched; frame2 deepest compression; frame3 cape overshoot at maximum squat; frame4 halfway rising; frame5 rise; frame6 upright; frame7 settle; frame8 idle stand. Each sprite full body, same scale, centered x, all cells equal, grounded feet at 82% cell height. Each row has exactly8 spaced sprites with at least15% fully transparent gutter. Natural successive poses and secondary cape motion, crisp pixel clusters, no weapon, no particles or speed trails, no floor, no labels, no grid, no text, no background. Genuinely transparent. Reference is identity reference, do not copy the sheet layout.",
+    "scale": 0.5773480662983426
+  }
+]

@@ -20,7 +20,7 @@ namespace ReTrap.EditorTools
     ///   <item><see cref="StagePreviewPanel"/> 오브젝트 생성/배선 (좌상단, Build 페이즈에만 표시)</item>
     ///   <item><see cref="ResearchBoardPanel"/> 오브젝트 생성/배선 (화면 중앙, R 키로 토글)</item>
     ///   <item><see cref="PhaseControlsGuide"/> 오브젝트 생성/배선 (화면 하단, 전 페이즈 상시 표시 +
-    ///         Build 전용 "시작" 버튼)</item>
+    ///         Build 전용 "AI 페이즈"/"플레이 페이즈" 버튼)</item>
     ///   <item><see cref="StageClearPanel"/> 오브젝트 생성/배선 (화면 중앙, 스테이지 클리어 시
     ///         <see cref="StageFlowController"/> 이벤트로 표시) + <see cref="StageFlowController"/>
     ///         로직 오브젝트 보장</item>
@@ -32,6 +32,7 @@ namespace ReTrap.EditorTools
     {
         private const string ResearchDir = "Assets/_Project/Settings/Meta/Research";
         private const string SpawnTablePath = "Assets/_Project/Settings/AI/SpawnTables/SpawnTable_Stage01.asset";
+        private const string SampleScenePath = "Assets/_Project/ResourcceEX/Scenes/SampleScene.unity";
 
         // ── 색상 (튜닝용 — 값은 여기 한곳에 모아둠) ──────────────────────────
         private static readonly Color PanelBackground   = new Color(0.06f, 0.06f, 0.09f, 0.62f);
@@ -68,12 +69,14 @@ namespace ReTrap.EditorTools
         private const float DebugButtonHeight   = 32f;
 
         private const float GuideBarHeight       = 44f;
-        private const float GuideBarSideMargin   = 220f; // 좌우 여백 (시작 버튼과 겹치지 않도록)
+        private const float GuideBarSideMargin   = 380f; // 우측 여백 (AI/플레이 버튼 2개와 겹치지 않도록)
         private const int   GuideTextSize        = 14;
         private const float StartButtonWidth     = 160f;
         private const float StartButtonHeight    = 40f;
+        private const float StartButtonSpacing   = 8f;
         private static readonly Color GuideBarBackground = new Color(0.05f, 0.05f, 0.07f, 0.75f);
         private static readonly Color StartButtonColor   = new Color(0.2f, 0.5f, 0.28f, 1f); // 초록 — 진행
+        private static readonly Color PlayButtonColor    = new Color(0.2f, 0.36f, 0.6f, 1f); // 파랑 — 테스트용 검증 건너뛰기
 
         private const float ClearPanelWidth      = 460f;
         private const float ClearPanelHeight     = 300f;
@@ -114,6 +117,20 @@ namespace ReTrap.EditorTools
             BuildStageClearPanel(uiCanvas.transform);
 
             Debug.Log("[MetaUiSetup] ✅ 메타 UI 세팅 완료 (미리보기 + 연구소 + 조작 안내 + 스테이지 클리어)");
+        }
+
+        /// <summary>
+        /// 배치모드용: SampleScene 을 열어 하단 조작 바(<see cref="PhaseControlsGuide"/>)만 재생성·배선하고 저장한다.
+        /// 다른 메타 패널은 건드리지 않는다.
+        /// <para>호출: <c>Unity -batchmode -quit -projectPath &lt;p&gt; -executeMethod ReTrap.EditorTools.MetaUiSetup.RunPhaseControlsGuideBatch</c></para>
+        /// </summary>
+        public static void RunPhaseControlsGuideBatch()
+        {
+            var scene = EditorSceneManager.OpenScene(SampleScenePath, OpenSceneMode.Single);
+            GameObject uiCanvas = EnsureUiCanvas();
+            BuildPhaseControlsGuide(uiCanvas.transform);
+            EditorSceneManager.SaveScene(scene);
+            Debug.Log("[MetaUiSetup] ✅ PhaseControlsGuide 배치 세팅 + 씬 저장 완료");
         }
 
         // ── 데이터 로드 ──────────────────────────────────────────────────────
@@ -593,15 +610,28 @@ namespace ReTrap.EditorTools
             startRootRect.anchorMax        = new Vector2(1f, 0.5f);
             startRootRect.pivot            = new Vector2(1f, 0.5f);
             startRootRect.anchoredPosition = new Vector2(-16f, 0f);
-            startRootRect.sizeDelta        = new Vector2(StartButtonWidth, StartButtonHeight);
+            startRootRect.sizeDelta        = new Vector2(StartButtonWidth * 2f + StartButtonSpacing, StartButtonHeight);
 
+            // 좌: ▶ AI 페이즈 (정식 흐름: 빌드 → AI → 플레이) / 우: ▶▶ 플레이 페이즈 (테스트용 — 검증 건너뛰기)
             Button startButton = FindOrCreateButton(startRootGo.transform, "StartButton",
-                "▶ 검증 시작", StartButtonWidth, StartButtonHeight, StartButtonColor);
+                "▶ AI 페이즈", StartButtonWidth, StartButtonHeight, StartButtonColor);
+            // 기존 씬의 구 라벨("▶ 검증 시작")은 FindOrCreateText 가 보존하므로 명시적으로 갱신
+            startButton.transform.Find("Label").GetComponent<Text>().text = "▶ AI 페이즈";
             var startButtonRect = (RectTransform)startButton.transform;
-            startButtonRect.anchorMin = Vector2.zero;
-            startButtonRect.anchorMax = Vector2.one;
-            startButtonRect.offsetMin = Vector2.zero;
-            startButtonRect.offsetMax = Vector2.zero;
+            startButtonRect.anchorMin        = new Vector2(0f, 0.5f);
+            startButtonRect.anchorMax        = new Vector2(0f, 0.5f);
+            startButtonRect.pivot            = new Vector2(0f, 0.5f);
+            startButtonRect.anchoredPosition = Vector2.zero;
+            startButtonRect.sizeDelta        = new Vector2(StartButtonWidth, StartButtonHeight);
+
+            Button playButton = FindOrCreateButton(startRootGo.transform, "PlayButton",
+                "▶▶ 플레이 페이즈", StartButtonWidth, StartButtonHeight, PlayButtonColor);
+            var playButtonRect = (RectTransform)playButton.transform;
+            playButtonRect.anchorMin        = new Vector2(1f, 0.5f);
+            playButtonRect.anchorMax        = new Vector2(1f, 0.5f);
+            playButtonRect.pivot            = new Vector2(1f, 0.5f);
+            playButtonRect.anchoredPosition = Vector2.zero;
+            playButtonRect.sizeDelta        = new Vector2(StartButtonWidth, StartButtonHeight);
 
             // ── 컴포넌트 부착 + 배선 ─────────────────────────────────────────
             var guide = rootGo.GetComponent<PhaseControlsGuide>();
@@ -610,6 +640,7 @@ namespace ReTrap.EditorTools
             var so = new SerializedObject(guide);
             so.FindProperty("guideText").objectReferenceValue       = guideText;
             so.FindProperty("startButton").objectReferenceValue     = startButton;
+            so.FindProperty("playButton").objectReferenceValue      = playButton;
             so.FindProperty("startButtonRoot").objectReferenceValue = startRootGo;
             so.ApplyModifiedPropertiesWithoutUndo();
 

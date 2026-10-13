@@ -1,0 +1,78 @@
+[
+  {
+    "id": "hero",
+    "name": "왕좌를 되찾는 영주",
+    "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a13030-48d9-79d2-bbe5-d2544038885d\\exec-b8d64259-d11a-45b6-a991-ee0ef5f20c4f.png",
+    "prompt": "Use case: stylized-concept. Asset type: actual pixel-art animation sprite sheet for Re:Trap, a side-view 2D castle trap platformer. Create ONE coherent protagonist sprite sheet, transparent background. Protagonist: displaced medieval lord reclaiming his demon-corrupted castle, small gold crown, expressive face, short dark hair, blue-steel light armor, burgundy cape, gold clasp, no weapon. Strong readable silhouette, 16-bit hand-pixeled aesthetic, hard square pixels, limited palette, no smooth painted shading, no text, no grid lines, no shadows on background. EXACT layout 4 columns by 8 rows of equal cells, 32 sprites, all same scale facing RIGHT, fixed baseline and centered pivot within each cell, generous empty padding and no overlap. Every row a continuous animation sequence left to right with consistent character design. Row1 idle breathing 4 frames; row2 running 4 distinct leg-cycle frames; row3 jump takeoff rising 4 frames; row4 falling 4 frames; row5 landing squash recover 4 frames; row6 invincible forward dash 4 frames cape trails golden small sparks; row7 recoil hit 4 frames; row8 death kneel fall fade to small golden spirit 4 frames, no gore. Square canvas 1024x1024. These are small game sprites, not concept portraits. Each frame fits in its cell completely, feet baseline at 85 percent of cell height except air/death movements. Genuine alpha transparency.",
+    "states": [
+      "Idle",
+      "Run",
+      "Jump_Start",
+      "Jump_Loop",
+      "Land",
+      "Dash",
+      "Lord_Hit",
+      "Death"
+    ]
+  },
+  {
+    "id": "goblin",
+    "name": "고블린 약탈자",
+    "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a13030-48d9-79d2-bbe5-d2544038885d\\exec-f95f9a35-eb38-441b-ae07-04e4bcd47aac.png",
+    "prompt": "Use case: stylized-concept. Asset type: actual animation sprite sheet for Re:Trap side-view 2D medieval demon-occupied castle trap platformer. Subject: small green goblin raider, long ears, ochre ragged scarf, leather tunic, crooked short dagger, agile mischievous silhouette, demon army invader. One coherent character only, consistent identity in all frames. Classic 16-bit hand-pixelled game art, crisp hard square pixels, dark contour, restrained shading, readable at small scale. EXACT 4 columns x 4 rows equal grid on square 1024x1024 canvas. 16 separate frames. Each cell is exactly 256x256. All sprites face RIGHT, centered at x=cell center, feet on y=cell top+220 (hovering imp instead consistent hover center); sprite including effects fully within central 200x200 of each cell, empty transparent padding. Same scale across frames. Row1 idle breathing 4 sequential frames. Row2 run locomotion cycle, clearly distinct leg and arm phases 4 sequential frames. Row3 hit recoil 4 frames. Row4 death collapse then dissolve to violet particles 4 frames, no gore. Character silhouettes match lord hero style: burgundy/gold/blue steel noble versus purple corrupted monsters. No lettering, no labels, no borders, no visible grid, no scenery, no platform, no ground shadows. Genuine transparent background, preserve empty cell padding. Deliver usable evenly spaced animation sheet, not character concept illustration.",
+    "states": [
+      "Idle",
+      "Run",
+      "Hit",
+      "Death"
+    ]
+  },
+  {
+    "id": "orc",
+    "name": "오크 투사",
+    "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a13030-48d9-79d2-bbe5-d2544038885d\\exec-ed03edc7-fee3-4016-82a2-140ae001c5bd.png",
+    "prompt": "Use case: stylized-concept. Asset type: actual animation sprite sheet for Re:Trap side-view 2D medieval demon-occupied castle trap platformer. Subject: large stocky olive-green orc brute, heavy shoulders, brown leather armor, iron bracers, blunt iron club, massive fists, demon army invader. One coherent character only, consistent identity in all frames. Classic 16-bit hand-pixelled game art, crisp hard square pixels, dark contour, restrained shading, readable at small scale. EXACT 4 columns x 4 rows equal grid on square 1024x1024 canvas. 16 separate frames. Each cell is exactly 256x256. All sprites face RIGHT, centered at x=cell center, feet on y=cell top+220 (hovering imp instead consistent hover center); sprite including effects fully within central 200x200 of each cell, empty transparent padding. Same scale across frames. Row1 idle breathing 4 sequential frames. Row2 run locomotion cycle, clearly distinct leg and arm phases 4 sequential frames. Row3 hit recoil 4 frames. Row4 death collapse then dissolve to violet particles 4 frames, no gore. Character silhouettes match lord hero style: burgundy/gold/blue steel noble versus purple corrupted monsters. No lettering, no labels, no borders, no visible grid, no scenery, no platform, no ground shadows. Genuine transparent background, preserve empty cell padding. Deliver usable evenly spaced animation sheet, not character concept illustration.",
+    "states": [
+      "Idle",
+      "Run",
+      "Hit",
+      "Death"
+    ]
+  },
+  {
+    "id": "skeleton",
+    "name": "해골 궁수",
+    "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a13030-48d9-79d2-bbe5-d2544038885d\\exec-bb275e75-c525-4be3-8896-cebf119962c6.png",
+    "prompt": "Use case: stylized-concept. Asset type: actual animation sprite sheet for Re:Trap side-view 2D medieval demon-occupied castle trap platformer. Subject: ivory skeleton archer, worn purple hood and scarf, wooden bow held low, slender readable bones, glowing violet eyes, demon army invader. One coherent character only, consistent identity in all frames. Classic 16-bit hand-pixelled game art, crisp hard square pixels, dark contour, restrained shading, readable at small scale. EXACT 4 columns x 4 rows equal grid on square 1024x1024 canvas. 16 separate frames. Each cell is exactly 256x256. All sprites face RIGHT, centered at x=cell center, feet on y=cell top+220 (hovering imp instead consistent hover center); sprite including effects fully within central 200x200 of each cell, empty transparent padding. Same scale across frames. Row1 idle breathing 4 sequential frames. Row2 run locomotion cycle, clearly distinct leg and arm phases 4 sequential frames. Row3 hit recoil 4 frames. Row4 death collapse then dissolve to violet particles 4 frames, no gore. Character silhouettes match lord hero style: burgundy/gold/blue steel noble versus purple corrupted monsters. No lettering, no labels, no borders, no visible grid, no scenery, no platform, no ground shadows. Genuine transparent background, preserve empty cell padding. Deliver usable evenly spaced animation sheet, not character concept illustration.",
+    "states": [
+      "Idle",
+      "Run",
+      "Hit",
+      "Death"
+    ]
+  },
+  {
+    "id": "imp",
+    "name": "비행 임프",
+    "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a13030-48d9-79d2-bbe5-d2544038885d\\exec-c9523f13-12d5-48ef-a7d1-f73e9497fd81.png",
+    "prompt": "Use case: stylized-concept. Asset type: actual animation sprite sheet for Re:Trap side-view 2D medieval demon-occupied castle trap platformer. Subject: small crimson flying imp, two little horns, purple bat wings, glowing orange eyes, curled tail, always hovering, demon army invader. One coherent character only, consistent identity in all frames. Classic 16-bit hand-pixelled game art, crisp hard square pixels, dark contour, restrained shading, readable at small scale. EXACT 4 columns x 4 rows equal grid on square 1024x1024 canvas. 16 separate frames. Each cell is exactly 256x256. All sprites face RIGHT, centered at x=cell center, feet on y=cell top+220 (hovering imp instead consistent hover center); sprite including effects fully within central 200x200 of each cell, empty transparent padding. Same scale across frames. Row1 idle breathing 4 sequential frames. Row2 flying wing flap cycle 4 sequential frames. Row3 hit recoil 4 frames. Row4 death collapse then dissolve to violet particles 4 frames, no gore. Character silhouettes match lord hero style: burgundy/gold/blue steel noble versus purple corrupted monsters. No lettering, no labels, no borders, no visible grid, no scenery, no platform, no ground shadows. Genuine transparent background, preserve empty cell padding. Deliver usable evenly spaced animation sheet, not character concept illustration.",
+    "states": [
+      "Idle",
+      "Run",
+      "Hit",
+      "Death"
+    ]
+  },
+  {
+    "id": "knight",
+    "name": "타락 기사",
+    "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a13030-48d9-79d2-bbe5-d2544038885d\\exec-b6544a22-3ad9-40c2-a7e5-be6da2138d45.png",
+    "prompt": "Use case: stylized-concept. Asset type: actual animation sprite sheet for Re:Trap side-view 2D medieval demon-occupied castle trap platformer. Subject: corrupted elite knight, closed dark steel helmet with horn-like crest, violet eyes slit, blackened plate armor, torn purple cape, sword held low, demon army invader. One coherent character only, consistent identity in all frames. Classic 16-bit hand-pixelled game art, crisp hard square pixels, dark contour, restrained shading, readable at small scale. EXACT 4 columns x 4 rows equal grid on square 1024x1024 canvas. 16 separate frames. Each cell is exactly 256x256. All sprites face RIGHT, centered at x=cell center, feet on y=cell top+220 (hovering imp instead consistent hover center); sprite including effects fully within central 200x200 of each cell, empty transparent padding. Same scale across frames. Row1 idle breathing 4 sequential frames. Row2 run locomotion cycle, clearly distinct leg and arm phases 4 sequential frames. Row3 hit recoil 4 frames. Row4 death collapse then dissolve to violet particles 4 frames, no gore. Character silhouettes match lord hero style: burgundy/gold/blue steel noble versus purple corrupted monsters. No lettering, no labels, no borders, no visible grid, no scenery, no platform, no ground shadows. Genuine transparent background, preserve empty cell padding. Deliver usable evenly spaced animation sheet, not character concept illustration.",
+    "states": [
+      "Idle",
+      "Run",
+      "Hit",
+      "Death"
+    ]
+  }
+]

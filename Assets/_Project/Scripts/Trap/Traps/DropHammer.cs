@@ -93,7 +93,34 @@ namespace ReTrap
         [Tooltip("감지 대상 레이어. 기본값(Everything)이면 PlayerController 컴포넌트로 한 번 더 필터.")]
         private LayerMask detectionMask = ~0;
 
+        [Header("DropHammer — 비주얼 (천장 마운트·체인·착지 충격)")]
+        [SerializeField]
+        [Tooltip("천장 마운트 Transform. 해머가 움직여도 천장 위치(ceilingPosition)에 고정된다.")]
+        private Transform mount;
+
+        [SerializeField]
+        [Tooltip("마운트와 해머 머리를 잇는 체인 (drawMode Tiled). 길이는 매 프레임 갱신된다.")]
+        private SpriteRenderer chain;
+
+        [SerializeField]
+        [Tooltip("착지 순간 잠깐 켜지는 충격 이펙트 렌더러 (평상시 비활성).")]
+        private SpriteRenderer impact;
+
+        [SerializeField]
+        [Tooltip("마운트 중심(피벗)에서 마운트 스프라이트 하단 가시 영역까지의 Y 오프셋(보통 음수). 체인 상단 기준.")]
+        private float mountBottomOffset;
+
+        [SerializeField]
+        [Tooltip("해머 루트에서 머리 스프라이트 상단 가시 영역까지의 Y 오프셋. 체인 하단 기준.")]
+        private float headTopOffset;
+
+        [SerializeField, Min(0.01f)]
+        [Tooltip("착지 충격 이펙트 표시 시간(초).")]
+        private float impactDuration = 0.15f;
+
         // ── 내부 상태 ─────────────────────────────────────────────────────────
+
+        private Coroutine _impactCoroutine;
 
         private Rigidbody2D  rb;
         private Vector2      ceilingPosition;  // 원래 천장 위치
@@ -142,6 +169,32 @@ namespace ReTrap
 
             if (IsPlayerInColumn())
                 TriggerDrop();
+        }
+
+        private void LateUpdate()
+        {
+            // 마운트는 천장 고정, 체인은 마운트 하단 ~ 머리 상단을 잇는다.
+            // ceilingPosition 은 Awake(Instantiate 시 슬롯 위치) 에서 확정되므로 모든 상태에서 유효.
+            if (mount != null)
+                mount.position = new Vector3(ceilingPosition.x, ceilingPosition.y, mount.position.z);
+
+            if (chain == null) return;
+
+            float top    = ceilingPosition.y + mountBottomOffset;
+            float bottom = transform.position.y + headTopOffset;
+            float length = top - bottom;
+
+            // 해머가 천장에 붙어 있으면 체인이 보일 길이가 없다
+            if (length < 0.02f || chain.sprite == null)
+            {
+                chain.enabled = false;
+                return;
+            }
+
+            chain.enabled = true;
+            chain.transform.position = new Vector3(
+                transform.position.x, (top + bottom) * 0.5f, chain.transform.position.z);
+            chain.size = new Vector2(chain.sprite.bounds.size.x, length);
         }
 
         // ── TrapBase 구현 ─────────────────────────────────────────────────────
@@ -266,6 +319,7 @@ namespace ReTrap
             // 착지
             hammerState = HammerState.Landed;
             SetDamageAreaEnabled(false);
+            ShowImpact();
             yield return new WaitForSeconds(landedWaitTime);
 
             // 복귀
@@ -309,6 +363,40 @@ namespace ReTrap
                 StopCoroutine(activeCoroutine);
                 activeCoroutine = null;
             }
+            HideImpact(); // 상태 전환·리셋 시 충격 이펙트 잔류 방지
+        }
+
+        /// <summary>착지 지점(지면 표면)에 충격 이펙트를 impactDuration 동안 표시.</summary>
+        private void ShowImpact()
+        {
+            if (impact == null) return;
+            if (_impactCoroutine != null) StopCoroutine(_impactCoroutine);
+
+            // 지면 표면 = floorY - rayOriginOffset. 스프라이트 하단(캔버스 바닥)을 지면에 맞춘다.
+            float groundY = floorY - rayOriginOffset;
+            float halfH   = impact.sprite != null ? impact.sprite.bounds.extents.y : 0f;
+            impact.transform.position = new Vector3(
+                transform.position.x, groundY + halfH, impact.transform.position.z);
+
+            _impactCoroutine = StartCoroutine(ImpactRoutine());
+        }
+
+        private IEnumerator ImpactRoutine()
+        {
+            impact.enabled = true;
+            yield return new WaitForSeconds(impactDuration);
+            impact.enabled = false;
+            _impactCoroutine = null;
+        }
+
+        private void HideImpact()
+        {
+            if (_impactCoroutine != null)
+            {
+                StopCoroutine(_impactCoroutine);
+                _impactCoroutine = null;
+            }
+            if (impact != null) impact.enabled = false;
         }
 
         private void SnapToCeiling()

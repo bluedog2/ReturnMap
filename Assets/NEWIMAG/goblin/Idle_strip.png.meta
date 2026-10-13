@@ -1,0 +1,1287 @@
+fileFormatVersion: 2
+guid: aa385b750754d7342a484453ef94b2ef
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3019355334869629922
+    second: Idle_strip_0
+  - first:
+      213: 6490345587067354277
+    second: Idle_strip_1
+  - first:
+      213: 1081194019392227066
+    second: Idle_strip_2
+  - first:
+      213: -7979980869381846109
+    second: Idle_strip_3
+  - first:
+      213: -1544650124043040375
+    second: Idle_strip_4
+  - first:
+      213: -3708661616252239033
+    second: Idle_strip_5
+  - first:
+      213: -4680678527137707413
+    second: Idle_strip_6
+  - first:
+      213: 282578275698491091
+    second: Idle_strip_7
+  - first:
+      213: 4293691744832741519
+    second: Idle_strip_8
+  - first:
+      213: 5220986605316717971
+    second: Idle_strip_9
+  - first:
+      213: -2273910514145271443
+    second: Idle_strip_10
+  - first:
+      213: -9196716364339495190
+    second: Idle_strip_11
+  - first:
+      213: -3495529181951417188
+    second: Idle_strip_12
+  - first:
+      213: 112402065843413209
+    second: Idle_strip_13
+  - first:
+      213: -5495862730932992530
+    second: Idle_strip_14
+  - first:
+      213: -6306605041400484341
+    second: Idle_strip_15
+  - first:
+      213: 6266849027250679912
+    second: Idle_strip_16
+  - first:
+      213: 2317389043718146735
+    second: Idle_strip_17
+  - first:
+      213: -8960207121715943806
+    second: Idle_strip_18
+  - first:
+      213: -5215129666617332060
+    second: Idle_strip_19
+  - first:
+      213: -8366602695883973318
+    second: Idle_strip_20
+  - first:
+      213: 8984821586699081839
+    second: Idle_strip_21
+  - first:
+      213: 2279501868731115303
+    second: Idle_strip_22
+  - first:
+      213: -1172774630163977925
+    second: Idle_strip_23
+  - first:
+      213: -4008539065065375083
+    second: Idle_strip_24
+  - first:
+      213: 3566553189809825362
+    second: Idle_strip_25
+  - first:
+      213: -8366879585348417780
+    second: Idle_strip_26
+  - first:
+      213: 4879068018811897932
+    second: Idle_strip_27
+  - first:
+      213: 5404685589796274264
+    second: Idle_strip_28
+  - first:
+      213: 7234009939290235465
+    second: Idle_strip_29
+  - first:
+      213: 7258604209307800481
+    second: Idle_strip_30
+  - first:
+      213: 4407555373450009000
+    second: Idle_strip_31
+  - first:
+      213: 7186152833737173800
+    second: Idle_strip_32
+  - first:
+      213: 861203708891008671
+    second: Idle_strip_33
+  - first:
+      213: -1325990934560877186
+    second: Idle_strip_34
+  - first:
+      213: -8534813928625005660
+    second: Idle_strip_35
+  - first:
+      213: -8853859850876852014
+    second: Idle_strip_36
+  - first:
+      213: -1149224354543313473
+    second: Idle_strip_37
+  - first:
+      213: 2681344499815575332
+    second: Idle_strip_38
+  - first:
+      213: 4422611640172344234
+    second: Idle_strip_39
+  - first:
+      213: -7541845258031655770
+    second: Idle_strip_40
+  - first:
+      213: 1696570389779822105
+    second: Idle_strip_41
+  - first:
+      213: 3972081746550790853
+    second: Idle_strip_42
+  - first:
+      213: 2244605649177323883
+    second: Idle_strip_43
+  - first:
+      213: 8176532300008541394
+    second: Idle_strip_44
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Idle_strip_0
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 30
+        width: 293
+        height: 289
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e144a66f1581916d0800000000000000
+      internalID: -3019355334869629922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_1
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 250
+        width: 24
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ac7ca29ce6521a50800000000000000
+      internalID: 6490345587067354277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_2
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 34
+        width: 319
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af686237b3c210f00800000000000000
+      internalID: 1081194019392227066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_3
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 288
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ab0516dda9614190800000000000000
+      internalID: -7979980869381846109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_4
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 292
+        width: 36
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 989c62665ec409ae0800000000000000
+      internalID: -1544650124043040375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_5
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 30
+        width: 331
+        height: 307
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 743c82bc8ef288cc0800000000000000
+      internalID: -3708661616252239033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_6
+      rect:
+        serializedVersion: 2
+        x: 1046
+        y: 292
+        width: 60
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6a882acda3ea0fb0800000000000000
+      internalID: -4680678527137707413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_7
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 253
+        width: 34
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3de3040d17bebe300800000000000000
+      internalID: 282578275698491091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_8
+      rect:
+        serializedVersion: 2
+        x: 1197
+        y: 272
+        width: 37
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8068c994e1469b30800000000000000
+      internalID: 4293691744832741519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_9
+      rect:
+        serializedVersion: 2
+        x: 1197
+        y: 30
+        width: 284
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39db9f2d7aba47840800000000000000
+      internalID: 5220986605316717971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_10
+      rect:
+        serializedVersion: 2
+        x: 1297
+        y: 304
+        width: 65
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6168516f627170e0800000000000000
+      internalID: -2273910514145271443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_11
+      rect:
+        serializedVersion: 2
+        x: 1341
+        y: 294
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aeeb5836133be5080800000000000000
+      internalID: -9196716364339495190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_12
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 288
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9426c7aab26d7fc0800000000000000
+      internalID: -3495529181951417188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_13
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 287
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d0ed9655155f8100800000000000000
+      internalID: 112402065843413209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_14
+      rect:
+        serializedVersion: 2
+        x: 1303
+        y: 276
+        width: 13
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee54e6ce6f5cab3b0800000000000000
+      internalID: -5495862730932992530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_15
+      rect:
+        serializedVersion: 2
+        x: 1369
+        y: 294
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0ee2a0f0207a78a0800000000000000
+      internalID: -6306605041400484341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_16
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 288
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8607742bcf158f650800000000000000
+      internalID: 6266849027250679912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_17
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 280
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: faac335ae05092020800000000000000
+      internalID: 2317389043718146735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_18
+      rect:
+        serializedVersion: 2
+        x: 1094
+        y: 280
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28622349813f6a380800000000000000
+      internalID: -8960207121715943806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_19
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 249
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ae2cabf23320a7b0800000000000000
+      internalID: -5215129666617332060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_20
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 249
+        width: 7
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3d920f1d2bd3eb80800000000000000
+      internalID: -8366602695883973318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_21
+      rect:
+        serializedVersion: 2
+        x: 1084
+        y: 239
+        width: 25
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f68d57521af70bc70800000000000000
+      internalID: 8984821586699081839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_22
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 258
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 727ae8e4fda62af10800000000000000
+      internalID: 2279501868731115303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_23
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 217
+        width: 40
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b396c7fffa779bfe0800000000000000
+      internalID: -1172774630163977925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_24
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 237
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59a708e55fece58c0800000000000000
+      internalID: -4008539065065375083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_25
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 235
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 256a62fca31fe7130800000000000000
+      internalID: 3566553189809825362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_26
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 236
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0707d4c85fd2eb80800000000000000
+      internalID: -8366879585348417780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_27
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 227
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c488040438ee5b340800000000000000
+      internalID: 4879068018811897932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_28
+      rect:
+        serializedVersion: 2
+        x: 1108
+        y: 233
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 850ca7e98ec410b40800000000000000
+      internalID: 5404685589796274264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_29
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 215
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9422a0d56bd546460800000000000000
+      internalID: 7234009939290235465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_30
+      rect:
+        serializedVersion: 2
+        x: 724
+        y: 217
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a352f4121ebbb460800000000000000
+      internalID: 7258604209307800481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_31
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 215
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a91a5a8248ca2d30800000000000000
+      internalID: 4407555373450009000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_32
+      rect:
+        serializedVersion: 2
+        x: 1116
+        y: 215
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82b229cade75ab360800000000000000
+      internalID: 7186152833737173800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_33
+      rect:
+        serializedVersion: 2
+        x: 1124
+        y: 221
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9e82bbd53c93fb00800000000000000
+      internalID: 861203708891008671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_34
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 199
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e755c1a3542299de0800000000000000
+      internalID: -1325990934560877186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_35
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 188
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ab104883ff3e8980800000000000000
+      internalID: -8534813928625005660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_36
+      rect:
+        serializedVersion: 2
+        x: 1102
+        y: 209
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d864691065c02580800000000000000
+      internalID: -8853859850876852014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_37
+      rect:
+        serializedVersion: 2
+        x: 1464
+        y: 199
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbdd734d9822d00f0800000000000000
+      internalID: -1149224354543313473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_38
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 185
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42f64ffbd9c063520800000000000000
+      internalID: 2681344499815575332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_39
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 126
+        width: 23
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa3faffcad5406d30800000000000000
+      internalID: 4422611640172344234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_40
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 81
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a41f0c32bbf55790800000000000000
+      internalID: -7541845258031655770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_41
+      rect:
+        serializedVersion: 2
+        x: 1108
+        y: 81
+        width: 24
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 916b54bd7cd6b8710800000000000000
+      internalID: 1696570389779822105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_42
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 42
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ca19f1bd4baf1730800000000000000
+      internalID: 3972081746550790853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_43
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 47
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b69ac0c02f0762f10800000000000000
+      internalID: 2244605649177323883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_strip_44
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 47
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dc44844ec0e87170800000000000000
+      internalID: 8176532300008541394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Idle_strip_0: -3019355334869629922
+      Idle_strip_1: 6490345587067354277
+      Idle_strip_10: -2273910514145271443
+      Idle_strip_11: -9196716364339495190
+      Idle_strip_12: -3495529181951417188
+      Idle_strip_13: 112402065843413209
+      Idle_strip_14: -5495862730932992530
+      Idle_strip_15: -6306605041400484341
+      Idle_strip_16: 6266849027250679912
+      Idle_strip_17: 2317389043718146735
+      Idle_strip_18: -8960207121715943806
+      Idle_strip_19: -5215129666617332060
+      Idle_strip_2: 1081194019392227066
+      Idle_strip_20: -8366602695883973318
+      Idle_strip_21: 8984821586699081839
+      Idle_strip_22: 2279501868731115303
+      Idle_strip_23: -1172774630163977925
+      Idle_strip_24: -4008539065065375083
+      Idle_strip_25: 3566553189809825362
+      Idle_strip_26: -8366879585348417780
+      Idle_strip_27: 4879068018811897932
+      Idle_strip_28: 5404685589796274264
+      Idle_strip_29: 7234009939290235465
+      Idle_strip_3: -7979980869381846109
+      Idle_strip_30: 7258604209307800481
+      Idle_strip_31: 4407555373450009000
+      Idle_strip_32: 7186152833737173800
+      Idle_strip_33: 861203708891008671
+      Idle_strip_34: -1325990934560877186
+      Idle_strip_35: -8534813928625005660
+      Idle_strip_36: -8853859850876852014
+      Idle_strip_37: -1149224354543313473
+      Idle_strip_38: 2681344499815575332
+      Idle_strip_39: 4422611640172344234
+      Idle_strip_4: -1544650124043040375
+      Idle_strip_40: -7541845258031655770
+      Idle_strip_41: 1696570389779822105
+      Idle_strip_42: 3972081746550790853
+      Idle_strip_43: 2244605649177323883
+      Idle_strip_44: 8176532300008541394
+      Idle_strip_5: -3708661616252239033
+      Idle_strip_6: -4680678527137707413
+      Idle_strip_7: 282578275698491091
+      Idle_strip_8: 4293691744832741519
+      Idle_strip_9: 5220986605316717971
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

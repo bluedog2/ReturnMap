@@ -46,6 +46,10 @@ namespace ReTrap.EditorTools
             EnsureFolder();
             Sprite sprite = LoadPlaceholderSprite();
 
+            // 신규 생성되는 프리팹이 있으면 끝에서 상태 비주얼(파츠 스프라이트)을 다시 연결한다
+            bool createdAny = ExistingPrefab("Arrow") == null || ExistingPrefab("SpikeTrap") == null ||
+                              ExistingPrefab("ArrowShooter") == null || ExistingPrefab("DropHammer") == null;
+
             var arrow  = BuildArrowProjectile(sprite);
             var spike  = BuildSpikeTrap(sprite);
             var shooter= BuildArrowShooter(sprite, arrow);
@@ -70,6 +74,8 @@ namespace ReTrap.EditorTools
 
             WireScene(definitions, hud, uiCanvas);
             EnsureSoundManager();
+
+            if (createdAny) TrapStateVisualSetup.RunTraps();
 
             EditorSceneManager.SaveOpenScenes();
             Debug.Log("[TrapPrefabBuilder] ✅ 함정 프리팹 + Build UI 세팅 완료");

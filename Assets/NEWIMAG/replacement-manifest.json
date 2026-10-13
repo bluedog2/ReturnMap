@@ -1,0 +1,4169 @@
+{
+  "traps": [
+    {
+      "id": "spike",
+      "parts": [
+        {
+          "state": "Normal",
+          "part": "base",
+          "file": "Traps/spike/Normal/base.png"
+        },
+        {
+          "state": "Normal",
+          "part": "spikes",
+          "file": "Traps/spike/Normal/spikes.png"
+        },
+        {
+          "state": "Normal",
+          "part": "glow",
+          "file": "Traps/spike/Normal/glow.png"
+        },
+        {
+          "state": "Normal",
+          "part": "platform",
+          "file": "Traps/spike/Normal/platform.png"
+        },
+        {
+          "state": "Dud",
+          "part": "base",
+          "file": "Traps/spike/Dud/base.png"
+        },
+        {
+          "state": "Dud",
+          "part": "spikes",
+          "file": "Traps/spike/Dud/spikes.png"
+        },
+        {
+          "state": "Dud",
+          "part": "glow",
+          "file": "Traps/spike/Dud/glow.png"
+        },
+        {
+          "state": "Dud",
+          "part": "platform",
+          "file": "Traps/spike/Dud/platform.png"
+        },
+        {
+          "state": "Critical",
+          "part": "base",
+          "file": "Traps/spike/Critical/base.png"
+        },
+        {
+          "state": "Critical",
+          "part": "spikes",
+          "file": "Traps/spike/Critical/spikes.png"
+        },
+        {
+          "state": "Critical",
+          "part": "glow",
+          "file": "Traps/spike/Critical/glow.png"
+        },
+        {
+          "state": "Critical",
+          "part": "platform",
+          "file": "Traps/spike/Critical/platform.png"
+        },
+        {
+          "state": "Beneficial",
+          "part": "base",
+          "file": "Traps/spike/Beneficial/base.png"
+        },
+        {
+          "state": "Beneficial",
+          "part": "spikes",
+          "file": "Traps/spike/Beneficial/spikes.png"
+        },
+        {
+          "state": "Beneficial",
+          "part": "glow",
+          "file": "Traps/spike/Beneficial/glow.png"
+        },
+        {
+          "state": "Beneficial",
+          "part": "platform",
+          "file": "Traps/spike/Beneficial/platform.png"
+        }
+      ]
+    },
+    {
+      "id": "arrow_shooter",
+      "parts": [
+        {
+          "state": "Normal",
+          "part": "body",
+          "file": "Traps/arrow_shooter/Normal/body.png"
+        },
+        {
+          "state": "Normal",
+          "part": "trigger",
+          "file": "Traps/arrow_shooter/Normal/trigger.png"
+        },
+        {
+          "state": "Normal",
+          "part": "arrow",
+          "file": "Traps/arrow_shooter/Normal/arrow.png"
+        },
+        {
+          "state": "Normal",
+          "part": "muzzle_flash",
+          "file": "Traps/arrow_shooter/Normal/muzzle_flash.png"
+        },
+        {
+          "state": "Dud",
+          "part": "body",
+          "file": "Traps/arrow_shooter/Dud/body.png"
+        },
+        {
+          "state": "Dud",
+          "part": "trigger",
+          "file": "Traps/arrow_shooter/Dud/trigger.png"
+        },
+        {
+          "state": "Dud",
+          "part": "arrow",
+          "file": "Traps/arrow_shooter/Dud/arrow.png"
+        },
+        {
+          "state": "Dud",
+          "part": "muzzle_flash",
+          "file": "Traps/arrow_shooter/Dud/muzzle_flash.png"
+        },
+        {
+          "state": "Critical",
+          "part": "body",
+          "file": "Traps/arrow_shooter/Critical/body.png"
+        },
+        {
+          "state": "Critical",
+          "part": "trigger",
+          "file": "Traps/arrow_shooter/Critical/trigger.png"
+        },
+        {
+          "state": "Critical",
+          "part": "arrow",
+          "file": "Traps/arrow_shooter/Critical/arrow.png"
+        },
+        {
+          "state": "Critical",
+          "part": "muzzle_flash",
+          "file": "Traps/arrow_shooter/Critical/muzzle_flash.png"
+        },
+        {
+          "state": "Beneficial",
+          "part": "body",
+          "file": "Traps/arrow_shooter/Beneficial/body.png"
+        },
+        {
+          "state": "Beneficial",
+          "part": "trigger",
+          "file": "Traps/arrow_shooter/Beneficial/trigger.png"
+        },
+        {
+          "state": "Beneficial",
+          "part": "arrow",
+          "file": "Traps/arrow_shooter/Beneficial/arrow.png"
+        },
+        {
+          "state": "Beneficial",
+          "part": "muzzle_flash",
+          "file": "Traps/arrow_shooter/Beneficial/muzzle_flash.png"
+        }
+      ]
+    },
+    {
+      "id": "drop_hammer",
+      "parts": [
+        {
+          "state": "Normal",
+          "part": "mount",
+          "file": "Traps/drop_hammer/Normal/mount.png"
+        },
+        {
+          "state": "Normal",
+          "part": "chain",
+          "file": "Traps/drop_hammer/Normal/chain.png"
+        },
+        {
+          "state": "Normal",
+          "part": "head",
+          "file": "Traps/drop_hammer/Normal/head.png"
+        },
+        {
+          "state": "Normal",
+          "part": "impact",
+          "file": "Traps/drop_hammer/Normal/impact.png"
+        },
+        {
+          "state": "Dud",
+          "part": "mount",
+          "file": "Traps/drop_hammer/Dud/mount.png"
+        },
+        {
+          "state": "Dud",
+          "part": "chain",
+          "file": "Traps/drop_hammer/Dud/chain.png"
+        },
+        {
+          "state": "Dud",
+          "part": "head",
+          "file": "Traps/drop_hammer/Dud/head.png"
+        },
+        {
+          "state": "Dud",
+          "part": "impact",
+          "file": "Traps/drop_hammer/Dud/impact.png"
+        },
+        {
+          "state": "Critical",
+          "part": "mount",
+          "file": "Traps/drop_hammer/Critical/mount.png"
+        },
+        {
+          "state": "Critical",
+          "part": "chain",
+          "file": "Traps/drop_hammer/Critical/chain.png"
+        },
+        {
+          "state": "Critical",
+          "part": "head",
+          "file": "Traps/drop_hammer/Critical/head.png"
+        },
+        {
+          "state": "Critical",
+          "part": "impact",
+          "file": "Traps/drop_hammer/Critical/impact.png"
+        },
+        {
+          "state": "Beneficial",
+          "part": "mount",
+          "file": "Traps/drop_hammer/Beneficial/mount.png"
+        },
+        {
+          "state": "Beneficial",
+          "part": "chain",
+          "file": "Traps/drop_hammer/Beneficial/chain.png"
+        },
+        {
+          "state": "Beneficial",
+          "part": "head",
+          "file": "Traps/drop_hammer/Beneficial/head.png"
+        },
+        {
+          "state": "Beneficial",
+          "part": "impact",
+          "file": "Traps/drop_hammer/Beneficial/impact.png"
+        }
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "state": "Dash",
+      "fps": 12,
+      "loop": false,
+      "frames": [
+        "Effects/Dash/00.png",
+        "Effects/Dash/01.png",
+        "Effects/Dash/02.png",
+        "Effects/Dash/03.png"
+      ],
+      "strip": "Effects/Dash/strip.png"
+    },
+    {
+      "state": "Hit",
+      "fps": 12,
+      "loop": false,
+      "frames": [
+        "Effects/Hit/00.png",
+        "Effects/Hit/01.png",
+        "Effects/Hit/02.png",
+        "Effects/Hit/03.png"
+      ],
+      "strip": "Effects/Hit/strip.png"
+    },
+    {
+      "state": "Death",
+      "fps": 12,
+      "loop": false,
+      "frames": [
+        "Effects/Death/00.png",
+        "Effects/Death/01.png",
+        "Effects/Death/02.png",
+        "Effects/Death/03.png"
+      ],
+      "strip": "Effects/Death/strip.png"
+    },
+    {
+      "state": "Respawn",
+      "fps": 12,
+      "loop": false,
+      "frames": [
+        "Effects/Respawn/00.png",
+        "Effects/Respawn/01.png",
+        "Effects/Respawn/02.png",
+        "Effects/Respawn/03.png"
+      ],
+      "strip": "Effects/Respawn/strip.png"
+    }
+  ],
+  "replacements": [
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Animation/Char_Dash.png",
+      "replacement": "Replacement/Sprites/Animation/Char_Dash.png",
+      "width": 1024,
+      "height": 1024,
+      "rectCount": 16,
+      "sourceUniqueFrames": 4,
+      "frames": [
+        {
+          "file": "Replacement/Frames/Char_Dash/00.png",
+          "name": "frame_0",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Dash/01.png",
+          "name": "frame_1",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Dash/02.png",
+          "name": "frame_2",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Dash/03.png",
+          "name": "frame_3",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Dash/04.png",
+          "name": "frame_4",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Dash/05.png",
+          "name": "frame_5",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Dash/06.png",
+          "name": "frame_6",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Dash/07.png",
+          "name": "frame_7",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Dash/08.png",
+          "name": "frame_8",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Dash/09.png",
+          "name": "frame_9",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Dash/10.png",
+          "name": "frame_10",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Dash/11.png",
+          "name": "frame_11",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Dash/12.png",
+          "name": "frame_12",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Dash/13.png",
+          "name": "frame_13",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Dash/14.png",
+          "name": "frame_14",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Dash/15.png",
+          "name": "frame_15",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ],
+      "keyframeCount": 8,
+      "clip": "Assets/_Project/ResourcceEX/Animations/Dash.anim"
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Animation/Char_Fall_Loop.png",
+      "replacement": "Replacement/Sprites/Animation/Char_Fall_Loop.png",
+      "width": 1024,
+      "height": 1024,
+      "rectCount": 16,
+      "sourceUniqueFrames": 4,
+      "frames": [
+        {
+          "file": "Replacement/Frames/Char_Fall_Loop/00.png",
+          "name": "frame_0",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Fall_Loop/01.png",
+          "name": "frame_1",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Fall_Loop/02.png",
+          "name": "frame_2",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Fall_Loop/03.png",
+          "name": "frame_3",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Fall_Loop/04.png",
+          "name": "frame_4",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Fall_Loop/05.png",
+          "name": "frame_5",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Fall_Loop/06.png",
+          "name": "frame_6",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Fall_Loop/07.png",
+          "name": "frame_7",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Fall_Loop/08.png",
+          "name": "frame_8",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Fall_Loop/09.png",
+          "name": "frame_9",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Fall_Loop/10.png",
+          "name": "frame_10",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Fall_Loop/11.png",
+          "name": "frame_11",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Fall_Loop/12.png",
+          "name": "frame_12",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Fall_Loop/13.png",
+          "name": "frame_13",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Fall_Loop/14.png",
+          "name": "frame_14",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Fall_Loop/15.png",
+          "name": "frame_15",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ],
+      "keyframeCount": 8,
+      "clip": "Assets/_Project/ResourcceEX/Animations/Fall_Loop.anim"
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Animation/Char_Idle.png",
+      "replacement": "Replacement/Sprites/Animation/Char_Idle.png",
+      "width": 1024,
+      "height": 1024,
+      "rectCount": 12,
+      "sourceUniqueFrames": 4,
+      "frames": [
+        {
+          "file": "Replacement/Frames/Char_Idle/00.png",
+          "name": "Char_Idle_0",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5644702,
+            "y": 0.49347043
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Idle/01.png",
+          "name": "Char_Idle_1",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.51393545,
+            "y": 0.49347043
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Idle/02.png",
+          "name": "Char_Idle_2",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.4539583,
+            "y": 0.49347043
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Idle/03.png",
+          "name": "Char_Idle_3",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.3289592,
+            "y": 0.49347043
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Idle/04.png",
+          "name": "Char_Idle_4",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.56382024,
+            "y": 0.49347043
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Idle/05.png",
+          "name": "Char_Idle_5",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.49962848,
+            "y": 0.49347043
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Idle/06.png",
+          "name": "Char_Idle_6",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.43870538,
+            "y": 0.49347043
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Idle/07.png",
+          "name": "Char_Idle_7",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.31337327,
+            "y": 0.49347043
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Idle/08.png",
+          "name": "Char_Idle_8",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5706362,
+            "y": 0.49347043
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Idle/09.png",
+          "name": "Char_Idle_9",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.49961445,
+            "y": 0.49347043
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Idle/10.png",
+          "name": "Char_Idle_10",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.44638768,
+            "y": 0.49347043
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Idle/11.png",
+          "name": "Char_Idle_11",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.3139357,
+            "y": 0.49347043
+          }
+        }
+      ],
+      "keyframeCount": 12,
+      "clip": "Assets/_Project/ResourcceEX/Animations/Idle.anim"
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Animation/Char_Jump_Loop.png",
+      "replacement": "Replacement/Sprites/Animation/Char_Jump_Loop.png",
+      "width": 1024,
+      "height": 1024,
+      "rectCount": 16,
+      "sourceUniqueFrames": 4,
+      "frames": [
+        {
+          "file": "Replacement/Frames/Char_Jump_Loop/00.png",
+          "name": "frame_0",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Loop/01.png",
+          "name": "frame_1",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Loop/02.png",
+          "name": "frame_2",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Loop/03.png",
+          "name": "frame_3",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Loop/04.png",
+          "name": "frame_4",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Loop/05.png",
+          "name": "frame_5",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Loop/06.png",
+          "name": "frame_6",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Loop/07.png",
+          "name": "frame_7",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Loop/08.png",
+          "name": "frame_8",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Loop/09.png",
+          "name": "frame_9",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Loop/10.png",
+          "name": "frame_10",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Loop/11.png",
+          "name": "frame_11",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Loop/12.png",
+          "name": "frame_12",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Loop/13.png",
+          "name": "frame_13",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Loop/14.png",
+          "name": "frame_14",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Loop/15.png",
+          "name": "frame_15",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ],
+      "keyframeCount": 0,
+      "clip": null
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Animation/Char_Jump_Start.png",
+      "replacement": "Replacement/Sprites/Animation/Char_Jump_Start.png",
+      "width": 1024,
+      "height": 1024,
+      "rectCount": 16,
+      "sourceUniqueFrames": 4,
+      "frames": [
+        {
+          "file": "Replacement/Frames/Char_Jump_Start/00.png",
+          "name": "frame_0",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Start/01.png",
+          "name": "frame_1",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Start/02.png",
+          "name": "frame_2",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Start/03.png",
+          "name": "frame_3",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Start/04.png",
+          "name": "frame_4",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Start/05.png",
+          "name": "frame_5",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Start/06.png",
+          "name": "frame_6",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Start/07.png",
+          "name": "frame_7",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Start/08.png",
+          "name": "frame_8",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Start/09.png",
+          "name": "frame_9",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Start/10.png",
+          "name": "frame_10",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Start/11.png",
+          "name": "frame_11",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Start/12.png",
+          "name": "frame_12",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Start/13.png",
+          "name": "frame_13",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Start/14.png",
+          "name": "frame_14",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Jump_Start/15.png",
+          "name": "frame_15",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ],
+      "keyframeCount": 8,
+      "clip": "Assets/_Project/ResourcceEX/Animations/Jump_Start.anim"
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Animation/Char_Land.png",
+      "replacement": "Replacement/Sprites/Animation/Char_Land.png",
+      "width": 1024,
+      "height": 1024,
+      "rectCount": 16,
+      "sourceUniqueFrames": 4,
+      "frames": [
+        {
+          "file": "Replacement/Frames/Char_Land/00.png",
+          "name": "frame_0",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Land/01.png",
+          "name": "frame_1",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Land/02.png",
+          "name": "frame_2",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Land/03.png",
+          "name": "frame_3",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Land/04.png",
+          "name": "frame_4",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Land/05.png",
+          "name": "frame_5",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Land/06.png",
+          "name": "frame_6",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Land/07.png",
+          "name": "frame_7",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Land/08.png",
+          "name": "frame_8",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Land/09.png",
+          "name": "frame_9",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Land/10.png",
+          "name": "frame_10",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Land/11.png",
+          "name": "frame_11",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Land/12.png",
+          "name": "frame_12",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Land/13.png",
+          "name": "frame_13",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Land/14.png",
+          "name": "frame_14",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Land/15.png",
+          "name": "frame_15",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ],
+      "keyframeCount": 10,
+      "clip": "Assets/_Project/ResourcceEX/Animations/Land.anim"
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Animation/Char_Run.png",
+      "replacement": "Replacement/Sprites/Animation/Char_Run.png",
+      "width": 1024,
+      "height": 1024,
+      "rectCount": 16,
+      "sourceUniqueFrames": 4,
+      "frames": [
+        {
+          "file": "Replacement/Frames/Char_Run/00.png",
+          "name": "frame_0",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Run/01.png",
+          "name": "frame_1",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Run/02.png",
+          "name": "frame_2",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Run/03.png",
+          "name": "frame_3",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Run/04.png",
+          "name": "frame_4",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Run/05.png",
+          "name": "frame_5",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Run/06.png",
+          "name": "frame_6",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Run/07.png",
+          "name": "frame_7",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Run/08.png",
+          "name": "frame_8",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Run/09.png",
+          "name": "frame_9",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Run/10.png",
+          "name": "frame_10",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Run/11.png",
+          "name": "frame_11",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Run/12.png",
+          "name": "frame_12",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Run/13.png",
+          "name": "frame_13",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Run/14.png",
+          "name": "frame_14",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Char_Run/15.png",
+          "name": "frame_15",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ],
+      "keyframeCount": 6,
+      "clip": "Assets/_Project/ResourcceEX/Animations/Run.anim"
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Animation/Enemies/Enemy_Elite_Knight_Death.png",
+      "replacement": "Replacement/Sprites/Animation/Enemies/Enemy_Elite_Knight_Death.png",
+      "width": 1024,
+      "height": 1024,
+      "rectCount": 16,
+      "sourceUniqueFrames": 4,
+      "frames": [
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Death/00.png",
+          "name": "Enemy_Elite_Knight_Death_0",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Death/01.png",
+          "name": "Enemy_Elite_Knight_Death_1",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Death/02.png",
+          "name": "Enemy_Elite_Knight_Death_2",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Death/03.png",
+          "name": "Enemy_Elite_Knight_Death_3",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Death/04.png",
+          "name": "Enemy_Elite_Knight_Death_4",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Death/05.png",
+          "name": "Enemy_Elite_Knight_Death_5",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Death/06.png",
+          "name": "Enemy_Elite_Knight_Death_6",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Death/07.png",
+          "name": "Enemy_Elite_Knight_Death_7",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Death/08.png",
+          "name": "Enemy_Elite_Knight_Death_8",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Death/09.png",
+          "name": "Enemy_Elite_Knight_Death_9",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Death/10.png",
+          "name": "Enemy_Elite_Knight_Death_10",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Death/11.png",
+          "name": "Enemy_Elite_Knight_Death_11",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Death/12.png",
+          "name": "Enemy_Elite_Knight_Death_12",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Death/13.png",
+          "name": "Enemy_Elite_Knight_Death_13",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Death/14.png",
+          "name": "Enemy_Elite_Knight_Death_14",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Death/15.png",
+          "name": "Enemy_Elite_Knight_Death_15",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ],
+      "keyframeCount": 16,
+      "clip": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Elite_Knight_Death.anim"
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Animation/Enemies/Enemy_Elite_Knight_Idle.png",
+      "replacement": "Replacement/Sprites/Animation/Enemies/Enemy_Elite_Knight_Idle.png",
+      "width": 1024,
+      "height": 1024,
+      "rectCount": 16,
+      "sourceUniqueFrames": 4,
+      "frames": [
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Idle/00.png",
+          "name": "Enemy_Elite_Knight_Idle_0",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Idle/01.png",
+          "name": "Enemy_Elite_Knight_Idle_1",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Idle/02.png",
+          "name": "Enemy_Elite_Knight_Idle_2",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Idle/03.png",
+          "name": "Enemy_Elite_Knight_Idle_3",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Idle/04.png",
+          "name": "Enemy_Elite_Knight_Idle_4",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Idle/05.png",
+          "name": "Enemy_Elite_Knight_Idle_5",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Idle/06.png",
+          "name": "Enemy_Elite_Knight_Idle_6",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Idle/07.png",
+          "name": "Enemy_Elite_Knight_Idle_7",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Idle/08.png",
+          "name": "Enemy_Elite_Knight_Idle_8",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Idle/09.png",
+          "name": "Enemy_Elite_Knight_Idle_9",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Idle/10.png",
+          "name": "Enemy_Elite_Knight_Idle_10",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Idle/11.png",
+          "name": "Enemy_Elite_Knight_Idle_11",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Idle/12.png",
+          "name": "Enemy_Elite_Knight_Idle_12",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Idle/13.png",
+          "name": "Enemy_Elite_Knight_Idle_13",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Idle/14.png",
+          "name": "Enemy_Elite_Knight_Idle_14",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Idle/15.png",
+          "name": "Enemy_Elite_Knight_Idle_15",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ],
+      "keyframeCount": 16,
+      "clip": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Elite_Knight_Idle.anim"
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Animation/Enemies/Enemy_Elite_Knight_Run.png",
+      "replacement": "Replacement/Sprites/Animation/Enemies/Enemy_Elite_Knight_Run.png",
+      "width": 1024,
+      "height": 1024,
+      "rectCount": 16,
+      "sourceUniqueFrames": 4,
+      "frames": [
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Run/00.png",
+          "name": "Enemy_Elite_Knight_Run_0",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Run/01.png",
+          "name": "Enemy_Elite_Knight_Run_1",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Run/02.png",
+          "name": "Enemy_Elite_Knight_Run_2",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Run/03.png",
+          "name": "Enemy_Elite_Knight_Run_3",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Run/04.png",
+          "name": "Enemy_Elite_Knight_Run_4",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Run/05.png",
+          "name": "Enemy_Elite_Knight_Run_5",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Run/06.png",
+          "name": "Enemy_Elite_Knight_Run_6",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Run/07.png",
+          "name": "Enemy_Elite_Knight_Run_7",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Run/08.png",
+          "name": "Enemy_Elite_Knight_Run_8",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Run/09.png",
+          "name": "Enemy_Elite_Knight_Run_9",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Run/10.png",
+          "name": "Enemy_Elite_Knight_Run_10",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Run/11.png",
+          "name": "Enemy_Elite_Knight_Run_11",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Run/12.png",
+          "name": "Enemy_Elite_Knight_Run_12",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Run/13.png",
+          "name": "Enemy_Elite_Knight_Run_13",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Run/14.png",
+          "name": "Enemy_Elite_Knight_Run_14",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Elite_Knight_Run/15.png",
+          "name": "Enemy_Elite_Knight_Run_15",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ],
+      "keyframeCount": 16,
+      "clip": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Elite_Knight_Run.anim"
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Animation/Enemies/Enemy_Goblin_Raider_Death.png",
+      "replacement": "Replacement/Sprites/Animation/Enemies/Enemy_Goblin_Raider_Death.png",
+      "width": 1024,
+      "height": 1024,
+      "rectCount": 16,
+      "sourceUniqueFrames": 4,
+      "frames": [
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Death/00.png",
+          "name": "Enemy_Goblin_Raider_Death_0",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Death/01.png",
+          "name": "Enemy_Goblin_Raider_Death_1",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Death/02.png",
+          "name": "Enemy_Goblin_Raider_Death_2",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Death/03.png",
+          "name": "Enemy_Goblin_Raider_Death_3",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Death/04.png",
+          "name": "Enemy_Goblin_Raider_Death_4",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Death/05.png",
+          "name": "Enemy_Goblin_Raider_Death_5",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Death/06.png",
+          "name": "Enemy_Goblin_Raider_Death_6",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Death/07.png",
+          "name": "Enemy_Goblin_Raider_Death_7",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Death/08.png",
+          "name": "Enemy_Goblin_Raider_Death_8",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Death/09.png",
+          "name": "Enemy_Goblin_Raider_Death_9",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Death/10.png",
+          "name": "Enemy_Goblin_Raider_Death_10",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Death/11.png",
+          "name": "Enemy_Goblin_Raider_Death_11",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Death/12.png",
+          "name": "Enemy_Goblin_Raider_Death_12",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Death/13.png",
+          "name": "Enemy_Goblin_Raider_Death_13",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Death/14.png",
+          "name": "Enemy_Goblin_Raider_Death_14",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Death/15.png",
+          "name": "Enemy_Goblin_Raider_Death_15",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ],
+      "keyframeCount": 16,
+      "clip": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Goblin_Raider_Death.anim"
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Animation/Enemies/Enemy_Goblin_Raider_Idle.png",
+      "replacement": "Replacement/Sprites/Animation/Enemies/Enemy_Goblin_Raider_Idle.png",
+      "width": 1024,
+      "height": 1024,
+      "rectCount": 16,
+      "sourceUniqueFrames": 4,
+      "frames": [
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Idle/00.png",
+          "name": "Enemy_Goblin_Raider_Idle_0",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Idle/01.png",
+          "name": "Enemy_Goblin_Raider_Idle_1",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Idle/02.png",
+          "name": "Enemy_Goblin_Raider_Idle_2",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Idle/03.png",
+          "name": "Enemy_Goblin_Raider_Idle_3",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Idle/04.png",
+          "name": "Enemy_Goblin_Raider_Idle_4",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Idle/05.png",
+          "name": "Enemy_Goblin_Raider_Idle_5",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Idle/06.png",
+          "name": "Enemy_Goblin_Raider_Idle_6",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Idle/07.png",
+          "name": "Enemy_Goblin_Raider_Idle_7",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Idle/08.png",
+          "name": "Enemy_Goblin_Raider_Idle_8",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Idle/09.png",
+          "name": "Enemy_Goblin_Raider_Idle_9",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Idle/10.png",
+          "name": "Enemy_Goblin_Raider_Idle_10",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Idle/11.png",
+          "name": "Enemy_Goblin_Raider_Idle_11",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Idle/12.png",
+          "name": "Enemy_Goblin_Raider_Idle_12",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Idle/13.png",
+          "name": "Enemy_Goblin_Raider_Idle_13",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Idle/14.png",
+          "name": "Enemy_Goblin_Raider_Idle_14",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Idle/15.png",
+          "name": "Enemy_Goblin_Raider_Idle_15",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ],
+      "keyframeCount": 16,
+      "clip": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Goblin_Raider_Idle.anim"
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Animation/Enemies/Enemy_Goblin_Raider_Run.png",
+      "replacement": "Replacement/Sprites/Animation/Enemies/Enemy_Goblin_Raider_Run.png",
+      "width": 1024,
+      "height": 1024,
+      "rectCount": 16,
+      "sourceUniqueFrames": 4,
+      "frames": [
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Run/00.png",
+          "name": "Enemy_Goblin_Raider_Run_0",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Run/01.png",
+          "name": "Enemy_Goblin_Raider_Run_1",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Run/02.png",
+          "name": "Enemy_Goblin_Raider_Run_2",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Run/03.png",
+          "name": "Enemy_Goblin_Raider_Run_3",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Run/04.png",
+          "name": "Enemy_Goblin_Raider_Run_4",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Run/05.png",
+          "name": "Enemy_Goblin_Raider_Run_5",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Run/06.png",
+          "name": "Enemy_Goblin_Raider_Run_6",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Run/07.png",
+          "name": "Enemy_Goblin_Raider_Run_7",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Run/08.png",
+          "name": "Enemy_Goblin_Raider_Run_8",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Run/09.png",
+          "name": "Enemy_Goblin_Raider_Run_9",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Run/10.png",
+          "name": "Enemy_Goblin_Raider_Run_10",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Run/11.png",
+          "name": "Enemy_Goblin_Raider_Run_11",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Run/12.png",
+          "name": "Enemy_Goblin_Raider_Run_12",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Run/13.png",
+          "name": "Enemy_Goblin_Raider_Run_13",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Run/14.png",
+          "name": "Enemy_Goblin_Raider_Run_14",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Goblin_Raider_Run/15.png",
+          "name": "Enemy_Goblin_Raider_Run_15",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ],
+      "keyframeCount": 16,
+      "clip": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Goblin_Raider_Run.anim"
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Animation/Enemies/Enemy_Imp_Flyer_Death.png",
+      "replacement": "Replacement/Sprites/Animation/Enemies/Enemy_Imp_Flyer_Death.png",
+      "width": 1024,
+      "height": 1024,
+      "rectCount": 16,
+      "sourceUniqueFrames": 4,
+      "frames": [
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Death/00.png",
+          "name": "Enemy_Imp_Flyer_Death_0",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Death/01.png",
+          "name": "Enemy_Imp_Flyer_Death_1",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Death/02.png",
+          "name": "Enemy_Imp_Flyer_Death_2",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Death/03.png",
+          "name": "Enemy_Imp_Flyer_Death_3",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Death/04.png",
+          "name": "Enemy_Imp_Flyer_Death_4",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Death/05.png",
+          "name": "Enemy_Imp_Flyer_Death_5",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Death/06.png",
+          "name": "Enemy_Imp_Flyer_Death_6",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Death/07.png",
+          "name": "Enemy_Imp_Flyer_Death_7",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Death/08.png",
+          "name": "Enemy_Imp_Flyer_Death_8",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Death/09.png",
+          "name": "Enemy_Imp_Flyer_Death_9",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Death/10.png",
+          "name": "Enemy_Imp_Flyer_Death_10",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Death/11.png",
+          "name": "Enemy_Imp_Flyer_Death_11",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Death/12.png",
+          "name": "Enemy_Imp_Flyer_Death_12",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Death/13.png",
+          "name": "Enemy_Imp_Flyer_Death_13",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Death/14.png",
+          "name": "Enemy_Imp_Flyer_Death_14",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Death/15.png",
+          "name": "Enemy_Imp_Flyer_Death_15",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ],
+      "keyframeCount": 16,
+      "clip": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Imp_Flyer_Death.anim"
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Animation/Enemies/Enemy_Imp_Flyer_Idle.png",
+      "replacement": "Replacement/Sprites/Animation/Enemies/Enemy_Imp_Flyer_Idle.png",
+      "width": 1024,
+      "height": 1024,
+      "rectCount": 16,
+      "sourceUniqueFrames": 4,
+      "frames": [
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Idle/00.png",
+          "name": "Enemy_Imp_Flyer_Idle_0",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Idle/01.png",
+          "name": "Enemy_Imp_Flyer_Idle_1",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Idle/02.png",
+          "name": "Enemy_Imp_Flyer_Idle_2",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Idle/03.png",
+          "name": "Enemy_Imp_Flyer_Idle_3",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Idle/04.png",
+          "name": "Enemy_Imp_Flyer_Idle_4",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Idle/05.png",
+          "name": "Enemy_Imp_Flyer_Idle_5",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Idle/06.png",
+          "name": "Enemy_Imp_Flyer_Idle_6",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Idle/07.png",
+          "name": "Enemy_Imp_Flyer_Idle_7",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Idle/08.png",
+          "name": "Enemy_Imp_Flyer_Idle_8",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Idle/09.png",
+          "name": "Enemy_Imp_Flyer_Idle_9",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Idle/10.png",
+          "name": "Enemy_Imp_Flyer_Idle_10",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Idle/11.png",
+          "name": "Enemy_Imp_Flyer_Idle_11",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Idle/12.png",
+          "name": "Enemy_Imp_Flyer_Idle_12",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Idle/13.png",
+          "name": "Enemy_Imp_Flyer_Idle_13",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Idle/14.png",
+          "name": "Enemy_Imp_Flyer_Idle_14",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Idle/15.png",
+          "name": "Enemy_Imp_Flyer_Idle_15",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ],
+      "keyframeCount": 16,
+      "clip": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Imp_Flyer_Idle.anim"
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Animation/Enemies/Enemy_Imp_Flyer_Run.png",
+      "replacement": "Replacement/Sprites/Animation/Enemies/Enemy_Imp_Flyer_Run.png",
+      "width": 1024,
+      "height": 1024,
+      "rectCount": 16,
+      "sourceUniqueFrames": 4,
+      "frames": [
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Run/00.png",
+          "name": "Enemy_Imp_Flyer_Run_0",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Run/01.png",
+          "name": "Enemy_Imp_Flyer_Run_1",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Run/02.png",
+          "name": "Enemy_Imp_Flyer_Run_2",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Run/03.png",
+          "name": "Enemy_Imp_Flyer_Run_3",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Run/04.png",
+          "name": "Enemy_Imp_Flyer_Run_4",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Run/05.png",
+          "name": "Enemy_Imp_Flyer_Run_5",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Run/06.png",
+          "name": "Enemy_Imp_Flyer_Run_6",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Run/07.png",
+          "name": "Enemy_Imp_Flyer_Run_7",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Run/08.png",
+          "name": "Enemy_Imp_Flyer_Run_8",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Run/09.png",
+          "name": "Enemy_Imp_Flyer_Run_9",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Run/10.png",
+          "name": "Enemy_Imp_Flyer_Run_10",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Run/11.png",
+          "name": "Enemy_Imp_Flyer_Run_11",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Run/12.png",
+          "name": "Enemy_Imp_Flyer_Run_12",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Run/13.png",
+          "name": "Enemy_Imp_Flyer_Run_13",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Run/14.png",
+          "name": "Enemy_Imp_Flyer_Run_14",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Imp_Flyer_Run/15.png",
+          "name": "Enemy_Imp_Flyer_Run_15",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ],
+      "keyframeCount": 16,
+      "clip": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Imp_Flyer_Run.anim"
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Animation/Enemies/Enemy_Orc_Brute_Death.png",
+      "replacement": "Replacement/Sprites/Animation/Enemies/Enemy_Orc_Brute_Death.png",
+      "width": 1024,
+      "height": 1024,
+      "rectCount": 16,
+      "sourceUniqueFrames": 4,
+      "frames": [
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Death/00.png",
+          "name": "Enemy_Orc_Brute_Death_0",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Death/01.png",
+          "name": "Enemy_Orc_Brute_Death_1",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Death/02.png",
+          "name": "Enemy_Orc_Brute_Death_2",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Death/03.png",
+          "name": "Enemy_Orc_Brute_Death_3",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Death/04.png",
+          "name": "Enemy_Orc_Brute_Death_4",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Death/05.png",
+          "name": "Enemy_Orc_Brute_Death_5",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Death/06.png",
+          "name": "Enemy_Orc_Brute_Death_6",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Death/07.png",
+          "name": "Enemy_Orc_Brute_Death_7",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Death/08.png",
+          "name": "Enemy_Orc_Brute_Death_8",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Death/09.png",
+          "name": "Enemy_Orc_Brute_Death_9",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Death/10.png",
+          "name": "Enemy_Orc_Brute_Death_10",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Death/11.png",
+          "name": "Enemy_Orc_Brute_Death_11",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Death/12.png",
+          "name": "Enemy_Orc_Brute_Death_12",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Death/13.png",
+          "name": "Enemy_Orc_Brute_Death_13",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Death/14.png",
+          "name": "Enemy_Orc_Brute_Death_14",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Death/15.png",
+          "name": "Enemy_Orc_Brute_Death_15",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ],
+      "keyframeCount": 16,
+      "clip": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Orc_Brute_Death.anim"
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Animation/Enemies/Enemy_Orc_Brute_Idle.png",
+      "replacement": "Replacement/Sprites/Animation/Enemies/Enemy_Orc_Brute_Idle.png",
+      "width": 1024,
+      "height": 1024,
+      "rectCount": 16,
+      "sourceUniqueFrames": 4,
+      "frames": [
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Idle/00.png",
+          "name": "Enemy_Orc_Brute_Idle_0",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Idle/01.png",
+          "name": "Enemy_Orc_Brute_Idle_1",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Idle/02.png",
+          "name": "Enemy_Orc_Brute_Idle_2",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Idle/03.png",
+          "name": "Enemy_Orc_Brute_Idle_3",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Idle/04.png",
+          "name": "Enemy_Orc_Brute_Idle_4",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Idle/05.png",
+          "name": "Enemy_Orc_Brute_Idle_5",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Idle/06.png",
+          "name": "Enemy_Orc_Brute_Idle_6",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Idle/07.png",
+          "name": "Enemy_Orc_Brute_Idle_7",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Idle/08.png",
+          "name": "Enemy_Orc_Brute_Idle_8",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Idle/09.png",
+          "name": "Enemy_Orc_Brute_Idle_9",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Idle/10.png",
+          "name": "Enemy_Orc_Brute_Idle_10",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Idle/11.png",
+          "name": "Enemy_Orc_Brute_Idle_11",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Idle/12.png",
+          "name": "Enemy_Orc_Brute_Idle_12",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Idle/13.png",
+          "name": "Enemy_Orc_Brute_Idle_13",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Idle/14.png",
+          "name": "Enemy_Orc_Brute_Idle_14",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Idle/15.png",
+          "name": "Enemy_Orc_Brute_Idle_15",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ],
+      "keyframeCount": 16,
+      "clip": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Orc_Brute_Idle.anim"
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Animation/Enemies/Enemy_Orc_Brute_Run.png",
+      "replacement": "Replacement/Sprites/Animation/Enemies/Enemy_Orc_Brute_Run.png",
+      "width": 1024,
+      "height": 1024,
+      "rectCount": 16,
+      "sourceUniqueFrames": 4,
+      "frames": [
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Run/00.png",
+          "name": "Enemy_Orc_Brute_Run_0",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Run/01.png",
+          "name": "Enemy_Orc_Brute_Run_1",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Run/02.png",
+          "name": "Enemy_Orc_Brute_Run_2",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Run/03.png",
+          "name": "Enemy_Orc_Brute_Run_3",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Run/04.png",
+          "name": "Enemy_Orc_Brute_Run_4",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Run/05.png",
+          "name": "Enemy_Orc_Brute_Run_5",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Run/06.png",
+          "name": "Enemy_Orc_Brute_Run_6",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Run/07.png",
+          "name": "Enemy_Orc_Brute_Run_7",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Run/08.png",
+          "name": "Enemy_Orc_Brute_Run_8",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Run/09.png",
+          "name": "Enemy_Orc_Brute_Run_9",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Run/10.png",
+          "name": "Enemy_Orc_Brute_Run_10",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Run/11.png",
+          "name": "Enemy_Orc_Brute_Run_11",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Run/12.png",
+          "name": "Enemy_Orc_Brute_Run_12",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Run/13.png",
+          "name": "Enemy_Orc_Brute_Run_13",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Run/14.png",
+          "name": "Enemy_Orc_Brute_Run_14",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Orc_Brute_Run/15.png",
+          "name": "Enemy_Orc_Brute_Run_15",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ],
+      "keyframeCount": 16,
+      "clip": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Orc_Brute_Run.anim"
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Animation/Enemies/Enemy_Skeleton_Archer_Death.png",
+      "replacement": "Replacement/Sprites/Animation/Enemies/Enemy_Skeleton_Archer_Death.png",
+      "width": 1024,
+      "height": 1024,
+      "rectCount": 16,
+      "sourceUniqueFrames": 4,
+      "frames": [
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Death/00.png",
+          "name": "Enemy_Skeleton_Archer_Death_0",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Death/01.png",
+          "name": "Enemy_Skeleton_Archer_Death_1",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Death/02.png",
+          "name": "Enemy_Skeleton_Archer_Death_2",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Death/03.png",
+          "name": "Enemy_Skeleton_Archer_Death_3",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Death/04.png",
+          "name": "Enemy_Skeleton_Archer_Death_4",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Death/05.png",
+          "name": "Enemy_Skeleton_Archer_Death_5",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Death/06.png",
+          "name": "Enemy_Skeleton_Archer_Death_6",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Death/07.png",
+          "name": "Enemy_Skeleton_Archer_Death_7",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Death/08.png",
+          "name": "Enemy_Skeleton_Archer_Death_8",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Death/09.png",
+          "name": "Enemy_Skeleton_Archer_Death_9",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Death/10.png",
+          "name": "Enemy_Skeleton_Archer_Death_10",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Death/11.png",
+          "name": "Enemy_Skeleton_Archer_Death_11",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Death/12.png",
+          "name": "Enemy_Skeleton_Archer_Death_12",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Death/13.png",
+          "name": "Enemy_Skeleton_Archer_Death_13",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Death/14.png",
+          "name": "Enemy_Skeleton_Archer_Death_14",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Death/15.png",
+          "name": "Enemy_Skeleton_Archer_Death_15",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ],
+      "keyframeCount": 16,
+      "clip": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Skeleton_Archer_Death.anim"
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Animation/Enemies/Enemy_Skeleton_Archer_Idle.png",
+      "replacement": "Replacement/Sprites/Animation/Enemies/Enemy_Skeleton_Archer_Idle.png",
+      "width": 1024,
+      "height": 1024,
+      "rectCount": 16,
+      "sourceUniqueFrames": 4,
+      "frames": [
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Idle/00.png",
+          "name": "Enemy_Skeleton_Archer_Idle_0",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Idle/01.png",
+          "name": "Enemy_Skeleton_Archer_Idle_1",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Idle/02.png",
+          "name": "Enemy_Skeleton_Archer_Idle_2",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Idle/03.png",
+          "name": "Enemy_Skeleton_Archer_Idle_3",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Idle/04.png",
+          "name": "Enemy_Skeleton_Archer_Idle_4",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Idle/05.png",
+          "name": "Enemy_Skeleton_Archer_Idle_5",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Idle/06.png",
+          "name": "Enemy_Skeleton_Archer_Idle_6",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Idle/07.png",
+          "name": "Enemy_Skeleton_Archer_Idle_7",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Idle/08.png",
+          "name": "Enemy_Skeleton_Archer_Idle_8",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Idle/09.png",
+          "name": "Enemy_Skeleton_Archer_Idle_9",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Idle/10.png",
+          "name": "Enemy_Skeleton_Archer_Idle_10",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Idle/11.png",
+          "name": "Enemy_Skeleton_Archer_Idle_11",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Idle/12.png",
+          "name": "Enemy_Skeleton_Archer_Idle_12",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Idle/13.png",
+          "name": "Enemy_Skeleton_Archer_Idle_13",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Idle/14.png",
+          "name": "Enemy_Skeleton_Archer_Idle_14",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Idle/15.png",
+          "name": "Enemy_Skeleton_Archer_Idle_15",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ],
+      "keyframeCount": 16,
+      "clip": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Skeleton_Archer_Idle.anim"
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Animation/Enemies/Enemy_Skeleton_Archer_Run.png",
+      "replacement": "Replacement/Sprites/Animation/Enemies/Enemy_Skeleton_Archer_Run.png",
+      "width": 1024,
+      "height": 1024,
+      "rectCount": 16,
+      "sourceUniqueFrames": 4,
+      "frames": [
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Run/00.png",
+          "name": "Enemy_Skeleton_Archer_Run_0",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Run/01.png",
+          "name": "Enemy_Skeleton_Archer_Run_1",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Run/02.png",
+          "name": "Enemy_Skeleton_Archer_Run_2",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Run/03.png",
+          "name": "Enemy_Skeleton_Archer_Run_3",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Run/04.png",
+          "name": "Enemy_Skeleton_Archer_Run_4",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Run/05.png",
+          "name": "Enemy_Skeleton_Archer_Run_5",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Run/06.png",
+          "name": "Enemy_Skeleton_Archer_Run_6",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Run/07.png",
+          "name": "Enemy_Skeleton_Archer_Run_7",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Run/08.png",
+          "name": "Enemy_Skeleton_Archer_Run_8",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Run/09.png",
+          "name": "Enemy_Skeleton_Archer_Run_9",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Run/10.png",
+          "name": "Enemy_Skeleton_Archer_Run_10",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Run/11.png",
+          "name": "Enemy_Skeleton_Archer_Run_11",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Run/12.png",
+          "name": "Enemy_Skeleton_Archer_Run_12",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Run/13.png",
+          "name": "Enemy_Skeleton_Archer_Run_13",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Run/14.png",
+          "name": "Enemy_Skeleton_Archer_Run_14",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Enemy_Skeleton_Archer_Run/15.png",
+          "name": "Enemy_Skeleton_Archer_Run_15",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ],
+      "keyframeCount": 16,
+      "clip": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Skeleton_Archer_Run.anim"
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Animation/Lord_Death.png",
+      "replacement": "Replacement/Sprites/Animation/Lord_Death.png",
+      "width": 1024,
+      "height": 1024,
+      "rectCount": 16,
+      "sourceUniqueFrames": 4,
+      "frames": [
+        {
+          "file": "Replacement/Frames/Lord_Death/00.png",
+          "name": "Lord_Death_00",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Death/01.png",
+          "name": "Lord_Death_01",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Death/02.png",
+          "name": "Lord_Death_02",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Death/03.png",
+          "name": "Lord_Death_03",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Death/04.png",
+          "name": "Lord_Death_04",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Death/05.png",
+          "name": "Lord_Death_05",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Death/06.png",
+          "name": "Lord_Death_06",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Death/07.png",
+          "name": "Lord_Death_07",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Death/08.png",
+          "name": "Lord_Death_08",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Death/09.png",
+          "name": "Lord_Death_09",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Death/10.png",
+          "name": "Lord_Death_10",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Death/11.png",
+          "name": "Lord_Death_11",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Death/12.png",
+          "name": "Lord_Death_12",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Death/13.png",
+          "name": "Lord_Death_13",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Death/14.png",
+          "name": "Lord_Death_14",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Death/15.png",
+          "name": "Lord_Death_15",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ],
+      "keyframeCount": 16,
+      "clip": "Assets/_Project/ResourcceEX/Animations/Death.anim"
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Animation/Lord_Hit.png",
+      "replacement": "Replacement/Sprites/Animation/Lord_Hit.png",
+      "width": 1024,
+      "height": 1024,
+      "rectCount": 16,
+      "sourceUniqueFrames": 4,
+      "frames": [
+        {
+          "file": "Replacement/Frames/Lord_Hit/00.png",
+          "name": "Lord_Hit_00",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Hit/01.png",
+          "name": "Lord_Hit_01",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Hit/02.png",
+          "name": "Lord_Hit_02",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Hit/03.png",
+          "name": "Lord_Hit_03",
+          "sourceFrame": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Hit/04.png",
+          "name": "Lord_Hit_04",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Hit/05.png",
+          "name": "Lord_Hit_05",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Hit/06.png",
+          "name": "Lord_Hit_06",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Hit/07.png",
+          "name": "Lord_Hit_07",
+          "sourceFrame": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Hit/08.png",
+          "name": "Lord_Hit_08",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Hit/09.png",
+          "name": "Lord_Hit_09",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Hit/10.png",
+          "name": "Lord_Hit_10",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Hit/11.png",
+          "name": "Lord_Hit_11",
+          "sourceFrame": 2,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Hit/12.png",
+          "name": "Lord_Hit_12",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Hit/13.png",
+          "name": "Lord_Hit_13",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Hit/14.png",
+          "name": "Lord_Hit_14",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "file": "Replacement/Frames/Lord_Hit/15.png",
+          "name": "Lord_Hit_15",
+          "sourceFrame": 3,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ],
+      "keyframeCount": 16,
+      "clip": "Assets/_Project/ResourcceEX/Animations/Lord_Hit.anim"
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Traps/SpikeTrap_Visual.png",
+      "replacement": "Replacement/Sprites/Traps/SpikeTrap_Visual.png",
+      "width": 1024,
+      "height": 1024,
+      "component": "Traps/spike/Normal/spikes.png"
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Traps/ArrowShooter_Visual.png",
+      "replacement": "Replacement/Sprites/Traps/ArrowShooter_Visual.png",
+      "width": 1024,
+      "height": 1024,
+      "component": "Traps/arrow_shooter/Normal/body.png"
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Traps/Arrow_Visual.png",
+      "replacement": "Replacement/Sprites/Traps/Arrow_Visual.png",
+      "width": 1024,
+      "height": 1024,
+      "component": "Traps/arrow_shooter/Normal/arrow.png"
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Sprites/Traps/DropHammer_Visual.png",
+      "replacement": "Replacement/Sprites/Traps/DropHammer_Visual.png",
+      "width": 1024,
+      "height": 1024,
+      "component": "Traps/drop_hammer/Normal/head.png"
+    }
+  ],
+  "animations": [
+    {
+      "original": "Assets/_Project/ResourcceEX/Animations/Dash.anim",
+      "replacement": "Replacement/Animations/Dash.anim",
+      "keyframes": 8
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Animations/Death.anim",
+      "replacement": "Replacement/Animations/Death.anim",
+      "keyframes": 16
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Elite_Knight_Death.anim",
+      "replacement": "Replacement/Animations/Enemies/Enemy_Elite_Knight_Death.anim",
+      "keyframes": 16
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Elite_Knight_Idle.anim",
+      "replacement": "Replacement/Animations/Enemies/Enemy_Elite_Knight_Idle.anim",
+      "keyframes": 16
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Elite_Knight_Run.anim",
+      "replacement": "Replacement/Animations/Enemies/Enemy_Elite_Knight_Run.anim",
+      "keyframes": 16
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Goblin_Raider_Death.anim",
+      "replacement": "Replacement/Animations/Enemies/Enemy_Goblin_Raider_Death.anim",
+      "keyframes": 16
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Goblin_Raider_Idle.anim",
+      "replacement": "Replacement/Animations/Enemies/Enemy_Goblin_Raider_Idle.anim",
+      "keyframes": 16
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Goblin_Raider_Run.anim",
+      "replacement": "Replacement/Animations/Enemies/Enemy_Goblin_Raider_Run.anim",
+      "keyframes": 16
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Imp_Flyer_Death.anim",
+      "replacement": "Replacement/Animations/Enemies/Enemy_Imp_Flyer_Death.anim",
+      "keyframes": 16
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Imp_Flyer_Idle.anim",
+      "replacement": "Replacement/Animations/Enemies/Enemy_Imp_Flyer_Idle.anim",
+      "keyframes": 16
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Imp_Flyer_Run.anim",
+      "replacement": "Replacement/Animations/Enemies/Enemy_Imp_Flyer_Run.anim",
+      "keyframes": 16
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Orc_Brute_Death.anim",
+      "replacement": "Replacement/Animations/Enemies/Enemy_Orc_Brute_Death.anim",
+      "keyframes": 16
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Orc_Brute_Idle.anim",
+      "replacement": "Replacement/Animations/Enemies/Enemy_Orc_Brute_Idle.anim",
+      "keyframes": 16
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Orc_Brute_Run.anim",
+      "replacement": "Replacement/Animations/Enemies/Enemy_Orc_Brute_Run.anim",
+      "keyframes": 16
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Skeleton_Archer_Death.anim",
+      "replacement": "Replacement/Animations/Enemies/Enemy_Skeleton_Archer_Death.anim",
+      "keyframes": 16
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Skeleton_Archer_Idle.anim",
+      "replacement": "Replacement/Animations/Enemies/Enemy_Skeleton_Archer_Idle.anim",
+      "keyframes": 16
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Animations/Enemies/Enemy_Skeleton_Archer_Run.anim",
+      "replacement": "Replacement/Animations/Enemies/Enemy_Skeleton_Archer_Run.anim",
+      "keyframes": 16
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Animations/Fall_Loop.anim",
+      "replacement": "Replacement/Animations/Fall_Loop.anim",
+      "keyframes": 8
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Animations/Idle.anim",
+      "replacement": "Replacement/Animations/Idle.anim",
+      "keyframes": 12
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Animations/Jump_Loop.anim",
+      "replacement": "Replacement/Animations/Jump_Loop.anim",
+      "keyframes": 8
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Animations/Jump_Start.anim",
+      "replacement": "Replacement/Animations/Jump_Start.anim",
+      "keyframes": 8
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Animations/Land.anim",
+      "replacement": "Replacement/Animations/Land.anim",
+      "keyframes": 10
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Animations/Lord_Hit.anim",
+      "replacement": "Replacement/Animations/Lord_Hit.anim",
+      "keyframes": 16
+    },
+    {
+      "original": "Assets/_Project/ResourcceEX/Animations/Run.anim",
+      "replacement": "Replacement/Animations/Run.anim",
+      "keyframes": 6
+    }
+  ]
+}

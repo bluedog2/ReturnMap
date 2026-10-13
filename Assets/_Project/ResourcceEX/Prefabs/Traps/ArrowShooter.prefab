@@ -1,5 +1,96 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &529692547453711516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3092484340158180397}
+  - component: {fileID: 2396729704732227287}
+  m_Layer: 0
+  m_Name: MuzzleFlash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3092484340158180397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529692547453711516}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.45, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8161890236872056194}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &2396729704732227287
+SpriteRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529692547453711516}
+  m_Enabled: 0
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 311294878
+  m_SortingLayer: 1
+  m_SortingOrder: 11
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: 21300000, guid: b05f535d9f5fbf4a52bf10fec803e5dd, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
 --- !u!1 &570977386896062070
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,6 +103,7 @@ GameObject:
   - component: {fileID: 4701258366733184004}
   - component: {fileID: 8374640372947285676}
   - component: {fileID: 6334499223300176206}
+  - component: {fileID: 62275345464742350}
   m_Layer: 0
   m_Name: ArrowShooter
   m_TagString: Untagged
@@ -128,6 +220,7 @@ MonoBehaviour:
   definition: {fileID: 11400000, guid: a5b7b2fc516fd0142b8a6087bbcd42f6, type: 2}
   dangerLevel: 5
   cellSize: {x: 1, y: 1}
+  damageType: 0
   damageArea: {fileID: 0}
   platformArea: {fileID: 0}
   dudParticles: {fileID: 5758243895036551739}
@@ -139,12 +232,47 @@ MonoBehaviour:
   bgWallSprite: {fileID: 21300000, guid: d1b3c17f28191134fa20a89724e2fe9b, type: 3}
   bgCeilingSprite: {fileID: 21300000, guid: 5034b54cba5b97d4d9b60eb7b7251635, type: 3}
   backgroundCellSize: 1
+  beneficialBlockSprite: {fileID: -1615564588, guid: 1844c9727a5683abe375de817fb77ec6, type: 3}
   baseCost: 25
   arrowPrefab: {fileID: 5529692169157957084, guid: 0aabc45719df2bf469ea66bb45e630d0, type: 3}
   firePoint: {fileID: 3261756247872094288}
   arrowSpeed: 12
   normalFireInterval: 1
   criticalFireInterval: 0.5
+  arrowSprites:
+    normal: {fileID: 21300000, guid: 490f5c31dfdded1480ecb6f8621c1c97, type: 3}
+    dud: {fileID: 21300000, guid: b2b7d114cfc99974b0b566cb37198258, type: 3}
+    critical: {fileID: 21300000, guid: f3992e25db00ec2383d3bc2e504226c5, type: 3}
+    beneficial: {fileID: 21300000, guid: cf8394326aaa6d4a3707f4e053c893e8, type: 3}
+  muzzleFlash: {fileID: 2396729704732227287}
+  muzzleFlashDuration: 0.08
+--- !u!114 &62275345464742350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570977386896062070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8abebc79432f824a9cfadbc0ba609a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: ReTrap.Runtime::ReTrap.TrapStateVisuals
+  bindings:
+  - target: {fileID: 5445975663267935013}
+    sprites:
+      normal: {fileID: 21300000, guid: ddb39f49a3b59f09f5baa9a15b593a7c, type: 3}
+      dud: {fileID: 21300000, guid: cff14dff2c97f6ae7f87c98b49d3dfe4, type: 3}
+      critical: {fileID: 21300000, guid: fbaca91588110e5cc8f15e088d780334, type: 3}
+      beneficial: {fileID: 21300000, guid: 260a2f935e4aadbc0b2c3001b198095a, type: 3}
+    transient: 0
+  - target: {fileID: 2396729704732227287}
+    sprites:
+      normal: {fileID: 21300000, guid: b05f535d9f5fbf4a52bf10fec803e5dd, type: 3}
+      dud: {fileID: 21300000, guid: e657b60e6ef32ca1d57a399908fed8f5, type: 3}
+      critical: {fileID: 21300000, guid: 381dd26b9f3abf179f7f2ec35e2b5671, type: 3}
+      beneficial: {fileID: 21300000, guid: 800b59b1f21e1381090b761d75f13258, type: 3}
+    transient: 1
 --- !u!1 &3467070675299588266
 GameObject:
   m_ObjectHideFlags: 0
@@ -5185,7 +5313,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3092484340158180397}
   m_Father: {fileID: 8773574135584797437}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5445975663267935013
@@ -5237,7 +5366,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 10
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 4fc005dc6035d5b40818c5a5ec5d2fcd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ddb39f49a3b59f09f5baa9a15b593a7c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
