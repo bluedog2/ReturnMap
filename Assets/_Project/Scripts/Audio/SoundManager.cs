@@ -359,6 +359,12 @@ namespace ReTrap
             }
 
             BindMixer();
+
+            // 저장된 사용자 볼륨(설정 패널)이 있으면 AudioConfig 기본값을 덮어쓴다.
+            // 반드시 맨 끝 — Awake·ApplyConfig 두 경로 모두에서 저장값이 유지되도록.
+            if (SettingsService.TryGetVolume(SoundBus.Master, out float sm)) _master = sm;
+            if (SettingsService.TryGetVolume(SoundBus.Bgm, out float sb)) _bgm = sb;
+            if (SettingsService.TryGetVolume(SoundBus.Sfx, out float ss)) _sfx = ss;
         }
 
         private void EnsureVoicePool(int want)
@@ -425,7 +431,8 @@ namespace ReTrap
                 _voices[i].outputAudioMixerGroup = sfxGroup;
         }
 
-        private float GetBusVolume(SoundBus bus)
+        /// <summary>버스 볼륨(선형 0~1). 설정 UI 슬라이더 초기값용.</summary>
+        public float GetBusVolume(SoundBus bus)
         {
             switch (bus)
             {

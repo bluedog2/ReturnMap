@@ -43,10 +43,34 @@ namespace ReTrap.EditorTools
         static int _fail;
         static string _out, _dir;
 
+        // SPEC-16: 저장 볼륨이 남아 있으면 기본 dB 검사가 깨지므로 ReTrap.Settings.* 키를 백업·삭제 후 종료 시 복원
+        static readonly string[] SettingsFloatKeys = { "ReTrap.Settings.MasterVolume", "ReTrap.Settings.BgmVolume", "ReTrap.Settings.SfxVolume" };
+        static readonly string[] SettingsIntKeys = { "ReTrap.Settings.ResWidth", "ReTrap.Settings.ResHeight", "ReTrap.Settings.Fullscreen" };
+        static readonly Dictionary<string, float> _prefsFloatBackup = new Dictionary<string, float>();
+        static readonly Dictionary<string, int> _prefsIntBackup = new Dictionary<string, int>();
+
+        static void BackupAndClearSettingsPrefs()
+        {
+            _prefsFloatBackup.Clear(); _prefsIntBackup.Clear();
+            foreach (var k in SettingsFloatKeys) { if (PlayerPrefs.HasKey(k)) _prefsFloatBackup[k] = PlayerPrefs.GetFloat(k); PlayerPrefs.DeleteKey(k); }
+            foreach (var k in SettingsIntKeys) { if (PlayerPrefs.HasKey(k)) _prefsIntBackup[k] = PlayerPrefs.GetInt(k); PlayerPrefs.DeleteKey(k); }
+            PlayerPrefs.Save();
+        }
+
+        static void RestoreSettingsPrefs()
+        {
+            foreach (var k in SettingsFloatKeys) PlayerPrefs.DeleteKey(k);
+            foreach (var k in SettingsIntKeys) PlayerPrefs.DeleteKey(k);
+            foreach (var kv in _prefsFloatBackup) PlayerPrefs.SetFloat(kv.Key, kv.Value);
+            foreach (var kv in _prefsIntBackup) PlayerPrefs.SetInt(kv.Key, kv.Value);
+            PlayerPrefs.Save();
+        }
+
         public static void Run()
         {
             _out = Arg("-probeOutput") ?? Path.Combine(Directory.GetParent(Application.dataPath).FullName, "Logs", "probe17.txt");
             _dir = Path.GetDirectoryName(_out);
+            BackupAndClearSettingsPrefs();
             EditorSettings.enterPlayModeOptionsEnabled = true;
             EditorSettings.enterPlayModeOptions = EnterPlayModeOptions.DisableDomainReload | EnterPlayModeOptions.DisableSceneReload;
             EditorSceneManager.OpenScene(ScenePath, OpenSceneMode.Single);
@@ -444,6 +468,7 @@ namespace ReTrap.EditorTools
             EditorApplication.update -= Tick;
             if (_subscribed) { TrapBase.OnTrapActivated -= OnAct; PlayerHealth.OnAnyDamageTaken -= OnDmg; _subscribed = false; }
             Time.timeScale = 1f;
+            RestoreSettingsPrefs();
             Check("콘솔 오류 0개 (무해 목록 제외)", _errors.Count == 0, $"{_errors.Count}개");
             var sb = new StringBuilder();
             sb.AppendLine($"RESULT: {(_fail == 0 ? "PASS" : "FAIL")} (fail {_fail} / total {_results.Count})");
