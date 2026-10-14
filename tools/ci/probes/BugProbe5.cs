@@ -49,10 +49,48 @@ namespace ReTrap.EditorTools
             EditorSettings.enterPlayModeOptionsEnabled = true;
             EditorSettings.enterPlayModeOptions = EnterPlayModeOptions.DisableDomainReload | EnterPlayModeOptions.DisableSceneReload;
             EditorSceneManager.OpenScene(ScenePath, OpenSceneMode.Single);
+            RunMetaUiSetup();
             Application.logMessageReceived += OnLog;
             _wallStart = EditorApplication.timeSinceStartup;
             EditorApplication.update += Tick;
             EditorApplication.EnterPlaymode();
+        }
+
+        /// <summary>
+        /// 커밋된 씬에는 설정 UI 가 없으므로(메타 UI 세팅 메뉴가 만든다) 사용자가 하듯 Play 진입 전에 메뉴를 실행한다.
+        /// 메뉴 실행이 안 되면 리플렉션으로 <c>MetaUiSetup.Run</c> 을 직접 호출한다. 씬은 저장하지 않는다.
+        /// </summary>
+        static void RunMetaUiSetup()
+        {
+            const string menu = "ReTrap/Setup/6. 메타 UI 세팅 (미리보기 + 연구소)";
+            string how = "메뉴";
+            bool ok;
+            string detail;
+            try
+            {
+                ok = EditorApplication.ExecuteMenuItem(menu);
+                if (!ok)
+                {
+                    how = "리플렉션";
+                    var t = AppDomain.CurrentDomain.GetAssemblies()
+                        .Select(a => a.GetType("ReTrap.EditorTools.MetaUiSetup", false))
+                        .FirstOrDefault(x => x != null)
+                        ?? AppDomain.CurrentDomain.GetAssemblies()
+                        .SelectMany(a => { try { return a.GetTypes(); } catch { return new Type[0]; } })
+                        .FirstOrDefault(x => x.Name == "MetaUiSetup");
+                    var mi = t?.GetMethod("Run", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+                    if (mi != null) { mi.Invoke(null, null); ok = true; }
+                    detail = ok ? "메뉴 실패 → 리플렉션 Run() 호출" : "메뉴 실패, MetaUiSetup.Run 못 찾음";
+                }
+                else detail = "ExecuteMenuItem true";
+            }
+            catch (Exception e)
+            {
+                ok = false;
+                detail = $"예외: {e.GetType().Name} {e.Message}";
+            }
+            bool exists = UnityEngine.Object.FindFirstObjectByType<SettingsPanel>(FindObjectsInactive.Include) != null;
+            Check("메타 UI 세팅 실행", ok && exists, $"{how}: {detail} / 씬 내 SettingsPanel={exists}");
         }
 
         /// <summary>콘솔 Error·Exception 수집. 에디터 검색 인덱서의 배치모드 예외(무해)만 제외한다.</summary>
