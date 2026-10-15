@@ -241,11 +241,14 @@ namespace ReTrap.EditorTools
 
             int groundLayer = LayerMask.NameToLayer("Ground");
             int playerLayer = LayerMask.NameToLayer("Player");
+            int enemyLayer  = LayerMask.NameToLayer("Enemy"); // 검증 AI 도 낙하 트리거 대상
 
             var trap = go.AddComponent<DropHammer>();
             var so   = new SerializedObject(trap);
             so.FindProperty("groundLayer").intValue   = groundLayer >= 0 ? (1 << groundLayer) : 0;
-            so.FindProperty("detectionMask").intValue = playerLayer >= 0 ? (1 << playerLayer) : ~0;
+            so.FindProperty("detectionMask").intValue = playerLayer >= 0
+                ? (1 << playerLayer) | (enemyLayer >= 0 ? 1 << enemyLayer : 0)
+                : ~0;
             so.ApplyModifiedPropertiesWithoutUndo();
             // baseCost/dangerLevel/CompatibleAnchors 는 TrapDefinition SO 가 원천 —
             // EnsureTrapDefinition() 이 신규 생성 시에만 시드하고 프리팹에 배선한다.

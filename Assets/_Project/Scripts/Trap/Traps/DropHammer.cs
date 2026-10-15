@@ -90,7 +90,7 @@ namespace ReTrap
         private float detectionWidth = 0.8f;
 
         [SerializeField]
-        [Tooltip("감지 대상 레이어. 기본값(Everything)이면 PlayerController 컴포넌트로 한 번 더 필터.")]
+        [Tooltip("감지 대상 레이어. 기본값(Everything)이면 PlayerController/VerificationAgent 컴포넌트로 한 번 더 필터. 검증 AI 감지를 위해 Enemy 레이어 포함 필요.")]
         private LayerMask detectionMask = ~0;
 
         [Header("DropHammer — 비주얼 (천장 마운트·체인·착지 충격)")]
@@ -284,8 +284,11 @@ namespace ReTrap
             int count = Physics2D.OverlapBox(center, size, 0f, detectionFilter, detectionHits);
             for (int i = 0; i < count; i++)
             {
-                if (detectionHits[i] != null &&
-                    detectionHits[i].GetComponentInParent<PlayerController>() != null)
+                if (detectionHits[i] == null) continue;
+
+                // 플레이어(Play) 또는 검증 AI(Verification) — 피격 처리(OnTriggerEnter2D)와 대상 일치
+                if (detectionHits[i].GetComponentInParent<PlayerController>() != null ||
+                    detectionHits[i].GetComponentInParent<VerificationAgent>() != null)
                     return true;
             }
             return false;

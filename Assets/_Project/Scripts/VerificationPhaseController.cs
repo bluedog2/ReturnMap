@@ -30,11 +30,31 @@ namespace ReTrap
         [Tooltip("director 미연결 시 스텁: 이 시간 후 자동 통과")]
         private float stubDuration = 1f;
 
+        [Header("방어 성공 연출")]
+        [SerializeField]
+        [Tooltip("방어 성공 배너. 비워두면 이 오브젝트에 자동 추가")]
+        private PhaseResultBanner resultBanner;
+
+        [SerializeField]
+        [Tooltip("방어 성공 배너 문구")]
+        private string successMessage = "방어 성공!";
+
+        [SerializeField, Min(0f)]
+        [Tooltip("방어 성공 배너를 보여준 뒤 Play 로 넘어가기까지 대기 시간(초, 실시간). 0이면 즉시 전환")]
+        private float successHoldTime = 1.2f;
+
         // ── 내부 상태 ─────────────────────────────────────────────────────────
 
         private Coroutine _routine;
 
         // ── Unity ─────────────────────────────────────────────────────────────
+
+        private void Awake()
+        {
+            // ?? 는 UnityEngine.Object 의 가짜 null 을 못 걸러내므로 명시 비교
+            if (resultBanner == null) resultBanner = GetComponent<PhaseResultBanner>();
+            if (resultBanner == null) resultBanner = gameObject.AddComponent<PhaseResultBanner>();
+        }
 
         private void OnEnable()  => GamePhaseManager.OnPhaseChanged += HandlePhaseChanged;
         private void OnDisable() => GamePhaseManager.OnPhaseChanged -= HandlePhaseChanged;
@@ -69,8 +89,19 @@ namespace ReTrap
             {
                 yield return director.Run();
 
-                if (director.LastRunBreached) ReportFailure();
-                else                          ReportSuccess();
+                if (director.LastRunBreached)
+                {
+                    ReportFailure();
+                    yield break;
+                }
+
+                // 방어 성공 연출 — 배너를 띄우고 잠깐 머문 뒤 Play 로 (배너 페이드 아웃은 카메라 글라이드와 겹침)
+                if (successHoldTime > 0f && resultBanner != null)
+                {
+                    resultBanner.Show(successMessage, successHoldTime);
+                    yield return new WaitForSecondsRealtime(successHoldTime);
+                }
+                ReportSuccess();
             }
             else
             {

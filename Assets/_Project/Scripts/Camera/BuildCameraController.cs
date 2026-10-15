@@ -52,10 +52,17 @@ namespace ReTrap
         [Tooltip("엣지 패닝 속도 (현재 줌 size 에 비례).")]
         [SerializeField] private float edgePanSpeed  = 3f;
 
+        [Header("Play 진입 글라이드")]
+        [Tooltip("전체 뷰 → 플레이어 추적 뷰로 부드럽게 이동하는 시간(초, 실시간). 0이면 즉시 전환.")]
+        [SerializeField] private float playGlideDuration = 1.2f;
+        [Tooltip("플레이어 추적 CinemachineCamera. 비워두면 씬에서 자동 탐색.")]
+        [SerializeField] private CinemachineCamera playCamera;
+
         // ── 런타임 ────────────────────────────────────────────────────────────
 
         private Camera           _cam;
         private CinemachineBrain _brain;
+        private Coroutine        _glide;
 
         /// <summary>Brain 을 끄고 카메라를 직접 제어하는가 (Build + Verification).</summary>
         private bool    _directControl;
@@ -111,6 +118,12 @@ namespace ReTrap
 
         private void HandlePhase(GamePhase phase)
         {
+            if (_glide != null)
+            {
+                StopCoroutine(_glide);
+                _glide = null;
+            }
+
             switch (phase)
             {
                 case GamePhase.Build:
@@ -120,7 +133,11 @@ namespace ReTrap
                     EnterSpectatorView();
                     break;
                 default: // GamePhase.Play
-                    ExitDirectControl();
+                    // 직접 제어 뷰(빌드/검증)에서 넘어올 때만 글라이드 — 그 외엔 즉시 복원
+                    if (_directControl && playGlideDuration > 0f && TryGetPlayCamera(out var vcam))
+                        _glide = StartCoroutine(GlideToPlayCamera(vcam));
+                    else
+                        ExitDirectControl();
                     break;
             }
         }
@@ -161,6 +178,56 @@ namespace ReTrap
             _inputEnabled  = false;
             _panning       = false;
             if (_brain != null) _brain.enabled = true;  // 플레이어 추적 카메라 복원
+        }
+
+        /// <summary>
+        /// Play 진입 연출 — Brain 을 끈 채로 현재 뷰에서 플레이어 추적 카메라의 목표 뷰
+        /// (추적 대상 위치 + 렌즈 size, 경계 클램프)까지 SmoothStep 으로 이동한 뒤,
+        /// 가상 카메라를 그 지점으로 강제 동기화하고 Brain 을 켭니다 (켜는 순간 튐 방지).
+        /// 이동 중 플레이어가 움직여도 목표를 매 프레임 다시 계산합니다.
+        /// </summary>
+        private System.Collections.IEnumerator GlideToPlayCamera(CinemachineCamera vcam)
+        {
+            _directControl = false;   // 입력 처리 중단 (Brain 은 아직 꺼진 채 유지)
+            _inputEnabled  = false;
+            _panning       = false;
+
+            Vector3 startPos   = transform.position;
+            float   startSize  = _cam.orthographicSize;
+            float   targetSize = vcam.Lens.OrthographicSize;
+
+            for (float t = 0f; t < playGlideDuration; t += Time.unscaledDeltaTime)
+            {
+                float k = Mathf.SmoothStep(0f, 1f, t / playGlideDuration);
+                Vector2 target = GlideTarget(vcam, targetSize);
+                _cam.orthographicSize = Mathf.Lerp(startSize, targetSize, k);
+                transform.position = new Vector3(Mathf.Lerp(startPos.x, target.x, k),
+                                                 Mathf.Lerp(startPos.y, target.y, k),
+                                                 startPos.z);
+                yield return null;
+            }
+
+            Vector2 end = GlideTarget(vcam, targetSize);
+            _cam.orthographicSize = targetSize;
+            transform.position = new Vector3(end.x, end.y, startPos.z);
+
+            vcam.ForceCameraPosition(transform.position, transform.rotation);
+            _glide = null;
+            ExitDirectControl();
+        }
+
+        /// <summary>글라이드 목표 지점 — 추적 대상 위치를 목표 size 기준으로 경계 안에 클램프.</summary>
+        private Vector2 GlideTarget(CinemachineCamera vcam, float size)
+        {
+            Vector2 p = vcam.Follow != null ? (Vector2)vcam.Follow.position : (Vector2)transform.position;
+            return TryGetBounds(out Bounds b) ? ClampPoint(b, p, size) : p;
+        }
+
+        private bool TryGetPlayCamera(out CinemachineCamera vcam)
+        {
+            if (playCamera == null) playCamera = FindFirstObjectByType<CinemachineCamera>();
+            vcam = playCamera;
+            return vcam != null;
         }
 
         // ── 뷰 맞춤 ───────────────────────────────────────────────────────────
@@ -259,15 +326,22 @@ namespace ReTrap
         /// <summary>카메라 뷰를 경계 안으로 가둡니다. 한 축이 경계에 꽉 차면 그 축은 중앙 고정.</summary>
         private void ClampToBounds(Bounds b)
         {
-            float halfH = _cam.orthographicSize;
+            Vector2 p = ClampPoint(b, transform.position, _cam.orthographicSize);
+            transform.position = new Vector3(p.x, p.y, transform.position.z);
+        }
+
+        /// <summary>주어진 size 의 뷰 중심 <paramref name="p"/> 를 경계 안으로 클램프한 지점.</summary>
+        private Vector2 ClampPoint(Bounds b, Vector2 p, float size)
+        {
+            float halfH = size;
             float halfW = halfH * _cam.aspect;
 
             float minX = b.min.x + halfW, maxX = b.max.x - halfW;
             float minY = b.min.y + halfH, maxY = b.max.y - halfH;
 
-            float x = (minX > maxX) ? b.center.x : Mathf.Clamp(transform.position.x, minX, maxX);
-            float y = (minY > maxY) ? b.center.y : Mathf.Clamp(transform.position.y, minY, maxY);
-            transform.position = new Vector3(x, y, transform.position.z);
+            float x = (minX > maxX) ? b.center.x : Mathf.Clamp(p.x, minX, maxX);
+            float y = (minY > maxY) ? b.center.y : Mathf.Clamp(p.y, minY, maxY);
+            return new Vector2(x, y);
         }
 
         // ── 경계 소스 ─────────────────────────────────────────────────────────

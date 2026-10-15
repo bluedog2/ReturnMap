@@ -22,3 +22,6 @@ MonoBehaviour:
   - mapId: stage_03
     displayName: "\uCC55\uD1301 - \uC678\uACFD \uC131\uBCBD"
     spawnTable: {fileID: 0}
+  - mapId: stage_04
+    displayName: "챕터1 - 함정 회랑"
+    spawnTable: {fileID: 11400000, guid: d72cd73f99e7424abc5042688bc09f1b, type: 2}

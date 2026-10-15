@@ -4995,7 +4995,7 @@ MonoBehaviour:
   detectionWidth: 0.8
   detectionMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1280
   mount: {fileID: 5338773808728463977}
   chain: {fileID: 3585210810619079964}
   impact: {fileID: 5373197217844355371}
