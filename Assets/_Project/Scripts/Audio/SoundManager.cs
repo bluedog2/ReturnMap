@@ -86,6 +86,7 @@ namespace ReTrap
         public int       SfxStealCount      { get; private set; }
         public int       SfxDroppedCount    { get; private set; }
         public SfxId?    LastSfxId          { get; private set; }
+        public AudioClip LastSfxClip        { get; private set; }
 
         /// <summary>현재 재생 중(장부상)인 SFX 보이스 수.</summary>
         public int ActiveSfxVoices
@@ -199,11 +200,21 @@ namespace ReTrap
         /// </summary>
         public bool PlaySfx(SfxId id, Vector3? pos = null)
         {
+            return PlayInternal(id, null, 1f, pos);
+        }
+
+        /// <summary>
+        /// PlaySfx 본체. <paramref name="overrideClips"/> 에 유효 클립이 있으면 그중에서, 없으면 엔트리 클립에서 고른다.
+        /// <paramref name="volScale"/> 은 엔트리 볼륨에 곱하는 배율.
+        /// </summary>
+        private bool PlayInternal(SfxId id, AudioClip[] overrideClips, float volScale, Vector3? pos)
+        {
             if (_entries == null) return false;   // 중복 인스턴스 등 미초기화
 
             int idx = (int)id;
             SfxEntry e = (idx >= 0 && idx < _entries.Length) ? _entries[idx] : null;
-            if (e == null || e.clips == null || e.clips.Length == 0)
+            AudioClip clip = e != null ? PickClip(overrideClips, e.clips) : null;
+            if (clip == null)
             {
                 SfxRejectedCount++;
                 return false;
@@ -211,13 +222,6 @@ namespace ReTrap
 
             float now = Time.unscaledTime;
             if (now - _lastPlay[idx] < e.minInterval)
-            {
-                SfxRejectedCount++;
-                return false;
-            }
-
-            AudioClip clip = e.clips[e.clips.Length == 1 ? 0 : UnityEngine.Random.Range(0, e.clips.Length)];
-            if (clip == null)
             {
                 SfxRejectedCount++;
                 return false;
@@ -241,7 +245,7 @@ namespace ReTrap
             src.Stop();
             if (pos.HasValue) src.transform.position = pos.Value;
             src.clip   = clip;
-            src.volume = e.volume * (MixerBound ? 1f : _master * _sfx);
+            src.volume = e.volume * volScale * (MixerBound ? 1f : _master * _sfx);
             src.pitch  = pitch;
             src.Play();
 
@@ -253,10 +257,39 @@ namespace ReTrap
 
             SfxPlayCount++;
             LastSfxId = id;
+            LastSfxClip = clip;
             return true;
         }
 
         // ── 순수 로직 (테스트 대상) ───────────────────────────────────────────
+
+        /// <summary>
+        /// 클립 선택. overrideClips 에 null 이 아닌 원소가 있으면 그중 무작위, 없으면 entryClips 의 non-null 중 무작위,
+        /// 그래도 없으면 null. 할당 없음(non-null 원소를 두 번 순회).
+        /// </summary>
+        internal static AudioClip PickClip(AudioClip[] overrideClips, AudioClip[] entryClips)
+        {
+            AudioClip c = PickNonNull(overrideClips);
+            return c != null ? c : PickNonNull(entryClips);
+        }
+
+        private static AudioClip PickNonNull(AudioClip[] clips)
+        {
+            if (clips == null) return null;
+            int n = 0;
+            for (int i = 0; i < clips.Length; i++)
+                if (clips[i] != null) n++;
+            if (n == 0) return null;
+
+            int pick = n == 1 ? 0 : UnityEngine.Random.Range(0, n);
+            for (int i = 0; i < clips.Length; i++)
+            {
+                if (clips[i] == null) continue;
+                if (pick == 0) return clips[i];
+                pick--;
+            }
+            return null;
+        }
 
         /// <summary>선형 볼륨(0~1) → dB. 0.0001 이하는 -80.</summary>
         internal static float LinearToDb(float v)
@@ -355,6 +388,17 @@ namespace ReTrap
                         continue;
                     }
                     _entries[idx] = e;
+                }
+            }
+
+            // TrapActivate 정책 엔트리 보장 — config 에 없어도 함정별 클립(TrapDefinition)은 재생되게 한다(클립 없음 → 전역 폴백은 무음).
+            int trapIdx = (int)SfxId.TrapActivate;
+            if (trapIdx >= 0 && trapIdx < idCount && _entries[trapIdx] == null)
+            {
+                var defaults = AudioConfig.DefaultEntries();
+                for (int i = 0; i < defaults.Length; i++)
+                {
+                    if (defaults[i].id == SfxId.TrapActivate) { _entries[trapIdx] = defaults[i]; break; }
                 }
             }
 
@@ -545,7 +589,11 @@ namespace ReTrap
                 float dx = tp.x - lp.x, dy = tp.y - lp.y;
                 if (dx * dx + dy * dy > maxDist * maxDist) return;
             }
-            PlaySfx(SfxId.TrapActivate, trap.transform.position);
+            TrapDefinition def = trap.Definition;
+            PlayInternal(SfxId.TrapActivate,
+                         def != null ? def.ActivateClips : null,
+                         def != null ? def.ActivateVolume : 1f,
+                         trap.transform.position);
         }
 
         private void HandleDamageTaken(PlayerHealth health, int amount)
