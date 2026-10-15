@@ -99,7 +99,9 @@ namespace ReTrap
                 if (successHoldTime > 0f && resultBanner != null)
                 {
                     resultBanner.Show(successMessage, successHoldTime);
-                    yield return new WaitForSecondsRealtime(successHoldTime);
+                    // 배너·카메라 글라이드와 같은 unscaledDeltaTime 누적 — 배속과 무관하고, 녹화(captureDeltaTime 고정)
+                    // 중에도 영상 시간 기준으로 흐른다 (WaitForSecondsRealtime 은 벽시계라 녹화 영상에서 순식간에 지나감)
+                    for (float t = 0f; t < successHoldTime; t += Time.unscaledDeltaTime) yield return null;
                 }
                 ReportSuccess();
             }
