@@ -178,6 +178,11 @@ namespace ReTrap
             if (mount != null)
                 mount.position = new Vector3(ceilingPosition.x, ceilingPosition.y, mount.position.z);
 
+            // 타일 배경도 슬롯 칸에 고정 — 루트 자식이라 그대로 두면 해머와 함께 떨어져 천장 타일이 깜빡여 보인다.
+            var bg = TileBackgroundRenderer;
+            if (bg != null)
+                bg.transform.position = new Vector3(ceilingPosition.x, ceilingPosition.y, bg.transform.position.z);
+
             if (chain == null) return;
 
             float top    = ceilingPosition.y + mountBottomOffset;

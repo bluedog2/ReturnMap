@@ -347,7 +347,7 @@ namespace ReTrap.EditorTools
                 visual.localScale = Vector3.one;
 
                 var mount  = EnsureChildRenderer(root.transform, "Mount",  9,  Vector3.zero);
-                var chain  = EnsureChildRenderer(root.transform, "Chain",  9,  Vector3.zero);
+                var chain  = EnsureChildRenderer(root.transform, "Chain",  8,  Vector3.zero); // 마운트(9) 뒤 — 같은 order 면 겹친 칸이 깜빡임
                 var impact = EnsureChildRenderer(root.transform, "Impact", 12, Vector3.zero);
                 impact.enabled = false;
 

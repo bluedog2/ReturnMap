@@ -130,6 +130,12 @@ namespace ReTrap
         public virtual bool ActsAsSolidTile => true;
 
         /// <summary>
+        /// 함정 셀 타일 배경 렌더러 (없으면 null). 본체가 움직이는 함정(DropHammer)이
+        /// 배경을 슬롯 칸에 고정하기 위해 읽는다.
+        /// </summary>
+        protected SpriteRenderer TileBackgroundRenderer => tileBackground;
+
+        /// <summary>
         /// Beneficial 변이 시 anchor 바깥 방향으로 황금 솔리드 블록(+1칸)을 만드는지.
         /// 자체 보너스가 있는 함정(DropHammer 엘리베이터 등)은 false 로 오버라이드.
         /// </summary>
