@@ -847,6 +847,8 @@ namespace ReTrap.EditorTools
         private const float SettingsRowHeight    = 36f;
         private const float SettingsDropdownWidth  = 240f;
         private const float SettingsDropdownHeight = 36f;
+        /// <summary>드롭다운 목록(Template)이 한 번에 보여줄 항목 수(기본 템플릿 크기로는 글자 20이 잘려 보이지 않음 → 항목 높이를 키움).</summary>
+        private const int   SettingsDropdownVisibleItems = 4;
         private const float SettingsToggleSize   = 28f;
         private const float SettingsCloseWidth   = 140f;
         private const float SettingsCloseHeight  = 40f;
@@ -963,7 +965,27 @@ namespace ReTrap.EditorTools
             }
             ddGo.GetComponent<Image>().color = SettingsControlBackground;
             var template = ddGo.transform.Find("Template");
-            if (template != null) template.GetComponent<Image>().color = SettingsControlBackground;
+            if (template != null)
+            {
+                template.GetComponent<Image>().color = SettingsControlBackground;
+
+                // 항목 라벨 높이가 글자(20)보다 작으면 Truncate 로 글자가 그려지지 않으므로
+                // Item/Content/Template 높이를 드롭다운 본체 높이에 맞춰 키운다(매 실행 재적용 = 멱등).
+                var templateRect = (RectTransform)template;
+                templateRect.sizeDelta = new Vector2(templateRect.sizeDelta.x, SettingsDropdownHeight * SettingsDropdownVisibleItems);
+                Transform content = template.Find("Viewport/Content");
+                if (content != null)
+                {
+                    var contentRect = (RectTransform)content;
+                    contentRect.sizeDelta = new Vector2(contentRect.sizeDelta.x, SettingsDropdownHeight);
+                    Transform item = content.Find("Item");
+                    if (item != null)
+                    {
+                        var itemRect = (RectTransform)item;
+                        itemRect.sizeDelta = new Vector2(itemRect.sizeDelta.x, SettingsDropdownHeight);
+                    }
+                }
+            }
             foreach (var img in ddGo.GetComponentsInChildren<Image>(true))
                 if (img.gameObject.name == "Item Background") img.color = SettingsControlBackground;
             var dropdown = ddGo.GetComponent<Dropdown>();
