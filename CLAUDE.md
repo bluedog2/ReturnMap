@@ -15,6 +15,7 @@ Unity 6 (6000.3.10f1) URP 2D 게임. 2D 샌드박스 퍼즐 플랫포머 + 로�
 |------|----------|------|------|
 | 코드/파일 **탐색**, "어디에 있나", 영향 범위 조사 | `Explore` 또는 `code-explorer` | Sonnet | 넓게 훑는 작업은 싼 모델로 |
 | 코드 **구현·수정** (정의된 작업) | `code-implementer` | Sonnet | 명세가 분명한 변경은 Sonnet으로 충분 |
+| `/spec-cycle` 구현 트랙 구현 | `tools/ai/astra-implement.ps1` → `design-reviewer` 리뷰 | GPT-6 Astra → Opus | Astra 구현을 Opus가 커밋 전 리뷰. Codex INFRA 시에만 `code-implementer` 대체 |
 | **설계 리뷰**, 아키텍처 판단, 트레이드오프, 변경 계획 승인 | `design-reviewer` | Opus | 판단·정확도가 중요한 곳에만 비싼 모델 |
 
 운영 원칙:

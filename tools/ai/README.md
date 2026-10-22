@@ -2,6 +2,8 @@
 
 역할 분담: **Opus**(설계·명세·리뷰·UX) → **GPT-6 Astra**(구현, `astra-implement.ps1`) → **Claude**(CI·커밋·리포트).
 
+`/spec-cycle` 구현 트랙(`.claude/skills/spec-cycle/impl-track.md` ⑪)이 이 흐름을 자동으로 쓴다.
+
 ## 처음 한 번 (사람이)
 
 ```powershell
@@ -31,6 +33,8 @@ powershell -ExecutionPolicy Bypass -File tools\ai\astra-implement.ps1 -Spec SPEC
 | `-Spec` | (필수) | `SPEC-n` / `BUG-n` |
 | `-SpecFile` | (필수) | 구현 명세(마크다운) |
 | `-CiLog` | 없음 | 재시도 시 CI 결과 — 마지막 200줄을 프롬프트에 붙인다 |
+| `-ReviewFile` | 없음 | Opus 리뷰 지적 — 이 지적만 고치게 한다 |
+| `-AllowDirty` | off | 미커밋 구현 위에서 이어서 수정(리뷰 반영용) |
 | `-Model` | `gpt-6-astra` | Codex 모델 ID |
 | `-Worktree` | `..\ReturnMap-spec\<Spec>` | 구현 worktree |
 | `-TimeoutMinutes` | 30 | 초과 시 프로세스 종료 → FAILED |

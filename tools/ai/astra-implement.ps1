@@ -8,6 +8,7 @@
 # 사용:
 #   tools\ai\astra-implement.ps1 -Spec SPEC-9 -SpecFile spec.md
 #   tools\ai\astra-implement.ps1 -Spec SPEC-9 -SpecFile spec.md -CiLog Logs\ci\ci-summary.json   # CI 실패 후 재시도
+#   tools\ai\astra-implement.ps1 -Spec SPEC-9 -SpecFile spec.md -ReviewFile review.md -AllowDirty # Opus 리뷰 지적 반영(미커밋 구현 위에서)
 #   tools\ai\astra-implement.ps1 -Spec SPEC-9 -SpecFile spec.md -DryRun                          # 프롬프트만 출력
 #
 # 전제: Codex CLI 설치·로그인(`npm i -g @openai/codex` → `codex login`), worktree 는 spec-worktree.ps1 로 먼저 생성.
@@ -19,6 +20,8 @@ param(
     [Parameter(Mandatory = $true)][ValidatePattern('^(SPEC|BUG)-\d+$')][string]$Spec,
     [Parameter(Mandatory = $true)][string]$SpecFile,
     [string]$CiLog = '',
+    [string]$ReviewFile = '',
+    [switch]$AllowDirty,
     [string]$Model = 'gpt-6-astra',
     [string]$Worktree = '',
     [int]$TimeoutMinutes = 30,
@@ -57,9 +60,10 @@ $branch = (Invoke-Git -C $Worktree rev-parse --abbrev-ref HEAD).Trim()
 if ($branch -ne "spec/$Spec") { Write-Output "브랜치 불일치: $branch (기대 spec/$Spec)"; Finish 'INFRA' 3 }
 if (-not (Test-Path $SpecFile)) { Write-Output "명세 파일 없음: $SpecFile"; Finish 'INFRA' 3 }
 if ($CiLog -and -not (Test-Path $CiLog)) { Write-Output "CI 로그 없음: $CiLog"; Finish 'INFRA' 3 }
+if ($ReviewFile -and -not (Test-Path $ReviewFile)) { Write-Output "리뷰 파일 없음: $ReviewFile"; Finish 'INFRA' 3 }
 
 $dirty = @(Invoke-Git -C $Worktree status --porcelain)
-if ($dirty.Count -gt 0) { Write-Output "커밋 안 된 변경이 있음 → 먼저 리뷰·커밋 또는 stash"; Finish 'DIRTY' 1 @{ dirty = $dirty } }
+if ($dirty.Count -gt 0 -and -not $AllowDirty) { Write-Output "커밋 안 된 변경이 있음 → 먼저 리뷰·커밋 또는 stash"; Finish 'DIRTY' 1 @{ dirty = $dirty } }
 
 # ── 프롬프트 조립 (Astra 는 CLAUDE.md 를 자동으로 읽지 않으므로 직접 넣는다) ──
 $claudeMd = Get-Content (Join-Path $Worktree 'CLAUDE.md') -Raw -Encoding UTF8
@@ -80,6 +84,7 @@ $prompt = @"
 - 새 .cs 의 .meta 파일은 만들지 않는다(CI 가 생성). 기존 .meta·.unity·.prefab·.asset 은 명세가 요구할 때만 수정.
 - 코드 컨벤션은 아래 [프로젝트 규칙]을 따른다: 네임스페이스 ReTrap, 한글 주석, [SerializeField] private + Header/Tooltip 등.
 - 명세가 모호하면 추측으로 확장하지 말고, 가장 작은 해석으로 구현한 뒤 마지막 보고에 "가정:"으로 적는다.
+- 명세대로는 구현할 수 없거나 새 프리팹·씬·ScriptableObject 에셋이 필요하면, 아무 파일도 고치지 말고 마지막 응답 첫 줄을 "설계로 해결 불가: <사유>" 로 쓴다.
 
 ## 마지막 응답 형식 (한국어)
 변경 파일 목록 / 무엇을 왜 바꿨는지 요약 / 가정: / 확인 필요:
@@ -95,6 +100,14 @@ if ($ciText) {
 
 ## 직전 CI 실패 로그 (마지막 200줄) — 이 실패를 고치는 것만 한다
 $ciText
+"@
+}
+if ($ReviewFile) {
+    $reviewText = Get-Content $ReviewFile -Raw -Encoding UTF8
+    $prompt += @"
+
+## 리뷰 지적 — 현재 worktree 의 미커밋 구현 위에서 이 지적만 고친다
+$reviewText
 "@
 }
 
