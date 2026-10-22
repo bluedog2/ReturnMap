@@ -53,6 +53,15 @@ namespace ReTrap
         [Tooltip("이 함정의 Addressable 프리팹 참조 (TrapBase 포함 필수).")]
         private AssetReferenceGameObject prefabRef;
 
+        [Header("사운드")]
+        [SerializeField]
+        [Tooltip("발동 효과음 후보. 발동할 때마다 무작위로 하나를 고른다. 비우면 전역 TrapActivate 클립으로 폴백.")]
+        private AudioClip[] activateClips;
+
+        [SerializeField, Range(0f, 1f)]
+        [Tooltip("발동 효과음 볼륨 배율(0~1). 전역 TrapActivate 엔트리 볼륨에 곱한다.")]
+        private float activateVolume = 1f;
+
         // ── 공개 프로퍼티 ─────────────────────────────────────────────────────
 
         /// <summary>Build HUD 핫바에 표시할 함정 이름.</summary>
@@ -75,6 +84,19 @@ namespace ReTrap
 
         /// <summary>함정 프리팹 Addressable 참조.</summary>
         public AssetReferenceGameObject PrefabRef => prefabRef;
+
+        /// <summary>발동 효과음 후보. 비어 있으면(또는 null) 전역 폴백.</summary>
+        public AudioClip[] ActivateClips => activateClips;
+
+        /// <summary>발동 효과음 볼륨 배율(0~1).</summary>
+        public float ActivateVolume => activateVolume;
+
+        /// <summary>프로브용 사운드 주입. 에셋 변경 없이 사본(CreateInstance/Instantiate)에 값을 채울 때 사용.</summary>
+        public void ConfigureSound(AudioClip[] clips, float volume)
+        {
+            activateClips = clips;
+            activateVolume = volume;
+        }
 
         /// <summary>해당 anchor 슬롯에 설치 가능한지.</summary>
         public bool IsCompatibleWith(TrapAnchor anchor)
