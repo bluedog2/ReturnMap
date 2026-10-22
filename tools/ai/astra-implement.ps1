@@ -113,8 +113,10 @@ $reviewText
 
 if ($DryRun) { Write-Output $prompt; Finish 'DRYRUN' 0 }
 
-$codex = Get-Command codex -ErrorAction SilentlyContinue
-if (-not $codex) { Write-Output 'codex CLI 없음 (npm i -g @openai/codex → codex login)'; Finish 'INFRA' 3 }
+# PATH 가 설치 이전 상태인 세션(예약 실행)에서도 찾도록 npm 전역 경로를 직접 확인한다
+$codexPath = (Get-Command codex.cmd -ErrorAction SilentlyContinue).Source
+if (-not $codexPath) { $codexPath = Join-Path $env:APPDATA 'npm\codex.cmd' }
+if (-not (Test-Path $codexPath)) { Write-Output 'codex CLI 없음 (npm i -g @openai/codex → codex login)'; Finish 'INFRA' 3 }
 
 # ── 실행: 프롬프트는 stdin 으로 (PS 5.1 기본 ASCII 파이프 → UTF-8 로 고정) ──
 $promptFile = Join-Path $OutDir "astra-$Spec-prompt.md"
@@ -123,8 +125,14 @@ if (Test-Path $LastMsg) { Remove-Item $LastMsg -Force }
 
 $psi = New-Object System.Diagnostics.ProcessStartInfo
 $psi.FileName = 'cmd.exe'
-$psi.Arguments = "/c codex exec -m `"$Model`" -C `"$Worktree`" --sandbox workspace-write -o `"$LastMsg`" - < `"$promptFile`""
+$psi.Arguments = "/s /c `"`"$codexPath`" exec -m `"$Model`" -C `"$Worktree`" --sandbox workspace-write -o `"$LastMsg`" - < `"$promptFile`"`""
+$sw = [System.Diagnostics.Stopwatch]::StartNew()
 $psi.UseShellExecute = $false
+# codex.cmd 는 node 를 PATH 에서 찾는다 → 레지스트리의 최신 PATH 를 앞에 붙여 넘긴다
+$psi.EnvironmentVariables['PATH'] = @(
+    [Environment]::GetEnvironmentVariable('Path', 'Machine'),
+    [Environment]::GetEnvironmentVariable('Path', 'User'),
+    $env:Path) -join ';'
 $psi.RedirectStandardOutput = $true
 $psi.RedirectStandardError = $true
 $psi.StandardOutputEncoding = [System.Text.Encoding]::UTF8
@@ -145,8 +153,15 @@ $allowed = '^(Assets/_Project/(Scripts|Editor|Tests|Settings)/|Assets/_Project/R
 $outside = @($changed | Where-Object { $_ -notmatch $allowed })
 $lastText = if (Test-Path $LastMsg) { Get-Content $LastMsg -Raw -Encoding UTF8 } else { '' }
 
-$extra = @{ exitCode = $proc.ExitCode; changed = $changed; outsideAllowed = $outside; lastMessage = $LastMsg; runLog = $runLog }
+# Codex 출력의 "tokens used\n15,798" → 리포트용 사용량 (없으면 -1)
+$tokens = -1
+$m = [regex]::Match($stdoutTask.Result + "`n" + $stderrTask.Result, 'tokens used\s+([\d,]+)')
+if ($m.Success) { $tokens = [int]($m.Groups[1].Value -replace ',', '') }
+
+$extra = @{ exitCode = $proc.ExitCode; changed = $changed; outsideAllowed = $outside; lastMessage = $LastMsg; runLog = $runLog
+            tokensUsed = $tokens; durationSec = [int]$sw.Elapsed.TotalSeconds }
 Write-Output "CHANGED=$($changed.Count)"
+Write-Output "TOKENS=$tokens"
 if ($outside.Count -gt 0) { Write-Output "OUTSIDE_ALLOWED=$($outside -join ',')" }
 if ($proc.ExitCode -ne 0) { Finish 'FAILED' 1 $extra }
 if ($changed.Count -eq 0) { Finish 'NO_CHANGE' 1 $extra }

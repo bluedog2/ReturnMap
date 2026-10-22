@@ -32,17 +32,18 @@ powershell -ExecutionPolicy Bypass -File tools\ci\spec-worktree.ps1 -Spec SPEC-n
 ```powershell
 powershell -ExecutionPolicy Bypass -File tools\ai\astra-implement.ps1 -Spec SPEC-n -SpecFile Logs\ci-spec\SPEC-n\impl-spec.md -TimeoutMinutes 9
 ```
-마지막 줄 `RESULT=` 와 `Logs\ai\astra-SPEC-n.json`·`astra-SPEC-n-last.md`(Astra 보고)로 판정:
+마지막 줄 `RESULT=` 와 `Logs\ai\astra-SPEC-n.json`·`astra-SPEC-n-last.md`(Astra 보고)로 판정. 실행마다 json 의 `tokensUsed`·`durationSec` 를 기록해 둔다(⑭ 리포트용, 재실행·리뷰 반영·CI 수정 회차 모두 합산):
 | RESULT | 처리 |
 |---|---|
 | `CHANGED` | ⑪-2. `OUTSIDE_ALLOWED=` 가 있으면 리뷰에 같이 넘긴다 |
 | `NO_CHANGE` + 보고 첫 줄 `설계로 해결 불가:` | 질문 DB 에 `설계안 피드백` 질문(`대기`, 사유 인용) → `질문대기`, 메모. 이후 단계 생략 |
-| `NO_CHANGE`(그 외)·`FAILED` | 1회 재실행. 또 실패면 `실패`, 메모 `Astra 구현 실패: <reason/보고 요약>` |
+| `NO_CHANGE`(그 외)·`FAILED` | 중단된 실행의 잔재가 있을 수 있으니 먼저 `spec-worktree.ps1 -Spec SPEC-n -Stash -Message "rev N Astra 실패 잔재"`(변경 없으면 생략) → 1회 재실행. 또 실패면 다시 Stash 후 `실패`, 메모 `Astra 구현 실패: <reason/보고 요약>` (timeout 이면 "설계를 나눠 다시 승인" 안내) |
 | `DIRTY` | ⑩ 의 DIRTY 처리와 같음(`보류`) |
 | `INFRA` | Codex 미설치·로그인 만료 등. 이번 실행만 **`code-implementer`(Sonnet)로 대체**해 같은 명세 파일로 구현하고(git 금지·worktree 밖 수정 금지·설계로 해결 불가 시 멈추고 보고), 리포트·알림에 "Astra INFRA → Sonnet 대체: <message>" |
 
 ### ⑪-2 Opus 리뷰 — `design-reviewer`
-넘길 것: 명세 파일 경로 · `<wt>` (diff 는 `git -C <wt> diff` 와 미추적 파일 — 읽기만, 수정 금지) · Astra 보고 · `OUTSIDE_ALLOWED`.
+`design-reviewer` 는 git 을 실행할 수 없으므로 먼저 diff 를 파일로 만든다: `git -C <wt> diff HEAD > Logs\ci-spec\SPEC-n\review-diff.patch` + `git -C <wt> ls-files --others --exclude-standard` 결과(새 파일 목록)를 `review-files.txt` 로.
+넘길 것: 명세 파일 경로 · `review-diff.patch` · 새 파일 목록(전문은 리뷰어가 `<wt>` 에서 직접 읽음, 수정 금지) · Astra 보고 · `OUTSIDE_ALLOWED`. **main 의 같은 파일과 비교해 정답을 추정하지 말고 명세 기준으로만 판정**하라고 적는다.
 확인 요청: 명세 충족(누락·명세 밖 변경) · CLAUDE.md 컨벤션 · 정확성 버그 · 컴파일 위험 · 테스트가 설계 기준을 실제로 검증하는지. 출력: `판정: 승인 | 수정 필요` + 지적(파일:줄·이유).
 - `승인` → ⑫.
 - `수정 필요` → 지적을 `Logs\ci-spec\SPEC-n\review-k.md` 로 저장 → `astra-implement.ps1 … -ReviewFile <그 파일> -AllowDirty -TimeoutMinutes 9` → 다시 ⑪-2. 리뷰 반복 **최대 2회**, 그래도 `수정 필요`면 `spec-worktree.ps1 -Spec SPEC-n -Stash -Message "rev N 리뷰 미통과"` → `실패`, 메모에 남은 지적 요약.
@@ -94,7 +95,7 @@ powershell -ExecutionPolicy Bypass -File tools\ci\spec-worktree.ps1 -Spec SPEC-n
 ```
 `## 📋 구현 리포트 (Claude)` 섹션은 문서에 **하나만** — 처음이면 끝에 추가, 있으면 **헤딩~문서 끝을 통째로 교체**(fetch 로 현재 텍스트를 얻어 매칭; 어려우면 블록 단위). 내용:
 1. 콜아웃: ✅ PASS / ❌ 실패 / ⏸ 보류 · 설계 rev N · `spec/SPEC-n` · 커밋 sha · 날짜
-2. 변경 파일 요약(`-Commit` 출력·diff 기준) · 구현자(Astra / Sonnet 대체 사유) · Opus 리뷰 반복 횟수와 반영한 지적
+2. 변경 파일 요약(`-Commit` 출력·diff 기준) · 구현자(Astra / Sonnet 대체 사유) · Opus 리뷰 반복 횟수와 반영한 지적 · Astra 토큰·시간 합계(회차별: 구현 / 리뷰 반영 / CI 수정) · Opus 리뷰 토큰(서브에이전트 완료 알림의 `subagent_tokens` 합)
 3. CI(check 별 · 새 경고 — 기준 `Logs\ci\ci-summary.json` 의 commit 이 main 과 같을 때만 비교, 아니면 "비교 기준 없음") · 자동 수정 이력
 4. 프로브: `PASS n/m`, 실패 항목, 픽셀 수치, 버린 측정 횟수, 프로브 수정 내역 · 스모크 결과 · 매핑표 커버리지(수용 기준 중 자동 검증된 비율)
 5. main 대비: `BEHIND`, `CONFLICT`(1 이면 충돌 파일 + "병합 전 main 병합 필요 — 지시하면 Claude 가 spec 브랜치에서 해결")
