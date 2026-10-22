@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using UnityEngine;
 
 namespace ReTrap.Tests
 {
@@ -27,6 +28,24 @@ namespace ReTrap.Tests
         {
             Assert.AreEqual(0f, TrapCooldownGauge.Progress(0f, 0f, 3f));
             Assert.AreEqual(0f, TrapCooldownGauge.Progress(0f, -1f, 3f));
+        }
+
+        [Test]
+        public void PulseAlpha_임계값_미만이면_1()
+        {
+            Assert.AreEqual(1f, TrapCooldownGauge.PulseAlpha(0.79f, 0.8f, Mathf.PI / 12f, 12f, 0.35f), 1e-5f);
+        }
+
+        [Test]
+        public void PulseAlpha_임계값_이상이고_시간이_0이면_1()
+        {
+            Assert.AreEqual(1f, TrapCooldownGauge.PulseAlpha(0.8f, 0.8f, 0f, 12f, 0.35f), 1e-5f);
+        }
+
+        [Test]
+        public void PulseAlpha_임계값_이상이고_시간과_속도의_곱이_파이면_최저_알파()
+        {
+            Assert.AreEqual(0.35f, TrapCooldownGauge.PulseAlpha(0.9f, 0.8f, Mathf.PI / 12f, 12f, 0.35f), 1e-5f);
         }
 
         [Test]

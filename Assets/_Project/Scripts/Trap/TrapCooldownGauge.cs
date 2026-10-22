@@ -42,6 +42,16 @@ namespace ReTrap
         [Tooltip("배경 링(빈 게이지) 색.")]
         [SerializeField] private Color backgroundColor = new Color(0f, 0f, 0f, 0.8f);
 
+        [Header("발사 직전 경고")]
+        [Tooltip("진행도가 이 값 이상이면 깜빡임을 시작한다.")]
+        [SerializeField, Range(0f, 1f)] private float warnThreshold = 0.8f;
+
+        [Tooltip("깜빡임 속도 (라디안/초).")]
+        [SerializeField, Min(0f)] private float pulseSpeed = 12f;
+
+        [Tooltip("깜빡임 최저 알파.")]
+        [SerializeField, Range(0f, 1f)] private float pulseMinAlpha = 0.35f;
+
         // ── 내부 ─────────────────────────────────────────────────────────────
 
         private ArrowShooter  _shooter;
@@ -61,6 +71,12 @@ namespace ReTrap
         /// </summary>
         public static float Progress(float start, float interval, float now)
             => interval <= 0f ? 0f : Mathf.Clamp01((now - start) / interval);
+
+        /// <summary>
+        /// 임계값 미만에서는 1, 이상에서는 시간에 따라 최저 알파와 1 사이를 오가는 깜빡임 알파.
+        /// </summary>
+        public static float PulseAlpha(float progress, float threshold, float time, float speed, float minAlpha)
+            => progress < threshold ? 1f : Mathf.Lerp(minAlpha, 1f, 0.5f + 0.5f * Mathf.Cos(time * speed));
 
         // ── Unity ─────────────────────────────────────────────────────────────
 
@@ -97,7 +113,9 @@ namespace ReTrap
                 transform.position + (Vector3)worldOffset, Quaternion.identity);
 
             _fillImage.fillAmount = _shooter.CycleProgress01;
-            _fillImage.color      = ColorFor(_shooter.CurrentState);
+            Color fillColor = ColorFor(_shooter.CurrentState);
+            fillColor.a *= PulseAlpha(_shooter.CycleProgress01, warnThreshold, Time.time, pulseSpeed, pulseMinAlpha);
+            _fillImage.color = fillColor;
         }
 
         // ── 표시 규칙 ─────────────────────────────────────────────────────────
