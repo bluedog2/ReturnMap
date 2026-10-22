@@ -44,8 +44,8 @@ powershell -ExecutionPolicy Bypass -File tools\ai\astra-implement.ps1 -Spec SPEC
 ### ⑪-2 Opus 리뷰 — `design-reviewer`
 `design-reviewer` 는 git 을 실행할 수 없으므로 먼저 diff 를 파일로 만든다: `git -C <wt> diff HEAD > Logs\ci-spec\SPEC-n\review-diff.patch` + `git -C <wt> ls-files --others --exclude-standard` 결과(새 파일 목록)를 `review-files.txt` 로.
 넘길 것: 명세 파일 경로 · `review-diff.patch` · 새 파일 목록(전문은 리뷰어가 `<wt>` 에서 직접 읽음, 수정 금지) · Astra 보고 · `OUTSIDE_ALLOWED`. **main 의 같은 파일과 비교해 정답을 추정하지 말고 명세 기준으로만 판정**하라고 적는다.
-확인 요청: 명세 충족(누락·명세 밖 변경) · CLAUDE.md 컨벤션 · 정확성 버그 · 컴파일 위험 · 테스트가 설계 기준을 실제로 검증하는지. 출력: `판정: 승인 | 수정 필요` + 지적(파일:줄·이유).
-- `승인` → ⑫.
+확인 요청: 명세 충족(누락·명세 밖 변경) · CLAUDE.md 컨벤션 · 정확성 버그 · 컴파일 위험 · 테스트가 설계 기준을 실제로 검증하는지. 출력: `판정: 승인 | 수정 필요` + 지적(파일:줄·심각도 `차단`/`권장`·이유). `차단` 이 하나라도 있으면 `수정 필요`.
+- `승인` → ⑫. 지적에 `권장` 이 있으면 ⑫ 뒤 ⑫-2 까지(반복 중 어느 회차의 승인이든 마지막 승인 리뷰의 `권장` 만).
 - `수정 필요` → 지적을 `Logs\ci-spec\SPEC-n\review-k.md` 로 저장 → `astra-implement.ps1 … -ReviewFile <그 파일> -AllowDirty -TimeoutMinutes 9` → 다시 ⑪-2. 리뷰 반복 **최대 2회**, 그래도 `수정 필요`면 `spec-worktree.ps1 -Spec SPEC-n -Stash -Message "rev N 리뷰 미통과"` → `실패`, 메모에 남은 지적 요약.
 
 ## ⑫ 커밋
@@ -55,6 +55,18 @@ powershell -ExecutionPolicy Bypass -File tools\ci\spec-worktree.ps1 -Spec SPEC-n
 ```
 메시지: `[SPEC-n] <문서 이름> — 설계 rev N 구현` / 빈 줄 / 변경 요약 2~4줄 + `구현: GPT-6 Astra · 리뷰: Opus 승인(반복 k회)` / 빈 줄 / `Notion: <URL>` / 빈 줄 / `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
 출력의 변경 목록이 의도한 파일뿐인지 확인. `UNTRACKED_LEFT=` 에 코드 파일이 있으면 원인 확인.
+
+### ⑫-2 권장 지적 1회 반영 (리뷰 없이) — 승인 리뷰에 `권장` 이 있을 때만
+승인본을 위 ⑫ 로 **먼저 커밋**해 두고(실패해도 승인본이 남도록), `권장` 지적만 `Logs\ci-spec\SPEC-n\review-advice.md` 로 저장 →
+```powershell
+powershell -ExecutionPolicy Bypass -File tools\ai\astra-implement.ps1 -Spec SPEC-n -SpecFile Logs\ci-spec\SPEC-n\impl-spec.md -ReviewFile Logs\ci-spec\SPEC-n\review-advice.md -TimeoutMinutes 9
+```
+| 결과 | 처리 |
+|---|---|
+| `CHANGED` 이고 `OUTSIDE_ALLOWED` 없음 | 다시 리뷰하지 않고 `-Commit`, 메시지 `[SPEC-n] 리뷰 권장 사항 반영` / 빈 줄 / 반영한 지적 1~3줄 + `구현: GPT-6 Astra · 리뷰 없음(권장 반영)` / 빈 줄 / Co-Authored-By. 검증은 ⑬ CI·프로브·스모크가 맡는다 |
+| `CHANGED` + `OUTSIDE_ALLOWED`, 보고 첫 줄 `설계로 해결 불가:`, `NO_CHANGE`, `FAILED` | 반영 포기: 잔재가 있으면 `-Stash -Message "rev N 권장 반영 포기"` → 승인본 커밋으로 ⑬ 진행. 리포트에 "권장 미반영: <사유>" |
+| `INFRA` | 반영 생략(Sonnet 대체 안 함) → 승인본으로 ⑬. 리포트에 기록 |
+반영은 **1회만**(재실행·재리뷰 없음). ⑬ 에서 실패하면 평소 수정 경로(Astra `-CiLog`, 시도 한도 공유)로 처리하고, 원인이 권장 반영분이면 리포트에 적는다.
 
 ## ⑬ 검증 — 시도 한도: 제품 결함 수정 **총 3회**(CI·프로브 공유)
 `개발 상태=검증중`.
@@ -95,7 +107,7 @@ powershell -ExecutionPolicy Bypass -File tools\ci\spec-worktree.ps1 -Spec SPEC-n
 ```
 `## 📋 구현 리포트 (Claude)` 섹션은 문서에 **하나만** — 처음이면 끝에 추가, 있으면 **헤딩~문서 끝을 통째로 교체**(fetch 로 현재 텍스트를 얻어 매칭; 어려우면 블록 단위). 내용:
 1. 콜아웃: ✅ PASS / ❌ 실패 / ⏸ 보류 · 설계 rev N · `spec/SPEC-n` · 커밋 sha · 날짜
-2. 변경 파일 요약(`-Commit` 출력·diff 기준) · 구현자(Astra / Sonnet 대체 사유) · Opus 리뷰 반복 횟수와 반영한 지적 · Astra 토큰·시간 합계(회차별: 구현 / 리뷰 반영 / CI 수정) · Opus 리뷰 토큰(서브에이전트 완료 알림의 `subagent_tokens` 합)
+2. 변경 파일 요약(`-Commit` 출력·diff 기준) · 구현자(Astra / Sonnet 대체 사유) · Opus 리뷰 반복 횟수와 반영한 지적 · 권장 지적 반영 여부(반영/미반영 사유, 리뷰 없이 커밋됨 표시) · Astra 토큰·시간 합계(회차별: 구현 / 리뷰 반영 / CI 수정) · Opus 리뷰 토큰(서브에이전트 완료 알림의 `subagent_tokens` 합)
 3. CI(check 별 · 새 경고 — 기준 `Logs\ci\ci-summary.json` 의 commit 이 main 과 같을 때만 비교, 아니면 "비교 기준 없음") · 자동 수정 이력
 4. 프로브: `PASS n/m`, 실패 항목, 픽셀 수치, 버린 측정 횟수, 프로브 수정 내역 · 스모크 결과 · 매핑표 커버리지(수용 기준 중 자동 검증된 비율)
 5. main 대비: `BEHIND`, `CONFLICT`(1 이면 충돌 파일 + "병합 전 main 병합 필요 — 지시하면 Claude 가 spec 브랜치에서 해결")
