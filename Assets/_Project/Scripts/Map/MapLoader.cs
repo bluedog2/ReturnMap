@@ -111,6 +111,9 @@ namespace ReTrap
 
         public static MapLoader Instance { get; private set; }
 
+        /// <summary>현재 사용 중인 타일 팔레트 (함정 칸 매립 배경이 지형과 같은 외형을 쓰기 위해 읽음).</summary>
+        public TilePaletteConfig Palette => _palette;
+
         // ── Unity ─────────────────────────────────────────────────────────────
 
         private void Awake()

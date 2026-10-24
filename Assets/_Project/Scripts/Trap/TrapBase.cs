@@ -224,10 +224,18 @@ namespace ReTrap
         // ── Unity ─────────────────────────────────────────────────────────────
 
         /// <summary>레지스트리 자기 등록. 서브클래스 오버라이드 시 base 호출 필수.</summary>
-        protected virtual void OnEnable()  => _activeTraps.Add(this);
+        protected virtual void OnEnable()
+        {
+            _activeTraps.Add(this);
+            GamePhaseManager.OnPhaseChanged += HandlePhaseChanged;
+        }
 
         /// <summary>레지스트리 등록 해제. 서브클래스 오버라이드 시 base 호출 필수.</summary>
-        protected virtual void OnDisable() => _activeTraps.Remove(this);
+        protected virtual void OnDisable()
+        {
+            _activeTraps.Remove(this);
+            GamePhaseManager.OnPhaseChanged -= HandlePhaseChanged;
+        }
 
         protected virtual void Awake()
         {
@@ -249,6 +257,17 @@ namespace ReTrap
             // 틴트 대상 수집 + 원본 색 저장
             if (tintTargets == null || tintTargets.Length == 0)
                 tintTargets = GetComponentsInChildren<SpriteRenderer>(true);
+
+            // 매립 덮개(tileBackground)는 황금 틴트 대상에서 제외 —
+            // 함정 칸 자체가 금색으로 칠해지면 황금 블록이 2칸처럼 보인다.
+            if (tileBackground != null)
+            {
+                var noBg = new List<SpriteRenderer>(tintTargets.Length);
+                for (int i = 0; i < tintTargets.Length; i++)
+                    if (tintTargets[i] != null && tintTargets[i] != tileBackground)
+                        noBg.Add(tintTargets[i]);
+                tintTargets = noBg.ToArray();
+            }
 
             // 상태 전용 스프라이트가 바인딩된 렌더러는 황금 틴트 대상에서 제외 (원본 색 저장 전에 수행)
             _stateVisuals = GetComponent<TrapStateVisuals>();
@@ -519,20 +538,48 @@ namespace ReTrap
         /// 설치된 anchor 의 부착면(바닥/벽/천장)에 맞는 타일 스프라이트를 배경에 깔고
         /// 1셀 크기에 맞게 스케일을 보정합니다. 함정이 지형에 박혀 보이도록 합니다.
         /// </summary>
-        private void RefreshTileBackground()
+        private void RefreshTileBackground() => RefreshTileBackground(null);
+
+        /// <summary>페이즈 전환 시 지형 타일과 같은 페이즈 스프라이트로 갱신.</summary>
+        private void HandlePhaseChanged(GamePhase phase) => RefreshTileBackground(phase);
+
+        private void RefreshTileBackground(GamePhase? phaseArg)
         {
             if (tileBackground == null) return;
 
-            Sprite sp = InstalledAnchor switch
+            // 팔레트의 지형 타일 스프라이트(페이즈별)를 우선 사용 — 매립 덮개가 주변 지형과 이어져 보이게
+            TilePaletteConfig palette = MapLoader.Instance != null ? MapLoader.Instance.Palette : null;
+            Sprite sp = null;
+            if (palette != null)
             {
-                TrapAnchor.Ceiling   => bgCeilingSprite,
-                TrapAnchor.LeftWall  => bgWallSprite,
-                TrapAnchor.RightWall => bgWallSprite,
-                _                    => bgFloorSprite,
-            };
+                GamePhase phase = phaseArg
+                    ?? (GamePhaseManager.Instance != null ? GamePhaseManager.Instance.currentPhase : GamePhase.Play);
+                TileType type = InstalledAnchor switch
+                {
+                    TrapAnchor.Ceiling   => TileType.Ceiling,
+                    TrapAnchor.LeftWall  => TileType.Wall,
+                    TrapAnchor.RightWall => TileType.Wall,
+                    _                    => TileType.Floor,
+                };
+                sp = palette.GetSprite(type, phase);
+                if (sp != null && palette.SharedMaterial != null)
+                    tileBackground.sharedMaterial = palette.SharedMaterial;
+            }
 
-            // 해당 anchor 스프라이트가 비어 있으면 사용 가능한 것으로 폴백
-            if (sp == null) sp = bgFloorSprite ?? bgWallSprite ?? bgCeilingSprite;
+            // 팔레트가 없거나 스프라이트가 비면 기존 고정 스프라이트로 폴백
+            if (sp == null)
+            {
+                sp = InstalledAnchor switch
+                {
+                    TrapAnchor.Ceiling   => bgCeilingSprite,
+                    TrapAnchor.LeftWall  => bgWallSprite,
+                    TrapAnchor.RightWall => bgWallSprite,
+                    _                    => bgFloorSprite,
+                };
+
+                // 해당 anchor 스프라이트가 비어 있으면 사용 가능한 것으로 폴백
+                if (sp == null) sp = bgFloorSprite ?? bgWallSprite ?? bgCeilingSprite;
+            }
 
             tileBackground.sprite = sp;
             tileBackground.enabled = sp != null;

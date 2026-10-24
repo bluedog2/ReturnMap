@@ -208,7 +208,24 @@ namespace ReTrap.EditorTools
                 visual.localScale = Vector3.one;
 
                 // 하우징(정적, 가시 Visual 의 형제) — 캔버스 하단 = 셀 하단(-0.5)
+                // 가시 매립 방식으로 전환 — Housing 은 더 이상 쓰지 않는다(바인딩·flip 에서 제외, 비활성).
                 var housing = EnsureChildRenderer(root.transform, "Housing", 11, Vector3.zero);
+                housing.gameObject.SetActive(false);
+
+                // 매립 덮개: 지형 타일 모양 TileBackground 를 가시(10) 위(12)에 덮어 가시가 타일에서 솟는 것처럼 보이게 한다.
+                // "타일=0" 소팅 원칙의 의도적 예외. (이름 변경 금지 — BuildHudController 가 이름으로 아이콘에서 제외)
+                var tileBg = root.transform.Find("TileBackground");
+                if (tileBg != null)
+                {
+                    var tileBgSr = tileBg.GetComponent<SpriteRenderer>();
+                    if (tileBgSr != null)
+                    {
+                        tileBgSr.sortingLayerName = "Map";
+                        tileBgSr.sortingOrder     = 12;
+                    }
+                }
+                else
+                    Debug.LogWarning("[TrapStateVisualSetup] SpikeTrap: TileBackground 자식이 없습니다.");
                 // 글로우(Critical/Beneficial 만)
                 var glow = EnsureChildRenderer(root.transform, "Glow", 9, Vector3.zero);
                 glow.color = new Color(1f, 1f, 1f, 0.6f);
@@ -224,22 +241,23 @@ namespace ReTrap.EditorTools
                 WriteBindings(root, new List<BindingSpec>
                 {
                     new BindingSpec { target = visualSr, sprites = spikes },
-                    new BindingSpec { target = housing,  sprites = bases  },
                     new BindingSpec { target = glow,     sprites = glows  },
                 });
 
                 // 초기(미변이) 표시도 Normal 에 맞춰 둔다
                 visualSr.sprite  = spikes[0];
-                housing.sprite   = bases[0];
                 glow.sprite      = null;
                 glow.enabled     = false;
+
+                float spikeTip = MeasureSpikeTip(visual.localScale.y);
 
                 var trap = root.GetComponent<SpikeTrap>();
                 if (trap != null)
                 {
                     var so = new SerializedObject(trap);
                     so.FindProperty("beneficialColor").colorValue = Color.white;
-                    SetObjectArray(so.FindProperty("flipWithAnchor"), new Object[] { housing, glow });
+                    SetObjectArray(so.FindProperty("flipWithAnchor"), new Object[] { glow });
+                    if (spikeTip > 0f) so.FindProperty("spikeTipLocalY").floatValue = spikeTip;
                     SetObject(so, "beneficialBlockSprite", platformBeneficial);
                     so.ApplyModifiedPropertiesWithoutUndo();
                 }
@@ -247,6 +265,44 @@ namespace ReTrap.EditorTools
                 PrefabUtility.SaveAsPrefabAsset(root, path);
             }
             finally { PrefabUtility.UnloadPrefabContents(root); }
+        }
+
+        /// <summary>
+        /// Normal 가시 PNG 의 불투명 최상단까지 높이(Visual 피벗 기준, 유닛)를 잰다. 실패 시 0.
+        /// 다른 상태 가시와 끝 높이가 다르거나 불투명 높이가 extendHeight 보다 작으면 경고.
+        /// </summary>
+        private static float MeasureSpikeTip(float visualScaleY)
+        {
+            const float extendHeight = 0.4f; // SpikeTrap.extendHeight 기본값
+            float tipNormal = 0f;
+            float[] tips = new float[States.Length];
+
+            for (int i = 0; i < States.Length; i++)
+            {
+                string p = PartPath("spike", States[i], "spikes");
+                var sp = LoadSprite(p);
+                if (sp == null || !TryGetAlphaBounds(p, out RectInt bb, out _))
+                {
+                    Debug.LogWarning($"[TrapStateVisualSetup] 가시 끝 높이 측정 실패: {p}");
+                    continue;
+                }
+
+                float ppu   = sp.pixelsPerUnit > 0f ? sp.pixelsPerUnit : PixelsPerUnit(p);
+                // 스프라이트 rect 기준 피벗(px) — 단일 전체 rect 면 텍스처 좌표와 동일
+                float pivotY = sp.rect.y + sp.pivot.y;
+                tips[i] = ((bb.yMax) - pivotY) / ppu * visualScaleY;
+
+                float opaqueH = bb.height / ppu * visualScaleY;
+                if (opaqueH < extendHeight)
+                    Debug.LogWarning($"[TrapStateVisualSetup] {States[i]} 가시 불투명 높이 {opaqueH:F3} < extendHeight {extendHeight} ({p})");
+            }
+
+            tipNormal = tips[0];
+            for (int i = 1; i < tips.Length; i++)
+                if (tips[i] > 0f && Mathf.Abs(tips[i] - tipNormal) > 2f / 384f)
+                    Debug.LogWarning($"[TrapStateVisualSetup] {States[i]} 가시 끝 높이 {tips[i]:F3} 가 Normal {tipNormal:F3} 과 다릅니다 (2px 초과).");
+
+            return tipNormal;
         }
 
         // ── 3. ArrowShooter ───────────────────────────────────────────────────

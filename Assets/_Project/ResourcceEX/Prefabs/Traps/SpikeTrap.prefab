@@ -4982,9 +4982,10 @@ MonoBehaviour:
   baseCost: 10
   spikeVisual: {fileID: 8136893130560315858}
   extendHeight: 0.4
+  spikeTipLocalY: 0.296875
+  retractedReveal: 0.08
   isFlipped: 0
   flipWithAnchor:
-  - {fileID: 406793652178937102}
   - {fileID: 1953553352187169143}
   normalCycleDuration: 2
   cycleDuration: 1
@@ -5008,13 +5009,6 @@ MonoBehaviour:
       dud: {fileID: 21300000, guid: 31b123f50c4606986be057f4e98009d4, type: 3}
       critical: {fileID: 21300000, guid: 814bb99ab5e01d8e245f7ef6739525e7, type: 3}
       beneficial: {fileID: 21300000, guid: e8dc29b69123bfd28641f381d3c6c5f3, type: 3}
-    transient: 0
-  - target: {fileID: 406793652178937102}
-    sprites:
-      normal: {fileID: 21300000, guid: 90ad100627043e8efc9368be6e0a6d21, type: 3}
-      dud: {fileID: 21300000, guid: d4dc048e28e188fbd4438621e21b23e6, type: 3}
-      critical: {fileID: 21300000, guid: 9fa4a13d261ed7e70a76246f59659b7f, type: 3}
-      beneficial: {fileID: 21300000, guid: 2cbe3f51fb50d7d7620f30d3f7d14228, type: 3}
     transient: 0
   - target: {fileID: 1953553352187169143}
     sprites:
@@ -5368,7 +5362,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 311294878
   m_SortingLayer: 1
-  m_SortingOrder: 1
+  m_SortingOrder: 12
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 5ca3c53d6eb591848987e7240cd02fda, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -10232,7 +10226,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5734451377087555838
 Transform:
   m_ObjectHideFlags: 0

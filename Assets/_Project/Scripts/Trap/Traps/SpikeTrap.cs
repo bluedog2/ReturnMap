@@ -33,6 +33,15 @@ namespace ReTrap
         private float extendHeight = 0.4f;
 
         [SerializeField]
+        [Tooltip("Visual 피벗에서 가시 끝까지의 높이(유닛). 에디터 세팅이 PNG 에서 측정해 기록. " +
+                 "0 이하 = 미측정 → 기존 공식(extendHeight 기반)으로 배치.")]
+        private float spikeTipLocalY;
+
+        [SerializeField, Min(0f)]
+        [Tooltip("수축 상태에서 가시 끝이 셀 표면 밖으로 살짝 보이는 높이(유닛). 측정값이 있을 때만 사용.")]
+        private float retractedReveal = 0.08f;
+
+        [SerializeField]
         [Tooltip("천장에 설치 시 true — 가시가 아래 방향으로 돌출.")]
         private bool isFlipped = false;
 
@@ -104,8 +113,20 @@ namespace ReTrap
             // isFlipped=true(천장) : 표면 = -0.5, 돌출 = 아래쪽
             float sign = isFlipped ? -1f : 1f;
 
-            extendedY  = sign * (0.5f + extendHeight * 0.5f);
-            retractedY = extendedY - sign * extendHeight;
+            // 데미지 트리거 위치(시각과 분리 — 판정은 항상 동일)
+            float triggerY = sign * (0.5f + extendHeight * 0.5f);
+
+            if (spikeTipLocalY > 0f)
+            {
+                // 측정된 가시 끝 높이 기준: 돌출 시 끝이 표면 + extendHeight, 수축 시 표면 + retractedReveal
+                extendedY  = sign * (0.5f + extendHeight   - spikeTipLocalY);
+                retractedY = sign * (0.5f + retractedReveal - spikeTipLocalY);
+            }
+            else
+            {
+                extendedY  = triggerY;
+                retractedY = extendedY - sign * extendHeight;
+            }
 
             // 천장이면 가시·하우징·글로우 스프라이트를 상하 반전 (프리팹 루트는 회전/스케일하지 않음)
             if (spikeRenderer != null) spikeRenderer.flipY = isFlipped;
@@ -117,7 +138,7 @@ namespace ReTrap
             if (DamageArea is BoxCollider2D box)
             {
                 box.size   = new Vector2(0.8f, extendHeight);
-                box.offset = new Vector2(0f, extendedY);
+                box.offset = new Vector2(0f, triggerY);
             }
         }
 

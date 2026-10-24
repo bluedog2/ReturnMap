@@ -125,6 +125,13 @@ namespace ReTrap
         {
             // 넉백 경직 중 착지는 Hit 모션을 유지 (넉백 종료 후 KnockbackState 가 복귀 처리)
             if (Controller.IsKnockedBack) return;
+
+            // 이동 입력이 있으면 착지 모션을 건너뛰고 바로 Run (착지 후 미끄러지는 느낌 방지)
+            if (Mathf.Abs(Controller.MoveInput.x) > 0.01f)
+            {
+                TransitionTo(PlayerAnimState.Run);
+                return;
+            }
             TransitionTo(PlayerAnimState.Land);
         }
         private void HandleDashEnd()
@@ -279,6 +286,21 @@ namespace ReTrap
 
         public void OnUpdate()
         {
+            var c = fsm.Controller;
+
+            // 착지 모션 중 다시 공중에 뜨면(점프·낙하) 해당 상태로 즉시 전환
+            if (!c.IsGrounded)
+            {
+                fsm.TransitionTo(c.Velocity.y > 0.1f ? PlayerAnimState.JumpStart : PlayerAnimState.JumpLoop);
+                return;
+            }
+            // 이동 입력이 시작되면 모션 완료를 기다리지 않고 즉시 Run
+            if (Mathf.Abs(c.MoveInput.x) > 0.01f)
+            {
+                fsm.TransitionTo(PlayerAnimState.Run);
+                return;
+            }
+
             timer -= Time.deltaTime;
             if (timer <= 0f)
                 fsm.TransitionTo(Mathf.Abs(fsm.Controller.MoveInput.x) > 0.01f
