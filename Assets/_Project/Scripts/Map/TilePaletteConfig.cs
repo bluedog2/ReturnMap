@@ -26,6 +26,9 @@ namespace ReTrap
                  "런타임은 MapLoader 가 Preload 후 캐시에서 조회, 에디터는 editorAsset 동기 접근.")]
         public AssetReferenceSprite spriteRef;
 
+        [Tooltip("빌드·검증 페이즈용 스프라이트(선택). 비우면 spriteRef 사용.")]
+        public AssetReferenceSprite buildSpriteRef;
+
         [Tooltip("스프라이트가 비어있을 때 에디터 셀에 채울 색입니다.")]
         public Color      fallbackColor = Color.gray;
 
@@ -54,6 +57,34 @@ namespace ReTrap
 
         [Tooltip("슬롯 마커에 곱할 색. 반투명 주황 권장 (alpha 0.6).")]
         public Color      tint = TilePaletteConfig.DefaultSlotTint;
+    }
+
+    /// <summary>패럴랙스 배경 1개 층의 스프라이트와 스크롤 설정.</summary>
+    [Serializable]
+    public class ParallaxLayer
+    {
+        [Tooltip("층 스프라이트 (Addressable). 가로로 이어붙여(Tiled) 반복됩니다. 비우면 이 층은 그려지지 않습니다.")]
+        public AssetReferenceSprite spriteRef;
+
+        [Tooltip("가로 패럴랙스 계수. 0 에 가까울수록 멀리(카메라와 함께 움직여 거의 고정), 클수록 가까이(월드와 함께 밀림).")]
+        public float factor;
+
+        [Tooltip("자동 스크롤 속도 (월드 유닛/초). 0 이면 정지. 구름 등 흐르는 원경용.")]
+        public float autoScroll;
+
+        [Tooltip("세로 패럴랙스 계수. 카메라가 맵 중심 높이에서 벗어난 만큼 곱해 층을 밀어냅니다.")]
+        public float verticalFactor;
+    }
+
+    /// <summary>원경(far)·근경(near) 2층으로 이루어진 패럴랙스 세트.</summary>
+    [Serializable]
+    public class ParallaxSet
+    {
+        [Tooltip("원경 층 (느리게 밀림).")]
+        public ParallaxLayer far  = new ParallaxLayer { factor = 0.15f, autoScroll = 0.05f, verticalFactor = 0.05f };
+
+        [Tooltip("근경 층 (원경보다 빠르게 밀림).")]
+        public ParallaxLayer near = new ParallaxLayer { factor = 0.45f, autoScroll = 0f,    verticalFactor = 0.05f };
     }
 
     // ═══════════════════════════════════════════════════════════════════════════
@@ -94,6 +125,17 @@ namespace ReTrap
                  "맵 데이터의 background 인덱스 = 이 목록 인덱스+1 (0=없음). 순서를 바꾸면 기존 맵이 어긋나니 끝에 추가만 권장.")]
         [SerializeField] private List<AssetReferenceSprite> backgroundTiles = new List<AssetReferenceSprite>();
 
+        [Header("배경")]
+        [Tooltip("true 면 맵 JSON 의 타일 격자 배경을 그립니다. false(기본)면 격자 배경은 생략하고 패럴랙스 배경만 사용합니다.")]
+        [SerializeField] private bool renderTileBackground = false;
+
+        [Header("패럴랙스 배경")]
+        [Tooltip("빌드·검증 페이즈 공용 패럴랙스 세트.")]
+        [SerializeField] private ParallaxSet verificationParallax = new ParallaxSet();
+
+        [Tooltip("플레이 페이즈 패럴랙스 세트.")]
+        [SerializeField] private ParallaxSet playParallax = new ParallaxSet();
+
         [Header("슬롯 봉인 타일 (Play 중 빈 슬롯을 막는 타일)")]
         [Tooltip("봉인 타일 전용 스프라이트 (Addressable). 비워두면 anchor 에 맞는 일반 타일 스프라이트를 사용합니다.")]
         [SerializeField] private AssetReferenceSprite sealRef;
@@ -123,6 +165,8 @@ namespace ReTrap
         // ── 어드레서블 런타임 캐시 (PreloadRoutine 이 채움) ──────────────────
 
         private Dictionary<TileType,   Sprite>     _loadedSprites;
+        private Dictionary<TileType,   Sprite>     _loadedBuildSprites;
+        private Dictionary<ParallaxLayer, Sprite>  _loadedParallax;
         private Dictionary<TileType,   GameObject> _loadedPrefabs;
         private Dictionary<TrapAnchor, Sprite>     _loadedSlotSprites;
         private Dictionary<int,        Sprite>     _loadedBackgrounds;
@@ -135,6 +179,9 @@ namespace ReTrap
         public string   TileSortingLayer => tileSortingLayer;
         public int      TileSortingOrder => tileSortingOrder;
         public int      SlotSortingOrder => slotSortingOrder;
+
+        /// <summary>true 면 맵 JSON 의 타일 격자 배경을 그립니다 (기본 false).</summary>
+        public bool     RenderTileBackground => renderTileBackground;
 
         /// <summary>봉인 타일 전용 스프라이트. null 이면 일반 타일 스프라이트 폴백.</summary>
         public Sprite SealSprite => ResolveSprite(SealRef, _loadedSeal);
@@ -163,6 +210,8 @@ namespace ReTrap
             BuildCache();
 
             _loadedSprites     = new Dictionary<TileType, Sprite>();
+            _loadedBuildSprites = new Dictionary<TileType, Sprite>();
+            _loadedParallax    = new Dictionary<ParallaxLayer, Sprite>();
             _loadedPrefabs     = new Dictionary<TileType, GameObject>();
             _loadedSlotSprites = new Dictionary<TrapAnchor, Sprite>();
             _loadedBackgrounds = new Dictionary<int, Sprite>();
@@ -173,8 +222,19 @@ namespace ReTrap
                 {
                     TileType t = v.type;
                     if (RefValid(v.spriteRef)) loader.Load(v.spriteRef, s => _loadedSprites[t] = s);
+                    if (RefValid(v.buildSpriteRef)) loader.Load(v.buildSpriteRef, s => _loadedBuildSprites[t] = s);
                     if (RefValid(v.prefabRef)) loader.Load(v.prefabRef, p => _loadedPrefabs[t] = p);
                 }
+
+            foreach (var set in new[] { verificationParallax, playParallax })
+            {
+                if (set == null) continue;
+                foreach (var layer in new[] { set.far, set.near })
+                {
+                    var l = layer;
+                    if (l != null && RefValid(l.spriteRef)) loader.Load(l.spriteRef, s => _loadedParallax[l] = s);
+                }
+            }
 
             if (slotMarkers != null)
                 foreach (var s in slotMarkers)
@@ -213,6 +273,8 @@ namespace ReTrap
         public void ClearCache()
         {
             _loadedSprites?.Clear();
+            _loadedBuildSprites?.Clear();
+            _loadedParallax?.Clear();
             _loadedPrefabs?.Clear();
             _loadedSlotSprites?.Clear();
             _loadedBackgrounds?.Clear();
@@ -299,6 +361,43 @@ namespace ReTrap
             if (v == null) return null;
             return ResolveSprite(v.spriteRef,
                 _loadedSprites != null && _loadedSprites.TryGetValue(type, out var s) ? s : null);
+        }
+
+        /// <summary>
+        /// 페이즈별 스프라이트. Play 가 아니고 빌드용 스프라이트가 로드돼 있으면 그것, 아니면 <see cref="GetSprite(TileType)"/>.
+        /// </summary>
+        public Sprite GetSprite(TileType type, GamePhase phase)
+        {
+            if (phase != GamePhase.Play)
+            {
+                var v = TileEntry(type);
+                if (v != null)
+                {
+                    var b = ResolveSprite(v.buildSpriteRef,
+                        _loadedBuildSprites != null && _loadedBuildSprites.TryGetValue(type, out var s) ? s : null);
+                    if (b != null) return b;
+                }
+            }
+            return GetSprite(type);
+        }
+
+        // ── 공개 API — 패럴랙스 ──────────────────────────────────────────────
+
+        /// <summary>페이즈에 맞는 패럴랙스 층 설정. Play 면 playParallax, 그 외 verificationParallax.</summary>
+        public ParallaxLayer GetParallaxLayer(GamePhase phase, bool near)
+        {
+            var set = phase == GamePhase.Play ? playParallax : verificationParallax;
+            if (set == null) return null;
+            return near ? set.near : set.far;
+        }
+
+        /// <summary>페이즈에 맞는 패럴랙스 층 스프라이트. 미설정·미로드면 null.</summary>
+        public Sprite GetParallaxSprite(GamePhase phase, bool near)
+        {
+            var layer = GetParallaxLayer(phase, near);
+            if (layer == null) return null;
+            return ResolveSprite(layer.spriteRef,
+                _loadedParallax != null && _loadedParallax.TryGetValue(layer, out var s) ? s : null);
         }
 
         /// <summary>폴백 색. 엔트리 없으면 마젠타 (Inspector 에서 눈에 띄도록).</summary>

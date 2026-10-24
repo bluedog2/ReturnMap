@@ -88,6 +88,10 @@ namespace ReTrap
         /// <summary>현재 <see cref="_assetLoader"/> 에 로드돼 있는 팔레트. 같은 팔레트 재로드 시 중복 로드 방지.</summary>
         private TilePaletteConfig _loadedPalette;
 
+        /// <summary>페이즈에 따라 스프라이트를 교체할 절차적 지형 타일 (프리팹 오버라이드 타일은 제외).</summary>
+        private readonly List<(SpriteRenderer sr, TileType type)> _phaseTiles
+            = new List<(SpriteRenderer sr, TileType type)>();
+
         // ── 이벤트 ────────────────────────────────────────────────────────────
 
         /// <summary>맵 빌드 완료 후 발행. MapData 를 인자로 전달합니다.</summary>
@@ -120,6 +124,9 @@ namespace ReTrap
 
             EnsureMapRoot();
         }
+
+        private void OnEnable()  => GamePhaseManager.OnPhaseChanged += HandlePhaseChanged;
+        private void OnDisable() => GamePhaseManager.OnPhaseChanged -= HandlePhaseChanged;
 
         private void Start()
         {
@@ -226,7 +233,9 @@ namespace ReTrap
                     }
 
                     // 배경: 이 맵이 실제 사용하는 인덱스만 로드 (종류가 수백 개여도 화면에 쓰는 것만)
-                    _palette.LoadBackgrounds(_assetLoader, CollectUsedBackgrounds(map));
+                    // (타일 격자 배경을 끈 팔레트면 생략)
+                    if (_palette.RenderTileBackground)
+                        _palette.LoadBackgrounds(_assetLoader, CollectUsedBackgrounds(map));
 
                     yield return StartCoroutine(_assetLoader.WaitAll());
                 }
@@ -267,7 +276,8 @@ namespace ReTrap
             SetupTerrainPhysics();
 
             // ── 1.5. 배경 레이어 (충돌 없는 장식, 소팅 뒤) ───────────────────
-            BuildBackground(map, origin);
+            if (_palette != null && _palette.RenderTileBackground)
+                BuildBackground(map, origin);
 
             // ── 2. 타일 생성 ─────────────────────────────────────────────────
             for (int y = 0; y < map.height; y++)
@@ -294,6 +304,58 @@ namespace ReTrap
 
             // ── 4. 카메라 경계 동기화 ─────────────────────────────────────────
             CameraConfinerSync.Instance?.SetFromMap(map, origin);
+
+            // ── 5. 패럴랙스 배경 (mapRoot 자식 — 언로드 시 함께 정리) ──────────
+            BuildParallax(map, origin);
+        }
+
+        /// <summary>
+        /// 패럴랙스 배경 루트를 만들고 <see cref="ParallaxBackground"/> 를 부착합니다.
+        /// 패럴랙스 스프라이트가 하나도 없고 타일 격자 배경도 꺼져 있으면 배경이 비므로 경고합니다.
+        /// </summary>
+        private void BuildParallax(MapData map, Vector2 origin)
+        {
+            if (_palette == null) return;
+
+            bool any = false;
+            foreach (GamePhase ph in new[] { GamePhase.Verification, GamePhase.Play })
+                any |= _palette.GetParallaxSprite(ph, false) != null || _palette.GetParallaxSprite(ph, true) != null;
+
+            if (!any && !_palette.RenderTileBackground)
+                Debug.LogWarning("[MapLoader] 패럴랙스 스프라이트가 없고 타일 격자 배경도 꺼져 있어 배경이 비어 보입니다. " +
+                                 "ReTrap → Setup → 패럴랙스 배경 세팅을 실행하세요.");
+
+            var go = new GameObject("ParallaxRoot");
+            go.transform.SetParent(_mapRoot, false);
+            var pb = go.AddComponent<ParallaxBackground>();
+            pb.Init(_palette, origin.y + map.height * map.tileUnit * 0.5f);
+        }
+
+        /// <summary>페이즈 전환 시 절차적 지형 타일 스프라이트를 페이즈용으로 교체합니다.</summary>
+        private void HandlePhaseChanged(GamePhase phase)
+        {
+            if (_palette == null) return;
+            foreach (var (sr, type) in _phaseTiles)
+            {
+                if (sr == null) continue; // 언로드로 파괴됨
+                Sprite sp = _palette.GetSprite(type, phase);
+                if (sp == null) continue;
+                sr.sprite = sp;
+                sr.color  = Color.white; // 폴백 색상 블록이었던 경우 대비
+                FitToCell(sr, CurrentMap != null ? CurrentMap.tileUnit : 1f);
+            }
+        }
+
+        private GamePhase CurrentPhaseOrPlay()
+            => GamePhaseManager.Instance != null ? GamePhaseManager.Instance.currentPhase : GamePhase.Play;
+
+        /// <summary>PPU·해상도가 제각각인 스프라이트도 정확히 1셀(tileUnit)을 채우도록 Visual 스케일 보정.</summary>
+        private static void FitToCell(SpriteRenderer sr, float tileUnit)
+        {
+            Vector2 spriteWorld = sr.sprite.bounds.size;
+            if (spriteWorld.x > 0.0001f && spriteWorld.y > 0.0001f)
+                sr.transform.localScale = new Vector3(
+                    tileUnit / spriteWorld.x, tileUnit / spriteWorld.y, 1f);
         }
 
         /// <summary>
@@ -429,7 +491,7 @@ namespace ReTrap
             visual.transform.SetParent(go.transform, false);
 
             var sr     = visual.AddComponent<SpriteRenderer>();
-            Sprite sp  = _palette != null ? _palette.GetSprite(type) : null;
+            Sprite sp  = _palette != null ? _palette.GetSprite(type, CurrentPhaseOrPlay()) : null;
             sr.sprite  = sp;
             sr.color   = sp != null ? Color.white
                         : (_palette != null ? _palette.GetColor(type)
@@ -449,10 +511,11 @@ namespace ReTrap
                 sr.sprite = GetFallbackSprite();
 
             // PPU·해상도가 제각각인 스프라이트도 정확히 1셀(tileUnit)을 채우도록 스케일 보정
-            Vector2 spriteWorld = sr.sprite.bounds.size;
-            if (spriteWorld.x > 0.0001f && spriteWorld.y > 0.0001f)
-                visual.transform.localScale = new Vector3(
-                    map.tileUnit / spriteWorld.x, map.tileUnit / spriteWorld.y, 1f);
+            FitToCell(sr, map.tileUnit);
+
+            // 페이즈별 스프라이트 교체 대상으로 등록 (프리팹 경로는 제외)
+            if (_palette != null)
+                _phaseTiles.Add((sr, type));
 
             // 솔리드 타일 → BoxCollider2D (부모 go, 스케일 1 → 루트 CompositeCollider2D 로 병합)
             if (_palette != null && _palette.IsSolid(type))
@@ -587,6 +650,7 @@ namespace ReTrap
 
         private IEnumerator UnloadRoutine()
         {
+            _phaseTiles.Clear();
             for (int i = _mapRoot.childCount - 1; i >= 0; i--)
                 Destroy(_mapRoot.GetChild(i).gameObject);
 

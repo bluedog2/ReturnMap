@@ -1,0 +1,163 @@
+{
+    "tool":  "image_gen (built-in)",
+    "images":  [
+                   {
+                       "file":  "Chapter1/Verification/far.png",
+                       "transparent":  false,
+                       "prompt":  "Use case: stylized-concept. Create ONE production parallax background PNG for Re:Trap, a 2D pixel-art platformer about reclaiming a fallen medieval castle. Landscape canvas 1536x1024. Strict coarse pixel art, visible square pixel clusters approximately 4x4 pixels, limited palette, hard stair-step silhouettes, flat color bands. No antialiasing, blur, photographic texture, text, logos, characters, creatures, traps, collectible-like bright objects. Horizontally seamless repeat: identical heights, colors and continuous shapes at left and right boundaries. Side-view game scenery, not a perspective floor. FAR layer, fully opaque. Warm subdued daytime/sunset sky, muted ivory and dusty ochre cloud bands, distant medieval castle ramparts and gently rolling hills in hazy low-contrast desaturated olive and warm stone silhouettes. Sky occupies upper 60 percent, distant castle and hills below. Restrained brass light, no sun disc. Low contrast and saturation so golden ivory foreground stone tiles remain readable. Broad quiet shapes, sparse detail.",
+                       "source":  "C:/Users/Owner/.codex/generated_images/01a164b9-1b08-7613-bce4-93454a9146c1/exec-b16b7f8a-177b-45fa-9b4f-5bfa05c2f1d1.png",
+                       "postprocessing":  "4x4 nearest point sampling; RGB saturation reduction (Verification 0.72, Play 0.85); Verification far contrast 0.72 around 140; RGB channels quantized to multiples of 12; near alpha threshold 192, visible vertical bounds (top and bottom) fitted into rows 564..1023; 128px edge transition to paired edge colors, quantized with binary alpha; transparent RGB zeroed.",
+                       "validation":  {
+                                          "width":  1536,
+                                          "height":  1024,
+                                          "alpha_min":  255,
+                                          "alpha_max":  255,
+                                          "partial_alpha_pixels":  0,
+                                          "top_564_nontransparent_pixels":  866304,
+                                          "first_visible_row":  0,
+                                          "left_right_different_rows":  0,
+                                          "uniform_4x4_blocks":  true
+                                      }
+                   },
+                   {
+                       "file":  "Chapter1/Verification/near.png",
+                       "transparent":  true,
+                       "prompt":  "Use case: stylized-concept. Create ONE production parallax background PNG for Re:Trap, a 2D pixel-art platformer about reclaiming a fallen medieval castle. Landscape canvas 1536x1024. Strict coarse pixel art, visible square pixel clusters approximately 4x4 pixels, limited palette, hard stair-step silhouettes, flat color bands. No antialiasing, blur, photographic texture, text, logos, characters, creatures, traps, collectible-like bright objects. Horizontally seamless repeat: identical heights, colors and continuous shapes at left and right boundaries. Side-view game scenery, not a perspective floor. NEAR layer, actual transparent background. Top 55 percent of canvas must be completely empty transparent; ALL scenery strictly contained in bottom 45 percent, reaching bottom edge. A continuous low medieval castle wall with crenellations, two modest leafy trees, hanging ivy and quiet shrubs. Warm dark umber and muted olive silhouettes, restrained ochre stone details, darker and less saturated than gameplay ivory sandstone tiles. No sky, no distant scenery, no ground plane outside bottom strip. No glow. Wall continues seamlessly through left and right edges at the same height. All cutout edges hard pixel steps with binary alpha.",
+                       "source":  "C:/Users/Owner/.codex/generated_images/01a164b9-1b08-7613-bce4-93454a9146c1/exec-5737983c-aee7-4bbd-805c-9760f1e872f6.png",
+                       "postprocessing":  "4x4 nearest point sampling; RGB saturation reduction (Verification 0.72, Play 0.85); Verification far contrast 0.72 around 140; RGB channels quantized to multiples of 12; near alpha threshold 192, visible vertical bounds (top and bottom) fitted into rows 564..1023; 128px edge transition to paired edge colors, quantized with binary alpha; transparent RGB zeroed.",
+                       "validation":  {
+                                          "width":  1536,
+                                          "height":  1024,
+                                          "alpha_min":  0,
+                                          "alpha_max":  255,
+                                          "partial_alpha_pixels":  0,
+                                          "top_564_nontransparent_pixels":  0,
+                                          "first_visible_row":  564,
+                                          "left_right_different_rows":  0,
+                                          "uniform_4x4_blocks":  true
+                                      }
+                   },
+                   {
+                       "file":  "Chapter1/Play/far.png",
+                       "transparent":  false,
+                       "prompt":  "Use case: stylized-concept. Create ONE production parallax background PNG for Re:Trap, a 2D pixel-art platformer about reclaiming a fallen medieval castle. Landscape canvas 1536x1024. Strict coarse pixel art, visible square pixel clusters approximately 4x4 pixels, limited palette, hard stair-step silhouettes, flat color bands. No antialiasing, blur, photographic texture, text, logos, characters, creatures, traps, collectible-like bright objects. Horizontally seamless repeat: identical heights, colors and continuous shapes at left and right boundaries. Side-view game scenery, not a perspective floor. FAR layer, fully opaque. Stormy deep blue night sky with broad charcoal navy storm cloud bands, two restrained thin muted blue-gray zigzag lightning bolts in sky, far distant eroded castle silhouettes and hills, subtle dusty violet corruption haze. Sky occupies upper 60 percent. Castle in lower part, desaturated slate navy, low contrast. No white lightning, no bright focal object, no trees in sky. Mood dark and subdued, suitable behind blue-gray stone foreground tiles.",
+                       "source":  "C:/Users/Owner/.codex/generated_images/01a164b9-1b08-7613-bce4-93454a9146c1/exec-62e0af85-3754-4388-ae1e-28b131bae5c0.png",
+                       "postprocessing":  "4x4 nearest point sampling; RGB saturation reduction (Verification 0.72, Play 0.85); Verification far contrast 0.72 around 140; RGB channels quantized to multiples of 12; near alpha threshold 192, visible vertical bounds (top and bottom) fitted into rows 564..1023; 128px edge transition to paired edge colors, quantized with binary alpha; transparent RGB zeroed.",
+                       "validation":  {
+                                          "width":  1536,
+                                          "height":  1024,
+                                          "alpha_min":  255,
+                                          "alpha_max":  255,
+                                          "partial_alpha_pixels":  0,
+                                          "top_564_nontransparent_pixels":  866304,
+                                          "first_visible_row":  0,
+                                          "left_right_different_rows":  0,
+                                          "uniform_4x4_blocks":  true
+                                      }
+                   },
+                   {
+                       "file":  "Chapter1/Play/near.png",
+                       "transparent":  true,
+                       "prompt":  "Use case: stylized-concept. Create ONE production parallax background PNG for Re:Trap, a 2D pixel-art platformer about reclaiming a fallen medieval castle. Landscape canvas 1536x1024. Strict coarse pixel art, visible square pixel clusters approximately 4x4 pixels, limited palette, hard stair-step silhouettes, flat color bands. No antialiasing, blur, photographic texture, text, logos, characters, creatures, traps, collectible-like bright objects. Horizontally seamless repeat: identical heights, colors and continuous shapes at left and right boundaries. Side-view game scenery, not a perspective floor. NEAR layer, actual transparent background. Top 55 percent completely empty transparent; ALL scenery strictly confined to bottom 45 percent and reaching bottom. Twisted dead trees with angular bare branches, collapsed medieval crenellated castle wall, subdued purple erosion crystals embedded into rubble and sparse extremely faint teal accents. Very dark charcoal slate-blue and muted violet silhouettes. Scenery darker than blue-gray gameplay stone tiles. No sky, no lightning, no distant scene, no floating objects, no bright collectible crystals. Wall/rubble continues through both side edges at same height. Hard pixel cutout edges, binary alpha.",
+                       "source":  "C:/Users/Owner/.codex/generated_images/01a164b9-1b08-7613-bce4-93454a9146c1/exec-1336da52-7e94-48ad-b0bc-ad6a47b08a68.png",
+                       "postprocessing":  "4x4 nearest point sampling; RGB saturation reduction (Verification 0.72, Play 0.85); Verification far contrast 0.72 around 140; RGB channels quantized to multiples of 12; near alpha threshold 192, visible vertical bounds (top and bottom) fitted into rows 564..1023; 128px edge transition to paired edge colors, quantized with binary alpha; transparent RGB zeroed.",
+                       "validation":  {
+                                          "width":  1536,
+                                          "height":  1024,
+                                          "alpha_min":  0,
+                                          "alpha_max":  255,
+                                          "partial_alpha_pixels":  0,
+                                          "top_564_nontransparent_pixels":  0,
+                                          "first_visible_row":  564,
+                                          "left_right_different_rows":  0,
+                                          "uniform_4x4_blocks":  true
+                                      }
+                   }
+               ],
+    "repair_history": [
+  {
+    "date": "2026-10-23",
+    "files": [
+      "Chapter1/Verification/far.png",
+      "Chapter1/Play/near.png"
+    ],
+    "backup": "_before_fix/Chapter1/ (same relative paths)",
+    "method": "Verification far: replace old edge strips with an interior donor over a 512px periodic patch, cosine feather outer 128px per side, smooth column exposure on 4px grid. Play near: replace contaminated branch and bright gray edge colors with opaque dark slate blue. Preserve silhouettes, binary alpha and zero transparent RGB.",
+    "validation": {
+      "far_before": {
+        "block_neighbor_median": 0.3821343750000068,
+        "block_neighbor_max": 3.713418749999988,
+        "block_threshold": 1.1464031250000204,
+        "block_violations": 29,
+        "raw_1px_median": 0,
+        "raw_1px_violations": 383,
+        "wrap_difference": 0.0,
+        "band_test_widths_px": [
+          40,
+          1336
+        ],
+        "band_side_width_px": 100,
+        "band_threshold": 2.0,
+        "band_max": [
+          4.6966859791687625,
+          648,
+          1224
+        ],
+        "band_violations": 16165
+      },
+      "far_after": {
+        "block_neighbor_median": 0.01871249999999236,
+        "block_neighbor_max": 0.036721875000012005,
+        "block_threshold": 0.05613749999997708,
+        "block_violations": 0,
+        "raw_1px_median": 0,
+        "raw_1px_violations": 384,
+        "wrap_difference": 0.01907499999998663,
+        "band_test_widths_px": [
+          40,
+          1336
+        ],
+        "band_side_width_px": 100,
+        "band_threshold": 2.0,
+        "band_max": [
+          1.8984168525516338,
+          572,
+          1264
+        ],
+        "band_violations": 0
+      },
+      "near": {
+        "partial_alpha_pixels": 0,
+        "top_564_nontransparent_pixels": 0,
+        "left_right_different_rows": 0,
+        "edge_100px_gray_opaque_pixels": 0,
+        "gray_definition": "HSV saturation <= 0.20 and value >= 64/255, alpha=255",
+        "recolored_pixels": 8096
+      },
+      "size": [
+        1536,
+        1024
+      ],
+      "uniform_4x4_blocks": true,
+      "saved_png_validation": {
+        "Chapter1/Verification/far.png": {
+          "width": 1536,
+          "height": 1024,
+          "nonuniform_4x4_pixels": 0
+        },
+        "Chapter1/Play/near.png": {
+          "width": 1536,
+          "height": 1024,
+          "nonuniform_4x4_pixels": 0
+        }
+      }
+    },
+    "limitations": [
+      "Literal 1px neighbor median is zero due to 4px blocks; 384 changes exceed literal zero threshold. Meaningful 4px boundary criterion passes.",
+      "Band prominence threshold explicitly chosen as 2/255; widths 40..1336 in 4px steps, circular positions, each side 100px. Larger widths cannot have disjoint 100px side windows.",
+      "No game-engine scrolling test. Donor cloud/hill shapes repeat and feathered patch changes local edge details.",
+      "Original process.ps1 predates repair; rerun fix_seams.py after it to restore repaired images."
+    ]
+  }
+]
+}

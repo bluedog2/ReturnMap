@@ -1,0 +1,69 @@
+{
+  "far_before": {
+    "block_neighbor_median": 0.3821343750000068,
+    "block_neighbor_max": 3.713418749999988,
+    "block_threshold": 1.1464031250000204,
+    "block_violations": 29,
+    "raw_1px_median": 0,
+    "raw_1px_violations": 383,
+    "wrap_difference": 0.0,
+    "band_test_widths_px": [
+      40,
+      1336
+    ],
+    "band_side_width_px": 100,
+    "band_threshold": 2.0,
+    "band_max": [
+      4.6966859791687625,
+      648,
+      1224
+    ],
+    "band_violations": 16165
+  },
+  "far_after": {
+    "block_neighbor_median": 0.01871249999999236,
+    "block_neighbor_max": 0.036721875000012005,
+    "block_threshold": 0.05613749999997708,
+    "block_violations": 0,
+    "raw_1px_median": 0,
+    "raw_1px_violations": 384,
+    "wrap_difference": 0.01907499999998663,
+    "band_test_widths_px": [
+      40,
+      1336
+    ],
+    "band_side_width_px": 100,
+    "band_threshold": 2.0,
+    "band_max": [
+      1.8984168525516338,
+      572,
+      1264
+    ],
+    "band_violations": 0
+  },
+  "near": {
+    "partial_alpha_pixels": 0,
+    "top_564_nontransparent_pixels": 0,
+    "left_right_different_rows": 0,
+    "edge_100px_gray_opaque_pixels": 0,
+    "gray_definition": "HSV saturation <= 0.20 and value >= 64/255, alpha=255",
+    "recolored_pixels": 8096
+  },
+  "size": [
+    1536,
+    1024
+  ],
+  "uniform_4x4_blocks": true,
+  "saved_png_validation": {
+    "Chapter1/Verification/far.png": {
+      "width": 1536,
+      "height": 1024,
+      "nonuniform_4x4_pixels": 0
+    },
+    "Chapter1/Play/near.png": {
+      "width": 1536,
+      "height": 1024,
+      "nonuniform_4x4_pixels": 0
+    }
+  }
+}

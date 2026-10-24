@@ -21,6 +21,12 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
       m_SubObjectGUID: 
       m_EditorAssetChanged: 0
+    buildSpriteRef:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
     fallbackColor: {r: 0.18, g: 0.18, b: 0.2, a: 1}
     isSolid: 0
     collisionLayer:
@@ -40,6 +46,12 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
       m_SubObjectGUID: 5ca3c53d6eb591848987e7240cd02fda
       m_EditorAssetChanged: 1
+    buildSpriteRef:
+      m_AssetGUID: ff63cf9a87097a54086358ae7950e00f
+      m_SubObjectName: Build_C1_r01_c03
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
     fallbackColor: {r: 0.55, g: 0.38, b: 0.24, a: 1}
     isSolid: 1
     collisionLayer:
@@ -59,6 +71,12 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
       m_SubObjectGUID: d1b3c17f28191134fa20a89724e2fe9b
       m_EditorAssetChanged: 1
+    buildSpriteRef:
+      m_AssetGUID: ff63cf9a87097a54086358ae7950e00f
+      m_SubObjectName: Build_C1_r01_c04
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
     fallbackColor: {r: 0.45, g: 0.45, b: 0.48, a: 1}
     isSolid: 1
     collisionLayer:
@@ -78,6 +96,12 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
       m_SubObjectGUID: 5034b54cba5b97d4d9b60eb7b7251635
       m_EditorAssetChanged: 1
+    buildSpriteRef:
+      m_AssetGUID: ff63cf9a87097a54086358ae7950e00f
+      m_SubObjectName: Build_C1_r01_c05
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
     fallbackColor: {r: 0.28, g: 0.28, b: 0.32, a: 1}
     isSolid: 1
     collisionLayer:
@@ -2105,6 +2129,49 @@ MonoBehaviour:
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
+  renderTileBackground: 0
+  verificationParallax:
+    far:
+      spriteRef:
+        m_AssetGUID: 7ea33f6450c7ed74da9001469ce4d2a1
+        m_SubObjectName: 
+        m_SubObjectType: 
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+      factor: 0.15
+      autoScroll: 0.05
+      verticalFactor: 0.05
+    near:
+      spriteRef:
+        m_AssetGUID: 5450172a008384c40b13681be5cf07e4
+        m_SubObjectName: 
+        m_SubObjectType: 
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+      factor: 0.45
+      autoScroll: 0
+      verticalFactor: 0.05
+  playParallax:
+    far:
+      spriteRef:
+        m_AssetGUID: 9f0c53e3f7afe554b889b63cf04de933
+        m_SubObjectName: 
+        m_SubObjectType: 
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+      factor: 0.15
+      autoScroll: 0.05
+      verticalFactor: 0.05
+    near:
+      spriteRef:
+        m_AssetGUID: f188764c369b8324a8fae6d78d995297
+        m_SubObjectName: 
+        m_SubObjectType: 
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+      factor: 0.45
+      autoScroll: 0
+      verticalFactor: 0.05
   sealRef:
     m_AssetGUID: c007ad3e8a88f9c43b459aca9ca4bf50
     m_SubObjectName: 

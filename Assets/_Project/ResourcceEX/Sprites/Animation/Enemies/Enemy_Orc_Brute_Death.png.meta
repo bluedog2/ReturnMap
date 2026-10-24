@@ -98,7 +98,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -133,7 +133,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.50301, y: 0.35808}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData:
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
@@ -141,7 +141,7 @@ TextureImporter:
       spriteID: 0420ab1b4a90d8eb0800000000000000
       internalID: -4716102631825997248
       vertices: []
-      indices:
+      indices: 
       edges: []
       weights: []
     - serializedVersion: 2
@@ -155,7 +155,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.50301, y: 0.35808}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData:
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
@@ -163,7 +163,7 @@ TextureImporter:
       spriteID: dad661f9ca4eb8b50800000000000000
       internalID: 6596617509268778413
       vertices: []
-      indices:
+      indices: 
       edges: []
       weights: []
     - serializedVersion: 2
@@ -177,7 +177,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.50301, y: 0.35808}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData:
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
@@ -185,7 +185,7 @@ TextureImporter:
       spriteID: 2629199d35e39e6c0800000000000000
       internalID: -4113688254772833694
       vertices: []
-      indices:
+      indices: 
       edges: []
       weights: []
     - serializedVersion: 2
@@ -199,7 +199,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.50301, y: 0.35808}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData:
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
@@ -207,7 +207,7 @@ TextureImporter:
       spriteID: 2aedec04171760260800000000000000
       internalID: 7063457796809744034
       vertices: []
-      indices:
+      indices: 
       edges: []
       weights: []
     - serializedVersion: 2
@@ -221,7 +221,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.50301, y: 0.35808}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData:
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
@@ -229,7 +229,7 @@ TextureImporter:
       spriteID: af19c9d32e2c7f670800000000000000
       internalID: 8572534692675097082
       vertices: []
-      indices:
+      indices: 
       edges: []
       weights: []
     - serializedVersion: 2
@@ -243,7 +243,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.50301, y: 0.35808}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData:
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
@@ -251,7 +251,7 @@ TextureImporter:
       spriteID: 9104662cdf3b3c3d0800000000000000
       internalID: -3187506208778600423
       vertices: []
-      indices:
+      indices: 
       edges: []
       weights: []
     - serializedVersion: 2
@@ -265,7 +265,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.50301, y: 0.35808}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData:
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
@@ -273,7 +273,7 @@ TextureImporter:
       spriteID: 14d8ce682fbd8de60800000000000000
       internalID: 7987375773833792833
       vertices: []
-      indices:
+      indices: 
       edges: []
       weights: []
     - serializedVersion: 2
@@ -287,7 +287,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.50301, y: 0.35808}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData:
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
@@ -295,7 +295,7 @@ TextureImporter:
       spriteID: 852ffb566610f4cc0800000000000000
       internalID: -3724756827506740648
       vertices: []
-      indices:
+      indices: 
       edges: []
       weights: []
     outline: []
@@ -312,14 +312,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Enemy_Orc_Brute_Death_5: -3187506208778600423
-      Enemy_Orc_Brute_Death_4: 8572534692675097082
-      Enemy_Orc_Brute_Death_7: -3724756827506740648
-      Enemy_Orc_Brute_Death_6: 7987375773833792833
-      Enemy_Orc_Brute_Death_1: 6596617509268778413
       Enemy_Orc_Brute_Death_0: -4716102631825997248
-      Enemy_Orc_Brute_Death_3: 7063457796809744034
+      Enemy_Orc_Brute_Death_1: 6596617509268778413
       Enemy_Orc_Brute_Death_2: -4113688254772833694
+      Enemy_Orc_Brute_Death_3: 7063457796809744034
+      Enemy_Orc_Brute_Death_4: 8572534692675097082
+      Enemy_Orc_Brute_Death_5: -3187506208778600423
+      Enemy_Orc_Brute_Death_6: 7987375773833792833
+      Enemy_Orc_Brute_Death_7: -3724756827506740648
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
