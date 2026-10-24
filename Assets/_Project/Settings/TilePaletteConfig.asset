@@ -27,6 +27,8 @@ MonoBehaviour:
       m_SubObjectType: 
       m_SubObjectGUID: 
       m_EditorAssetChanged: 0
+    spriteVariants: []
+    buildSpriteVariants: []
     fallbackColor: {r: 0.18, g: 0.18, b: 0.2, a: 1}
     isSolid: 0
     collisionLayer:
@@ -40,16 +42,43 @@ MonoBehaviour:
       m_EditorAssetChanged: 0
   - type: 1
     spriteRef:
-      m_AssetGUID: 2fd948604309a0e42975f014615d0e58
-      m_SubObjectName: Play_C1_r01_c03
+      m_AssetGUID: cb5c3b579321cfd4d93bdf21fed72d56
+      m_SubObjectName: Tile_Play_Floor_A
       m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       m_SubObjectGUID: 5ca3c53d6eb591848987e7240cd02fda
       m_EditorAssetChanged: 1
     buildSpriteRef:
-      m_AssetGUID: ff63cf9a87097a54086358ae7950e00f
-      m_SubObjectName: Build_C1_r01_c03
-      m_SubObjectType: 
+      m_AssetGUID: ce31df7134983c04eabc9bdf20e208c4
+      m_SubObjectName: Tile_Build_Floor_A
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    spriteVariants:
+    - m_AssetGUID: 9b5eb7dd56df38249ac6c36c87c9d153
+      m_SubObjectName: Tile_Play_Floor_B
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 9c70b613e2c5fc94db42c7790ef76fd0
+      m_SubObjectName: Tile_Play_Floor_C
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    buildSpriteVariants:
+    - m_AssetGUID: 69f7635eb9099a84198a3b8b79d7adea
+      m_SubObjectName: Tile_Build_Floor_B
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 62ef4e1e3acabbb4f940be44efdedb0c
+      m_SubObjectName: Tile_Build_Floor_C
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
       m_SubObjectGUID: 
       m_EditorAssetChanged: 0
     fallbackColor: {r: 0.55, g: 0.38, b: 0.24, a: 1}
@@ -65,16 +94,43 @@ MonoBehaviour:
       m_EditorAssetChanged: 0
   - type: 2
     spriteRef:
-      m_AssetGUID: 2fd948604309a0e42975f014615d0e58
-      m_SubObjectName: Play_C1_r01_c04
+      m_AssetGUID: be9eb732e2efcb7479018ee07ff705c5
+      m_SubObjectName: Tile_Play_Wall_A
       m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       m_SubObjectGUID: d1b3c17f28191134fa20a89724e2fe9b
       m_EditorAssetChanged: 1
     buildSpriteRef:
-      m_AssetGUID: ff63cf9a87097a54086358ae7950e00f
-      m_SubObjectName: Build_C1_r01_c04
-      m_SubObjectType: 
+      m_AssetGUID: cdbef8342da3e844d8c91f2e7e7c82f8
+      m_SubObjectName: Tile_Build_Wall_A
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    spriteVariants:
+    - m_AssetGUID: 87bb732764e9add4596ab72161b5b7f9
+      m_SubObjectName: Tile_Play_Wall_B
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 17118ea31c09df549b2a024ad96a0894
+      m_SubObjectName: Tile_Play_Wall_C
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    buildSpriteVariants:
+    - m_AssetGUID: 36bf04c351bceec41855a1cb910f3b26
+      m_SubObjectName: Tile_Build_Wall_B
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 4fd4676695d8b1e41bde1dcd08f6b1f2
+      m_SubObjectName: Tile_Build_Wall_C
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
       m_SubObjectGUID: 
       m_EditorAssetChanged: 0
     fallbackColor: {r: 0.45, g: 0.45, b: 0.48, a: 1}
@@ -90,16 +146,31 @@ MonoBehaviour:
       m_EditorAssetChanged: 0
   - type: 3
     spriteRef:
-      m_AssetGUID: 2fd948604309a0e42975f014615d0e58
-      m_SubObjectName: Play_C1_r01_c05
+      m_AssetGUID: 89b0fc8f660923f47981a7d5a087c864
+      m_SubObjectName: Tile_Play_Ceiling_A
       m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       m_SubObjectGUID: 5034b54cba5b97d4d9b60eb7b7251635
       m_EditorAssetChanged: 1
     buildSpriteRef:
-      m_AssetGUID: ff63cf9a87097a54086358ae7950e00f
-      m_SubObjectName: Build_C1_r01_c05
-      m_SubObjectType: 
+      m_AssetGUID: a7f87f8602ee3d84a8064e861bb03438
+      m_SubObjectName: Tile_Build_Ceiling_A
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    spriteVariants:
+    - m_AssetGUID: 1248b18a4a56c144585af886c13dc8fb
+      m_SubObjectName: Tile_Play_Ceiling_B
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    buildSpriteVariants:
+    - m_AssetGUID: fa7bb99534e8ec44c91990cbd18847c6
+      m_SubObjectName: Tile_Build_Ceiling_B
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
       m_SubObjectGUID: 
       m_EditorAssetChanged: 0
     fallbackColor: {r: 0.28, g: 0.28, b: 0.32, a: 1}

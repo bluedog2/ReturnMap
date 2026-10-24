@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Px32Tiles
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Px32Tiles
+  m_GUID: 92dc7bd073dc8b4419ea157d8002044a
+  m_SerializeEntries:
+  - m_GUID: 1248b18a4a56c144585af886c13dc8fb
+    m_Address: Px32/Tiles/Tile_Play_Ceiling_B
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 17118ea31c09df549b2a024ad96a0894
+    m_Address: Px32/Tiles/Tile_Play_Wall_C
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 36bf04c351bceec41855a1cb910f3b26
+    m_Address: Px32/Tiles/Tile_Build_Wall_B
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4fd4676695d8b1e41bde1dcd08f6b1f2
+    m_Address: Px32/Tiles/Tile_Build_Wall_C
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 62ef4e1e3acabbb4f940be44efdedb0c
+    m_Address: Px32/Tiles/Tile_Build_Floor_C
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 69f7635eb9099a84198a3b8b79d7adea
+    m_Address: Px32/Tiles/Tile_Build_Floor_B
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 87bb732764e9add4596ab72161b5b7f9
+    m_Address: Px32/Tiles/Tile_Play_Wall_B
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 89b0fc8f660923f47981a7d5a087c864
+    m_Address: Px32/Tiles/Tile_Play_Ceiling_A
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9b5eb7dd56df38249ac6c36c87c9d153
+    m_Address: Px32/Tiles/Tile_Play_Floor_B
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9c70b613e2c5fc94db42c7790ef76fd0
+    m_Address: Px32/Tiles/Tile_Play_Floor_C
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a7f87f8602ee3d84a8064e861bb03438
+    m_Address: Px32/Tiles/Tile_Build_Ceiling_A
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: be9eb732e2efcb7479018ee07ff705c5
+    m_Address: Px32/Tiles/Tile_Play_Wall_A
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cb5c3b579321cfd4d93bdf21fed72d56
+    m_Address: Px32/Tiles/Tile_Play_Floor_A
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cdbef8342da3e844d8c91f2e7e7c82f8
+    m_Address: Px32/Tiles/Tile_Build_Wall_A
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ce31df7134983c04eabc9bdf20e208c4
+    m_Address: Px32/Tiles/Tile_Build_Floor_A
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fa7bb99534e8ec44c91990cbd18847c6
+    m_Address: Px32/Tiles/Tile_Build_Ceiling_B
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 53fa6c3e14a8a4046a70d9cc23035519, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 498c74ef5646e7c48be6b02b40f7ffeb, type: 2}
+    - {fileID: 11400000, guid: 8c61491041349cf40a519d78dd5eea91, type: 2}

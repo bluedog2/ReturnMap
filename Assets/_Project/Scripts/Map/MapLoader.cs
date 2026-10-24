@@ -89,8 +89,8 @@ namespace ReTrap
         private TilePaletteConfig _loadedPalette;
 
         /// <summary>페이즈에 따라 스프라이트를 교체할 절차적 지형 타일 (프리팹 오버라이드 타일은 제외).</summary>
-        private readonly List<(SpriteRenderer sr, TileType type)> _phaseTiles
-            = new List<(SpriteRenderer sr, TileType type)>();
+        private readonly List<(SpriteRenderer sr, TileType type, int x, int y)> _phaseTiles
+            = new List<(SpriteRenderer sr, TileType type, int x, int y)>();
 
         // ── 이벤트 ────────────────────────────────────────────────────────────
 
@@ -338,10 +338,10 @@ namespace ReTrap
         private void HandlePhaseChanged(GamePhase phase)
         {
             if (_palette == null) return;
-            foreach (var (sr, type) in _phaseTiles)
+            foreach (var (sr, type, cx, cy) in _phaseTiles)
             {
                 if (sr == null) continue; // 언로드로 파괴됨
-                Sprite sp = _palette.GetSprite(type, phase);
+                Sprite sp = _palette.GetSprite(type, phase, cx, cy);
                 if (sp == null) continue;
                 sr.sprite = sp;
                 sr.color  = Color.white; // 폴백 색상 블록이었던 경우 대비
@@ -494,7 +494,7 @@ namespace ReTrap
             visual.transform.SetParent(go.transform, false);
 
             var sr     = visual.AddComponent<SpriteRenderer>();
-            Sprite sp  = _palette != null ? _palette.GetSprite(type, CurrentPhaseOrPlay()) : null;
+            Sprite sp  = _palette != null ? _palette.GetSprite(type, CurrentPhaseOrPlay(), x, y) : null;
             sr.sprite  = sp;
             sr.color   = sp != null ? Color.white
                         : (_palette != null ? _palette.GetColor(type)
@@ -518,7 +518,7 @@ namespace ReTrap
 
             // 페이즈별 스프라이트 교체 대상으로 등록 (프리팹 경로는 제외)
             if (_palette != null)
-                _phaseTiles.Add((sr, type));
+                _phaseTiles.Add((sr, type, x, y));
 
             // 솔리드 타일 → BoxCollider2D (부모 go, 스케일 1 → 루트 CompositeCollider2D 로 병합)
             if (_palette != null && _palette.IsSolid(type))

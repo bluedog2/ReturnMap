@@ -29,6 +29,13 @@ namespace ReTrap
         [Tooltip("빌드·검증 페이즈용 스프라이트(선택). 비우면 spriteRef 사용.")]
         public AssetReferenceSprite buildSpriteRef;
 
+        [Tooltip("Play 페이즈 추가 변형 스프라이트(선택). spriteRef 가 변형 A(기본), 여기가 B, C... " +
+                 "셀 좌표 해시로 칸마다 고정된 변형을 고릅니다.")]
+        public List<AssetReferenceSprite> spriteVariants = new List<AssetReferenceSprite>();
+
+        [Tooltip("빌드·검증 페이즈 추가 변형 스프라이트(선택). 비우면 buildSpriteRef 단일만 사용합니다(Play 변형으로 폴백하지 않음).")]
+        public List<AssetReferenceSprite> buildSpriteVariants = new List<AssetReferenceSprite>();
+
         [Tooltip("스프라이트가 비어있을 때 에디터 셀에 채울 색입니다.")]
         public Color      fallbackColor = Color.gray;
 
@@ -166,6 +173,8 @@ namespace ReTrap
 
         private Dictionary<TileType,   Sprite>     _loadedSprites;
         private Dictionary<TileType,   Sprite>     _loadedBuildSprites;
+        private Dictionary<TileType,   Sprite[]>   _loadedVariants;      // 인덱스 = spriteVariants 순서
+        private Dictionary<TileType,   Sprite[]>   _loadedBuildVariants; // 인덱스 = buildSpriteVariants 순서
         private Dictionary<ParallaxLayer, Sprite>  _loadedParallax;
         private Dictionary<TileType,   GameObject> _loadedPrefabs;
         private Dictionary<TrapAnchor, Sprite>     _loadedSlotSprites;
@@ -211,6 +220,8 @@ namespace ReTrap
 
             _loadedSprites     = new Dictionary<TileType, Sprite>();
             _loadedBuildSprites = new Dictionary<TileType, Sprite>();
+            _loadedVariants      = new Dictionary<TileType, Sprite[]>();
+            _loadedBuildVariants = new Dictionary<TileType, Sprite[]>();
             _loadedParallax    = new Dictionary<ParallaxLayer, Sprite>();
             _loadedPrefabs     = new Dictionary<TileType, GameObject>();
             _loadedSlotSprites = new Dictionary<TrapAnchor, Sprite>();
@@ -224,6 +235,8 @@ namespace ReTrap
                     if (RefValid(v.spriteRef)) loader.Load(v.spriteRef, s => _loadedSprites[t] = s);
                     if (RefValid(v.buildSpriteRef)) loader.Load(v.buildSpriteRef, s => _loadedBuildSprites[t] = s);
                     if (RefValid(v.prefabRef)) loader.Load(v.prefabRef, p => _loadedPrefabs[t] = p);
+                    BeginLoadVariants(loader, v.spriteVariants, t, _loadedVariants);
+                    BeginLoadVariants(loader, v.buildSpriteVariants, t, _loadedBuildVariants);
                 }
 
             foreach (var set in new[] { verificationParallax, playParallax })
@@ -251,6 +264,20 @@ namespace ReTrap
             _preloaded = true;
         }
 
+        /// <summary>변형 스프라이트 목록을 로드 요청으로 등록합니다 (유효 ref 만, 목록 인덱스 유지).</summary>
+        private static void BeginLoadVariants(AddressableLoader loader, List<AssetReferenceSprite> refs,
+                                              TileType type, Dictionary<TileType, Sprite[]> dest)
+        {
+            if (refs == null || refs.Count == 0) return;
+            var arr = new Sprite[refs.Count];
+            dest[type] = arr;
+            for (int i = 0; i < refs.Count; i++)
+            {
+                int idx = i;
+                if (RefValid(refs[i])) loader.Load(refs[i], sp => arr[idx] = sp);
+            }
+        }
+
         /// <summary>
         /// 맵이 실제 사용하는 배경 타일 인덱스만 어드레서블 로드합니다(누적 — 이미 로드된 건 건너뜀).
         /// MapLoader 가 맵 빌드 직전 호출하며, 종류가 수백 개여도 화면에 쓰는 것만 메모리에 올립니다.
@@ -274,6 +301,8 @@ namespace ReTrap
         {
             _loadedSprites?.Clear();
             _loadedBuildSprites?.Clear();
+            _loadedVariants?.Clear();
+            _loadedBuildVariants?.Clear();
             _loadedParallax?.Clear();
             _loadedPrefabs?.Clear();
             _loadedSlotSprites?.Clear();
@@ -379,6 +408,59 @@ namespace ReTrap
                 }
             }
             return GetSprite(type);
+        }
+
+        /// <summary>
+        /// 셀 좌표로 변형을 고르는 페이즈별 스프라이트.
+        /// 후보 = [기본(<see cref="GetSprite(TileType, GamePhase)"/>)] + 해당 페이즈의 로드된 변형들.
+        /// 후보가 여럿이면 셀 좌표 결정적 해시로 고르므로 같은 칸은 항상 같은 변형(페이즈가 바뀌어도 같은 인덱스).
+        /// Build 변형이 없으면 Play 변형으로 폴백하지 않고 기본 하나만 씁니다.
+        /// </summary>
+        public Sprite GetSprite(TileType type, GamePhase phase, int cellX, int cellY)
+        {
+            Sprite baseSprite = GetSprite(type, phase);
+            var v = TileEntry(type);
+            if (v == null) return baseSprite;
+
+            bool play = phase == GamePhase.Play;
+            var refs  = play ? v.spriteVariants : v.buildSpriteVariants;
+            if (refs == null || refs.Count == 0) return baseSprite;
+
+            var loaded = play ? _loadedVariants : _loadedBuildVariants;
+            Sprite[] arr = null;
+            if (loaded != null) loaded.TryGetValue(type, out arr);
+
+            // 후보 수를 먼저 세고(할당 없음), 해시 인덱스로 k번째 후보를 직접 고른다
+            int count = baseSprite != null ? 1 : 0;
+            for (int i = 0; i < refs.Count; i++)
+                if (ResolveSprite(refs[i], arr != null && i < arr.Length ? arr[i] : null) != null) count++;
+
+            if (count == 0) return null;
+            if (count == 1 && baseSprite != null) return baseSprite;
+
+            int pick = 0;
+            if (count > 1)
+            {
+                uint h = unchecked((uint)(cellX * 73856093) ^ (uint)(cellY * 19349663));
+                h ^= h >> 13;
+                h = unchecked(h * 0x5bd1e995);
+                h ^= h >> 15;
+                pick = (int)(h % (uint)count);
+            }
+
+            if (baseSprite != null)
+            {
+                if (pick == 0) return baseSprite;
+                pick--;
+            }
+            for (int i = 0; i < refs.Count; i++)
+            {
+                Sprite sp = ResolveSprite(refs[i], arr != null && i < arr.Length ? arr[i] : null);
+                if (sp == null) continue;
+                if (pick == 0) return sp;
+                pick--;
+            }
+            return null;
         }
 
         // ── 공개 API — 패럴랙스 ──────────────────────────────────────────────

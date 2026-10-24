@@ -117,7 +117,14 @@ namespace ReTrap.EditorTools
                         _                => null,
                     };
                     if (sub == null) continue;
-                    SetRef(el.FindPropertyRelative("buildSpriteRef"), atlasGuid, sub);
+                    var buildRef = el.FindPropertyRelative("buildSpriteRef");
+                    string curPath = AssetDatabase.GUIDToAssetPath(buildRef.FindPropertyRelative("m_AssetGUID").stringValue);
+                    if (curPath.Replace('\\', '/').Contains("/Sprites/Px32/"))
+                    {
+                        log.AppendLine($"{type} buildSpriteRef 가 Px32 에셋이라 덮어쓰지 않음");
+                        continue;
+                    }
+                    SetRef(buildRef, atlasGuid, sub);
                     set++;
                 }
                 log.AppendLine($"buildSpriteRef 설정: {set}개");

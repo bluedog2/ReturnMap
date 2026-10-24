@@ -211,9 +211,14 @@ namespace ReTrap
         public void ConfigureForAnchor(TrapAnchor anchor)
         {
             InstalledAnchor = anchor;
+            _tileCellCached = false; // 재배치 — 셀 좌표 재계산
             OnConfigureAnchor(anchor);
             RefreshTileBackground();
         }
+
+        // 타일 변형 선택용 셀 좌표 캐시 (이동형 함정의 루트 이동에 영향받지 않도록)
+        private bool _tileCellCached;
+        private int  _tileCellX, _tileCellY;
 
         /// <summary>
         /// 서브클래스 방향 설정 훅
@@ -561,7 +566,26 @@ namespace ReTrap
                     TrapAnchor.RightWall => TileType.Wall,
                     _                    => TileType.Floor,
                 };
-                sp = palette.GetSprite(type, phase);
+                MapData map = MapLoader.Instance.CurrentMap;
+                if (map != null)
+                {
+                    // 셀 좌표는 처음(루트가 슬롯 위치일 때) 한 번만 계산해 캐시 — 이동형 함정 대비.
+                    // MapData.CellToWorld(셀 중심 = origin + (x+0.5)*tileUnit) 의 역연산
+                    if (!_tileCellCached)
+                    {
+                        Vector2 origin   = MapLoader.Instance.MapOrigin;
+                        Vector2 pos      = transform.position;
+                        float   tileUnit = Mathf.Max(0.0001f, map.tileUnit);
+                        _tileCellX = Mathf.FloorToInt((pos.x - origin.x) / tileUnit);
+                        _tileCellY = Mathf.FloorToInt((pos.y - origin.y) / tileUnit);
+                        _tileCellCached = true;
+                    }
+                    sp = palette.GetSprite(type, phase, _tileCellX, _tileCellY);
+                }
+                else
+                {
+                    sp = palette.GetSprite(type, phase);
+                }
                 if (sp != null && palette.SharedMaterial != null)
                     tileBackground.sharedMaterial = palette.SharedMaterial;
             }
