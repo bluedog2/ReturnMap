@@ -273,7 +273,7 @@ namespace ReTrap.EditorTools
         /// </summary>
         private static float MeasureSpikeTip(float visualScaleY)
         {
-            const float extendHeight = 0.4f; // SpikeTrap.extendHeight 기본값
+            float extendHeight = ReadSpikeExtendHeight();
             float tipNormal = 0f;
             float[] tips = new float[States.Length];
 
@@ -555,7 +555,23 @@ namespace ReTrap.EditorTools
         private static float PixelsPerUnit(string path)
         {
             var ti = AssetImporter.GetAtPath(path) as TextureImporter;
-            return ti != null && ti.spritePixelsPerUnit > 0f ? ti.spritePixelsPerUnit : 100f;
+            // 폴백은 32px 규격(PPU 32). 실제 임포터 PPU 가 있으면 그것을 우선.
+            return ti != null && ti.spritePixelsPerUnit > 0f ? ti.spritePixelsPerUnit : 32f;
+        }
+
+        /// <summary>SpikeTrap 프리팹의 직렬화 필드 extendHeight 를 읽는다. 실패 시 0.4(기존 기본값).</summary>
+        private static float ReadSpikeExtendHeight()
+        {
+            const float fallback = 0.4f;
+            var prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/_Project/ResourcceEX/Prefabs/Traps/SpikeTrap.prefab");
+            var trap = prefab != null ? prefab.GetComponent<SpikeTrap>() : null;
+            if (trap == null)
+            {
+                Debug.LogWarning("[TrapStateVisualSetup] SpikeTrap 프리팹/컴포넌트를 찾지 못해 extendHeight 기본값 0.4 사용");
+                return fallback;
+            }
+            var prop = new SerializedObject(trap).FindProperty("extendHeight");
+            return prop != null ? prop.floatValue : fallback;
         }
 
         /// <summary>Map 레이어 + 정렬 순서 + 흰색 틴트 지정.</summary>

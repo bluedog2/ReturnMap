@@ -61,6 +61,17 @@ namespace ReTrap.EditorTools
             Array.Sort(guids, (a, b) =>
                 string.Compare(AssetDatabase.GUIDToAssetPath(a), AssetDatabase.GUIDToAssetPath(b), StringComparison.Ordinal));
 
+            // Px32 폴더면 PPU 32 규격 불일치만 경고 (임포트 설정은 Px32ImportPostprocessor 담당 — 여기서 바꾸지 않음)
+            if (Px32Rules.IsPx32Path(folder + "/"))
+            {
+                foreach (var g in guids)
+                {
+                    string p = AssetDatabase.GUIDToAssetPath(g);
+                    if (AssetImporter.GetAtPath(p) is TextureImporter ti && !Mathf.Approximately(ti.spritePixelsPerUnit, 32f))
+                        Debug.LogWarning($"[BackgroundTileImporter] Px32 규격 불일치: PPU {ti.spritePixelsPerUnit} (기대 32) — {p}");
+                }
+            }
+
             var so  = new SerializedObject(palette);
             var arr = so.FindProperty("backgroundTiles");
 

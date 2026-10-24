@@ -66,6 +66,7 @@ namespace ReTrap.EditorTools
             string srcRoot = Path.Combine(ProjectRoot(), InboxFolder, inboxSubFolder ?? "").Replace('\\', '/').TrimEnd('/');
             if (!Directory.Exists(srcRoot)) return "원본 폴더 없음: " + srcRoot;
             if (!destFolder.StartsWith(ResourceRoot)) return "대상은 " + ResourceRoot + " 안이어야 합니다: " + destFolder;
+            if (Px32Rules.IsPx32Path(destFolder.TrimEnd('/') + "/")) return "Px32 폴더로는 가져올 수 없습니다(PPU 충돌) — 'NEWIMAG → Px32 가져오기'를 사용하세요: " + destFolder;
 
             var manifest = LoadManifest(srcRoot);
             float ppu = manifest != null && manifest.pixelsPerUnit > 0 ? manifest.pixelsPerUnit : DefaultPpu;
@@ -151,6 +152,119 @@ namespace ReTrap.EditorTools
             }
             AssetDatabase.SaveAssets();
             return created;
+        }
+
+        // ── Px32 모드 (32px 규격: 다운샘플 → 정리 → 팔레트 양자화 → 검사) ─────────────
+
+        private const string Px32LogFolder = "Logs/px32-import";
+
+        [MenuItem("ReTrap/Art/NEWIMAG → Px32 가져오기", false, 1)]
+        public static void RunPx32()
+        {
+            string inboxAbs = Path.Combine(ProjectRoot(), InboxFolder).Replace('\\', '/');
+            string src = EditorUtility.OpenFolderPanel("Px32로 가져올 수신함 폴더 선택 (NEWIMAG 안, 폴더명 또는 상위 폴더명이 카테고리)", inboxAbs, "");
+            if (string.IsNullOrEmpty(src)) return;
+            src = src.Replace('\\', '/');
+            if (!src.StartsWith(inboxAbs + "/"))
+            {
+                EditorUtility.DisplayDialog("오류", "NEWIMAG 폴더 안을 선택하세요.", "확인");
+                return;
+            }
+            string sub = src.Substring(inboxAbs.Length + 1);
+            string category = null;
+            string[] parts = sub.Split('/');
+            for (int i = parts.Length - 1; i >= 0 && category == null; i--)
+                foreach (string c in Px32Rules.Categories)
+                    if (string.Equals(c, parts[i], StringComparison.OrdinalIgnoreCase)) { category = c; break; }
+            if (category == null)
+            {
+                EditorUtility.DisplayDialog("오류", "경로 중 하나가 카테고리 이름이어야 합니다: " + string.Join("/", Px32Rules.Categories), "확인");
+                return;
+            }
+            EditorUtility.DisplayDialog("NEWIMAG → Px32", ImportPx32(sub, category), "확인");
+        }
+
+        /// <summary>
+        /// NEWIMAG/&lt;inboxSubFolder&gt; 의 PNG 를 k 추정 → 최빈색 다운샘플 → 알파 0/255(임계 128) → 팔레트 최근접 양자화 →
+        /// <see cref="PixelArtSheetValidator"/> 검사 후, PASS 만 <c>Sprites/Px32/&lt;category&gt;/</c> 에 저장합니다.
+        /// FAIL 은 복사하지 않고 <c>Logs/px32-import/&lt;파일&gt;.txt</c> 에 사유를 씁니다. 대상이 이미 있으면 건너뜁니다(교체는 삭제 후 재실행).
+        /// </summary>
+        public static string ImportPx32(string inboxSubFolder, string category)
+        {
+            if (Array.IndexOf(Px32Rules.Categories, category) < 0)
+                return "알 수 없는 카테고리: " + category;
+            string srcRoot = Path.Combine(ProjectRoot(), InboxFolder, inboxSubFolder ?? "").Replace('\\', '/').TrimEnd('/');
+            if (!Directory.Exists(srcRoot)) return "원본 폴더 없음: " + srcRoot;
+            var palette = Px32Rules.LoadPalette(true);
+            if (palette.Length == 0) return "팔레트 없음: " + Px32Rules.PaletteRel;
+
+            string destDir = Path.Combine(ProjectRoot(), Px32Rules.RootFolder, category);
+            string logDir  = Path.Combine(ProjectRoot(), Px32LogFolder);
+            int ok = 0, failed = 0, skipped = 0;
+            var lines = new List<string>();
+
+            foreach (string file in Directory.GetFiles(srcRoot, "*.png", SearchOption.AllDirectories))
+            {
+                string name = Path.GetFileName(file);
+                string baseName = Path.GetFileNameWithoutExtension(file);
+                string destFile = Path.Combine(destDir, name);
+                if (File.Exists(destFile)) { skipped++; lines.Add("건너뜀(이미 있음): " + name); continue; }
+
+                var tex = new Texture2D(2, 2, TextureFormat.RGBA32, false);
+                try
+                {
+                    if (!tex.LoadImage(File.ReadAllBytes(file))) { failed++; WriteImportLog(logDir, name, "PNG 디코딩 실패"); lines.Add("FAIL " + name + ": PNG 디코딩 실패"); continue; }
+                    Color32[] raw = tex.GetPixels32();
+                    int w = tex.width, h = tex.height;
+
+                    // 1) 원본 격자·가짜 픽셀 검사 (정리 전)
+                    var rawRes = PixelArtSheetValidator.Validate(raw, w, h, PixelArtSheetValidator.OptionsFor(category, baseName, palette, true));
+                    var gridItem = rawRes.Get(PixelArtSheetValidator.ItemGrid);
+
+                    // 2) 다운샘플 → 알파 정리 → 양자화
+                    int k = rawRes.k, dw = w, dh = h;
+                    Color32[] px = k > 1 ? PixelArtSheetValidator.Downsample(raw, w, h, k, out dw, out dh) : raw;
+                    px = (Color32[])px.Clone();
+                    for (int i = 0; i < px.Length; i++)
+                        px[i] = px[i].a >= 128 ? PixelArtSheetValidator.NearestPaletteColor(px[i], palette) : new Color32(0, 0, 0, 0);
+
+                    // 3) 정리된 1배 결과 검사 + 원본 격자 결과 병합
+                    var res = PixelArtSheetValidator.Validate(px, dw, dh, PixelArtSheetValidator.OptionsFor(category, baseName, palette, false));
+                    var reasons = new List<string>();
+                    if (gridItem != null && !gridItem.pass) foreach (string r in gridItem.reasons) reasons.Add("grid: " + r);
+                    foreach (var it in res.items)
+                        if (!it.pass) foreach (string r in it.reasons) reasons.Add(it.name + ": " + r);
+
+                    if (reasons.Count > 0)
+                    {
+                        failed++;
+                        WriteImportLog(logDir, name, $"원본 {w}×{h}, k={k}, 정리 후 {dw}×{dh}\n" + string.Join("\n", reasons));
+                        lines.Add($"FAIL {name}: {reasons.Count}건 (Logs/px32-import/{name}.txt)");
+                        continue;
+                    }
+
+                    var outTex = new Texture2D(dw, dh, TextureFormat.RGBA32, false);
+                    outTex.SetPixels32(px);
+                    byte[] png = outTex.EncodeToPNG();
+                    UnityEngine.Object.DestroyImmediate(outTex);
+                    Directory.CreateDirectory(destDir);
+                    File.WriteAllBytes(destFile, png);
+                    ok++;
+                    lines.Add($"PASS {name}: k={k}, {dw}×{dh}");
+                }
+                finally { UnityEngine.Object.DestroyImmediate(tex); }
+            }
+            if (ok > 0) AssetDatabase.Refresh();
+
+            string report = $"{InboxFolder}/{inboxSubFolder} → {Px32Rules.RootFolder}/{category}\n\n통과·저장: {ok}개\n실패(복사 안 함): {failed}개\n건너뜀: {skipped}개\n\n" + string.Join("\n", lines);
+            Debug.Log("[ArtInboxImporter/Px32] " + report.Replace("\n\n", " | ").Replace("\n", " | "));
+            return report;
+        }
+
+        private static void WriteImportLog(string logDir, string pngName, string text)
+        {
+            Directory.CreateDirectory(logDir);
+            File.WriteAllText(Path.Combine(logDir, pngName + ".txt"), text);
         }
 
         private static Manifest LoadManifest(string srcRoot)

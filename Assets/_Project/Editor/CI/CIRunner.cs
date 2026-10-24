@@ -23,7 +23,7 @@ namespace ReTrap.EditorTools
     /// -executeMethod ReTrap.EditorTools.CIRunner.RunAll -ciOutput &lt;json 절대경로&gt; -logFile &lt;log&gt;</c></para>
     ///
     /// <para>종료 코드: 0 = 통과(경고 허용), 1 = 오류 있음, 3 = 러너 자체 예외.</para>
-    /// <para>검사 항목: compile / maps / stageCatalog / trapDefinitions / prefabs / scenes / sortingLayers / scriptFolders / balance.</para>
+    /// <para>검사 항목: compile / maps / stageCatalog / trapDefinitions / prefabs / scenes / sortingLayers / scriptFolders / balance / sprites32.</para>
     /// </summary>
     public static class CIRunner
     {
@@ -139,6 +139,7 @@ namespace ReTrap.EditorTools
             report.checks.Add(RunCheck("sortingLayers",   CheckSortingLayers));
             report.checks.Add(RunCheck("scriptFolders",   CheckScriptFolders));
             report.checks.Add(RunCheck("balance",         CheckBalance));
+            report.checks.Add(RunCheck("sprites32",       CheckSprites32));
 
             foreach (var c in report.checks)
             {
@@ -546,7 +547,73 @@ namespace ReTrap.EditorTools
             }
         }
 
-        /// <summary>소팅 레이어 위반을 경고로만 처리할 프리팹 (미사용 잔재 추정).</summary>
+        // 10) sprites32 ───────────────────────────────────────────────────────
+        private const string Px32FixtureFolder = "tools/ci/fixtures/px32";
+
+        /// <summary>(a) 결함 샘플 4장으로 PixelArtSheetValidator 자기 검사 (b) Sprites/Px32 하위 실제 에셋 전수 검사.</summary>
+        private static void CheckSprites32(CICheck c)
+        {
+            var palette = Px32Rules.LoadPalette(true);
+            if (palette.Length == 0) { c.errors.Add($"팔레트 없음 또는 비어 있음: {Px32Rules.PaletteRel}"); return; }
+
+            // (a) 자기 검사: 파일명 → 실패해야 할 항목(null = 전체 PASS)
+            var expect = new[]
+            {
+                ("good_Idle.png",          (string)null),
+                ("bad_drift_Idle.png",     PixelArtSheetValidator.ItemDrift),
+                ("bad_clip_Idle.png",      PixelArtSheetValidator.ItemClip),
+                ("bad_fakepixel_Idle.png", PixelArtSheetValidator.ItemGrid),
+            };
+            foreach (var (file, failItem) in expect)
+            {
+                string path = Path.Combine(ProjectRoot(), Px32FixtureFolder, file);
+                if (!File.Exists(path)) { c.errors.Add($"{Px32FixtureFolder}/{file}: 없음 — 메뉴 ReTrap/Dev/Px32 결함 샘플 생성"); continue; }
+                var res = ValidatePng(path, Path.GetFileNameWithoutExtension(file), null, palette, true);
+                if (res == null) { c.errors.Add($"{file}: PNG 디코딩 실패"); continue; }
+                if (failItem == null)
+                {
+                    if (!res.Passed) c.errors.Add($"자기 검사: {file} 는 PASS 여야 하나 FAIL — {res.Summary()}");
+                }
+                else
+                {
+                    var item = res.Get(failItem);
+                    if (item == null || item.pass) c.errors.Add($"자기 검사: {file} 는 '{failItem}' 항목이 FAIL 이어야 하나 아님");
+                }
+            }
+
+            // (b) 실제 Px32 에셋
+            if (!AssetDatabase.IsValidFolder(Px32Rules.RootFolder)) { Debug.Log("[CI] sprites32: 대상 없음 (" + Px32Rules.RootFolder + " 폴더가 없음)"); return; }
+            string[] guids = AssetDatabase.FindAssets("t:Texture2D", new[] { Px32Rules.RootFolder });
+            if (guids.Length == 0) { Debug.Log("[CI] sprites32: 대상 없음 (Px32 에셋 0개)"); return; }
+            foreach (string guid in guids)
+            {
+                string assetPath = AssetDatabase.GUIDToAssetPath(guid);
+                string category = Px32Rules.CategoryOf(assetPath);
+                if (category == null || Array.IndexOf(Px32Rules.Categories, category) < 0)
+                {
+                    c.errors.Add($"{assetPath}: Px32 카테고리 폴더({string.Join("/", Px32Rules.Categories)}) 밖");
+                    continue;
+                }
+                var res = ValidatePng(Path.Combine(ProjectRoot(), assetPath), Path.GetFileNameWithoutExtension(assetPath), category, palette, false);
+                if (res == null) { c.errors.Add($"{assetPath}: PNG 디코딩 실패"); continue; }
+                if (!res.Passed) c.errors.Add($"{assetPath}: {res.Summary().Replace("\n", " | ")}");
+            }
+        }
+
+        private static PixelArtSheetValidator.Result ValidatePng(string absPath, string baseName, string category,
+                                                                  Color32[] palette, bool detectGrid)
+        {
+            var tex = new Texture2D(2, 2, TextureFormat.RGBA32, false);
+            try
+            {
+                if (!tex.LoadImage(File.ReadAllBytes(absPath))) return null;
+                return PixelArtSheetValidator.Validate(tex.GetPixels32(), tex.width, tex.height,
+                    PixelArtSheetValidator.OptionsFor(category, baseName, palette, detectGrid));
+            }
+            finally { UnityEngine.Object.DestroyImmediate(tex); }
+        }
+
+        /// <summary>소팅 레이어 위반을 경고로만 처리할 프리팹 (미사용 잔재 추정).
         private const string SortingAllowlistPrefab = "Assets/_Project/ResourcceEX/Prefabs/Tlie/Tlie.prefab";
         private const string RequiredSortingLayer   = "Map";
 
