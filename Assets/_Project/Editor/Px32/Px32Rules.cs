@@ -78,6 +78,14 @@ namespace ReTrap.EditorTools
             if (category == "Tiles")
                 return new SheetSpec { cellW = 32, cellH = 32, frames = 1, pivot = new Vector2(0.5f, 0.5f) };
 
+            // 배경: 원경 640×360, 근경 640×256 (이름 끝 _Near) — 규격으로 업스케일 배율을 확정해야
+            // 2×2 덩어리로 그린 그림을 4배로 잘못 추정하지 않는다
+            if (category == "Backgrounds")
+            {
+                bool near = baseName.EndsWith("_Near", StringComparison.OrdinalIgnoreCase);
+                return new SheetSpec { cellW = 640, cellH = near ? 256 : 360, frames = 1, pivot = new Vector2(0.5f, near ? 0f : 0.5f) };
+            }
+
             string anim = AnimOf(baseName);
             if (anim.Length == 0) return null;
 
@@ -86,7 +94,7 @@ namespace ReTrap.EditorTools
                 var bottom = new Vector2(0.5f, 0f);
                 switch (anim)
                 {
-                    case "Idle":      return Sheet(64, 4,  6f, true,  bottom);
+                    case "Idle":      return Sheet(64, 6,  8f, true,  bottom);
                     case "Run":       return Sheet(64, 8, 12f, true,  bottom);
                     case "JumpStart": return Sheet(64, 2, 12f, false, bottom);
                     case "Fall":      return Sheet(64, 2,  8f, true,  bottom);

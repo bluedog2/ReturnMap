@@ -1,0 +1,576 @@
+{
+  "tiles": [
+    {
+      "name": "Tile_Play_Floor_A",
+      "colors": 7,
+      "outside_palette": 0,
+      "interior_changed": 0,
+      "interior_total": 784,
+      "interior_change_percent": 0.0,
+      "border_change": 0,
+      "A_byte_identical": true
+    },
+    {
+      "name": "Tile_Play_Floor_B",
+      "colors": 9,
+      "outside_palette": 0,
+      "interior_changed": 225,
+      "interior_total": 784,
+      "interior_change_percent": 28.699,
+      "border_change": 0,
+      "A_byte_identical": null
+    },
+    {
+      "name": "Tile_Play_Floor_C",
+      "colors": 9,
+      "outside_palette": 0,
+      "interior_changed": 225,
+      "interior_total": 784,
+      "interior_change_percent": 28.699,
+      "border_change": 0,
+      "A_byte_identical": null
+    },
+    {
+      "name": "Tile_Build_Floor_A",
+      "colors": 7,
+      "outside_palette": 0,
+      "interior_changed": 0,
+      "interior_total": 784,
+      "interior_change_percent": 0.0,
+      "border_change": 0,
+      "A_byte_identical": true
+    },
+    {
+      "name": "Tile_Build_Floor_B",
+      "colors": 9,
+      "outside_palette": 0,
+      "interior_changed": 225,
+      "interior_total": 784,
+      "interior_change_percent": 28.699,
+      "border_change": 0,
+      "A_byte_identical": null
+    },
+    {
+      "name": "Tile_Build_Floor_C",
+      "colors": 9,
+      "outside_palette": 0,
+      "interior_changed": 225,
+      "interior_total": 784,
+      "interior_change_percent": 28.699,
+      "border_change": 0,
+      "A_byte_identical": null
+    },
+    {
+      "name": "Tile_Play_Wall_A",
+      "colors": 6,
+      "outside_palette": 0,
+      "interior_changed": 0,
+      "interior_total": 784,
+      "interior_change_percent": 0.0,
+      "border_change": 0,
+      "A_byte_identical": true
+    },
+    {
+      "name": "Tile_Play_Wall_B",
+      "colors": 8,
+      "outside_palette": 0,
+      "interior_changed": 225,
+      "interior_total": 784,
+      "interior_change_percent": 28.699,
+      "border_change": 0,
+      "A_byte_identical": null
+    },
+    {
+      "name": "Tile_Play_Wall_C",
+      "colors": 8,
+      "outside_palette": 0,
+      "interior_changed": 225,
+      "interior_total": 784,
+      "interior_change_percent": 28.699,
+      "border_change": 0,
+      "A_byte_identical": null
+    },
+    {
+      "name": "Tile_Build_Wall_A",
+      "colors": 6,
+      "outside_palette": 0,
+      "interior_changed": 0,
+      "interior_total": 784,
+      "interior_change_percent": 0.0,
+      "border_change": 0,
+      "A_byte_identical": true
+    },
+    {
+      "name": "Tile_Build_Wall_B",
+      "colors": 8,
+      "outside_palette": 0,
+      "interior_changed": 225,
+      "interior_total": 784,
+      "interior_change_percent": 28.699,
+      "border_change": 0,
+      "A_byte_identical": null
+    },
+    {
+      "name": "Tile_Build_Wall_C",
+      "colors": 8,
+      "outside_palette": 0,
+      "interior_changed": 225,
+      "interior_total": 784,
+      "interior_change_percent": 28.699,
+      "border_change": 0,
+      "A_byte_identical": null
+    },
+    {
+      "name": "Tile_Play_Ceiling_A",
+      "colors": 7,
+      "outside_palette": 0,
+      "interior_changed": 0,
+      "interior_total": 784,
+      "interior_change_percent": 0.0,
+      "border_change": 0,
+      "A_byte_identical": true
+    },
+    {
+      "name": "Tile_Play_Ceiling_B",
+      "colors": 9,
+      "outside_palette": 0,
+      "interior_changed": 233,
+      "interior_total": 784,
+      "interior_change_percent": 29.719,
+      "border_change": 0,
+      "A_byte_identical": null
+    },
+    {
+      "name": "Tile_Build_Ceiling_A",
+      "colors": 7,
+      "outside_palette": 0,
+      "interior_changed": 0,
+      "interior_total": 784,
+      "interior_change_percent": 0.0,
+      "border_change": 0,
+      "A_byte_identical": true
+    },
+    {
+      "name": "Tile_Build_Ceiling_B",
+      "colors": 9,
+      "outside_palette": 0,
+      "interior_changed": 233,
+      "interior_total": 784,
+      "interior_change_percent": 29.719,
+      "border_change": 0,
+      "A_byte_identical": null
+    }
+  ],
+  "boundary_pairs": [
+    {
+      "mode": "Play",
+      "kind": "Floor",
+      "pair": "AA",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Play",
+      "kind": "Floor",
+      "pair": "AB",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Play",
+      "kind": "Floor",
+      "pair": "AC",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Play",
+      "kind": "Floor",
+      "pair": "BA",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Play",
+      "kind": "Floor",
+      "pair": "BB",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Play",
+      "kind": "Floor",
+      "pair": "BC",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Play",
+      "kind": "Floor",
+      "pair": "CA",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Play",
+      "kind": "Floor",
+      "pair": "CB",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Play",
+      "kind": "Floor",
+      "pair": "CC",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Build",
+      "kind": "Floor",
+      "pair": "AA",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Build",
+      "kind": "Floor",
+      "pair": "AB",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Build",
+      "kind": "Floor",
+      "pair": "AC",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Build",
+      "kind": "Floor",
+      "pair": "BA",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Build",
+      "kind": "Floor",
+      "pair": "BB",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Build",
+      "kind": "Floor",
+      "pair": "BC",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Build",
+      "kind": "Floor",
+      "pair": "CA",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Build",
+      "kind": "Floor",
+      "pair": "CB",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Build",
+      "kind": "Floor",
+      "pair": "CC",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Play",
+      "kind": "Wall",
+      "pair": "AA",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Play",
+      "kind": "Wall",
+      "pair": "AB",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Play",
+      "kind": "Wall",
+      "pair": "AC",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Play",
+      "kind": "Wall",
+      "pair": "BA",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Play",
+      "kind": "Wall",
+      "pair": "BB",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Play",
+      "kind": "Wall",
+      "pair": "BC",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Play",
+      "kind": "Wall",
+      "pair": "CA",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Play",
+      "kind": "Wall",
+      "pair": "CB",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Play",
+      "kind": "Wall",
+      "pair": "CC",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Build",
+      "kind": "Wall",
+      "pair": "AA",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Build",
+      "kind": "Wall",
+      "pair": "AB",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Build",
+      "kind": "Wall",
+      "pair": "AC",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Build",
+      "kind": "Wall",
+      "pair": "BA",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Build",
+      "kind": "Wall",
+      "pair": "BB",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Build",
+      "kind": "Wall",
+      "pair": "BC",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Build",
+      "kind": "Wall",
+      "pair": "CA",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Build",
+      "kind": "Wall",
+      "pair": "CB",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Build",
+      "kind": "Wall",
+      "pair": "CC",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Play",
+      "kind": "Ceiling",
+      "pair": "AA",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Play",
+      "kind": "Ceiling",
+      "pair": "AB",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Play",
+      "kind": "Ceiling",
+      "pair": "BA",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Play",
+      "kind": "Ceiling",
+      "pair": "BB",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Build",
+      "kind": "Ceiling",
+      "pair": "AA",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Build",
+      "kind": "Ceiling",
+      "pair": "AB",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Build",
+      "kind": "Ceiling",
+      "pair": "BA",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    },
+    {
+      "mode": "Build",
+      "kind": "Ceiling",
+      "pair": "BB",
+      "same_position_2px_border_mismatch": 0,
+      "touching_lr_color_mismatch": 0,
+      "touching_tb_color_mismatch": 0
+    }
+  ],
+  "seed": 32703,
+  "preview": {
+    "size": [
+      1152,
+      960
+    ],
+    "layout": {
+      "Play": [
+        {
+          "kind": "Floor",
+          "variants": "BBBBACBCCBAC"
+        },
+        {
+          "kind": "Wall",
+          "variants": "BBCBAAABABAB"
+        },
+        {
+          "kind": "Wall",
+          "variants": "BCCACBCBABAA"
+        },
+        {
+          "kind": "Wall",
+          "variants": "BABBAACAABAB"
+        },
+        {
+          "kind": "Ceiling",
+          "variants": "BABBBAAAAABB"
+        }
+      ],
+      "Build": [
+        {
+          "kind": "Floor",
+          "variants": "BBBBACBCCBAC"
+        },
+        {
+          "kind": "Wall",
+          "variants": "BBCBAAABABAB"
+        },
+        {
+          "kind": "Wall",
+          "variants": "BCCACBCBABAA"
+        },
+        {
+          "kind": "Wall",
+          "variants": "BABBAACAABAB"
+        },
+        {
+          "kind": "Ceiling",
+          "variants": "BABBBAAAAABB"
+        }
+      ]
+    }
+  },
+  "palette_layout_mismatch": 0,
+  "limitations": [
+    "A is byte-for-byte original; its horizontal mortar is unchanged. B/C soften only interior Floor mortar.",
+    "The fixed 2px border and original brick-course rhythm remain recognizable in long runs, despite interior variations."
+  ]
+}

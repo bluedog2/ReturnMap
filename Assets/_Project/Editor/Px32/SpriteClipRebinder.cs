@@ -39,7 +39,7 @@ namespace ReTrap.EditorTools
             public bool   Loop;
         }
 
-        // 상태별 규격 (계획서 2.2). 주인공 Idle 4@6 · Run 8@12 · JumpStart 2@12 · Fall 2@8 루프 · Land 3@12 · Dash 4@16 · Hit 2@10 · Death 6@10
+        // 상태별 규격 (계획서 2.2). 주인공 Idle 6@8 · Run 8@12 · JumpStart 2@12 · Fall 2@8 루프 · Land 3@12 · Dash 4@16 · Hit 2@10 · Death 6@10
         private static List<Entry> BuildTable()
         {
             var t = new List<Entry>();
@@ -50,7 +50,7 @@ namespace ReTrap.EditorTools
                 Frames = n, Fps = fps, Loop = loop,
             });
 
-            Hero("Idle",       "Hero_Idle",      4, 6,  true);
+            Hero("Idle",       "Hero_Idle",      6, 8,  true);
             Hero("Run",        "Hero_Run",       8, 12, true);
             Hero("Jump_Start", "Hero_JumpStart", 2, 12, false);
             Hero("Jump_Loop",  "Hero_Fall",      2, 8,  true);   // Fall 공유

@@ -1,0 +1,369 @@
+{
+  "tool": "built-in image_gen",
+  "spec": "docs/px32-conversion-plan.md section 2",
+  "master_palette": [
+    "#692820",
+    "#654138",
+    "#2B231B",
+    "#4D3720",
+    "#554639",
+    "#B0701C",
+    "#A87B56",
+    "#CEA362",
+    "#CAA981",
+    "#C5AF92",
+    "#DEC28D",
+    "#716432",
+    "#C8A332",
+    "#E3DBC3",
+    "#293145",
+    "#384869",
+    "#53617E",
+    "#19142E",
+    "#27213F",
+    "#2F2F50",
+    "#302460",
+    "#8284A1",
+    "#040205",
+    "#47345B",
+    "#4B3478",
+    "#2C182D",
+    "#5F3861",
+    "#6F2F73",
+    "#7E2D94",
+    "#180711",
+    "#46353A",
+    "#47141D",
+    "#8C1D24",
+    "#902F36",
+    "#AF1F28",
+    "#1A151A",
+    "#2A2B32",
+    "#6C665E",
+    "#928982",
+    "#A0AAA7",
+    "#F2C14E",
+    "#FFF4D6",
+    "#3E6B3A",
+    "#6E9A4A",
+    "#3FC1C9",
+    "#8FB8E8"
+  ],
+  "coordinates": "PNG y down; bottom-origin row0 = PNG y63; cell center x31.5",
+  "torso_measurement": "blue armor pixels in cell y34..47; red cape, head and boots excluded",
+  "files": {
+    "Tile_Play_Floor": {
+      "file": "Tiles/Tile_Play_Floor.png",
+      "one_x": "_1x/Tile_Play_Floor.png",
+      "prompt": "Create a single opaque square FLOOR tile texture for a 2D pixel platformer. Same blue-gray charcoal masonry style as the previous wall, but only TWO courses of staggered broad stones at logical 32x32 pixel resolution, enlarged nearest neighbor. Thin exposed top face highlight across upper 2-3 logical pixels, discrete flat #8284A1 highlight. Fill all square. No outer dark outline, no border, no margin, no text. Upper-left lighting. Seamless repeated texture. Sparse purple cracks. STRICT palette #293145 #384869 #53617E #8284A1 #2A2B32 #27213F #47345B only. No gradients, no antialias, no dithering. Crisp chunky actual low resolution pixels.",
+      "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a16f2f-da2b-7ca3-8af1-36f57bf0b688\\exec-8f5b9a41-ee91-485d-ab54-f8400f60f5ad.png",
+      "postprocess": [
+        "Quantized area-mode downsample to 32x32 using nearest RGB palette; no dithering.",
+        "Periodic phase offset (+3,+5); opposing edges matched; no dark outer frame.",
+        "Floor rows 1-2 highlighted / ceiling rows 28-30 underside shaded as applicable.",
+        "Opaque alpha 255; nearest-neighbor 8x export."
+      ]
+    },
+    "Tile_Build_Floor": {
+      "file": "Tiles/Tile_Build_Floor.png",
+      "one_x": "_1x/Tile_Build_Floor.png",
+      "prompt": "Recolor this exact stone FLOOR texture to warm ochre and ivory masonry for the Build phase. Preserve every brick silhouette, mortar line, crack and shading layout. Only palette replacement: #293145 -> #654138, #384869 -> #A87B56, #53617E -> #CEA362, #8284A1 -> #FFF4D6, #2A2B32 -> #554639, #27213F -> #4D3720, #47345B -> #B0701C. Crisp nearest neighbor pixel art, no borders, no text, opaque. No new shapes.",
+      "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a16f2f-da2b-7ca3-8af1-36f57bf0b688\\exec-44e1be36-c282-41b0-bc33-80be43fbfac3.png",
+      "postprocess": [
+        "Generated warm variant downsampled/nearest-palette quantized.",
+        "Exact Play color-index transfer supersedes generated geometry to enforce identical silhouette, mortar and crack pixels.",
+        "Mapping: {(41, 49, 69): (101, 65, 56), (56, 72, 105): (168, 123, 86), (83, 97, 126): (206, 163, 98), (130, 132, 161): (255, 244, 214), (42, 43, 50): (85, 70, 57), (39, 33, 63): (77, 55, 32), (71, 52, 91): (176, 112, 28)}",
+        "Opaque alpha 255; nearest-neighbor 8x export."
+      ]
+    },
+    "Tile_Play_Wall": {
+      "file": "Tiles/Tile_Play_Wall.png",
+      "one_x": "_1x/Tile_Play_Wall.png",
+      "prompt": "Use case: stylized-concept. Game asset: ONE seamless square stone masonry WALL texture for Re:Trap 2D pixel platformer. Full bleed opaque square, no borders, no margins, no lettering. Actual art logical grid exactly 32x32 pixels enlarged with nearest-neighbor large square pixels. Blue-gray stone, charcoal recessed mortar, a few purple hairline cracks. Two courses of staggered broad rectangular stone bricks. Upper-left light with short discrete flat highlights, mostly clean stone faces, sparse chips. No antialias, no gradient, no noise dithering. All four sides repeat seamlessly; do not frame the tile. ONLY these colors: #293145 #384869 #53617E #8284A1 #2A2B32 #27213F #47345B. Similar medieval stone quality to the blue-gray reference atlas seen in conversation. Deliver only the single filled texture.",
+      "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a16f2f-da2b-7ca3-8af1-36f57bf0b688\\exec-7e9fefbe-2917-4d24-8570-012aec6b7af8.png",
+      "postprocess": [
+        "Quantized area-mode downsample to 32x32 using nearest RGB palette; no dithering.",
+        "Periodic phase offset (+3,+5); opposing edges matched; no dark outer frame.",
+        "Floor rows 1-2 highlighted / ceiling rows 28-30 underside shaded as applicable.",
+        "Opaque alpha 255; nearest-neighbor 8x export."
+      ]
+    },
+    "Tile_Build_Wall": {
+      "file": "Tiles/Tile_Build_Wall.png",
+      "one_x": "_1x/Tile_Build_Wall.png",
+      "prompt": "Recolor this exact stone WALL texture to warm ochre and ivory masonry for the Build phase. Preserve every brick silhouette, mortar line, crack and shading layout. Only palette replacement: #293145 -> #654138, #384869 -> #A87B56, #53617E -> #CEA362, #8284A1 -> #FFF4D6, #2A2B32 -> #554639, #27213F -> #4D3720, #47345B -> #B0701C. Crisp nearest neighbor pixel art, no borders, no text, opaque. No new shapes.",
+      "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a16f2f-da2b-7ca3-8af1-36f57bf0b688\\exec-2018be4e-0e89-46e1-934c-0f4d17d86eac.png",
+      "postprocess": [
+        "Generated warm variant downsampled/nearest-palette quantized.",
+        "Exact Play color-index transfer supersedes generated geometry to enforce identical silhouette, mortar and crack pixels.",
+        "Mapping: {(41, 49, 69): (101, 65, 56), (56, 72, 105): (168, 123, 86), (83, 97, 126): (206, 163, 98), (130, 132, 161): (255, 244, 214), (42, 43, 50): (85, 70, 57), (39, 33, 63): (77, 55, 32), (71, 52, 91): (176, 112, 28)}",
+        "Opaque alpha 255; nearest-neighbor 8x export."
+      ]
+    },
+    "Tile_Play_Ceiling": {
+      "file": "Tiles/Tile_Play_Ceiling.png",
+      "one_x": "_1x/Tile_Play_Ceiling.png",
+      "prompt": "Create a single opaque square CEILING tile texture for a 2D pixel platformer. Same blue-gray charcoal masonry style as the previous wall, but only TWO courses of staggered broad stones at logical 32x32 pixel resolution, enlarged nearest neighbor. Exposed darker underside across bottom 2-3 logical pixels, carved horizontal stone lip. Top-left lit brick faces. Fill all square. No outer dark outline, no border, no margin, no text. Upper-left lighting. Seamless repeated texture. Sparse purple cracks. STRICT palette #293145 #384869 #53617E #8284A1 #2A2B32 #27213F #47345B only. No gradients, no antialias, no dithering. Crisp chunky actual low resolution pixels.",
+      "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a16f2f-da2b-7ca3-8af1-36f57bf0b688\\exec-2403133c-6a48-4ad6-89c4-9f42e8002065.png",
+      "postprocess": [
+        "Quantized area-mode downsample to 32x32 using nearest RGB palette; no dithering.",
+        "Periodic phase offset (+3,+5); opposing edges matched; no dark outer frame.",
+        "Floor rows 1-2 highlighted / ceiling rows 28-30 underside shaded as applicable.",
+        "Opaque alpha 255; nearest-neighbor 8x export."
+      ]
+    },
+    "Tile_Build_Ceiling": {
+      "file": "Tiles/Tile_Build_Ceiling.png",
+      "one_x": "_1x/Tile_Build_Ceiling.png",
+      "prompt": "Recolor this exact stone CEILING texture to warm ochre and ivory masonry for the Build phase. Preserve every brick silhouette, mortar line, crack and shading layout. Only palette replacement: #293145 -> #654138, #384869 -> #A87B56, #53617E -> #CEA362, #8284A1 -> #FFF4D6, #2A2B32 -> #554639, #27213F -> #4D3720, #47345B -> #B0701C. Crisp nearest neighbor pixel art, no borders, no text, opaque. No new shapes.",
+      "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a16f2f-da2b-7ca3-8af1-36f57bf0b688\\exec-b4d46723-6eef-4eb9-9ad2-c2f1be2acec5.png",
+      "postprocess": [
+        "Generated warm variant downsampled/nearest-palette quantized.",
+        "Exact Play color-index transfer supersedes generated geometry to enforce identical silhouette, mortar and crack pixels.",
+        "Mapping: {(41, 49, 69): (101, 65, 56), (56, 72, 105): (168, 123, 86), (83, 97, 126): (206, 163, 98), (130, 132, 161): (255, 244, 214), (42, 43, 50): (85, 70, 57), (39, 33, 63): (77, 55, 32), (71, 52, 91): (176, 112, 28)}",
+        "Opaque alpha 255; nearest-neighbor 8x export."
+      ]
+    },
+    "Hero_Idle": {
+      "file": "Player/Hero_Idle.png",
+      "one_x": "_1x/Hero_Idle.png",
+      "prompt": "Use case: stylized-concept. Create production pixel-art Hero_Idle sprite sheet, FOUR equal square cells side by side in ONE horizontal row on genuine transparent background. Logical sheet 256x64 pixels, 4 cells 64x64, enlarged nearest-neighbor 8x to 2048x512. Use the reference character just viewed: young lord, small gold crown, dark brown swept hair, blue steel armor with gold trim, crimson cape hanging behind to LEFT, dark boots. SIDE PROFILE facing RIGHT. Compact human proportions, exactly 48 logical pixels high including crown, no more than 30 pixels wide including cape. Feet on bottom row of each cell, crown 16px below top, torso center x=32 in each cell. Idle breathing only: same head and feet positions, shoulders and cape rise/fall 1px. Four nearly identical poses, no walking. 1 logical pixel hard outline, darkest appropriate ramp, NO pure black. Flat pixel clusters, no AA, no gradient, no shadows outside sprite, no text, no grid. Upper-left light. Use at most these 16 colors: #293145 #384869 #53617E #8FB8E8 #47141D #8C1D24 #AF1F28 #2B231B #654138 #A87B56 #DEC28D #FFF4D6 #B0701C #F2C14E #1A151A #2A2B32. Make readable clean low-res sprite, not detailed illustration. All feet exactly same baseline. Leave top and side margins empty.",
+      "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a16f2f-da2b-7ca3-8af1-36f57bf0b688\\exec-1f716d23-b727-4cca-9804-9b6cb1bd094e.png",
+      "postprocess": [
+        "Alpha >=128 bounds of generated first frame; quantized area-mode downsample to width 30 x48.",
+        "Canonical first pose reused to eliminate frame identity drift; middle phases lift shoulder 1px; cape fold changes 1px.",
+        "Material-specific 1px inner outline. Torso armor centered at cell x31.5; feet aligned PNG y63 = bottom-origin row0.",
+        "Hidden RGB uses master color #1A151A; binary alpha; 4x64 cells; nearest-neighbor 8x export."
+      ]
+    }
+  },
+  "validation": {
+    "Tile_Play_Floor": {
+      "art_size": [
+        32,
+        32
+      ],
+      "saved_size": [
+        256,
+        256
+      ],
+      "palette_outside_colors": 0,
+      "opaque_colors": 7,
+      "alpha_values": [
+        255
+      ],
+      "edge_mismatch_lr": 0,
+      "edge_mismatch_tb": 0,
+      "eight_x_block_errors": 0,
+      "sha256": "3c5b4c7e42d7c4ae1602ddb4f09b4c20c1d89fa1d6b59a19b9f51dbb22f84b33"
+    },
+    "Tile_Build_Floor": {
+      "art_size": [
+        32,
+        32
+      ],
+      "saved_size": [
+        256,
+        256
+      ],
+      "palette_outside_colors": 0,
+      "opaque_colors": 7,
+      "alpha_values": [
+        255
+      ],
+      "edge_mismatch_lr": 0,
+      "edge_mismatch_tb": 0,
+      "phase_structure_mismatch": 0,
+      "eight_x_block_errors": 0,
+      "sha256": "598367126075cb774a6dc11e9a7494363c1f351da1b877d6deee57c5c4ed3c52"
+    },
+    "Tile_Play_Wall": {
+      "art_size": [
+        32,
+        32
+      ],
+      "saved_size": [
+        256,
+        256
+      ],
+      "palette_outside_colors": 0,
+      "opaque_colors": 6,
+      "alpha_values": [
+        255
+      ],
+      "edge_mismatch_lr": 0,
+      "edge_mismatch_tb": 0,
+      "eight_x_block_errors": 0,
+      "sha256": "95bdd6517edfbcf6be904e7b29885f49ad023ef08d7e4d82d6133aed29154313"
+    },
+    "Tile_Build_Wall": {
+      "art_size": [
+        32,
+        32
+      ],
+      "saved_size": [
+        256,
+        256
+      ],
+      "palette_outside_colors": 0,
+      "opaque_colors": 6,
+      "alpha_values": [
+        255
+      ],
+      "edge_mismatch_lr": 0,
+      "edge_mismatch_tb": 0,
+      "phase_structure_mismatch": 0,
+      "eight_x_block_errors": 0,
+      "sha256": "451db7d01caeed51e983191e5723e5099032a57c862a8286629f0941119ff1ce"
+    },
+    "Tile_Play_Ceiling": {
+      "art_size": [
+        32,
+        32
+      ],
+      "saved_size": [
+        256,
+        256
+      ],
+      "palette_outside_colors": 0,
+      "opaque_colors": 7,
+      "alpha_values": [
+        255
+      ],
+      "edge_mismatch_lr": 0,
+      "edge_mismatch_tb": 0,
+      "eight_x_block_errors": 0,
+      "sha256": "0081684f51b0746a31be62fd78f3b70243bbf0685c0613db0c19cb9520476ddd"
+    },
+    "Tile_Build_Ceiling": {
+      "art_size": [
+        32,
+        32
+      ],
+      "saved_size": [
+        256,
+        256
+      ],
+      "palette_outside_colors": 0,
+      "opaque_colors": 7,
+      "alpha_values": [
+        255
+      ],
+      "edge_mismatch_lr": 0,
+      "edge_mismatch_tb": 0,
+      "phase_structure_mismatch": 0,
+      "eight_x_block_errors": 0,
+      "sha256": "042f074e412a689160af8dc88b1e427a5eff0fac288e8cd4855c4d1666ffd9ff"
+    },
+    "Hero_Idle": {
+      "art_size": [
+        256,
+        64
+      ],
+      "saved_size": [
+        2048,
+        512
+      ],
+      "palette_outside_colors": 0,
+      "opaque_colors": 16,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "frames": [
+        {
+          "frame": 0,
+          "opaque_bbox_xyxy": [
+            13,
+            16,
+            42,
+            63
+          ],
+          "bottom_png_y": 63,
+          "bottom_origin_row": 0,
+          "height": 48,
+          "width": 30,
+          "torso_bbox_xyxy": [
+            26,
+            35,
+            37,
+            47
+          ],
+          "torso_center_x": 31.5,
+          "top_left_right_edge_opaque": 0
+        },
+        {
+          "frame": 1,
+          "opaque_bbox_xyxy": [
+            13,
+            16,
+            42,
+            63
+          ],
+          "bottom_png_y": 63,
+          "bottom_origin_row": 0,
+          "height": 48,
+          "width": 30,
+          "torso_bbox_xyxy": [
+            26,
+            34,
+            37,
+            47
+          ],
+          "torso_center_x": 31.5,
+          "top_left_right_edge_opaque": 0
+        },
+        {
+          "frame": 2,
+          "opaque_bbox_xyxy": [
+            13,
+            16,
+            42,
+            63
+          ],
+          "bottom_png_y": 63,
+          "bottom_origin_row": 0,
+          "height": 48,
+          "width": 30,
+          "torso_bbox_xyxy": [
+            26,
+            34,
+            37,
+            47
+          ],
+          "torso_center_x": 31.5,
+          "top_left_right_edge_opaque": 0
+        },
+        {
+          "frame": 3,
+          "opaque_bbox_xyxy": [
+            13,
+            16,
+            42,
+            63
+          ],
+          "bottom_png_y": 63,
+          "bottom_origin_row": 0,
+          "height": 48,
+          "width": 30,
+          "torso_bbox_xyxy": [
+            26,
+            35,
+            37,
+            47
+          ],
+          "torso_center_x": 31.5,
+          "top_left_right_edge_opaque": 0
+        }
+      ],
+      "eight_x_block_errors": 0,
+      "sha256": "db68c00372ed1411a6c1af092b4dc3e608103a9bbb09fdd95e8fe27800bfc83e"
+    }
+  },
+  "limitations": [
+    "Pixel metrics and contact sheet checked; no Unity import or in-game animation playtest.",
+    "Floor/ceiling directional bands repeat when tiled vertically; edge equality is a necessary technical check, not proof of invisible perceptual repetition.",
+    "Build originals structurally normalized with exact Play index mapping.",
+    "Idle motion reconstructed from canonical generated first frame to remove model jitter."
+  ]
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "key": "far",
+    "prompt": "Use case: stylized-concept. Create a production 2D pixel game FAR background for Re:Trap. Reference image is composition reference: storm clouds fill upper two thirds, two subtle lightning forks, distant eroded medieval castle and ruined bridges on bottom third. Preserve this general layout, no foreground trees. Logical art 640x360 enlarged nearest-neighbor 2x to 1280x720. Opaque. Seamless horizontally: left and right edges connect with matching sky and hill heights. Very subdued low contrast dark storm night. LARGE flat pixel clusters, ONLY optional 2x2 checker dither, no smooth gradients, no AA, no microtexture. Strict colors #19142E #27213F #2F2F50 #293145 #384869 #53617E #47345B #302460 #2A2B32 #8284A1. Lightning dim #53617E not white. No text or borders.",
+    "ref": "NEWIMAG/Backgrounds/Chapter1/Play/far.png",
+    "transparent": false,
+    "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a16f41-8d66-71f3-97d5-09487948a499\\exec-6150eb61-9081-45c1-affe-6c630b439a5a.png"
+  },
+  {
+    "key": "near",
+    "prompt": "Use case: stylized-concept. Create a production 2D pixel game NEAR parallax background. Reference composition: broken medieval wall, dead branching trees at left and right, small purple crystals among bottom rubble. All content in bottom 45 percent, upper 55 percent genuinely transparent. Logical 640x256 enlarged nearest-neighbor 2x 1280x512. Seamless horizontally matching low ruined wall and rubble heights on both edges; keep tall trees away from exact edges. Large clean flat pixel clusters, optional 2x2 checker dither only, NO AA, no smooth shading, no noisy microtexture. Dark subdued silhouette. Strict colors #19142E #27213F #2F2F50 #293145 #384869 #47345B #4B3478 #5F3861 #2A2B32 #1A151A #53617E. No text, no frame.",
+    "ref": "NEWIMAG/Backgrounds/Chapter1/Play/near.png",
+    "transparent": true,
+    "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a16f41-8d66-71f3-97d5-09487948a499\\exec-330cbc05-1379-4ade-80c9-e7e788e7a064.png"
+  }
+,
+{
+  "key": "warm_near",
+  "prompt": "Use case: lighting-weather. Edit reference near parallax game layer for Verification phase. Preserve exact locations and silhouette arrangement of wall, rubble, left tree and right tree. Warm ochre/ivory castle stone under sunset. The dead trees now have compact GREEN leafy canopies attached to existing branches; green vines on wall and green plants replace purple crystals in same locations. Upper 45 percent genuinely transparent. Pixel art logical 640x256 enlarged nearest-neighbor 2x; LARGE flat pixel regions, 2x2 checker dithering only, NO AA, no gradient, no noisy texture. Palette only #2B231B #4D3720 #554639 #654138 #A87B56 #CEA362 #CAA981 #DEC28D #716432 #3E6B3A #6E9A4A #C5AF92. Horizontally seamless matching both edge columns. No text.",
+  "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a16f41-8d66-71f3-97d5-09487948a499\\exec-c00374dc-c771-48ee-9e40-970498f39c6e.png",
+  "transparent": true
+}
+]

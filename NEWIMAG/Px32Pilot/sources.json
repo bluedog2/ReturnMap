@@ -1,0 +1,30 @@
+{
+  "wall": {
+    "prompt": "Use case: stylized-concept. Game asset: ONE seamless square stone masonry WALL texture for Re:Trap 2D pixel platformer. Full bleed opaque square, no borders, no margins, no lettering. Actual art logical grid exactly 32x32 pixels enlarged with nearest-neighbor large square pixels. Blue-gray stone, charcoal recessed mortar, a few purple hairline cracks. Two courses of staggered broad rectangular stone bricks. Upper-left light with short discrete flat highlights, mostly clean stone faces, sparse chips. No antialias, no gradient, no noise dithering. All four sides repeat seamlessly; do not frame the tile. ONLY these colors: #293145 #384869 #53617E #8284A1 #2A2B32 #27213F #47345B. Similar medieval stone quality to the blue-gray reference atlas seen in conversation. Deliver only the single filled texture.",
+    "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a16f2f-da2b-7ca3-8af1-36f57bf0b688\\exec-7e9fefbe-2917-4d24-8570-012aec6b7af8.png"
+  },
+  "floor": {
+    "prompt": "Create a single opaque square FLOOR tile texture for a 2D pixel platformer. Same blue-gray charcoal masonry style as the previous wall, but only TWO courses of staggered broad stones at logical 32x32 pixel resolution, enlarged nearest neighbor. Thin exposed top face highlight across upper 2-3 logical pixels, discrete flat #8284A1 highlight. Fill all square. No outer dark outline, no border, no margin, no text. Upper-left lighting. Seamless repeated texture. Sparse purple cracks. STRICT palette #293145 #384869 #53617E #8284A1 #2A2B32 #27213F #47345B only. No gradients, no antialias, no dithering. Crisp chunky actual low resolution pixels.",
+    "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a16f2f-da2b-7ca3-8af1-36f57bf0b688\\exec-8f5b9a41-ee91-485d-ab54-f8400f60f5ad.png"
+  },
+  "ceiling": {
+    "prompt": "Create a single opaque square CEILING tile texture for a 2D pixel platformer. Same blue-gray charcoal masonry style as the previous wall, but only TWO courses of staggered broad stones at logical 32x32 pixel resolution, enlarged nearest neighbor. Exposed darker underside across bottom 2-3 logical pixels, carved horizontal stone lip. Top-left lit brick faces. Fill all square. No outer dark outline, no border, no margin, no text. Upper-left lighting. Seamless repeated texture. Sparse purple cracks. STRICT palette #293145 #384869 #53617E #8284A1 #2A2B32 #27213F #47345B only. No gradients, no antialias, no dithering. Crisp chunky actual low resolution pixels.",
+    "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a16f2f-da2b-7ca3-8af1-36f57bf0b688\\exec-2403133c-6a48-4ad6-89c4-9f42e8002065.png"
+  },
+  "hero": {
+    "prompt": "Use case: stylized-concept. Create production pixel-art Hero_Idle sprite sheet, FOUR equal square cells side by side in ONE horizontal row on genuine transparent background. Logical sheet 256x64 pixels, 4 cells 64x64, enlarged nearest-neighbor 8x to 2048x512. Use the reference character just viewed: young lord, small gold crown, dark brown swept hair, blue steel armor with gold trim, crimson cape hanging behind to LEFT, dark boots. SIDE PROFILE facing RIGHT. Compact human proportions, exactly 48 logical pixels high including crown, no more than 30 pixels wide including cape. Feet on bottom row of each cell, crown 16px below top, torso center x=32 in each cell. Idle breathing only: same head and feet positions, shoulders and cape rise/fall 1px. Four nearly identical poses, no walking. 1 logical pixel hard outline, darkest appropriate ramp, NO pure black. Flat pixel clusters, no AA, no gradient, no shadows outside sprite, no text, no grid. Upper-left light. Use at most these 16 colors: #293145 #384869 #53617E #8FB8E8 #47141D #8C1D24 #AF1F28 #2B231B #654138 #A87B56 #DEC28D #FFF4D6 #B0701C #F2C14E #1A151A #2A2B32. Make readable clean low-res sprite, not detailed illustration. All feet exactly same baseline. Leave top and side margins empty.",
+    "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a16f2f-da2b-7ca3-8af1-36f57bf0b688\\exec-1f716d23-b727-4cca-9804-9b6cb1bd094e.png"
+  },
+  "buildWall": {
+    "prompt": "Recolor this exact stone WALL texture to warm ochre and ivory masonry for the Build phase. Preserve every brick silhouette, mortar line, crack and shading layout. Only palette replacement: #293145 -> #654138, #384869 -> #A87B56, #53617E -> #CEA362, #8284A1 -> #FFF4D6, #2A2B32 -> #554639, #27213F -> #4D3720, #47345B -> #B0701C. Crisp nearest neighbor pixel art, no borders, no text, opaque. No new shapes.",
+    "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a16f2f-da2b-7ca3-8af1-36f57bf0b688\\exec-2018be4e-0e89-46e1-934c-0f4d17d86eac.png"
+  },
+  "buildFloor": {
+    "prompt": "Recolor this exact stone FLOOR texture to warm ochre and ivory masonry for the Build phase. Preserve every brick silhouette, mortar line, crack and shading layout. Only palette replacement: #293145 -> #654138, #384869 -> #A87B56, #53617E -> #CEA362, #8284A1 -> #FFF4D6, #2A2B32 -> #554639, #27213F -> #4D3720, #47345B -> #B0701C. Crisp nearest neighbor pixel art, no borders, no text, opaque. No new shapes.",
+    "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a16f2f-da2b-7ca3-8af1-36f57bf0b688\\exec-44e1be36-c282-41b0-bc33-80be43fbfac3.png"
+  },
+  "buildCeiling": {
+    "prompt": "Recolor this exact stone CEILING texture to warm ochre and ivory masonry for the Build phase. Preserve every brick silhouette, mortar line, crack and shading layout. Only palette replacement: #293145 -> #654138, #384869 -> #A87B56, #53617E -> #CEA362, #8284A1 -> #FFF4D6, #2A2B32 -> #554639, #27213F -> #4D3720, #47345B -> #B0701C. Crisp nearest neighbor pixel art, no borders, no text, opaque. No new shapes.",
+    "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a16f2f-da2b-7ca3-8af1-36f57bf0b688\\exec-b4d46723-6eef-4eb9-9ad2-c2f1be2acec5.png"
+  }
+}

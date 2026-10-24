@@ -1,0 +1,362 @@
+{
+  "spec": "docs/px32-conversion-plan.md section 2",
+  "master_palette": [
+    "#692820",
+    "#654138",
+    "#2B231B",
+    "#4D3720",
+    "#554639",
+    "#B0701C",
+    "#A87B56",
+    "#CEA362",
+    "#CAA981",
+    "#C5AF92",
+    "#DEC28D",
+    "#716432",
+    "#C8A332",
+    "#E3DBC3",
+    "#293145",
+    "#384869",
+    "#53617E",
+    "#19142E",
+    "#27213F",
+    "#2F2F50",
+    "#302460",
+    "#8284A1",
+    "#040205",
+    "#47345B",
+    "#4B3478",
+    "#2C182D",
+    "#5F3861",
+    "#6F2F73",
+    "#7E2D94",
+    "#180711",
+    "#46353A",
+    "#47141D",
+    "#8C1D24",
+    "#902F36",
+    "#AF1F28",
+    "#1A151A",
+    "#2A2B32",
+    "#6C665E",
+    "#928982",
+    "#A0AAA7",
+    "#F2C14E",
+    "#FFF4D6",
+    "#3E6B3A",
+    "#6E9A4A",
+    "#3FC1C9",
+    "#8FB8E8"
+  ],
+  "pipeline": "Pilot1 PNG IO, palette nearest RGB, area-mode downsample, binary alpha, deterministic repair, nearest-neighbor export",
+  "sources": [
+    {
+      "key": "far",
+      "prompt": "Use case: stylized-concept. Create a production 2D pixel game FAR background for Re:Trap. Reference image is composition reference: storm clouds fill upper two thirds, two subtle lightning forks, distant eroded medieval castle and ruined bridges on bottom third. Preserve this general layout, no foreground trees. Logical art 640x360 enlarged nearest-neighbor 2x to 1280x720. Opaque. Seamless horizontally: left and right edges connect with matching sky and hill heights. Very subdued low contrast dark storm night. LARGE flat pixel clusters, ONLY optional 2x2 checker dither, no smooth gradients, no AA, no microtexture. Strict colors #19142E #27213F #2F2F50 #293145 #384869 #53617E #47345B #302460 #2A2B32 #8284A1. Lightning dim #53617E not white. No text or borders.",
+      "ref": "NEWIMAG/Backgrounds/Chapter1/Play/far.png",
+      "transparent": false,
+      "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a16f41-8d66-71f3-97d5-09487948a499\\exec-6150eb61-9081-45c1-affe-6c630b439a5a.png"
+    },
+    {
+      "key": "near",
+      "prompt": "Use case: stylized-concept. Create a production 2D pixel game NEAR parallax background. Reference composition: broken medieval wall, dead branching trees at left and right, small purple crystals among bottom rubble. All content in bottom 45 percent, upper 55 percent genuinely transparent. Logical 640x256 enlarged nearest-neighbor 2x 1280x512. Seamless horizontally matching low ruined wall and rubble heights on both edges; keep tall trees away from exact edges. Large clean flat pixel clusters, optional 2x2 checker dither only, NO AA, no smooth shading, no noisy microtexture. Dark subdued silhouette. Strict colors #19142E #27213F #2F2F50 #293145 #384869 #47345B #4B3478 #5F3861 #2A2B32 #1A151A #53617E. No text, no frame.",
+      "ref": "NEWIMAG/Backgrounds/Chapter1/Play/near.png",
+      "transparent": true,
+      "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a16f41-8d66-71f3-97d5-09487948a499\\exec-330cbc05-1379-4ade-80c9-e7e788e7a064.png"
+    },
+    {
+      "key": "warm_near",
+      "prompt": "Use case: lighting-weather. Edit reference near parallax game layer for Verification phase. Preserve exact locations and silhouette arrangement of wall, rubble, left tree and right tree. Warm ochre/ivory castle stone under sunset. The dead trees now have compact GREEN leafy canopies attached to existing branches; green vines on wall and green plants replace purple crystals in same locations. Upper 45 percent genuinely transparent. Pixel art logical 640x256 enlarged nearest-neighbor 2x; LARGE flat pixel regions, 2x2 checker dithering only, NO AA, no gradient, no noisy texture. Palette only #2B231B #4D3720 #554639 #654138 #A87B56 #CEA362 #CAA981 #DEC28D #716432 #3E6B3A #6E9A4A #C5AF92. Horizontally seamless matching both edge columns. No text.",
+      "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a16f41-8d66-71f3-97d5-09487948a499\\exec-c00374dc-c771-48ee-9e40-970498f39c6e.png",
+      "transparent": true
+    }
+  ],
+  "files": {
+    "Tile_Play_Floor_A": {
+      "file": "Tiles\\Tile_Play_Floor_A.png",
+      "one_x": "_1x\\Tile_Play_Floor_A.png",
+      "source": "C:\\Users\\Owner\\work\\ReturnMap\\NEWIMAG\\Px32Pilot\\_1x\\Tile_Play_Floor.png",
+      "postprocess": [
+        "Reuse imagegen Pilot1 clusters; deterministic interior warp and localized chips.",
+        "Reduce horizontal mortar contrast; shared two-pixel border; floor highlight one row.",
+        "Binary alpha and master palette; nearest-neighbor 8x."
+      ]
+    },
+    "Tile_Build_Floor_A": {
+      "file": "Tiles\\Tile_Build_Floor_A.png",
+      "one_x": "_1x\\Tile_Build_Floor_A.png",
+      "source": "Tile_Play_Floor_A",
+      "postprocess": [
+        "Exact Play-to-Build palette index replacement; no geometry changes."
+      ]
+    },
+    "Tile_Play_Floor_B": {
+      "file": "Tiles\\Tile_Play_Floor_B.png",
+      "one_x": "_1x\\Tile_Play_Floor_B.png",
+      "source": "C:\\Users\\Owner\\work\\ReturnMap\\NEWIMAG\\Px32Pilot\\_1x\\Tile_Play_Floor.png",
+      "postprocess": [
+        "Reuse imagegen Pilot1 clusters; deterministic interior warp and localized chips.",
+        "Reduce horizontal mortar contrast; shared two-pixel border; floor highlight one row.",
+        "Binary alpha and master palette; nearest-neighbor 8x."
+      ]
+    },
+    "Tile_Build_Floor_B": {
+      "file": "Tiles\\Tile_Build_Floor_B.png",
+      "one_x": "_1x\\Tile_Build_Floor_B.png",
+      "source": "Tile_Play_Floor_B",
+      "postprocess": [
+        "Exact Play-to-Build palette index replacement; no geometry changes."
+      ]
+    },
+    "Tile_Play_Floor_C": {
+      "file": "Tiles\\Tile_Play_Floor_C.png",
+      "one_x": "_1x\\Tile_Play_Floor_C.png",
+      "source": "C:\\Users\\Owner\\work\\ReturnMap\\NEWIMAG\\Px32Pilot\\_1x\\Tile_Play_Floor.png",
+      "postprocess": [
+        "Reuse imagegen Pilot1 clusters; deterministic interior warp and localized chips.",
+        "Reduce horizontal mortar contrast; shared two-pixel border; floor highlight one row.",
+        "Binary alpha and master palette; nearest-neighbor 8x."
+      ]
+    },
+    "Tile_Build_Floor_C": {
+      "file": "Tiles\\Tile_Build_Floor_C.png",
+      "one_x": "_1x\\Tile_Build_Floor_C.png",
+      "source": "Tile_Play_Floor_C",
+      "postprocess": [
+        "Exact Play-to-Build palette index replacement; no geometry changes."
+      ]
+    },
+    "Tile_Play_Wall_A": {
+      "file": "Tiles\\Tile_Play_Wall_A.png",
+      "one_x": "_1x\\Tile_Play_Wall_A.png",
+      "source": "C:\\Users\\Owner\\work\\ReturnMap\\NEWIMAG\\Px32Pilot\\_1x\\Tile_Play_Wall.png",
+      "postprocess": [
+        "Reuse imagegen Pilot1 clusters; deterministic interior warp and localized chips.",
+        "Reduce horizontal mortar contrast; shared two-pixel border; floor highlight one row.",
+        "Binary alpha and master palette; nearest-neighbor 8x."
+      ]
+    },
+    "Tile_Build_Wall_A": {
+      "file": "Tiles\\Tile_Build_Wall_A.png",
+      "one_x": "_1x\\Tile_Build_Wall_A.png",
+      "source": "Tile_Play_Wall_A",
+      "postprocess": [
+        "Exact Play-to-Build palette index replacement; no geometry changes."
+      ]
+    },
+    "Tile_Play_Wall_B": {
+      "file": "Tiles\\Tile_Play_Wall_B.png",
+      "one_x": "_1x\\Tile_Play_Wall_B.png",
+      "source": "C:\\Users\\Owner\\work\\ReturnMap\\NEWIMAG\\Px32Pilot\\_1x\\Tile_Play_Wall.png",
+      "postprocess": [
+        "Reuse imagegen Pilot1 clusters; deterministic interior warp and localized chips.",
+        "Reduce horizontal mortar contrast; shared two-pixel border; floor highlight one row.",
+        "Binary alpha and master palette; nearest-neighbor 8x."
+      ]
+    },
+    "Tile_Build_Wall_B": {
+      "file": "Tiles\\Tile_Build_Wall_B.png",
+      "one_x": "_1x\\Tile_Build_Wall_B.png",
+      "source": "Tile_Play_Wall_B",
+      "postprocess": [
+        "Exact Play-to-Build palette index replacement; no geometry changes."
+      ]
+    },
+    "Tile_Play_Wall_C": {
+      "file": "Tiles\\Tile_Play_Wall_C.png",
+      "one_x": "_1x\\Tile_Play_Wall_C.png",
+      "source": "C:\\Users\\Owner\\work\\ReturnMap\\NEWIMAG\\Px32Pilot\\_1x\\Tile_Play_Wall.png",
+      "postprocess": [
+        "Reuse imagegen Pilot1 clusters; deterministic interior warp and localized chips.",
+        "Reduce horizontal mortar contrast; shared two-pixel border; floor highlight one row.",
+        "Binary alpha and master palette; nearest-neighbor 8x."
+      ]
+    },
+    "Tile_Build_Wall_C": {
+      "file": "Tiles\\Tile_Build_Wall_C.png",
+      "one_x": "_1x\\Tile_Build_Wall_C.png",
+      "source": "Tile_Play_Wall_C",
+      "postprocess": [
+        "Exact Play-to-Build palette index replacement; no geometry changes."
+      ]
+    },
+    "Tile_Play_Ceiling_A": {
+      "file": "Tiles\\Tile_Play_Ceiling_A.png",
+      "one_x": "_1x\\Tile_Play_Ceiling_A.png",
+      "source": "C:\\Users\\Owner\\work\\ReturnMap\\NEWIMAG\\Px32Pilot\\_1x\\Tile_Play_Ceiling.png",
+      "postprocess": [
+        "Reuse imagegen Pilot1 clusters; deterministic interior warp and localized chips.",
+        "Reduce horizontal mortar contrast; shared two-pixel border; floor highlight one row.",
+        "Binary alpha and master palette; nearest-neighbor 8x."
+      ]
+    },
+    "Tile_Build_Ceiling_A": {
+      "file": "Tiles\\Tile_Build_Ceiling_A.png",
+      "one_x": "_1x\\Tile_Build_Ceiling_A.png",
+      "source": "Tile_Play_Ceiling_A",
+      "postprocess": [
+        "Exact Play-to-Build palette index replacement; no geometry changes."
+      ]
+    },
+    "Tile_Play_Ceiling_B": {
+      "file": "Tiles\\Tile_Play_Ceiling_B.png",
+      "one_x": "_1x\\Tile_Play_Ceiling_B.png",
+      "source": "C:\\Users\\Owner\\work\\ReturnMap\\NEWIMAG\\Px32Pilot\\_1x\\Tile_Play_Ceiling.png",
+      "postprocess": [
+        "Reuse imagegen Pilot1 clusters; deterministic interior warp and localized chips.",
+        "Reduce horizontal mortar contrast; shared two-pixel border; floor highlight one row.",
+        "Binary alpha and master palette; nearest-neighbor 8x."
+      ]
+    },
+    "Tile_Build_Ceiling_B": {
+      "file": "Tiles\\Tile_Build_Ceiling_B.png",
+      "one_x": "_1x\\Tile_Build_Ceiling_B.png",
+      "source": "Tile_Play_Ceiling_B",
+      "postprocess": [
+        "Exact Play-to-Build palette index replacement; no geometry changes."
+      ]
+    },
+    "Hero_Idle": {
+      "file": "Player\\Hero_Idle.png",
+      "one_x": "_1x\\Hero_Idle.png",
+      "source": "C:\\Users\\Owner\\work\\ReturnMap\\NEWIMAG\\Px32Pilot\\_1x\\Hero_Idle.png",
+      "postprocess": [
+        "Use first 64x64 Pilot1 frame, no new character drawing.",
+        "Integer breathing shifts 0,-1,-1,0,+1,+1; cape tip shifts 0,+1,+2,+1,0,-1.",
+        "Boots fixed; material-specific one-pixel inner outline; same palette; 8fps loop."
+      ]
+    },
+    "Play_Far": {
+      "file": "Backgrounds\\Play_Far.png",
+      "one_x": "_1x\\Play_Far.png",
+      "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a16f41-8d66-71f3-97d5-09487948a499\\exec-6150eb61-9081-45c1-affe-6c630b439a5a.png",
+      "postprocess": [
+        "Imagegen reference-guided generation.",
+        "Pilot1 nearest-palette area-mode downsample, alpha threshold 128; 2x2 cluster cleanup.",
+        "24px discrete periodic transition; exact matching edge columns; nearest-neighbor 2x."
+      ]
+    },
+    "Verification_Far": {
+      "file": "Backgrounds\\Verification_Far.png",
+      "one_x": "_1x\\Verification_Far.png",
+      "source": "Play_Far",
+      "postprocess": [
+        "Exact geometry reuse; region-aware sunset/ochre/green palette mapping; dim lightning absorbed into clouds."
+      ]
+    },
+    "Play_Near": {
+      "file": "Backgrounds\\Play_Near.png",
+      "one_x": "_1x\\Play_Near.png",
+      "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a16f41-8d66-71f3-97d5-09487948a499\\exec-330cbc05-1379-4ade-80c9-e7e788e7a064.png",
+      "postprocess": [
+        "Imagegen reference-guided generation.",
+        "Pilot1 nearest-palette area-mode downsample, alpha threshold 128; 2x2 cluster cleanup.",
+        "24px discrete periodic transition; exact matching edge columns; nearest-neighbor 2x."
+      ]
+    },
+    "Verification_Near": {
+      "file": "Backgrounds\\Verification_Near.png",
+      "one_x": "_1x\\Verification_Near.png",
+      "source": "C:\\Users\\Owner\\.codex\\generated_images\\01a16f41-8d66-71f3-97d5-09487948a499\\exec-c00374dc-c771-48ee-9e40-970498f39c6e.png",
+      "postprocess": [
+        "Imagegen reference-guided generation.",
+        "Pilot1 nearest-palette area-mode downsample, alpha threshold 128; 2x2 cluster cleanup.",
+        "24px discrete periodic transition; exact matching edge columns; nearest-neighbor 2x."
+      ]
+    }
+  },
+  "preview_layouts": {
+    "Play": [
+      [
+        "Tile_Play_Ceiling_B",
+        "Tile_Play_Ceiling_B",
+        "Tile_Play_Ceiling_A",
+        "Tile_Play_Ceiling_A",
+        "Tile_Play_Ceiling_B",
+        "Tile_Play_Ceiling_A",
+        "Tile_Play_Ceiling_B",
+        "Tile_Play_Ceiling_B"
+      ],
+      [
+        "Tile_Play_Wall_A",
+        "Tile_Play_Wall_C",
+        "Tile_Play_Wall_A",
+        "Tile_Play_Wall_A",
+        "Tile_Play_Wall_B",
+        "Tile_Play_Wall_B",
+        "Tile_Play_Wall_B",
+        "Tile_Play_Wall_C"
+      ],
+      [
+        "Tile_Play_Wall_A",
+        "Tile_Play_Wall_B",
+        "Tile_Play_Wall_C",
+        "Tile_Play_Wall_C",
+        "Tile_Play_Wall_A",
+        "Tile_Play_Wall_C",
+        "Tile_Play_Wall_B",
+        "Tile_Play_Wall_C"
+      ],
+      [
+        "Tile_Play_Floor_A",
+        "Tile_Play_Floor_C",
+        "Tile_Play_Floor_C",
+        "Tile_Play_Floor_A",
+        "Tile_Play_Floor_A",
+        "Tile_Play_Floor_A",
+        "Tile_Play_Floor_B",
+        "Tile_Play_Floor_B"
+      ]
+    ],
+    "Build": [
+      [
+        "Tile_Build_Ceiling_B",
+        "Tile_Build_Ceiling_A",
+        "Tile_Build_Ceiling_B",
+        "Tile_Build_Ceiling_A",
+        "Tile_Build_Ceiling_A",
+        "Tile_Build_Ceiling_B",
+        "Tile_Build_Ceiling_A",
+        "Tile_Build_Ceiling_B"
+      ],
+      [
+        "Tile_Build_Wall_C",
+        "Tile_Build_Wall_B",
+        "Tile_Build_Wall_B",
+        "Tile_Build_Wall_C",
+        "Tile_Build_Wall_B",
+        "Tile_Build_Wall_A",
+        "Tile_Build_Wall_A",
+        "Tile_Build_Wall_B"
+      ],
+      [
+        "Tile_Build_Wall_B",
+        "Tile_Build_Wall_C",
+        "Tile_Build_Wall_A",
+        "Tile_Build_Wall_B",
+        "Tile_Build_Wall_B",
+        "Tile_Build_Wall_A",
+        "Tile_Build_Wall_C",
+        "Tile_Build_Wall_C"
+      ],
+      [
+        "Tile_Build_Floor_A",
+        "Tile_Build_Floor_B",
+        "Tile_Build_Floor_A",
+        "Tile_Build_Floor_C",
+        "Tile_Build_Floor_B",
+        "Tile_Build_Floor_C",
+        "Tile_Build_Floor_B",
+        "Tile_Build_Floor_B"
+      ]
+    ]
+  },
+  "hero_fps": 8,
+  "limitations": [
+    "No Unity import or in-game camera/parallax playtest.",
+    "Exact edge equality is a numerical condition, not a guarantee against all perceived repetition.",
+    "Tiles derive from Pilot1 generated clusters via deterministic interior edits; hero derives exclusively from Pilot1 first frame.",
+    "Background generation grid was normalized with 2x2 clusters; no smooth gradients survive quantization.",
+    "Verification Near retains general composition but adds vegetation; not pixel-identical geometry to Play Near."
+  ]
+}

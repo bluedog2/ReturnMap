@@ -1,0 +1,223 @@
+{
+  "Tile_Play_Floor": {
+    "art_size": [
+      32,
+      32
+    ],
+    "saved_size": [
+      256,
+      256
+    ],
+    "palette_outside_colors": 0,
+    "opaque_colors": 7,
+    "alpha_values": [
+      255
+    ],
+    "edge_mismatch_lr": 0,
+    "edge_mismatch_tb": 0,
+    "eight_x_block_errors": 0,
+    "sha256": "3c5b4c7e42d7c4ae1602ddb4f09b4c20c1d89fa1d6b59a19b9f51dbb22f84b33"
+  },
+  "Tile_Build_Floor": {
+    "art_size": [
+      32,
+      32
+    ],
+    "saved_size": [
+      256,
+      256
+    ],
+    "palette_outside_colors": 0,
+    "opaque_colors": 7,
+    "alpha_values": [
+      255
+    ],
+    "edge_mismatch_lr": 0,
+    "edge_mismatch_tb": 0,
+    "phase_structure_mismatch": 0,
+    "eight_x_block_errors": 0,
+    "sha256": "598367126075cb774a6dc11e9a7494363c1f351da1b877d6deee57c5c4ed3c52"
+  },
+  "Tile_Play_Wall": {
+    "art_size": [
+      32,
+      32
+    ],
+    "saved_size": [
+      256,
+      256
+    ],
+    "palette_outside_colors": 0,
+    "opaque_colors": 6,
+    "alpha_values": [
+      255
+    ],
+    "edge_mismatch_lr": 0,
+    "edge_mismatch_tb": 0,
+    "eight_x_block_errors": 0,
+    "sha256": "95bdd6517edfbcf6be904e7b29885f49ad023ef08d7e4d82d6133aed29154313"
+  },
+  "Tile_Build_Wall": {
+    "art_size": [
+      32,
+      32
+    ],
+    "saved_size": [
+      256,
+      256
+    ],
+    "palette_outside_colors": 0,
+    "opaque_colors": 6,
+    "alpha_values": [
+      255
+    ],
+    "edge_mismatch_lr": 0,
+    "edge_mismatch_tb": 0,
+    "phase_structure_mismatch": 0,
+    "eight_x_block_errors": 0,
+    "sha256": "451db7d01caeed51e983191e5723e5099032a57c862a8286629f0941119ff1ce"
+  },
+  "Tile_Play_Ceiling": {
+    "art_size": [
+      32,
+      32
+    ],
+    "saved_size": [
+      256,
+      256
+    ],
+    "palette_outside_colors": 0,
+    "opaque_colors": 7,
+    "alpha_values": [
+      255
+    ],
+    "edge_mismatch_lr": 0,
+    "edge_mismatch_tb": 0,
+    "eight_x_block_errors": 0,
+    "sha256": "0081684f51b0746a31be62fd78f3b70243bbf0685c0613db0c19cb9520476ddd"
+  },
+  "Tile_Build_Ceiling": {
+    "art_size": [
+      32,
+      32
+    ],
+    "saved_size": [
+      256,
+      256
+    ],
+    "palette_outside_colors": 0,
+    "opaque_colors": 7,
+    "alpha_values": [
+      255
+    ],
+    "edge_mismatch_lr": 0,
+    "edge_mismatch_tb": 0,
+    "phase_structure_mismatch": 0,
+    "eight_x_block_errors": 0,
+    "sha256": "042f074e412a689160af8dc88b1e427a5eff0fac288e8cd4855c4d1666ffd9ff"
+  },
+  "Hero_Idle": {
+    "art_size": [
+      256,
+      64
+    ],
+    "saved_size": [
+      2048,
+      512
+    ],
+    "palette_outside_colors": 0,
+    "opaque_colors": 16,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "opaque_bbox_xyxy": [
+          13,
+          16,
+          42,
+          63
+        ],
+        "bottom_png_y": 63,
+        "bottom_origin_row": 0,
+        "height": 48,
+        "width": 30,
+        "torso_bbox_xyxy": [
+          26,
+          35,
+          37,
+          47
+        ],
+        "torso_center_x": 31.5,
+        "top_left_right_edge_opaque": 0
+      },
+      {
+        "frame": 1,
+        "opaque_bbox_xyxy": [
+          13,
+          16,
+          42,
+          63
+        ],
+        "bottom_png_y": 63,
+        "bottom_origin_row": 0,
+        "height": 48,
+        "width": 30,
+        "torso_bbox_xyxy": [
+          26,
+          34,
+          37,
+          47
+        ],
+        "torso_center_x": 31.5,
+        "top_left_right_edge_opaque": 0
+      },
+      {
+        "frame": 2,
+        "opaque_bbox_xyxy": [
+          13,
+          16,
+          42,
+          63
+        ],
+        "bottom_png_y": 63,
+        "bottom_origin_row": 0,
+        "height": 48,
+        "width": 30,
+        "torso_bbox_xyxy": [
+          26,
+          34,
+          37,
+          47
+        ],
+        "torso_center_x": 31.5,
+        "top_left_right_edge_opaque": 0
+      },
+      {
+        "frame": 3,
+        "opaque_bbox_xyxy": [
+          13,
+          16,
+          42,
+          63
+        ],
+        "bottom_png_y": 63,
+        "bottom_origin_row": 0,
+        "height": 48,
+        "width": 30,
+        "torso_bbox_xyxy": [
+          26,
+          35,
+          37,
+          47
+        ],
+        "torso_center_x": 31.5,
+        "top_left_right_edge_opaque": 0
+      }
+    ],
+    "eight_x_block_errors": 0,
+    "sha256": "db68c00372ed1411a6c1af092b4dc3e608103a9bbb09fdd95e8fe27800bfc83e"
+  }
+}
