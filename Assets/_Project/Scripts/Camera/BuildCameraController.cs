@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using Unity.Cinemachine;
+using UnityEngine.Rendering.Universal;
 
 namespace ReTrap
 {
@@ -25,7 +26,9 @@ namespace ReTrap
     /// AI 10마리의 동선과 함정 작동을 한눈에 조망하는 관전 전용 고정 뷰입니다.</para>
     ///
     /// <para><b>플레이 페이즈</b>: CinemachineBrain 을 다시 켜서
-    /// 기존 PlayerFollowCamera(플레이어 추적) 로 복원합니다.</para>
+    /// 기존 PlayerFollowCamera(플레이어 추적) 로 복원합니다.
+    /// 픽셀 퍼펙트(PixelPerfectCamera, 640×360·PPU 32)는 <b>Play 에서만 켜고</b>
+    /// 빌드·검증의 직접 제어 중에는 끕니다 (pixelPerfectPlay 로 롤백 가능).</para>
     ///
     /// <para><b>경계 정책</b>: 줌아웃 상한을 "맵 밖이 보이지 않는 최대 size"(크롭)로
     /// 동적 cap 하므로 어떤 줌·패닝에서도 맵 밖은 화면에 들어오지 않습니다.</para>
@@ -58,11 +61,18 @@ namespace ReTrap
         [Tooltip("플레이어 추적 CinemachineCamera. 비워두면 씬에서 자동 탐색.")]
         [SerializeField] private CinemachineCamera playCamera;
 
+        [Header("픽셀 퍼펙트")]
+        [Tooltip("Play 페이즈에서 Pixel Perfect Camera 를 사용합니다. 끄면 기존 동작(레거시 렌즈 크기).")]
+        [SerializeField] private bool  pixelPerfectPlay    = true;
+        [Tooltip("픽셀 퍼펙트를 끌 때 쓰는 기존 Play 렌즈 크기(Orthographic Size).")]
+        [SerializeField] private float legacyPlayOrthoSize = 6f;
+
         // ── 런타임 ────────────────────────────────────────────────────────────
 
         private Camera           _cam;
         private CinemachineBrain _brain;
         private Coroutine        _glide;
+        private PixelPerfectCamera _ppc;
 
         /// <summary>Brain 을 끄고 카메라를 직접 제어하는가 (Build + Verification).</summary>
         private bool    _directControl;
@@ -77,6 +87,11 @@ namespace ReTrap
         {
             _cam   = GetComponent<Camera>();
             _brain = GetComponent<CinemachineBrain>();
+            _ppc   = GetComponent<PixelPerfectCamera>();
+
+            if (_ppc == null && pixelPerfectPlay)
+                Debug.LogWarning("[BuildCameraController] PixelPerfectCamera 가 없어 픽셀 퍼펙트 기능을 비활성화합니다. (ReTrap/Setup/픽셀 퍼펙트 카메라 세팅)", this);
+            if (_ppc != null) _ppc.enabled = false; // Build/Verification 기본: 꺼짐
         }
 
         private void OnEnable()
@@ -100,6 +115,7 @@ namespace ReTrap
         private void Update()
         {
             if (!_directControl) return;
+            if (IsPpcOn) return; // PPC 가 켜져 있으면 orthographicSize 를 쓰지 않는다
             if (!TryGetBounds(out Bounds b)) return;
 
             // 검증 페이즈(관전 전용 고정 뷰): 입력 자체를 받지 않는다.
@@ -116,8 +132,37 @@ namespace ReTrap
 
         // ── 페이즈 연동 ───────────────────────────────────────────────────────
 
+        /// <summary>Play 에서 Pixel Perfect Camera 를 쓰는가 (플래그 + 컴포넌트 존재).</summary>
+        private bool UsePpc => pixelPerfectPlay && _ppc != null;
+
+        /// <summary>Pixel Perfect Camera 가 현재 켜져 있는가.</summary>
+        private bool IsPpcOn => _ppc != null && _ppc.enabled;
+
+        private void SetPpc(bool on)
+        {
+            if (_ppc != null) _ppc.enabled = on;
+        }
+
+        /// <summary>Play 목표 렌즈 크기 — PPC 사용 시 ref 해상도/PPU 기준 값을 PPC 보정, 아니면 레거시 값.</summary>
+        private float PlayOrthoSize()
+        {
+            if (!UsePpc) return legacyPlayOrthoSize;
+            float target = _ppc.refResolutionY / (2f * _ppc.assetsPPU);
+            return _ppc.CorrectCinemachineOrthoSize(target);
+        }
+
+        private static void SetLensSize(CinemachineCamera vcam, float size)
+        {
+            var lens = vcam.Lens;
+            lens.OrthographicSize = size;
+            vcam.Lens = lens;
+        }
+
         private void HandlePhase(GamePhase phase)
         {
+            // Play 를 떠나거나 직접 제어 뷰로 갈 때 PPC 를 먼저 끈다
+            if (phase != GamePhase.Play) SetPpc(false);
+
             if (_glide != null)
             {
                 StopCoroutine(_glide);
@@ -178,6 +223,18 @@ namespace ReTrap
             _inputEnabled  = false;
             _panning       = false;
             if (_brain != null) _brain.enabled = true;  // 플레이어 추적 카메라 복원
+
+            // 렌즈 크기를 Play 목표값으로 맞춘 뒤 PPC 를 켠다 (켜는 순간 크기 점프 방지)
+            bool hasVcam = TryGetPlayCamera(out var vcam);
+            if (hasVcam) SetLensSize(vcam, PlayOrthoSize());
+            // vcam 이 없으면 PPC 를 켜지 않는다 (호환 모드만 켜져 크기가 빌드 값에 멈추는 것 방지)
+            if (UsePpc && hasVcam)
+            {
+                SetPpc(true);
+                // OnEnable 이 Cinemachine 호환 모드를 초기화하므로 켠 뒤 다시 호출
+                float corrected = PlayOrthoSize();
+                if (vcam != null) SetLensSize(vcam, corrected);
+            }
         }
 
         /// <summary>
@@ -194,7 +251,7 @@ namespace ReTrap
 
             Vector3 startPos   = transform.position;
             float   startSize  = _cam.orthographicSize;
-            float   targetSize = vcam.Lens.OrthographicSize;
+            float   targetSize = PlayOrthoSize(); // 글라이드는 PPC 꺼진 상태로 진행
 
             for (float t = 0f; t < playGlideDuration; t += Time.unscaledDeltaTime)
             {
@@ -211,6 +268,7 @@ namespace ReTrap
             _cam.orthographicSize = targetSize;
             transform.position = new Vector3(end.x, end.y, startPos.z);
 
+            SetLensSize(vcam, targetSize);
             vcam.ForceCameraPosition(transform.position, transform.rotation);
             _glide = null;
             ExitDirectControl();
@@ -239,6 +297,7 @@ namespace ReTrap
         /// <summary>경계 중심으로 이동하고 줌아웃 상한(맵이 화면을 꽉 채우는 크롭)으로 맞춥니다.</summary>
         private void FitToBounds()
         {
+            if (IsPpcOn) return; // PPC 켜진 동안 ortho 쓰기 금지
             if (!TryGetBounds(out Bounds b)) return;
 
             float maxSize = Mathf.Max(MaxCropSize(b), minOrthoSize);

@@ -3106,6 +3106,7 @@ GameObject:
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
   - component: {fileID: 519420034}
+  - component: {fileID: 519420035}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3281,6 +3282,34 @@ MonoBehaviour:
   edgePan: 1
   edgeMargin: 24
   edgePanSpeed: 3
+  playGlideDuration: 1.2
+  playCamera: {fileID: 0}
+  pixelPerfectPlay: 1
+  legacyPlayOrthoSize: 6
+--- !u!114 &519420035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.PixelPerfectCamera
+  m_ComponentVersion: 1
+  m_AssetsPPU: 32
+  m_RefResolutionX: 640
+  m_RefResolutionY: 360
+  m_CropFrame: 0
+  m_GridSnapping: 0
+  m_FilterMode: 0
+  m_UpscaleRT: 0
+  m_PixelSnapping: 0
+  m_CropFrameX: 0
+  m_CropFrameY: 0
+  m_StretchFill: 0
 --- !u!1 &577838423
 GameObject:
   m_ObjectHideFlags: 0
@@ -5619,6 +5648,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ReTrap.VerificationPhaseController
   director: {fileID: 984637851}
   stubDuration: 1
+  resultBanner: {fileID: 0}
+  successMessage: "\uBC29\uC5B4 \uC131\uACF5!"
+  successHoldTime: 1.2
 --- !u!114 &984637851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9558,6 +9590,7 @@ GameObject:
   - component: {fileID: 1693843774}
   - component: {fileID: 1693843773}
   - component: {fileID: 1693843776}
+  - component: {fileID: 1693843777}
   m_Layer: 0
   m_Name: PlayerFollowCamera
   m_TagString: Untagged
@@ -9621,7 +9654,7 @@ MonoBehaviour:
     CustomLookAtTarget: 1
   Lens:
     FieldOfView: 40
-    OrthographicSize: 6
+    OrthographicSize: 5.625
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -9674,6 +9707,18 @@ MonoBehaviour:
     MaxWindowSize: 0
     Padding: 0
   m_LegacyMaxWindowSize: -2
+--- !u!114 &1693843777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693843772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a8a05de0ac134f4f9d01bef6b9da077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachinePixelPerfect
 --- !u!1 &1737592810
 GameObject:
   m_ObjectHideFlags: 0
