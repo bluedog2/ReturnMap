@@ -274,7 +274,7 @@ namespace ReTrap
     {
         private readonly PlayerAnimationFSM fsm;
         private float timer;
-        private const float CLIP_DURATION = 0.33f;
+        private const float CLIP_DURATION = 0.25f; // Land 3프레임 @12fps
 
         internal LandState(PlayerAnimationFSM fsm) => this.fsm = fsm;
 

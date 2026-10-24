@@ -39,7 +39,7 @@ namespace ReTrap.EditorTools
             public bool   Loop;
         }
 
-        // 상태별 규격 (계획서 2.2). 주인공 Idle 6@8 · Run 8@12 · JumpStart 2@12 · Fall 2@8 루프 · Land 3@12 · Dash 4@16 · Hit 2@10 · Death 6@10
+        // 상태별 규격 (계획서 2.2). 주인공 Idle 6@8 · Run 8@12 · JumpStart 2@12 · Fall 2@8 루프 · Land 3@12 · Dash 4@20 · Hit 2@10 · Death 6@10
         private static List<Entry> BuildTable()
         {
             var t = new List<Entry>();
@@ -56,7 +56,7 @@ namespace ReTrap.EditorTools
             Hero("Jump_Loop",  "Hero_Fall",      2, 8,  true);   // Fall 공유
             Hero("Fall_Loop",  "Hero_Fall",      2, 8,  true);
             Hero("Land",       "Hero_Land",      3, 12, false);
-            Hero("Dash",       "Hero_Dash",      4, 16, false);
+            Hero("Dash",       "Hero_Dash",      4, 20, false);  // 대시 0.2s 와 길이 일치
             Hero("Lord_Hit",   "Hero_Hit",       2, 10, false);
             Hero("Death",      "Hero_Death",     6, 10, false);
 
@@ -85,12 +85,15 @@ namespace ReTrap.EditorTools
         [MenuItem("ReTrap/Art/Px32 클립 재배선 (적용)", false, 131)]
         public static void RunApply() => Run(true);
 
-        private static void Run(bool apply)
+        /// <summary>주인공 클립 9개만 적용한다 (Px32HeroWiring 용). 전부 재배선되면 true, 하나라도 건너뛰면 false.</summary>
+        public static bool RunApplyHero() => Run(true, heroOnly: true);
+
+        private static bool Run(bool apply, bool heroOnly = false)
         {
             if (EditorApplication.isPlaying)
             {
                 Debug.LogWarning("[SpriteClipRebinder] 플레이 모드에서는 실행할 수 없습니다.");
-                return;
+                return false;
             }
 
             var log = new StringBuilder();
@@ -102,6 +105,7 @@ namespace ReTrap.EditorTools
             {
                 foreach (var e in BuildTable())
                 {
+                    if (heroOnly && e.ClipPath.StartsWith(EnemyRoot, StringComparison.Ordinal)) continue;
                     var clip = AssetDatabase.LoadAssetAtPath<AnimationClip>(e.ClipPath);
                     if (clip == null)
                     {
@@ -138,6 +142,7 @@ namespace ReTrap.EditorTools
             Directory.CreateDirectory(Path.GetDirectoryName(logPath));
             File.WriteAllText(logPath, log.ToString(), new UTF8Encoding(false));
             Debug.Log($"[SpriteClipRebinder] {(apply ? "적용" : "드라이런")} 완료 — 재배선 {done} / 건너뜀 {skipped}. 로그: Logs/px32-rebind.txt");
+            return skipped == 0;
         }
 
         // ── 재배선 ────────────────────────────────────────────────────────────

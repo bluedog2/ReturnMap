@@ -1,0 +1,128 @@
+{
+  "source": "NEWIMAG\\Px32Pilot2\\_1x\\Hero_Idle.png",
+  "source_sha256": "1b313648360ee07c144c4d1cf5d42d4a9d0f7dd9c0791976a7cb2e0645c9cce7",
+  "source_frame": 0,
+  "pipeline": "Source cutout segmentation; inverse nearest-neighbor affine limb poses; translated original head; cape rotation and row flutter; padded composition; per-sheet height and bbox centering; material-specific 1px inner outline; exact 8x nearest-neighbor. No image generation.",
+  "palette": [
+    "#692820",
+    "#654138",
+    "#2B231B",
+    "#4D3720",
+    "#554639",
+    "#B0701C",
+    "#A87B56",
+    "#CEA362",
+    "#CAA981",
+    "#C5AF92",
+    "#DEC28D",
+    "#716432",
+    "#C8A332",
+    "#E3DBC3",
+    "#293145",
+    "#384869",
+    "#53617E",
+    "#19142E",
+    "#27213F",
+    "#2F2F50",
+    "#302460",
+    "#8284A1",
+    "#040205",
+    "#47345B",
+    "#4B3478",
+    "#2C182D",
+    "#5F3861",
+    "#6F2F73",
+    "#7E2D94",
+    "#180711",
+    "#46353A",
+    "#47141D",
+    "#8C1D24",
+    "#902F36",
+    "#AF1F28",
+    "#1A151A",
+    "#2A2B32",
+    "#6C665E",
+    "#928982",
+    "#A0AAA7",
+    "#F2C14E",
+    "#FFF4D6",
+    "#3E6B3A",
+    "#6E9A4A",
+    "#3FC1C9",
+    "#8FB8E8"
+  ],
+  "files": {
+    "Hero_Run": {
+      "one_x": "_1x/Hero_Run.png",
+      "eight_x": "Player/Hero_Run.png",
+      "animation": "Animations/Hero_Run_3x.apng",
+      "frames": 8,
+      "fps": 12,
+      "pose_notes": "Alternating contact, push, flight-shaped legs and landing. Ground anchor retained in flight-shaped frames per import rule."
+    },
+    "Hero_JumpStart": {
+      "one_x": "_1x/Hero_JumpStart.png",
+      "eight_x": "Player/Hero_JumpStart.png",
+      "animation": "Animations/Hero_JumpStart_3x.apng",
+      "frames": 2,
+      "fps": 12,
+      "pose_notes": "Crouch then extended takeoff with raised arm; airborne second frame."
+    },
+    "Hero_Fall": {
+      "one_x": "_1x/Hero_Fall.png",
+      "eight_x": "Player/Hero_Fall.png",
+      "animation": "Animations/Hero_Fall_3x.apng",
+      "frames": 2,
+      "fps": 8,
+      "pose_notes": "Upturned cape; separated legs and slight flutter."
+    },
+    "Hero_Land": {
+      "one_x": "_1x/Hero_Land.png",
+      "eight_x": "Player/Hero_Land.png",
+      "animation": "Animations/Hero_Land_3x.apng",
+      "frames": 3,
+      "fps": 12,
+      "pose_notes": "Crouch expressed through knees and cape; crown varies by only two rows."
+    },
+    "Hero_Dash": {
+      "one_x": "_1x/Hero_Dash.png",
+      "eight_x": "Player/Hero_Dash.png",
+      "animation": "Animations/Hero_Dash_3x.apng",
+      "frames": 4,
+      "fps": 16,
+      "pose_notes": "Low forward lean; horizontal cape. Padded composition preserves complete torso before cell fitting."
+    },
+    "Hero_Hit": {
+      "one_x": "_1x/Hero_Hit.png",
+      "eight_x": "Player/Hero_Hit.png",
+      "animation": "Animations/Hero_Hit_3x.apng",
+      "frames": 2,
+      "fps": 10,
+      "pose_notes": "Recoil backward then recover."
+    },
+    "Hero_Death": {
+      "one_x": "_1x/Hero_Death.png",
+      "eight_x": "Player/Hero_Death.png",
+      "animation": "Animations/Hero_Death_3x.apng",
+      "frames": 6,
+      "fps": 10,
+      "pose_notes": "Stagger, buckle to knees, roll onto side, fully prone final frame within cell."
+    }
+  },
+  "preview_row_order": [
+    "Hero_Run",
+    "Hero_JumpStart",
+    "Hero_Fall",
+    "Hero_Land",
+    "Hero_Dash",
+    "Hero_Hit",
+    "Hero_Death"
+  ],
+  "limitations": [
+    "Source cutout editing has no newly drawn occluded anatomy; extreme poses retain source-side lighting.",
+    "Run flight-shaped frames retain ground alignment as explicitly required.",
+    "Crouch depth is restricted by per-sheet height tolerance.",
+    "Death animation preview loops for inspection; gameplay should hold the last frame.",
+    "No engine import or gameplay test performed."
+  ]
+}

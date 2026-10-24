@@ -99,7 +99,7 @@ namespace ReTrap.EditorTools
                     case "JumpStart": return Sheet(64, 2, 12f, false, bottom);
                     case "Fall":      return Sheet(64, 2,  8f, true,  bottom);
                     case "Land":      return Sheet(64, 3, 12f, false, bottom);
-                    case "Dash":      return Sheet(64, 4, 16f, false, bottom);
+                    case "Dash":      return Sheet(64, 4, 20f, false, bottom);  // 대시 0.2s(PlayerController.dashDuration)와 길이 일치
                     case "Hit":       return Sheet(64, 2, 10f, false, bottom);
                     case "Death":     return Sheet(64, 6, 10f, false, bottom);
                 }

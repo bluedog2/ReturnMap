@@ -46,7 +46,7 @@ namespace ReTrap
 
         [Header("Ground Detection")]
         [SerializeField] private Transform groundCheck;
-        [Tooltip("발밑 판정 박스. 폭은 캡슐 폭(0.7)보다 약간 좁게 — 벽 접촉을 바닥으로 오인하지 않는 한계값.\n" +
+        [Tooltip("발밑 판정 박스. 폭은 캡슐 폭(0.6875)보다 약간 좁게 — 벽 접촉을 바닥으로 오인하지 않는 한계값.\n" +
                  "원형 점 판정은 턱 모서리에 걸쳐 섰을 때 공중으로 오판하므로 박스를 사용합니다.")]
         [SerializeField] private Vector2   groundCheckSize = new Vector2(0.64f, 0.12f);
         [SerializeField] private LayerMask groundLayer;
