@@ -78,7 +78,9 @@ namespace ReTrap.EditorTools
             {
                 category = category, baseName = baseName, palette = palette, detectGrid = detectGrid,
                 airborne = Px32Rules.IsAirborne(baseName), death = Px32Rules.IsDeath(baseName),
-                maxColors = (category == "Tiles" || category == "Backgrounds") ? 24 : 16,
+                // 캐릭터는 화풍 v2 팔레트(20색) 전체 사용 허용
+                maxColors = (category == "Tiles" || category == "Backgrounds") ? 24
+                          : (category == "Player" || category == "Enemies") ? 20 : 16,
             };
             var spec = Px32Rules.GetSheetSpec(category, baseName);
             if (spec != null) { o.cellW = spec.cellW; o.cellH = spec.cellH; o.frames = spec.frames; }

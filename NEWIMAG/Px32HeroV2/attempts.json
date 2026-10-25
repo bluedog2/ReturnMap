@@ -1,0 +1,136 @@
+{
+  "Run": {
+    "attempts": [
+      {
+        "attempt": 1,
+        "source": "Sources/Hero_Run_attempt1.png",
+        "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a1732e-3ec7-76f2-a851-e012a33e5557\\exec-0ce33960-58dc-47c8-b930-8f2d13cb3646.png",
+        "prompt": "Draw EXACTLY 8 96×96 pixel-art sprites in a 4 column × 2 row grid, enlarged by EXACTLY k=4 nearest-neighbor blocks, output 1536×768. Each logical art pixel is a solid 4×4 square, no smaller details, no antialiasing. Reference 1 Hero_B.png is the approved exact character and size (80 logical pixels high); reference 2 shows its design enlarged. Create Hero_Run, an unmistakable right-facing running cycle: contact, down, passing, flight, opposite contact, down, passing, flight. Same face, ivory high ponytail with charcoal/red bow, crimson hairclips, red eyes, cropped charcoal crown top, ivory oversized crimson-lined jacket, black shorts and straps, asymmetrical black thigh-high and red sock, chunky ivory/charcoal shoes. Same tooth-mouth charcoal/red suitcase held in hand every frame. Maintain identical proportions, facial design, costume and box across all frames. Hair/jacket trail to left. Each silhouette 78–82 logical pixels tall, same bbox height across poses, centered in each 96px cell, no clipping, no touching top/side edges. Solid pure green #00FF00 background for clean extraction. No text, no borders, no floor/shadows. Palette only #19181F #2A282D #3D3940 #555058 #74666A #641F36 #92223F #B83450 #DC526B #F18490 #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #B87573 #D79A8D #EAB6A3 #F8D4BF #FFE7D2. Outline #19181F not black. Preserve approved pixel density, do not create high resolution illustration.",
+        "accepted": false
+      },
+      {
+        "attempt": 2,
+        "source": "Sources/Hero_Run_attempt2.png",
+        "prompt": "Draw EXACTLY 8 96×96 pixel-art sprites in a 4 column × 2 row grid, enlarged by EXACTLY k=4 nearest-neighbor blocks, output 1536×768. Each logical art pixel is a solid 4×4 square, no smaller details, no antialiasing. Reference 1 Hero_B.png is the approved exact character and size (80 logical pixels high); reference 2 shows its design enlarged. Create Hero_Run, an unmistakable right-facing running cycle: contact, down, passing, flight, opposite contact, down, passing, flight. Same face, ivory high ponytail with charcoal/red bow, crimson hairclips, red eyes, cropped charcoal crown top, ivory oversized crimson-lined jacket, black shorts and straps, asymmetrical black thigh-high and red sock, chunky ivory/charcoal shoes. Same tooth-mouth charcoal/red suitcase held in hand every frame. Maintain identical proportions, facial design, costume and box across all frames. Hair/jacket trail to left. Each silhouette 78–82 logical pixels tall, same bbox height across poses, centered in each 96px cell, no clipping, no touching top/side edges. Solid pure green #00FF00 background for clean extraction. No text, no borders, no floor/shadows. Palette only #19181F #2A282D #3D3940 #555058 #74666A #641F36 #92223F #B83450 #DC526B #F18490 #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #B87573 #D79A8D #EAB6A3 #F8D4BF #FFE7D2. Outline #19181F not black. Preserve approved pixel density, do not create high resolution illustration.\nCORRECTION: Keep every figure same size as reference 1: silhouette height EXACTLY 80 logical pixels, within a 96x96 cell, 8px empty above and 8px empty below. At 4x this means 320px figure in 384px cell. All eight silhouettes must match 80px height +/-1. Make heads smaller than previous full-cell illustrations. Preserve coherent chunky clusters, absolutely no subpixel detail, do not draw a high resolution image then shrink. Clean true 96px art. Run poses are distinct alternating legs; costume asymmetry stays on the same leg.",
+        "accepted": true
+      }
+    ],
+    "selected": 2,
+    "attempt_count": 2,
+    "selection_reason": "Attempt 1 height 85-86; selected attempt 2 height 78-81 with distinct running poses."
+  },
+  "JumpStart": {
+    "attempts": [
+      {
+        "attempt": 1,
+        "source": "Sources/Hero_JumpStart_attempt1.png",
+        "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a1732e-3ec7-76f2-a851-e012a33e5557\\exec-4c5d3ef8-ec27-4a3d-97c0-1bc824f55006.png",
+        "prompt": "Draw EXACTLY 2 96×96 pixel-art sprites in a 2 column × 1 row grid, enlarged by EXACTLY k=8 nearest-neighbor blocks, output 1536×768. Each logical art pixel is a solid 8×8 square, no smaller details, no antialiasing. Reference 1 Hero_B.png is the approved exact character and size (80 logical pixels high); reference 2 shows its design enlarged. Create Hero_JumpStart: frame 1 shallow knee crouch ready to spring with ponytail lifted; frame 2 upward takeoff legs extended and jacket trailing. Both bbox heights must be 80 pixels (+/-1), achieve crouch with higher ponytail, not shrinking character. Same face, ivory high ponytail with charcoal/red bow, crimson hairclips, red eyes, cropped charcoal crown top, ivory oversized crimson-lined jacket, black shorts and straps, asymmetrical black thigh-high and red sock, chunky ivory/charcoal shoes. Same tooth-mouth charcoal/red suitcase held in hand every frame. Maintain identical proportions, facial design, costume and box across all frames. Hair/jacket trail to left. Each silhouette 78–82 logical pixels tall, same bbox height across poses, centered in each 96px cell, no clipping, no touching top/side edges. Solid pure green #00FF00 background for clean extraction. No text, no borders, no floor/shadows. Palette only #19181F #2A282D #3D3940 #555058 #74666A #641F36 #92223F #B83450 #DC526B #F18490 #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #B87573 #D79A8D #EAB6A3 #F8D4BF #FFE7D2. Outline #19181F not black. Preserve approved pixel density, do not create high resolution illustration.",
+        "accepted": false
+      },
+      {
+        "attempt": 2,
+        "source": "Sources/Hero_JumpStart_attempt2.png",
+        "prompt": "Draw EXACTLY 2 96×96 pixel-art sprites in a 2 column × 1 row grid, enlarged by EXACTLY k=8 nearest-neighbor blocks, output 1536×768. Each logical art pixel is a solid 8×8 square, no smaller details, no antialiasing. Reference 1 Hero_B.png is the approved exact character and size (80 logical pixels high); reference 2 shows its design enlarged. Create Hero_JumpStart: frame 1 shallow knee crouch ready to spring with ponytail lifted; frame 2 upward takeoff legs extended and jacket trailing. Both bbox heights must be 80 pixels (+/-1), achieve crouch with higher ponytail, not shrinking character. Same face, ivory high ponytail with charcoal/red bow, crimson hairclips, red eyes, cropped charcoal crown top, ivory oversized crimson-lined jacket, black shorts and straps, asymmetrical black thigh-high and red sock, chunky ivory/charcoal shoes. Same tooth-mouth charcoal/red suitcase held in hand every frame. Maintain identical proportions, facial design, costume and box across all frames. Hair/jacket trail to left. Each silhouette 78–82 logical pixels tall, same bbox height across poses, centered in each 96px cell, no clipping, no touching top/side edges. Solid pure green #00FF00 background for clean extraction. No text, no borders, no floor/shadows. Palette only #19181F #2A282D #3D3940 #555058 #74666A #641F36 #92223F #B83450 #DC526B #F18490 #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #B87573 #D79A8D #EAB6A3 #F8D4BF #FFE7D2. Outline #19181F not black. Preserve approved pixel density, do not create high resolution illustration.\nCORRECTION: accurately match the tiny reference 1 pixel grid! Both frames EXACTLY 80px silhouette height and maximum 56px silhouette width within each logical 96x96 cell. Leave 8px above and 8px below each 80px figure. Frame 1 knee bend VERY SHALLOW (2px), ponytail rises 2px to compensate. Frame 2 legs extended but ponytail lowers 2px. Never enlarge the head or body to fill cell. BOTH bboxes same height, no 7px difference. Strict grid of uniform 8px blocks.",
+        "accepted": true
+      }
+    ],
+    "selected": 2,
+    "attempt_count": 2,
+    "selection_reason": "Attempt 1 height 79/86 failed drift; attempt 2 height 80/83 passes."
+  },
+  "Fall": {
+    "attempts": [
+      {
+        "attempt": 1,
+        "source": "Sources/Hero_Fall_attempt1.png",
+        "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a1732e-3ec7-76f2-a851-e012a33e5557\\exec-59920350-a3eb-4b3d-9ca4-345250e893e8.png",
+        "prompt": "Draw EXACTLY 2 96×96 pixel-art sprites in a 2 column × 1 row grid, enlarged by EXACTLY k=8 nearest-neighbor blocks, output 1536×768. Each logical art pixel is a solid 8×8 square, no smaller details, no antialiasing. Reference 1 Hero_B.png is the approved exact character and size (80 logical pixels high); reference 2 shows its design enlarged. Create Hero_Fall, 2-frame falling loop: both legs dangling, arms spread while one hand still holds the same box, ponytail lifted upward by falling air, jacket lifted. Frame 2 subtle different hair and leg pose. Same face, ivory high ponytail with charcoal/red bow, crimson hairclips, red eyes, cropped charcoal crown top, ivory oversized crimson-lined jacket, black shorts and straps, asymmetrical black thigh-high and red sock, chunky ivory/charcoal shoes. Same tooth-mouth charcoal/red suitcase held in hand every frame. Maintain identical proportions, facial design, costume and box across all frames. Hair/jacket trail to left. Each silhouette 78–82 logical pixels tall, same bbox height across poses, centered in each 96px cell, no clipping, no touching top/side edges. Solid pure green #00FF00 background for clean extraction. No text, no borders, no floor/shadows. Palette only #19181F #2A282D #3D3940 #555058 #74666A #641F36 #92223F #B83450 #DC526B #F18490 #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #B87573 #D79A8D #EAB6A3 #F8D4BF #FFE7D2. Outline #19181F not black. Preserve approved pixel density, do not create high resolution illustration.",
+        "accepted": false
+      },
+      {
+        "attempt": 2,
+        "source": "Sources/Hero_Fall_attempt2.png",
+        "prompt": "Draw EXACTLY 2 96×96 pixel-art sprites in a 2 column × 1 row grid, enlarged by EXACTLY k=8 nearest-neighbor blocks, output 1536×768. Each logical art pixel is a solid 8×8 square, no smaller details, no antialiasing. Reference 1 Hero_B.png is the approved exact character and size (80 logical pixels high); reference 2 shows its design enlarged. Create Hero_Fall, 2-frame falling loop: both legs dangling, arms spread while one hand still holds the same box, ponytail lifted upward by falling air, jacket lifted. Frame 2 subtle different hair and leg pose. Same face, ivory high ponytail with charcoal/red bow, crimson hairclips, red eyes, cropped charcoal crown top, ivory oversized crimson-lined jacket, black shorts and straps, asymmetrical black thigh-high and red sock, chunky ivory/charcoal shoes. Same tooth-mouth charcoal/red suitcase held in hand every frame. Maintain identical proportions, facial design, costume and box across all frames. Hair/jacket trail to left. Each silhouette 78–82 logical pixels tall, same bbox height across poses, centered in each 96px cell, no clipping, no touching top/side edges. Solid pure green #00FF00 background for clean extraction. No text, no borders, no floor/shadows. Palette only #19181F #2A282D #3D3940 #555058 #74666A #641F36 #92223F #B83450 #DC526B #F18490 #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #B87573 #D79A8D #EAB6A3 #F8D4BF #FFE7D2. Outline #19181F not black. Preserve approved pixel density, do not create high resolution illustration.\nCORRECTION: EXACTLY 80px tall silhouettes, no 90px figures. Within every 96px logical cell leave exactly 8px blank above, 8px blank below. 640px figure within 768px cell at 8x. Maximum silhouette width 64px. Same compact head size as approved 96px reference. Arms spread, hair floats upward, but feet closer upward to preserve total height of 80. Very clean consistent square blocks, no subpixel details.",
+        "accepted": true
+      }
+    ],
+    "selected": 2,
+    "attempt_count": 2,
+    "selection_reason": "Attempt 1 height 90/91; attempt 2 improves to 81/84."
+  },
+  "Land": {
+    "attempts": [
+      {
+        "attempt": 1,
+        "source": "Sources/Hero_Land_attempt1.png",
+        "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a1732e-3ec7-76f2-a851-e012a33e5557\\exec-eb7b6dfc-81a9-4cea-95ab-b8d67b3533a7.png",
+        "prompt": "Draw EXACTLY 3 96×96 pixel-art sprites in a 3 column × 1 row grid, enlarged by EXACTLY k=6 nearest-neighbor blocks, output 1728×576. Each logical art pixel is a solid 6×6 square, no smaller details, no antialiasing. Reference 1 Hero_B.png is the approved exact character and size (80 logical pixels high); reference 2 shows its design enlarged. Create Hero_Land, 3 frames: shallow squash landing knees flexed, halfway recovery, recovered stance. Keep ALL silhouette heights exactly 80 logical pixels: compensate knee bend with upward ponytail tips, shallow crouch only, never shrinking body. Same face, ivory high ponytail with charcoal/red bow, crimson hairclips, red eyes, cropped charcoal crown top, ivory oversized crimson-lined jacket, black shorts and straps, asymmetrical black thigh-high and red sock, chunky ivory/charcoal shoes. Same tooth-mouth charcoal/red suitcase held in hand every frame. Maintain identical proportions, facial design, costume and box across all frames. Hair/jacket trail to left. Each silhouette 78–82 logical pixels tall, same bbox height across poses, centered in each 96px cell, no clipping, no touching top/side edges. Solid pure green #00FF00 background for clean extraction. No text, no borders, no floor/shadows. Palette only #19181F #2A282D #3D3940 #555058 #74666A #641F36 #92223F #B83450 #DC526B #F18490 #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #B87573 #D79A8D #EAB6A3 #F8D4BF #FFE7D2. Outline #19181F not black. Preserve approved pixel density, do not create high resolution illustration.",
+        "accepted": false
+      },
+      {
+        "attempt": 2,
+        "source": "Sources/Hero_Land_attempt2.png",
+        "prompt": "Draw EXACTLY 3 96×96 pixel-art sprites in a 3 column × 1 row grid, enlarged by EXACTLY k=6 nearest-neighbor blocks, output 1728×576. Each logical art pixel is a solid 6×6 square, no smaller details, no antialiasing. Reference 1 Hero_B.png is the approved exact character and size (80 logical pixels high); reference 2 shows its design enlarged. Create Hero_Land, 3 frames: shallow squash landing knees flexed, halfway recovery, recovered stance. Keep ALL silhouette heights exactly 80 logical pixels: compensate knee bend with upward ponytail tips, shallow crouch only, never shrinking body. Same face, ivory high ponytail with charcoal/red bow, crimson hairclips, red eyes, cropped charcoal crown top, ivory oversized crimson-lined jacket, black shorts and straps, asymmetrical black thigh-high and red sock, chunky ivory/charcoal shoes. Same tooth-mouth charcoal/red suitcase held in hand every frame. Maintain identical proportions, facial design, costume and box across all frames. Hair/jacket trail to left. Each silhouette 78–82 logical pixels tall, same bbox height across poses, centered in each 96px cell, no clipping, no touching top/side edges. Solid pure green #00FF00 background for clean extraction. No text, no borders, no floor/shadows. Palette only #19181F #2A282D #3D3940 #555058 #74666A #641F36 #92223F #B83450 #DC526B #F18490 #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #B87573 #D79A8D #EAB6A3 #F8D4BF #FFE7D2. Outline #19181F not black. Preserve approved pixel density, do not create high resolution illustration.\nCORRECTION: Each figure's TOTAL silhouette height exactly 80 logical px (480 output px). Each cell 576x576. Leave 48 output px above and below EVERY figure. All three heads stay level, squash only 1–2 logical px and lift ponytail by same amount. Keep bbox height identical. Match reference 1 at exact same size, width 52–56 logical px. Do NOT enlarge to fill panel. Use strict identical square pixel blocks.",
+        "accepted": true
+      }
+    ],
+    "selected": 2,
+    "attempt_count": 2,
+    "selection_reason": "Attempt 1 height 83/88/90 failed drift; attempt 2 height 77/79/79 passes."
+  },
+  "Dash": {
+    "attempts": [
+      {
+        "attempt": 1,
+        "source": "Sources/Hero_Dash_attempt1.png",
+        "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a1732e-3ec7-76f2-a851-e012a33e5557\\exec-3193c88d-a350-4b86-bbde-98a978688fed.png",
+        "prompt": "Draw EXACTLY 4 96×96 pixel-art sprites in a 2 column × 2 row grid, enlarged by EXACTLY k=6 nearest-neighbor blocks, output 1152×1152. Each logical art pixel is a solid 6×6 square, no smaller details, no antialiasing. Reference 1 Hero_B.png is the approved exact character and size (80 logical pixels high); reference 2 shows its design enlarged. Create Hero_Dash 4 frames, rightward forceful dash: torso leans strongly forward to right, legs push back left, face looking right, hair and jacket streaming left, box held securely. Small short crimson/charcoal speed streaks inside each cell. Four distinct push-off and extended-leg poses. All 4 silhouettes identical bbox height 80 logical pixels (raised ponytail/extended back leg maintain height) and width under 90 pixels. Same face, ivory high ponytail with charcoal/red bow, crimson hairclips, red eyes, cropped charcoal crown top, ivory oversized crimson-lined jacket, black shorts and straps, asymmetrical black thigh-high and red sock, chunky ivory/charcoal shoes. Same tooth-mouth charcoal/red suitcase held in hand every frame. Maintain identical proportions, facial design, costume and box across all frames. Hair/jacket trail to left. Each silhouette 78–82 logical pixels tall, same bbox height across poses, centered in each 96px cell, no clipping, no touching top/side edges. Solid pure green #00FF00 background for clean extraction. No text, no borders, no floor/shadows. Palette only #19181F #2A282D #3D3940 #555058 #74666A #641F36 #92223F #B83450 #DC526B #F18490 #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #B87573 #D79A8D #EAB6A3 #F8D4BF #FFE7D2. Outline #19181F not black. Preserve approved pixel density, do not create high resolution illustration.",
+        "accepted": true
+      }
+    ],
+    "selected": 1,
+    "attempt_count": 1,
+    "selection_reason": "Attempt 1 has four dash poses and generated palette-colored streaks; numeric checks pass."
+  },
+  "Hit": {
+    "attempts": [
+      {
+        "attempt": 1,
+        "source": "Sources/Hero_Hit_attempt1.png",
+        "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a1732e-3ec7-76f2-a851-e012a33e5557\\exec-4388e2c9-5da0-4993-b8b2-0415c0219b05.png",
+        "prompt": "Draw EXACTLY 2 96×96 pixel-art sprites in a 2 column × 1 row grid, enlarged by EXACTLY k=8 nearest-neighbor blocks, output 1536×768. Each logical art pixel is a solid 8×8 square, no smaller details, no antialiasing. Reference 1 Hero_B.png is the approved exact character and size (80 logical pixels high); reference 2 shows its design enlarged. Create Hero_Hit 2 frames: 1 strong backward recoil torso arched left, face still right, eyes squeezed in pain, box swings forward; 2 settling recoil just before recovery, knees braced, clearly different from idle. Keep silhouette heights equal 80 logical pixels. Same face, ivory high ponytail with charcoal/red bow, crimson hairclips, red eyes, cropped charcoal crown top, ivory oversized crimson-lined jacket, black shorts and straps, asymmetrical black thigh-high and red sock, chunky ivory/charcoal shoes. Same tooth-mouth charcoal/red suitcase held in hand every frame. Maintain identical proportions, facial design, costume and box across all frames. Hair/jacket trail to left. Each silhouette 78–82 logical pixels tall, same bbox height across poses, centered in each 96px cell, no clipping, no touching top/side edges. Solid pure green #00FF00 background for clean extraction. No text, no borders, no floor/shadows. Palette only #19181F #2A282D #3D3940 #555058 #74666A #641F36 #92223F #B83450 #DC526B #F18490 #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #B87573 #D79A8D #EAB6A3 #F8D4BF #FFE7D2. Outline #19181F not black. Preserve approved pixel density, do not create high resolution illustration.",
+        "accepted": false
+      },
+      {
+        "attempt": 2,
+        "source": "Sources/Hero_Hit_attempt2.png",
+        "prompt": "Draw EXACTLY 2 96×96 pixel-art sprites in a 2 column × 1 row grid, enlarged by EXACTLY k=8 nearest-neighbor blocks, output 1536×768. Each logical art pixel is a solid 8×8 square, no smaller details, no antialiasing. Reference 1 Hero_B.png is the approved exact character and size (80 logical pixels high); reference 2 shows its design enlarged. Create Hero_Hit 2 frames: 1 strong backward recoil torso arched left, face still right, eyes squeezed in pain, box swings forward; 2 settling recoil just before recovery, knees braced, clearly different from idle. Keep silhouette heights equal 80 logical pixels. Same face, ivory high ponytail with charcoal/red bow, crimson hairclips, red eyes, cropped charcoal crown top, ivory oversized crimson-lined jacket, black shorts and straps, asymmetrical black thigh-high and red sock, chunky ivory/charcoal shoes. Same tooth-mouth charcoal/red suitcase held in hand every frame. Maintain identical proportions, facial design, costume and box across all frames. Hair/jacket trail to left. Each silhouette 78–82 logical pixels tall, same bbox height across poses, centered in each 96px cell, no clipping, no touching top/side edges. Solid pure green #00FF00 background for clean extraction. No text, no borders, no floor/shadows. Palette only #19181F #2A282D #3D3940 #555058 #74666A #641F36 #92223F #B83450 #DC526B #F18490 #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #B87573 #D79A8D #EAB6A3 #F8D4BF #FFE7D2. Outline #19181F not black. Preserve approved pixel density, do not create high resolution illustration.\nCORRECTION: total silhouette height EXACTLY 80 logical pixels each, max width 64. Eight empty logical pixels above and below each figure, 640px figure inside 768px cell. Match reference 1's head and physical body dimensions. Maintain clean chunky real pixel clusters, 8x8 blocks only. First frame unmistakable backward leftward recoil, head tilted back looking right, second return halfway. Same held tooth-box intact, same red eye and ivory ponytail.",
+        "accepted": true
+      }
+    ],
+    "selected": 2,
+    "attempt_count": 2,
+    "selection_reason": "Attempt 1 height 89; attempt 2 height 82 and clear backward recoil."
+  },
+  "Death": {
+    "attempts": [
+      {
+        "attempt": 1,
+        "source": "Sources/Hero_Death_attempt1.png",
+        "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a1732e-3ec7-76f2-a851-e012a33e5557\\exec-5deb547e-2f5d-41d3-b4cd-f43b9838df64.png",
+        "prompt": "Draw EXACTLY 6 96×96 pixel-art sprites in a 3 column × 2 row grid, enlarged by EXACTLY k=4 nearest-neighbor blocks, output 1152×768. Each logical art pixel is a solid 4×4 square, no smaller details, no antialiasing. Reference 1 Hero_B.png is the approved exact character and size (80 logical pixels high); reference 2 shows its design enlarged. Create Hero_Death 6 chronological frames: 1 hurt upright knees buckle; 2 falling to knees; 3 torso tipping sideways right; 4 collapse rightward low; 5 lying fully horizontal head to right feet to left; 6 fully motionless lying horizontal head right eyes closed, suitcase resting beside hand. Last two entire body and all hair/box must fit inside 96x96 cell width, tuck legs slightly if needed. Natural consistent body proportions throughout, changing silhouette height is REQUIRED for this death sequence. Same face, ivory high ponytail with charcoal/red bow, crimson hairclips, red eyes, cropped charcoal crown top, ivory oversized crimson-lined jacket, black shorts and straps, asymmetrical black thigh-high and red sock, chunky ivory/charcoal shoes. Same tooth-mouth charcoal/red suitcase held in hand every frame. Maintain identical proportions, facial design, costume and box across all frames. Hair/jacket trail to left. Standing silhouette 80 logical pixels tall; progressively shorter silhouette as she falls, final lying height about 30px; preserve physical body size, centered in each 96px cell, no clipping, no touching top/side edges. Solid pure green #00FF00 background for clean extraction. No text, no borders, no floor/shadows. Palette only #19181F #2A282D #3D3940 #555058 #74666A #641F36 #92223F #B83450 #DC526B #F18490 #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #B87573 #D79A8D #EAB6A3 #F8D4BF #FFE7D2. Outline #19181F not black. Preserve approved pixel density, do not create high resolution illustration.",
+        "accepted": true
+      }
+    ],
+    "selected": 1,
+    "attempt_count": 1,
+    "selection_reason": "Attempt 1 selected; second source row origin offset +28 pixels avoids previous-row foot contamination. Final pose fully inside cell."
+  },
+  "Idle": {
+    "attempt_count": 0,
+    "selected": "approved-cutout",
+    "attempts": [],
+    "method": "approved Hero_B cutout translations only, upper body +1px, left ponytail and jacket hem -1px"
+  }
+}

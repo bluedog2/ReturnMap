@@ -7213,8 +7213,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.036249995}
-  m_Size: {x: 0.6875, y: 1.4375}
+  m_Offset: {x: 0, y: 0.1825}
+  m_Size: {x: 0.75, y: 1.875}
   m_Direction: 0
 --- !u!114 &1250373946
 MonoBehaviour:
@@ -7270,7 +7270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d24b396e40dcec439497df560c4ed9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReTrap.DashGaugeUI
-  offset: {x: 0.85, y: 0.55}
+  offset: {x: 1, y: 1.7}
   size: 0.9
   fillColor: {r: 0.25, g: 0.8, b: 1, a: 0.95}
   emptyColor: {r: 0, g: 0, b: 0, a: 0.45}
@@ -9622,7 +9622,7 @@ MonoBehaviour:
       Size: {x: 0.01, y: 0.01}
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 0.5, z: 0}
+  TargetOffset: {x: 0, y: 1, z: 0}
   Damping: {x: 0.05, y: 0.05, z: 0}
   Lookahead:
     Enabled: 0
