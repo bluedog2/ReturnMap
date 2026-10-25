@@ -1,0 +1,303 @@
+{
+  "tool": "built-in image_gen",
+  "palette": [
+    "#692820",
+    "#654138",
+    "#2B231B",
+    "#4D3720",
+    "#554639",
+    "#B0701C",
+    "#A87B56",
+    "#CEA362",
+    "#CAA981",
+    "#C5AF92",
+    "#DEC28D",
+    "#716432",
+    "#C8A332",
+    "#E3DBC3",
+    "#293145",
+    "#384869",
+    "#53617E",
+    "#19142E",
+    "#27213F",
+    "#2F2F50",
+    "#302460",
+    "#8284A1",
+    "#040205",
+    "#47345B",
+    "#4B3478",
+    "#2C182D",
+    "#5F3861",
+    "#6F2F73",
+    "#7E2D94",
+    "#180711",
+    "#46353A",
+    "#47141D",
+    "#8C1D24",
+    "#902F36",
+    "#AF1F28",
+    "#1A151A",
+    "#2A2B32",
+    "#6C665E",
+    "#928982",
+    "#A0AAA7",
+    "#F2C14E",
+    "#FFF4D6",
+    "#3E6B3A",
+    "#6E9A4A",
+    "#3FC1C9",
+    "#8FB8E8"
+  ],
+  "sources": [
+    {
+      "character": "Goblin_Raider",
+      "design_reference": "NEWIMAG/AnimationV2/goblin/Idle_00.png",
+      "generated_source": "Sources/Goblin_Raider_imagegen.png",
+      "base": "_bases/Goblin_Raider_Idle_0.png",
+      "palette": [
+        "1A151A",
+        "2B231B",
+        "4D3720",
+        "654138",
+        "A87B56",
+        "CEA362",
+        "B0701C",
+        "C8A332",
+        "DEC28D",
+        "3E6B3A",
+        "6E9A4A",
+        "293145",
+        "53617E",
+        "A0AAA7",
+        "F2C14E",
+        "FFF4D6"
+      ],
+      "method": "Built-in image_gen newly redrew reference; generated art sampled to target grid, palette quantized and outlined. All later frames edit that 1x base only."
+    },
+    {
+      "character": "Imp_Flyer",
+      "design_reference": "NEWIMAG/AnimationV2/imp/Idle_00.png",
+      "generated_source": "Sources/Imp_Flyer_imagegen.png",
+      "base": "_bases/Imp_Flyer_Idle_0.png",
+      "palette": [
+        "180711",
+        "47141D",
+        "8C1D24",
+        "902F36",
+        "AF1F28",
+        "692820",
+        "CEA362",
+        "DEC28D",
+        "FFF4D6",
+        "F2C14E",
+        "19142E",
+        "27213F",
+        "47345B",
+        "4B3478",
+        "6F2F73",
+        "7E2D94"
+      ],
+      "method": "Built-in image_gen newly redrew reference; generated art sampled to target grid, palette quantized and outlined. All later frames edit that 1x base only."
+    },
+    {
+      "character": "Skeleton_Archer",
+      "design_reference": "NEWIMAG/AnimationV2/skeleton/Idle_00.png",
+      "generated_source": "Sources/Skeleton_Archer_imagegen.png",
+      "base": "_bases/Skeleton_Archer_Idle_0.png",
+      "palette": [
+        "19142E",
+        "27213F",
+        "47345B",
+        "4B3478",
+        "6F2F73",
+        "8284A1",
+        "2B231B",
+        "4D3720",
+        "654138",
+        "A87B56",
+        "CEA362",
+        "C5AF92",
+        "DEC28D",
+        "E3DBC3",
+        "FFF4D6",
+        "1A151A"
+      ],
+      "method": "Built-in image_gen newly redrew reference; generated art sampled to target grid, palette quantized and outlined. All later frames edit that 1x base only."
+    }
+  ],
+  "files": {
+    "Goblin_Raider_Idle": {
+      "one_x": "_1x/Goblin_Raider_Idle.png",
+      "eight_x": "Enemies/Goblin_Raider_Idle.png",
+      "frames": 4,
+      "cell": [
+        48,
+        48
+      ],
+      "fps": 6,
+      "flying": false,
+      "outline": "1A151A"
+    },
+    "Goblin_Raider_Run": {
+      "one_x": "_1x/Goblin_Raider_Run.png",
+      "eight_x": "Enemies/Goblin_Raider_Run.png",
+      "frames": 6,
+      "cell": [
+        48,
+        48
+      ],
+      "fps": 10,
+      "flying": false,
+      "outline": "1A151A"
+    },
+    "Goblin_Raider_Hit": {
+      "one_x": "_1x/Goblin_Raider_Hit.png",
+      "eight_x": "Enemies/Goblin_Raider_Hit.png",
+      "frames": 2,
+      "cell": [
+        48,
+        48
+      ],
+      "fps": 10,
+      "flying": false,
+      "outline": "1A151A"
+    },
+    "Goblin_Raider_Death": {
+      "one_x": "_1x/Goblin_Raider_Death.png",
+      "eight_x": "Enemies/Goblin_Raider_Death.png",
+      "frames": 6,
+      "cell": [
+        48,
+        48
+      ],
+      "fps": 10,
+      "flying": false,
+      "outline": "1A151A"
+    },
+    "Imp_Flyer_Idle": {
+      "one_x": "_1x/Imp_Flyer_Idle.png",
+      "eight_x": "Enemies/Imp_Flyer_Idle.png",
+      "frames": 4,
+      "cell": [
+        48,
+        48
+      ],
+      "fps": 6,
+      "flying": true,
+      "outline": "180711"
+    },
+    "Imp_Flyer_Run": {
+      "one_x": "_1x/Imp_Flyer_Run.png",
+      "eight_x": "Enemies/Imp_Flyer_Run.png",
+      "frames": 6,
+      "cell": [
+        48,
+        48
+      ],
+      "fps": 10,
+      "flying": true,
+      "outline": "180711"
+    },
+    "Imp_Flyer_Hit": {
+      "one_x": "_1x/Imp_Flyer_Hit.png",
+      "eight_x": "Enemies/Imp_Flyer_Hit.png",
+      "frames": 2,
+      "cell": [
+        48,
+        48
+      ],
+      "fps": 10,
+      "flying": true,
+      "outline": "180711"
+    },
+    "Imp_Flyer_Death": {
+      "one_x": "_1x/Imp_Flyer_Death.png",
+      "eight_x": "Enemies/Imp_Flyer_Death.png",
+      "frames": 6,
+      "cell": [
+        48,
+        48
+      ],
+      "fps": 10,
+      "flying": true,
+      "outline": "180711"
+    },
+    "Skeleton_Archer_Idle": {
+      "one_x": "_1x/Skeleton_Archer_Idle.png",
+      "eight_x": "Enemies/Skeleton_Archer_Idle.png",
+      "frames": 4,
+      "cell": [
+        64,
+        64
+      ],
+      "fps": 6,
+      "flying": false,
+      "outline": "19142E"
+    },
+    "Skeleton_Archer_Run": {
+      "one_x": "_1x/Skeleton_Archer_Run.png",
+      "eight_x": "Enemies/Skeleton_Archer_Run.png",
+      "frames": 6,
+      "cell": [
+        64,
+        64
+      ],
+      "fps": 10,
+      "flying": false,
+      "outline": "19142E"
+    },
+    "Skeleton_Archer_Hit": {
+      "one_x": "_1x/Skeleton_Archer_Hit.png",
+      "eight_x": "Enemies/Skeleton_Archer_Hit.png",
+      "frames": 2,
+      "cell": [
+        64,
+        64
+      ],
+      "fps": 10,
+      "flying": false,
+      "outline": "19142E"
+    },
+    "Skeleton_Archer_Death": {
+      "one_x": "_1x/Skeleton_Archer_Death.png",
+      "eight_x": "Enemies/Skeleton_Archer_Death.png",
+      "frames": 6,
+      "cell": [
+        64,
+        64
+      ],
+      "fps": 10,
+      "flying": false,
+      "outline": "19142E"
+    }
+  },
+  "preview_row_order": [
+    "Goblin_Raider_Idle",
+    "Goblin_Raider_Run",
+    "Goblin_Raider_Hit",
+    "Goblin_Raider_Death",
+    "Imp_Flyer_Idle",
+    "Imp_Flyer_Run",
+    "Imp_Flyer_Hit",
+    "Imp_Flyer_Death",
+    "Skeleton_Archer_Idle",
+    "Skeleton_Archer_Run",
+    "Skeleton_Archer_Hit",
+    "Skeleton_Archer_Death"
+  ],
+  "preview_hero": "C:\\Users\\Owner\\work\\ReturnMap\\NEWIMAG\\Px32Pilot2\\_1x\\Hero_Idle.png",
+  "pipeline": "New pixel-art redraw from high-resolution design reference, grid sampling and exact palette normalization; 1x pixel cutout/row articulation; padded rotation for death; exact nearest neighbor 8x. No original high-resolution animation frame was scaled into an output sheet.",
+  "prompt_summary": [
+    "Goblin: green skin, pointed ears, ochre cape, leather clothes, curved dagger, right facing 32px.",
+    "Imp: red body, tan horns, purple bat wings, yellow eye, curled tail, right facing 32px including wings.",
+    "Skeleton: purple hood/cape, ivory bones, quiver, wooden bow, right facing 48px.",
+    "All: transparent, chunky native pixel clusters, dark 1px outline, supplied 16-color subset, hero style reference."
+  ],
+  "limitations": [
+    "Generated artwork needs grid normalization; image_gen does not directly emit exact native pixel dimensions.",
+    "Pixel cutout animation reuses visible anatomy and lighting; no newly revealed reverse-side anatomy.",
+    "Grounded run poses retain the mandatory baseline and height; no true airborne run frame.",
+    "Imp death settles into a horizontal floating fallen pose rather than disappearing completely.",
+    "No Unity import or gameplay test."
+  ]
+}

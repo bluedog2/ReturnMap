@@ -1,0 +1,149 @@
+{
+  "pipeline": "Built-in image_gen redraw from original references, decode enlarged new drawing to native pixel grid, fixed palette, native cutout articulation, exact nearest-neighbor 8x. Original high-resolution enemy art is never resized into a delivery.",
+  "palette": [
+    "#692820",
+    "#654138",
+    "#2B231B",
+    "#4D3720",
+    "#554639",
+    "#B0701C",
+    "#A87B56",
+    "#CEA362",
+    "#CAA981",
+    "#C5AF92",
+    "#DEC28D",
+    "#716432",
+    "#C8A332",
+    "#E3DBC3",
+    "#293145",
+    "#384869",
+    "#53617E",
+    "#19142E",
+    "#27213F",
+    "#2F2F50",
+    "#302460",
+    "#8284A1",
+    "#040205",
+    "#47345B",
+    "#4B3478",
+    "#2C182D",
+    "#5F3861",
+    "#6F2F73",
+    "#7E2D94",
+    "#180711",
+    "#46353A",
+    "#47141D",
+    "#8C1D24",
+    "#902F36",
+    "#AF1F28",
+    "#1A151A",
+    "#2A2B32",
+    "#6C665E",
+    "#928982",
+    "#A0AAA7",
+    "#F2C14E",
+    "#FFF4D6",
+    "#3E6B3A",
+    "#6E9A4A",
+    "#3FC1C9",
+    "#8FB8E8"
+  ],
+  "sources": {
+    "Elite_Knight": {
+      "original_reference": "NEWIMAG/AnimationV2/knight/Idle_00.png",
+      "generated_source": "sources/Elite_Knight.png",
+      "generated_sha256": "327ab25783791962d0144df01d38e1d9f8907778b03492e5baa4ddd563880944"
+    },
+    "Orc_Brute": {
+      "original_reference": "NEWIMAG/AnimationV2/orc/Idle_00.png",
+      "generated_source": "sources/Orc_Brute.png",
+      "generated_sha256": "5d779dc89bcb636423f7e884c14a765563ce5ed2ebd21b973d266fc7f1ac992a"
+    }
+  },
+  "files": {
+    "Elite_Knight_Idle": {
+      "one_x": "_1x/Elite_Knight_Idle.png",
+      "eight_x": "Enemies/Elite_Knight_Idle.png",
+      "cell": 64,
+      "frames": 4,
+      "fps": 6,
+      "base": "bases/Elite_Knight_Idle_0.png"
+    },
+    "Elite_Knight_Run": {
+      "one_x": "_1x/Elite_Knight_Run.png",
+      "eight_x": "Enemies/Elite_Knight_Run.png",
+      "cell": 64,
+      "frames": 6,
+      "fps": 10,
+      "base": "bases/Elite_Knight_Idle_0.png"
+    },
+    "Elite_Knight_Hit": {
+      "one_x": "_1x/Elite_Knight_Hit.png",
+      "eight_x": "Enemies/Elite_Knight_Hit.png",
+      "cell": 64,
+      "frames": 2,
+      "fps": 10,
+      "base": "bases/Elite_Knight_Idle_0.png"
+    },
+    "Elite_Knight_Death": {
+      "one_x": "_1x/Elite_Knight_Death.png",
+      "eight_x": "Enemies/Elite_Knight_Death.png",
+      "cell": 64,
+      "frames": 6,
+      "fps": 10,
+      "base": "bases/Elite_Knight_Idle_0.png"
+    },
+    "Orc_Brute_Idle": {
+      "one_x": "_1x/Orc_Brute_Idle.png",
+      "eight_x": "Enemies/Orc_Brute_Idle.png",
+      "cell": 96,
+      "frames": 4,
+      "fps": 6,
+      "base": "bases/Orc_Brute_Idle_0.png"
+    },
+    "Orc_Brute_Run": {
+      "one_x": "_1x/Orc_Brute_Run.png",
+      "eight_x": "Enemies/Orc_Brute_Run.png",
+      "cell": 96,
+      "frames": 6,
+      "fps": 10,
+      "base": "bases/Orc_Brute_Idle_0.png"
+    },
+    "Orc_Brute_Hit": {
+      "one_x": "_1x/Orc_Brute_Hit.png",
+      "eight_x": "Enemies/Orc_Brute_Hit.png",
+      "cell": 96,
+      "frames": 2,
+      "fps": 10,
+      "base": "bases/Orc_Brute_Idle_0.png"
+    },
+    "Orc_Brute_Death": {
+      "one_x": "_1x/Orc_Brute_Death.png",
+      "eight_x": "Enemies/Orc_Brute_Death.png",
+      "cell": 96,
+      "frames": 6,
+      "fps": 10,
+      "base": "bases/Orc_Brute_Idle_0.png"
+    }
+  },
+  "preview_row_order": [
+    "Elite_Knight_Idle",
+    "Elite_Knight_Run",
+    "Elite_Knight_Hit",
+    "Elite_Knight_Death",
+    "Orc_Brute_Idle",
+    "Orc_Brute_Run",
+    "Orc_Brute_Hit",
+    "Orc_Brute_Death"
+  ],
+  "preview_hero": "NEWIMAG/Px32Pilot2/_1x/Hero_Idle.png frame 0",
+  "limitations": [
+    "Cutout animation retains source-side lighting; some joints use overlapping native texels.",
+    "Grounded run cycle has no airborne frames due to mandatory bottom-row anchoring.",
+    "Automated validation does not replace engine import or human motion review."
+  ],
+  "image_gen_prompts": {
+    "Elite_Knight": "Use case: style-transfer. Redraw the reference elite knight as a NEW extremely low resolution game pixel sprite, not a filtered shrink. Single idle frame facing RIGHT. Preserve horned black closed helmet with purple visor, bulky charcoal plate with restrained gold edges, purple cape flowing left, long purple sword pointing diagonally down-right. Match reference hero's readable chunky pixel clusters. Logical canvas 64x64, character total height exactly 48 logical pixels, 1 logical pixel dark outline. Render as crisp nearest-neighbor enlarged pixel art with visibly large square texels, at most 16 flat colors, no antialiasing, no gradients or tiny texture. Transparent background, full body and sword entirely visible, no ground shadow, no text. Palette only: #1A151A #2A2B32 #293145 #53617E #928982 #2B231B #B0701C #CEA362 #19142E #302460 #4B3478 #7E2D94 #8284A1 #FFF4D6. Reference 1 defines knight design; reference 2 defines pixel art treatment. One character only.",
+    "Orc_Brute": "Use case: style-transfer. Redraw reference orc as NEW extremely low resolution pixel art, not filtered resize. One idle sprite facing RIGHT. Preserve massive green muscular orc with bald hunched head, jutting jaw and white tusks, red eye, brown leather shoulder armor with metal studs, diagonal leather chest strap, ragged brown leather skirt, metal wrist guards, heavy studded iron mace held low to right. Match chunky readable pixel clusters of reference hero. Logical canvas 96x96; total visible height 64 logical pixels. Hard 1 logical pixel dark contour, max 16 flat colors, no smooth shading or fine texture. Large visible square pixels as a nearest-neighbor enlarged low-res sprite. Transparent background. Entire body and mace visible, no shadow, no text. Palette only #1A151A #2B231B #3E6B3A #6E9A4A #716432 #DEC28D #FFF4D6 #654138 #A87B56 #4D3720 #2A2B32 #6C665E #928982 #A0AAA7 #AF1F28. Reference 1 design, reference 2 pixel treatment. Single character."
+  }
+}

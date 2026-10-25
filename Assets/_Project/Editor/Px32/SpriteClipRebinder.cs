@@ -88,7 +88,10 @@ namespace ReTrap.EditorTools
         /// <summary>주인공 클립 9개만 적용한다 (Px32HeroWiring 용). 전부 재배선되면 true, 하나라도 건너뛰면 false.</summary>
         public static bool RunApplyHero() => Run(true, heroOnly: true);
 
-        private static bool Run(bool apply, bool heroOnly = false)
+        /// <summary>적 클립 20개만 적용한다 (Px32EnemyWiring 용). 전부 재배선되면 true, 하나라도 건너뛰면 false.</summary>
+        public static bool RunApplyEnemies() => Run(true, enemiesOnly: true);
+
+        private static bool Run(bool apply, bool heroOnly = false, bool enemiesOnly = false)
         {
             if (EditorApplication.isPlaying)
             {
@@ -106,6 +109,7 @@ namespace ReTrap.EditorTools
                 foreach (var e in BuildTable())
                 {
                     if (heroOnly && e.ClipPath.StartsWith(EnemyRoot, StringComparison.Ordinal)) continue;
+                    if (enemiesOnly && !e.ClipPath.StartsWith(EnemyRoot, StringComparison.Ordinal)) continue;
                     var clip = AssetDatabase.LoadAssetAtPath<AnimationClip>(e.ClipPath);
                     if (clip == null)
                     {
