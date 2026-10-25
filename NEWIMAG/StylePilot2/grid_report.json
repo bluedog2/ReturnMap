@@ -1,0 +1,351 @@
+[
+  {
+    "name": "A",
+    "attempt": 1,
+    "source_size": [
+      1254,
+      1254
+    ],
+    "grid_x": {
+      "k": 19.6,
+      "phase": 11.056410256410258,
+      "score": 0.1331432416886407,
+      "edge_fraction": 0.1998245307895145
+    },
+    "grid_y": {
+      "k": 19.6,
+      "phase": 9.548717948717949,
+      "score": 0.15869413247706907,
+      "edge_fraction": 0.22340996844037145
+    },
+    "restored_size": [
+      41,
+      61
+    ],
+    "fits_canvas": true,
+    "removed_isolated_pixels": 0,
+    "bbox": [
+      11,
+      3,
+      52,
+      64
+    ]
+  },
+  {
+    "name": "A",
+    "attempt": 2,
+    "source_size": [
+      1254,
+      1254
+    ],
+    "grid_x": {
+      "k": 16.0,
+      "phase": 2.5,
+      "score": 0.17943842414211164,
+      "edge_fraction": 0.2563660718787887
+    },
+    "grid_y": {
+      "k": 16.0,
+      "phase": 8.5,
+      "score": 0.07970696116340792,
+      "edge_fraction": 0.16598443355433842
+    },
+    "restored_size": [
+      47,
+      71
+    ],
+    "fits_canvas": false,
+    "removed_isolated_pixels": 0,
+    "bbox": null
+  },
+  {
+    "name": "A",
+    "attempt": 3,
+    "source_size": [
+      1254,
+      1254
+    ],
+    "grid_x": {
+      "k": 17.5,
+      "phase": 12.0,
+      "score": 0.06529498792022537,
+      "edge_fraction": 0.14541256038420605
+    },
+    "grid_y": {
+      "k": 17.5,
+      "phase": 8.5,
+      "score": 0.084670797731763,
+      "edge_fraction": 0.1631275864976119
+    },
+    "restored_size": [
+      49,
+      68
+    ],
+    "fits_canvas": false,
+    "removed_isolated_pixels": 0,
+    "bbox": null
+  },
+  {
+    "name": "A",
+    "attempt": 4,
+    "source_size": [
+      1254,
+      1254
+    ],
+    "grid_x": {
+      "k": 16.0,
+      "phase": 13.5,
+      "score": 0.10038966524606255,
+      "edge_fraction": 0.1847281341292442
+    },
+    "grid_y": {
+      "k": 16.0,
+      "phase": 8.5,
+      "score": 0.11444804080006958,
+      "edge_fraction": 0.19746853697506306
+    },
+    "restored_size": [
+      52,
+      70
+    ],
+    "fits_canvas": false,
+    "removed_isolated_pixels": 0,
+    "bbox": null
+  },
+  {
+    "name": "B",
+    "attempt": 1,
+    "source_size": [
+      1254,
+      1254
+    ],
+    "grid_x": {
+      "k": 12.0,
+      "phase": 10.5,
+      "score": 0.10674802553336983,
+      "edge_fraction": 0.2184045223416986
+    },
+    "grid_y": {
+      "k": 12.0,
+      "phase": 9.5,
+      "score": 0.11757963090253394,
+      "edge_fraction": 0.2278821770397172
+    },
+    "restored_size": [
+      63,
+      101
+    ],
+    "fits_canvas": false,
+    "removed_isolated_pixels": 0,
+    "bbox": null
+  },
+  {
+    "name": "B",
+    "attempt": 2,
+    "source_size": [
+      1254,
+      1254
+    ],
+    "grid_x": {
+      "k": 12.3,
+      "phase": 10.332,
+      "score": 0.20272891606150076,
+      "edge_fraction": 0.2984014461341207
+    },
+    "grid_y": {
+      "k": 12.3,
+      "phase": 0.49200000000000005,
+      "score": 0.1268525181223092,
+      "edge_fraction": 0.23163021594763208
+    },
+    "restored_size": [
+      62,
+      95
+    ],
+    "fits_canvas": true,
+    "removed_isolated_pixels": 0,
+    "bbox": [
+      17,
+      1,
+      79,
+      96
+    ]
+  },
+  {
+    "name": "B",
+    "attempt": 3,
+    "source_size": [
+      1254,
+      1254
+    ],
+    "grid_x": {
+      "k": 13.5,
+      "phase": 9.5,
+      "score": 0.3080768384986984,
+      "edge_fraction": 0.38495718977662075
+    },
+    "grid_y": {
+      "k": 13.5,
+      "phase": 12.0,
+      "score": 0.09507541724326214,
+      "edge_fraction": 0.1956225931051219
+    },
+    "restored_size": [
+      52,
+      80
+    ],
+    "fits_canvas": true,
+    "removed_isolated_pixels": 0,
+    "bbox": [
+      22,
+      16,
+      74,
+      96
+    ]
+  },
+  {
+    "name": "B",
+    "attempt": 4,
+    "source_size": [
+      1254,
+      1254
+    ],
+    "grid_x": {
+      "k": 9.0,
+      "phase": 6.5,
+      "score": 0.09617357945685931,
+      "edge_fraction": 0.24681131621404942
+    },
+    "grid_y": {
+      "k": 9.0,
+      "phase": 5.5,
+      "score": 0.13651713479964975,
+      "edge_fraction": 0.2804309456663748
+    },
+    "restored_size": [
+      90,
+      122
+    ],
+    "fits_canvas": false,
+    "removed_isolated_pixels": 0,
+    "bbox": null
+  },
+  {
+    "name": "C",
+    "attempt": 1,
+    "source_size": [
+      1254,
+      1254
+    ],
+    "grid_x": {
+      "k": 7.0,
+      "phase": 0.5,
+      "score": 0.11416905424075142,
+      "edge_fraction": 0.3039899711891618
+    },
+    "grid_y": {
+      "k": 7.0,
+      "phase": 1.5,
+      "score": 0.1200284136903458,
+      "edge_fraction": 0.3085937536138431
+    },
+    "restored_size": [
+      114,
+      173
+    ],
+    "fits_canvas": false,
+    "removed_isolated_pixels": 0,
+    "bbox": null
+  },
+  {
+    "name": "C",
+    "attempt": 2,
+    "source_size": [
+      1254,
+      1254
+    ],
+    "grid_x": {
+      "k": 7.0,
+      "phase": 3.5,
+      "score": 0.13662575477218622,
+      "edge_fraction": 0.32163452160671774
+    },
+    "grid_y": {
+      "k": 7.0,
+      "phase": 5.5,
+      "score": 0.15045198051223496,
+      "edge_fraction": 0.3324979846881846
+    },
+    "restored_size": [
+      113,
+      175
+    ],
+    "fits_canvas": false,
+    "removed_isolated_pixels": 0,
+    "bbox": null
+  },
+  {
+    "name": "C",
+    "attempt": 3,
+    "source_size": [
+      1254,
+      1254
+    ],
+    "grid_x": {
+      "k": 13.0,
+      "phase": 0.5,
+      "score": 0.06371132036400724,
+      "edge_fraction": 0.17174462955277564
+    },
+    "grid_y": {
+      "k": 13.0,
+      "phase": 9.5,
+      "score": 0.1959340518200744,
+      "edge_fraction": 0.2887108919946812
+    },
+    "restored_size": [
+      61,
+      93
+    ],
+    "fits_canvas": true,
+    "removed_isolated_pixels": 0,
+    "bbox": [
+      33,
+      35,
+      94,
+      128
+    ]
+  },
+  {
+    "name": "C",
+    "attempt": 4,
+    "source_size": [
+      1254,
+      1254
+    ],
+    "grid_x": {
+      "k": 12.0,
+      "phase": 1.5,
+      "score": 0.10677639381426227,
+      "edge_fraction": 0.21842934458747948
+    },
+    "grid_y": {
+      "k": 12.0,
+      "phase": 11.5,
+      "score": 0.14285464190052696,
+      "edge_fraction": 0.2499978116629611
+    },
+    "restored_size": [
+      67,
+      101
+    ],
+    "fits_canvas": true,
+    "removed_isolated_pixels": 0,
+    "bbox": [
+      30,
+      27,
+      97,
+      128
+    ]
+  }
+]

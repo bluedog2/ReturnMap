@@ -19,6 +19,8 @@ namespace ReTrap.EditorTools
         public const int    Ppu        = 32;
         public const string RootFolder = "Assets/_Project/ResourcceEX/Sprites/Px32";
         public const string PaletteRel = "NEWIMAG/palette_32px.txt";
+        /// <summary>화풍 v2 팔레트. 과도기에는 구 팔레트와 합집합으로 검사하고, 전환 완료 후 이것만 남긴다.</summary>
+        public const string PaletteV2Rel = "NEWIMAG/palette_v2.txt";
 
         /// <summary>허용 카테고리 폴더 이름.</summary>
         public static readonly string[] Categories = { "Tiles", "Player", "Enemies", "Traps", "Effects", "Backgrounds", "UI" };
@@ -89,26 +91,46 @@ namespace ReTrap.EditorTools
             string anim = AnimOf(baseName);
             if (anim.Length == 0) return null;
 
+            return CharacterSpec(category, baseName, anim, HeroCell, EnemyCell(baseName));
+        }
+
+        /// <summary>
+        /// 화풍 v2 전환 과도기용 — 구 규격(주인공 셀 64, 적 48/64/96)의 셀 크기.
+        /// CI 가 아직 교체되지 않은 구 시트를 경고로만 처리할 때 씁니다. 가져오기(신규 입고)는 항상 새 규격.
+        /// 전환이 끝나면(구 시트 0장) 이 함수와 호출부를 제거합니다. 해당 없으면 null.
+        /// </summary>
+        public static SheetSpec GetLegacySheetSpec(string category, string baseName)
+        {
+            string anim = AnimOf(baseName);
+            if (anim.Length == 0) return null;
+            return CharacterSpec(category, baseName, anim, 64, LegacyEnemyCell(baseName));
+        }
+
+        /// <summary>주인공 셀 (화풍 v2: 키 80px — docs/hero-b-scale-impact.md).</summary>
+        public const int HeroCell = 96;
+
+        private static SheetSpec CharacterSpec(string category, string baseName, string anim, int heroCell, int enemyCell)
+        {
             if (category == "Player" && baseName.StartsWith("Hero_", StringComparison.OrdinalIgnoreCase))
             {
                 var bottom = new Vector2(0.5f, 0f);
                 switch (anim)
                 {
-                    case "Idle":      return Sheet(64, 6,  8f, true,  bottom);
-                    case "Run":       return Sheet(64, 8, 12f, true,  bottom);
-                    case "JumpStart": return Sheet(64, 2, 12f, false, bottom);
-                    case "Fall":      return Sheet(64, 2,  8f, true,  bottom);
-                    case "Land":      return Sheet(64, 3, 12f, false, bottom);
-                    case "Dash":      return Sheet(64, 4, 20f, false, bottom);  // 대시 0.2s(PlayerController.dashDuration)와 길이 일치
-                    case "Hit":       return Sheet(64, 2, 10f, false, bottom);
-                    case "Death":     return Sheet(64, 6, 10f, false, bottom);
+                    case "Idle":      return Sheet(heroCell, 6,  8f, true,  bottom);
+                    case "Run":       return Sheet(heroCell, 8, 12f, true,  bottom);
+                    case "JumpStart": return Sheet(heroCell, 2, 12f, false, bottom);
+                    case "Fall":      return Sheet(heroCell, 2,  8f, true,  bottom);
+                    case "Land":      return Sheet(heroCell, 3, 12f, false, bottom);
+                    case "Dash":      return Sheet(heroCell, 4, 20f, false, bottom);  // 대시 0.2s(PlayerController.dashDuration)와 길이 일치
+                    case "Hit":       return Sheet(heroCell, 2, 10f, false, bottom);
+                    case "Death":     return Sheet(heroCell, 6, 10f, false, bottom);
                 }
                 return null;
             }
 
             if (category == "Enemies")
             {
-                int cell = EnemyCell(baseName);
+                int cell = enemyCell;
                 if (cell == 0) return null;
                 var pivot = baseName.StartsWith("Imp", StringComparison.OrdinalIgnoreCase)
                     ? new Vector2(0.5f, 0.5f) : new Vector2(0.5f, 0f);
@@ -123,7 +145,18 @@ namespace ReTrap.EditorTools
             return null;
         }
 
+        /// <summary>적 셀 (화풍 v2: 고블린 48·임프 44 → 64, 스켈레톤 72·기사 84 → 96, 오크 96 → 128).</summary>
         private static int EnemyCell(string baseName)
+        {
+            if (baseName.StartsWith("Goblin", StringComparison.OrdinalIgnoreCase) ||
+                baseName.StartsWith("Imp",    StringComparison.OrdinalIgnoreCase)) return 64;
+            if (baseName.StartsWith("Skeleton", StringComparison.OrdinalIgnoreCase) ||
+                baseName.StartsWith("Elite",    StringComparison.OrdinalIgnoreCase)) return 96;
+            if (baseName.StartsWith("Orc", StringComparison.OrdinalIgnoreCase)) return 128;
+            return 0;
+        }
+
+        private static int LegacyEnemyCell(string baseName)
         {
             if (baseName.StartsWith("Goblin", StringComparison.OrdinalIgnoreCase) ||
                 baseName.StartsWith("Imp",    StringComparison.OrdinalIgnoreCase)) return 48;
@@ -153,24 +186,35 @@ namespace ReTrap.EditorTools
 
         public static string ProjectRoot() => Path.GetDirectoryName(Application.dataPath);
 
-        /// <summary>NEWIMAG/palette_32px.txt 의 #RRGGBB 줄(# 로 시작해도 6자리 hex 면 색, 그 외 주석 무시)을 읽습니다.</summary>
+        /// <summary>
+        /// 팔레트 파일(구 + v2 합집합)의 #RRGGBB 줄(# 로 시작해도 6자리 hex 면 색, 그 외 주석 무시)을 읽습니다.
+        /// 구 팔레트 파일이 없으면 빈 배열(CI 가 "팔레트 없음"으로 실패).
+        /// </summary>
         public static Color32[] LoadPalette(bool forceReload = false)
         {
             if (_palette != null && !forceReload) return _palette;
-            string path = Path.Combine(ProjectRoot(), PaletteRel);
             var list = new List<Color32>();
-            if (File.Exists(path))
+            if (File.Exists(Path.Combine(ProjectRoot(), PaletteRel)))
             {
-                foreach (string raw in File.ReadAllLines(path))
-                {
-                    string line = raw.Trim();
-                    if (line.Length != 7 || line[0] != '#' || line.IndexOf(' ') >= 0) continue; // 주석·빈 줄
-                    if (int.TryParse(line.Substring(1), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out int v))
-                        list.Add(new Color32((byte)(v >> 16), (byte)(v >> 8), (byte)v, 255));
-                }
+                ReadPaletteFile(PaletteRel, list);
+                ReadPaletteFile(PaletteV2Rel, list);
             }
             _palette = list.ToArray();
             return _palette;
+        }
+
+        private static void ReadPaletteFile(string rel, List<Color32> list)
+        {
+            string path = Path.Combine(ProjectRoot(), rel);
+            if (!File.Exists(path)) return;
+            foreach (string raw in File.ReadAllLines(path))
+            {
+                string line = raw.Trim();
+                if (line.Length != 7 || line[0] != '#' || line.IndexOf(' ') >= 0) continue; // 주석·빈 줄
+                if (!int.TryParse(line.Substring(1), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out int v)) continue;
+                var c = new Color32((byte)(v >> 16), (byte)(v >> 8), (byte)v, 255);
+                if (!list.Exists(p => p.r == c.r && p.g == c.g && p.b == c.b)) list.Add(c);
+            }
         }
     }
 }

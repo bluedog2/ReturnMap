@@ -1,0 +1,98 @@
+{
+  "A": {
+    "attempts": 4,
+    "selected_attempt": 1,
+    "canvas": [
+      64,
+      64
+    ],
+    "bbox_exclusive": [
+      11,
+      3,
+      52,
+      64
+    ],
+    "bbox_size": [
+      41,
+      61
+    ],
+    "k": 19.6,
+    "palette_outside": 0,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors_used": 20,
+    "bottom_row": true,
+    "horizontal_center_error": -0.5,
+    "exact_grid": false
+  },
+  "B": {
+    "attempts": 4,
+    "selected_attempt": 3,
+    "canvas": [
+      96,
+      96
+    ],
+    "bbox_exclusive": [
+      22,
+      16,
+      74,
+      96
+    ],
+    "bbox_size": [
+      52,
+      80
+    ],
+    "k": 13.5,
+    "palette_outside": 0,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors_used": 20,
+    "bottom_row": true,
+    "horizontal_center_error": 0.0,
+    "exact_grid": false
+  },
+  "C": {
+    "attempts": 4,
+    "selected_attempt": 4,
+    "canvas": [
+      128,
+      128
+    ],
+    "bbox_exclusive": [
+      30,
+      27,
+      97,
+      128
+    ],
+    "bbox_size": [
+      67,
+      101
+    ],
+    "k": 12.0,
+    "palette_outside": 0,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors_used": 20,
+    "bottom_row": true,
+    "horizontal_center_error": -0.5,
+    "exact_grid": false
+  },
+  "existing_hero_bbox": [
+    13,
+    16,
+    43,
+    64
+  ],
+  "goblin_bbox": [
+    9,
+    16,
+    38,
+    48
+  ]
+}

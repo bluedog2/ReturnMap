@@ -594,21 +594,39 @@ namespace ReTrap.EditorTools
                     c.errors.Add($"{assetPath}: Px32 카테고리 폴더({string.Join("/", Px32Rules.Categories)}) 밖");
                     continue;
                 }
-                var res = ValidatePng(Path.Combine(ProjectRoot(), assetPath), Path.GetFileNameWithoutExtension(assetPath), category, palette, false);
+                string baseName = Path.GetFileNameWithoutExtension(assetPath);
+                var res = ValidatePng(Path.Combine(ProjectRoot(), assetPath), baseName, category, palette, false);
                 if (res == null) { c.errors.Add($"{assetPath}: PNG 디코딩 실패"); continue; }
-                if (!res.Passed) c.errors.Add($"{assetPath}: {res.Summary().Replace("\n", " | ")}");
+                if (res.Passed) continue;
+
+                // 화풍 v2 과도기: 구 셀 규격으로는 통과하는 시트는 교체 대기 경고 (docs/hero-b-scale-impact.md)
+                var legacy = Px32Rules.GetLegacySheetSpec(category, baseName);
+                if (legacy != null)
+                {
+                    var lo = PixelArtSheetValidator.OptionsFor(category, baseName, palette, false);
+                    lo.cellW = legacy.cellW; lo.cellH = legacy.cellH; lo.frames = legacy.frames;
+                    var lres = ValidatePng(Path.Combine(ProjectRoot(), assetPath), lo);
+                    if (lres != null && lres.Passed)
+                    {
+                        c.warnings.Add($"{assetPath}: 구 규격(셀 {legacy.cellW}) — 화풍 v2 시트로 교체 대기");
+                        continue;
+                    }
+                }
+                c.errors.Add($"{assetPath}: {res.Summary().Replace("\n", " | ")}");
             }
         }
 
         private static PixelArtSheetValidator.Result ValidatePng(string absPath, string baseName, string category,
                                                                   Color32[] palette, bool detectGrid)
+            => ValidatePng(absPath, PixelArtSheetValidator.OptionsFor(category, baseName, palette, detectGrid));
+
+        private static PixelArtSheetValidator.Result ValidatePng(string absPath, PixelArtSheetValidator.Options options)
         {
             var tex = new Texture2D(2, 2, TextureFormat.RGBA32, false);
             try
             {
                 if (!tex.LoadImage(File.ReadAllBytes(absPath))) return null;
-                return PixelArtSheetValidator.Validate(tex.GetPixels32(), tex.width, tex.height,
-                    PixelArtSheetValidator.OptionsFor(category, baseName, palette, detectGrid));
+                return PixelArtSheetValidator.Validate(tex.GetPixels32(), tex.width, tex.height, options);
             }
             finally { UnityEngine.Object.DestroyImmediate(tex); }
         }

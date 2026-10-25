@@ -17,8 +17,9 @@ namespace ReTrap.EditorTools
     /// <list type="number">
     ///   <item>주인공 시트 8종(Hero_Run/JumpStart/Fall/Land/Dash/Hit/Death + 기존 Idle)이 모두 규격 프레임 수로 있을 때만 진행
     ///         (없으면 "아트 미입고"로 중단 — 반쪽 연결 방지). 클립은 <see cref="SpriteClipRebinder.RunApplyHero"/> 로 재배선.</item>
-    ///   <item>SampleScene 의 Player: Visual 스케일 1 · 위치 = 콜라이더 바닥, 캡슐 콜라이더 (0.6875, 1.4375)
-    ///         (바닥 높이 유지), Rigidbody2D 보간 Interpolate. <c>PlayerEffects.effectScale</c> 은 건드리지 않는다.</item>
+    ///   <item>SampleScene 의 Player: Visual 스케일 1 · 위치 = 콜라이더 바닥, 캡슐 콜라이더 (0.75, 1.875)
+    ///         (바닥 높이 유지, 화풍 v2), Rigidbody2D 보간 Interpolate, vcam TargetOffset.y 1.0, DashGaugeUI offset (1.0, 1.7).
+    ///         <c>PlayerEffects.effectScale</c> 은 건드리지 않는다. 시트 셀이 <see cref="Px32Rules.HeroCell"/> 가 아니면 중단.</item>
     ///   <item>Lord_Controller 의 Land state speed 를 1 로 되돌린다.</item>
     /// </list>
     /// 모든 이전 값은 로그에 남긴다.
@@ -35,7 +36,10 @@ namespace ReTrap.EditorTools
             ("Hero_Land", 3), ("Hero_Dash", 4), ("Hero_Hit", 2), ("Hero_Death", 6),
         };
 
-        private static readonly Vector2 NewColliderSize = new Vector2(0.6875f, 1.4375f);
+        // 화풍 v2 (docs/hero-b-scale-impact.md D1 ②): 아트 키 80px, 판정은 머리 꼭대기·포니테일 제외 60px
+        private static readonly Vector2 NewColliderSize = new Vector2(0.75f, 1.875f);
+        private const float   CameraTargetOffsetY = 1.0f;                     // 몸 중간이 화면 중심 근처에 오게
+        private static readonly Vector2 DashGaugeOffset = new Vector2(1.0f, 1.7f); // 새 키의 머리 옆
 
         [MenuItem("ReTrap/Setup/Px32 주인공 연결", false, 112)]
         public static void Run()
@@ -48,17 +52,24 @@ namespace ReTrap.EditorTools
             // 메뉴 실행 시 저장 안 된 씬 변경을 묻지 않고 버리지 않도록
             if (!Application.isBatchMode && !EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) return;
 
-            // 1) 아트 입고 확인 — 8종 모두 있을 때만 진행
+            // 1) 아트 입고 확인 — 8종 모두 새 규격 셀(Px32Rules.HeroCell)로 있을 때만 진행
+            //    (구 64 셀 시트에 새 콜라이더를 붙이는 반쪽 연결 방지)
             AssetDatabase.Refresh();
             foreach (var (sheet, frames) in Sheets)
             {
                 string path = $"{SheetDir}/{sheet}.png";
-                int count = File.Exists(Path.Combine(Directory.GetParent(Application.dataPath).FullName, path))
-                    ? AssetDatabase.LoadAllAssetsAtPath(path).OfType<Sprite>().Count()
-                    : 0;
-                if (count != frames)
+                var sprites = File.Exists(Path.Combine(Directory.GetParent(Application.dataPath).FullName, path))
+                    ? AssetDatabase.LoadAllAssetsAtPath(path).OfType<Sprite>().ToArray()
+                    : new Sprite[0];
+                if (sprites.Length != frames)
                 {
-                    Debug.LogError($"[Px32HeroWiring] 아트 미입고 — {path} 스프라이트 {count}개 (규격 {frames}). 아무것도 변경하지 않고 중단.");
+                    Debug.LogError($"[Px32HeroWiring] 아트 미입고 — {path} 스프라이트 {sprites.Length}개 (규격 {frames}). 아무것도 변경하지 않고 중단.");
+                    return;
+                }
+                int cellH = Mathf.RoundToInt(sprites[0].rect.height);
+                if (cellH != Px32Rules.HeroCell)
+                {
+                    Debug.LogError($"[Px32HeroWiring] 구 규격 시트 — {path} 셀 높이 {cellH} (규격 {Px32Rules.HeroCell}). 화풍 v2 시트 입고 전이므로 아무것도 변경하지 않고 중단.");
                     return;
                 }
             }
@@ -115,6 +126,7 @@ namespace ReTrap.EditorTools
             EditorUtility.SetDirty(cap);
             EditorUtility.SetDirty(visual);
             EditorUtility.SetDirty(rb);
+            ApplyCameraAndGauge(player);
             EditorSceneManager.MarkSceneDirty(scene);
             EditorSceneManager.SaveScene(scene);
 
@@ -151,6 +163,35 @@ namespace ReTrap.EditorTools
             // 5) 저장
             AssetDatabase.SaveAssets();
             Debug.Log("[Px32HeroWiring] 완료 — 씬/컨트롤러/클립 저장.");
+        }
+
+        /// <summary>vcam PositionComposer TargetOffset.y 와 DashGaugeUI offset 을 새 키에 맞춘다 (이전 값 로그). 없으면 경고만.</summary>
+        private static void ApplyCameraAndGauge(PlayerController player)
+        {
+            var composer = Object.FindFirstObjectByType<Unity.Cinemachine.CinemachinePositionComposer>();
+            if (composer != null)
+            {
+                var old = composer.TargetOffset;
+                composer.TargetOffset = new Vector3(old.x, CameraTargetOffsetY, old.z);
+                EditorUtility.SetDirty(composer);
+                Debug.Log($"[Px32HeroWiring] vcam TargetOffset {old} → {composer.TargetOffset}");
+            }
+            else Debug.LogWarning("[Px32HeroWiring] CinemachinePositionComposer 없음 — 카메라 오프셋 미변경");
+
+            var gauge = player.GetComponentInChildren<DashGaugeUI>(true);
+            if (gauge == null) gauge = Object.FindFirstObjectByType<DashGaugeUI>();
+            if (gauge != null)
+            {
+                var so   = new SerializedObject(gauge);
+                var prop = so.FindProperty("offset");
+                if (prop != null)
+                {
+                    Debug.Log($"[Px32HeroWiring] DashGaugeUI offset {prop.vector2Value} → {DashGaugeOffset}");
+                    prop.vector2Value = DashGaugeOffset;
+                    so.ApplyModifiedPropertiesWithoutUndo();
+                }
+            }
+            else Debug.LogWarning("[Px32HeroWiring] DashGaugeUI 없음 — 게이지 오프셋 미변경");
         }
 
         private static readonly string[] HeroClips =

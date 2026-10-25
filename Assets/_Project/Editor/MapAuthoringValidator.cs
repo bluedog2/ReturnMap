@@ -23,6 +23,7 @@ namespace ReTrap.EditorTools
     ///   <item>맵 테두리 뚫림 (플레이어 이탈 가능)</item>
     ///   <item>슬롯이 솔리드 타일과 같은 칸에 겹침 (지형 중복)</item>
     ///   <item>스폰 → 골 연결성 없음 (빈 칸 기준 — 근사 검사)</item>
+    ///   <item>통행 높이 2칸 미만인 바닥 칸 (주인공 콜라이더 1.875칸)</item>
     /// </list>
     /// </summary>
     public static class MapAuthoringValidator
@@ -43,6 +44,7 @@ namespace ReTrap.EditorTools
             CheckBorder(map, slotCells, warnings);
             CheckSlotBuried(map, warnings);
             CheckReachability(map, slotCells, warnings);
+            CheckHeadroom(map, slotCells, warnings);
 
             return warnings;
         }
@@ -159,6 +161,32 @@ namespace ReTrap.EditorTools
             }
 
             w.Add($"스폰 {s} 에서 골 {g} 까지 빈 칸 경로가 없습니다 — 클리어 불가능한 맵");
+        }
+
+        // ── 6. 통행 높이 ─────────────────────────────────────────────────────
+
+        /// <summary>주인공 콜라이더 키 1.875칸(화풍 v2) → 서서 지나가려면 빈 칸 2칸 이상.</summary>
+        private const int MinHeadroom = 2;
+
+        /// <summary>
+        /// 설 수 있는 칸(빈 칸 + 바로 아래 지형) 위로 빈 칸이 <see cref="MinHeadroom"/> 미만이면
+        /// 주인공이 들어갈 수 없는 칸입니다. 의도된 막다른 틈일 수 있으므로 위치만 알립니다.
+        /// </summary>
+        private static void CheckHeadroom(MapData map, HashSet<int> slots, List<string> w)
+        {
+            var low = new List<string>();
+            for (int y = 1; y < map.height; y++)
+            for (int x = 0; x < map.width; x++)
+            {
+                if (IsTerrain(map, slots, x, y) || !IsTerrain(map, slots, x, y - 1)) continue;
+                int room = 0;
+                for (int yy = y; yy < map.height && room < MinHeadroom && !IsTerrain(map, slots, x, yy); yy++) room++;
+                if (room < MinHeadroom) low.Add($"({x},{y})");
+            }
+
+            if (low.Count > 0)
+                w.Add($"통행 높이 {MinHeadroom}칸 미만인 바닥 칸 {low.Count}개 — 주인공(키 1.875칸)이 서서 지나갈 수 없습니다: " +
+                      string.Join(" ", low.GetRange(0, System.Math.Min(8, low.Count))) + (low.Count > 8 ? " …" : ""));
         }
 
         // ── 유틸 ─────────────────────────────────────────────────────────────
