@@ -1,0 +1,32 @@
+Boundary 2px paired RGBA pixels: Floor 1728/1728; Wall 1728/1728; Build Floor 1728/1728; Build Wall 1728/1728.
+All 36 tiles: 32x32, alpha 255. Maximum colors: 19.
+8-neighbor paint connectivity Floor 11: True; Wall 11: True
+8-neighbor paint connectivity Floor 12: True; Wall 12: True
+8-neighbor paint connectivity Floor 21: True; Wall 21: True
+8-neighbor paint connectivity Floor 22: True; Wall 22: True
+Map dimensions 25x14; trapSlots 4; spawn 2,1; camera world x=[0,640), y=[0,360). Hero visible foot y=328.
+Paint metrics: crimson/ivory mask, Floor excludes y<7 (platform lip and source lip drips). Width coverage = columns containing paint /32; area coverage = paint pixels /1024; span and height = bounding box. Charcoal outline excluded.
+Floor00: painted columns=0/32 (0.00%), bbox width=0, height=0, area=0.00%.
+Floor01: painted columns=30/32 (93.75%), bbox width=30, height=24, area=35.06%.
+Floor02: painted columns=30/32 (93.75%), bbox width=30, height=24, area=35.25%.
+Floor10: painted columns=30/32 (93.75%), bbox width=30, height=21, area=29.49%.
+Floor11: painted columns=32/32 (100.00%), bbox width=32, height=23, area=40.92%.
+Floor12: painted columns=32/32 (100.00%), bbox width=32, height=23, area=34.08%.
+Floor20: painted columns=30/32 (93.75%), bbox width=30, height=23, area=31.05%.
+Floor21: painted columns=32/32 (100.00%), bbox width=32, height=22, area=38.57%.
+Floor22: painted columns=32/32 (100.00%), bbox width=32, height=21, area=29.30%.
+Wall00: painted columns=0/32 (0.00%), bbox width=0, height=0, area=0.00%.
+Wall01: painted columns=29/32 (90.63%), bbox width=29, height=26, area=39.55%.
+Wall02: painted columns=26/32 (81.25%), bbox width=27, height=28, area=42.58%.
+Wall10: painted columns=28/32 (87.50%), bbox width=28, height=29, area=44.63%.
+Wall11: painted columns=28/32 (87.50%), bbox width=28, height=32, area=44.92%.
+Wall12: painted columns=27/32 (84.38%), bbox width=27, height=32, area=38.67%.
+Wall20: painted columns=26/32 (81.25%), bbox width=26, height=30, area=29.10%.
+Wall21: painted columns=30/32 (93.75%), bbox width=30, height=32, area=50.59%.
+Wall22: painted columns=30/32 (93.75%), bbox width=30, height=32, area=38.38%.
+Floor type1 primary port thickness=8px, coordinates=13..20 (crimson/ivory only; fringe/outline excluded).
+Floor type2 primary port thickness=3px, coordinates=15..17 (crimson/ivory only; fringe/outline excluded).
+Wall type1 primary port thickness=7px, coordinates=13..19 (crimson/ivory only; fringe/outline excluded).
+Wall type2 primary port thickness=4px, coordinates=14..17 (crimson/ivory only; fringe/outline excluded).
+Build exact coordinate-preserving palette substitution PASS. Shared Floor top3 rows PASS.
+

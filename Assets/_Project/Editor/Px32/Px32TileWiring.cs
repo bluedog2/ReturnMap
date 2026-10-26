@@ -16,9 +16,10 @@ namespace ReTrap.EditorTools
     /// <summary>
     /// 메뉴 <b>ReTrap → Setup → Px32 타일 연결</b> (멱등, 배치모드는 <see cref="Run"/>):
     /// <list type="number">
-    ///   <item>Px32/Tiles PNG 16장을 어드레서블 그룹 'Px32Tiles' 에 주소 'Px32/Tiles/{파일명}' 으로 등록.</item>
+    ///   <item>Px32/Tiles PNG(빈 콘크리트 16장 + 입고된 이음 조각)를 어드레서블 그룹 'Px32Tiles' 에 주소 'Px32/Tiles/{파일명}' 으로 등록.</item>
     ///   <item>스프라이트 아틀라스 Px32_Tiles.spriteatlasv2 생성(없을 때만).</item>
-    ///   <item>TilePaletteConfig 의 Floor/Wall/Ceiling 엔트리에 A(기본)+변형 B/C 참조 연결.
+    ///   <item>TilePaletteConfig 의 Floor/Wall/Ceiling 엔트리에 A(기본)+변형 B/C 참조 연결,
+    ///         이음 조각 10장이 모두 있으면 linkSprites/buildLinkSprites(<see cref="TileLinkRule"/> 순서) 연결.
     ///         덮어쓰기 전 기존 참조는 로그에 남김.</item>
     /// </list>
     /// </summary>
@@ -110,6 +111,26 @@ namespace ReTrap.EditorTools
                     for (int v = 0; v < variants.Length; v++)
                         SetRef(list.GetArrayElementAtIndex(v), $"Tile_{phase}_{kind}_{variants[v]}");
                     wired++;
+
+                    // 이음 낙서 조각 (TileLinkRule 순서) — 10장이 모두 있을 때만, 아니면 비워 빈 콘크리트로 폴백
+                    string linkField = phase == "Play" ? "linkSprites" : "buildLinkSprites";
+                    var links = el.FindPropertyRelative(linkField);
+                    log.AppendLine($"[{type}.{linkField}] 이전 값: {DescribeList(links)}");
+                    bool allLinks = true;
+                    for (int li = 1; li < TileLinkRule.SpriteCount; li++)
+                        if (!File.Exists($"{TilesFolder}/{LinkName(phase, kind, li)}.png")) { allLinks = false; break; }
+                    if (allLinks)
+                    {
+                        links.arraySize = TileLinkRule.SpriteCount;
+                        ClearRef(links.GetArrayElementAtIndex(0)); // [0] 미사용 (0-0 = 빈 콘크리트)
+                        for (int li = 1; li < TileLinkRule.SpriteCount; li++)
+                            SetRef(links.GetArrayElementAtIndex(li), LinkName(phase, kind, li));
+                    }
+                    else
+                    {
+                        links.arraySize = 0;
+                        log.AppendLine($"[{type}.{linkField}] 이음 조각 PNG 미입고 — 비움(빈 콘크리트 변형만 사용)");
+                    }
                 }
             }
             so.ApplyModifiedProperties();
@@ -124,14 +145,42 @@ namespace ReTrap.EditorTools
         {
             foreach (string phase in Phases)
                 foreach (string kind in Kinds)
+                {
                     foreach (string v in new[] { "A", "B", "C" })
                     {
                         if (kind == "Ceiling" && v == "C") continue; // Ceiling 은 A/B 만
                         yield return $"{TilesFolder}/Tile_{phase}_{kind}_{v}.png";
                     }
+                    for (int i = 1; i < TileLinkRule.SpriteCount; i++)
+                    {
+                        string p = $"{TilesFolder}/{LinkName(phase, kind, i)}.png";
+                        if (File.Exists(p)) yield return p; // 이음 조각은 입고된 것만
+                    }
+                }
         }
 
-        // 계획서의 PNG 는 Floor/Wall A/B/C + Ceiling A/B = 8종 x 2페이즈 = 16장.
+        // 빈 콘크리트 Floor/Wall A/B/C + Ceiling A/B = 8종 x 2페이즈 = 16장,
+        // 이음 낙서 조각 10종 x 3타입 x 2페이즈 = 60장 (화풍 v2).
+
+        /// <summary>
+        /// 이음 조각 파일 이름 (<see cref="TileLinkRule"/> 인덱스 1..10).
+        /// Floor·Ceiling = L{왼쪽}R{오른쪽}, Wall = T{위}B{아래}, 9·10 = 1-1·2-2 의 b 변형.
+        /// </summary>
+        private static string LinkName(string phase, string kind, int index)
+        {
+            string a = kind == "Wall" ? "T" : "L", b = kind == "Wall" ? "B" : "R";
+            string combo = index == 9  ? $"{a}1{b}1b"
+                         : index == 10 ? $"{a}2{b}2b"
+                         : $"{a}{index / 3}{b}{index % 3}";
+            return $"Tile_{phase}_{kind}_{combo}";
+        }
+
+        private static void ClearRef(SerializedProperty prop)
+        {
+            prop.FindPropertyRelative("m_AssetGUID").stringValue     = "";
+            prop.FindPropertyRelative("m_SubObjectName").stringValue = "";
+            prop.FindPropertyRelative("m_SubObjectType").stringValue = "";
+        }
 
         private static string EnsureAtlas(AddressableAssetSettings settings)
         {

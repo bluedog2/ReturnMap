@@ -1,0 +1,8 @@
+Boundary 2px paired RGBA pixels: Floor 1728/1728; Wall 1728/1728; Build Floor 1728/1728; Build Wall 1728/1728.
+All 36 tiles: 32x32, alpha 255. Maximum colors: 16.
+8-neighbor paint connectivity Floor 11: True; Wall 11: True
+8-neighbor paint connectivity Floor 12: True; Wall 12: True
+8-neighbor paint connectivity Floor 21: True; Wall 21: True
+8-neighbor paint connectivity Floor 22: True; Wall 22: True
+Map dimensions 25x14; trapSlots 4; spawn 2,1; camera world x=[0,640), y=[0,360). Hero visible foot y=328.
+Shared Floor top 3 rows: 864/864 pixels identical (verified).

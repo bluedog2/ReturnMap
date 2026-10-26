@@ -29,6 +29,8 @@ MonoBehaviour:
       m_EditorAssetChanged: 0
     spriteVariants: []
     buildSpriteVariants: []
+    linkSprites: []
+    buildLinkSprites: []
     fallbackColor: {r: 0.18, g: 0.18, b: 0.2, a: 1}
     isSolid: 0
     collisionLayer:
@@ -77,6 +79,138 @@ MonoBehaviour:
       m_EditorAssetChanged: 0
     - m_AssetGUID: 62ef4e1e3acabbb4f940be44efdedb0c
       m_SubObjectName: Tile_Build_Floor_C
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    linkSprites:
+    - m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 02aaa0d6f41c5c5459e4ec8d8307d171
+      m_SubObjectName: Tile_Play_Floor_L0R1
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 87d14332c2645aa4395e2d0d3a18cc38
+      m_SubObjectName: Tile_Play_Floor_L0R2
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 5b2f43cc016d8c743927c8ea6fd2c314
+      m_SubObjectName: Tile_Play_Floor_L1R0
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: d54f4198031305c499e2ec3e1d428d0f
+      m_SubObjectName: Tile_Play_Floor_L1R1
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 7b4f88d0f9959f044ac1eb39240f7715
+      m_SubObjectName: Tile_Play_Floor_L1R2
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 50a81192664db7e4698f037300152a80
+      m_SubObjectName: Tile_Play_Floor_L2R0
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: f72e263021d611545b2e4c70203b8c46
+      m_SubObjectName: Tile_Play_Floor_L2R1
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: a1ef737923b36fe4b9e24fb781114168
+      m_SubObjectName: Tile_Play_Floor_L2R2
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 604b21d7ac26e1a40b4a12f8e9f2d88b
+      m_SubObjectName: Tile_Play_Floor_L1R1b
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 9bb9bd6fed756464abfa780ec33a7358
+      m_SubObjectName: Tile_Play_Floor_L2R2b
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    buildLinkSprites:
+    - m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 8a7c5ae3ddc7e0f4c8341310b41b6551
+      m_SubObjectName: Tile_Build_Floor_L0R1
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: e03f2d3a40036094ea6048a2c9be8bd8
+      m_SubObjectName: Tile_Build_Floor_L0R2
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 3405ec5efa8e12c4fb9e7a08b264c54f
+      m_SubObjectName: Tile_Build_Floor_L1R0
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 5dc64473896ab0f45a374d1807ca326b
+      m_SubObjectName: Tile_Build_Floor_L1R1
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: ab17d4e8ca9e1ee4f85e6331c0f65c08
+      m_SubObjectName: Tile_Build_Floor_L1R2
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 0ac5f46aae7af67488e5b42373391d9e
+      m_SubObjectName: Tile_Build_Floor_L2R0
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 3e0836497ebf41c40b8b56410c8b370b
+      m_SubObjectName: Tile_Build_Floor_L2R1
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 2c9dbae30fccade45af3569431b5834d
+      m_SubObjectName: Tile_Build_Floor_L2R2
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 9fd23d3df431c6842a82ea60e35ae70b
+      m_SubObjectName: Tile_Build_Floor_L1R1b
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 33c392d23dfd8bb4581f3212473cce38
+      m_SubObjectName: Tile_Build_Floor_L2R2b
       m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       m_SubObjectGUID: 
@@ -133,6 +267,138 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
       m_SubObjectGUID: 
       m_EditorAssetChanged: 0
+    linkSprites:
+    - m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 2083e49ce77cce74cab837e6f37b76b5
+      m_SubObjectName: Tile_Play_Wall_T0B1
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 16db578871c0a0e46aab03639c572092
+      m_SubObjectName: Tile_Play_Wall_T0B2
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 1a5230e0d27b498429f1ab9c9b750e1b
+      m_SubObjectName: Tile_Play_Wall_T1B0
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 1e81176fea2a2644c8a4acb7d6bbeb07
+      m_SubObjectName: Tile_Play_Wall_T1B1
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 33e512cf96c8f7145aa4d1c54b3164da
+      m_SubObjectName: Tile_Play_Wall_T1B2
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 45a5ee9cd6dd14847af94b7b745978f6
+      m_SubObjectName: Tile_Play_Wall_T2B0
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: d5a3bcceb09e8f0479f624d3142f6c23
+      m_SubObjectName: Tile_Play_Wall_T2B1
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 7405c9113d750a34a845ececbc4734e4
+      m_SubObjectName: Tile_Play_Wall_T2B2
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 05efe08e2697f6f40a1303a02a629d08
+      m_SubObjectName: Tile_Play_Wall_T1B1b
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: a1cc12b264617ac4b8fd9860b53502d3
+      m_SubObjectName: Tile_Play_Wall_T2B2b
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    buildLinkSprites:
+    - m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: d963c77b825847f4c88e369eb7daf1f8
+      m_SubObjectName: Tile_Build_Wall_T0B1
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 69585d8d817dff347bc9244dee50ebe7
+      m_SubObjectName: Tile_Build_Wall_T0B2
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: a0925b2d97039de49a8b31f77ab35299
+      m_SubObjectName: Tile_Build_Wall_T1B0
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 0763d35587fa6de4e903c0cb60d4e15d
+      m_SubObjectName: Tile_Build_Wall_T1B1
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 5b3310584dd91114caf618729dd43c68
+      m_SubObjectName: Tile_Build_Wall_T1B2
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 72682d26c1e3a5f4ea4e57101c83f1cc
+      m_SubObjectName: Tile_Build_Wall_T2B0
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 325d481f8ca4b9a40a535af4a66db780
+      m_SubObjectName: Tile_Build_Wall_T2B1
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: f6d4d921c576e1b499aeeaa55a360ffd
+      m_SubObjectName: Tile_Build_Wall_T2B2
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 1278a2e5ea05ee448b4c2a0338ed6573
+      m_SubObjectName: Tile_Build_Wall_T1B1b
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 24abf3dd553fa0b45a73739fb68c2613
+      m_SubObjectName: Tile_Build_Wall_T2B2b
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
     fallbackColor: {r: 0.45, g: 0.45, b: 0.48, a: 1}
     isSolid: 1
     collisionLayer:
@@ -169,6 +435,138 @@ MonoBehaviour:
     buildSpriteVariants:
     - m_AssetGUID: fa7bb99534e8ec44c91990cbd18847c6
       m_SubObjectName: Tile_Build_Ceiling_B
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    linkSprites:
+    - m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 070d42bad1dc74740b099c825b897ca7
+      m_SubObjectName: Tile_Play_Ceiling_L0R1
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 86f92735f4beb6a4ebc68132653ada4b
+      m_SubObjectName: Tile_Play_Ceiling_L0R2
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 03119fa478adedd4ea53bcf897a9acc3
+      m_SubObjectName: Tile_Play_Ceiling_L1R0
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: bf0376f6513d21a4d9e243a5451262fa
+      m_SubObjectName: Tile_Play_Ceiling_L1R1
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 291a77b88db0f6b4e9cd709bbc21a84f
+      m_SubObjectName: Tile_Play_Ceiling_L1R2
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 38e92f8cc050ca14f9fc5aa37e7e4701
+      m_SubObjectName: Tile_Play_Ceiling_L2R0
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: de01aa06ec8ac364a9bdfbbff999c9f0
+      m_SubObjectName: Tile_Play_Ceiling_L2R1
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: e388f3e9750b8b64ba52c096d1de308c
+      m_SubObjectName: Tile_Play_Ceiling_L2R2
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: ec335de1eb230934dbdb93ccde9b7ebf
+      m_SubObjectName: Tile_Play_Ceiling_L1R1b
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 5ac3d1541a9f69448a9332c42424275e
+      m_SubObjectName: Tile_Play_Ceiling_L2R2b
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    buildLinkSprites:
+    - m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 25f3f0f333eba9048bd7d3096ce96af1
+      m_SubObjectName: Tile_Build_Ceiling_L0R1
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 4d5bdff20055fd14eab85aee231bf1b8
+      m_SubObjectName: Tile_Build_Ceiling_L0R2
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: fe75ee93186a06e429605f19f44cf846
+      m_SubObjectName: Tile_Build_Ceiling_L1R0
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 473c5802d3522dd4cba1d034bd82bae3
+      m_SubObjectName: Tile_Build_Ceiling_L1R1
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: f6d208219ac1d4b48a94d797008bbe7f
+      m_SubObjectName: Tile_Build_Ceiling_L1R2
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 090ca1fb62b8d6448982e597ecba81a6
+      m_SubObjectName: Tile_Build_Ceiling_L2R0
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: eb59eeb0ffa08d8428f32dc76adae9f6
+      m_SubObjectName: Tile_Build_Ceiling_L2R1
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 883d813d71ba2db49bb5a49a3c540fa7
+      m_SubObjectName: Tile_Build_Ceiling_L2R2
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 567502ae04fb5194ab9a537dea20d025
+      m_SubObjectName: Tile_Build_Ceiling_L1R1b
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: ec30bf944e1fa834690bd861cb0de80f
+      m_SubObjectName: Tile_Build_Ceiling_L2R2b
       m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       m_SubObjectGUID: 

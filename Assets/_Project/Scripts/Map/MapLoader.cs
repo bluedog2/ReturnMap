@@ -88,9 +88,15 @@ namespace ReTrap
         /// <summary>현재 <see cref="_assetLoader"/> 에 로드돼 있는 팔레트. 같은 팔레트 재로드 시 중복 로드 방지.</summary>
         private TilePaletteConfig _loadedPalette;
 
-        /// <summary>페이즈에 따라 스프라이트를 교체할 절차적 지형 타일 (프리팹 오버라이드 타일은 제외).</summary>
-        private readonly List<(SpriteRenderer sr, TileType type, int x, int y)> _phaseTiles
-            = new List<(SpriteRenderer sr, TileType type, int x, int y)>();
+        /// <summary>
+        /// 페이즈에 따라 스프라이트를 교체할 절차적 지형 타일 (프리팹 오버라이드 타일은 제외).
+        /// linkPrev/linkNext = 이음 낙서 조각 선택용 이웃 연결(<see cref="TileLinkRule"/>).
+        /// </summary>
+        private readonly List<(SpriteRenderer sr, TileType type, int x, int y, bool linkPrev, bool linkNext)> _phaseTiles
+            = new List<(SpriteRenderer sr, TileType type, int x, int y, bool linkPrev, bool linkNext)>();
+
+        /// <summary>현재 맵의 함정 슬롯 칸 인덱스 (이음 낙서가 슬롯 칸으로 이어지지 않게).</summary>
+        private readonly HashSet<int> _slotCells = new HashSet<int>();
 
         // ── 이벤트 ────────────────────────────────────────────────────────────
 
@@ -283,6 +289,11 @@ namespace ReTrap
                 BuildBackground(map, origin);
 
             // ── 2. 타일 생성 ─────────────────────────────────────────────────
+            _slotCells.Clear();
+            foreach (var slot in map.trapSlots)
+                if (map.InBounds(slot.x, slot.y))
+                    _slotCells.Add(map.Index(slot.x, slot.y));
+
             for (int y = 0; y < map.height; y++)
             {
                 for (int x = 0; x < map.width; x++)
@@ -338,10 +349,10 @@ namespace ReTrap
         private void HandlePhaseChanged(GamePhase phase)
         {
             if (_palette == null) return;
-            foreach (var (sr, type, cx, cy) in _phaseTiles)
+            foreach (var (sr, type, cx, cy, linkPrev, linkNext) in _phaseTiles)
             {
                 if (sr == null) continue; // 언로드로 파괴됨
-                Sprite sp = _palette.GetSprite(type, phase, cx, cy);
+                Sprite sp = _palette.GetSprite(type, phase, cx, cy, linkPrev, linkNext);
                 if (sp == null) continue;
                 sr.sprite = sp;
                 sr.color  = Color.white; // 폴백 색상 블록이었던 경우 대비
@@ -494,7 +505,8 @@ namespace ReTrap
             visual.transform.SetParent(go.transform, false);
 
             var sr     = visual.AddComponent<SpriteRenderer>();
-            Sprite sp  = _palette != null ? _palette.GetSprite(type, CurrentPhaseOrPlay(), x, y) : null;
+            GetLinks(map, x, y, type, out bool linkPrev, out bool linkNext);
+            Sprite sp  = _palette != null ? _palette.GetSprite(type, CurrentPhaseOrPlay(), x, y, linkPrev, linkNext) : null;
             sr.sprite  = sp;
             sr.color   = sp != null ? Color.white
                         : (_palette != null ? _palette.GetColor(type)
@@ -518,7 +530,7 @@ namespace ReTrap
 
             // 페이즈별 스프라이트 교체 대상으로 등록 (프리팹 경로는 제외)
             if (_palette != null)
-                _phaseTiles.Add((sr, type, x, y));
+                _phaseTiles.Add((sr, type, x, y, linkPrev, linkNext));
 
             // 솔리드 타일 → BoxCollider2D (부모 go, 스케일 1 → 루트 CompositeCollider2D 로 병합)
             if (_palette != null && _palette.IsSolid(type))
@@ -529,6 +541,29 @@ namespace ReTrap
                 go.layer = _palette.GetCollisionLayerIndex(type);
             }
         }
+
+        /// <summary>
+        /// 이음 낙서용 이웃 연결. Floor·Ceiling 은 좌(prev)·우(next), Wall 은 아래(prev)·위(next).
+        /// 이웃이 같은 타입이고 함정 슬롯이 아니며, 이 칸도 슬롯이 아닐 때만 이어집니다.
+        /// </summary>
+        private void GetLinks(MapData map, int x, int y, TileType type, out bool linkPrev, out bool linkNext)
+        {
+            linkPrev = linkNext = false;
+            if (_slotCells.Contains(map.Index(x, y))) return;
+            if (type == TileType.Wall)
+            {
+                linkPrev = SameUnslotted(map, x, y - 1, type);
+                linkNext = SameUnslotted(map, x, y + 1, type);
+            }
+            else
+            {
+                linkPrev = SameUnslotted(map, x - 1, y, type);
+                linkNext = SameUnslotted(map, x + 1, y, type);
+            }
+        }
+
+        private bool SameUnslotted(MapData map, int x, int y, TileType type)
+            => map.InBounds(x, y) && map.GetTile(x, y) == type && !_slotCells.Contains(map.Index(x, y));
 
         /// <summary>맵의 배경 그리드에 실제 등장하는 타일 인덱스 집합 (0=없음 제외).</summary>
         private static HashSet<int> CollectUsedBackgrounds(MapData map)

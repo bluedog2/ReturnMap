@@ -1,0 +1,12 @@
+Selected sources: Floor generation3; Wall generation4. Both 1254x1254.
+3x3 equal atlas cells. Each cell sampled at logical32x32 centers:
+sx=floor((column+(x+0.5)/32)*sourceWidth/3)
+sy=floor((row+(y+0.5)/32)*sourceHeight/3)
+No blur, stroke drawing, dilation or procedurally generated art.
+Quantization uses nearest squared RGB distance in the allowed shared subset.
+Floor11 source fragment: Floor10 rect(0,13,3,8) pasted at(24,13).
+Floor lip y0..2: copied from A Tile_Play_Floor, then quantized.
+Floor1 profile: Floor10 x0. Floor2 profile: Floor22 x3 y14..21, Floor00 x2 elsewhere.
+All Floor profile y0..2 copied from Floor00 x2.
+Wall profiles: Wall00/11/22 row2.
+Each1px profile duplicated into2px boundary; both matching sides overwritten identically.

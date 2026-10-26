@@ -36,6 +36,13 @@ namespace ReTrap
         [Tooltip("빌드·검증 페이즈 추가 변형 스프라이트(선택). 비우면 buildSpriteRef 단일만 사용합니다(Play 변형으로 폴백하지 않음).")]
         public List<AssetReferenceSprite> buildSpriteVariants = new List<AssetReferenceSprite>();
 
+        [Tooltip("Play 페이즈 이음 낙서 조각(선택, 11칸). [0] 미사용, 1..8 = 첫 경계*3+둘째 경계, 9 = 1-1 b, 10 = 2-2 b. " +
+                 "양쪽 경계가 0 인 칸은 위 기본·변형(빈 콘크리트)을 씁니다. 규칙은 TileLinkRule.")]
+        public List<AssetReferenceSprite> linkSprites = new List<AssetReferenceSprite>();
+
+        [Tooltip("빌드·검증 페이즈 이음 낙서 조각(선택, 11칸, linkSprites 와 같은 순서).")]
+        public List<AssetReferenceSprite> buildLinkSprites = new List<AssetReferenceSprite>();
+
         [Tooltip("스프라이트가 비어있을 때 에디터 셀에 채울 색입니다.")]
         public Color      fallbackColor = Color.gray;
 
@@ -175,6 +182,8 @@ namespace ReTrap
         private Dictionary<TileType,   Sprite>     _loadedBuildSprites;
         private Dictionary<TileType,   Sprite[]>   _loadedVariants;      // 인덱스 = spriteVariants 순서
         private Dictionary<TileType,   Sprite[]>   _loadedBuildVariants; // 인덱스 = buildSpriteVariants 순서
+        private Dictionary<TileType,   Sprite[]>   _loadedLinks;         // 인덱스 = linkSprites 순서
+        private Dictionary<TileType,   Sprite[]>   _loadedBuildLinks;    // 인덱스 = buildLinkSprites 순서
         private Dictionary<ParallaxLayer, Sprite>  _loadedParallax;
         private Dictionary<TileType,   GameObject> _loadedPrefabs;
         private Dictionary<TrapAnchor, Sprite>     _loadedSlotSprites;
@@ -222,6 +231,8 @@ namespace ReTrap
             _loadedBuildSprites = new Dictionary<TileType, Sprite>();
             _loadedVariants      = new Dictionary<TileType, Sprite[]>();
             _loadedBuildVariants = new Dictionary<TileType, Sprite[]>();
+            _loadedLinks         = new Dictionary<TileType, Sprite[]>();
+            _loadedBuildLinks    = new Dictionary<TileType, Sprite[]>();
             _loadedParallax    = new Dictionary<ParallaxLayer, Sprite>();
             _loadedPrefabs     = new Dictionary<TileType, GameObject>();
             _loadedSlotSprites = new Dictionary<TrapAnchor, Sprite>();
@@ -237,6 +248,8 @@ namespace ReTrap
                     if (RefValid(v.prefabRef)) loader.Load(v.prefabRef, p => _loadedPrefabs[t] = p);
                     BeginLoadVariants(loader, v.spriteVariants, t, _loadedVariants);
                     BeginLoadVariants(loader, v.buildSpriteVariants, t, _loadedBuildVariants);
+                    BeginLoadVariants(loader, v.linkSprites, t, _loadedLinks);
+                    BeginLoadVariants(loader, v.buildLinkSprites, t, _loadedBuildLinks);
                 }
 
             foreach (var set in new[] { verificationParallax, playParallax })
@@ -303,6 +316,8 @@ namespace ReTrap
             _loadedBuildSprites?.Clear();
             _loadedVariants?.Clear();
             _loadedBuildVariants?.Clear();
+            _loadedLinks?.Clear();
+            _loadedBuildLinks?.Clear();
             _loadedParallax?.Clear();
             _loadedPrefabs?.Clear();
             _loadedSlotSprites?.Clear();
@@ -461,6 +476,32 @@ namespace ReTrap
                 pick--;
             }
             return null;
+        }
+
+        /// <summary>
+        /// 이음 낙서 조각을 고려한 페이즈별 스프라이트. 이웃 연결 여부로 <see cref="TileLinkRule"/> 조각을 고르고,
+        /// 양쪽 경계가 0 이거나 해당 페이즈의 이음 조각이 비어 있으면 <see cref="GetSprite(TileType, GamePhase, int, int)"/>
+        /// (빈 콘크리트 변형) 로 폴백합니다.
+        /// </summary>
+        /// <param name="linkPrev">Floor·Ceiling: 왼쪽 / Wall: 아래 이웃이 같은 타입(슬롯 아님)인지.</param>
+        /// <param name="linkNext">Floor·Ceiling: 오른쪽 / Wall: 위 이웃이 같은 타입(슬롯 아님)인지.</param>
+        public Sprite GetSprite(TileType type, GamePhase phase, int cellX, int cellY, bool linkPrev, bool linkNext)
+        {
+            int idx = TileLinkRule.SpriteIndex(type == TileType.Wall, cellX, cellY, linkPrev, linkNext);
+            if (idx < 0) return GetSprite(type, phase, cellX, cellY);
+
+            var v = TileEntry(type);
+            if (v == null) return GetSprite(type, phase, cellX, cellY);
+
+            bool play = phase == GamePhase.Play;
+            var refs  = play ? v.linkSprites : v.buildLinkSprites;
+            if (refs == null || idx >= refs.Count) return GetSprite(type, phase, cellX, cellY);
+
+            var loaded = play ? _loadedLinks : _loadedBuildLinks;
+            Sprite[] arr = null;
+            if (loaded != null) loaded.TryGetValue(type, out arr);
+            Sprite sp = ResolveSprite(refs[idx], arr != null && idx < arr.Length ? arr[idx] : null);
+            return sp != null ? sp : GetSprite(type, phase, cellX, cellY);
         }
 
         // ── 공개 API — 패럴랙스 ──────────────────────────────────────────────

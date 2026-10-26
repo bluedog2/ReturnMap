@@ -1,0 +1,2 @@
+undefined
+FINAL GRID FIX: 32 pixels wide PER TILE, not 64. Draw 32x32 pixel tiles multiple in a grid, exactly 16-times block enlargement. Palette is flat, no gradients. Extremely chunky retro game texture. Each rivet only 1 or 2 pixels. The entire X inside FLOOR is 8 pixels wide. Big empty solid color regions. Output 1024x1024.

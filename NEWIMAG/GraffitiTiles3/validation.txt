@@ -1,0 +1,102 @@
+Boundary 2px paired RGBA pixels: Floor 1728/1728; Wall 1728/1728; Build Floor 1728/1728; Build Wall 1728/1728.
+All 36 tiles: 32x32, alpha 255. Maximum colors: 19.
+8-neighbor paint connectivity Floor 11: True; Wall 11: True
+8-neighbor paint connectivity Floor 12: True; Wall 12: True
+8-neighbor paint connectivity Floor 21: True; Wall 21: True
+8-neighbor paint connectivity Floor 22: True; Wall 22: True
+Map dimensions 25x14; trapSlots 4; spawn 2,1; camera world x=[0,640), y=[0,360). Hero visible foot y=328.
+Floor concrete source: 00 interior column6; target concrete luma=105.016; isolated dark source pixels replaced with same-row/column nearby concrete samples.
+Wall concrete source: 00 interior row4; target concrete luma=119.782; isolated dark source pixels replaced with same-row/column nearby concrete samples.
+Floor00a -> Floor00a: inner=105.879, boundary=104.184, delta=-1.601%
+Floor00a -> Floor01a: inner=105.318, boundary=104.184, delta=-1.076%
+Floor00a -> Floor02a: inner=105.764, boundary=104.184, delta=-1.493%
+Floor01a -> Floor10a: inner=104.688, boundary=103.463, delta=-1.170%
+Floor01a -> Floor11a: inner=103.349, boundary=103.463, delta=0.111%
+Floor01a -> Floor12a: inner=104.560, boundary=103.463, delta=-1.049%
+Floor01a -> Floor11b: inner=104.614, boundary=103.463, delta=-1.100%
+Floor02a -> Floor20a: inner=105.064, boundary=103.675, delta=-1.322%
+Floor02a -> Floor21a: inner=104.597, boundary=103.675, delta=-0.881%
+Floor02a -> Floor22a: inner=105.448, boundary=103.675, delta=-1.681%
+Floor02a -> Floor22b: inner=108.458, boundary=103.675, delta=-4.410%
+Floor10a -> Floor00a: inner=105.683, boundary=104.184, delta=-1.418%
+Floor10a -> Floor01a: inner=104.688, boundary=104.184, delta=-0.481%
+Floor10a -> Floor02a: inner=105.343, boundary=104.184, delta=-1.100%
+Floor11a -> Floor10a: inner=104.505, boundary=103.463, delta=-0.997%
+Floor11a -> Floor11a: inner=102.891, boundary=103.463, delta=0.556%
+Floor11a -> Floor12a: inner=104.331, boundary=103.463, delta=-0.832%
+Floor11a -> Floor11b: inner=104.438, boundary=103.463, delta=-0.933%
+Floor12a -> Floor20a: inner=105.052, boundary=103.675, delta=-1.311%
+Floor12a -> Floor21a: inner=104.656, boundary=103.675, delta=-0.937%
+Floor12a -> Floor22a: inner=105.389, boundary=103.675, delta=-1.626%
+Floor12a -> Floor22b: inner=108.115, boundary=103.675, delta=-4.107%
+Floor20a -> Floor00a: inner=105.565, boundary=104.184, delta=-1.308%
+Floor20a -> Floor01a: inner=104.337, boundary=104.184, delta=-0.147%
+Floor20a -> Floor02a: inner=105.064, boundary=104.184, delta=-0.838%
+Floor21a -> Floor10a: inner=104.774, boundary=103.463, delta=-1.251%
+Floor21a -> Floor11a: inner=103.415, boundary=103.463, delta=0.047%
+Floor21a -> Floor12a: inner=104.656, boundary=103.463, delta=-1.140%
+Floor21a -> Floor11b: inner=104.693, boundary=103.463, delta=-1.174%
+Floor22a -> Floor20a: inner=105.191, boundary=103.675, delta=-1.441%
+Floor22a -> Floor21a: inner=104.857, boundary=103.675, delta=-1.127%
+Floor22a -> Floor22a: inner=105.487, boundary=103.675, delta=-1.718%
+Floor22a -> Floor22b: inner=107.998, boundary=103.675, delta=-4.002%
+Floor11b -> Floor10a: inner=105.226, boundary=103.463, delta=-1.675%
+Floor11b -> Floor11a: inner=104.438, boundary=103.463, delta=-0.933%
+Floor11b -> Floor12a: inner=105.193, boundary=103.463, delta=-1.645%
+Floor11b -> Floor11b: inner=105.140, boundary=103.463, delta=-1.595%
+Floor22b -> Floor20a: inner=107.922, boundary=103.675, delta=-3.935%
+Floor22b -> Floor21a: inner=107.950, boundary=103.675, delta=-3.960%
+Floor22b -> Floor22a: inner=107.998, boundary=103.675, delta=-4.002%
+Floor22b -> Floor22b: inner=109.679, boundary=103.675, delta=-5.474%
+Wall00a -> Wall00a: inner=118.123, boundary=121.022, delta=2.454%
+Wall00a -> Wall01a: inner=118.185, boundary=121.022, delta=2.401%
+Wall00a -> Wall02a: inner=118.688, boundary=121.022, delta=1.966%
+Wall01a -> Wall10a: inner=119.499, boundary=121.469, delta=1.648%
+Wall01a -> Wall11a: inner=119.731, boundary=121.469, delta=1.451%
+Wall01a -> Wall12a: inner=119.659, boundary=121.469, delta=1.512%
+Wall01a -> Wall11b: inner=118.428, boundary=121.469, delta=2.568%
+Wall02a -> Wall20a: inner=120.264, boundary=120.442, delta=0.148%
+Wall02a -> Wall21a: inner=120.394, boundary=120.442, delta=0.040%
+Wall02a -> Wall22a: inner=120.726, boundary=120.442, delta=-0.235%
+Wall02a -> Wall22b: inner=118.572, boundary=120.442, delta=1.577%
+Wall10a -> Wall00a: inner=118.742, boundary=121.022, delta=1.920%
+Wall10a -> Wall01a: inner=119.499, boundary=121.022, delta=1.275%
+Wall10a -> Wall02a: inner=120.763, boundary=121.022, delta=0.214%
+Wall11a -> Wall10a: inner=121.429, boundary=121.469, delta=0.033%
+Wall11a -> Wall11a: inner=121.847, boundary=121.469, delta=-0.310%
+Wall11a -> Wall12a: inner=121.255, boundary=121.469, delta=0.177%
+Wall11a -> Wall11b: inner=119.295, boundary=121.469, delta=1.822%
+Wall12a -> Wall20a: inner=120.442, boundary=120.442, delta=0.000%
+Wall12a -> Wall21a: inner=120.662, boundary=120.442, delta=-0.182%
+Wall12a -> Wall22a: inner=120.897, boundary=120.442, delta=-0.376%
+Wall12a -> Wall22b: inner=118.820, boundary=120.442, delta=1.366%
+Wall20a -> Wall00a: inner=118.828, boundary=121.022, delta=1.846%
+Wall20a -> Wall01a: inner=119.415, boundary=121.022, delta=1.346%
+Wall20a -> Wall02a: inner=120.264, boundary=121.022, delta=0.630%
+Wall21a -> Wall10a: inner=120.700, boundary=121.469, delta=0.637%
+Wall21a -> Wall11a: inner=121.106, boundary=121.469, delta=0.300%
+Wall21a -> Wall12a: inner=120.662, boundary=121.469, delta=0.669%
+Wall21a -> Wall11b: inner=118.836, boundary=121.469, delta=2.215%
+Wall22a -> Wall20a: inner=120.444, boundary=120.442, delta=-0.001%
+Wall22a -> Wall21a: inner=120.667, boundary=120.442, delta=-0.186%
+Wall22a -> Wall22a: inner=120.903, boundary=120.442, delta=-0.381%
+Wall22a -> Wall22b: inner=118.811, boundary=120.442, delta=1.373%
+Wall11b -> Wall10a: inner=119.161, boundary=121.469, delta=1.937%
+Wall11b -> Wall11a: inner=119.295, boundary=121.469, delta=1.822%
+Wall11b -> Wall12a: inner=119.305, boundary=121.469, delta=1.814%
+Wall11b -> Wall11b: inner=118.465, boundary=121.469, delta=2.536%
+Wall22b -> Wall20a: inner=118.754, boundary=120.442, delta=1.422%
+Wall22b -> Wall21a: inner=118.291, boundary=120.442, delta=1.819%
+Wall22b -> Wall22a: inner=118.811, boundary=120.442, delta=1.373%
+Wall22b -> Wall22b: inner=117.816, boundary=120.442, delta=2.229%
+Floor kind0 concrete profile before=97.733, after=104.184
+Floor kind1 concrete profile before=69.222, after=103.463
+Floor kind2 concrete profile before=95.577, after=103.675
+Wall kind0 concrete profile before=115.582, after=121.022
+Wall kind1 concrete profile before=112.117, after=121.469
+Wall kind2 concrete profile before=112.668, after=120.442
+Dark charcoal concrete profile pixels (luma<75): 0/138; no repeated charcoal boundary bar. Build coordinate-preserving substitution all44 PASS.
+All variants included boundary match=10496/10496; max colors=19; all 44 tiles alpha255/palette PASS.
+Worst adjacent-pair concrete brightness delta=5.474%; requirement <=6%.
+Strip: empty 00=19/72 (26.389%); zero internal edges=35/69; b variants=4/72.
+

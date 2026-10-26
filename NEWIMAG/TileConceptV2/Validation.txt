@@ -1,0 +1,6 @@
+Artifact checks
+A: PASS ??6 tiles; 32x32; <=24 colors; base+12 palette; opaque identical silhouettes; bijective phase recolor; directional seam equality; 640x360 and pixel-exact 3x mocks.
+B: PASS ??6 tiles; 32x32; <=24 colors; base+12 palette; opaque identical silhouettes; bijective phase recolor; directional seam equality; 640x360 and pixel-exact 3x mocks.
+C: PASS ??6 tiles; 32x32; <=24 colors; base+12 palette; opaque identical silhouettes; bijective phase recolor; directional seam equality; 640x360 and pixel-exact 3x mocks.
+Overview: PASS ??1280x1152, six mocks copied 1:1.
+Source grid: NOT PASS ??image_gen returned 1254x1254, not requested 1024x1024 / exact 16x blocks. Final tile dimensions are exact after center sampling; source grid compliance must not be inferred.

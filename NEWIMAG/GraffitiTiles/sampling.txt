@@ -1,0 +1,1 @@
+Floor22 grid center registration offset: 1,-1 source pixels (source cell approx 418px).

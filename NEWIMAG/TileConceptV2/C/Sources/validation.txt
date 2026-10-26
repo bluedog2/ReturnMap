@@ -1,0 +1,9 @@
+Source: 1254x1254
+Sampling: block center, 2x2 atlas, 32x32 per quadrant.
+Build Floor: 32x32, 11 colors; seam endpoints identical.
+Play Floor: 32x32, 11 colors; seam endpoints identical.
+Build Wall: 32x32, 10 colors; seam endpoints identical.
+Play Wall: 32x32, 10 colors; seam endpoints identical.
+Build Ceiling: 32x32, 11 colors; seam endpoints identical.
+Play Ceiling: 32x32, 11 colors; seam endpoints identical.
+Hero first 96x96 frame; alpha-bottom=96; feet contact y=296. Platform surface y=168 (4 tiles higher).
