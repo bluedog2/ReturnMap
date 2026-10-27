@@ -259,6 +259,10 @@ namespace ReTrap
                     yield return new WaitForSeconds(deathLingerTime);
                     if (runner.ActiveAgent == null) yield break; // 유지 중 외부 중단
                 }
+                // 골 도달 훅은 풀 반납(ActiveAgent 해제) 이전에 디스패치
+                if (reached && runner.ActiveAgent.TryGetComponent<AgentContext>(out var reachedCtx))
+                    reachedCtx.DispatchGoalReachedHooks();
+
                 ReleaseRunnerAgent(runner);
 
                 if (reached)

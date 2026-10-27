@@ -21,5 +21,8 @@ namespace ReTrap
 
         /// <summary>함정에 피격당했을 때 호출. 예: 백스텝.</summary>
         public virtual void OnTrapHit(AgentContext agent, TrapBase trap) { }
+
+        /// <summary>개체가 골에 도달(방어 뚫림)했을 때 호출. 예: 도둑 재화 도난.</summary>
+        public virtual void OnGoalReached(AgentContext agent) { }
     }
 }

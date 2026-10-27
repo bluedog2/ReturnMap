@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ReTrap
@@ -56,6 +57,9 @@ namespace ReTrap
         private int  currentSeed;
         private bool hasMutated; // Play 중 중복 호출 방지
 
+        /// <summary>저주부르미(D-12)에게 피격당한 함정. Build/Verification 진입 시 비워진다.</summary>
+        private readonly HashSet<TrapBase> _cursed = new HashSet<TrapBase>();
+
         // ── Unity ─────────────────────────────────────────────────────────────
 
         private void Awake()
@@ -93,12 +97,14 @@ namespace ReTrap
                 case GamePhase.Build:
                     // 빌드로 돌아오면 모든 함정 리셋
                     ResetAll();
+                    _cursed.Clear();
                     hasMutated = false;
                     break;
 
                 case GamePhase.Verification:
                     // 검증 페이즈: AI 는 원본(Normal) 배치를 검증한다는 설계 결정 — 변이 미적용
                     ResetAll();
+                    _cursed.Clear();
                     hasMutated = false;
                     break;
             }
@@ -118,11 +124,25 @@ namespace ReTrap
             // 라이브 목록이라 순회 중 제거에 안전하도록 역순으로 돈다.
             var traps = TrapBase.ActiveTraps;
             for (int i = traps.Count - 1; i >= 0; i--)
-                traps[i].Mutate(RollStateFor(traps[i]));
+            {
+                TrapState state = RollStateFor(traps[i]);
+                if (_cursed.Contains(traps[i])) state = Worsen(state); // 저주 — 한 단계 불리
+                traps[i].Mutate(state);
+            }
 
 #if UNITY_EDITOR
             Debug.Log($"[MutationManager] MutateAll — Seed:{currentSeed}  Traps:{traps.Count}");
 #endif
+        }
+
+        /// <summary>
+        /// 함정을 저주 대상으로 표시한다. 다음 변이(Play 진입·하드모드 리롤)부터 한 단계 불리하게
+        /// 굴려지며, Build/Verification 진입 시 해제된다. null/파괴된 함정은 무시.
+        /// </summary>
+        public void MarkCursed(TrapBase trap)
+        {
+            if (trap == null) return;
+            _cursed.Add(trap);
         }
 
         /// <summary>모든 함정을 Normal 로 초기화.</summary>
@@ -176,6 +196,22 @@ namespace ReTrap
             // 시드 × 좌표 해시 (소수 곱 XOR — 인접 칸 상관성 제거)
             int hash = CellHash(currentSeed, gx, gy);
             return RollState(hash, NormalChance, DudChance, CriticalChance);
+        }
+
+        /// <summary>
+        /// 저주 시 변이 상태를 한 단계 불리하게 바꾼다. 순수 함수.
+        /// Dud→Normal, Normal→Critical, Critical→Critical, Beneficial→Normal.
+        /// </summary>
+        internal static TrapState Worsen(TrapState state)
+        {
+            switch (state)
+            {
+                case TrapState.Dud:        return TrapState.Normal;
+                case TrapState.Normal:     return TrapState.Critical;
+                case TrapState.Critical:   return TrapState.Critical;
+                case TrapState.Beneficial: return TrapState.Normal;
+                default:                   return state;
+            }
         }
 
         /// <summary>시드 × 그리드 좌표 해시 (소수 곱 XOR). 순수 함수.</summary>

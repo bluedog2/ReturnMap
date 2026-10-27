@@ -10,19 +10,29 @@ namespace ReTrap
     /// <see cref="TraitState.timer"/> 에 <b>실제 이동 중</b> 경과한 시간을 누적해
     /// (1 + 0.1×초) 배로 가속한다. 정지/대기 구간에서는 GetSpeedMultiplier 자체가
     /// 호출되지 않으므로 순수 정지 시간은 누적되지 않는다.
-    /// <para>⚠️ 상한(×4)은 기획 미확정 수치 — "이동속도 무한 증가"로만 적혀 있어 터널링
-    /// (지형/함정 통과) 위험을 막기 위한 임시 안전핀이다. 기획 확정 시 조정할 것.</para>
+    /// <para>배율 상한은 인스펙터(<c>maxMultiplier</c>)로 조정한다 — 터널링(지형/함정 통과)
+    /// 위험을 막는 안전핀이며 기본값은 ×4.</para>
     /// </summary>
     [CreateAssetMenu(menuName = "ReTrap/AI Trait/가속 (Accelerate)", fileName = "Trait_Accelerate")]
     public class AccelerateTrait : MovementTrait
     {
         private const float RatePerSecond = 0.1f;
-        private const float MaxMultiplier = 4f; // ⚠️ 임시 안전핀 — 기획 확정 시 조정
+
+        [SerializeField, Min(1)]
+        [Tooltip("가속 배율 상한. 1 이면 가속하지 않는다.")]
+        private float maxMultiplier = 4f;
 
         public override float GetSpeedMultiplier(ref TraitState s, in MoveQuery q)
         {
             s.timer += Time.deltaTime;
-            return Mathf.Min(1f + RatePerSecond * s.timer, MaxMultiplier);
+            return ComputeMultiplier(s.timer, maxMultiplier);
+        }
+
+        /// <summary>이동 누적 시간과 상한으로 가속 배율을 계산한다. 순수 함수 (결과 ≤ 상한, 상한이 1 미만이면 1).</summary>
+        internal static float ComputeMultiplier(float movingSeconds, float maxMultiplier)
+        {
+            float cap = Mathf.Max(1f, maxMultiplier);
+            return Mathf.Min(1f + RatePerSecond * movingSeconds, cap);
         }
     }
 }

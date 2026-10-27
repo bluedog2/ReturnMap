@@ -40,6 +40,14 @@ namespace ReTrap
                  "AgentContext 가 배선돼 있으면 ctx.Stats.MoveSpeed 로 대체된다.")]
         private float baseMoveSpeed = 4f;
 
+        [Header("넉백")]
+        [SerializeField, Min(0)]
+        [Tooltip("화살·해머 피격 시 경로 역방향으로 물러나는 기본 칸수. 태그의 넉백 배율이 곱해진다. 0 이면 넉백 끔.")]
+        private int knockbackBaseCells = 1;
+
+        /// <summary>넉백 기본 칸수 (0 = 넉백 없음).</summary>
+        public int KnockbackBaseCells => knockbackBaseCells;
+
         // ── 애니메이션 — Enemy_*.controller 의 상태 이름과 일치해야 함 ──────────
 
         private static readonly int StateIdle  = Animator.StringToHash("Idle");

@@ -106,12 +106,24 @@ namespace ReTrap
                 sourceTrap.Mutate(TrapState.Dud);
             }
 
-            // TODO: 저주부르미(CurseTrapOnHit) — 피격 시 해당 함정 저주. 효과 기획 미정.
+            // 저주부르미(D-12) — 피격한 함정을 저주(플레이 변이 한 단계 불리). 사망해도 적용.
+            if (agent.HasFlag(SpecialFlag.CurseTrapOnHit) && sourceTrap != null)
+                TrapMutationManager.Instance?.MarkCursed(sourceTrap);
 
-            // TODO: 넉백 — Stats.KnockbackMultiplier 를 이용한 실제 변위 적용은
-            // 3단계 로코모션 FSM 에서 처리한다. 여기서는 배율 계산만 노출.
+            // 넉백 — 화살·해머 실제 피해 + 생존 시만. 경로 역방향 후퇴(RequestStepBack 재사용).
+            if (!killed && (type == DamageType.Arrow || type == DamageType.Hammer)
+                && agent.TryGetComponent<VerificationAgent>(out var va))
+            {
+                va.RequestStepBack(ComputeKnockbackCells(va.KnockbackBaseCells, agent.Stats.KnockbackMultiplier));
+            }
 
             return killed ? DamageResult.Killed : DamageResult.Damaged;
+        }
+
+        /// <summary>넉백 후퇴 칸수 = max(0, round(기본 칸수 × 넉백 배율)). 순수 함수.</summary>
+        internal static int ComputeKnockbackCells(int baseCells, float multiplier)
+        {
+            return Mathf.Max(0, Mathf.RoundToInt(baseCells * multiplier));
         }
     }
 }

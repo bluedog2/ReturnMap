@@ -159,6 +159,21 @@ namespace ReTrap
             }
         }
 
+        /// <summary>골 도달 시 훅 디스패치 (예: 도둑 재화 도난).</summary>
+        public void DispatchGoalReachedHooks()
+        {
+            var tagList = _tags.Tags;
+            for (int i = 0; i < tagList.Count; i++)
+            {
+                AITagDefinition tag = tagList[i];
+                if (tag == null || tag.EventHooks == null) continue;
+
+                TagEventHook[] hooks = tag.EventHooks;
+                for (int j = 0; j < hooks.Length; j++)
+                    hooks[j]?.OnGoalReached(this);
+            }
+        }
+
         // ── IPoolable — ComponentPool 재사용 훅 ──────────────────────────────
         // 주의: ComponentPool<VerificationAgent> 는 풀링 대상 타입(VerificationAgent)의
         // IPoolable 만 직접 호출한다. 이 컴포넌트의 훅은 VerificationAgent.OnSpawned/

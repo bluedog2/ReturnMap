@@ -62,6 +62,23 @@ namespace ReTrap
             return true;
         }
 
+        /// <summary>
+        /// 지구본을 도난당한다(도둑 S-04 탈출). 보유량 한도까지만 차감하며 0 미만으로 내려가지 않는다.
+        /// </summary>
+        /// <returns>실제로 차감된 수량 (n 이 0 이하이거나 잔액이 0 이면 0).</returns>
+        public static int Steal(int n)
+        {
+            if (n <= 0) return 0;
+
+            int taken = Math.Min(_globes, n);
+            if (taken <= 0) return 0;
+
+            _globes -= taken;
+            Save();
+            OnChanged?.Invoke(_globes);
+            return taken;
+        }
+
         private static void Save()
         {
             if (_globes < 0) _globes = 0; // 음수 방지

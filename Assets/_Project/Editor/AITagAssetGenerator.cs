@@ -137,7 +137,7 @@ namespace ReTrap.EditorTools
             new TagRow("D-11", AITagCategory.Defense, "지름길 중독",
                 "아래 가시 유무 무관 최단 경로로 즉시 낙하", flags: SpecialFlag.RecklessDrop),
             new TagRow("D-12", AITagCategory.Defense, "저주부르미",
-                "피격 시 해당 함정 저주 (효과 기획 미정)", flags: SpecialFlag.CurseTrapOnHit),
+                "피격한 함정을 저주 → 플레이 변이 한 단계 불리", flags: SpecialFlag.CurseTrapOnHit),
 
             // ── 스펙(Stat) 12종 ───────────────────────────────────────────────
             new TagRow("S-01", AITagCategory.Stat, "뚱뚱이",
@@ -152,7 +152,7 @@ namespace ReTrap.EditorTools
                 "처치 시 재화 획득, 실패 시 재화 도난",
                 hookTypes: new[] { typeof(ThiefCurrencyHook) }),
             new TagRow("S-05", AITagCategory.Stat, "가속",
-                "이동속도 무한 증가 (상한 수치 기획 확인 필요)", GROUP_SPEED,
+                "이동 시간에 따라 가속 (상한 = 인스펙터 값)", GROUP_SPEED,
                 traitType: typeof(AccelerateTrait)),
             new TagRow("S-06", AITagCategory.Stat, "거대화",
                 "크기 2배, 체력 3",
@@ -171,7 +171,7 @@ namespace ReTrap.EditorTools
                 "함정 피격 시 뒤로 2칸 강제 반동",
                 hookTypes: new[] { typeof(BackstepOnHitHook) }),
             new TagRow("S-10", AITagCategory.Stat, "뒷걸음질",
-                "플레이어 감지 시 2칸 후퇴 후 전진", flags: SpecialFlag.RetreatFromPlayer),
+                "미구현 — 감지 대상 미정", flags: SpecialFlag.RetreatFromPlayer),
             new TagRow("S-11", AITagCategory.Stat, "스프린터",
                 "스폰 후 5칸 +100% 질주, 이후 -50%", GROUP_SPEED,
                 traitType: typeof(SprinterTrait)),
