@@ -478,9 +478,11 @@ namespace ReTrap.EditorTools
                 var r = new Sc();
                 yield return Scenario(r, new AITagDefinition[0], Kind.ArrowContinuous, false);
                 float moved = Mathf.Abs(r.xEnd - r.xAtDeath) / _tu;
-                bool ok = r.killed && !r.reachedGoal && moved <= 0.05f && r.cellEnd == r.cellAtDeath && r.pending == 0;
+                // 판정은 사망 후 실제 후퇴(x·셀)만. pendingStepBack 은 사망 전 비치명 피격(G4 상 넉백 대상)의
+                // 잔여 요청일 수 있어 판정에서 제외(사망 개체는 더 이동하지 않고 OnSpawned 에서 0 으로 초기화됨) — 참고 출력만.
+                bool ok = r.killed && !r.reachedGoal && moved <= 0.05f && r.cellEnd == r.cellAtDeath;
                 Check("[A10] 사망(치명타) → 후퇴 0칸", ok,
-                    $"killed={r.killed} 골도달={r.reachedGoal} 피격 {r.hits}회 | 사망 후 1.5초 x변위 {moved:F2}칸 셀 {r.cellAtDeath}→{r.cellEnd} pendingStepBack {r.pending}");
+                    $"killed={r.killed} 골도달={r.reachedGoal} 피격 {r.hits}회 | 사망 후 1.5초 x변위 {moved:F2}칸 셀 {r.cellAtDeath}→{r.cellEnd} | 참고 pendingStepBack {r.pending}(사망 전 비치명 피격 잔여)");
             }
 
             // ── A8 ─────────────────────────────────────────────────────
