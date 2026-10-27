@@ -14,11 +14,12 @@ namespace ReTrap.EditorTools
     /// 메뉴 <b>ReTrap → Setup → Px32 적 연결</b> (멱등, 대화상자 없음 → 배치모드 가능):
     /// <c>-executeMethod ReTrap.EditorTools.Px32EnemyWiring.Run</c>
     /// <list type="number">
-    ///   <item>사전 검사: 시트 20장 규격 프레임 수 · 프리팹 5종의 Visual(SpriteRenderer)·Collider2D · 각 종 Idle_0. 하나라도 실패하면 아무것도 바꾸지 않고 중단.</item>
+    ///   <item>사전 검사: 시트 20장 규격 프레임 수·셀 크기(화풍 v2) · 프리팹 5종의 Visual(SpriteRenderer)·Collider2D · 각 종 Idle_0. 하나라도 실패하면 아무것도 바꾸지 않고 중단.</item>
     ///   <item>적 클립의 빈 경로 m_Sprite 바인딩 → "Visual", 컨트롤러 state writeDefaultValues=false,
     ///         클립 재배선(<see cref="SpriteClipRebinder.RunApplyEnemies"/>). 재배선에서 건너뛴 게 있으면 프리팹은 건드리지 않고 중단.</item>
-    ///   <item>프리팹: Visual 스케일 1 · 위치(지상=콜라이더 바닥, Imp_Flyer=콜라이더 중심) · 기본 sprite=Idle_0.
-    ///         콜라이더 크기·오프셋은 변경하지 않고, 콜라이더 크기 vs 새 아트 불투명 영역(px)만 로그로 남긴다.</item>
+    ///   <item>프리팹: Visual 스케일 1 · 위치(지상=바닥면 -0.5, Imp_Flyer=칸 중심 0) · 기본 sprite=Idle_0.
+    ///         콜라이더(Capsule/Box)를 화풍 v2 크기 표(<see cref="ColliderSize"/>)로 맞춤 — 지상 종은 바닥면 정렬.
+    ///         함정 판정이 바뀌므로 적용 후 스테이지별 돌파율 비교 필요.</item>
     /// </list>
     /// 모든 이전 값은 로그에 남긴다.
     /// </summary>
@@ -65,6 +66,16 @@ namespace ReTrap.EditorTools
                     {
                         Debug.LogError($"[Px32EnemyWiring] 아트 미입고 — {path} 스프라이트 {count}개 (규격 {frames}).");
                         ok = false;
+                        continue;
+                    }
+                    // 화풍 v2 셀 규격 확인 — 구 규격 시트에 새 콜라이더를 붙이는 반쪽 연결 방지
+                    var spec  = Px32Rules.GetSheetSpec("Enemies", $"{sp}_{state}");
+                    var first = AssetDatabase.LoadAllAssetsAtPath(path).OfType<Sprite>().First();
+                    int cellH = Mathf.RoundToInt(first.rect.height);
+                    if (spec != null && cellH != spec.cellH)
+                    {
+                        Debug.LogError($"[Px32EnemyWiring] 구 규격 시트 — {path} 셀 높이 {cellH} (규격 {spec.cellH}).");
+                        ok = false;
                     }
                 }
 
@@ -110,6 +121,20 @@ namespace ReTrap.EditorTools
 
         private static string PrefabPath(string sp) => $"{PrefabDir}/Enemy_{sp}.prefab";
 
+        /// <summary>화풍 v2 적 콜라이더 크기(칸) — docs/hero-b-scale-impact.md 3.4 확정 표.</summary>
+        private static Vector2 ColliderSize(string sp)
+        {
+            switch (sp)
+            {
+                case "Goblin_Raider":   return new Vector2(0.75f,  1.25f);
+                case "Imp_Flyer":       return new Vector2(1.0f,   1.0f);
+                case "Skeleton_Archer": return new Vector2(0.75f,  1.75f);
+                case "Elite_Knight":    return new Vector2(0.875f, 2.0f);
+                case "Orc_Brute":       return new Vector2(1.25f,  2.25f);
+            }
+            return Vector2.one;
+        }
+
         private static Sprite FindIdle0(string sp) =>
             AssetDatabase.LoadAllAssetsAtPath($"{SheetDir}/{sp}_Idle.png")
                 .OfType<Sprite>().FirstOrDefault(s => s.name == $"{sp}_Idle_0");
@@ -127,9 +152,8 @@ namespace ReTrap.EditorTools
                 var col    = contents.GetComponent<Collider2D>();
                 var idle0  = FindIdle0(sp);
 
-                // 콜라이더(루트 로컬) 바닥·중심 — 크기/오프셋은 변경하지 않고 비교 로그에만 쓴다
+                // 이전 콜라이더(루트 로컬) — 비교 로그용
                 GetColliderExtents(col, out Vector2 center, out Vector2 size);
-                float bottom = center.y - size.y * 0.5f;
                 // 루트는 서 있는 칸 중심(MapData.CellToWorld)에 놓이므로 바닥면 = 루트 로컬 -0.5칸.
                 // 지상 종은 발바닥 피벗을 바닥면에, Imp(중앙 피벗)는 칸 중심에 둔다.
                 float targetY = sp == FlyerSpecies ? 0f : GroundY;
@@ -141,12 +165,30 @@ namespace ReTrap.EditorTools
                 visual.localPosition = new Vector3(0f, targetY, oldPos.z);
                 sr.sprite = idle0;
 
+                // 화풍 v2 콜라이더 (docs/hero-b-scale-impact.md 3.4): 지상 종은 바닥면 정렬, 임프는 칸 중심
+                string colLog = "콜라이더 유지(지원하지 않는 종류)";
+                Vector2 newSize = ColliderSize(sp);
+                Vector2 newOffset = new Vector2(0f, sp == FlyerSpecies ? 0f : GroundY + newSize.y * 0.5f);
+                if (col is CapsuleCollider2D cap)
+                {
+                    cap.size      = newSize;
+                    cap.offset    = newOffset;
+                    cap.direction = newSize.y >= newSize.x ? CapsuleDirection2D.Vertical : CapsuleDirection2D.Horizontal;
+                    colLog = $"Capsule {size} @ {center} → {cap.size} @ {cap.offset}";
+                }
+                else if (col is BoxCollider2D box)
+                {
+                    box.size   = newSize;
+                    box.offset = newOffset;
+                    colLog = $"Box {size} @ {center} → {box.size} @ {box.offset}";
+                }
+
                 PrefabUtility.SaveAsPrefabAsset(contents, path);
 
                 string bbox = OpaqueBoundsPx(sp, idle0, out Vector2Int bboxPx) ? $"{bboxPx.x}x{bboxPx.y}px" : "측정 실패";
-                Debug.Log($"[Px32EnemyWiring] {sp}: {col.GetType().Name} 크기 {size.x * Ppu:F1}x{size.y * Ppu:F1}px(콜라이더 유지) vs 새 아트 Idle_0 불투명 {bbox}. " +
+                Debug.Log($"[Px32EnemyWiring] {sp}: {colLog} (새 아트 Idle_0 불투명 {bbox}). " +
                           $"Visual scale {oldScale} → {visual.localScale}, pos {oldPos} → {visual.localPosition} " +
-                          $"({(sp == FlyerSpecies ? "칸 중심" : "바닥면")} y={targetY:F5}, 참고: 콜라이더 바닥 {bottom:F5} · 중심 {center.y:F5}). " +
+                          $"({(sp == FlyerSpecies ? "칸 중심" : "바닥면")} y={targetY:F5}). " +
                           $"sprite {(oldSprite != null ? oldSprite.name : "null")} → {idle0.name}.");
             }
             finally

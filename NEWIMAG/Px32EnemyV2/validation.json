@@ -1,0 +1,2452 @@
+﻿[
+    {
+        "sheet":  "Goblin_Raider_Idle",
+        "source":  "Sources/Goblin_Raider_Idle_Selected.png",
+        "cell":  64,
+        "frames":  4,
+        "colors":  18,
+        "palette_outside":  0,
+        "nonbinary_alpha":  0,
+        "edge_pixels":  0,
+        "passed":  true,
+        "scale8_exact":  true,
+        "max_center_drift":  0.5,
+        "max_height_drift":  0,
+        "measurements":  [
+                             {
+                                 "frame":  1,
+                                 "bottom_row":  63,
+                                 "height":  48,
+                                 "width":  33,
+                                 "colors":  18,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  32,
+                                 "vertical_center":  39.5,
+                                 "bbox":  [
+                                              16,
+                                              16,
+                                              48,
+                                              63
+                                          ],
+                                 "source_bbox":  [
+                                                     140,
+                                                     149,
+                                                     354,
+                                                     515
+                                                 ],
+                                 "source_height_relative_to_first":  1
+                             },
+                             {
+                                 "frame":  2,
+                                 "bottom_row":  63,
+                                 "height":  48,
+                                 "width":  35,
+                                 "colors":  18,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31,
+                                 "vertical_center":  39.5,
+                                 "bbox":  [
+                                              14,
+                                              16,
+                                              48,
+                                              63
+                                          ],
+                                 "source_bbox":  [
+                                                     658,
+                                                     145,
+                                                     379,
+                                                     519
+                                                 ],
+                                 "source_height_relative_to_first":  1.007766990291262
+                             },
+                             {
+                                 "frame":  3,
+                                 "bottom_row":  63,
+                                 "height":  48,
+                                 "width":  34,
+                                 "colors":  18,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31.5,
+                                 "vertical_center":  39.5,
+                                 "bbox":  [
+                                              15,
+                                              16,
+                                              48,
+                                              63
+                                          ],
+                                 "source_bbox":  [
+                                                     1190,
+                                                     160,
+                                                     360,
+                                                     504
+                                                 ],
+                                 "source_height_relative_to_first":  0.97864077669902916
+                             },
+                             {
+                                 "frame":  4,
+                                 "bottom_row":  63,
+                                 "height":  48,
+                                 "width":  34,
+                                 "colors":  18,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31.5,
+                                 "vertical_center":  39.5,
+                                 "bbox":  [
+                                              15,
+                                              16,
+                                              48,
+                                              63
+                                          ],
+                                 "source_bbox":  [
+                                                     1710,
+                                                     137,
+                                                     378,
+                                                     527
+                                                 ],
+                                 "source_height_relative_to_first":  1.0233009708737864
+                             }
+                         ],
+        "errors":  [
+
+                   ]
+    },
+    {
+        "sheet":  "Goblin_Raider_Run",
+        "source":  "Sources/Goblin_Raider_Run_Selected.png",
+        "cell":  64,
+        "frames":  6,
+        "colors":  18,
+        "palette_outside":  0,
+        "nonbinary_alpha":  0,
+        "edge_pixels":  0,
+        "passed":  true,
+        "scale8_exact":  true,
+        "max_center_drift":  0.66666666666666785,
+        "max_height_drift":  0,
+        "measurements":  [
+                             {
+                                 "frame":  1,
+                                 "bottom_row":  63,
+                                 "height":  48,
+                                 "width":  41,
+                                 "colors":  17,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  32,
+                                 "vertical_center":  39.5,
+                                 "bbox":  [
+                                              12,
+                                              16,
+                                              52,
+                                              63
+                                          ],
+                                 "source_bbox":  [
+                                                     28,
+                                                     212,
+                                                     312,
+                                                     365
+                                                 ],
+                                 "source_height_relative_to_first":  1
+                             },
+                             {
+                                 "frame":  2,
+                                 "bottom_row":  63,
+                                 "height":  48,
+                                 "width":  37,
+                                 "colors":  18,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  32,
+                                 "vertical_center":  39.5,
+                                 "bbox":  [
+                                              14,
+                                              16,
+                                              50,
+                                              63
+                                          ],
+                                 "source_bbox":  [
+                                                     411,
+                                                     211,
+                                                     283,
+                                                     366
+                                                 ],
+                                 "source_height_relative_to_first":  1.0027397260273974
+                             },
+                             {
+                                 "frame":  3,
+                                 "bottom_row":  63,
+                                 "height":  48,
+                                 "width":  41,
+                                 "colors":  17,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  32,
+                                 "vertical_center":  39.5,
+                                 "bbox":  [
+                                              12,
+                                              16,
+                                              52,
+                                              63
+                                          ],
+                                 "source_bbox":  [
+                                                     748,
+                                                     195,
+                                                     329,
+                                                     381
+                                                 ],
+                                 "source_height_relative_to_first":  1.0438356164383562
+                             },
+                             {
+                                 "frame":  4,
+                                 "bottom_row":  63,
+                                 "height":  48,
+                                 "width":  40,
+                                 "colors":  17,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31.5,
+                                 "vertical_center":  39.5,
+                                 "bbox":  [
+                                              12,
+                                              16,
+                                              51,
+                                              63
+                                          ],
+                                 "source_bbox":  [
+                                                     1112,
+                                                     211,
+                                                     308,
+                                                     367
+                                                 ],
+                                 "source_height_relative_to_first":  1.0054794520547945
+                             },
+                             {
+                                 "frame":  5,
+                                 "bottom_row":  63,
+                                 "height":  48,
+                                 "width":  36,
+                                 "colors":  17,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31.5,
+                                 "vertical_center":  39.5,
+                                 "bbox":  [
+                                              14,
+                                              16,
+                                              49,
+                                              63
+                                          ],
+                                 "source_bbox":  [
+                                                     1500,
+                                                     210,
+                                                     275,
+                                                     368
+                                                 ],
+                                 "source_height_relative_to_first":  1.0082191780821919
+                             },
+                             {
+                                 "frame":  6,
+                                 "bottom_row":  63,
+                                 "height":  48,
+                                 "width":  39,
+                                 "colors":  17,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31,
+                                 "vertical_center":  39.5,
+                                 "bbox":  [
+                                              12,
+                                              16,
+                                              50,
+                                              63
+                                          ],
+                                 "source_bbox":  [
+                                                     1834,
+                                                     195,
+                                                     314,
+                                                     383
+                                                 ],
+                                 "source_height_relative_to_first":  1.0493150684931507
+                             }
+                         ],
+        "errors":  [
+
+                   ]
+    },
+    {
+        "sheet":  "Goblin_Raider_Hit",
+        "source":  "Sources/Goblin_Raider_Hit_Selected.png",
+        "cell":  64,
+        "frames":  2,
+        "colors":  18,
+        "palette_outside":  0,
+        "nonbinary_alpha":  0,
+        "edge_pixels":  0,
+        "passed":  true,
+        "scale8_exact":  true,
+        "max_center_drift":  0,
+        "max_height_drift":  0,
+        "measurements":  [
+                             {
+                                 "frame":  1,
+                                 "bottom_row":  63,
+                                 "height":  48,
+                                 "width":  48,
+                                 "colors":  18,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31.5,
+                                 "vertical_center":  39.5,
+                                 "bbox":  [
+                                              8,
+                                              16,
+                                              55,
+                                              63
+                                          ],
+                                 "source_bbox":  [
+                                                     164,
+                                                     226,
+                                                     600,
+                                                     605
+                                                 ],
+                                 "source_height_relative_to_first":  1
+                             },
+                             {
+                                 "frame":  2,
+                                 "bottom_row":  63,
+                                 "height":  48,
+                                 "width":  38,
+                                 "colors":  18,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31.5,
+                                 "vertical_center":  39.5,
+                                 "bbox":  [
+                                              13,
+                                              16,
+                                              50,
+                                              63
+                                          ],
+                                 "source_bbox":  [
+                                                     1143,
+                                                     229,
+                                                     472,
+                                                     601
+                                                 ],
+                                 "source_height_relative_to_first":  0.99338842975206609
+                             }
+                         ],
+        "errors":  [
+
+                   ]
+    },
+    {
+        "sheet":  "Goblin_Raider_Death",
+        "source":  "Sources/Goblin_Raider_Death_Selected.png",
+        "cell":  64,
+        "frames":  6,
+        "colors":  18,
+        "palette_outside":  0,
+        "nonbinary_alpha":  0,
+        "edge_pixels":  0,
+        "passed":  true,
+        "scale8_exact":  true,
+        "max_center_drift":  0.75,
+        "max_height_drift":  15.166666666666664,
+        "measurements":  [
+                             {
+                                 "frame":  1,
+                                 "bottom_row":  63,
+                                 "height":  48,
+                                 "width":  36,
+                                 "colors":  18,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31.5,
+                                 "vertical_center":  39.5,
+                                 "bbox":  [
+                                              14,
+                                              16,
+                                              49,
+                                              63
+                                          ],
+                                 "source_bbox":  [
+                                                     120,
+                                                     145,
+                                                     286,
+                                                     384
+                                                 ],
+                                 "source_height_relative_to_first":  1
+                             },
+                             {
+                                 "frame":  2,
+                                 "bottom_row":  63,
+                                 "height":  44,
+                                 "width":  45,
+                                 "colors":  17,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  32,
+                                 "vertical_center":  41.5,
+                                 "bbox":  [
+                                              10,
+                                              20,
+                                              54,
+                                              63
+                                          ],
+                                 "source_bbox":  [
+                                                     578,
+                                                     180,
+                                                     356,
+                                                     349
+                                                 ],
+                                 "source_height_relative_to_first":  0.90885416666666663
+                             },
+                             {
+                                 "frame":  3,
+                                 "bottom_row":  63,
+                                 "height":  37,
+                                 "width":  39,
+                                 "colors":  17,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31,
+                                 "vertical_center":  45,
+                                 "bbox":  [
+                                              12,
+                                              27,
+                                              50,
+                                              63
+                                          ],
+                                 "source_bbox":  [
+                                                     1119,
+                                                     236,
+                                                     305,
+                                                     293
+                                                 ],
+                                 "source_height_relative_to_first":  0.76302083333333337
+                             },
+                             {
+                                 "frame":  4,
+                                 "bottom_row":  63,
+                                 "height":  28,
+                                 "width":  51,
+                                 "colors":  18,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31,
+                                 "vertical_center":  49.5,
+                                 "bbox":  [
+                                              6,
+                                              36,
+                                              56,
+                                              63
+                                          ],
+                                 "source_bbox":  [
+                                                     56,
+                                                     704,
+                                                     399,
+                                                     221
+                                                 ],
+                                 "source_height_relative_to_first":  0.57552083333333337
+                             },
+                             {
+                                 "frame":  5,
+                                 "bottom_row":  63,
+                                 "height":  22,
+                                 "width":  55,
+                                 "colors":  18,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31,
+                                 "vertical_center":  52.5,
+                                 "bbox":  [
+                                              4,
+                                              42,
+                                              58,
+                                              63
+                                          ],
+                                 "source_bbox":  [
+                                                     536,
+                                                     746,
+                                                     449,
+                                                     179
+                                                 ],
+                                 "source_height_relative_to_first":  0.46614583333333331
+                             },
+                             {
+                                 "frame":  6,
+                                 "bottom_row":  63,
+                                 "height":  18,
+                                 "width":  59,
+                                 "colors":  16,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31,
+                                 "vertical_center":  54.5,
+                                 "bbox":  [
+                                              2,
+                                              46,
+                                              60,
+                                              63
+                                          ],
+                                 "source_bbox":  [
+                                                     1040,
+                                                     779,
+                                                     476,
+                                                     146
+                                                 ],
+                                 "source_height_relative_to_first":  0.38020833333333331
+                             }
+                         ],
+        "errors":  [
+
+                   ]
+    },
+    {
+        "sheet":  "Imp_Flyer_Idle",
+        "source":  "Sources/Imp_Flyer_Idle_Selected.png",
+        "cell":  64,
+        "frames":  4,
+        "colors":  19,
+        "palette_outside":  0,
+        "nonbinary_alpha":  0,
+        "edge_pixels":  0,
+        "passed":  true,
+        "scale8_exact":  true,
+        "max_center_drift":  0.375,
+        "max_height_drift":  0,
+        "measurements":  [
+                             {
+                                 "frame":  1,
+                                 "bottom_row":  53,
+                                 "height":  44,
+                                 "width":  47,
+                                 "colors":  19,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31,
+                                 "vertical_center":  31.5,
+                                 "bbox":  [
+                                              8,
+                                              10,
+                                              54,
+                                              53
+                                          ],
+                                 "source_bbox":  [
+                                                     116,
+                                                     153,
+                                                     454,
+                                                     422
+                                                 ],
+                                 "source_height_relative_to_first":  1
+                             },
+                             {
+                                 "frame":  2,
+                                 "bottom_row":  53,
+                                 "height":  44,
+                                 "width":  48,
+                                 "colors":  17,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31.5,
+                                 "vertical_center":  31.5,
+                                 "bbox":  [
+                                              8,
+                                              10,
+                                              55,
+                                              53
+                                          ],
+                                 "source_bbox":  [
+                                                     707,
+                                                     157,
+                                                     459,
+                                                     420
+                                                 ],
+                                 "source_height_relative_to_first":  0.995260663507109
+                             },
+                             {
+                                 "frame":  3,
+                                 "bottom_row":  53,
+                                 "height":  44,
+                                 "width":  52,
+                                 "colors":  17,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31.5,
+                                 "vertical_center":  31.5,
+                                 "bbox":  [
+                                              6,
+                                              10,
+                                              57,
+                                              53
+                                          ],
+                                 "source_bbox":  [
+                                                     89,
+                                                     716,
+                                                     499,
+                                                     421
+                                                 ],
+                                 "source_height_relative_to_first":  0.99763033175355453
+                             },
+                             {
+                                 "frame":  4,
+                                 "bottom_row":  53,
+                                 "height":  44,
+                                 "width":  48,
+                                 "colors":  17,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31.5,
+                                 "vertical_center":  31.5,
+                                 "bbox":  [
+                                              8,
+                                              10,
+                                              55,
+                                              53
+                                          ],
+                                 "source_bbox":  [
+                                                     706,
+                                                     716,
+                                                     460,
+                                                     421
+                                                 ],
+                                 "source_height_relative_to_first":  0.99763033175355453
+                             }
+                         ],
+        "errors":  [
+
+                   ]
+    },
+    {
+        "sheet":  "Imp_Flyer_Run",
+        "source":  "Sources/Imp_Flyer_Run_Selected.png",
+        "cell":  64,
+        "frames":  6,
+        "colors":  19,
+        "palette_outside":  0,
+        "nonbinary_alpha":  0,
+        "edge_pixels":  0,
+        "passed":  true,
+        "scale8_exact":  true,
+        "max_center_drift":  0.5,
+        "max_height_drift":  0,
+        "measurements":  [
+                             {
+                                 "frame":  1,
+                                 "bottom_row":  53,
+                                 "height":  44,
+                                 "width":  49,
+                                 "colors":  19,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  32,
+                                 "vertical_center":  31.5,
+                                 "bbox":  [
+                                              8,
+                                              10,
+                                              56,
+                                              53
+                                          ],
+                                 "source_bbox":  [
+                                                     79,
+                                                     141,
+                                                     353,
+                                                     314
+                                                 ],
+                                 "source_height_relative_to_first":  1
+                             },
+                             {
+                                 "frame":  2,
+                                 "bottom_row":  53,
+                                 "height":  44,
+                                 "width":  53,
+                                 "colors":  18,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  32,
+                                 "vertical_center":  31.5,
+                                 "bbox":  [
+                                              6,
+                                              10,
+                                              58,
+                                              53
+                                          ],
+                                 "source_bbox":  [
+                                                     580,
+                                                     141,
+                                                     376,
+                                                     314
+                                                 ],
+                                 "source_height_relative_to_first":  1
+                             },
+                             {
+                                 "frame":  3,
+                                 "bottom_row":  53,
+                                 "height":  44,
+                                 "width":  51,
+                                 "colors":  19,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31,
+                                 "vertical_center":  31.5,
+                                 "bbox":  [
+                                              6,
+                                              10,
+                                              56,
+                                              53
+                                          ],
+                                 "source_bbox":  [
+                                                     1098,
+                                                     141,
+                                                     363,
+                                                     314
+                                                 ],
+                                 "source_height_relative_to_first":  1
+                             },
+                             {
+                                 "frame":  4,
+                                 "bottom_row":  53,
+                                 "height":  44,
+                                 "width":  51,
+                                 "colors":  18,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31,
+                                 "vertical_center":  31.5,
+                                 "bbox":  [
+                                              6,
+                                              10,
+                                              56,
+                                              53
+                                          ],
+                                 "source_bbox":  [
+                                                     78,
+                                                     588,
+                                                     367,
+                                                     315
+                                                 ],
+                                 "source_height_relative_to_first":  1.0031847133757963
+                             },
+                             {
+                                 "frame":  5,
+                                 "bottom_row":  53,
+                                 "height":  44,
+                                 "width":  53,
+                                 "colors":  18,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  32,
+                                 "vertical_center":  31.5,
+                                 "bbox":  [
+                                              6,
+                                              10,
+                                              58,
+                                              53
+                                          ],
+                                 "source_bbox":  [
+                                                     585,
+                                                     588,
+                                                     383,
+                                                     316
+                                                 ],
+                                 "source_height_relative_to_first":  1.0063694267515924
+                             },
+                             {
+                                 "frame":  6,
+                                 "bottom_row":  53,
+                                 "height":  44,
+                                 "width":  51,
+                                 "colors":  18,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31,
+                                 "vertical_center":  31.5,
+                                 "bbox":  [
+                                              6,
+                                              10,
+                                              56,
+                                              53
+                                          ],
+                                 "source_bbox":  [
+                                                     1106,
+                                                     589,
+                                                     367,
+                                                     315
+                                                 ],
+                                 "source_height_relative_to_first":  1.0031847133757963
+                             }
+                         ],
+        "errors":  [
+
+                   ]
+    },
+    {
+        "sheet":  "Imp_Flyer_Hit",
+        "source":  "Sources/Imp_Flyer_Hit_Selected.png",
+        "cell":  64,
+        "frames":  2,
+        "colors":  18,
+        "palette_outside":  0,
+        "nonbinary_alpha":  0,
+        "edge_pixels":  0,
+        "passed":  true,
+        "scale8_exact":  true,
+        "max_center_drift":  0.25,
+        "max_height_drift":  0,
+        "measurements":  [
+                             {
+                                 "frame":  1,
+                                 "bottom_row":  53,
+                                 "height":  44,
+                                 "width":  47,
+                                 "colors":  18,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31,
+                                 "vertical_center":  31.5,
+                                 "bbox":  [
+                                              8,
+                                              10,
+                                              54,
+                                              53
+                                          ],
+                                 "source_bbox":  [
+                                                     226,
+                                                     203,
+                                                     549,
+                                                     510
+                                                 ],
+                                 "source_height_relative_to_first":  1
+                             },
+                             {
+                                 "frame":  2,
+                                 "bottom_row":  53,
+                                 "height":  44,
+                                 "width":  52,
+                                 "colors":  18,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31.5,
+                                 "vertical_center":  31.5,
+                                 "bbox":  [
+                                              6,
+                                              10,
+                                              57,
+                                              53
+                                          ],
+                                 "source_bbox":  [
+                                                     968,
+                                                     212,
+                                                     595,
+                                                     501
+                                                 ],
+                                 "source_height_relative_to_first":  0.98235294117647054
+                             }
+                         ],
+        "errors":  [
+
+                   ]
+    },
+    {
+        "sheet":  "Imp_Flyer_Death",
+        "source":  "Sources/Imp_Flyer_Death_Selected.png",
+        "cell":  64,
+        "frames":  6,
+        "colors":  19,
+        "palette_outside":  0,
+        "nonbinary_alpha":  0,
+        "edge_pixels":  0,
+        "passed":  true,
+        "scale8_exact":  true,
+        "max_center_drift":  0.33333333333333215,
+        "max_height_drift":  14.5,
+        "measurements":  [
+                             {
+                                 "frame":  1,
+                                 "bottom_row":  53,
+                                 "height":  44,
+                                 "width":  39,
+                                 "colors":  17,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31,
+                                 "vertical_center":  31.5,
+                                 "bbox":  [
+                                              12,
+                                              10,
+                                              50,
+                                              53
+                                          ],
+                                 "source_bbox":  [
+                                                     16,
+                                                     289,
+                                                     294,
+                                                     333
+                                                 ],
+                                 "source_height_relative_to_first":  1
+                             },
+                             {
+                                 "frame":  2,
+                                 "bottom_row":  56,
+                                 "height":  41,
+                                 "width":  35,
+                                 "colors":  18,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31,
+                                 "vertical_center":  36,
+                                 "bbox":  [
+                                              14,
+                                              16,
+                                              48,
+                                              56
+                                          ],
+                                 "source_bbox":  [
+                                                     329,
+                                                     310,
+                                                     268,
+                                                     312
+                                                 ],
+                                 "source_height_relative_to_first":  0.93693693693693691
+                             },
+                             {
+                                 "frame":  3,
+                                 "bottom_row":  60,
+                                 "height":  34,
+                                 "width":  35,
+                                 "colors":  19,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31,
+                                 "vertical_center":  43.5,
+                                 "bbox":  [
+                                              14,
+                                              27,
+                                              48,
+                                              60
+                                          ],
+                                 "source_bbox":  [
+                                                     625,
+                                                     352,
+                                                     265,
+                                                     260
+                                                 ],
+                                 "source_height_relative_to_first":  0.78078078078078073
+                             },
+                             {
+                                 "frame":  4,
+                                 "bottom_row":  63,
+                                 "height":  31,
+                                 "width":  40,
+                                 "colors":  17,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31.5,
+                                 "vertical_center":  48,
+                                 "bbox":  [
+                                              12,
+                                              33,
+                                              51,
+                                              63
+                                          ],
+                                 "source_bbox":  [
+                                                     912,
+                                                     390,
+                                                     304,
+                                                     238
+                                                 ],
+                                 "source_height_relative_to_first":  0.71471471471471471
+                             },
+                             {
+                                 "frame":  5,
+                                 "bottom_row":  63,
+                                 "height":  22,
+                                 "width":  43,
+                                 "colors":  19,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31,
+                                 "vertical_center":  52.5,
+                                 "bbox":  [
+                                              10,
+                                              42,
+                                              52,
+                                              63
+                                          ],
+                                 "source_bbox":  [
+                                                     1238,
+                                                     464,
+                                                     321,
+                                                     166
+                                                 ],
+                                 "source_height_relative_to_first":  0.49849849849849848
+                             },
+                             {
+                                 "frame":  6,
+                                 "bottom_row":  63,
+                                 "height":  17,
+                                 "width":  38,
+                                 "colors":  16,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  31.5,
+                                 "vertical_center":  55,
+                                 "bbox":  [
+                                              13,
+                                              47,
+                                              50,
+                                              63
+                                          ],
+                                 "source_bbox":  [
+                                                     1582,
+                                                     502,
+                                                     288,
+                                                     128
+                                                 ],
+                                 "source_height_relative_to_first":  0.38438438438438438
+                             }
+                         ],
+        "errors":  [
+
+                   ]
+    },
+    {
+        "sheet":  "Skeleton_Archer_Idle",
+        "source":  "Sources/Skeleton_Archer_Idle_Selected.png",
+        "cell":  96,
+        "frames":  4,
+        "colors":  16,
+        "palette_outside":  0,
+        "nonbinary_alpha":  0,
+        "edge_pixels":  0,
+        "passed":  true,
+        "scale8_exact":  true,
+        "max_center_drift":  0.375,
+        "max_height_drift":  0,
+        "measurements":  [
+                             {
+                                 "frame":  1,
+                                 "bottom_row":  95,
+                                 "height":  72,
+                                 "width":  58,
+                                 "colors":  16,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47.5,
+                                 "vertical_center":  59.5,
+                                 "bbox":  [
+                                              19,
+                                              24,
+                                              76,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     62,
+                                                     208,
+                                                     408,
+                                                     503
+                                                 ],
+                                 "source_height_relative_to_first":  1
+                             },
+                             {
+                                 "frame":  2,
+                                 "bottom_row":  95,
+                                 "height":  72,
+                                 "width":  56,
+                                 "colors":  16,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47.5,
+                                 "vertical_center":  59.5,
+                                 "bbox":  [
+                                              20,
+                                              24,
+                                              75,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     539,
+                                                     197,
+                                                     398,
+                                                     514
+                                                 ],
+                                 "source_height_relative_to_first":  1.0218687872763419
+                             },
+                             {
+                                 "frame":  3,
+                                 "bottom_row":  95,
+                                 "height":  72,
+                                 "width":  60,
+                                 "colors":  16,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47.5,
+                                 "vertical_center":  59.5,
+                                 "bbox":  [
+                                              18,
+                                              24,
+                                              77,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     1001,
+                                                     225,
+                                                     402,
+                                                     486
+                                                 ],
+                                 "source_height_relative_to_first":  0.96620278330019882
+                             },
+                             {
+                                 "frame":  4,
+                                 "bottom_row":  95,
+                                 "height":  72,
+                                 "width":  57,
+                                 "colors":  16,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  48,
+                                 "vertical_center":  59.5,
+                                 "bbox":  [
+                                              20,
+                                              24,
+                                              76,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     1472,
+                                                     204,
+                                                     404,
+                                                     507
+                                                 ],
+                                 "source_height_relative_to_first":  1.0079522862823063
+                             }
+                         ],
+        "errors":  [
+
+                   ]
+    },
+    {
+        "sheet":  "Skeleton_Archer_Run",
+        "source":  "Sources/Skeleton_Archer_Run_Selected.png",
+        "cell":  96,
+        "frames":  6,
+        "colors":  16,
+        "palette_outside":  0,
+        "nonbinary_alpha":  0,
+        "edge_pixels":  0,
+        "passed":  true,
+        "scale8_exact":  true,
+        "max_center_drift":  0.5833333333333357,
+        "max_height_drift":  0,
+        "measurements":  [
+                             {
+                                 "frame":  1,
+                                 "bottom_row":  95,
+                                 "height":  72,
+                                 "width":  60,
+                                 "colors":  16,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47.5,
+                                 "vertical_center":  59.5,
+                                 "bbox":  [
+                                              18,
+                                              24,
+                                              77,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     25,
+                                                     196,
+                                                     350,
+                                                     421
+                                                 ],
+                                 "source_height_relative_to_first":  1
+                             },
+                             {
+                                 "frame":  2,
+                                 "bottom_row":  95,
+                                 "height":  72,
+                                 "width":  54,
+                                 "colors":  16,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47.5,
+                                 "vertical_center":  59.5,
+                                 "bbox":  [
+                                              21,
+                                              24,
+                                              74,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     397,
+                                                     212,
+                                                     306,
+                                                     405
+                                                 ],
+                                 "source_height_relative_to_first":  0.96199524940617576
+                             },
+                             {
+                                 "frame":  3,
+                                 "bottom_row":  95,
+                                 "height":  72,
+                                 "width":  61,
+                                 "colors":  16,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  48,
+                                 "vertical_center":  59.5,
+                                 "bbox":  [
+                                              18,
+                                              24,
+                                              78,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     725,
+                                                     196,
+                                                     356,
+                                                     421
+                                                 ],
+                                 "source_height_relative_to_first":  1
+                             },
+                             {
+                                 "frame":  4,
+                                 "bottom_row":  95,
+                                 "height":  72,
+                                 "width":  59,
+                                 "colors":  16,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47,
+                                 "vertical_center":  59.5,
+                                 "bbox":  [
+                                              18,
+                                              24,
+                                              76,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     1089,
+                                                     194,
+                                                     348,
+                                                     422
+                                                 ],
+                                 "source_height_relative_to_first":  1.002375296912114
+                             },
+                             {
+                                 "frame":  5,
+                                 "bottom_row":  95,
+                                 "height":  72,
+                                 "width":  57,
+                                 "colors":  16,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  48,
+                                 "vertical_center":  59.5,
+                                 "bbox":  [
+                                              20,
+                                              24,
+                                              76,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     1468,
+                                                     208,
+                                                     321,
+                                                     409
+                                                 ],
+                                 "source_height_relative_to_first":  0.97149643705463185
+                             },
+                             {
+                                 "frame":  6,
+                                 "bottom_row":  95,
+                                 "height":  72,
+                                 "width":  58,
+                                 "colors":  16,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47.5,
+                                 "vertical_center":  59.5,
+                                 "bbox":  [
+                                              19,
+                                              24,
+                                              76,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     1818,
+                                                     196,
+                                                     338,
+                                                     420
+                                                 ],
+                                 "source_height_relative_to_first":  0.997624703087886
+                             }
+                         ],
+        "errors":  [
+
+                   ]
+    },
+    {
+        "sheet":  "Skeleton_Archer_Hit",
+        "source":  "Sources/Skeleton_Archer_Hit_Selected.png",
+        "cell":  96,
+        "frames":  2,
+        "colors":  16,
+        "palette_outside":  0,
+        "nonbinary_alpha":  0,
+        "edge_pixels":  0,
+        "passed":  true,
+        "scale8_exact":  true,
+        "max_center_drift":  0,
+        "max_height_drift":  0,
+        "measurements":  [
+                             {
+                                 "frame":  1,
+                                 "bottom_row":  95,
+                                 "height":  72,
+                                 "width":  83,
+                                 "colors":  16,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47,
+                                 "vertical_center":  59.5,
+                                 "bbox":  [
+                                              6,
+                                              24,
+                                              88,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     144,
+                                                     209,
+                                                     689,
+                                                     601
+                                                 ],
+                                 "source_height_relative_to_first":  1
+                             },
+                             {
+                                 "frame":  2,
+                                 "bottom_row":  95,
+                                 "height":  72,
+                                 "width":  59,
+                                 "colors":  16,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47,
+                                 "vertical_center":  59.5,
+                                 "bbox":  [
+                                              18,
+                                              24,
+                                              76,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     1132,
+                                                     179,
+                                                     516,
+                                                     631
+                                                 ],
+                                 "source_height_relative_to_first":  1.0499168053244592
+                             }
+                         ],
+        "errors":  [
+
+                   ]
+    },
+    {
+        "sheet":  "Skeleton_Archer_Death",
+        "source":  "Sources/Skeleton_Archer_Death_Selected.png",
+        "cell":  96,
+        "frames":  6,
+        "colors":  16,
+        "palette_outside":  0,
+        "nonbinary_alpha":  0,
+        "edge_pixels":  0,
+        "passed":  true,
+        "scale8_exact":  true,
+        "max_center_drift":  0,
+        "max_height_drift":  27.666666666666664,
+        "measurements":  [
+                             {
+                                 "frame":  1,
+                                 "bottom_row":  95,
+                                 "height":  72,
+                                 "width":  54,
+                                 "colors":  16,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47.5,
+                                 "vertical_center":  59.5,
+                                 "bbox":  [
+                                              21,
+                                              24,
+                                              74,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     28,
+                                                     218,
+                                                     264,
+                                                     350
+                                                 ],
+                                 "source_height_relative_to_first":  1
+                             },
+                             {
+                                 "frame":  2,
+                                 "bottom_row":  95,
+                                 "height":  67,
+                                 "width":  64,
+                                 "colors":  16,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47.5,
+                                 "vertical_center":  62,
+                                 "bbox":  [
+                                              16,
+                                              29,
+                                              79,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     318,
+                                                     240,
+                                                     311,
+                                                     328
+                                                 ],
+                                 "source_height_relative_to_first":  0.93714285714285717
+                             },
+                             {
+                                 "frame":  3,
+                                 "bottom_row":  95,
+                                 "height":  59,
+                                 "width":  58,
+                                 "colors":  16,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47.5,
+                                 "vertical_center":  66,
+                                 "bbox":  [
+                                              19,
+                                              37,
+                                              76,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     682,
+                                                     279,
+                                                     285,
+                                                     289
+                                                 ],
+                                 "source_height_relative_to_first":  0.82571428571428573
+                             },
+                             {
+                                 "frame":  4,
+                                 "bottom_row":  95,
+                                 "height":  43,
+                                 "width":  68,
+                                 "colors":  16,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47.5,
+                                 "vertical_center":  74,
+                                 "bbox":  [
+                                              14,
+                                              53,
+                                              81,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     1018,
+                                                     358,
+                                                     331,
+                                                     210
+                                                 ],
+                                 "source_height_relative_to_first":  0.6
+                             },
+                             {
+                                 "frame":  5,
+                                 "bottom_row":  95,
+                                 "height":  30,
+                                 "width":  74,
+                                 "colors":  16,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47.5,
+                                 "vertical_center":  80.5,
+                                 "bbox":  [
+                                              11,
+                                              66,
+                                              84,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     1371,
+                                                     420,
+                                                     366,
+                                                     148
+                                                 ],
+                                 "source_height_relative_to_first":  0.42285714285714288
+                             },
+                             {
+                                 "frame":  6,
+                                 "bottom_row":  95,
+                                 "height":  21,
+                                 "width":  84,
+                                 "colors":  16,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47.5,
+                                 "vertical_center":  85,
+                                 "bbox":  [
+                                              6,
+                                              75,
+                                              89,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     1752,
+                                                     465,
+                                                     412,
+                                                     103
+                                                 ],
+                                 "source_height_relative_to_first":  0.29428571428571426
+                             }
+                         ],
+        "errors":  [
+
+                   ]
+    },
+    {
+        "sheet":  "Elite_Knight_Idle",
+        "source":  "Sources/Elite_Knight_Idle_Selected.png",
+        "cell":  96,
+        "frames":  4,
+        "colors":  20,
+        "palette_outside":  0,
+        "nonbinary_alpha":  0,
+        "edge_pixels":  0,
+        "passed":  true,
+        "scale8_exact":  true,
+        "max_center_drift":  0.625,
+        "max_height_drift":  0,
+        "measurements":  [
+                             {
+                                 "frame":  1,
+                                 "bottom_row":  95,
+                                 "height":  84,
+                                 "width":  68,
+                                 "colors":  20,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47.5,
+                                 "vertical_center":  53.5,
+                                 "bbox":  [
+                                              14,
+                                              12,
+                                              81,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     36,
+                                                     163,
+                                                     414,
+                                                     510
+                                                 ],
+                                 "source_height_relative_to_first":  1
+                             },
+                             {
+                                 "frame":  2,
+                                 "bottom_row":  95,
+                                 "height":  84,
+                                 "width":  69,
+                                 "colors":  20,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  48,
+                                 "vertical_center":  53.5,
+                                 "bbox":  [
+                                              14,
+                                              12,
+                                              82,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     509,
+                                                     166,
+                                                     414,
+                                                     507
+                                                 ],
+                                 "source_height_relative_to_first":  0.99411764705882355
+                             },
+                             {
+                                 "frame":  3,
+                                 "bottom_row":  95,
+                                 "height":  84,
+                                 "width":  71,
+                                 "colors":  20,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47,
+                                 "vertical_center":  53.5,
+                                 "bbox":  [
+                                              12,
+                                              12,
+                                              82,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     971,
+                                                     173,
+                                                     420,
+                                                     500
+                                                 ],
+                                 "source_height_relative_to_first":  0.98039215686274506
+                             },
+                             {
+                                 "frame":  4,
+                                 "bottom_row":  95,
+                                 "height":  84,
+                                 "width":  67,
+                                 "colors":  20,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47,
+                                 "vertical_center":  53.5,
+                                 "bbox":  [
+                                              14,
+                                              12,
+                                              80,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     1442,
+                                                     159,
+                                                     411,
+                                                     514
+                                                 ],
+                                 "source_height_relative_to_first":  1.0078431372549019
+                             }
+                         ],
+        "errors":  [
+
+                   ]
+    },
+    {
+        "sheet":  "Elite_Knight_Run",
+        "source":  "Sources/Elite_Knight_Run_Selected.png",
+        "cell":  96,
+        "frames":  6,
+        "colors":  20,
+        "palette_outside":  0,
+        "nonbinary_alpha":  0,
+        "edge_pixels":  0,
+        "passed":  true,
+        "scale8_exact":  true,
+        "max_center_drift":  0.5,
+        "max_height_drift":  0,
+        "measurements":  [
+                             {
+                                 "frame":  1,
+                                 "bottom_row":  95,
+                                 "height":  84,
+                                 "width":  70,
+                                 "colors":  20,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47.5,
+                                 "vertical_center":  53.5,
+                                 "bbox":  [
+                                              13,
+                                              12,
+                                              82,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     22,
+                                                     190,
+                                                     323,
+                                                     385
+                                                 ],
+                                 "source_height_relative_to_first":  1
+                             },
+                             {
+                                 "frame":  2,
+                                 "bottom_row":  95,
+                                 "height":  84,
+                                 "width":  72,
+                                 "colors":  20,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47.5,
+                                 "vertical_center":  53.5,
+                                 "bbox":  [
+                                              12,
+                                              12,
+                                              83,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     393,
+                                                     204,
+                                                     320,
+                                                     373
+                                                 ],
+                                 "source_height_relative_to_first":  0.96883116883116882
+                             },
+                             {
+                                 "frame":  3,
+                                 "bottom_row":  95,
+                                 "height":  84,
+                                 "width":  74,
+                                 "colors":  20,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47.5,
+                                 "vertical_center":  53.5,
+                                 "bbox":  [
+                                              11,
+                                              12,
+                                              84,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     743,
+                                                     191,
+                                                     340,
+                                                     386
+                                                 ],
+                                 "source_height_relative_to_first":  1.0025974025974025
+                             },
+                             {
+                                 "frame":  4,
+                                 "bottom_row":  95,
+                                 "height":  84,
+                                 "width":  69,
+                                 "colors":  20,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  48,
+                                 "vertical_center":  53.5,
+                                 "bbox":  [
+                                              14,
+                                              12,
+                                              82,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     1106,
+                                                     189,
+                                                     319,
+                                                     388
+                                                 ],
+                                 "source_height_relative_to_first":  1.0077922077922077
+                             },
+                             {
+                                 "frame":  5,
+                                 "bottom_row":  95,
+                                 "height":  84,
+                                 "width":  68,
+                                 "colors":  20,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47.5,
+                                 "vertical_center":  53.5,
+                                 "bbox":  [
+                                              14,
+                                              12,
+                                              81,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     1466,
+                                                     204,
+                                                     304,
+                                                     375
+                                                 ],
+                                 "source_height_relative_to_first":  0.974025974025974
+                             },
+                             {
+                                 "frame":  6,
+                                 "bottom_row":  95,
+                                 "height":  84,
+                                 "width":  71,
+                                 "colors":  20,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47,
+                                 "vertical_center":  53.5,
+                                 "bbox":  [
+                                              12,
+                                              12,
+                                              82,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     1822,
+                                                     189,
+                                                     329,
+                                                     390
+                                                 ],
+                                 "source_height_relative_to_first":  1.0129870129870129
+                             }
+                         ],
+        "errors":  [
+
+                   ]
+    },
+    {
+        "sheet":  "Elite_Knight_Hit",
+        "source":  "Sources/Elite_Knight_Hit_Selected.png",
+        "cell":  96,
+        "frames":  2,
+        "colors":  20,
+        "palette_outside":  0,
+        "nonbinary_alpha":  0,
+        "edge_pixels":  0,
+        "passed":  true,
+        "scale8_exact":  true,
+        "max_center_drift":  0.5,
+        "max_height_drift":  0,
+        "measurements":  [
+                             {
+                                 "frame":  1,
+                                 "bottom_row":  95,
+                                 "height":  84,
+                                 "width":  89,
+                                 "colors":  20,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  48,
+                                 "vertical_center":  53.5,
+                                 "bbox":  [
+                                              4,
+                                              12,
+                                              92,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     95,
+                                                     107,
+                                                     767,
+                                                     727
+                                                 ],
+                                 "source_height_relative_to_first":  1
+                             },
+                             {
+                                 "frame":  2,
+                                 "bottom_row":  95,
+                                 "height":  84,
+                                 "width":  75,
+                                 "colors":  20,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47,
+                                 "vertical_center":  53.5,
+                                 "bbox":  [
+                                              10,
+                                              12,
+                                              84,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     1018,
+                                                     112,
+                                                     655,
+                                                     729
+                                                 ],
+                                 "source_height_relative_to_first":  1.0027510316368637
+                             }
+                         ],
+        "errors":  [
+
+                   ]
+    },
+    {
+        "sheet":  "Elite_Knight_Death",
+        "source":  "Sources/Elite_Knight_Death_Selected.png",
+        "cell":  96,
+        "frames":  6,
+        "colors":  20,
+        "palette_outside":  0,
+        "nonbinary_alpha":  0,
+        "edge_pixels":  0,
+        "passed":  true,
+        "scale8_exact":  true,
+        "max_center_drift":  0.5833333333333357,
+        "max_height_drift":  30.666666666666664,
+        "measurements":  [
+                             {
+                                 "frame":  1,
+                                 "bottom_row":  95,
+                                 "height":  84,
+                                 "width":  68,
+                                 "colors":  20,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47.5,
+                                 "vertical_center":  53.5,
+                                 "bbox":  [
+                                              14,
+                                              12,
+                                              81,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     100,
+                                                     104,
+                                                     337,
+                                                     418
+                                                 ],
+                                 "source_height_relative_to_first":  1
+                             },
+                             {
+                                 "frame":  2,
+                                 "bottom_row":  95,
+                                 "height":  79,
+                                 "width":  71,
+                                 "colors":  19,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47,
+                                 "vertical_center":  56,
+                                 "bbox":  [
+                                              12,
+                                              17,
+                                              82,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     611,
+                                                     135,
+                                                     352,
+                                                     393
+                                                 ],
+                                 "source_height_relative_to_first":  0.94019138755980858
+                             },
+                             {
+                                 "frame":  3,
+                                 "bottom_row":  95,
+                                 "height":  65,
+                                 "width":  77,
+                                 "colors":  20,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  48,
+                                 "vertical_center":  63,
+                                 "bbox":  [
+                                              10,
+                                              31,
+                                              86,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     1096,
+                                                     212,
+                                                     383,
+                                                     322
+                                                 ],
+                                 "source_height_relative_to_first":  0.77033492822966509
+                             },
+                             {
+                                 "frame":  4,
+                                 "bottom_row":  95,
+                                 "height":  54,
+                                 "width":  89,
+                                 "colors":  19,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  48,
+                                 "vertical_center":  68.5,
+                                 "bbox":  [
+                                              4,
+                                              42,
+                                              92,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     43,
+                                                     690,
+                                                     441,
+                                                     269
+                                                 ],
+                                 "source_height_relative_to_first":  0.6435406698564593
+                             },
+                             {
+                                 "frame":  5,
+                                 "bottom_row":  95,
+                                 "height":  37,
+                                 "width":  94,
+                                 "colors":  18,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47.5,
+                                 "vertical_center":  77,
+                                 "bbox":  [
+                                              1,
+                                              59,
+                                              94,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     513,
+                                                     769,
+                                                     481,
+                                                     192
+                                                 ],
+                                 "source_height_relative_to_first":  0.45933014354066987
+                             },
+                             {
+                                 "frame":  6,
+                                 "bottom_row":  95,
+                                 "height":  27,
+                                 "width":  94,
+                                 "colors":  17,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  47.5,
+                                 "vertical_center":  82,
+                                 "bbox":  [
+                                              1,
+                                              69,
+                                              94,
+                                              95
+                                          ],
+                                 "source_bbox":  [
+                                                     1010,
+                                                     814,
+                                                     509,
+                                                     148
+                                                 ],
+                                 "source_height_relative_to_first":  0.35406698564593303
+                             }
+                         ],
+        "errors":  [
+
+                   ]
+    },
+    {
+        "sheet":  "Orc_Brute_Idle",
+        "source":  "Sources/Orc_Brute_Idle_Selected.png",
+        "cell":  128,
+        "frames":  4,
+        "colors":  19,
+        "palette_outside":  0,
+        "nonbinary_alpha":  0,
+        "edge_pixels":  0,
+        "passed":  true,
+        "scale8_exact":  true,
+        "max_center_drift":  0.25,
+        "max_height_drift":  0,
+        "measurements":  [
+                             {
+                                 "frame":  1,
+                                 "bottom_row":  127,
+                                 "height":  96,
+                                 "width":  93,
+                                 "colors":  19,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  64,
+                                 "vertical_center":  79.5,
+                                 "bbox":  [
+                                              18,
+                                              32,
+                                              110,
+                                              127
+                                          ],
+                                 "source_bbox":  [
+                                                     44,
+                                                     163,
+                                                     472,
+                                                     486
+                                                 ],
+                                 "source_height_relative_to_first":  1
+                             },
+                             {
+                                 "frame":  2,
+                                 "bottom_row":  127,
+                                 "height":  96,
+                                 "width":  88,
+                                 "colors":  19,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  63.5,
+                                 "vertical_center":  79.5,
+                                 "bbox":  [
+                                              20,
+                                              32,
+                                              107,
+                                              127
+                                          ],
+                                 "source_bbox":  [
+                                                     595,
+                                                     125,
+                                                     479,
+                                                     524
+                                                 ],
+                                 "source_height_relative_to_first":  1.0781893004115226
+                             },
+                             {
+                                 "frame":  3,
+                                 "bottom_row":  127,
+                                 "height":  96,
+                                 "width":  93,
+                                 "colors":  19,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  64,
+                                 "vertical_center":  79.5,
+                                 "bbox":  [
+                                              18,
+                                              32,
+                                              110,
+                                              127
+                                          ],
+                                 "source_bbox":  [
+                                                     1141,
+                                                     170,
+                                                     465,
+                                                     479
+                                                 ],
+                                 "source_height_relative_to_first":  0.98559670781893
+                             },
+                             {
+                                 "frame":  4,
+                                 "bottom_row":  127,
+                                 "height":  96,
+                                 "width":  86,
+                                 "colors":  19,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  63.5,
+                                 "vertical_center":  79.5,
+                                 "bbox":  [
+                                              21,
+                                              32,
+                                              106,
+                                              127
+                                          ],
+                                 "source_bbox":  [
+                                                     1696,
+                                                     149,
+                                                     446,
+                                                     500
+                                                 ],
+                                 "source_height_relative_to_first":  1.02880658436214
+                             }
+                         ],
+        "errors":  [
+
+                   ]
+    },
+    {
+        "sheet":  "Orc_Brute_Run",
+        "source":  "Sources/Orc_Brute_Run_Selected.png",
+        "cell":  128,
+        "frames":  6,
+        "colors":  18,
+        "palette_outside":  0,
+        "nonbinary_alpha":  0,
+        "edge_pixels":  0,
+        "passed":  true,
+        "scale8_exact":  true,
+        "max_center_drift":  0.25,
+        "max_height_drift":  0,
+        "measurements":  [
+                             {
+                                 "frame":  1,
+                                 "bottom_row":  127,
+                                 "height":  96,
+                                 "width":  87,
+                                 "colors":  17,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  63,
+                                 "vertical_center":  79.5,
+                                 "bbox":  [
+                                              20,
+                                              32,
+                                              106,
+                                              127
+                                          ],
+                                 "source_bbox":  [
+                                                     22,
+                                                     212,
+                                                     348,
+                                                     383
+                                                 ],
+                                 "source_height_relative_to_first":  1
+                             },
+                             {
+                                 "frame":  2,
+                                 "bottom_row":  127,
+                                 "height":  96,
+                                 "width":  74,
+                                 "colors":  18,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  63.5,
+                                 "vertical_center":  79.5,
+                                 "bbox":  [
+                                              27,
+                                              32,
+                                              100,
+                                              127
+                                          ],
+                                 "source_bbox":  [
+                                                     411,
+                                                     224,
+                                                     287,
+                                                     371
+                                                 ],
+                                 "source_height_relative_to_first":  0.96866840731070492
+                             },
+                             {
+                                 "frame":  3,
+                                 "bottom_row":  127,
+                                 "height":  96,
+                                 "width":  99,
+                                 "colors":  18,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  63,
+                                 "vertical_center":  79.5,
+                                 "bbox":  [
+                                              14,
+                                              32,
+                                              112,
+                                              127
+                                          ],
+                                 "source_bbox":  [
+                                                     698,
+                                                     219,
+                                                     386,
+                                                     376
+                                                 ],
+                                 "source_height_relative_to_first":  0.98172323759791125
+                             },
+                             {
+                                 "frame":  4,
+                                 "bottom_row":  127,
+                                 "height":  96,
+                                 "width":  83,
+                                 "colors":  18,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  63,
+                                 "vertical_center":  79.5,
+                                 "bbox":  [
+                                              22,
+                                              32,
+                                              104,
+                                              127
+                                          ],
+                                 "source_bbox":  [
+                                                     1118,
+                                                     212,
+                                                     332,
+                                                     383
+                                                 ],
+                                 "source_height_relative_to_first":  1
+                             },
+                             {
+                                 "frame":  5,
+                                 "bottom_row":  127,
+                                 "height":  96,
+                                 "width":  76,
+                                 "colors":  18,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  63.5,
+                                 "vertical_center":  79.5,
+                                 "bbox":  [
+                                              26,
+                                              32,
+                                              101,
+                                              127
+                                          ],
+                                 "source_bbox":  [
+                                                     1487,
+                                                     225,
+                                                     292,
+                                                     370
+                                                 ],
+                                 "source_height_relative_to_first":  0.96605744125326376
+                             },
+                             {
+                                 "frame":  6,
+                                 "bottom_row":  127,
+                                 "height":  96,
+                                 "width":  96,
+                                 "colors":  17,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  63.5,
+                                 "vertical_center":  79.5,
+                                 "bbox":  [
+                                              16,
+                                              32,
+                                              111,
+                                              127
+                                          ],
+                                 "source_bbox":  [
+                                                     1779,
+                                                     218,
+                                                     377,
+                                                     377
+                                                 ],
+                                 "source_height_relative_to_first":  0.98433420365535251
+                             }
+                         ],
+        "errors":  [
+
+                   ]
+    },
+    {
+        "sheet":  "Orc_Brute_Hit",
+        "source":  "Sources/Orc_Brute_Hit_Selected.png",
+        "cell":  128,
+        "frames":  2,
+        "colors":  19,
+        "palette_outside":  0,
+        "nonbinary_alpha":  0,
+        "edge_pixels":  0,
+        "passed":  true,
+        "scale8_exact":  true,
+        "max_center_drift":  0.5,
+        "max_height_drift":  0,
+        "measurements":  [
+                             {
+                                 "frame":  1,
+                                 "bottom_row":  127,
+                                 "height":  96,
+                                 "width":  103,
+                                 "colors":  19,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  63,
+                                 "vertical_center":  79.5,
+                                 "bbox":  [
+                                              12,
+                                              32,
+                                              114,
+                                              127
+                                          ],
+                                 "source_bbox":  [
+                                                     72,
+                                                     158,
+                                                     746,
+                                                     697
+                                                 ],
+                                 "source_height_relative_to_first":  1
+                             },
+                             {
+                                 "frame":  2,
+                                 "bottom_row":  127,
+                                 "height":  96,
+                                 "width":  105,
+                                 "colors":  19,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  64,
+                                 "vertical_center":  79.5,
+                                 "bbox":  [
+                                              12,
+                                              32,
+                                              116,
+                                              127
+                                          ],
+                                 "source_bbox":  [
+                                                     978,
+                                                     153,
+                                                     769,
+                                                     702
+                                                 ],
+                                 "source_height_relative_to_first":  1.0071736011477761
+                             }
+                         ],
+        "errors":  [
+
+                   ]
+    },
+    {
+        "sheet":  "Orc_Brute_Death",
+        "source":  "Sources/Orc_Brute_Death_Selected.png",
+        "cell":  128,
+        "frames":  6,
+        "colors":  19,
+        "palette_outside":  0,
+        "nonbinary_alpha":  0,
+        "edge_pixels":  0,
+        "passed":  true,
+        "scale8_exact":  true,
+        "max_center_drift":  0.3333333333333357,
+        "max_height_drift":  33.333333333333336,
+        "measurements":  [
+                             {
+                                 "frame":  1,
+                                 "bottom_row":  127,
+                                 "height":  96,
+                                 "width":  72,
+                                 "colors":  18,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  63.5,
+                                 "vertical_center":  79.5,
+                                 "bbox":  [
+                                              28,
+                                              32,
+                                              99,
+                                              127
+                                          ],
+                                 "source_bbox":  [
+                                                     24,
+                                                     198,
+                                                     315,
+                                                     421
+                                                 ],
+                                 "source_height_relative_to_first":  1
+                             },
+                             {
+                                 "frame":  2,
+                                 "bottom_row":  127,
+                                 "height":  84,
+                                 "width":  74,
+                                 "colors":  17,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  63.5,
+                                 "vertical_center":  85.5,
+                                 "bbox":  [
+                                              27,
+                                              44,
+                                              100,
+                                              127
+                                          ],
+                                 "source_bbox":  [
+                                                     364,
+                                                     249,
+                                                     326,
+                                                     370
+                                                 ],
+                                 "source_height_relative_to_first":  0.87885985748218531
+                             },
+                             {
+                                 "frame":  3,
+                                 "bottom_row":  127,
+                                 "height":  70,
+                                 "width":  73,
+                                 "colors":  18,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  64,
+                                 "vertical_center":  92.5,
+                                 "bbox":  [
+                                              28,
+                                              58,
+                                              100,
+                                              127
+                                          ],
+                                 "source_bbox":  [
+                                                     713,
+                                                     313,
+                                                     317,
+                                                     306
+                                                 ],
+                                 "source_height_relative_to_first":  0.72684085510688834
+                             },
+                             {
+                                 "frame":  4,
+                                 "bottom_row":  127,
+                                 "height":  55,
+                                 "width":  70,
+                                 "colors":  17,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  63.5,
+                                 "vertical_center":  100,
+                                 "bbox":  [
+                                              29,
+                                              73,
+                                              98,
+                                              127
+                                          ],
+                                 "source_bbox":  [
+                                                     1035,
+                                                     382,
+                                                     323,
+                                                     243
+                                                 ],
+                                 "source_height_relative_to_first":  0.5771971496437055
+                             },
+                             {
+                                 "frame":  5,
+                                 "bottom_row":  127,
+                                 "height":  40,
+                                 "width":  82,
+                                 "colors":  17,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  63.5,
+                                 "vertical_center":  107.5,
+                                 "bbox":  [
+                                              23,
+                                              88,
+                                              104,
+                                              127
+                                          ],
+                                 "source_bbox":  [
+                                                     1358,
+                                                     444,
+                                                     363,
+                                                     176
+                                                 ],
+                                 "source_height_relative_to_first":  0.41805225653206651
+                             },
+                             {
+                                 "frame":  6,
+                                 "bottom_row":  127,
+                                 "height":  31,
+                                 "width":  93,
+                                 "colors":  19,
+                                 "edge_pixels":  0,
+                                 "horizontal_center":  64,
+                                 "vertical_center":  112,
+                                 "bbox":  [
+                                              18,
+                                              97,
+                                              110,
+                                              127
+                                          ],
+                                 "source_bbox":  [
+                                                     1745,
+                                                     492,
+                                                     410,
+                                                     137
+                                                 ],
+                                 "source_height_relative_to_first":  0.32541567695961993
+                             }
+                         ],
+        "errors":  [
+
+                   ]
+    }
+]

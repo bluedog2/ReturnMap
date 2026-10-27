@@ -1,0 +1,33 @@
+{
+  "generator": "built-in image_gen",
+  "generated_so_far": 2,
+  "complete": false,
+  "sheets": [
+    {
+      "sheet": "Goblin_Raider_Idle",
+      "attempt_count": 1,
+      "selected_attempt": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Four 64px Idle cells, 48px goblin, 6x blocks. Approved goblin concept and Hero Run references; subtle breathing, clean board/spray, charcoal outline, flat shading.",
+          "original_path": "C:\\Users\\Owner\\.codex\\generated_images\\01a17dd8-0599-7090-b789-630d67eeae30\\exec-37e42549-34f0-4048-a28e-4f18500e056f.png",
+          "copied_source": "Sources/Goblin_Raider_Idle_Attempt1.png"
+        }
+      ]
+    },
+    {
+      "sheet": "Goblin_Raider_Run",
+      "attempt_count": 1,
+      "selected_attempt": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Create Goblin_Raider RUN sprite animation sheet: exactly SIX 64x64 logical pixel cells in ONE HORIZONTAL ROW, enlarged exactly 6x nearest neighbor blocks (2304x384). Reference 1 approved character design, reference 2 pixel art style only. IDENTICAL purple hood, toxic lime goblin face, purple skateboard and waist spray can, exact same head size and proportions. Facing RIGHT. Six distinct full sprint poses while carrying skateboard: left foot forward contact, compressed passing, right foot reaching, right contact, opposite passing, left reaching. Always one sole touches bottom baseline; height 48px +/-1 each pose, no jumping higher. Lean body forward but preserve head/hood shape and all equipment. Keep wide gaps between each full character, no overlaps. Single logical pixel #19181F charcoal outline, 2-3 flat shades per material, no dithering or smooth gradients. Separate hand, skateboard and waist spray cleanly. Transparent background, no text/grid/shadow. Same character same colors same size in ALL six frames.",
+          "original_path": "C:\\Users\\Owner\\.codex\\generated_images\\01a17dd8-0599-7090-b789-630d67eeae30\\exec-cddc6627-1e73-48ef-888f-d85c12d30bd8.png",
+          "copied_source": "Sources/Goblin_Raider_Run_Attempt1.png"
+        }
+      ]
+    }
+  ]
+}

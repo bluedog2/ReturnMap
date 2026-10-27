@@ -1,0 +1,8 @@
+Goblin_Raider: PASS cell=64, height=48, colors=18, alpha=0/255, 6x exact; occupied rows=16..63
+Imp_Flyer: PASS cell=64, height=44, colors=19, alpha=0/255, 6x exact; occupied rows=10..53
+Skeleton_Archer: PASS cell=96, height=72, colors=16, alpha=0/255, 6x exact; occupied rows=24..95
+Elite_Knight: PASS cell=96, height=84, colors=20, alpha=0/255, 6x exact; occupied rows=12..95
+Orc_Brute: PASS cell=128, height=96, colors=19, alpha=0/255, 6x exact; occupied rows=32..127
+Lineup_3x.png: PASS 2304x720, exact 3x blocks
+Screen_3x.png: PASS 1920x1080, exact 3x blocks
+Original imagegen sources: grid compliance NOT certified. Review README limitations.

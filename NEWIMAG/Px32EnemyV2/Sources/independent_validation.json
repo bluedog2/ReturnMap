@@ -1,0 +1,1207 @@
+﻿{
+    "checked_from_saved_files":  true,
+    "sheet_count":  20,
+    "all_passed":  true,
+    "sheets":  [
+                   {
+                       "sheet":  "Goblin_Raider_Idle",
+                       "passed":  true,
+                       "errors":  [
+
+                                  ],
+                       "colors":  18,
+                       "palette_outside_pixels":  0,
+                       "nonbinary_alpha_pixels":  0,
+                       "edge_pixels":  0,
+                       "gif_delays_centiseconds":  [
+                                                       17,
+                                                       16,
+                                                       17,
+                                                       17
+                                                   ],
+                       "frames":  [
+                                      {
+                                          "frame":  1,
+                                          "bottom_row":  63,
+                                          "horizontal_center":  32,
+                                          "vertical_center":  39.5,
+                                          "height":  48,
+                                          "colors":  18,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  2,
+                                          "bottom_row":  63,
+                                          "horizontal_center":  31,
+                                          "vertical_center":  39.5,
+                                          "height":  48,
+                                          "colors":  18,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  3,
+                                          "bottom_row":  63,
+                                          "horizontal_center":  31.5,
+                                          "vertical_center":  39.5,
+                                          "height":  48,
+                                          "colors":  18,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  4,
+                                          "bottom_row":  63,
+                                          "horizontal_center":  31.5,
+                                          "vertical_center":  39.5,
+                                          "height":  48,
+                                          "colors":  18,
+                                          "edge_pixels":  0
+                                      }
+                                  ]
+                   },
+                   {
+                       "sheet":  "Goblin_Raider_Run",
+                       "passed":  true,
+                       "errors":  [
+
+                                  ],
+                       "colors":  18,
+                       "palette_outside_pixels":  0,
+                       "nonbinary_alpha_pixels":  0,
+                       "edge_pixels":  0,
+                       "gif_delays_centiseconds":  [
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10
+                                                   ],
+                       "frames":  [
+                                      {
+                                          "frame":  1,
+                                          "bottom_row":  63,
+                                          "horizontal_center":  32,
+                                          "vertical_center":  39.5,
+                                          "height":  48,
+                                          "colors":  17,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  2,
+                                          "bottom_row":  63,
+                                          "horizontal_center":  32,
+                                          "vertical_center":  39.5,
+                                          "height":  48,
+                                          "colors":  18,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  3,
+                                          "bottom_row":  63,
+                                          "horizontal_center":  32,
+                                          "vertical_center":  39.5,
+                                          "height":  48,
+                                          "colors":  17,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  4,
+                                          "bottom_row":  63,
+                                          "horizontal_center":  31.5,
+                                          "vertical_center":  39.5,
+                                          "height":  48,
+                                          "colors":  17,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  5,
+                                          "bottom_row":  63,
+                                          "horizontal_center":  31.5,
+                                          "vertical_center":  39.5,
+                                          "height":  48,
+                                          "colors":  17,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  6,
+                                          "bottom_row":  63,
+                                          "horizontal_center":  31,
+                                          "vertical_center":  39.5,
+                                          "height":  48,
+                                          "colors":  17,
+                                          "edge_pixels":  0
+                                      }
+                                  ]
+                   },
+                   {
+                       "sheet":  "Goblin_Raider_Hit",
+                       "passed":  true,
+                       "errors":  [
+
+                                  ],
+                       "colors":  18,
+                       "palette_outside_pixels":  0,
+                       "nonbinary_alpha_pixels":  0,
+                       "edge_pixels":  0,
+                       "gif_delays_centiseconds":  [
+                                                       10,
+                                                       10
+                                                   ],
+                       "frames":  [
+                                      {
+                                          "frame":  1,
+                                          "bottom_row":  63,
+                                          "horizontal_center":  31.5,
+                                          "vertical_center":  39.5,
+                                          "height":  48,
+                                          "colors":  18,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  2,
+                                          "bottom_row":  63,
+                                          "horizontal_center":  31.5,
+                                          "vertical_center":  39.5,
+                                          "height":  48,
+                                          "colors":  18,
+                                          "edge_pixels":  0
+                                      }
+                                  ]
+                   },
+                   {
+                       "sheet":  "Goblin_Raider_Death",
+                       "passed":  true,
+                       "errors":  [
+
+                                  ],
+                       "colors":  18,
+                       "palette_outside_pixels":  0,
+                       "nonbinary_alpha_pixels":  0,
+                       "edge_pixels":  0,
+                       "gif_delays_centiseconds":  [
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10
+                                                   ],
+                       "frames":  [
+                                      {
+                                          "frame":  1,
+                                          "bottom_row":  63,
+                                          "horizontal_center":  31.5,
+                                          "vertical_center":  39.5,
+                                          "height":  48,
+                                          "colors":  18,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  2,
+                                          "bottom_row":  63,
+                                          "horizontal_center":  32,
+                                          "vertical_center":  41.5,
+                                          "height":  44,
+                                          "colors":  17,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  3,
+                                          "bottom_row":  63,
+                                          "horizontal_center":  31,
+                                          "vertical_center":  45,
+                                          "height":  37,
+                                          "colors":  17,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  4,
+                                          "bottom_row":  63,
+                                          "horizontal_center":  31,
+                                          "vertical_center":  49.5,
+                                          "height":  28,
+                                          "colors":  18,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  5,
+                                          "bottom_row":  63,
+                                          "horizontal_center":  31,
+                                          "vertical_center":  52.5,
+                                          "height":  22,
+                                          "colors":  18,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  6,
+                                          "bottom_row":  63,
+                                          "horizontal_center":  31,
+                                          "vertical_center":  54.5,
+                                          "height":  18,
+                                          "colors":  16,
+                                          "edge_pixels":  0
+                                      }
+                                  ]
+                   },
+                   {
+                       "sheet":  "Imp_Flyer_Idle",
+                       "passed":  true,
+                       "errors":  [
+
+                                  ],
+                       "colors":  19,
+                       "palette_outside_pixels":  0,
+                       "nonbinary_alpha_pixels":  0,
+                       "edge_pixels":  0,
+                       "gif_delays_centiseconds":  [
+                                                       17,
+                                                       16,
+                                                       17,
+                                                       17
+                                                   ],
+                       "frames":  [
+                                      {
+                                          "frame":  1,
+                                          "bottom_row":  53,
+                                          "horizontal_center":  31.5,
+                                          "vertical_center":  31.5,
+                                          "height":  44,
+                                          "colors":  19,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  2,
+                                          "bottom_row":  53,
+                                          "horizontal_center":  31,
+                                          "vertical_center":  31.5,
+                                          "height":  44,
+                                          "colors":  19,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  3,
+                                          "bottom_row":  53,
+                                          "horizontal_center":  31.5,
+                                          "vertical_center":  31.5,
+                                          "height":  44,
+                                          "colors":  18,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  4,
+                                          "bottom_row":  53,
+                                          "horizontal_center":  31,
+                                          "vertical_center":  31.5,
+                                          "height":  44,
+                                          "colors":  19,
+                                          "edge_pixels":  0
+                                      }
+                                  ]
+                   },
+                   {
+                       "sheet":  "Imp_Flyer_Run",
+                       "passed":  true,
+                       "errors":  [
+
+                                  ],
+                       "colors":  19,
+                       "palette_outside_pixels":  0,
+                       "nonbinary_alpha_pixels":  0,
+                       "edge_pixels":  0,
+                       "gif_delays_centiseconds":  [
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10
+                                                   ],
+                       "frames":  [
+                                      {
+                                          "frame":  1,
+                                          "bottom_row":  53,
+                                          "horizontal_center":  31.5,
+                                          "vertical_center":  31.5,
+                                          "height":  44,
+                                          "colors":  19,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  2,
+                                          "bottom_row":  53,
+                                          "horizontal_center":  32,
+                                          "vertical_center":  31.5,
+                                          "height":  44,
+                                          "colors":  19,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  3,
+                                          "bottom_row":  53,
+                                          "horizontal_center":  31.5,
+                                          "vertical_center":  31.5,
+                                          "height":  44,
+                                          "colors":  19,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  4,
+                                          "bottom_row":  53,
+                                          "horizontal_center":  31.5,
+                                          "vertical_center":  31.5,
+                                          "height":  44,
+                                          "colors":  19,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  5,
+                                          "bottom_row":  53,
+                                          "horizontal_center":  31,
+                                          "vertical_center":  31.5,
+                                          "height":  44,
+                                          "colors":  19,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  6,
+                                          "bottom_row":  53,
+                                          "horizontal_center":  31.5,
+                                          "vertical_center":  31.5,
+                                          "height":  44,
+                                          "colors":  19,
+                                          "edge_pixels":  0
+                                      }
+                                  ]
+                   },
+                   {
+                       "sheet":  "Imp_Flyer_Hit",
+                       "passed":  true,
+                       "errors":  [
+
+                                  ],
+                       "colors":  19,
+                       "palette_outside_pixels":  0,
+                       "nonbinary_alpha_pixels":  0,
+                       "edge_pixels":  0,
+                       "gif_delays_centiseconds":  [
+                                                       10,
+                                                       10
+                                                   ],
+                       "frames":  [
+                                      {
+                                          "frame":  1,
+                                          "bottom_row":  53,
+                                          "horizontal_center":  31.5,
+                                          "vertical_center":  31.5,
+                                          "height":  44,
+                                          "colors":  19,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  2,
+                                          "bottom_row":  53,
+                                          "horizontal_center":  32,
+                                          "vertical_center":  31.5,
+                                          "height":  44,
+                                          "colors":  18,
+                                          "edge_pixels":  0
+                                      }
+                                  ]
+                   },
+                   {
+                       "sheet":  "Imp_Flyer_Death",
+                       "passed":  true,
+                       "errors":  [
+
+                                  ],
+                       "colors":  19,
+                       "palette_outside_pixels":  0,
+                       "nonbinary_alpha_pixels":  0,
+                       "edge_pixels":  0,
+                       "gif_delays_centiseconds":  [
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10
+                                                   ],
+                       "frames":  [
+                                      {
+                                          "frame":  1,
+                                          "bottom_row":  53,
+                                          "horizontal_center":  31,
+                                          "vertical_center":  31.5,
+                                          "height":  44,
+                                          "colors":  17,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  2,
+                                          "bottom_row":  56,
+                                          "horizontal_center":  31,
+                                          "vertical_center":  36,
+                                          "height":  41,
+                                          "colors":  18,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  3,
+                                          "bottom_row":  60,
+                                          "horizontal_center":  31,
+                                          "vertical_center":  43.5,
+                                          "height":  34,
+                                          "colors":  19,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  4,
+                                          "bottom_row":  63,
+                                          "horizontal_center":  31.5,
+                                          "vertical_center":  48,
+                                          "height":  31,
+                                          "colors":  17,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  5,
+                                          "bottom_row":  63,
+                                          "horizontal_center":  31,
+                                          "vertical_center":  52.5,
+                                          "height":  22,
+                                          "colors":  19,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  6,
+                                          "bottom_row":  63,
+                                          "horizontal_center":  31.5,
+                                          "vertical_center":  55,
+                                          "height":  17,
+                                          "colors":  16,
+                                          "edge_pixels":  0
+                                      }
+                                  ]
+                   },
+                   {
+                       "sheet":  "Skeleton_Archer_Idle",
+                       "passed":  true,
+                       "errors":  [
+
+                                  ],
+                       "colors":  16,
+                       "palette_outside_pixels":  0,
+                       "nonbinary_alpha_pixels":  0,
+                       "edge_pixels":  0,
+                       "gif_delays_centiseconds":  [
+                                                       17,
+                                                       16,
+                                                       17,
+                                                       17
+                                                   ],
+                       "frames":  [
+                                      {
+                                          "frame":  1,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47.5,
+                                          "vertical_center":  59.5,
+                                          "height":  72,
+                                          "colors":  16,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  2,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47.5,
+                                          "vertical_center":  59.5,
+                                          "height":  72,
+                                          "colors":  16,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  3,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47.5,
+                                          "vertical_center":  59.5,
+                                          "height":  72,
+                                          "colors":  16,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  4,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  48,
+                                          "vertical_center":  59.5,
+                                          "height":  72,
+                                          "colors":  16,
+                                          "edge_pixels":  0
+                                      }
+                                  ]
+                   },
+                   {
+                       "sheet":  "Skeleton_Archer_Run",
+                       "passed":  true,
+                       "errors":  [
+
+                                  ],
+                       "colors":  16,
+                       "palette_outside_pixels":  0,
+                       "nonbinary_alpha_pixels":  0,
+                       "edge_pixels":  0,
+                       "gif_delays_centiseconds":  [
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10
+                                                   ],
+                       "frames":  [
+                                      {
+                                          "frame":  1,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47.5,
+                                          "vertical_center":  59.5,
+                                          "height":  72,
+                                          "colors":  16,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  2,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47.5,
+                                          "vertical_center":  59.5,
+                                          "height":  72,
+                                          "colors":  16,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  3,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  48,
+                                          "vertical_center":  59.5,
+                                          "height":  72,
+                                          "colors":  16,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  4,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47,
+                                          "vertical_center":  59.5,
+                                          "height":  72,
+                                          "colors":  16,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  5,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  48,
+                                          "vertical_center":  59.5,
+                                          "height":  72,
+                                          "colors":  16,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  6,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47.5,
+                                          "vertical_center":  59.5,
+                                          "height":  72,
+                                          "colors":  16,
+                                          "edge_pixels":  0
+                                      }
+                                  ]
+                   },
+                   {
+                       "sheet":  "Skeleton_Archer_Hit",
+                       "passed":  true,
+                       "errors":  [
+
+                                  ],
+                       "colors":  16,
+                       "palette_outside_pixels":  0,
+                       "nonbinary_alpha_pixels":  0,
+                       "edge_pixels":  0,
+                       "gif_delays_centiseconds":  [
+                                                       10,
+                                                       10
+                                                   ],
+                       "frames":  [
+                                      {
+                                          "frame":  1,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47,
+                                          "vertical_center":  59.5,
+                                          "height":  72,
+                                          "colors":  16,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  2,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47,
+                                          "vertical_center":  59.5,
+                                          "height":  72,
+                                          "colors":  16,
+                                          "edge_pixels":  0
+                                      }
+                                  ]
+                   },
+                   {
+                       "sheet":  "Skeleton_Archer_Death",
+                       "passed":  true,
+                       "errors":  [
+
+                                  ],
+                       "colors":  16,
+                       "palette_outside_pixels":  0,
+                       "nonbinary_alpha_pixels":  0,
+                       "edge_pixels":  0,
+                       "gif_delays_centiseconds":  [
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10
+                                                   ],
+                       "frames":  [
+                                      {
+                                          "frame":  1,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47.5,
+                                          "vertical_center":  59.5,
+                                          "height":  72,
+                                          "colors":  16,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  2,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47.5,
+                                          "vertical_center":  62,
+                                          "height":  67,
+                                          "colors":  16,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  3,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47.5,
+                                          "vertical_center":  66,
+                                          "height":  59,
+                                          "colors":  16,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  4,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47.5,
+                                          "vertical_center":  74,
+                                          "height":  43,
+                                          "colors":  16,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  5,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47.5,
+                                          "vertical_center":  80.5,
+                                          "height":  30,
+                                          "colors":  16,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  6,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47.5,
+                                          "vertical_center":  85,
+                                          "height":  21,
+                                          "colors":  16,
+                                          "edge_pixels":  0
+                                      }
+                                  ]
+                   },
+                   {
+                       "sheet":  "Elite_Knight_Idle",
+                       "passed":  true,
+                       "errors":  [
+
+                                  ],
+                       "colors":  20,
+                       "palette_outside_pixels":  0,
+                       "nonbinary_alpha_pixels":  0,
+                       "edge_pixels":  0,
+                       "gif_delays_centiseconds":  [
+                                                       17,
+                                                       16,
+                                                       17,
+                                                       17
+                                                   ],
+                       "frames":  [
+                                      {
+                                          "frame":  1,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47.5,
+                                          "vertical_center":  53.5,
+                                          "height":  84,
+                                          "colors":  20,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  2,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  48,
+                                          "vertical_center":  53.5,
+                                          "height":  84,
+                                          "colors":  20,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  3,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47,
+                                          "vertical_center":  53.5,
+                                          "height":  84,
+                                          "colors":  20,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  4,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47,
+                                          "vertical_center":  53.5,
+                                          "height":  84,
+                                          "colors":  20,
+                                          "edge_pixels":  0
+                                      }
+                                  ]
+                   },
+                   {
+                       "sheet":  "Elite_Knight_Run",
+                       "passed":  true,
+                       "errors":  [
+
+                                  ],
+                       "colors":  20,
+                       "palette_outside_pixels":  0,
+                       "nonbinary_alpha_pixels":  0,
+                       "edge_pixels":  0,
+                       "gif_delays_centiseconds":  [
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10
+                                                   ],
+                       "frames":  [
+                                      {
+                                          "frame":  1,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47.5,
+                                          "vertical_center":  53.5,
+                                          "height":  84,
+                                          "colors":  20,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  2,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47.5,
+                                          "vertical_center":  53.5,
+                                          "height":  84,
+                                          "colors":  20,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  3,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47.5,
+                                          "vertical_center":  53.5,
+                                          "height":  84,
+                                          "colors":  20,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  4,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  48,
+                                          "vertical_center":  53.5,
+                                          "height":  84,
+                                          "colors":  20,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  5,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47.5,
+                                          "vertical_center":  53.5,
+                                          "height":  84,
+                                          "colors":  20,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  6,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47,
+                                          "vertical_center":  53.5,
+                                          "height":  84,
+                                          "colors":  20,
+                                          "edge_pixels":  0
+                                      }
+                                  ]
+                   },
+                   {
+                       "sheet":  "Elite_Knight_Hit",
+                       "passed":  true,
+                       "errors":  [
+
+                                  ],
+                       "colors":  20,
+                       "palette_outside_pixels":  0,
+                       "nonbinary_alpha_pixels":  0,
+                       "edge_pixels":  0,
+                       "gif_delays_centiseconds":  [
+                                                       10,
+                                                       10
+                                                   ],
+                       "frames":  [
+                                      {
+                                          "frame":  1,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  48,
+                                          "vertical_center":  53.5,
+                                          "height":  84,
+                                          "colors":  20,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  2,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47,
+                                          "vertical_center":  53.5,
+                                          "height":  84,
+                                          "colors":  20,
+                                          "edge_pixels":  0
+                                      }
+                                  ]
+                   },
+                   {
+                       "sheet":  "Elite_Knight_Death",
+                       "passed":  true,
+                       "errors":  [
+
+                                  ],
+                       "colors":  20,
+                       "palette_outside_pixels":  0,
+                       "nonbinary_alpha_pixels":  0,
+                       "edge_pixels":  0,
+                       "gif_delays_centiseconds":  [
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10
+                                                   ],
+                       "frames":  [
+                                      {
+                                          "frame":  1,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47,
+                                          "vertical_center":  53.5,
+                                          "height":  84,
+                                          "colors":  20,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  2,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  48,
+                                          "vertical_center":  55.5,
+                                          "height":  80,
+                                          "colors":  20,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  3,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47.5,
+                                          "vertical_center":  60,
+                                          "height":  71,
+                                          "colors":  20,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  4,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47,
+                                          "vertical_center":  68.5,
+                                          "height":  54,
+                                          "colors":  20,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  5,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47,
+                                          "vertical_center":  75.5,
+                                          "height":  40,
+                                          "colors":  19,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  6,
+                                          "bottom_row":  95,
+                                          "horizontal_center":  47.5,
+                                          "vertical_center":  80,
+                                          "height":  31,
+                                          "colors":  20,
+                                          "edge_pixels":  0
+                                      }
+                                  ]
+                   },
+                   {
+                       "sheet":  "Orc_Brute_Idle",
+                       "passed":  true,
+                       "errors":  [
+
+                                  ],
+                       "colors":  19,
+                       "palette_outside_pixels":  0,
+                       "nonbinary_alpha_pixels":  0,
+                       "edge_pixels":  0,
+                       "gif_delays_centiseconds":  [
+                                                       17,
+                                                       16,
+                                                       17,
+                                                       17
+                                                   ],
+                       "frames":  [
+                                      {
+                                          "frame":  1,
+                                          "bottom_row":  127,
+                                          "horizontal_center":  64,
+                                          "vertical_center":  79.5,
+                                          "height":  96,
+                                          "colors":  19,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  2,
+                                          "bottom_row":  127,
+                                          "horizontal_center":  63.5,
+                                          "vertical_center":  79.5,
+                                          "height":  96,
+                                          "colors":  19,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  3,
+                                          "bottom_row":  127,
+                                          "horizontal_center":  64,
+                                          "vertical_center":  79.5,
+                                          "height":  96,
+                                          "colors":  19,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  4,
+                                          "bottom_row":  127,
+                                          "horizontal_center":  63.5,
+                                          "vertical_center":  79.5,
+                                          "height":  96,
+                                          "colors":  19,
+                                          "edge_pixels":  0
+                                      }
+                                  ]
+                   },
+                   {
+                       "sheet":  "Orc_Brute_Run",
+                       "passed":  true,
+                       "errors":  [
+
+                                  ],
+                       "colors":  18,
+                       "palette_outside_pixels":  0,
+                       "nonbinary_alpha_pixels":  0,
+                       "edge_pixels":  0,
+                       "gif_delays_centiseconds":  [
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10
+                                                   ],
+                       "frames":  [
+                                      {
+                                          "frame":  1,
+                                          "bottom_row":  127,
+                                          "horizontal_center":  63,
+                                          "vertical_center":  79.5,
+                                          "height":  96,
+                                          "colors":  17,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  2,
+                                          "bottom_row":  127,
+                                          "horizontal_center":  63.5,
+                                          "vertical_center":  79.5,
+                                          "height":  96,
+                                          "colors":  18,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  3,
+                                          "bottom_row":  127,
+                                          "horizontal_center":  63,
+                                          "vertical_center":  79.5,
+                                          "height":  96,
+                                          "colors":  18,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  4,
+                                          "bottom_row":  127,
+                                          "horizontal_center":  63,
+                                          "vertical_center":  79.5,
+                                          "height":  96,
+                                          "colors":  18,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  5,
+                                          "bottom_row":  127,
+                                          "horizontal_center":  63.5,
+                                          "vertical_center":  79.5,
+                                          "height":  96,
+                                          "colors":  18,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  6,
+                                          "bottom_row":  127,
+                                          "horizontal_center":  63.5,
+                                          "vertical_center":  79.5,
+                                          "height":  96,
+                                          "colors":  17,
+                                          "edge_pixels":  0
+                                      }
+                                  ]
+                   },
+                   {
+                       "sheet":  "Orc_Brute_Hit",
+                       "passed":  true,
+                       "errors":  [
+
+                                  ],
+                       "colors":  19,
+                       "palette_outside_pixels":  0,
+                       "nonbinary_alpha_pixels":  0,
+                       "edge_pixels":  0,
+                       "gif_delays_centiseconds":  [
+                                                       10,
+                                                       10
+                                                   ],
+                       "frames":  [
+                                      {
+                                          "frame":  1,
+                                          "bottom_row":  127,
+                                          "horizontal_center":  63,
+                                          "vertical_center":  79.5,
+                                          "height":  96,
+                                          "colors":  19,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  2,
+                                          "bottom_row":  127,
+                                          "horizontal_center":  64,
+                                          "vertical_center":  79.5,
+                                          "height":  96,
+                                          "colors":  19,
+                                          "edge_pixels":  0
+                                      }
+                                  ]
+                   },
+                   {
+                       "sheet":  "Orc_Brute_Death",
+                       "passed":  true,
+                       "errors":  [
+
+                                  ],
+                       "colors":  19,
+                       "palette_outside_pixels":  0,
+                       "nonbinary_alpha_pixels":  0,
+                       "edge_pixels":  0,
+                       "gif_delays_centiseconds":  [
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10,
+                                                       10
+                                                   ],
+                       "frames":  [
+                                      {
+                                          "frame":  1,
+                                          "bottom_row":  127,
+                                          "horizontal_center":  63.5,
+                                          "vertical_center":  79.5,
+                                          "height":  96,
+                                          "colors":  18,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  2,
+                                          "bottom_row":  127,
+                                          "horizontal_center":  63.5,
+                                          "vertical_center":  85.5,
+                                          "height":  84,
+                                          "colors":  17,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  3,
+                                          "bottom_row":  127,
+                                          "horizontal_center":  64,
+                                          "vertical_center":  92.5,
+                                          "height":  70,
+                                          "colors":  18,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  4,
+                                          "bottom_row":  127,
+                                          "horizontal_center":  63.5,
+                                          "vertical_center":  100,
+                                          "height":  55,
+                                          "colors":  17,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  5,
+                                          "bottom_row":  127,
+                                          "horizontal_center":  63.5,
+                                          "vertical_center":  107.5,
+                                          "height":  40,
+                                          "colors":  17,
+                                          "edge_pixels":  0
+                                      },
+                                      {
+                                          "frame":  6,
+                                          "bottom_row":  127,
+                                          "horizontal_center":  64,
+                                          "vertical_center":  112,
+                                          "height":  31,
+                                          "colors":  19,
+                                          "edge_pixels":  0
+                                      }
+                                  ]
+                   }
+               ]
+}

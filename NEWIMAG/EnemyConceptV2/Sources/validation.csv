@@ -1,0 +1,6 @@
+name,source_width,source_height,source_bbox,cell,height,colors,alpha,bottom_row,grid_note
+Goblin_Raider,1254,1254,"{X=305,Y=154,Width=718,Height=1041}",64,48,18,0/255,63,source grid approximate; center sampled
+Imp_Flyer,1254,1254,"{X=192,Y=236,Width=896,Height=827}",64,44,19,0/255,53,source grid approximate; center sampled
+Skeleton_Archer,1254,1254,"{X=323,Y=165,Width=831,Height=1079}",96,72,16,0/255,95,source grid approximate; center sampled
+Elite_Knight,1254,1254,"{X=202,Y=165,Width=847,Height=1035}",96,84,20,0/255,95,source grid approximate; center sampled
+Orc_Brute,1254,1254,"{X=138,Y=147,Width=1049,Height=1088}",128,96,19,0/255,127,source grid approximate; center sampled

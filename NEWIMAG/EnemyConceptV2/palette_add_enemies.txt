@@ -1,0 +1,15 @@
+# Re:Trap enemy faction additions — 9 colors (maximum 10)
+# Base: NEWIMAG/palette_v2.txt (32 colors, unchanged)
+# Toxic green: shadow -> light
+#334629
+#58783B
+#88AE43
+#B8D849
+#D8EC76
+# Purple: shadow -> light
+#38284D
+#58377B
+#8050AD
+#B581D4
+# Concept outputs use a fixed subset of 11 base neutrals + these 9 additions.
+# Transparent pixels do not count toward the 20 visible-color limit.
