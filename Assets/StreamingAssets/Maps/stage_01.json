@@ -3,6 +3,7 @@
     "mapId": "stage_01",
     "displayName": "테스트 스테이지",
     "buildBudget": 100,
+    "allowedTraps": ["TrapDefinition_Spike", "TrapDefinition_ArrowShooter"],
     "width": 25,
     "height": 14,
     "tileUnit": 1.0,

@@ -3,6 +3,7 @@
     "mapId": "stage_02",
     "displayName": "",
     "buildBudget": 100,
+    "allowedTraps": ["TrapDefinition_Spike", "TrapDefinition_ArrowShooter", "TrapDefinition_DropHammer"],
     "width": 24,
     "height": 16,
     "tileUnit": 1.0,

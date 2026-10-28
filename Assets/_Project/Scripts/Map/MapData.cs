@@ -116,6 +116,21 @@ namespace ReTrap
         // ── 함정 슬롯 (오버레이) ─────────────────────────────────────────────
         public List<TrapSlotData> trapSlots = new List<TrapSlotData>();
 
+        /// <summary>허용할 함정 에셋 이름 목록. null 또는 빈 배열이면 전체 허용합니다.</summary>
+        public string[] allowedTraps;
+
+        /// <summary>함정 에셋 이름이 허용 목록에 정확히 일치하는지 판정합니다.</summary>
+        public bool IsTrapAllowed(string defName)
+        {
+            if (allowedTraps == null || allowedTraps.Length == 0) return true;
+
+            foreach (string allowedName in allowedTraps)
+                if (string.Equals(allowedName, defName, StringComparison.Ordinal))
+                    return true;
+
+            return false;
+        }
+
         // ── 팩토리 ────────────────────────────────────────────────────────────
 
         /// <summary>지정 크기의 빈(Empty) 맵을 생성합니다.</summary>

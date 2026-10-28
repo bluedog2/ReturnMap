@@ -84,6 +84,8 @@ namespace ReTrap
 
         private int            _selected;
         private Camera         _cam;
+        private MapData        _currentMap;
+        private bool           _allowedTrapsChecked;
 
         // 어드레서블에서 로드한 함정 프리팹 캐시 + 해제용 핸들
         private readonly List<GameObject> _loadedTrapPrefabs = new List<GameObject>();
@@ -253,6 +255,8 @@ namespace ReTrap
             }
 
             TrapsReady = true;
+            WarnUnknownAllowedTraps();
+            EnsureSelectionAllowed();
             RefreshGhostSprite();
             RefreshSlotHighlights();
             OnTrapsReady?.Invoke();
@@ -316,11 +320,58 @@ namespace ReTrap
         /// <summary>함정 선택. HUD 버튼 / 숫자 키 양쪽에서 사용. 철거 모드는 자동 해제.</summary>
         public void SelectTrap(int index)
         {
-            if (index < 0 || index >= _loadedTrapPrefabs.Count) return;
+            if (!IsTrapAllowed(index)) return;
             _selected     = index;
             IsRemoveMode  = false;
             RefreshGhostSprite();
             RefreshSlotHighlights();
+        }
+
+        /// <summary>로드된 함정 인덱스의 스테이지 허용 여부. 맵 로드 전에는 전체 허용합니다.</summary>
+        public bool IsTrapAllowed(int index)
+        {
+            if (index < 0 || index >= _loadedTrapDefinitions.Count) return false;
+            return _currentMap == null || _currentMap.IsTrapAllowed(_loadedTrapDefinitions[index].name);
+        }
+
+        /// <summary>잠긴 선택은 첫 허용 함정으로 보정하고, 허용 함정이 없으면 선택을 해제합니다.</summary>
+        private void EnsureSelectionAllowed()
+        {
+            if (IsTrapAllowed(_selected)) return;
+
+            _selected = -1;
+            for (int i = 0; i < _loadedTrapDefinitions.Count; i++)
+            {
+                if (!IsTrapAllowed(i)) continue;
+                _selected = i;
+                break;
+            }
+            RefreshGhostSprite();
+        }
+
+        /// <summary>맵과 함정 로드가 끝난 뒤 미존재 허용 이름을 맵당 한 번 경고합니다.</summary>
+        private void WarnUnknownAllowedTraps()
+        {
+            if (_currentMap == null || !TrapsReady || _allowedTrapsChecked) return;
+            _allowedTrapsChecked = true;
+            if (_currentMap.allowedTraps == null) return;
+
+            var unknownNames = new List<string>();
+            foreach (string allowedName in _currentMap.allowedTraps)
+            {
+                bool found = false;
+                foreach (var def in _loadedTrapDefinitions)
+                {
+                    if (!string.Equals(def.name, allowedName, StringComparison.Ordinal)) continue;
+                    found = true;
+                    break;
+                }
+                if (!found) unknownNames.Add(allowedName);
+            }
+
+            if (unknownNames.Count > 0)
+                Debug.LogWarning($"[BuildPhaseController] '{_currentMap.mapId}' allowedTraps 에 " +
+                                 $"로드된 함정이 없어 무시할 이름: {string.Join(", ", unknownNames)}");
         }
 
         /// <summary>철거 모드 토글. HUD 버튼 / X 키 양쪽에서 사용.</summary>
@@ -380,10 +431,14 @@ namespace ReTrap
 
         private void HandleMapLoaded(MapData map)
         {
+            if (_currentMap != map) _allowedTrapsChecked = false;
+            _currentMap = map;
             RemainingBudget = map.buildBudget;
             for (int i = trapRoot.childCount - 1; i >= 0; i--)
                 Destroy(trapRoot.GetChild(i).gameObject);
 
+            WarnUnknownAllowedTraps();
+            EnsureSelectionAllowed();
             // 슬롯 마커는 맵 빌드 중 먼저 등록되므로 예산 확정 후 한 번 더 갱신
             RefreshSlotHighlights();
         }
@@ -516,6 +571,7 @@ namespace ReTrap
 
             var def = SelectedDefinition();
             if (def == null)                   { reason = "선택된 함정 없음";  return false; }
+            if (!IsTrapAllowed(_selected))     { reason = "이 스테이지에서 잠긴 함정"; return false; }
             if (slot == null)                  { reason = "슬롯 아님";        return false; }
             if (!slot.IsEmpty)                 { reason = "이미 설치됨";      return false; }
 

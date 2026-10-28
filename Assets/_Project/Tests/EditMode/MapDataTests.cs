@@ -12,6 +12,31 @@ namespace ReTrap.Tests
     public class MapDataTests
     {
         [Test]
+        public void IsTrapAllowed_null이면_전체_허용()
+        {
+            var map = new MapData { allowedTraps = null };
+            Assert.IsTrue(map.IsTrapAllowed("TrapDefinition_Spike"));
+            Assert.IsTrue(map.IsTrapAllowed("TrapDefinition_DropHammer"));
+        }
+
+        [Test]
+        public void IsTrapAllowed_빈_배열이면_전체_허용()
+        {
+            var map = new MapData { allowedTraps = new string[0] };
+            Assert.IsTrue(map.IsTrapAllowed("TrapDefinition_Spike"));
+            Assert.IsTrue(map.IsTrapAllowed("TrapDefinition_DropHammer"));
+        }
+
+        [TestCase("TrapDefinition_Spike", true)]
+        [TestCase("TrapDefinition_DropHammer", false)]
+        [TestCase("trapdefinition_spike", false)]
+        public void IsTrapAllowed_목록의_이름과_대소문자가_일치해야_허용(string defName, bool expected)
+        {
+            var map = new MapData { allowedTraps = new[] { "TrapDefinition_Spike" } };
+            Assert.AreEqual(expected, map.IsTrapAllowed(defName));
+        }
+
+        [Test]
         public void JSON_왕복_후_타일_슬롯_스폰이_보존된다()
         {
             var map = MapData.CreateEmpty(6, 4);
