@@ -585,38 +585,40 @@ MonoBehaviour:
   slotMarkers:
   - anchor: 0
     markerRef:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 6ae69b85d1964f746919616aaabbae84
+      m_SubObjectName: SlotMarker_Floor
       m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       m_SubObjectGUID: 
       m_EditorAssetChanged: 0
-    tint: {r: 1, g: 0.5, b: 0, a: 0.6}
+    tint: {r: 1, g: 1, b: 1, a: 1}
   - anchor: 1
     markerRef:
-      m_AssetGUID: 
-      m_SubObjectName: 
+      m_AssetGUID: 0187a34755bd04840af4de7fc72b0504
+      m_SubObjectName: SlotMarker_Ceiling
       m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       m_SubObjectGUID: 
       m_EditorAssetChanged: 0
-    tint: {r: 1, g: 0.5, b: 0, a: 0.6}
+    tint: {r: 1, g: 1, b: 1, a: 1}
   - anchor: 2
     markerRef:
-      m_AssetGUID: 
-      m_SubObjectName: 
-      m_SubObjectType: 
+      m_AssetGUID: efc6aa5275c093248b7a0b4c677d634d
+      m_SubObjectName: SlotMarker_LeftWall
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
       m_SubObjectGUID: 
       m_EditorAssetChanged: 0
-    tint: {r: 1, g: 0.5, b: 0, a: 0.6}
+    tint: {r: 1, g: 1, b: 1, a: 1}
   - anchor: 3
     markerRef:
-      m_AssetGUID: 
-      m_SubObjectName: 
-      m_SubObjectType: 
+      m_AssetGUID: 25ae42b307c487d4ead2df93d7dac3e2
+      m_SubObjectName: SlotMarker_RightWall
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
       m_SubObjectGUID: 
       m_EditorAssetChanged: 0
-    tint: {r: 1, g: 0.5, b: 0, a: 0.6}
+    tint: {r: 1, g: 1, b: 1, a: 1}
   backgroundTiles:
   - m_AssetGUID: 0deac2f7c2cf12f48b639d687b716c84
     m_SubObjectName: 
@@ -2642,9 +2644,10 @@ MonoBehaviour:
       autoScroll: 0
       verticalFactor: 0.05
   sealRef:
-    m_AssetGUID: c007ad3e8a88f9c43b459aca9ca4bf50
-    m_SubObjectName: 
-    m_SubObjectType: 
+    m_AssetGUID: a1719a963343d884fa0dcd8ae845a755
+    m_SubObjectName: SlotSeal
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
   sealTint: {r: 1, g: 1, b: 1, a: 1}

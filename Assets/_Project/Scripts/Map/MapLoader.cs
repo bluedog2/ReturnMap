@@ -629,8 +629,8 @@ namespace ReTrap
                 if (!string.IsNullOrEmpty(_palette.TileSortingLayer))
                     sr.sortingLayerName = _palette.TileSortingLayer;
                 sr.sortingOrder = _palette.SlotSortingOrder;
-                if (_palette.SharedMaterial != null)
-                    sr.sharedMaterial = _palette.SharedMaterial;
+                // 공유 재질(내장 Sprites/Default)은 타일 아틀라스 전용 — 아틀라스 밖 마커 텍스처에 쓰면
+                // URP 2D 배칭에서 다른 텍스처로 그려진다. 마커는 기본 스프라이트 재질 유지.
             }
             else
             {
@@ -658,10 +658,12 @@ namespace ReTrap
             // 외형 우선순위: 팔레트 봉인 전용 스프라이트 → anchor 타일 스프라이트 → 색상 블록
             Sprite sealSprite;
             Color  sealColor;
+            bool   sealInAtlas = true; // 봉인 전용 스프라이트는 타일 아틀라스 밖 → 공유 재질 제외(마커와 같은 이유)
             if (_palette != null && _palette.SealSprite != null)
             {
-                sealSprite = _palette.SealSprite;
-                sealColor  = _palette.SealTint;
+                sealSprite  = _palette.SealSprite;
+                sealColor   = _palette.SealTint;
+                sealInAtlas = false;
             }
             else if (_palette != null && _palette.GetSprite(sealType) != null)
             {
@@ -677,7 +679,7 @@ namespace ReTrap
 
             marker.CreateSeal(
                 sealSprite, sealColor,
-                _palette != null ? _palette.SharedMaterial : null,
+                _palette != null && sealInAtlas ? _palette.SharedMaterial : null,
                 _palette != null ? _palette.TileSortingLayer : null,
                 _palette != null ? _palette.TileSortingOrder : 0,
                 _palette != null ? _palette.GetCollisionLayerIndex(sealType) : 0,

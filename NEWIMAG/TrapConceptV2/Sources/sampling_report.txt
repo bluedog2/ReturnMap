@@ -1,0 +1,21 @@
+Spike Normal source bounds {X=91,Y=116,Width=508,Height=489} base split y=306
+Spike Dud source bounds {X=662,Y=210,Width=514,Height=395} base split y=306
+Spike Critical source bounds {X=91,Y=660,Width=508,Height=491} base split y=850
+Spike Beneficial source bounds {X=662,Y=661,Width=514,Height=490} base split y=850
+ArrowShooter Normal body {X=31,Y=65,Width=579,Height=369} projectile {X=185,Y=459,Width=304,Height=112}
+ArrowShooter Dud body {X=658,Y=65,Width=569,Height=369} projectile {X=812,Y=459,Width=285,Height=112}
+ArrowShooter Critical body {X=31,Y=668,Width=588,Height=367} projectile {X=186,Y=1060,Width=372,Height=111}
+ArrowShooter Beneficial body {X=658,Y=668,Width=577,Height=367} projectile {X=813,Y=1060,Width=304,Height=111}
+Hammer Normal head {X=20,Y=91,Width=597,Height=515}
+Hammer Dud head {X=637,Y=91,Width=597,Height=515}
+Hammer Critical head {X=20,Y=656,Width=597,Height=524}
+Hammer Beneficial head {X=637,Y=656,Width=597,Height=513}
+GoldBlock source {X=42,Y=58,Width=389,Height=342}
+SlotMarker_Floor source {X=471,Y=57,Width=324,Height=330}
+SlotMarker_Wall source {X=879,Y=57,Width=326,Height=320}
+SlotMarker_Ceiling source {X=57,Y=466,Width=330,Height=324}
+SlotSeal source {X=460,Y=468,Width=334,Height=336}
+DropHammer_Mount_Normal source {X=844,Y=474,Width=378,Height=317}
+DropHammer_Chain_Normal source {X=154,Y=867,Width=155,Height=333}
+DropHammer_Chain_Dud source {X=550,Y=867,Width=154,Height=333}
+DropHammer_Chain_Critical source {X=946,Y=867,Width=154,Height=333}

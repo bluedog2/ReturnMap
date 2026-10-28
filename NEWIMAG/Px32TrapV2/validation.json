@@ -1,0 +1,1326 @@
+﻿{
+    "scope":  "Parts/**/*.png + Misc/*.png only. Preview and retained generation sources excluded.",
+    "file_count":  49,
+    "all_pass":  true,
+    "max_color_count":  16,
+    "failures":  [
+
+                 ],
+    "placement_checks":  {
+                             "all_spike_tips_at_row_zero":  true,
+                             "spike_rods_end_at_row_20":  true,
+                             "bases_fully_opaque":  true,
+                             "platforms_fully_opaque":  true,
+                             "heads_bottom_aligned":  true,
+                             "mounts_top_aligned":  true,
+                             "glow_within_top_16_rows":  true,
+                             "impacts_bottom_aligned":  true,
+                             "seal_fully_opaque":  true
+                         },
+    "state_silhouettes":  [
+                              {
+                                  "part":  "arrow_shooter/arrow.png",
+                                  "state_count":  4,
+                                  "identical_alpha_and_position":  true
+                              },
+                              {
+                                  "part":  "arrow_shooter/body.png",
+                                  "state_count":  4,
+                                  "identical_alpha_and_position":  true
+                              },
+                              {
+                                  "part":  "arrow_shooter/muzzle_flash.png",
+                                  "state_count":  4,
+                                  "identical_alpha_and_position":  true
+                              },
+                              {
+                                  "part":  "drop_hammer/chain.png",
+                                  "state_count":  4,
+                                  "identical_alpha_and_position":  true
+                              },
+                              {
+                                  "part":  "drop_hammer/head.png",
+                                  "state_count":  4,
+                                  "identical_alpha_and_position":  true
+                              },
+                              {
+                                  "part":  "drop_hammer/impact.png",
+                                  "state_count":  4,
+                                  "identical_alpha_and_position":  true
+                              },
+                              {
+                                  "part":  "drop_hammer/mount.png",
+                                  "state_count":  4,
+                                  "identical_alpha_and_position":  true
+                              },
+                              {
+                                  "part":  "spike/base.png",
+                                  "state_count":  4,
+                                  "identical_alpha_and_position":  true
+                              },
+                              {
+                                  "part":  "spike/glow.png",
+                                  "state_count":  4,
+                                  "identical_alpha_and_position":  true
+                              },
+                              {
+                                  "part":  "spike/platform.png",
+                                  "state_count":  4,
+                                  "identical_alpha_and_position":  true
+                              },
+                              {
+                                  "part":  "spike/spikes.png",
+                                  "state_count":  4,
+                                  "identical_alpha_and_position":  true
+                              }
+                          ],
+    "chain_checks":  [
+                         {
+                             "file":  "Parts/drop_hammer/Beneficial/chain.png",
+                             "top_has_opaque":  true,
+                             "bottom_has_opaque":  true,
+                             "rgba_seam_identical":  true,
+                             "vertical_connection":  true,
+                             "link_width":  4,
+                             "centered":  true
+                         },
+                         {
+                             "file":  "Parts/drop_hammer/Critical/chain.png",
+                             "top_has_opaque":  true,
+                             "bottom_has_opaque":  true,
+                             "rgba_seam_identical":  true,
+                             "vertical_connection":  true,
+                             "link_width":  4,
+                             "centered":  true
+                         },
+                         {
+                             "file":  "Parts/drop_hammer/Dud/chain.png",
+                             "top_has_opaque":  true,
+                             "bottom_has_opaque":  true,
+                             "rgba_seam_identical":  true,
+                             "vertical_connection":  true,
+                             "link_width":  4,
+                             "centered":  true
+                         },
+                         {
+                             "file":  "Parts/drop_hammer/Normal/chain.png",
+                             "top_has_opaque":  true,
+                             "bottom_has_opaque":  true,
+                             "rgba_seam_identical":  true,
+                             "vertical_connection":  true,
+                             "link_width":  4,
+                             "centered":  true
+                         }
+                     ],
+    "shooter_checks":  [
+                           {
+                               "state":  "Normal",
+                               "right_edge_opaque_rows":  [
+                                                              15,
+                                                              16,
+                                                              17
+                                                          ],
+                               "muzzle_mid_y":  16,
+                               "touches_right_edge":  true
+                           },
+                           {
+                               "state":  "Dud",
+                               "right_edge_opaque_rows":  [
+                                                              15,
+                                                              16,
+                                                              17
+                                                          ],
+                               "muzzle_mid_y":  16,
+                               "touches_right_edge":  true
+                           },
+                           {
+                               "state":  "Critical",
+                               "right_edge_opaque_rows":  [
+                                                              15,
+                                                              16,
+                                                              17
+                                                          ],
+                               "muzzle_mid_y":  16,
+                               "touches_right_edge":  true
+                           },
+                           {
+                               "state":  "Beneficial",
+                               "right_edge_opaque_rows":  [
+                                                              15,
+                                                              16,
+                                                              17
+                                                          ],
+                               "muzzle_mid_y":  16,
+                               "touches_right_edge":  true
+                           }
+                       ],
+    "files":  [
+                  {
+                      "file":  "Misc/SlotMarker_Ceiling.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  10,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  31,
+                      "opaque_pixels":  623,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  30,
+                      "bottom_row_opaque_pixels":  30
+                  },
+                  {
+                      "file":  "Misc/SlotMarker_Floor.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  8,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  31,
+                      "opaque_pixels":  605,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  30,
+                      "bottom_row_opaque_pixels":  17
+                  },
+                  {
+                      "file":  "Misc/SlotMarker_LeftWall.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  10,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  31,
+                      "opaque_pixels":  648,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  30,
+                      "bottom_row_opaque_pixels":  30
+                  },
+                  {
+                      "file":  "Misc/SlotMarker_RightWall.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  10,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  31,
+                      "opaque_pixels":  648,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  30,
+                      "bottom_row_opaque_pixels":  30
+                  },
+                  {
+                      "file":  "Misc/SlotSeal.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  13,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  31,
+                      "opaque_pixels":  1024,
+                      "fully_opaque":  true,
+                      "top_row_opaque_pixels":  32,
+                      "bottom_row_opaque_pixels":  32
+                  },
+                  {
+                      "file":  "Parts/arrow_shooter/Beneficial/arrow.png",
+                      "width":  16,
+                      "height":  8,
+                      "expected_size":  [
+                                            16,
+                                            8
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  6,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  1,
+                      "bottom_opaque_row":  5,
+                      "opaque_pixels":  47,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  0,
+                      "bottom_row_opaque_pixels":  0
+                  },
+                  {
+                      "file":  "Parts/arrow_shooter/Beneficial/body.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  16,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  3,
+                      "bottom_opaque_row":  26,
+                      "opaque_pixels":  426,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  0,
+                      "bottom_row_opaque_pixels":  0
+                  },
+                  {
+                      "file":  "Parts/arrow_shooter/Beneficial/muzzle_flash.png",
+                      "width":  16,
+                      "height":  16,
+                      "expected_size":  [
+                                            16,
+                                            16
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  4,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  3,
+                      "bottom_opaque_row":  12,
+                      "opaque_pixels":  41,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  0,
+                      "bottom_row_opaque_pixels":  0
+                  },
+                  {
+                      "file":  "Parts/arrow_shooter/Critical/arrow.png",
+                      "width":  16,
+                      "height":  8,
+                      "expected_size":  [
+                                            16,
+                                            8
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  8,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  1,
+                      "bottom_opaque_row":  5,
+                      "opaque_pixels":  47,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  0,
+                      "bottom_row_opaque_pixels":  0
+                  },
+                  {
+                      "file":  "Parts/arrow_shooter/Critical/body.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  16,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  3,
+                      "bottom_opaque_row":  26,
+                      "opaque_pixels":  426,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  0,
+                      "bottom_row_opaque_pixels":  0
+                  },
+                  {
+                      "file":  "Parts/arrow_shooter/Critical/muzzle_flash.png",
+                      "width":  16,
+                      "height":  16,
+                      "expected_size":  [
+                                            16,
+                                            16
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  4,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  3,
+                      "bottom_opaque_row":  12,
+                      "opaque_pixels":  41,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  0,
+                      "bottom_row_opaque_pixels":  0
+                  },
+                  {
+                      "file":  "Parts/arrow_shooter/Dud/arrow.png",
+                      "width":  16,
+                      "height":  8,
+                      "expected_size":  [
+                                            16,
+                                            8
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  6,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  1,
+                      "bottom_opaque_row":  5,
+                      "opaque_pixels":  47,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  0,
+                      "bottom_row_opaque_pixels":  0
+                  },
+                  {
+                      "file":  "Parts/arrow_shooter/Dud/body.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  8,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  3,
+                      "bottom_opaque_row":  26,
+                      "opaque_pixels":  426,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  0,
+                      "bottom_row_opaque_pixels":  0
+                  },
+                  {
+                      "file":  "Parts/arrow_shooter/Dud/muzzle_flash.png",
+                      "width":  16,
+                      "height":  16,
+                      "expected_size":  [
+                                            16,
+                                            16
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  4,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  3,
+                      "bottom_opaque_row":  12,
+                      "opaque_pixels":  41,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  0,
+                      "bottom_row_opaque_pixels":  0
+                  },
+                  {
+                      "file":  "Parts/arrow_shooter/Normal/arrow.png",
+                      "width":  16,
+                      "height":  8,
+                      "expected_size":  [
+                                            16,
+                                            8
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  6,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  1,
+                      "bottom_opaque_row":  5,
+                      "opaque_pixels":  47,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  0,
+                      "bottom_row_opaque_pixels":  0
+                  },
+                  {
+                      "file":  "Parts/arrow_shooter/Normal/body.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  16,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  3,
+                      "bottom_opaque_row":  26,
+                      "opaque_pixels":  426,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  0,
+                      "bottom_row_opaque_pixels":  0
+                  },
+                  {
+                      "file":  "Parts/arrow_shooter/Normal/muzzle_flash.png",
+                      "width":  16,
+                      "height":  16,
+                      "expected_size":  [
+                                            16,
+                                            16
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  5,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  3,
+                      "bottom_opaque_row":  12,
+                      "opaque_pixels":  41,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  0,
+                      "bottom_row_opaque_pixels":  0
+                  },
+                  {
+                      "file":  "Parts/drop_hammer/Beneficial/chain.png",
+                      "width":  8,
+                      "height":  8,
+                      "expected_size":  [
+                                            8,
+                                            8
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  3,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  7,
+                      "opaque_pixels":  24,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  2,
+                      "bottom_row_opaque_pixels":  2
+                  },
+                  {
+                      "file":  "Parts/drop_hammer/Beneficial/head.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  16,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  4,
+                      "bottom_opaque_row":  31,
+                      "opaque_pixels":  693,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  0,
+                      "bottom_row_opaque_pixels":  12
+                  },
+                  {
+                      "file":  "Parts/drop_hammer/Beneficial/impact.png",
+                      "width":  32,
+                      "height":  16,
+                      "expected_size":  [
+                                            32,
+                                            16
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  6,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  1,
+                      "bottom_opaque_row":  15,
+                      "opaque_pixels":  204,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  0,
+                      "bottom_row_opaque_pixels":  27
+                  },
+                  {
+                      "file":  "Parts/drop_hammer/Beneficial/mount.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  6,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  31,
+                      "opaque_pixels":  640,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  28,
+                      "bottom_row_opaque_pixels":  6
+                  },
+                  {
+                      "file":  "Parts/drop_hammer/Critical/chain.png",
+                      "width":  8,
+                      "height":  8,
+                      "expected_size":  [
+                                            8,
+                                            8
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  3,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  7,
+                      "opaque_pixels":  24,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  2,
+                      "bottom_row_opaque_pixels":  2
+                  },
+                  {
+                      "file":  "Parts/drop_hammer/Critical/head.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  16,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  4,
+                      "bottom_opaque_row":  31,
+                      "opaque_pixels":  693,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  0,
+                      "bottom_row_opaque_pixels":  12
+                  },
+                  {
+                      "file":  "Parts/drop_hammer/Critical/impact.png",
+                      "width":  32,
+                      "height":  16,
+                      "expected_size":  [
+                                            32,
+                                            16
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  6,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  1,
+                      "bottom_opaque_row":  15,
+                      "opaque_pixels":  204,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  0,
+                      "bottom_row_opaque_pixels":  27
+                  },
+                  {
+                      "file":  "Parts/drop_hammer/Critical/mount.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  6,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  31,
+                      "opaque_pixels":  640,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  28,
+                      "bottom_row_opaque_pixels":  6
+                  },
+                  {
+                      "file":  "Parts/drop_hammer/Dud/chain.png",
+                      "width":  8,
+                      "height":  8,
+                      "expected_size":  [
+                                            8,
+                                            8
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  3,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  7,
+                      "opaque_pixels":  24,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  2,
+                      "bottom_row_opaque_pixels":  2
+                  },
+                  {
+                      "file":  "Parts/drop_hammer/Dud/head.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  7,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  4,
+                      "bottom_opaque_row":  31,
+                      "opaque_pixels":  693,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  0,
+                      "bottom_row_opaque_pixels":  12
+                  },
+                  {
+                      "file":  "Parts/drop_hammer/Dud/impact.png",
+                      "width":  32,
+                      "height":  16,
+                      "expected_size":  [
+                                            32,
+                                            16
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  6,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  1,
+                      "bottom_opaque_row":  15,
+                      "opaque_pixels":  204,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  0,
+                      "bottom_row_opaque_pixels":  27
+                  },
+                  {
+                      "file":  "Parts/drop_hammer/Dud/mount.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  6,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  31,
+                      "opaque_pixels":  640,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  28,
+                      "bottom_row_opaque_pixels":  6
+                  },
+                  {
+                      "file":  "Parts/drop_hammer/Normal/chain.png",
+                      "width":  8,
+                      "height":  8,
+                      "expected_size":  [
+                                            8,
+                                            8
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  4,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  7,
+                      "opaque_pixels":  24,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  2,
+                      "bottom_row_opaque_pixels":  2
+                  },
+                  {
+                      "file":  "Parts/drop_hammer/Normal/head.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  16,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  4,
+                      "bottom_opaque_row":  31,
+                      "opaque_pixels":  693,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  0,
+                      "bottom_row_opaque_pixels":  12
+                  },
+                  {
+                      "file":  "Parts/drop_hammer/Normal/impact.png",
+                      "width":  32,
+                      "height":  16,
+                      "expected_size":  [
+                                            32,
+                                            16
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  6,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  1,
+                      "bottom_opaque_row":  15,
+                      "opaque_pixels":  204,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  0,
+                      "bottom_row_opaque_pixels":  27
+                  },
+                  {
+                      "file":  "Parts/drop_hammer/Normal/mount.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  16,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  31,
+                      "opaque_pixels":  640,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  28,
+                      "bottom_row_opaque_pixels":  6
+                  },
+                  {
+                      "file":  "Parts/spike/Beneficial/base.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  16,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  31,
+                      "opaque_pixels":  1024,
+                      "fully_opaque":  true,
+                      "top_row_opaque_pixels":  32,
+                      "bottom_row_opaque_pixels":  32
+                  },
+                  {
+                      "file":  "Parts/spike/Beneficial/glow.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  2,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  13,
+                      "opaque_pixels":  168,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  4,
+                      "bottom_row_opaque_pixels":  0
+                  },
+                  {
+                      "file":  "Parts/spike/Beneficial/platform.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  7,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  31,
+                      "opaque_pixels":  1024,
+                      "fully_opaque":  true,
+                      "top_row_opaque_pixels":  32,
+                      "bottom_row_opaque_pixels":  32
+                  },
+                  {
+                      "file":  "Parts/spike/Beneficial/spikes.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  7,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  20,
+                      "opaque_pixels":  513,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  5,
+                      "bottom_row_opaque_pixels":  0
+                  },
+                  {
+                      "file":  "Parts/spike/Critical/base.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  16,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  31,
+                      "opaque_pixels":  1024,
+                      "fully_opaque":  true,
+                      "top_row_opaque_pixels":  32,
+                      "bottom_row_opaque_pixels":  32
+                  },
+                  {
+                      "file":  "Parts/spike/Critical/glow.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  2,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  13,
+                      "opaque_pixels":  168,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  4,
+                      "bottom_row_opaque_pixels":  0
+                  },
+                  {
+                      "file":  "Parts/spike/Critical/platform.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  7,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  31,
+                      "opaque_pixels":  1024,
+                      "fully_opaque":  true,
+                      "top_row_opaque_pixels":  32,
+                      "bottom_row_opaque_pixels":  32
+                  },
+                  {
+                      "file":  "Parts/spike/Critical/spikes.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  10,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  20,
+                      "opaque_pixels":  513,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  5,
+                      "bottom_row_opaque_pixels":  0
+                  },
+                  {
+                      "file":  "Parts/spike/Dud/base.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  6,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  31,
+                      "opaque_pixels":  1024,
+                      "fully_opaque":  true,
+                      "top_row_opaque_pixels":  32,
+                      "bottom_row_opaque_pixels":  32
+                  },
+                  {
+                      "file":  "Parts/spike/Dud/glow.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  2,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  13,
+                      "opaque_pixels":  168,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  4,
+                      "bottom_row_opaque_pixels":  0
+                  },
+                  {
+                      "file":  "Parts/spike/Dud/platform.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  7,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  31,
+                      "opaque_pixels":  1024,
+                      "fully_opaque":  true,
+                      "top_row_opaque_pixels":  32,
+                      "bottom_row_opaque_pixels":  32
+                  },
+                  {
+                      "file":  "Parts/spike/Dud/spikes.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  5,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  20,
+                      "opaque_pixels":  513,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  5,
+                      "bottom_row_opaque_pixels":  0
+                  },
+                  {
+                      "file":  "Parts/spike/Normal/base.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  15,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  31,
+                      "opaque_pixels":  1024,
+                      "fully_opaque":  true,
+                      "top_row_opaque_pixels":  32,
+                      "bottom_row_opaque_pixels":  32
+                  },
+                  {
+                      "file":  "Parts/spike/Normal/glow.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  2,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  13,
+                      "opaque_pixels":  168,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  4,
+                      "bottom_row_opaque_pixels":  0
+                  },
+                  {
+                      "file":  "Parts/spike/Normal/platform.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  7,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  31,
+                      "opaque_pixels":  1024,
+                      "fully_opaque":  true,
+                      "top_row_opaque_pixels":  32,
+                      "bottom_row_opaque_pixels":  32
+                  },
+                  {
+                      "file":  "Parts/spike/Normal/spikes.png",
+                      "width":  32,
+                      "height":  32,
+                      "expected_size":  [
+                                            32,
+                                            32
+                                        ],
+                      "size_ok":  true,
+                      "color_count":  9,
+                      "outside_palette_color_count":  0,
+                      "forbidden_faction_color_count":  0,
+                      "pure_black_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "top_opaque_row":  0,
+                      "bottom_opaque_row":  20,
+                      "opaque_pixels":  513,
+                      "fully_opaque":  false,
+                      "top_row_opaque_pixels":  5,
+                      "bottom_row_opaque_pixels":  0
+                  }
+              ]
+}

@@ -230,6 +230,10 @@ namespace ReTrap.EditorTools
                 var glow = EnsureChildRenderer(root.transform, "Glow", 9, Vector3.zero);
                 glow.color = new Color(1f, 1f, 1f, 0.6f);
 
+                // 받침(화풍 v2): 매립 덮개(12) 위에 칸 전체 받침을 그려 함정 칸이 함정으로 보이게 한다.
+                // 칸은 그대로 솔리드 지형(슬롯=지형) — 외형만 덮는다.
+                var baseSr = EnsureChildRenderer(root.transform, "Base", 13, Vector3.zero);
+
                 var spikes = LoadStateSprites("spike", "spikes");
                 var bases  = LoadStateSprites("spike", "base");
                 var glows  = LoadStateSprites("spike", "glow");
@@ -242,12 +246,15 @@ namespace ReTrap.EditorTools
                 {
                     new BindingSpec { target = visualSr, sprites = spikes },
                     new BindingSpec { target = glow,     sprites = glows  },
+                    new BindingSpec { target = baseSr,   sprites = bases  },
                 });
 
                 // 초기(미변이) 표시도 Normal 에 맞춰 둔다
                 visualSr.sprite  = spikes[0];
                 glow.sprite      = null;
                 glow.enabled     = false;
+                baseSr.sprite    = bases[0];
+                baseSr.enabled   = bases[0] != null;
 
                 float spikeTip = MeasureSpikeTip(visual.localScale.y);
 
@@ -256,7 +263,7 @@ namespace ReTrap.EditorTools
                 {
                     var so = new SerializedObject(trap);
                     so.FindProperty("beneficialColor").colorValue = Color.white;
-                    SetObjectArray(so.FindProperty("flipWithAnchor"), new Object[] { glow });
+                    SetObjectArray(so.FindProperty("flipWithAnchor"), new Object[] { glow, baseSr });
                     if (spikeTip > 0f) so.FindProperty("spikeTipLocalY").floatValue = spikeTip;
                     SetObject(so, "beneficialBlockSprite", platformBeneficial);
                     so.ApplyModifiedPropertiesWithoutUndo();
@@ -298,8 +305,9 @@ namespace ReTrap.EditorTools
             }
 
             tipNormal = tips[0];
+            float px = 1f / PixelsPerUnit(PartPath("spike", States[0], "spikes"));
             for (int i = 1; i < tips.Length; i++)
-                if (tips[i] > 0f && Mathf.Abs(tips[i] - tipNormal) > 2f / 384f)
+                if (tips[i] > 0f && Mathf.Abs(tips[i] - tipNormal) > 2f * px)
                     Debug.LogWarning($"[TrapStateVisualSetup] {States[i]} 가시 끝 높이 {tips[i]:F3} 가 Normal {tipNormal:F3} 과 다릅니다 (2px 초과).");
 
             return tipNormal;
@@ -375,6 +383,16 @@ namespace ReTrap.EditorTools
                     var so = new SerializedObject(arrow);
                     so.FindProperty("beneficialColor").colorValue = Color.white;
                     so.ApplyModifiedPropertiesWithoutUndo();
+                }
+
+                // 32px 규격: 화살 스프라이트는 1배(픽셀 퍼펙트), 기본 외형 = Normal 화살 파츠
+                var visual = root.transform.Find("Visual");
+                var normalArrow = LoadSprite(PartPath("arrow_shooter", "Normal", "arrow"));
+                if (visual != null && normalArrow != null)
+                {
+                    visual.localScale = Vector3.one;
+                    var sr = visual.GetComponent<SpriteRenderer>();
+                    if (sr != null) sr.sprite = normalArrow;
                 }
 
                 PrefabUtility.SaveAsPrefabAsset(root, path);

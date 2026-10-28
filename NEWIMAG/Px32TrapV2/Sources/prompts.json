@@ -1,0 +1,17 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "reference": "NEWIMAG/TrapConceptV2/States_4x.png",
+  "transparent_background": true,
+  "attempts": {
+    "flash": 1,
+    "impact": 1,
+    "glow": 1,
+    "chain": 1
+  },
+  "prompts": {
+    "flash": "Create one isolated pixel-art sprite for Re:Trap: a muzzle flash, pointing RIGHT, originating at horizontal center and spreading toward right edge. Logical canvas 16x16 pixels, render as strict 32x32 blocks per logical pixel (512 square or integer upscale). Reference is approved trap design sheet, style only. Charcoal 1 logical pixel outline, 2-3 flat tones, NO dithering, no antialiasing, no text. Cream bright core and crimson red angular flame, simple small readable sprite, no weapon. transparent background. Colors #19181F #92223F #DC526B #E7D8CE #F7EEE4. Occupy roughly x=7..15,y=3..12, leave left half empty. This same silhouette will be recolored as smoke/rust/gold variants.",
+    "impact": "Re:Trap pixel art game accessory. Approved concept sheet is style reference. A single landing impact effect sprite: a horizontal burst of angular concrete dust and crimson fragments, scattered low across floor, central space open for a hammer. Logical 32x16 canvas, enlarged 32 times, simple chunky pixels. Bottom opaque pixels align at last row; transparent everywhere else. 1 logical pixel charcoal outline, flat 2-3 tone shading, no dither, no antialiasing. Cream gray concrete with crimson chips. No hammer, no floor line, no letters. Palette only #19181F #555058 #B3A1A0 #E7D8CE #F7EEE4 #92223F #DC526B. Render a single isolated asset.",
+    "glow": "Re:Trap pixel art game accessory. Approved concept sheet is style reference. A single spike heat halo sprite on logical 32x32 canvas enlarged 32 times. Only the TOP HALF (rows 0-15) contains art, bottom half entirely transparent. Thick crimson/pink contour bands around FIVE upright short spike tips positioned evenly at x=4,10,16,22,28, tallest tip row 0. The interiors of these halos must be transparent holes; do NOT draw solid spikes or a base. Crisp simple pixel bands 2 logical pixels thick. Flat 2-3 red tones, no gradient no dither no antialiasing no text. Palette only #19181F #555058 #B3A1A0 #E7D8CE #F7EEE4 #92223F #DC526B. Render a single isolated asset.",
+    "chain": "Re:Trap pixel art game accessory. Approved concept sheet is style reference. One vertically seamless steel chain tile. Logical canvas exactly 8x8, enlarged 64 times as chunky pixel blocks. Chain centered, width 4 logical pixels. A single linked vertical oval with transparent hole, outer 1px charcoal outline, cream metal highlights. First and last pixel rows must be identical, opaque central connecting neck. Transparent background, no margins top bottom, no text, no dithering, only 3 flat tones. Designed to repeat endlessly vertically in 8px segments. Palette only #19181F #555058 #B3A1A0 #E7D8CE #F7EEE4 #92223F #DC526B. Render a single isolated asset."
+  }
+}

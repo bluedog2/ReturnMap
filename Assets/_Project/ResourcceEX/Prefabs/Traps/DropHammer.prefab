@@ -4999,8 +4999,8 @@ MonoBehaviour:
   mount: {fileID: 5338773808728463977}
   chain: {fileID: 3585210810619079964}
   impact: {fileID: 5373197217844355371}
-  mountBottomOffset: -0.44010416
-  headTopOffset: 0.1171875
+  mountBottomOffset: -0.5
+  headTopOffset: 0.375
   impactDuration: 0.15
 --- !u!114 &5887115245726616103
 MonoBehaviour:
@@ -10231,7 +10231,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 0.23697917, y: 1}
+  m_Size: {x: 0.125, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

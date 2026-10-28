@@ -1,0 +1,8 @@
+# Trap-only additions, 6 colors; never added to shared palette_v2.txt
+#79502B
+#B67C32
+#E8B94F
+#FFE09A
+#845443
+#B07853
+# Gold: first 4 colors. Rust: last 2 colors. No enemy green/purple.
