@@ -33,3 +33,7 @@ MonoBehaviour:
     baseWeight: 15
   spawnInterval: 2
   breachThreshold: 3
+  timeLimitMin: 40
+  timeLimitMax: 60
+  agentCountMin: 5
+  agentCountMax: 5

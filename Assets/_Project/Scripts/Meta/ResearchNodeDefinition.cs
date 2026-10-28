@@ -22,6 +22,29 @@ namespace ReTrap
     }
 
     // ═══════════════════════════════════════════════════════════════════════════
+    //  ResearchEffect — 연구 노드가 영향을 주는 대상
+    // ═══════════════════════════════════════════════════════════════════════════
+
+    /// <summary>
+    /// 연구 노드 효과 종류. <see cref="TagWeight"/> 가 기본(기존 노드)이며, 나머지는 검증 페이즈
+    /// 규칙(<see cref="VerificationRules"/>)에 레벨별 수치(<c>weightDeltaPerLevel</c>)를 그대로 쓴다.
+    /// </summary>
+    public enum ResearchEffect
+    {
+        /// <summary>대상 태그의 등장 가중치 보정 (기존 6노드).</summary>
+        TagWeight,
+
+        /// <summary>검증 허용 돌파 수(라이프) 증가.</summary>
+        BreachLife,
+
+        /// <summary>검증 제한 시간 단축(초).</summary>
+        VerificationTime,
+
+        /// <summary>검증 투입 마릿수 감소(마리).</summary>
+        AgentCount,
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════════
     //  ResearchNodeDefinition — 연구 노드 1개의 데이터 에셋
     // ═══════════════════════════════════════════════════════════════════════════
 
@@ -49,6 +72,10 @@ namespace ReTrap
         [SerializeField, TextArea]
         [Tooltip("연구 노드 설명.")]
         private string description;
+
+        [SerializeField]
+        [Tooltip("효과 종류. TagWeight 외에는 targetTags 를 쓰지 않고 weightDeltaPerLevel 을 해당 규칙의 보정 수치로 쓴다.")]
+        private ResearchEffect effect = ResearchEffect.TagWeight;
 
         [Header("대상 태그")]
         [SerializeField]
@@ -79,6 +106,9 @@ namespace ReTrap
 
         /// <summary>연구 노드 설명.</summary>
         public string Description => description;
+
+        /// <summary>효과 종류 (기본 TagWeight).</summary>
+        public ResearchEffect Effect => effect;
 
         /// <summary>이 노드가 가중치를 보정하는 태그 목록.</summary>
         public AITagDefinition[] TargetTags => targetTags;
@@ -125,8 +155,10 @@ namespace ReTrap
         /// <summary>에셋 생성기 전용 — 런타임 호출 금지.</summary>
         internal void EditorInit(string nodeId, ResearchSchool school, string displayName,
             string description, AITagDefinition[] targetTags,
-            float[] weightDeltaPerLevel, int[] costPerLevel)
+            float[] weightDeltaPerLevel, int[] costPerLevel,
+            ResearchEffect effect = ResearchEffect.TagWeight)
         {
+            this.effect              = effect;
             this.nodeId              = nodeId;
             this.school              = school;
             this.displayName         = displayName;

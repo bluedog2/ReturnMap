@@ -410,13 +410,21 @@ namespace ReTrap.EditorTools
 
                 gpm.SetPhase(GamePhase.Verification, true);
                 float simStart = Time.time;
+                float simEnd = -1f; // 결과 대기 진입 시각 — 시뮬 시간에서 결과 확인 대기를 제외
                 bool timedOut = false;
+                var phaseCtl = FindFirstObjectByType<VerificationPhaseController>();
                 while (gpm.currentPhase == GamePhase.Verification)
                 {
                     if (Time.time - simStart > timeout) { timedOut = true; break; }
+                    // 검증이 끝나면 결과 패널에서 「계속」 확인을 기다린다 — 프로브가 공개 API 로 확인해 넘긴다.
+                    if (phaseCtl != null && phaseCtl.IsAwaitingResult)
+                    {
+                        if (simEnd < 0f) simEnd = Time.time;
+                        phaseCtl.ConfirmResult();
+                    }
                     yield return null;
                 }
-                float simSec = Time.time - simStart;
+                float simSec = (simEnd >= 0f ? simEnd : Time.time) - simStart;
                 if (timedOut)
                 {
                     gpm.SetPhase(GamePhase.Build, true);

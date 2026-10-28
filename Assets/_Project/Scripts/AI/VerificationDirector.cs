@@ -77,7 +77,20 @@ namespace ReTrap
         [Tooltip("미지정 시 위 제한 시간 필드를 폴백으로 사용 (BalanceConfig 미지정 시 폴백)")]
         private BalanceConfig balance;
 
-        private float TimeLimit => balance != null ? balance.VerificationTimeLimit : timeLimit;
+        /// <summary>
+        /// 연구 단축·스테이지 범위까지 반영해 확정된 제한 시간(초). 로스터가 확정된 뒤에야 정해지므로
+        /// 호출 시 로스터를 확정한다 (PlaytestProbe 가 리플렉션으로 읽는 이름이라 `TimeLimit` 유지).
+        /// </summary>
+        private float TimeLimit
+        {
+            get
+            {
+                StageAgentRoster roster = EnsureRoster();
+                return roster != null ? ResolveRules(roster).TimeLimit : BaseTimeLimit;
+            }
+        }
+
+        private float BaseTimeLimit => balance != null ? balance.VerificationTimeLimit : timeLimit;
 
         [Header("풀링")]
         [SerializeField, Min(1)]
@@ -100,6 +113,12 @@ namespace ReTrap
         /// <summary>직전 Run 에서 영구 사망한 개체 수 (HUD/결과 리포트용).</summary>
         public int LastKilledCount { get; private set; }
 
+        /// <summary>직전 Run 에 적용된 확정 규칙 (시간·마릿수·라이프).</summary>
+        public VerificationRuleSet LastRules { get; private set; }
+
+        /// <summary>직전 Run 의 결과 리포트 (결과 패널용). 항상 non-null.</summary>
+        public VerificationReport LastReport { get; private set; }
+
         // ── 내부 상태 ─────────────────────────────────────────────────────────
 
         // 교체 지점: 성향별로 다른 알고리즘을 쓰려면 여기서 분기/주입.
@@ -107,6 +126,7 @@ namespace ReTrap
 
         private ComponentPool<VerificationAgent> _agentPool;
         private AgentWaveController              _wave;
+        private readonly VerificationReport      _emptyReport = new VerificationReport(); // 구성 미비 시 LastReport 대체
         private StageAgentRoster                 _roster; // 스테이지 진입 시 1회 확정, 재검증에도 재사용
 
         // 연구 보정이 반영된 최종 가중치 버퍼 — 로스터 확정 시 1회 계산, 리스트 재사용
@@ -174,6 +194,9 @@ namespace ReTrap
             LastRunBreached  = false;
             LastReachedCount = 0;
             LastKilledCount  = 0;
+            LastRules        = default;
+            _emptyReport.Reset();
+            LastReport       = _emptyReport;
 
             var loader = MapLoader.Instance;
             if (loader == null || !loader.IsLoaded || agentPrefab == null)
@@ -189,14 +212,24 @@ namespace ReTrap
                 yield break;
             }
 
+            VerificationRuleSet rules = ResolveRules(roster);
+            LastRules = rules;
+
             EnsurePool(roster.Plans.Count);
             _wave ??= new AgentWaveController(_agentPool, _planner);
 
-            yield return _wave.Run(roster, TimeLimit, deathLingerTime, this);
+            yield return _wave.Run(roster, rules, deathLingerTime, this);
 
             LastRunBreached  = _wave.Breached;
             LastReachedCount = _wave.ReachedCount;
             LastKilledCount  = _wave.KilledCount;
+
+            VerificationReport report = _wave.Report;
+            report.Breached      = LastRunBreached;
+            report.Reached       = LastReachedCount;
+            report.Life          = rules.Life;
+            report.StoppedAgents = LastKilledCount;
+            LastReport           = report;
 
             if (LastRunBreached)
                 Debug.Log($"[VerificationDirector] 방어 뚫림 — 도달 {LastReachedCount}, 영구사망 {LastKilledCount}");
@@ -263,6 +296,20 @@ namespace ReTrap
             }
 
             return _roster;
+        }
+
+        /// <summary>
+        /// 기본 시간(BalanceConfig 단일 소스)·연구 보정·스테이지 범위로 이번 검증 규칙을 확정한다.
+        /// 연구 수치는 노드의 레벨별 값(라이프 +n, 시간 −n초, 마릿수 −n)을 그대로 쓴다.
+        /// </summary>
+        private VerificationRuleSet ResolveRules(StageAgentRoster roster)
+        {
+            int   lifeBonus = Mathf.RoundToInt(VerificationRules.SumEffect(researchNodes, ResearchEffect.BreachLife));
+            float timeCut   = VerificationRules.SumEffect(researchNodes, ResearchEffect.VerificationTime);
+            int   countCut  = Mathf.RoundToInt(VerificationRules.SumEffect(researchNodes, ResearchEffect.AgentCount));
+
+            return VerificationRules.Resolve(roster.Table, roster.Plans.Count, BaseTimeLimit,
+                                              lifeBonus, timeCut, countCut);
         }
 
         private void EnsurePool(int rosterTotal)

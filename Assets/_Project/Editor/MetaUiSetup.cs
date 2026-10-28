@@ -24,6 +24,8 @@ namespace ReTrap.EditorTools
     ///   <item><see cref="StageClearPanel"/> 오브젝트 생성/배선 (화면 중앙, 스테이지 클리어 시
     ///         <see cref="StageFlowController"/> 이벤트로 표시) + <see cref="StageFlowController"/>
     ///         로직 오브젝트 보장</item>
+    ///   <item><see cref="VerificationResultPanel"/> 오브젝트 생성/배선 (화면 중앙, 검증 종료 시 결과·리포트 표시) +
+    ///         <see cref="VerificationDirector"/> 의 researchNodes 자동 배선</item>
     /// </list>
     /// 이미 생성돼 있으면 참조만 재배선하므로 여러 번 실행해도 안전합니다(멱등).
     /// 씬 저장은 하지 않습니다 — 호출자가 직접 저장할 것.
@@ -90,6 +92,21 @@ namespace ReTrap.EditorTools
         private static readonly Color ClearErrorColor       = new Color(0.95f, 0.35f, 0.3f, 1f);
         private static readonly Color ClearCloseButtonColor = new Color(0.3f, 0.3f, 0.34f, 1f); // 회색 — 중립(닫기)
 
+        // 검증 결과 패널 (기준 1920x1080 CanvasScaler: 제목 64 / 본문·버튼 36)
+        private const float ResultPanelWidth    = 1200f;
+        private const float ResultPanelHeight   = 760f;
+        private const float ResultTitleHeight   = 100f;
+        private const int   ResultTitleSize     = 64;
+        private const int   ResultBodySize      = 36;
+        private const float ResultButtonWidth   = 240f;
+        private const float ResultButtonHeight  = 72f;
+        private const float ResultTabTop        = 110f;
+        private const float ResultPageTop       = 200f;
+        private const float ResultPageBottom    = 110f;
+        private const float ResultPagePadding   = 40f;
+        private static readonly Color ResultPanelBackground = new Color(0f, 0f, 0f, 0.85f);
+        private static readonly Color ResultTitleColor      = new Color(1f, 0.84f, 0f, 1f); // 금색
+
         [MenuItem("ReTrap/Setup/6. 메타 UI 세팅 (미리보기 + 연구소)", false, 6)]
         public static void Run()
         {
@@ -115,6 +132,8 @@ namespace ReTrap.EditorTools
             BuildResearchBoardPanel(uiCanvas.transform, nodes);
             BuildPhaseControlsGuide(uiCanvas.transform);
             BuildStageClearPanel(uiCanvas.transform);
+            BuildVerificationResultPanel(uiCanvas.transform);
+            WireDirectorResearchNodes(nodes);
             BuildSettingsPanel(uiCanvas.transform);   // 항상 마지막 sibling 이 되도록 맨 끝에 호출
 
             Debug.Log("[MetaUiSetup] ✅ 메타 UI 세팅 완료 (미리보기 + 연구소 + 조작 안내 + 스테이지 클리어 + 설정)");
@@ -832,9 +851,247 @@ namespace ReTrap.EditorTools
             Debug.Log("[MetaUiSetup] StageFlowController 오브젝트 생성");
         }
 
+        // ── VerificationResultPanel ──────────────────────────────────────────
+
+        /// <summary>씬의 <see cref="VerificationDirector"/> 에 연구 노드 전체를 연결한다 (미리보기 패널과 같은 목록).</summary>
+        private static void WireDirectorResearchNodes(ResearchNodeDefinition[] nodes)
+        {
+            var director = Object.FindFirstObjectByType<VerificationDirector>(FindObjectsInactive.Include);
+            if (director == null)
+            {
+                Debug.LogWarning("[MetaUiSetup] VerificationDirector 를 씬에서 찾지 못해 researchNodes 를 배선하지 못했습니다.");
+                return;
+            }
+
+            var so = new SerializedObject(director);
+            var nodesProp = so.FindProperty("researchNodes");
+            nodesProp.arraySize = nodes.Length;
+            for (int i = 0; i < nodes.Length; i++)
+                nodesProp.GetArrayElementAtIndex(i).objectReferenceValue = nodes[i];
+            so.ApplyModifiedPropertiesWithoutUndo();
+
+            EditorSceneManager.MarkSceneDirty(director.gameObject.scene);
+            Debug.Log($"[MetaUiSetup] VerificationDirector.researchNodes 배선 ({nodes.Length}개)");
+        }
+
+        /// <summary>
+        /// 검증 결과 패널(제목 + 「결과」「리포트」 탭 + 「상세」 토글 + 「계속」)을 생성/배선한다(Find-or-Create, 멱등).
+        /// 컴포넌트는 항상 활성인 루트에 붙이고 표시/숨김은 자식 "PanelContent" 로만 제어한다.
+        /// 씬 저장은 호출자가 한다.
+        /// </summary>
+        /// <param name="canvasTransform">UICanvas(Canvas 보유 오브젝트)의 Transform.</param>
+        public static void BuildVerificationResultPanel(Transform canvasTransform)
+        {
+            Transform existing = canvasTransform.Find("VerificationResultPanel");
+            bool isNew = existing == null;
+
+            GameObject rootGo;
+            if (isNew)
+            {
+                rootGo = new GameObject("VerificationResultPanel", typeof(RectTransform));
+                rootGo.transform.SetParent(canvasTransform, false);
+            }
+            else
+            {
+                rootGo = existing.gameObject;
+            }
+
+            var rootRect = (RectTransform)rootGo.transform;
+            rootRect.anchorMin = Vector2.zero;
+            rootRect.anchorMax = Vector2.one;
+            rootRect.offsetMin = Vector2.zero;
+            rootRect.offsetMax = Vector2.zero;
+
+            // ── 콘텐츠 컨테이너 (표시/숨김 대상) ───────────────────────────
+            Transform contentTf = rootGo.transform.Find("PanelContent");
+            GameObject contentGo;
+            if (contentTf == null)
+            {
+                contentGo = new GameObject("PanelContent", typeof(RectTransform), typeof(Image));
+                contentGo.transform.SetParent(rootGo.transform, false);
+            }
+            else
+            {
+                contentGo = contentTf.gameObject;
+            }
+
+            var contentRect = (RectTransform)contentGo.transform;
+            contentRect.anchorMin        = new Vector2(0.5f, 0.5f);
+            contentRect.anchorMax        = new Vector2(0.5f, 0.5f);
+            contentRect.pivot            = new Vector2(0.5f, 0.5f);
+            contentRect.anchoredPosition = Vector2.zero;
+            contentRect.sizeDelta        = new Vector2(ResultPanelWidth, ResultPanelHeight);
+            contentGo.GetComponent<Image>().color = ResultPanelBackground;
+
+            // ── 제목 ───────────────────────────────────────────────────────
+            Text titleText = FindOrCreateText(contentGo.transform, "TitleText", "방어 성공!",
+                ResultTitleSize, FontStyle.Bold, ResultTitleColor, TextAnchor.MiddleCenter);
+            var titleRect = (RectTransform)titleText.rectTransform;
+            titleRect.anchorMin = new Vector2(0f, 1f);
+            titleRect.anchorMax = new Vector2(1f, 1f);
+            titleRect.pivot     = new Vector2(0.5f, 1f);
+            titleRect.offsetMin = new Vector2(0f, -ResultTitleHeight);
+            titleRect.offsetMax = Vector2.zero;
+
+            // ── 탭 행 ──────────────────────────────────────────────────────
+            RectTransform tabRow = FindOrCreateRect(contentGo.transform, "TabRow");
+            if (tabRow.GetComponent<HorizontalLayoutGroup>() == null)
+            {
+                var hl = tabRow.gameObject.AddComponent<HorizontalLayoutGroup>();
+                hl.spacing                = 20f;
+                hl.childControlWidth      = false;
+                hl.childControlHeight     = false;
+                hl.childForceExpandWidth  = false;
+                hl.childForceExpandHeight = false;
+                hl.childAlignment         = TextAnchor.MiddleCenter;
+            }
+            tabRow.anchorMin        = new Vector2(0.5f, 1f);
+            tabRow.anchorMax        = new Vector2(0.5f, 1f);
+            tabRow.pivot            = new Vector2(0.5f, 1f);
+            tabRow.anchoredPosition = new Vector2(0f, -ResultTabTop);
+            tabRow.sizeDelta        = new Vector2(ResultPanelWidth - 80f, ResultButtonHeight);
+
+            Button resultTab = FindOrCreateResultButton(tabRow, "ResultTabButton", "결과", StartButtonColor);
+            Button reportTab = FindOrCreateResultButton(tabRow, "ReportTabButton", "리포트", PlayButtonColor);
+
+            // ── 결과 페이지 ────────────────────────────────────────────────
+            RectTransform resultPage = FindOrCreateResultPage(contentGo.transform, "ResultPage");
+            Text verdictText = FindOrCreateText(resultPage, "VerdictText", "",
+                ResultBodySize, FontStyle.Normal, TextPrimaryColor, TextAnchor.MiddleCenter);
+            var verdictRect = (RectTransform)verdictText.rectTransform;
+            verdictRect.anchorMin = Vector2.zero;
+            verdictRect.anchorMax = Vector2.one;
+            verdictRect.offsetMin = Vector2.zero;
+            verdictRect.offsetMax = Vector2.zero;
+            verdictText.horizontalOverflow = HorizontalWrapMode.Wrap;
+            verdictText.verticalOverflow   = VerticalWrapMode.Overflow;
+
+            // ── 리포트 페이지: 요약 A + 「상세」 토글 + 상세 B ───────────────
+            RectTransform reportPage = FindOrCreateResultPage(contentGo.transform, "ReportPage");
+
+            Text summaryText = FindOrCreateText(reportPage, "SummaryText", "",
+                ResultBodySize, FontStyle.Normal, TextPrimaryColor, TextAnchor.UpperLeft);
+            var summaryRect = (RectTransform)summaryText.rectTransform;
+            summaryRect.anchorMin        = new Vector2(0f, 1f);
+            summaryRect.anchorMax        = new Vector2(0f, 1f);
+            summaryRect.pivot            = new Vector2(0f, 1f);
+            summaryRect.anchoredPosition = Vector2.zero;
+            summaryRect.sizeDelta        = new Vector2(ResultPanelWidth - ResultPagePadding * 2f - ResultButtonWidth - 20f, 140f);
+            summaryText.horizontalOverflow = HorizontalWrapMode.Wrap;
+            summaryText.verticalOverflow   = VerticalWrapMode.Overflow;
+
+            Button detailButton = FindOrCreateResultButton(reportPage, "DetailButton", "상세", PlayButtonColor);
+            var detailBtnRect = (RectTransform)detailButton.transform;
+            detailBtnRect.anchorMin        = new Vector2(1f, 1f);
+            detailBtnRect.anchorMax        = new Vector2(1f, 1f);
+            detailBtnRect.pivot            = new Vector2(1f, 1f);
+            detailBtnRect.anchoredPosition = Vector2.zero;
+
+            RectTransform detailRoot = FindOrCreateRect(reportPage, "DetailRoot");
+            detailRoot.anchorMin = Vector2.zero;
+            detailRoot.anchorMax = Vector2.one;
+            detailRoot.offsetMin = Vector2.zero;
+            detailRoot.offsetMax = new Vector2(0f, -150f);
+
+            Text killsText = FindOrCreateText(detailRoot, "KillsText", "",
+                ResultBodySize, FontStyle.Normal, TextPrimaryColor, TextAnchor.UpperLeft);
+            var killsRect = (RectTransform)killsText.rectTransform;
+            killsRect.anchorMin = new Vector2(0f, 0f);
+            killsRect.anchorMax = new Vector2(0.5f, 1f);
+            killsRect.offsetMin = Vector2.zero;
+            killsRect.offsetMax = new Vector2(-10f, 0f);
+
+            Text cellsText = FindOrCreateText(detailRoot, "CellsText", "",
+                ResultBodySize, FontStyle.Normal, TextPrimaryColor, TextAnchor.UpperLeft);
+            var cellsRect = (RectTransform)cellsText.rectTransform;
+            cellsRect.anchorMin = new Vector2(0.5f, 0f);
+            cellsRect.anchorMax = new Vector2(1f, 1f);
+            cellsRect.offsetMin = new Vector2(10f, 0f);
+            cellsRect.offsetMax = Vector2.zero;
+
+            foreach (Text t in new[] { killsText, cellsText })
+            {
+                t.horizontalOverflow = HorizontalWrapMode.Wrap;
+                t.verticalOverflow   = VerticalWrapMode.Overflow;
+            }
+
+            // ── 계속 버튼 (항상 표시) ──────────────────────────────────────
+            Button continueButton = FindOrCreateResultButton(contentGo.transform, "ContinueButton", "계속", StartButtonColor);
+            var continueRect = (RectTransform)continueButton.transform;
+            continueRect.anchorMin        = new Vector2(0.5f, 0f);
+            continueRect.anchorMax        = new Vector2(0.5f, 0f);
+            continueRect.pivot            = new Vector2(0.5f, 0f);
+            continueRect.anchoredPosition = new Vector2(0f, 20f);
+
+            // ── 컴포넌트 부착 + 배선 ───────────────────────────────────────
+            var panel = rootGo.GetComponent<VerificationResultPanel>();
+            if (panel == null) panel = rootGo.AddComponent<VerificationResultPanel>();
+
+            var so = new SerializedObject(panel);
+            so.FindProperty("phaseController").objectReferenceValue =
+                Object.FindFirstObjectByType<VerificationPhaseController>(FindObjectsInactive.Include);
+            so.FindProperty("director").objectReferenceValue =
+                Object.FindFirstObjectByType<VerificationDirector>(FindObjectsInactive.Include);
+            so.FindProperty("panelRoot").objectReferenceValue        = contentGo;
+            so.FindProperty("titleText").objectReferenceValue        = titleText;
+            so.FindProperty("resultTabButton").objectReferenceValue  = resultTab;
+            so.FindProperty("reportTabButton").objectReferenceValue  = reportTab;
+            so.FindProperty("resultPage").objectReferenceValue       = resultPage.gameObject;
+            so.FindProperty("reportPage").objectReferenceValue       = reportPage.gameObject;
+            so.FindProperty("verdictText").objectReferenceValue      = verdictText;
+            so.FindProperty("summaryText").objectReferenceValue      = summaryText;
+            so.FindProperty("detailButton").objectReferenceValue     = detailButton;
+            so.FindProperty("detailRoot").objectReferenceValue       = detailRoot.gameObject;
+            so.FindProperty("killsText").objectReferenceValue        = killsText;
+            so.FindProperty("cellsText").objectReferenceValue        = cellsText;
+            so.FindProperty("continueButton").objectReferenceValue   = continueButton;
+            so.ApplyModifiedPropertiesWithoutUndo();
+
+            // 시작 상태: 패널 숨김, 「결과」 탭, 상세 접힘
+            resultPage.gameObject.SetActive(true);
+            reportPage.gameObject.SetActive(false);
+            detailRoot.gameObject.SetActive(false);
+            contentGo.SetActive(false);
+
+            EditorSceneManager.MarkSceneDirty(rootGo.scene);
+            Debug.Log(isNew
+                ? "[MetaUiSetup] VerificationResultPanel 생성 및 배선 완료"
+                : "[MetaUiSetup] VerificationResultPanel 참조 재배선 완료");
+        }
+
+        /// <summary>결과 패널 규격(240x72, 라벨 36)의 버튼.</summary>
+        private static Button FindOrCreateResultButton(Transform parent, string name, string label, Color color)
+        {
+            Button button = FindOrCreateButton(parent, name, label, ResultButtonWidth, ResultButtonHeight, color);
+            Text labelText = button.GetComponentInChildren<Text>(true);
+            if (labelText != null) labelText.fontSize = ResultBodySize;
+            return button;
+        }
+
+        /// <summary>탭 페이지 영역(제목·탭 행 아래, 계속 버튼 위)을 차지하는 컨테이너.</summary>
+        private static RectTransform FindOrCreateResultPage(Transform parent, string name)
+        {
+            RectTransform page = FindOrCreateRect(parent, name);
+            page.anchorMin = Vector2.zero;
+            page.anchorMax = Vector2.one;
+            page.offsetMin = new Vector2(ResultPagePadding, ResultPageBottom);
+            page.offsetMax = new Vector2(-ResultPagePadding, -ResultPageTop);
+            return page;
+        }
+
+        private static RectTransform FindOrCreateRect(Transform parent, string name)
+        {
+            Transform tf = parent.Find(name);
+            if (tf != null) return (RectTransform)tf;
+
+            var go = new GameObject(name, typeof(RectTransform));
+            go.transform.SetParent(parent, false);
+            return (RectTransform)go.transform;
+        }
+
         // ── SettingsPanel ────────────────────────────────────────────────────
 
-        private const float SettingsWidth        = 560f;
+        private const float SettingsWidth       = 560f;
         private const float SettingsHeight       = 380f;
         private const int   SettingsTextSize     = 20;
         private const float SettingsLabelX       = 24f;

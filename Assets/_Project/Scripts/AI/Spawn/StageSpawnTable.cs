@@ -67,6 +67,23 @@ namespace ReTrap
         [Tooltip("이 수 이상의 적이 골에 도달하면 방어 실패(뚫림). 기획 변경 가능성이 있어 데이터로 둠.")]
         private int breachThreshold = 1;
 
+        [Header("검증 규칙 범위")]
+        [SerializeField, Min(0f)]
+        [Tooltip("검증 제한 시간 하한(초). 연구 단축 후에도 이 값 아래로 내려가지 않는다.")]
+        private float timeLimitMin = 40f;
+
+        [SerializeField, Min(0f)]
+        [Tooltip("검증 제한 시간 상한(초).")]
+        private float timeLimitMax = 60f;
+
+        [SerializeField, Min(0)]
+        [Tooltip("검증 투입 마릿수 하한. 실제 로스터 총원을 넘지 않는다.")]
+        private int agentCountMin = 7;
+
+        [SerializeField, Min(0)]
+        [Tooltip("검증 투입 마릿수 상한. 실제 로스터 총원을 넘지 않는다.")]
+        private int agentCountMax = 10;
+
         // ── 공개 프로퍼티 ─────────────────────────────────────────────────────
 
         /// <summary>아키타입별 스폰 묶음 목록.</summary>
@@ -80,5 +97,17 @@ namespace ReTrap
 
         /// <summary>방어 실패(뚫림) 기준 골 도달 적 수.</summary>
         public int BreachThreshold => breachThreshold;
+
+        /// <summary>검증 제한 시간 하한(초).</summary>
+        public float TimeLimitMin => timeLimitMin;
+
+        /// <summary>검증 제한 시간 상한(초).</summary>
+        public float TimeLimitMax => timeLimitMax;
+
+        /// <summary>검증 투입 마릿수 하한.</summary>
+        public int AgentCountMin => agentCountMin;
+
+        /// <summary>검증 투입 마릿수 상한.</summary>
+        public int AgentCountMax => agentCountMax;
     }
 }

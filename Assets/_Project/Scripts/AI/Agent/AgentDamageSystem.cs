@@ -91,6 +91,8 @@ namespace ReTrap
                 return DamageResult.Immune;
 
             // 7) 피해 적용
+            //    킬 기록용 가해 함정 — TakeDamage 가 사망 시 Kill 을 동기 호출하므로 반드시 그 전에 설정.
+            health.SetDamageSource(sourceTrap);
             bool killed = health.TakeDamage(amount);
 
             // 8) 피격 훅 + 특수 플래그 후처리 — 여기 도달했다는 것 자체가 실제 피해가

@@ -21,7 +21,8 @@ namespace ReTrap.EditorTools
         private const string RESEARCH_DIR = "Assets/_Project/Settings/Meta/Research";
 
         // 기획 미정 — 전 노드 공통 placeholder. TODO: 기획 확정되면 노드별로 분리.
-        private static readonly int[] DefaultCostPerLevel = { 50, 100, 200 };
+        // 4레벨 노드(검증 단축)는 같은 배수열을 이어 400 까지 쓴다.
+        private static readonly int[] DefaultCostPerLevel = { 50, 100, 200, 400 };
 
         /// <summary>연구 노드 1종의 테이블 행.</summary>
         private struct ResearchRow
@@ -32,10 +33,13 @@ namespace ReTrap.EditorTools
             public string          description;
             public string[]        targetTagIds;
             public float[]         weightDeltaPerLevel;
+            public ResearchEffect  effect;
 
             public ResearchRow(string nodeId, ResearchSchool school, string displayName,
-                                string description, string[] targetTagIds, float[] weightDeltaPerLevel)
+                                string description, string[] targetTagIds, float[] weightDeltaPerLevel,
+                                ResearchEffect effect = ResearchEffect.TagWeight)
             {
+                this.effect               = effect;
                 this.nodeId              = nodeId;
                 this.school              = school;
                 this.displayName          = displayName;
@@ -88,6 +92,28 @@ namespace ReTrap.EditorTools
                 "뚝배기 보호 태그의 등장 가중치를 줄인다 (감소 노드).",
                 new[] { "D-03" },
                 new float[] { -15f, -30f, -50f }),
+
+            // ── 검증 페이즈 규칙 노드 (SPEC-11) — 수치는 레벨별 규칙 보정값 그대로, 대상 태그 없음 ──
+            new ResearchRow("Research_방어선보강", ResearchSchool.EarthTruth,
+                "방어선 보강",
+                "검증에서 허용되는 돌파 수(라이프)를 늘린다.",
+                new string[0],
+                new float[] { 1f, 2f },
+                ResearchEffect.BreachLife),
+
+            new ResearchRow("Research_검증단축", ResearchSchool.GeometryBreak,
+                "검증 단축",
+                "검증 제한 시간을 줄인다 (스테이지 하한까지).",
+                new string[0],
+                new float[] { 5f, 10f, 15f, 20f },
+                ResearchEffect.VerificationTime),
+
+            new ResearchRow("Research_침입차단", ResearchSchool.CapitalReverse,
+                "침입 차단",
+                "검증에 투입되는 적의 마릿수를 줄인다 (스테이지 하한까지).",
+                new string[0],
+                new float[] { 1f, 2f, 3f },
+                ResearchEffect.AgentCount),
         };
 
         // ── 메뉴 ──────────────────────────────────────────────────────────────
@@ -113,8 +139,12 @@ namespace ReTrap.EditorTools
 
                 AITagDefinition[] targets = ResolveTags(row.targetTagIds, tagsById, row.nodeId);
 
+                // 비용은 기본 수열의 앞 N개 (N = 레벨 수) — 길이가 weightDeltaPerLevel 과 같아야 한다.
+                var costs = new int[row.weightDeltaPerLevel.Length];
+                System.Array.Copy(DefaultCostPerLevel, costs, costs.Length);
+
                 node.EditorInit(row.nodeId, row.school, row.displayName, row.description,
-                                 targets, row.weightDeltaPerLevel, DefaultCostPerLevel);
+                                 targets, row.weightDeltaPerLevel, costs, row.effect);
 
                 if (isNew)
                 {
