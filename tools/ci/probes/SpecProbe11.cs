@@ -188,7 +188,10 @@ namespace ReTrap.EditorTools
                 if (GamePhaseManager.Instance == null) return;
                 _st.Push(Main());
             }
-            if (_hold && Mathf.Abs(Time.timeScale - _holdScale) > 0.01f) Time.timeScale = _holdScale; // VerificationSpeedController 가 덮어쓰면 다시 건다
+            // 검증 진행 중에만 배속을 다시 건다. 결과 대기에 들어가면(IsAwaitingResult) 재적용을 멈춰
+            // 제품(VerificationSpeedController)이 복원한 값을 그대로 관찰한다.
+            bool awaiting = _phaseCtl != null && _phaseCtl.IsAwaitingResult;
+            if (_hold && !awaiting && Mathf.Abs(Time.timeScale - _holdScale) > 0.01f) Time.timeScale = _holdScale;
 
             var top = _st.Peek();
             bool more;
@@ -256,7 +259,7 @@ namespace ReTrap.EditorTools
         }
 
         // ═══════════════ 시나리오 실행 ═══════════════
-        static IEnumerator RunScenario(Res r, Place place, int seed)
+        static IEnumerator RunScenario(Res r, Place place, int seed, int limit = int.MaxValue)
         {
             r.seed = seed;
             _hold = false; Time.timeScale = 1f;
@@ -294,7 +297,7 @@ namespace ReTrap.EditorTools
             else if (place == Place.Greedy)
             {
                 foreach (var slot in TrapSlotRegistry.All.ToList())
-                    for (int k = 0; k < _build.TrapDefinitions.Count && slot.IsEmpty; k++)
+                    for (int k = 0; k < _build.TrapDefinitions.Count && slot.IsEmpty && placed < limit; k++)
                     {
                         _build.SelectTrap(k); tryPlace.Invoke(_build, new object[] { slot.GridX, slot.GridY });
                         if (!slot.IsEmpty) placed++;
@@ -363,8 +366,11 @@ namespace ReTrap.EditorTools
         /// <summary>글자가 실제로 그려진 영역(버텍스 경계). 버텍스가 없으면 rect 로 대체.</summary>
         static Rect TextInk(Text t)
         {
-            var verts = t.cachedTextGenerator.verts;
-            int n = t.cachedTextGenerator.vertexCount;
+            // 탭 전환 직후 cachedTextGenerator 가 낡았을 수 있어 현재 텍스트·rect 로 새로 생성해 쓴다.
+            var gen = new TextGenerator();
+            gen.Populate(t.text, t.GetGenerationSettings(t.rectTransform.rect.size));
+            var verts = gen.verts;
+            int n = gen.vertexCount;
             if (verts == null || n <= 0) return ScreenRect(t.rectTransform);
             float u = 1f / Mathf.Max(0.0001f, t.pixelsPerUnit);
             Vector2 mn = new Vector2(float.MaxValue, float.MaxValue), mx = new Vector2(float.MinValue, float.MinValue);
@@ -388,8 +394,11 @@ namespace ReTrap.EditorTools
         static bool Overlap(Rect a, Rect b) => a.xMin < b.xMax - 0.5f && b.xMin < a.xMax - 0.5f && a.yMin < b.yMax - 0.5f && b.yMin < a.yMax - 0.5f;
 
         /// <summary>#2 — 현재 보이는 화면(view)의 글자 크기·화면 밖·겹침. (1080 기준 → 720p 환산 ×0.667)</summary>
-        static void MeasureLayout(string tag)
+        static IEnumerator MeasureLayout(string tag)
         {
+            // 탭 전환·표시 직후 레이아웃·메시가 갱신되도록 갱신 + 프레임 대기 후 측정
+            Canvas.ForceUpdateCanvases();
+            yield return WaitFrames(2);
             Canvas.ForceUpdateCanvases();
             var rootGo = Fld<GameObject>(_panel, "panelRoot");
             var title = Fld<Text>(_panel, "titleText");
@@ -428,7 +437,7 @@ namespace ReTrap.EditorTools
                 for (int j = i + 1; j < all.Count; j++)
                     if (Overlap(all[i].Value, all[j].Value)) overlaps.Add(all[i].Key + "×" + all[j].Key);
 
-            Check($"#2 [{tag}] 본문 글자 720p 환산 ≥24px", nTxt > 0 && minBody >= 24f - 0.01f, $"활성 글자 {nTxt}개, 제목 외 최소 {(nTxt > 0 ? minBody : 0):F2}px@720p ('{minName}')");
+            Check($"#2 [{tag}] 본문 글자 720p 환산 ≥24px", nTxt > 0 && minBody >= 24f - 0.01f, $"활성 글자 {nTxt}개, 제목 외 최소 {(nTxt > 0 ? minBody : 0):F2}px@720p ('{minName}'), 패널 activeInHierarchy={rootGo.activeInHierarchy}");
             Check($"#2 [{tag}] 화면 밖 0", outside.Count == 0 && panelIn, $"Screen {Screen.width}x{Screen.height}, 패널 {pr.width:F0}x{pr.height:F0} 화면 안={panelIn}, 밖으로 나간 요소 [{string.Join(", ", outside)}]");
             Check($"#2 [{tag}] 덮인 UI 0", overlaps.Count == 0, $"검사 {all.Count}개(버튼 {clicks.Count}+글자 {texts.Count}), 겹침 {overlaps.Count} [{string.Join(", ", overlaps)}]");
         }
@@ -446,7 +455,20 @@ namespace ReTrap.EditorTools
             int n = 0, white = 0, gold = 0, w = 0, h = 0; string note = ""; Rect expect = default;
             try
             {
-                _canvas.renderMode = RenderMode.ScreenSpaceCamera; _canvas.worldCamera = cam; _canvas.planeDistance = cam.nearClipPlane + 1f;
+                // 오버레이/ScreenSpaceCamera 는 이 환경에서 cam.Render 에 안 잡혀(SpecProbe16 도 0px) 세계 공간 캔버스로 바꿔 렌더한다.
+                // (SpecProbe9b 의 함정 게이지 월드 캔버스가 cam.Render 로 잡히는 것과 같은 경로) 캔버스 높이가 화면 높이와 같도록 배치.
+                var crt = (RectTransform)_canvas.transform;
+                Vector2 prevSize = crt.sizeDelta; Vector3 prevPos = crt.position, prevScl = crt.localScale; Quaternion prevRot = crt.rotation;
+                Vector2 cSize = crt.rect.size;
+                float dist = 10f;
+                float viewH = cam.orthographic ? cam.orthographicSize * 2f : 2f * dist * Mathf.Tan(cam.fieldOfView * 0.5f * Mathf.Deg2Rad);
+                _canvas.renderMode = RenderMode.WorldSpace; _canvas.worldCamera = cam;
+                crt.sizeDelta = cSize;
+                crt.rotation = cam.transform.rotation;
+                crt.position = cam.transform.position + cam.transform.forward * dist;
+                crt.localScale = Vector3.one * (viewH / cSize.y);
+                _canvas.overrideSorting = true; _canvas.sortingLayerName = "Map"; _canvas.sortingOrder = 1000;
+                _restoreCanvas = () => { crt.sizeDelta = prevSize; crt.position = prevPos; crt.localScale = prevScl; crt.rotation = prevRot; _canvas.overrideSorting = false; };
                 cam.cullingMask |= 1 << _canvas.gameObject.layer;
                 Texture2D on = null, off = null;
                 for (int attempt = 0; attempt < 2 && n == 0; attempt++)
@@ -457,7 +479,12 @@ namespace ReTrap.EditorTools
                     off = RenderOnce(cam, rt, req);
                     rootGo.SetActive(true);
                     Canvas.ForceUpdateCanvases();
-                    expect = ScreenRect((RectTransform)rootGo.transform);
+                    {
+                        // 패널 rect 를 RT(1920×1080) 좌표로 투영한 기대 영역
+                        var cs = new Vector3[4]; ((RectTransform)rootGo.transform).GetWorldCorners(cs);
+                        Vector3 v0 = cam.WorldToViewportPoint(cs[0]), v2 = cam.WorldToViewportPoint(cs[2]);
+                        expect = Rect.MinMaxRect(Mathf.Min(v0.x, v2.x) * W, Mathf.Min(v0.y, v2.y) * H, Mathf.Max(v0.x, v2.x) * W, Mathf.Max(v0.y, v2.y) * H);
+                    }
                     var pa = on.GetPixels(); var pb = off.GetPixels();
                     int minX = int.MaxValue, maxX = int.MinValue, minY = int.MaxValue, maxY = int.MinValue; n = 0; white = gold = 0;
                     for (int y = 0; y < H; y++)
@@ -485,6 +512,7 @@ namespace ReTrap.EditorTools
                 cam.targetTexture = prevTarget; cam.cullingMask = prevMask;
                 if (!rootGo.activeSelf) rootGo.SetActive(true);
                 _canvas.renderMode = prevMode; _canvas.worldCamera = prevCam; _canvas.planeDistance = prevDist;
+                _restoreCanvas?.Invoke(); _restoreCanvas = null;
                 Canvas.ForceUpdateCanvases();
                 rt.Release();
             }
@@ -542,24 +570,24 @@ namespace ReTrap.EditorTools
                 $"A '돌파 {aReached}/{(mB.Success ? mB.Groups[2].Value : "?")}' vs LastReachedCount {_director.LastReachedCount} (텍스트 \"{sum.Replace("\n", " / ")}\")");
             Check($"#5 [{r.tag}] 리포트 탭 A: 저지/투입 표기", mS.Success && int.Parse(mS.Groups[1].Value) == r.stopped && int.Parse(mS.Groups[2].Value) == r.spawned,
                 $"A '{(mS.Success ? mS.Value : "없음")}' vs 저지 {r.stopped} 투입 {r.spawned}");
-            MeasureLayout($"{r.tag}·리포트");
+            yield return MeasureLayout($"{r.tag}·리포트");
 
             var detailRoot = Fld<GameObject>(_panel, "detailRoot");
             bool openedBefore = detailRoot != null && detailRoot.activeSelf;
             yield return ClickButton("detailButton");
             bool opened = detailRoot != null && detailRoot.activeSelf;
             Check($"#6 [{r.tag}] 「상세」 클릭 → B 펼침(처음엔 접힘)", !openedBefore && opened, $"클릭 전 {openedBefore} → 후 {opened}");
-            MeasureLayout($"{r.tag}·상세");
+            yield return MeasureLayout($"{r.tag}·상세");
 
             var kills = ParseRows(Fld<Text>(_panel, "killsText")?.text);
             var cells = ParseRows(Fld<Text>(_panel, "cellsText")?.text);
             int kSum = kills.Sum(x => x.count), cSum = cells.Sum(x => x.count);
-            bool kRowsOk = r.deaths == 0 ? kills.Count == 0 : (kills.Count >= 1 && kills.Count <= 6 && (kills.Count <= 5 || kills[kills.Count - 1].label.StartsWith("기타")));
-            Check($"#6 [{r.tag}] B 함정별 처치 행 수 1–5(+기타)", needKills ? (kills.Count >= 1 && kRowsOk) : kRowsOk, $"행 {kills.Count}: {string.Join(" | ", kills.Select(k => k.label + " x" + k.count))}");
-            Check($"#6 [{r.tag}] B 합계 = A 처치", kSum == aKills && cSum == aKills && aKills == r.deaths,
-                $"함정별 합 {kSum}, 사망 지점 합 {cSum}, A 처치 {aKills}, 리포트 DeathEvents {r.deaths}");
-            if (needKills)
+            if (needKills) // 처치가 실제로 발생한 판에서만 B 를 판정한다(처치 0 판은 측정 대상 아님)
             {
+                bool kRowsOk = kills.Count >= 1 && kills.Count <= 6 && (kills.Count <= 5 || kills[kills.Count - 1].label.StartsWith("기타"));
+                Check($"#6 [{r.tag}] B 함정별 처치 행 수 1–5(+기타)", kRowsOk, $"행 {kills.Count}: {string.Join(" | ", kills.Select(k => k.label + " x" + k.count))}");
+                Check($"#6 [{r.tag}] B 합계 = A 처치", kSum == aKills && cSum == aKills && aKills == r.deaths,
+                    $"함정별 합 {kSum}, 사망 지점 합 {cSum}, A 처치 {aKills}, 리포트 DeathEvents {r.deaths}");
                 bool named = kills.Count >= 1 && Regex.IsMatch(kills[0].label, @"Spike|Arrow|Hammer|함정", RegexOptions.IgnoreCase) && !kills[0].label.StartsWith("기타") && kills[0].count >= 1;
                 Check($"#7 [{r.tag}] 함정 킬 기록: B 1행 라벨에 함정 이름·킬 ≥1", r.deaths >= 1 && named, kills.Count > 0 ? $"1행 '{kills[0].label}' x{kills[0].count}, 총 처치 {r.deaths}" : $"행 없음, 총 처치 {r.deaths}");
             }
@@ -625,7 +653,7 @@ namespace ReTrap.EditorTools
                 $"주입 전 timeScale {scaleBefore:F2} → 후 {Time.timeScale:F2}, phase {_gpm.currentPhase}, 대기 {_phaseCtl.IsAwaitingResult}, 키 상태 반영 관찰 {pressedSeen}");
 
             // #2 결과 화면 레이아웃·픽셀
-            MeasureLayout($"{s1.tag}·결과");
+            yield return MeasureLayout($"{s1.tag}·결과");
             if (!_shotDone) { _shotDone = true; MeasurePixels("result"); }
 
             // #5·#6(상세)·#8 일관성
@@ -638,22 +666,23 @@ namespace ReTrap.EditorTools
 
             yield return ContinueFlow(s1);
 
-            // ═══ S2: stage_01 + fixture 함정 → 킬 기록. #5 #6 #7 #8 ═══
+            // ═══ S2: stage_04 + 전 슬롯 설치(연구 없음) → 함정 처치가 실제로 발생하는 판. #5 #6 #7 #8 ═══
+            // (stage_01 함정 4개·라이프 1 은 첫 돌파로 바로 끝나 처치 0 이라 B 판정 대상이 못 된다)
             Res s2 = null;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 2; i++)
             {
-                var c = new Res { tag = $"S2 stage_01 함정(seed {1001 + i})", map = "stage_01" };
-                yield return RunScenario(c, Place.Fixture01, 1001 + i);
+                var c = new Res { tag = $"S2 stage_04 전슬롯(seed {4001 + i})", map = "stage_04" };
+                yield return RunScenario(c, Place.Greedy, 4001 + i);
                 if (!c.ok) { Abort("S2 결과 대기 실패"); yield break; }
                 s2 = c;
-                if (c.deaths >= 1) break;
+                if (c.deaths >= 1 || i == 1) break; // 마지막 판은 패널이 열린 채로 측정해야 하므로 계속하지 않는다
                 yield return ContinueFlow(c);
             }
-            Check("#18 [S2] 결과 표시 시 설정 패널 비활성", !_settings.PanelRoot.activeSelf, $"SettingsPanel active={_settings.PanelRoot.activeSelf}");
-            MeasureLayout($"{s2.tag}·결과");
+            Check("#18 [S2] 결과 표시 시 설정 패널 비활성", !_settings.PanelRoot.activeSelf && rootGo.activeSelf, $"SettingsPanel active={_settings.PanelRoot.activeSelf}, 결과 패널 active={rootGo.activeSelf}");
+            yield return MeasureLayout($"{s2.tag}·결과");
             yield return CheckReportTabs(s2, true);
             yield return ContinueFlow(s2);
-            Res stage01Base = s2;
+            Res base04 = s2;
 
             // ═══ S3: stage_03 → #14 ═══
             var s3 = new Res { tag = "S3 stage_03 무방비", map = "stage_03" };
@@ -684,48 +713,34 @@ namespace ReTrap.EditorTools
                 $"리포트 투입 {s5.spawned}, 규칙 마릿수 {s5.rCount}, 연구 없을 때 {s1.spawned}");
             yield return ContinueFlow(s5);
 
-            // ═══ S6: #16 방어선 보강 Lv1 — stage_01, 시드 반복 ═══
+            // ═══ S6: #16 방어선 보강 Lv1 — stage_04, 방어가 강한 배치(전 슬롯)에서 시작해 설치 수를 줄여 가며 ═══
+            // "1 ≤ 돌파 < 라이프" 판을 찾는다(전 슬롯은 돌파 0 이라 성립하지 않을 수 있어 설치 수를 단계적으로 줄임).
+            // 판정 기준(실패 아님 → 「계속」 후 Play)은 그대로다. 실행 시간 상한 안에서만 시도.
             if (!SetResearch(nodeLife, 1)) { Abort("방어선 보강 Lv1 설정 실패"); yield break; }
             var s6 = new List<Res>(); bool matched = false; Res firstMatch = null;
-            for (int i = 0; i < 8 && !matched; i++)
+            var tries = new (int limit, int seed)[] { (int.MaxValue, 4001), (int.MaxValue, 4002), (8, 4001), (6, 4001), (4, 4001), (3, 4001), (2, 4001), (2, 4002), (1, 4001), (1, 4002) };
+            for (int i = 0; i < tries.Length && !matched; i++)
             {
-                var c = new Res { tag = $"S6 방어선보강Lv1(seed {1001 + i})", map = "stage_01" };
-                yield return RunScenario(c, Place.Fixture01, 1001 + i);
+                if (EditorApplication.timeSinceStartup - _wallStart > 430) break;
+                var c = new Res { tag = $"S6 방어선보강Lv1(stage_04 설치≤{(tries[i].limit == int.MaxValue ? "전체" : tries[i].limit.ToString())}, seed {tries[i].seed})", map = "stage_04" };
+                yield return RunScenario(c, Place.Greedy, tries[i].seed, tries[i].limit);
                 if (!c.ok) { Abort("S6 결과 대기 실패"); yield break; }
                 s6.Add(c);
                 if (c.reached >= 1 && c.reached < c.rLife) { matched = true; firstMatch = c; }
                 if (!c.breached && !_shotDone2)
                 {
                     _shotDone2 = true;
-                    MeasureLayout($"{c.tag}·결과(성공)");
-                    yield return ClickButton("reportTabButton"); MeasureLayout($"{c.tag}·리포트(성공)"); yield return ClickButton("resultTabButton");
+                    yield return MeasureLayout($"{c.tag}·결과(성공)");
+                    yield return ClickButton("reportTabButton"); yield return MeasureLayout($"{c.tag}·리포트(성공)"); yield return ClickButton("resultTabButton");
                 }
                 yield return ContinueFlow(c);
             }
-            string s6log = string.Join("; ", s6.Select(c => $"seed{c.seed}: 돌파 {c.reached}/라이프 {c.rLife} → {(c.breached ? "실패" : "성공")}→{c.next}"));
+            string s6log = string.Join("; ", s6.Select(c => $"[{c.tag}] 돌파 {c.reached}/라이프 {c.rLife} → {(c.breached ? "실패" : "성공")}→{c.next}"));
             bool consistent = s6.All(c => c.breached == (c.reached >= c.rLife));
-            Check("#16 Lv1 라이프 = 연구 없을 때 +1", s6.Count > 0 && s6.All(c => c.rLife == stage01Base.rLife + 1), $"연구 없음 라이프 {stage01Base.rLife}, Lv1 라이프 [{string.Join(",", s6.Select(c => c.rLife))}]");
-            Check("#16 판정 = 돌파 수 ≥ 라이프 (전 판)", consistent, s6log);
+            Check("#16 Lv1 라이프 = 연구 없을 때 +1", s6.Count > 0 && s6.All(c => c.rLife == base04.rLife + 1), $"연구 없음(stage_04) 라이프 {base04.rLife}, Lv1 라이프 [{string.Join(",", s6.Select(c => c.rLife))}]");
+            Check("#16 판정 = 돌파 수 ≥ 라이프 (전 판)", s6.Count > 0 && consistent, s6log);
             Check("#16 방어선 보강 Lv1, 1마리 돌파 시 실패 아님", matched && !firstMatch.breached && firstMatch.next == GamePhase.Play,
-                matched ? $"seed {firstMatch.seed}: 돌파 {firstMatch.reached}/라이프 {firstMatch.rLife} → breached={firstMatch.breached}, 계속 후 {firstMatch.next}" : "8시드 모두 '돌파 1 ≤ n < 라이프' 판이 나오지 않아 시나리오 미성립 — " + s6log);
-
-            // ═══ 성공 자료가 없으면 stage_04 + 방어선 보강 Lv2 + 전 슬롯 설치로 자연 성공 유도 ═══
-            if (!_all.Any(a => a.ok && !a.breached))
-            {
-                if (!SetResearch(nodeLife, Mathf.Min(2, nodeLife.MaxLevel))) { Abort("방어선 보강 Lv2 설정 실패"); yield break; }
-                for (int i = 0; i < 2 && !_all.Any(a => a.ok && !a.breached); i++)
-                {
-                    var c = new Res { tag = $"S7 stage_04 성공유도(seed {4001 + i})", map = "stage_04" };
-                    yield return RunScenario(c, Place.Greedy, 4001 + i);
-                    if (!c.ok) { Abort("S7 결과 대기 실패"); yield break; }
-                    if (!c.breached)
-                    {
-                        MeasureLayout($"{c.tag}·결과(성공)");
-                        yield return ClickButton("reportTabButton"); MeasureLayout($"{c.tag}·리포트(성공)"); yield return ClickButton("resultTabButton");
-                    }
-                    yield return ContinueFlow(c);
-                }
-            }
+                matched ? $"{firstMatch.tag}: 돌파 {firstMatch.reached}/라이프 {firstMatch.rLife} → breached={firstMatch.breached}, 계속 후 {firstMatch.next}" : "'돌파 1 ≤ n < 라이프' 판이 나오지 않아 시나리오 미성립 — " + s6log);
 
             // ═══ 집계: #3 #4 ═══
             var breaches = _all.Where(a => a.ok && a.breached && a.continued).ToList();
@@ -733,11 +748,12 @@ namespace ReTrap.EditorTools
             Check("#3 실패 → 「계속」 → Build (클릭 1초 내)", breaches.Count >= 1 && breaches.All(a => a.next == GamePhase.Build && a.nextAfter >= 0f && a.nextAfter <= 1f),
                 breaches.Count == 0 ? "자연 실패 판이 나오지 않음" : $"{breaches.Count}판: " + string.Join(", ", breaches.Select(a => $"{a.tag}→{a.next}({a.nextAfter:F2}s)")));
             Check("#4 성공 → 「계속」 → Play + 플레이어 rb.simulated", successes.Count >= 1 && successes.All(a => a.next == GamePhase.Play && a.simulated),
-                successes.Count == 0 ? "자연 성공 판이 나오지 않음(S6 Lv1 시드 8개·S7 stage_04 모두 실패)" : $"{successes.Count}판: " + string.Join(", ", successes.Select(a => $"{a.tag}→{a.next} simulated={a.simulated}")));
+                successes.Count == 0 ? "자연 성공 판이 나오지 않음(S2·S6 stage_04 모두 실패)" : $"{successes.Count}판: " + string.Join(", ", successes.Select(a => $"{a.tag}→{a.next} simulated={a.simulated}")));
 
             Check("[진단] 시나리오 요약", true, string.Join(" || ", _all.Select(a => $"{a.tag}: 돌파 {a.reached}/{a.rLife} 처치 {a.deaths} 저지 {a.stopped}/{a.spawned} 시간초과 {a.timedOut} 시간한도 {a.rTime:F0}s")));
         }
         static bool _shotDone2;
+        static Action _restoreCanvas;
 
         // ═══════════════ 종료 ═══════════════
         static void Finish()
