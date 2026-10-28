@@ -588,7 +588,11 @@ namespace ReTrap.EditorTools
                 Check($"#6 [{r.tag}] B 함정별 처치 행 수 1–5(+기타)", kRowsOk, $"행 {kills.Count}: {string.Join(" | ", kills.Select(k => k.label + " x" + k.count))}");
                 Check($"#6 [{r.tag}] B 합계 = A 처치", kSum == aKills && cSum == aKills && aKills == r.deaths,
                     $"함정별 합 {kSum}, 사망 지점 합 {cSum}, A 처치 {aKills}, 리포트 DeathEvents {r.deaths}");
-                bool named = kills.Count >= 1 && Regex.IsMatch(kills[0].label, @"Spike|Arrow|Hammer|함정", RegexOptions.IgnoreCase) && !kills[0].label.StartsWith("기타") && kills[0].count >= 1;
+                // 함정 이름 = 실제 TrapDefinition 에셋들의 표시 이름 중 하나
+                var trapNames = AssetDatabase.FindAssets("t:TrapDefinition")
+                    .Select(g => AssetDatabase.LoadAssetAtPath<TrapDefinition>(AssetDatabase.GUIDToAssetPath(g)))
+                    .Where(d => d != null && !string.IsNullOrEmpty(d.DisplayName)).Select(d => d.DisplayName).Distinct().ToList();
+                bool named = kills.Count >= 1 && trapNames.Any(n => kills[0].label.Contains(n)) && !kills[0].label.StartsWith("기타") && kills[0].count >= 1;
                 Check($"#7 [{r.tag}] 함정 킬 기록: B 1행 라벨에 함정 이름·킬 ≥1", r.deaths >= 1 && named, kills.Count > 0 ? $"1행 '{kills[0].label}' x{kills[0].count}, 총 처치 {r.deaths}" : $"행 없음, 총 처치 {r.deaths}");
             }
             // #8: 시간 초과 시도는 처치(A·B)에 편입되지 않고 별도 계상 — 합계 일치 + 시간초과분이 B 에 따로 섞이지 않음
