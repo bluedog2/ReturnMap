@@ -21,6 +21,7 @@ namespace ReTrap.EditorTools
         const string Arrow       = "TrapDefinition_ArrowShooter";
         const string Hammer      = "TrapDefinition_DropHammer";
         const string Stage1      = "stage_01";
+        const string Stage2      = "stage_02";
         const string Stage3      = "stage_03";
 
         static int _step = -1;
@@ -36,6 +37,8 @@ namespace ReTrap.EditorTools
         static int _iSpike = -1, _iArrow = -1, _iHammer = -1;
         static int _prevSelected;
         static readonly List<string> _buildLogs = new List<string>();
+        static bool _directStart;
+        static string _origAuto;
 
         static readonly List<string> _results = new List<string>();
         static readonly List<string> _errors = new List<string>();
@@ -49,6 +52,19 @@ namespace ReTrap.EditorTools
             EditorSettings.enterPlayModeOptionsEnabled = true;
             EditorSettings.enterPlayModeOptions = EnterPlayModeOptions.DisableDomainReload | EnterPlayModeOptions.DisableSceneReload;
             EditorSceneManager.OpenScene(ScenePath, OpenSceneMode.Single);
+            // 진짜 '직접 시작': 씬(메모리상, 저장 안 함)의 MapLoader._autoLoadMapId 를 stage_01 로 바꾼 뒤 Play 진입.
+            // 씬 리로드를 끄므로 편집 중 상태가 그대로 Play 에 쓰인다. 배치모드 프로세스라 종료 시 원복 불필요(저장 안 함).
+            var ml = UnityEngine.Object.FindFirstObjectByType<MapLoader>();
+            if (ml != null)
+            {
+                var so = new SerializedObject(ml);
+                var p = so.FindProperty("_autoLoadMapId");
+                if (p != null)
+                {
+                    _origAuto = p.stringValue; p.stringValue = Stage1;
+                    so.ApplyModifiedPropertiesWithoutUndo(); _directStart = true;
+                }
+            }
             Application.logMessageReceived += OnLog;
             _wallStart = EditorApplication.timeSinceStartup;
             EditorApplication.update += Tick;
@@ -158,14 +174,38 @@ namespace ReTrap.EditorTools
 
                 case 1: // A9: 직접 시작 경로 — 맵 전환 없이 초기 자동 로드 상태 그대로 관찰
                     if (fr < 5) return;
-                    Check("A9 stage_01 직접 시작 → 해머만 비활성",
-                        _loader.CurrentMap.mapId == Stage1 && HammerOnlyOff(),
-                        $"맵={_loader.CurrentMap.mapId} {Counts()} 해머 버튼 interactable={_buttons[_iHammer].interactable}");
+                    if (!_directStart)
+                        _results.Add("SKIP | A9 stage_01 직접 시작 | 자동화 불가: MapLoader._autoLoadMapId 필드를 찾지 못함");
+                    else
+                        Check("A9 stage_01 직접 시작(_autoLoadMapId=stage_01 로 Play 진입) → 해머만 비활성",
+                            _loader.CurrentMap.mapId == Stage1 && HammerOnlyOff(),
+                            $"맵={_loader.CurrentMap.mapId} (원래 씬 값 {_origAuto}) {Counts()} 해머 버튼 interactable={_buttons[_iHammer].interactable}");
                     Next(); return;
 
-                case 2: // A3, A5, A6 (stage_01)
+                case 2: // 다른 맵으로 전환 후 stage_01 로 되돌아와 A3·A5·A6 측정 (초기 맵 비의존)
+                    _loader.LoadMap(Stage2); _step = 19; Next(); return;
+
+                case 20:
+                    if (!MapReady(Stage2))
+                    {
+                        if (tr > 40f) { Check("stage_02 로드", false, $"현재맵 {_loader.CurrentMap?.mapId}"); Finish(); }
+                        return;
+                    }
+                    _loader.LoadMap(Stage1); Next(); return;
+
+                case 21:
+                    if (!MapReady(Stage1))
+                    {
+                        if (tr > 40f) { Check("stage_01 로드", false, $"현재맵 {_loader.CurrentMap?.mapId}"); Finish(); }
+                        return;
+                    }
+                    TrapMutationManager.Instance.RollNewSeed();
+                    gpm.SetPhase(GamePhase.Build, true);
+                    _step = 22; _stepFrame = Time.frameCount; _stepStartReal = Time.unscaledTime; return;
+
+                case 22: // A3, A5, A6 (stage_01)
                 {
-                    if (fr < 5) return;
+                    if (fr < 10) return;
                     Check("A3 stage_01 Build HUD → 해머만 비활성", HammerOnlyOff(),
                         $"{Counts()} (해머 인덱스 {_iHammer} interactable={_buttons[_iHammer].interactable})");
 
@@ -196,7 +236,7 @@ namespace ReTrap.EditorTools
                             $"강제 방식: 리플렉션으로 BuildPhaseController._selected={_iHammer}(해머) 설정 후 TryPlace({slot.GridX},{slot.GridY}, anchor={slot.Anchor}) 호출 / 슬롯 IsEmpty={slot.IsEmpty} / 로그: {(_buildLogs.Count > 0 ? string.Join(" | ", _buildLogs) : "(없음)")}");
                         _build.SelectTrap(_iSpike); // 복구
                     }
-                    Next(); return;
+                    _step = 2; Next(); return; // → case 3
                 }
 
                 case 3:
@@ -265,7 +305,7 @@ namespace ReTrap.EditorTools
             EditorApplication.update -= Tick;
             Time.timeScale = 1f;
             Check("콘솔 오류 0개 (무해 목록 제외)", _errors.Count == 0, $"{_errors.Count}개");
-            int total = _results.Count, pass = total - _fail;
+            int total = _results.Count(r => !r.StartsWith("SKIP")), pass = total - _fail; // SKIP 은 집계 제외
             var sb = new StringBuilder();
             sb.AppendLine($"RESULT: {(_fail == 0 ? "PASS" : "FAIL")} (fail {_fail} / total {total})");
             sb.AppendLine($"PASS {pass}/{total}");
