@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace ReTrap.EditorTools
@@ -24,6 +25,7 @@ namespace ReTrap.EditorTools
     ///   <item>슬롯이 솔리드 타일과 같은 칸에 겹침 (지형 중복)</item>
     ///   <item>스폰 → 골 연결성 없음 (빈 칸 기준 — 근사 검사)</item>
     ///   <item>통행 높이 2칸 미만인 바닥 칸 (주인공 콜라이더 1.875칸)</item>
+    ///   <item>허용 함정 이름 미존재·중복 및 슬롯 앵커별 호환 함정 부재</item>
     /// </list>
     /// </summary>
     public static class MapAuthoringValidator
@@ -45,6 +47,7 @@ namespace ReTrap.EditorTools
             CheckSlotBuried(map, warnings);
             CheckReachability(map, slotCells, warnings);
             CheckHeadroom(map, slotCells, warnings);
+            CheckAllowedTraps(map, warnings);
 
             return warnings;
         }
@@ -187,6 +190,49 @@ namespace ReTrap.EditorTools
             if (low.Count > 0)
                 w.Add($"통행 높이 {MinHeadroom}칸 미만인 바닥 칸 {low.Count}개 — 주인공(키 1.875칸)이 서서 지나갈 수 없습니다: " +
                       string.Join(" ", low.GetRange(0, System.Math.Min(8, low.Count))) + (low.Count > 8 ? " …" : ""));
+        }
+
+        // ── 7. 허용 함정 ─────────────────────────────────────────────────────
+
+        /// <summary>허용 이름의 유효성과 맵에 있는 앵커별 설치 가능한 함정을 검사합니다.</summary>
+        private static void CheckAllowedTraps(MapData map, List<string> w)
+        {
+            var definitions = new List<TrapDefinition>();
+            var names = new HashSet<string>(System.StringComparer.Ordinal);
+            foreach (string guid in AssetDatabase.FindAssets("t:TrapDefinition"))
+            {
+                var def = AssetDatabase.LoadAssetAtPath<TrapDefinition>(AssetDatabase.GUIDToAssetPath(guid));
+                if (def == null) continue;
+                definitions.Add(def);
+                names.Add(def.name);
+            }
+
+            if (map.allowedTraps != null)
+            {
+                var seen = new HashSet<string>(System.StringComparer.Ordinal);
+                foreach (string name in map.allowedTraps)
+                {
+                    if (!names.Contains(name))
+                        w.Add($"allowedTraps 에 미존재 함정 이름: '{name}'");
+                    if (!seen.Add(name))
+                        w.Add($"allowedTraps 에 중복 함정 이름: '{name}'");
+                }
+            }
+
+            var anchors = new HashSet<TrapAnchor>();
+            foreach (var slot in map.trapSlots)
+            {
+                if (!anchors.Add(slot.Anchor)) continue;
+                bool compatible = false;
+                foreach (var def in definitions)
+                {
+                    if (!map.IsTrapAllowed(def.name) || !def.IsCompatibleWith(slot.Anchor)) continue;
+                    compatible = true;
+                    break;
+                }
+                if (!compatible)
+                    w.Add($"{slot.Anchor} 슬롯과 호환되는 허용 함정이 없습니다");
+            }
         }
 
         // ── 유틸 ─────────────────────────────────────────────────────────────

@@ -36,6 +36,10 @@ namespace ReTrap
 
         private BuildPhaseController _ctrl;
         private readonly List<Image> _buttonFrames = new List<Image>();
+        private readonly List<Button> _trapButtons = new List<Button>();
+        private readonly List<Image> _trapIcons = new List<Image>();
+        private readonly List<Color> _trapIconColors = new List<Color>();
+        private readonly List<Text> _trapCosts = new List<Text>();
         private Image                _removeFrame;   // 철거 모드 버튼 프레임
 
         // 핫바 슬롯 룩
@@ -46,6 +50,9 @@ namespace ReTrap
         private static readonly Color FrameUnselected = new Color(0.32f, 0.33f, 0.40f, 1f); // 평소 = 회색 테두리
         private static readonly Color FrameRemove     = new Color(1f, 0.3f, 0.3f, 1f);      // 철거 = 빨간 테두리
         private static readonly Color SlotBackground  = new Color(0.09f, 0.09f, 0.12f, 0.95f);
+        private static readonly Color LockedIcon      = new Color(0.5f, 0.5f, 0.5f, 0.4f);
+        private static readonly Color TrapCostColor   = new Color(1f, 0.9f, 0.4f);
+        private static readonly Color LockedCostColor = new Color(1f, 0.9f, 0.4f, 0.35f);
 
         // ── Unity ─────────────────────────────────────────────────────────────
 
@@ -98,8 +105,14 @@ namespace ReTrap
 
             // 선택 하이라이트 — 철거 모드 중엔 함정 선택 강조 해제
             for (int i = 0; i < _buttonFrames.Count; i++)
+            {
+                bool allowed = _ctrl.IsTrapAllowed(i);
+                _trapButtons[i].interactable = allowed;
+                _trapIcons[i].color = allowed ? _trapIconColors[i] : LockedIcon;
+                _trapCosts[i].color = allowed ? TrapCostColor : LockedCostColor;
                 _buttonFrames[i].color =
                     (!_ctrl.IsRemoveMode && i == _ctrl.SelectedIndex) ? FrameSelected : FrameUnselected;
+            }
 
             // 철거 모드 버튼 하이라이트
             if (_removeFrame != null)
@@ -222,12 +235,15 @@ namespace ReTrap
 
                 var slot = CreateSlot($"TrapSlot_{prefab.name}", keyLabel, out var frame);
                 _buttonFrames.Add(frame);
-                slot.GetComponent<Button>().onClick.AddListener(() => _ctrl.SelectTrap(index));
+                var button = slot.GetComponent<Button>();
+                _trapButtons.Add(button);
+                button.onClick.AddListener(() => _ctrl.SelectTrap(index));
 
-                AddSpriteIcon(slot.transform, iconSprite, iconColor);
+                _trapIcons.Add(AddSpriteIcon(slot.transform, iconSprite, iconColor));
+                _trapIconColors.Add(iconColor);
 
                 int cost = def != null ? def.BaseCost : (trap != null ? trap.BaseCost : 0);
-                AddCornerCost(slot.transform, cost.ToString(), new Color(1f, 0.9f, 0.4f));
+                _trapCosts.Add(AddCornerCost(slot.transform, cost.ToString(), TrapCostColor));
             }
 
             BuildRemoveModeButton();
@@ -329,7 +345,7 @@ namespace ReTrap
         }
 
         /// <summary>슬롯 중앙에 스프라이트 아이콘을 채웁니다.</summary>
-        private static void AddSpriteIcon(Transform slot, Sprite sprite, Color tint)
+        private static Image AddSpriteIcon(Transform slot, Sprite sprite, Color tint)
         {
             var iconGo = new GameObject("Icon", typeof(RectTransform), typeof(Image));
             iconGo.transform.SetParent(slot, false);
@@ -340,6 +356,7 @@ namespace ReTrap
             icon.color          = tint;
             icon.preserveAspect = true;
             icon.raycastTarget  = false;
+            return icon;
         }
 
         /// <summary>슬롯 중앙에 텍스트 아이콘(✕ 등)을 채웁니다.</summary>
@@ -360,7 +377,7 @@ namespace ReTrap
         }
 
         /// <summary>슬롯 우하단 코스트(또는 라벨) 표시.</summary>
-        private static void AddCornerCost(Transform slot, string text, Color color)
+        private static Text AddCornerCost(Transform slot, string text, Color color)
         {
             var costGo = new GameObject("Cost", typeof(RectTransform), typeof(Text));
             costGo.transform.SetParent(slot, false);
@@ -379,6 +396,7 @@ namespace ReTrap
             cost.alignment     = TextAnchor.LowerRight;
             cost.color         = color;
             cost.raycastTarget = false;
+            return cost;
         }
 
         /// <summary>부모를 꽉 채우되 percent 만큼 사방 여백을 둔 RectTransform 설정.</summary>

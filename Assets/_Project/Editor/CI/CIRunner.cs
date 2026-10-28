@@ -208,6 +208,13 @@ namespace ReTrap.EditorTools
                 return;
             }
 
+            var trapNames = new HashSet<string>(StringComparer.Ordinal);
+            foreach (string guid in AssetDatabase.FindAssets("t:TrapDefinition"))
+            {
+                var def = AssetDatabase.LoadAssetAtPath<TrapDefinition>(AssetDatabase.GUIDToAssetPath(guid));
+                if (def != null) trapNames.Add(def.name);
+            }
+
             foreach (string path in files)
             {
                 string file = Path.GetFileName(path);
@@ -228,6 +235,11 @@ namespace ReTrap.EditorTools
 
                 if (!map.Validate(out string err))
                     c.errors.Add($"{file}: {err}");
+
+                if (map.allowedTraps != null)
+                    foreach (string name in map.allowedTraps)
+                        if (!trapNames.Contains(name))
+                            c.errors.Add($"{file}: allowedTraps 에 미존재 함정 이름: '{name}'");
 
                 List<string> msgs = MapAuthoringValidator.Validate(map);
                 if (msgs != null)
