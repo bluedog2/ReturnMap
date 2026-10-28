@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -46,6 +47,13 @@ namespace ReTrap
         // ── 내부 상태 ─────────────────────────────────────────────────────────
 
         private Coroutine _routine;
+        private bool      _resultConfirmed;
+
+        /// <summary>검증은 끝났고 결과 패널에서 「계속」 확인을 기다리는 중인가.</summary>
+        public bool IsAwaitingResult { get; private set; }
+
+        /// <summary>결과 대기에 들어갈 때 발행 — 결과 패널이 구독해 표시한다 (판정은 director 의 LastReport/LastRunBreached).</summary>
+        public static event Action OnResultPresented;
 
         // ── Unity ─────────────────────────────────────────────────────────────
 
@@ -57,7 +65,11 @@ namespace ReTrap
         }
 
         private void OnEnable()  => GamePhaseManager.OnPhaseChanged += HandlePhaseChanged;
-        private void OnDisable() => GamePhaseManager.OnPhaseChanged -= HandlePhaseChanged;
+        private void OnDisable()
+        {
+            GamePhaseManager.OnPhaseChanged -= HandlePhaseChanged;
+            IsAwaitingResult = false;
+        }
 
         // ── 페이즈 연동 ───────────────────────────────────────────────────────
 
@@ -72,6 +84,7 @@ namespace ReTrap
                 _routine = null;
                 director?.Cancel();
             }
+            IsAwaitingResult = false; // 결과 대기 중 강제 전환 시 대기 해제
 
             if (phase == GamePhase.Verification)
                 _routine = StartCoroutine(RunVerification());
@@ -89,21 +102,8 @@ namespace ReTrap
             {
                 yield return director.Run();
 
-                if (director.LastRunBreached)
-                {
-                    ReportFailure();
-                    yield break;
-                }
-
-                // 방어 성공 연출 — 배너를 띄우고 잠깐 머문 뒤 Play 로 (배너 페이드 아웃은 카메라 글라이드와 겹침)
-                if (successHoldTime > 0f && resultBanner != null)
-                {
-                    resultBanner.Show(successMessage, successHoldTime);
-                    // 배너·카메라 글라이드와 같은 unscaledDeltaTime 누적 — 배속과 무관하고, 녹화(captureDeltaTime 고정)
-                    // 중에도 영상 시간 기준으로 흐른다 (WaitForSecondsRealtime 은 벽시계라 녹화 영상에서 순식간에 지나감)
-                    for (float t = 0f; t < successHoldTime; t += Time.unscaledDeltaTime) yield return null;
-                }
-                ReportSuccess();
+                // 결과 패널에서 「계속」 을 누를 때까지 대기한 뒤 판정대로 전환
+                yield return AwaitResult(director.LastRunBreached);
             }
             else
             {
@@ -113,7 +113,40 @@ namespace ReTrap
             }
         }
 
+        /// <summary>
+        /// 결과 표시 후 <see cref="ConfirmResult"/> 가 불릴 때까지 대기하고, 확인되면 판정대로
+        /// 실패(Build) / 성공(Play) 전환을 한다. 검증 페이즈가 중간에 바뀌면
+        /// <see cref="HandlePhaseChanged"/> 가 코루틴을 중단해 이 대기는 자연히 해제된다.
+        /// </summary>
+        private IEnumerator AwaitResult(bool breached)
+        {
+            _resultConfirmed = false;
+
+            // 결과 패널이 씬에 없으면(미배선) 「계속」 을 누를 곳이 없어 영영 멈추므로 대기 없이 바로 전환한다.
+            if (FindFirstObjectByType<VerificationResultPanel>() == null)
+            {
+                Debug.LogWarning("[VerificationPhaseController] VerificationResultPanel 미배선 — 결과 대기 없이 전환합니다. " +
+                                 "ReTrap/Setup/6. 메타 UI 세팅을 실행하세요.");
+                _resultConfirmed = true;
+            }
+
+            IsAwaitingResult = true;
+            OnResultPresented?.Invoke();
+
+            while (!_resultConfirmed) yield return null;
+
+            IsAwaitingResult = false;
+            if (breached) ReportFailure();
+            else          ReportSuccess();
+        }
+
         // ── 공개 API ──────────────────────────────────────────────────────────
+
+        /// <summary>결과 패널의 「계속」 확인 — 결과 대기 중일 때만 유효. 판정대로 페이즈를 전환한다.</summary>
+        public void ConfirmResult()
+        {
+            if (IsAwaitingResult) _resultConfirmed = true;
+        }
 
         /// <summary>방어 성공(AI 저지/시간 초과) — Play 페이즈로 진행.</summary>
         public void ReportSuccess()

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a18dafe7ae32c4daa4a92a402cf5fa, type: 3}
+  m_Name: Research_침입차단
+  m_EditorClassIdentifier: Assembly-CSharp::ReTrap.ResearchNodeDefinition
+  nodeId: Research_침입차단
+  school: 2
+  displayName: "침입 차단"
+  description: "검증에 투입되는 적의 마릿수를 줄인다 (스테이지 하한까지)."
+  effect: 3
+  targetTags: []
+  weightDeltaPerLevel:
+  - 1
+  - 2
+  - 3
+  costPerLevel: 3200000064000000c8000000

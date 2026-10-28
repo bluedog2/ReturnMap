@@ -199,6 +199,13 @@ namespace ReTrap
             float delta = node.GetDelta(previewLevel);
             string sign = delta > 0f ? "+" : string.Empty;
 
+            switch (node.Effect)
+            {
+                case ResearchEffect.BreachLife:        return $"허용 돌파 +{delta:0.#}";
+                case ResearchEffect.VerificationTime:  return $"검증 시간 -{delta:0.#}초";
+                case ResearchEffect.AgentCount:        return $"투입 마릿수 -{delta:0.#}";
+            }
+
             return $"{TagListText(node.TargetTags)} 가중치 {sign}{delta:0.#}";
         }
 

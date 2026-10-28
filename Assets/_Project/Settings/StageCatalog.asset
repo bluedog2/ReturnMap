@@ -17,11 +17,11 @@ MonoBehaviour:
     displayName: "\uD14C\uC2A4\uD2B8 \uC2A4\uD14C\uC774\uC9C0"
     spawnTable: {fileID: 11400000, guid: 9e6ccb5abc6dded4e876be62f935721d, type: 2}
   - mapId: stage_02
-    displayName: 
-    spawnTable: {fileID: 0}
+    displayName:
+    spawnTable: {fileID: 11400000, guid: 7984726fb1f3f484cbfe19c03d9a65e4, type: 2}
   - mapId: stage_03
     displayName: "\uCC55\uD1301 - \uC678\uACFD \uC131\uBCBD"
-    spawnTable: {fileID: 0}
+    spawnTable: {fileID: 11400000, guid: f232766ec71983046ae91fce9c1c09df, type: 2}
   - mapId: stage_04
     displayName: "챕터1 - 함정 회랑"
     spawnTable: {fileID: 11400000, guid: d72cd73f99e7424abc5042688bc09f1b, type: 2}

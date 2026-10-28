@@ -84,19 +84,26 @@ namespace ReTrap
         /// <summary>현재 진행 중인(스폰되어 아직 결판나지 않은) 개체 수 — HUD 용.</summary>
         public int AliveCount { get; private set; }
 
+        /// <summary>직전 Run 의 함정별 처치·사망 지점 집계 (Run 시작 시 초기화). 돌파/저지 수는 소유자가 채운다.</summary>
+        public VerificationReport Report { get; } = new VerificationReport();
+
         // ── 실행 ──────────────────────────────────────────────────────────────
 
         /// <summary>
         /// 웨이브 1회 실행. 로스터의 모든 개체가 결판나거나(도달/영구사망), 방어 실패가
         /// 확정되거나, 제한 시간이 지날 때까지 대기합니다. 종료 후 결과 프로퍼티를 읽습니다.
+        /// <para>투입 개체는 로스터 앞에서부터 <see cref="VerificationRuleSet.AgentCount"/> 명(뒤쪽부터 감소),
+        /// 방어 실패 기준은 <see cref="VerificationRuleSet.Life"/>, 제한 시간은 <see cref="VerificationRuleSet.TimeLimit"/>.</para>
         /// </summary>
-        public IEnumerator Run(StageAgentRoster roster, float timeLimit, float deathLingerTime,
+        public IEnumerator Run(StageAgentRoster roster, VerificationRuleSet rules, float deathLingerTime,
                                MonoBehaviour coroutineHost)
         {
+            float timeLimit = rules.TimeLimit;
             Breached      = false;
             ReachedCount  = 0;
             KilledCount   = 0;
             AliveCount    = 0;
+            Report.Reset();
             _runners.Clear();
             _coroutineHost = coroutineHost;
 
@@ -111,11 +118,13 @@ namespace ReTrap
             Vector2 origin = loader.MapOrigin;
 
             // Table 이 null 인 폴백 로스터(BuildSingle)는 합리적 기본값을 쓴다.
-            int   breachThreshold = roster.Table != null ? roster.Table.BreachThreshold : 1;
+            int   breachThreshold = rules.Life;
             float spawnInterval   = roster.Table != null ? roster.Table.SpawnInterval : 1.5f;
 
-            for (int i = 0; i < roster.Plans.Count; i++)
+            int runnerCount = Mathf.Clamp(rules.AgentCount, 0, roster.Plans.Count);
+            for (int i = 0; i < runnerCount; i++)
                 _runners.Add(new AgentRunner(roster.Plans[i], map.width));
+            Report.Spawned = runnerCount;
 
             float deadline      = Time.time + timeLimit;
             int   nextSpawn     = 0;
@@ -248,10 +257,18 @@ namespace ReTrap
                 // Cancel 로 외부 중단된 경우 — 회수는 Cancel 쪽이 이미 처리했으므로 종료만
                 if (runner.ActiveAgent == null) yield break;
 
-                if (!runner.ActiveAgent.IsDone) runner.ActiveAgent.Kill(); // 시간 초과
+                // 시간 초과 여부는 Kill 전에 캡처 — 데드라인 프레임에 함정 사망과 겹쳐도 IsDone 으로만 판정
+                bool timedOut = !runner.ActiveAgent.IsDone;
+                if (timedOut) runner.ActiveAgent.Kill(); // 시간 초과
 
                 bool      reached   = runner.ActiveAgent.ReachedGoal;
                 GridCoord deathCell = runner.ActiveAgent.CurrentCell;
+
+                // 킬 기록 — 도달·시간 초과는 처치가 아니다. 가해 함정은 풀 반납(리셋) 전에 읽는다.
+                if (!reached && !timedOut)
+                    Report.TryRecordDeath(false, false, BuildTrapLabel(runner.ActiveAgent, map, origin), deathCell.ToString());
+                else
+                    Report.TryRecordDeath(reached, timedOut, null, null);
 
                 // 사망 애니메이션이 보이도록 잠시 유지 후 회수 (Cancel 시 즉시 회수됨)
                 if (!reached && deathLingerTime > 0f)
@@ -280,6 +297,25 @@ namespace ReTrap
             // 시도 소진 또는 시간 초과 — 영구 사망
             runner.State = RunnerState.Dead;
             KilledCount++;
+        }
+
+        /// <summary>사망 개체의 가해 함정 라벨 "{함정 이름} ({x},{y})". 가해 함정을 모르면 "기타(미상)".</summary>
+        private static string BuildTrapLabel(VerificationAgent agent, MapData map, Vector2 origin)
+        {
+            TrapBase trap = null;
+            if (agent.TryGetComponent<AgentContext>(out var ctx) && ctx.Health != null)
+                trap = ctx.Health.LastDamageSource;
+            if (trap == null) return "기타(미상)";
+
+            string name = trap.Definition != null && !string.IsNullOrEmpty(trap.Definition.DisplayName)
+                ? trap.Definition.DisplayName
+                : trap.name;
+
+            float   unit = Mathf.Max(0.0001f, map.tileUnit);
+            Vector2 pos  = trap.transform.position;
+            int cx = Mathf.FloorToInt((pos.x - origin.x) / unit);
+            int cy = Mathf.FloorToInt((pos.y - origin.y) / unit);
+            return $"{name} ({cx},{cy})";
         }
 
         private void ReleaseRunnerAgent(AgentRunner runner)

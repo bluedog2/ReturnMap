@@ -40,6 +40,16 @@ namespace ReTrap
         /// <summary>피격 시 발행. (남은 HP, 받은 피해) — 사망 시엔 발행하지 않는다(사망 훅 → Kill() 흐름 유지).</summary>
         public event Action<int, int> OnDamageTaken;
 
+        /// <summary>
+        /// 직전에 피해를 가한 함정 (검증 리포트의 킬 기록용). 스폰·리셋 시 null.
+        /// <see cref="AgentDamageSystem"/> 이 <see cref="TakeDamage"/> 직전에 설정한다 —
+        /// 사망 훅이 TakeDamage 안에서 동기로 Kill 을 부르므로 반드시 그 전이어야 한다.
+        /// </summary>
+        public TrapBase LastDamageSource { get; private set; }
+
+        /// <summary>피해를 가한 함정을 기록한다 (null 허용).</summary>
+        public void SetDamageSource(TrapBase source) => LastDamageSource = source;
+
         private float _invulnerableUntil;
 
         // GetComponent 캐시 (사망 시점에 매번 조회하지 않도록)
@@ -59,6 +69,7 @@ namespace ReTrap
             Shield             = 0;
             IsDead             = false;
             _invulnerableUntil = 0f;
+            LastDamageSource   = null;
         }
 
         /// <summary>쉴드를 부여합니다 (기사단 태그 등 훅에서 호출 예정).</summary>
@@ -130,6 +141,7 @@ namespace ReTrap
             Shield             = 0;
             IsDead             = false;
             _invulnerableUntil = 0f;
+            LastDamageSource   = null;
         }
 
         /// <summary>풀로 반납될 때 — 별도 정리 없음.</summary>

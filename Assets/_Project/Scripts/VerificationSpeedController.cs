@@ -45,7 +45,11 @@ namespace ReTrap
 
         // ── Unity ─────────────────────────────────────────────────────────────
 
-        private void OnEnable() => GamePhaseManager.OnPhaseChanged += HandlePhaseChanged;
+        private void OnEnable()
+        {
+            GamePhaseManager.OnPhaseChanged            += HandlePhaseChanged;
+            VerificationPhaseController.OnResultPresented += HandleResultPresented;
+        }
 
         private void Start()
         {
@@ -58,7 +62,8 @@ namespace ReTrap
 
         private void OnDisable()
         {
-            GamePhaseManager.OnPhaseChanged -= HandlePhaseChanged;
+            GamePhaseManager.OnPhaseChanged            -= HandlePhaseChanged;
+            VerificationPhaseController.OnResultPresented -= HandleResultPresented;
 
             // _active(검증 페이즈 중)일 때만 복원 — 일시정지 메뉴 등 외부가 이미 timeScale=0 을
             // 걸어둔 상태에서 이 컴포넌트가 비활성화될 때 의도치 않게 1x 로 재개시키지 않는다.
@@ -94,6 +99,16 @@ namespace ReTrap
             {
                 RestoreSpeed();
             }
+        }
+
+        /// <summary>
+        /// 결과 패널이 뜨면 배속 입력을 끄고 1x 로 복원한다 (Enter 스킵 키가 「계속」 submit 으로
+        /// 이어지거나 결과 화면이 고속으로 도는 것을 막는다). 다음 검증 진입 시 다시 활성화된다.
+        /// </summary>
+        private void HandleResultPresented()
+        {
+            _active = false;
+            RestoreSpeed();
         }
 
         // ── 공개 API (키 입력·UI 버튼 공용) ──────────────────────────────────

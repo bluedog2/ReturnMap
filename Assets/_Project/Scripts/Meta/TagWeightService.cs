@@ -60,7 +60,7 @@ namespace ReTrap
             for (int i = 0; i < nodes.Count; i++)
             {
                 ResearchNodeDefinition node = nodes[i];
-                if (node == null) continue;
+                if (node == null || node.Effect != ResearchEffect.TagWeight) continue;
 
                 int level = ResearchBoardState.GetLevel(node);
                 if (level <= 0) continue;
