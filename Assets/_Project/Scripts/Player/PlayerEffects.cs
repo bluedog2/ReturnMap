@@ -11,7 +11,7 @@ namespace ReTrap
     /// <b>Player</b> 루트에 부착합니다. 각 이벤트 발생 시 해당 이펙트 프레임 배열을
     /// 플레이어 위치에서 1회 재생합니다 (재발생 시 처음부터 다시 재생).
     ///
-    /// <para><b>구독 이벤트</b>: <see cref="PlayerController.OnDashStart"/>,
+    /// <para><b>구독 이벤트</b>: <see cref="PlayerController.OnDashStart"/>, <see cref="PlayerController.OnLand"/>(착지 먼지),
     /// <see cref="PlayerHealth.OnDamageTaken"/>(사망 피격 제외), <see cref="PlayerController.OnKnockback"/>,
     /// <see cref="RespawnManager.OnDeath"/>, <see cref="RespawnManager.OnRespawn"/>.</para>
     ///
@@ -43,6 +43,10 @@ namespace ReTrap
         [Tooltip("리스폰 이펙트 프레임.")]
         private Sprite[] respawnFrames;
 
+        [SerializeField]
+        [Tooltip("착지 먼지 프레임 (발밑, 하단 피벗).")]
+        private Sprite[] dustFrames;
+
         [Header("재생 설정")]
         [SerializeField, Min(1f)]
         [Tooltip("재생 속도(프레임/초).")]
@@ -52,13 +56,18 @@ namespace ReTrap
         [Tooltip("이펙트 스케일 배율. 이펙트 스프라이트 1유닛 = 플레이어 몸 높이 기준.")]
         private float effectScale = 1f;
 
+        [SerializeField, Min(0f)]
+        [Tooltip("피격·사망 이펙트(중앙 피벗)를 놓을 높이 — 발바닥 기준 몸 중심(유닛). 대시·리스폰·먼지는 하단 피벗이라 발바닥에 놓는다.")]
+        private float bodyCenterHeight = 1.25f;
+
         // ── 내부 상태 ─────────────────────────────────────────────────────────
 
-        private const int ChannelCount = 4;
-        private const int Dash = 0, Hit = 1, Death = 2, Respawn = 3;
+        private const int ChannelCount = 5;
+        private const int Dash = 0, Hit = 1, Death = 2, Respawn = 3, Dust = 4;
 
         private PlayerController _controller;
         private PlayerHealth     _health;
+        private float            _feetLocalY;
 
         private GameObject       _root;
         private SpriteRenderer[] _renderers = new SpriteRenderer[ChannelCount];
@@ -71,11 +80,15 @@ namespace ReTrap
             _controller = GetComponent<PlayerController>();
             _health     = GetComponent<PlayerHealth>();
 
+            // 발바닥 = Visual 하단 피벗 (Px32HeroWiring 이 콜라이더 바닥에 맞춤)
+            var visual = transform.Find("Visual");
+            _feetLocalY = visual != null ? visual.localPosition.y : 0f;
+
             // 플레이어 계층 밖 런타임 루트 — PlayerPhaseVisibility 의 렌더러 일괄 토글 영향 회피
             _root = new GameObject("PlayerEffects_Runtime");
 
-            string[] names  = { "Dash", "Hit", "Death", "Respawn" };
-            int[]    orders = { 19, 21, 21, 21 }; // 캐릭터(20) 뒤 / 앞
+            string[] names  = { "Dash", "Hit", "Death", "Respawn", "Dust" };
+            int[]    orders = { 19, 21, 21, 21, 19 }; // 캐릭터(20) 뒤 / 앞
             for (int i = 0; i < ChannelCount; i++)
             {
                 var go = new GameObject(names[i]);
@@ -93,6 +106,7 @@ namespace ReTrap
         {
             if (_controller != null) _controller.OnDashStart += HandleDashStart;
             if (_controller != null) _controller.OnKnockback += HandleKnockback;
+            if (_controller != null) _controller.OnLand      += HandleLand;
             if (_health     != null) _health.OnDamageTaken   += HandleDamageTaken;
             RespawnManager.OnDeath   += HandleDeath;
             RespawnManager.OnRespawn += HandleRespawn;
@@ -103,6 +117,7 @@ namespace ReTrap
         {
             if (_controller != null) _controller.OnDashStart -= HandleDashStart;
             if (_controller != null) _controller.OnKnockback -= HandleKnockback;
+            if (_controller != null) _controller.OnLand      -= HandleLand;
             if (_health     != null) _health.OnDamageTaken   -= HandleDamageTaken;
             RespawnManager.OnDeath   -= HandleDeath;
             RespawnManager.OnRespawn -= HandleRespawn;
@@ -119,19 +134,20 @@ namespace ReTrap
         // ── 이벤트 핸들러 ─────────────────────────────────────────────────────
 
         private void HandleDashStart()
-            => PlayEffect(Dash, dashFrames, flipX: !_controller.IsFacingRight);
+            => PlayEffect(Dash, dashFrames, flipX: !_controller.IsFacingRight, atBodyCenter: false);
 
         private void HandleDamageTaken(int currentHp, int damage)
         {
             if (currentHp <= 0) return; // 사망 피격은 사망 이펙트가 담당
-            PlayEffect(Hit, hitFrames, flipX: false);
+            PlayEffect(Hit, hitFrames, flipX: false, atBodyCenter: true);
         }
 
         // 넉백(비치명 피격)도 피격 이펙트 — maxHp 1 이면 데미지 피격은 전부 사망이라 넉백이 주 경로
-        private void HandleKnockback() => PlayEffect(Hit, hitFrames, flipX: false);
+        private void HandleKnockback() => PlayEffect(Hit, hitFrames, flipX: false, atBodyCenter: true);
 
-        private void HandleDeath()   => PlayEffect(Death,   deathFrames,   flipX: false);
-        private void HandleRespawn() => PlayEffect(Respawn, respawnFrames, flipX: false);
+        private void HandleDeath()   => PlayEffect(Death,   deathFrames,   flipX: false, atBodyCenter: true);
+        private void HandleRespawn() => PlayEffect(Respawn, respawnFrames, flipX: false, atBodyCenter: false);
+        private void HandleLand()    => PlayEffect(Dust,    dustFrames,    flipX: false, atBodyCenter: false);
 
         private void HandlePhaseChanged(GamePhase phase)
         {
@@ -144,7 +160,7 @@ namespace ReTrap
             => GamePhaseManager.Instance != null &&
                GamePhaseManager.Instance.currentPhase == GamePhase.Play;
 
-        private void PlayEffect(int channel, Sprite[] frames, bool flipX)
+        private void PlayEffect(int channel, Sprite[] frames, bool flipX, bool atBodyCenter)
         {
             if (frames == null || frames.Length == 0) return;
             if (!IsPlayPhase()) return;
@@ -153,7 +169,8 @@ namespace ReTrap
 
             var sr = _renderers[channel];
             sr.flipX = flipX;
-            sr.transform.position   = transform.position;
+            float y = _feetLocalY + (atBodyCenter ? bodyCenterHeight : 0f);
+            sr.transform.position   = transform.position + new Vector3(0f, y, 0f);
             sr.transform.localScale = new Vector3(effectScale, effectScale, 1f);
 
             _routines[channel] = StartCoroutine(PlayRoutine(channel, frames));

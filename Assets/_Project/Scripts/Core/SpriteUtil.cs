@@ -3,7 +3,7 @@ using UnityEngine;
 namespace ReTrap
 {
     // ═══════════════════════════════════════════════════════════════════════════
-    //  SpriteUtil — 공용 1×1 흰 폴백 스프라이트
+    //  SpriteUtil — 공용 1×1 흰 폴백 스프라이트 · 링 게이지 헬퍼
     // ═══════════════════════════════════════════════════════════════════════════
 
     /// <summary>
@@ -70,6 +70,32 @@ namespace ReTrap
                 new Rect(0, 0, texSize, texSize),
                 new Vector2(0.5f, 0.5f), 100f);
             return _ring;
+        }
+
+        // ── 픽셀 링 게이지 (화풍 v2) ─────────────────────────────────────────
+
+        /// <summary>
+        /// 진행도(0~1)에 가장 가까운 채움 단계 프레임 인덱스. frameCount 9 = 0/8..8/8.
+        /// </summary>
+        public static int RingFrameIndex(float progress01, int frameCount)
+            => frameCount <= 1 ? 0 : Mathf.Clamp(Mathf.RoundToInt(Mathf.Clamp01(progress01) * (frameCount - 1)), 0, frameCount - 1);
+
+        /// <summary>
+        /// 채움 프레임이 있으면 진행도에 맞는 프레임으로 교체, 없으면 기존 방식(fillAmount).
+        /// </summary>
+        public static void SetRingFill(UnityEngine.UI.Image img, Sprite[] frames, float progress01)
+        {
+            if (frames != null && frames.Length > 0)
+                img.sprite = frames[RingFrameIndex(progress01, frames.Length)];
+            else
+                img.fillAmount = progress01;
+        }
+
+        /// <summary>링 Image 를 프레임 교체용(Simple, 원본 색)으로 바꾼다.</summary>
+        public static void UseRingFrame(UnityEngine.UI.Image img, Sprite sprite)
+        {
+            img.sprite = sprite;
+            img.type   = UnityEngine.UI.Image.Type.Simple;
         }
     }
 }

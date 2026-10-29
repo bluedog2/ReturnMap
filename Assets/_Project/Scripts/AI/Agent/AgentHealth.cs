@@ -40,6 +40,9 @@ namespace ReTrap
         /// <summary>피격 시 발행. (남은 HP, 받은 피해) — 사망 시엔 발행하지 않는다(사망 훅 → Kill() 흐름 유지).</summary>
         public event Action<int, int> OnDamageTaken;
 
+        /// <summary>어떤 에이전트든 사망한 순간 (월드 위치). 처치 이펙트 등 연출용 전역 이벤트.</summary>
+        public static event Action<Vector3> OnAgentKilled;
+
         /// <summary>
         /// 직전에 피해를 가한 함정 (검증 리포트의 킬 기록용). 스폰·리셋 시 null.
         /// <see cref="AgentDamageSystem"/> 이 <see cref="TakeDamage"/> 직전에 설정한다 —
@@ -111,6 +114,7 @@ namespace ReTrap
                 if (_body == null) _body = GetComponent<VerificationAgent>();
 
                 _ctx?.DispatchDeathHooks();
+                OnAgentKilled?.Invoke(transform.position);
                 _body?.Kill();
                 return true;
             }

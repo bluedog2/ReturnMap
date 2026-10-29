@@ -52,6 +52,13 @@ namespace ReTrap
         [Tooltip("깜빡임 최저 알파.")]
         [SerializeField, Range(0f, 1f)] private float pulseMinAlpha = 0.35f;
 
+        [Header("픽셀 링 (화풍 v2) — 채우면 코드 생성 링·fillAmount 대신 프레임 교체")]
+        [Tooltip("채움 단계 프레임 (0/8..8/8 = 9장). 진행도에 가장 가까운 단계를 표시.")]
+        [SerializeField] private Sprite[] fillFrames;
+
+        [Tooltip("빈 게이지 바탕 링. 비우면 fillFrames[0].")]
+        [SerializeField] private Sprite backgroundSprite;
+
         // ── 내부 ─────────────────────────────────────────────────────────────
 
         private ArrowShooter  _shooter;
@@ -112,7 +119,7 @@ namespace ReTrap
             _canvasRect.SetPositionAndRotation(
                 transform.position + (Vector3)worldOffset, Quaternion.identity);
 
-            _fillImage.fillAmount = _shooter.CycleProgress01;
+            SpriteUtil.SetRingFill(_fillImage, fillFrames, _shooter.CycleProgress01);
             Color fillColor = ColorFor(_shooter.CurrentState);
             fillColor.a *= PulseAlpha(_shooter.CycleProgress01, warnThreshold, Time.time, pulseSpeed, pulseMinAlpha);
             _fillImage.color = fillColor;
@@ -162,11 +169,15 @@ namespace ReTrap
 
             Sprite ring = SpriteUtil.Ring();
 
+            bool frames = fillFrames != null && fillFrames.Length > 0;
+
             var bg = MakeRingImage(canvasGo.transform, "Bg", ring, backgroundColor);
             bg.fillAmount = 1f;
+            if (frames) SpriteUtil.UseRingFrame(bg, backgroundSprite != null ? backgroundSprite : fillFrames[0]);
 
             _fillImage = MakeRingImage(canvasGo.transform, "Fill", ring, normalColor);
             _fillImage.fillAmount = 0f;
+            if (frames) SpriteUtil.UseRingFrame(_fillImage, fillFrames[0]);
         }
 
         private static Image MakeRingImage(Transform parent, string name, Sprite ring, Color color)

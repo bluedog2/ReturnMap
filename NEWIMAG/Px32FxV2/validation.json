@@ -1,0 +1,674 @@
+﻿{
+    "all_pass":  true,
+    "asset_count":  18,
+    "color_count_excludes_transparency":  true,
+    "preview_exempt_from_asset_palette_and_1x_rules":  true,
+    "background_matches_zero_frame":  {
+                                          "Ring32":  true,
+                                          "Ring24":  true
+                                      },
+    "files":  [
+                  {
+                      "file":  "Effects/Fx_Dash.png",
+                      "width":  160,
+                      "height":  32,
+                      "cell":  [
+                                   32,
+                                   32
+                               ],
+                      "frames":  5,
+                      "visible_color_count":  7,
+                      "colors":  [
+                                     "#641F36",
+                                     "#74666A",
+                                     "#92223F",
+                                     "#B3A1A0",
+                                     "#B83450",
+                                     "#D0BEB8",
+                                     "#F7EEE4"
+                                 ],
+                      "out_of_palette_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "pure_black_pixels":  0,
+                      "edge_violations":  0,
+                      "bottom_aligned":  true,
+                      "lowest_opaque_row_per_frame":  [
+                                                          31,
+                                                          31,
+                                                          31,
+                                                          31,
+                                                          31
+                                                      ],
+                      "isolated_1px_components_8_connected":  0,
+                      "ring32_center_diameter14_violations":  0,
+                      "pass":  true
+                  },
+                  {
+                      "file":  "Effects/Fx_Hit.png",
+                      "width":  128,
+                      "height":  32,
+                      "cell":  [
+                                   32,
+                                   32
+                               ],
+                      "frames":  4,
+                      "visible_color_count":  8,
+                      "colors":  [
+                                     "#641F36",
+                                     "#92223F",
+                                     "#B3A1A0",
+                                     "#B83450",
+                                     "#D0BEB8",
+                                     "#DC526B",
+                                     "#F18490",
+                                     "#F7EEE4"
+                                 ],
+                      "out_of_palette_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "pure_black_pixels":  0,
+                      "edge_violations":  0,
+                      "bottom_aligned":  false,
+                      "lowest_opaque_row_per_frame":  [
+                                                          22,
+                                                          29,
+                                                          28,
+                                                          25
+                                                      ],
+                      "isolated_1px_components_8_connected":  0,
+                      "ring32_center_diameter14_violations":  0,
+                      "pass":  true
+                  },
+                  {
+                      "file":  "Effects/Fx_Death.png",
+                      "width":  288,
+                      "height":  48,
+                      "cell":  [
+                                   48,
+                                   48
+                               ],
+                      "frames":  6,
+                      "visible_color_count":  11,
+                      "colors":  [
+                                     "#19181F",
+                                     "#3D3940",
+                                     "#641F36",
+                                     "#74666A",
+                                     "#92223F",
+                                     "#B3A1A0",
+                                     "#B83450",
+                                     "#D0BEB8",
+                                     "#DC526B",
+                                     "#F18490",
+                                     "#F7EEE4"
+                                 ],
+                      "out_of_palette_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "pure_black_pixels":  0,
+                      "edge_violations":  0,
+                      "bottom_aligned":  false,
+                      "lowest_opaque_row_per_frame":  [
+                                                          31,
+                                                          38,
+                                                          44,
+                                                          42,
+                                                          38,
+                                                          33
+                                                      ],
+                      "isolated_1px_components_8_connected":  0,
+                      "ring32_center_diameter14_violations":  0,
+                      "pass":  true
+                  },
+                  {
+                      "file":  "Effects/Fx_Respawn.png",
+                      "width":  288,
+                      "height":  48,
+                      "cell":  [
+                                   48,
+                                   48
+                               ],
+                      "frames":  6,
+                      "visible_color_count":  11,
+                      "colors":  [
+                                     "#19181F",
+                                     "#3D3940",
+                                     "#641F36",
+                                     "#74666A",
+                                     "#92223F",
+                                     "#B3A1A0",
+                                     "#B83450",
+                                     "#D0BEB8",
+                                     "#DC526B",
+                                     "#F18490",
+                                     "#F7EEE4"
+                                 ],
+                      "out_of_palette_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "pure_black_pixels":  0,
+                      "edge_violations":  0,
+                      "bottom_aligned":  true,
+                      "lowest_opaque_row_per_frame":  [
+                                                          47,
+                                                          47,
+                                                          47,
+                                                          47,
+                                                          47,
+                                                          47
+                                                      ],
+                      "isolated_1px_components_8_connected":  0,
+                      "ring32_center_diameter14_violations":  0,
+                      "pass":  true
+                  },
+                  {
+                      "file":  "Effects/Fx_Dust.png",
+                      "width":  64,
+                      "height":  16,
+                      "cell":  [
+                                   16,
+                                   16
+                               ],
+                      "frames":  4,
+                      "visible_color_count":  5,
+                      "colors":  [
+                                     "#555058",
+                                     "#74666A",
+                                     "#8D7B80",
+                                     "#B3A1A0",
+                                     "#D0BEB8"
+                                 ],
+                      "out_of_palette_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "pure_black_pixels":  0,
+                      "edge_violations":  0,
+                      "bottom_aligned":  true,
+                      "lowest_opaque_row_per_frame":  [
+                                                          15,
+                                                          15,
+                                                          15,
+                                                          15
+                                                      ],
+                      "isolated_1px_components_8_connected":  0,
+                      "ring32_center_diameter14_violations":  0,
+                      "pass":  true
+                  },
+                  {
+                      "file":  "Effects/Fx_EnemyPoof.png",
+                      "width":  288,
+                      "height":  48,
+                      "cell":  [
+                                   48,
+                                   48
+                               ],
+                      "frames":  6,
+                      "visible_color_count":  8,
+                      "colors":  [
+                                     "#334629",
+                                     "#38284D",
+                                     "#58377B",
+                                     "#58783B",
+                                     "#8050AD",
+                                     "#88AE43",
+                                     "#B8D849",
+                                     "#D8EC76"
+                                 ],
+                      "out_of_palette_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "pure_black_pixels":  0,
+                      "edge_violations":  0,
+                      "bottom_aligned":  false,
+                      "lowest_opaque_row_per_frame":  [
+                                                          35,
+                                                          37,
+                                                          44,
+                                                          43,
+                                                          41,
+                                                          34
+                                                      ],
+                      "isolated_1px_components_8_connected":  0,
+                      "ring32_center_diameter14_violations":  0,
+                      "pass":  true
+                  },
+                  {
+                      "file":  "Effects/GoalMarker.png",
+                      "width":  128,
+                      "height":  32,
+                      "cell":  [
+                                   32,
+                                   32
+                               ],
+                      "frames":  4,
+                      "visible_color_count":  11,
+                      "colors":  [
+                                     "#19181F",
+                                     "#3D3940",
+                                     "#641F36",
+                                     "#74666A",
+                                     "#92223F",
+                                     "#B3A1A0",
+                                     "#B83450",
+                                     "#D0BEB8",
+                                     "#DC526B",
+                                     "#F18490",
+                                     "#F7EEE4"
+                                 ],
+                      "out_of_palette_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "pure_black_pixels":  0,
+                      "edge_violations":  0,
+                      "bottom_aligned":  true,
+                      "lowest_opaque_row_per_frame":  [
+                                                          31,
+                                                          31,
+                                                          31,
+                                                          31
+                                                      ],
+                      "isolated_1px_components_8_connected":  0,
+                      "ring32_center_diameter14_violations":  0,
+                      "pass":  true
+                  },
+                  {
+                      "file":  "Effects/Gauge_Ring24.png",
+                      "width":  216,
+                      "height":  24,
+                      "cell":  [
+                                   24,
+                                   24
+                               ],
+                      "frames":  9,
+                      "visible_color_count":  5,
+                      "colors":  [
+                                     "#19181F",
+                                     "#3D3940",
+                                     "#DC526B",
+                                     "#F18490",
+                                     "#F7EEE4"
+                                 ],
+                      "out_of_palette_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "pure_black_pixels":  0,
+                      "edge_violations":  0,
+                      "bottom_aligned":  false,
+                      "lowest_opaque_row_per_frame":  [
+                                                          22,
+                                                          22,
+                                                          22,
+                                                          22,
+                                                          22,
+                                                          22,
+                                                          22,
+                                                          22,
+                                                          22
+                                                      ],
+                      "isolated_1px_components_8_connected":  0,
+                      "ring32_center_diameter14_violations":  0,
+                      "pass":  true
+                  },
+                  {
+                      "file":  "Effects/Gauge_Ring32.png",
+                      "width":  288,
+                      "height":  32,
+                      "cell":  [
+                                   32,
+                                   32
+                               ],
+                      "frames":  9,
+                      "visible_color_count":  7,
+                      "colors":  [
+                                     "#19181F",
+                                     "#3D3940",
+                                     "#92223F",
+                                     "#B83450",
+                                     "#DC526B",
+                                     "#F18490",
+                                     "#F7EEE4"
+                                 ],
+                      "out_of_palette_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "pure_black_pixels":  0,
+                      "edge_violations":  0,
+                      "bottom_aligned":  false,
+                      "lowest_opaque_row_per_frame":  [
+                                                          30,
+                                                          30,
+                                                          30,
+                                                          30,
+                                                          30,
+                                                          30,
+                                                          30,
+                                                          30,
+                                                          30
+                                                      ],
+                      "isolated_1px_components_8_connected":  0,
+                      "ring32_center_diameter14_violations":  0,
+                      "pass":  true
+                  },
+                  {
+                      "file":  "UI/Gauge_Ring24_Background.png",
+                      "width":  24,
+                      "height":  24,
+                      "cell":  [
+                                   24,
+                                   24
+                               ],
+                      "frames":  1,
+                      "visible_color_count":  2,
+                      "colors":  [
+                                     "#19181F",
+                                     "#3D3940"
+                                 ],
+                      "out_of_palette_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "pure_black_pixels":  0,
+                      "edge_violations":  0,
+                      "bottom_aligned":  false,
+                      "lowest_opaque_row_per_frame":  [
+                                                          22
+                                                      ],
+                      "isolated_1px_components_8_connected":  0,
+                      "ring32_center_diameter14_violations":  0,
+                      "pass":  true
+                  },
+                  {
+                      "file":  "UI/Gauge_Ring32_Background.png",
+                      "width":  32,
+                      "height":  32,
+                      "cell":  [
+                                   32,
+                                   32
+                               ],
+                      "frames":  1,
+                      "visible_color_count":  2,
+                      "colors":  [
+                                     "#19181F",
+                                     "#3D3940"
+                                 ],
+                      "out_of_palette_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "pure_black_pixels":  0,
+                      "edge_violations":  0,
+                      "bottom_aligned":  false,
+                      "lowest_opaque_row_per_frame":  [
+                                                          30
+                                                      ],
+                      "isolated_1px_components_8_connected":  0,
+                      "ring32_center_diameter14_violations":  0,
+                      "pass":  true
+                  },
+                  {
+                      "file":  "UI/Icon_Spike.png",
+                      "width":  32,
+                      "height":  32,
+                      "cell":  [
+                                   32,
+                                   32
+                               ],
+                      "frames":  1,
+                      "visible_color_count":  10,
+                      "colors":  [
+                                     "#19181F",
+                                     "#3D3940",
+                                     "#641F36",
+                                     "#74666A",
+                                     "#92223F",
+                                     "#B3A1A0",
+                                     "#B83450",
+                                     "#D0BEB8",
+                                     "#DC526B",
+                                     "#F7EEE4"
+                                 ],
+                      "out_of_palette_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "pure_black_pixels":  0,
+                      "edge_violations":  0,
+                      "bottom_aligned":  false,
+                      "lowest_opaque_row_per_frame":  [
+                                                          30
+                                                      ],
+                      "isolated_1px_components_8_connected":  0,
+                      "ring32_center_diameter14_violations":  0,
+                      "pass":  true
+                  },
+                  {
+                      "file":  "UI/Icon_ArrowShooter.png",
+                      "width":  32,
+                      "height":  32,
+                      "cell":  [
+                                   32,
+                                   32
+                               ],
+                      "frames":  1,
+                      "visible_color_count":  11,
+                      "colors":  [
+                                     "#19181F",
+                                     "#3D3940",
+                                     "#641F36",
+                                     "#74666A",
+                                     "#92223F",
+                                     "#B3A1A0",
+                                     "#B83450",
+                                     "#D0BEB8",
+                                     "#DC526B",
+                                     "#F18490",
+                                     "#F7EEE4"
+                                 ],
+                      "out_of_palette_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "pure_black_pixels":  0,
+                      "edge_violations":  0,
+                      "bottom_aligned":  false,
+                      "lowest_opaque_row_per_frame":  [
+                                                          27
+                                                      ],
+                      "isolated_1px_components_8_connected":  0,
+                      "ring32_center_diameter14_violations":  0,
+                      "pass":  true
+                  },
+                  {
+                      "file":  "UI/Icon_DropHammer.png",
+                      "width":  32,
+                      "height":  32,
+                      "cell":  [
+                                   32,
+                                   32
+                               ],
+                      "frames":  1,
+                      "visible_color_count":  10,
+                      "colors":  [
+                                     "#19181F",
+                                     "#3D3940",
+                                     "#641F36",
+                                     "#74666A",
+                                     "#92223F",
+                                     "#B3A1A0",
+                                     "#B83450",
+                                     "#D0BEB8",
+                                     "#DC526B",
+                                     "#F7EEE4"
+                                 ],
+                      "out_of_palette_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "pure_black_pixels":  0,
+                      "edge_violations":  0,
+                      "bottom_aligned":  false,
+                      "lowest_opaque_row_per_frame":  [
+                                                          30
+                                                      ],
+                      "isolated_1px_components_8_connected":  0,
+                      "ring32_center_diameter14_violations":  0,
+                      "pass":  true
+                  },
+                  {
+                      "file":  "UI/Icon_Remove.png",
+                      "width":  32,
+                      "height":  32,
+                      "cell":  [
+                                   32,
+                                   32
+                               ],
+                      "frames":  1,
+                      "visible_color_count":  9,
+                      "colors":  [
+                                     "#19181F",
+                                     "#3D3940",
+                                     "#641F36",
+                                     "#92223F",
+                                     "#B83450",
+                                     "#D0BEB8",
+                                     "#DC526B",
+                                     "#F18490",
+                                     "#F7EEE4"
+                                 ],
+                      "out_of_palette_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "pure_black_pixels":  0,
+                      "edge_violations":  0,
+                      "bottom_aligned":  false,
+                      "lowest_opaque_row_per_frame":  [
+                                                          27
+                                                      ],
+                      "isolated_1px_components_8_connected":  0,
+                      "ring32_center_diameter14_violations":  0,
+                      "pass":  true
+                  },
+                  {
+                      "file":  "UI/Particle_Critical.png",
+                      "width":  8,
+                      "height":  8,
+                      "cell":  [
+                                   8,
+                                   8
+                               ],
+                      "frames":  1,
+                      "visible_color_count":  7,
+                      "colors":  [
+                                     "#19181F",
+                                     "#641F36",
+                                     "#92223F",
+                                     "#B83450",
+                                     "#D0BEB8",
+                                     "#DC526B",
+                                     "#F18490"
+                                 ],
+                      "out_of_palette_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "pure_black_pixels":  0,
+                      "edge_violations":  0,
+                      "bottom_aligned":  false,
+                      "lowest_opaque_row_per_frame":  [
+                                                          6
+                                                      ],
+                      "isolated_1px_components_8_connected":  0,
+                      "ring32_center_diameter14_violations":  0,
+                      "pass":  true
+                  },
+                  {
+                      "file":  "UI/Particle_Dud.png",
+                      "width":  8,
+                      "height":  8,
+                      "cell":  [
+                                   8,
+                                   8
+                               ],
+                      "frames":  1,
+                      "visible_color_count":  5,
+                      "colors":  [
+                                     "#555058",
+                                     "#74666A",
+                                     "#8D7B80",
+                                     "#B3A1A0",
+                                     "#D0BEB8"
+                                 ],
+                      "out_of_palette_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "pure_black_pixels":  0,
+                      "edge_violations":  0,
+                      "bottom_aligned":  false,
+                      "lowest_opaque_row_per_frame":  [
+                                                          6
+                                                      ],
+                      "isolated_1px_components_8_connected":  0,
+                      "ring32_center_diameter14_violations":  0,
+                      "pass":  true
+                  },
+                  {
+                      "file":  "UI/Particle_Beneficial.png",
+                      "width":  8,
+                      "height":  8,
+                      "cell":  [
+                                   8,
+                                   8
+                               ],
+                      "frames":  1,
+                      "visible_color_count":  3,
+                      "colors":  [
+                                     "#B67C32",
+                                     "#E8B94F",
+                                     "#FFE09A"
+                                 ],
+                      "out_of_palette_pixels":  0,
+                      "alpha_values":  [
+                                           0,
+                                           255
+                                       ],
+                      "pure_black_pixels":  0,
+                      "edge_violations":  0,
+                      "bottom_aligned":  false,
+                      "lowest_opaque_row_per_frame":  [
+                                                          6
+                                                      ],
+                      "isolated_1px_components_8_connected":  0,
+                      "ring32_center_diameter14_violations":  0,
+                      "pass":  true
+                  }
+              ]
+}

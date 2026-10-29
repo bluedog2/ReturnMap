@@ -37,12 +37,21 @@ namespace ReTrap
         [Header("아트 교체용 (비우면 코드 생성 링)")]
         [SerializeField] private Sprite ringSprite;
 
+        [Header("픽셀 링 (화풍 v2) — 채우면 ringSprite·fillAmount 대신 프레임 교체")]
+        [Tooltip("채움 단계 프레임 (0/8..8/8 = 9장). 진행도에 가장 가까운 단계를 표시.")]
+        [SerializeField] private Sprite[] fillFrames;
+
+        [Tooltip("빈 게이지 바탕 링. 비우면 fillFrames[0].")]
+        [SerializeField] private Sprite backgroundSprite;
+
         // ── 내부 ─────────────────────────────────────────────────────────────
 
         private PlayerController _pc;
         private Image            _fillImage;
         private Text             _countText;
         private RectTransform    _canvasRect;
+
+        private bool UsesFrames => fillFrames != null && fillFrames.Length > 0;
 
         // ── Unity ─────────────────────────────────────────────────────────────
 
@@ -61,18 +70,19 @@ namespace ReTrap
 
             if (rem > 0)
             {
-                _fillImage.fillAmount = (float)rem / max;
+                SpriteUtil.SetRingFill(_fillImage, fillFrames, (float)rem / max);
                 _fillImage.color      = fillColor;
             }
             else
             {
                 // 전량 소진 — 재충전 진행도가 금색으로 차오름
-                _fillImage.fillAmount = _pc.DashRechargeProgress01;
+                SpriteUtil.SetRingFill(_fillImage, fillFrames, _pc.DashRechargeProgress01);
                 _fillImage.color      = rechargeColor;
             }
 
+            // 픽셀 링은 가운데 구멍이 작아 남은 횟수만 표시
             if (_countText != null)
-                _countText.text = $"{rem}/{max}";
+                _countText.text = UsesFrames ? rem.ToString() : $"{rem}/{max}";
 
             // 위치 고정 (좌우반전은 flipX 방식이라 child 가 안 뒤집히지만, 위치만 갱신)
             if (_canvasRect != null)
@@ -103,10 +113,12 @@ namespace ReTrap
             // ── 배경 링 (빈 게이지) ──────────────────────────────────────────
             var bg = MakeRingImage(canvasGo.transform, "Bg", ring, emptyColor);
             bg.fillAmount = 1f;
+            if (UsesFrames) SpriteUtil.UseRingFrame(bg, backgroundSprite != null ? backgroundSprite : fillFrames[0]);
 
             // ── 채움 링 ──────────────────────────────────────────────────────
             _fillImage = MakeRingImage(canvasGo.transform, "Fill", ring, fillColor);
             _fillImage.fillAmount = 1f;
+            if (UsesFrames) SpriteUtil.UseRingFrame(_fillImage, fillFrames[fillFrames.Length - 1]);
 
             // ── 카운트 텍스트 ("2/3") ────────────────────────────────────────
             var textGo = new GameObject("Count", typeof(RectTransform), typeof(Text));

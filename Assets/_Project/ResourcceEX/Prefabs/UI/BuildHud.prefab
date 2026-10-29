@@ -306,5 +306,6 @@ MonoBehaviour:
   panel: {fileID: 162061080568853747}
   budgetText: {fileID: 4739147275083617812}
   buttonContainer: {fileID: 5917679914654485527}
+  removeIcon: {fileID: 21300000, guid: add0266f977dbe14fbfdb38141978bab, type: 3}
   hintText: {fileID: 0}
   playHint: {fileID: 0}

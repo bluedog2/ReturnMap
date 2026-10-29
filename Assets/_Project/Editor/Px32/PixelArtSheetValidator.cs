@@ -77,7 +77,9 @@ namespace ReTrap.EditorTools
             var o = new Options
             {
                 category = category, baseName = baseName, palette = palette, detectGrid = detectGrid,
-                airborne = Px32Rules.IsAirborne(baseName), death = Px32Rules.IsDeath(baseName),
+                // 이펙트(터짐·흩어짐)·게이지 단계는 프레임마다 크기·위치가 변하는 게 정상 → 기준선·드리프트 예외
+                airborne = category == "Effects" || Px32Rules.IsAirborne(baseName),
+                death    = category == "Effects" || Px32Rules.IsDeath(baseName),
                 // 캐릭터는 화풍 v2 팔레트(20색) 전체 사용 허용
                 maxColors = (category == "Tiles" || category == "Backgrounds") ? 24
                           : (category == "Player" || category == "Enemies") ? 20 : 16,

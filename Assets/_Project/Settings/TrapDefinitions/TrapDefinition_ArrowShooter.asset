@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TrapDefinition_ArrowShooter
   m_EditorClassIdentifier: Assembly-CSharp::ReTrap.TrapDefinition
   displayName: "\uD654\uC0B4 \uC288\uD130"
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: f37a61735e4d7c84fb8e8085520b032c, type: 3}
   baseCost: 25
   dangerLevel: 5
   damageType: 2
@@ -24,3 +24,5 @@ MonoBehaviour:
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
+  activateClips: []
+  activateVolume: 1

@@ -26,6 +26,9 @@ namespace ReTrap
         [SerializeField] private Text       budgetText;
         [SerializeField] private Transform  buttonContainer;  // 함정 버튼 부모
 
+        [Tooltip("철거 모드 버튼 아이콘 (화풍 v2). 비우면 ✕ 글자.")]
+        [SerializeField] private Sprite     removeIcon;
+
         // [미사용] 조작 안내는 전 페이즈 공용 하단바 PhaseControlsGuide 로 이관됨.
         // TrapPrefabBuilder 는 더 이상 이 오브젝트들을 프리팹에 생성하지 않으므로 항상 null —
         // 널 가드로 안전하게 무시되며, 필드 자체는 과거 씬/프리팹과의 하위 호환을 위해 남겨둔다.
@@ -280,7 +283,10 @@ namespace ReTrap
             var slot = CreateSlot("RemoveModeSlot", "X", out _removeFrame);
             slot.GetComponent<Button>().onClick.AddListener(() => _ctrl.ToggleRemoveMode());
 
-            AddTextIcon(slot.transform, "✕", 30, new Color(1f, 0.45f, 0.45f));
+            if (removeIcon != null)
+                AddSpriteIcon(slot.transform, removeIcon, Color.white);
+            else
+                AddTextIcon(slot.transform, "✕", 30, new Color(1f, 0.45f, 0.45f));
             AddCornerCost(slot.transform, "철거", new Color(0.9f, 0.9f, 0.9f));
         }
 

@@ -88,10 +88,35 @@ namespace ReTrap.EditorTools
                 return new SheetSpec { cellW = 640, cellH = near ? 256 : 360, frames = 1, pivot = new Vector2(0.5f, near ? 0f : 0.5f) };
             }
 
+            if (category == "Effects")
+                return EffectSpec(baseName);
+
             string anim = AnimOf(baseName);
             if (anim.Length == 0) return null;
 
             return CharacterSpec(category, baseName, anim, HeroCell, EnemyCell(baseName));
+        }
+
+        /// <summary>
+        /// 이펙트·월드 UI 시트 규격 (화풍 v2, NEWIMAG/Px32FxV2). 하단 피벗 = 발밑·바닥에 놓는 것.
+        /// </summary>
+        private static SheetSpec EffectSpec(string baseName)
+        {
+            var center = new Vector2(0.5f, 0.5f);
+            var bottom = new Vector2(0.5f, 0f);
+            switch (baseName)
+            {
+                case "Fx_Dash":      return Sheet(32, 5, 20f, false, bottom);
+                case "Fx_Hit":       return Sheet(32, 4, 20f, false, center);
+                case "Fx_Death":     return Sheet(48, 6, 15f, false, center);
+                case "Fx_Respawn":   return Sheet(48, 6, 15f, false, bottom);
+                case "Fx_Dust":      return Sheet(16, 4, 15f, false, bottom);
+                case "Fx_EnemyPoof": return Sheet(48, 6, 15f, false, center);
+                case "Fx_GoalMarker": return Sheet(32, 4, 6f, true,  bottom);
+                case "Gauge_Ring24": return Sheet(24, 9,  0f, false, center);
+                case "Gauge_Ring32": return Sheet(32, 9,  0f, false, center);
+            }
+            return null;
         }
 
         /// <summary>

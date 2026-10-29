@@ -1,0 +1,104 @@
+[
+  {
+    "name": "Fx_Dash",
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a1881b-eb58-7293-9f08-11a44683fe42\\exec-56a9d10c-e61b-4dd9-8948-b03a9aff2310.png",
+    "prompt": "Use case: stylized-concept. Generate Re:Trap Fx_Dash pixel sprite animation, transparent background. Reference 1 approved hero, reference 2 approved traps: match crimson and warm ivory punk palette. Output FIVE frames in ONE horizontal row of equal square cells, no text/grid. Each cell represents 32x32 logical pixels magnified exactly 8x (256 square), entire canvas 1280x256 or padded transparent to 1280x512 with artwork in central band. Ground dust clumps aligned at same bottom line, crimson speed streaks trailing LEFT for hero moving RIGHT. Only effect, no hero. Frames: small kickoff puff; stronger leftwards ivory dust/crimson streak; widest burst; separated shrinking chunks; few residual fragments. Flat chunky pixel clusters, 2-3 flat tones, NO AA, gradients, glow, translucency, dithering. Colors ONLY #641F36 #92223F #B83450 #DC526B #B3A1A0 #D0BEB8 #F7EEE4. Leave transparent margins between frames, large clean shapes. Every art pixel an 8x8 solid block. Not smooth illustration.",
+    "attempt": 1
+  },
+  {
+    "name": "Fx_Hit",
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a1881b-eb58-7293-9f08-11a44683fe42\\exec-975512b4-ede0-43fd-9cc0-efa81f8dfc5f.png",
+    "prompt": "Use case: stylized-concept. Re:Trap approval concept Fx_Hit. References: approved hero and traps for palette/style only. Central white/crimson sharp star impact: compact white flash; large jagged starburst; broken outward shards; tiny residual shards. Generate 4 distinct chronological animation frame(s), ONE horizontal row, evenly spaced, no text or grid. Each frame is 32x32 logical pixel art enlarged with solid k=16 blocks. All frames must have same logical grid scale and equal-sized cells; varying effect sizes reflect animation. Transparent background, hard alpha, clean 1 logical pixel charcoal outlines for icons and ring only; effects can be unoutlined. Flat 2-3 shades, no dithering/AA/gradients/glow/translucency, no smooth or fine detail. ONLY these colors: #19181F #3D3940 #74666A #B3A1A0 #D0BEB8 #F7EEE4 #641F36 #92223F #B83450 #DC526B #F18490. Keep all art inside each cell with transparent margins. Large clean clusters readable at native resolution.",
+    "attempt": 1
+  },
+  {
+    "name": "Fx_Death",
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a1881b-eb58-7293-9f08-11a44683fe42\\exec-743e115a-50e8-426c-84e7-85be4e26936b.png",
+    "prompt": "Use case: stylized-concept. Re:Trap approval concept Fx_Death. References: approved hero and traps for palette/style only. Central crimson smoke explosion with clearly readable X and star graffiti fragments: small puff; expanding burst; maximum cloud; separated smoke lobes and X; dispersing fragments; few tiny last pieces. No body. Generate 6 distinct chronological animation frame(s), ONE horizontal row, evenly spaced, no text or grid. Each frame is 48x48 logical pixel art enlarged with solid k=16 blocks. All frames must have same logical grid scale and equal-sized cells; varying effect sizes reflect animation. Transparent background, hard alpha, clean 1 logical pixel charcoal outlines for icons and ring only; effects can be unoutlined. Flat 2-3 shades, no dithering/AA/gradients/glow/translucency, no smooth or fine detail. ONLY these colors: #19181F #3D3940 #74666A #B3A1A0 #D0BEB8 #F7EEE4 #641F36 #92223F #B83450 #DC526B #F18490. Keep all art inside each cell with transparent margins. Large clean clusters readable at native resolution.",
+    "attempt": 1
+  },
+  {
+    "name": "Fx_Respawn",
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a1881b-eb58-7293-9f08-11a44683fe42\\exec-b0da3138-855d-4afc-b804-6d57a543298d.png",
+    "prompt": "Use case: stylized-concept. Re:Trap approval concept Fx_Respawn. References: approved hero and traps for palette/style only. Bottom anchored spray-paint respawn: tiny painted elliptical ground ring; ring growing; crimson spray pillar rising; full ivory/crimson pillar; broken vertical paint streaks; fading fragments of ground ring. No character. Generate 6 distinct chronological animation frame(s), ONE horizontal row, evenly spaced, no text or grid. Each frame is 48x48 logical pixel art enlarged with solid k=16 blocks. All frames must have same logical grid scale and equal-sized cells; varying effect sizes reflect animation. Transparent background, hard alpha, clean 1 logical pixel charcoal outlines for icons and ring only; effects can be unoutlined. Flat 2-3 shades, no dithering/AA/gradients/glow/translucency, no smooth or fine detail. ONLY these colors: #19181F #3D3940 #74666A #B3A1A0 #D0BEB8 #F7EEE4 #641F36 #92223F #B83450 #DC526B #F18490. Keep all art inside each cell with transparent margins. Large clean clusters readable at native resolution.",
+    "attempt": 1
+  },
+  {
+    "name": "Fx_Dust",
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a1881b-eb58-7293-9f08-11a44683fe42\\exec-db4d4224-7554-49f1-bf77-4c6411399305.png",
+    "prompt": "Use case: stylized-concept. Re:Trap approval concept Fx_Dust. References: approved hero and traps for palette/style only. Bottom aligned warm concrete taupe dust: small puff; two broad chunky puff lobes; spreading smaller lobes; few remnants. No crimson. Generate 4 distinct chronological animation frame(s), ONE horizontal row, evenly spaced, no text or grid. Each frame is 16x16 logical pixel art enlarged with solid k=16 blocks. All frames must have same logical grid scale and equal-sized cells; varying effect sizes reflect animation. Transparent background, hard alpha, clean 1 logical pixel charcoal outlines for icons and ring only; effects can be unoutlined. Flat 2-3 shades, no dithering/AA/gradients/glow/translucency, no smooth or fine detail. ONLY these colors: #555058 #74666A #8D7B80 #B3A1A0 #D0BEB8. Keep all art inside each cell with transparent margins. Large clean clusters readable at native resolution.",
+    "attempt": 1
+  },
+  {
+    "name": "Fx_EnemyPoof",
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a1881b-eb58-7293-9f08-11a44683fe42\\exec-235879f1-a01e-4dbe-884f-53b9355ba39a.png",
+    "prompt": "Use case: stylized-concept. Re:Trap approval concept Fx_EnemyPoof. References: approved hero and traps for palette/style only. Central enemy defeat toxic green and purple smoke: initial lime flash; swelling cloud; large two-tone puff; separated violet lime lobes; dispersing chunks; few remnants. No character. Generate 6 distinct chronological animation frame(s), ONE horizontal row, evenly spaced, no text or grid. Each frame is 48x48 logical pixel art enlarged with solid k=16 blocks. All frames must have same logical grid scale and equal-sized cells; varying effect sizes reflect animation. Transparent background, hard alpha, clean 1 logical pixel charcoal outlines for icons and ring only; effects can be unoutlined. Flat 2-3 shades, no dithering/AA/gradients/glow/translucency, no smooth or fine detail. ONLY these colors: #38284D #58377B #8050AD #B581D4 #334629 #58783B #88AE43 #B8D849 #D8EC76. Keep all art inside each cell with transparent margins. Large clean clusters readable at native resolution.",
+    "attempt": 1
+  },
+  {
+    "name": "Particle_Critical",
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a1881b-eb58-7293-9f08-11a44683fe42\\exec-a6e3533b-3bd4-41b0-a27e-b43f45d637fa.png",
+    "prompt": "Use case: stylized-concept. Re:Trap approval concept Particle_Critical. References: approved hero and traps for palette/style only. One tiny bold red ember texture, compact angular red spark. Logical 8x8 pixel art, must also read sampled to 4x4. Generate 1 distinct chronological animation frame(s), ONE horizontal row, evenly spaced, no text or grid. Each frame is 8x8 logical pixel art enlarged with solid k=16 blocks. One isolated centered asset. Transparent background, hard alpha, clean 1 logical pixel charcoal outlines for icons and ring only; effects can be unoutlined. Flat 2-3 shades, no dithering/AA/gradients/glow/translucency, no smooth or fine detail. ONLY these colors: #19181F #3D3940 #74666A #B3A1A0 #D0BEB8 #F7EEE4 #641F36 #92223F #B83450 #DC526B #F18490. Keep all art inside each cell with transparent margins. Large clean clusters readable at native resolution.",
+    "attempt": 1
+  },
+  {
+    "name": "Particle_Dud",
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a1881b-eb58-7293-9f08-11a44683fe42\\exec-bf25c6ae-63e9-42c8-8d8a-427ffdb1019d.png",
+    "prompt": "Use case: stylized-concept. Re:Trap approval concept Particle_Dud. References: approved hero and traps for palette/style only. One tiny grey smoke dot texture, compact cluster with two flat shades. Logical 8x8 pixels, also reads at 4x4. Generate 1 distinct chronological animation frame(s), ONE horizontal row, evenly spaced, no text or grid. Each frame is 8x8 logical pixel art enlarged with solid k=16 blocks. One isolated centered asset. Transparent background, hard alpha, clean 1 logical pixel charcoal outlines for icons and ring only; effects can be unoutlined. Flat 2-3 shades, no dithering/AA/gradients/glow/translucency, no smooth or fine detail. ONLY these colors: #555058 #74666A #8D7B80 #B3A1A0 #D0BEB8. Keep all art inside each cell with transparent margins. Large clean clusters readable at native resolution.",
+    "attempt": 1
+  },
+  {
+    "name": "Particle_Beneficial",
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a1881b-eb58-7293-9f08-11a44683fe42\\exec-9a475989-a53a-4931-94a0-0644a64f79f3.png",
+    "prompt": "Use case: stylized-concept. Re:Trap approval concept Particle_Beneficial. References: approved hero and traps for palette/style only. One gold sparkle texture: symmetrical plus/cross sparkle with long vertical horizontal arms. Logical 8x8 pixels, also reads at 4x4. Generate 1 distinct chronological animation frame(s), ONE horizontal row, evenly spaced, no text or grid. Each frame is 8x8 logical pixel art enlarged with solid k=16 blocks. One isolated centered asset. Transparent background, hard alpha, clean 1 logical pixel charcoal outlines for icons and ring only; effects can be unoutlined. Flat 2-3 shades, no dithering/AA/gradients/glow/translucency, no smooth or fine detail. ONLY these colors: #79502B #B67C32 #E8B94F #FFE09A. Keep all art inside each cell with transparent margins. Large clean clusters readable at native resolution.",
+    "attempt": 1
+  },
+  {
+    "name": "Gauge_Ring24",
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a1881b-eb58-7293-9f08-11a44683fe42\\exec-726fc5e2-3d79-4d14-8da5-8e33fd15ab78.png",
+    "prompt": "Use case: stylized-concept. Re:Trap approval concept Gauge_Ring24. References: approved hero and traps for palette/style only. ONE full circular cooldown ring. Exact 24x24 logical pixels. Perfect four-way circular symmetry, 1 pixel charcoal outer AND inner border, 2 pixel crimson fill band, transparent hollow center. Simple clean ring, no ticks icons text or decorative protrusions. Diameter 22px. Generate 1 distinct chronological animation frame(s), ONE horizontal row, evenly spaced, no text or grid. Each frame is 24x24 logical pixel art enlarged with solid k=16 blocks. One isolated centered asset. Transparent background, hard alpha, clean 1 logical pixel charcoal outlines for icons and ring only; effects can be unoutlined. Flat 2-3 shades, no dithering/AA/gradients/glow/translucency, no smooth or fine detail. ONLY these colors: #19181F #3D3940 #74666A #B3A1A0 #D0BEB8 #F7EEE4 #641F36 #92223F #B83450 #DC526B #F18490. Keep all art inside each cell with transparent margins. Large clean clusters readable at native resolution.",
+    "attempt": 1
+  },
+  {
+    "name": "Gauge_Ring32",
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a1881b-eb58-7293-9f08-11a44683fe42\\exec-d81a9431-07dc-424a-90f0-281a5df67702.png",
+    "prompt": "Use case: stylized-concept. Re:Trap approval concept Gauge_Ring32. References: approved hero and traps for palette/style only. ONE full circular dash ring. Exact 32x32 logical pixels. Perfect four-way circular symmetry, 1 pixel charcoal inner AND outer border, crimson broad ring band with thin warm white inset highlight. TRANSPARENT central hole at least 16 pixels diameter for number. Simple clean ring no ticks text protrusions. Diameter 30px. Generate 1 distinct chronological animation frame(s), ONE horizontal row, evenly spaced, no text or grid. Each frame is 32x32 logical pixel art enlarged with solid k=16 blocks. One isolated centered asset. Transparent background, hard alpha, clean 1 logical pixel charcoal outlines for icons and ring only; effects can be unoutlined. Flat 2-3 shades, no dithering/AA/gradients/glow/translucency, no smooth or fine detail. ONLY these colors: #19181F #3D3940 #74666A #B3A1A0 #D0BEB8 #F7EEE4 #641F36 #92223F #B83450 #DC526B #F18490. Keep all art inside each cell with transparent margins. Large clean clusters readable at native resolution.",
+    "attempt": 1
+  },
+  {
+    "name": "GoalMarker",
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a1881b-eb58-7293-9f08-11a44683fe42\\exec-f44c6d78-5933-4a64-8556-9cd287cd6d4f.png",
+    "prompt": "Use case: stylized-concept. Re:Trap approval concept GoalMarker. References: approved hero and traps for palette/style only. Bottom anchored goal flag on short charcoal pole with crimson pennant bearing white graffiti star, small painted white sparkle. 4 frames flutter flag right, flutter up, flutter right, flutter down. Identical pole position and height, fully inside cell. Generate 4 distinct chronological animation frame(s), ONE horizontal row, evenly spaced, no text or grid. Each frame is 32x32 logical pixel art enlarged with solid k=16 blocks. All frames must have same logical grid scale and equal-sized cells; varying effect sizes reflect animation. Transparent background, hard alpha, clean 1 logical pixel charcoal outlines for icons and ring only; effects can be unoutlined. Flat 2-3 shades, no dithering/AA/gradients/glow/translucency, no smooth or fine detail. ONLY these colors: #19181F #3D3940 #74666A #B3A1A0 #D0BEB8 #F7EEE4 #641F36 #92223F #B83450 #DC526B #F18490. Keep all art inside each cell with transparent margins. Large clean clusters readable at native resolution.",
+    "attempt": 1
+  },
+  {
+    "name": "Icon_Spike",
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a1881b-eb58-7293-9f08-11a44683fe42\\exec-2d29b609-3dc6-47a3-8915-1ca9249c9e13.png",
+    "prompt": "Use case: stylized-concept. Re:Trap approval concept Icon_Spike. References: approved hero and traps for palette/style only. HUD icon of approved NORMAL spike trap in reference, large silhouette filling 28x28: ivory steel box with bold diagonal crimson stripe, 4 ivory metal spikes on top, charcoal outline and corner bolts. No tile or background. Simplify detail. Generate 1 distinct chronological animation frame(s), ONE horizontal row, evenly spaced, no text or grid. Each frame is 32x32 logical pixel art enlarged with solid k=16 blocks. One isolated centered asset. Transparent background, hard alpha, clean 1 logical pixel charcoal outlines for icons and ring only; effects can be unoutlined. Flat 2-3 shades, no dithering/AA/gradients/glow/translucency, no smooth or fine detail. ONLY these colors: #19181F #3D3940 #74666A #B3A1A0 #D0BEB8 #F7EEE4 #641F36 #92223F #B83450 #DC526B #F18490. Keep all art inside each cell with transparent margins. Large clean clusters readable at native resolution.",
+    "attempt": 1
+  },
+  {
+    "name": "Icon_ArrowShooter",
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a1881b-eb58-7293-9f08-11a44683fe42\\exec-704865fd-31e8-447a-9b22-45b79b93b4d4.png",
+    "prompt": "Use case: stylized-concept. Re:Trap approval concept Icon_ArrowShooter. References: approved hero and traps for palette/style only. HUD icon of approved NORMAL arrow shooter in reference: squat ivory cylindrical canister with diagonal crimson stripe and metal brackets, short barrel pointing RIGHT with crimson lip. Large readable silhouette filling 28x28. No tile/background. Generate 1 distinct chronological animation frame(s), ONE horizontal row, evenly spaced, no text or grid. Each frame is 32x32 logical pixel art enlarged with solid k=16 blocks. One isolated centered asset. Transparent background, hard alpha, clean 1 logical pixel charcoal outlines for icons and ring only; effects can be unoutlined. Flat 2-3 shades, no dithering/AA/gradients/glow/translucency, no smooth or fine detail. ONLY these colors: #19181F #3D3940 #74666A #B3A1A0 #D0BEB8 #F7EEE4 #641F36 #92223F #B83450 #DC526B #F18490. Keep all art inside each cell with transparent margins. Large clean clusters readable at native resolution.",
+    "attempt": 1
+  },
+  {
+    "name": "Icon_DropHammer",
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a1881b-eb58-7293-9f08-11a44683fe42\\exec-907f7cc9-2332-4443-a2ae-bc0818b622ae.png",
+    "prompt": "Use case: stylized-concept. Re:Trap approval concept Icon_DropHammer. References: approved hero and traps for palette/style only. HUD icon of approved NORMAL drop hammer in reference: chunky square ivory steel hammer head, bold diagonal crimson stripe, charcoal corner bolts, short chain loop above. Large silhouette 28x28. No tile/background. Generate 1 distinct chronological animation frame(s), ONE horizontal row, evenly spaced, no text or grid. Each frame is 32x32 logical pixel art enlarged with solid k=16 blocks. One isolated centered asset. Transparent background, hard alpha, clean 1 logical pixel charcoal outlines for icons and ring only; effects can be unoutlined. Flat 2-3 shades, no dithering/AA/gradients/glow/translucency, no smooth or fine detail. ONLY these colors: #19181F #3D3940 #74666A #B3A1A0 #D0BEB8 #F7EEE4 #641F36 #92223F #B83450 #DC526B #F18490. Keep all art inside each cell with transparent margins. Large clean clusters readable at native resolution.",
+    "attempt": 1
+  },
+  {
+    "name": "Icon_Remove",
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a1881b-eb58-7293-9f08-11a44683fe42\\exec-fd018a71-7e9e-49ce-af5a-53d74a201747.png",
+    "prompt": "Use case: stylized-concept. Re:Trap approval concept Icon_Remove. References: approved hero and traps for palette/style only. HUD demolition icon: single bold crimson sprayed X mark, chunky torn ends and 3 deliberate paint flecks, white tiny offset highlight, no enclosing button/background. Strong clean silhouette within 28x28. Generate 1 distinct chronological animation frame(s), ONE horizontal row, evenly spaced, no text or grid. Each frame is 32x32 logical pixel art enlarged with solid k=16 blocks. One isolated centered asset. Transparent background, hard alpha, clean 1 logical pixel charcoal outlines for icons and ring only; effects can be unoutlined. Flat 2-3 shades, no dithering/AA/gradients/glow/translucency, no smooth or fine detail. ONLY these colors: #19181F #3D3940 #74666A #B3A1A0 #D0BEB8 #F7EEE4 #641F36 #92223F #B83450 #DC526B #F18490. Keep all art inside each cell with transparent margins. Large clean clusters readable at native resolution.",
+    "attempt": 1
+  },
+  {
+    "name": "Gauge_Ring24",
+    "attempt": 2,
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a1881b-eb58-7293-9f08-11a44683fe42\\exec-8f49f82f-fcb9-4f0d-8164-4325aadde2ec.png",
+    "prompt": "Create ONE SINGLE isolated 24x24 logical pixel-art cooldown ring icon enlarged 24 times, centered in square transparent canvas. NOT animation, NOT multiple rings. True transparent background AND central hole. No glow anywhere. Simple front-facing perfect circular ring: 1 logical pixel #19181F outer border, 2 logical pixel thick solid #B83450 crimson band, 1 logical pixel #19181F inner border. Outer diameter 22 logical pixels. Solid flat colors ONLY TWO colors #19181F and #B83450. Exactly square pixel blocks, no antialiasing, no shading, no gradients, no lighting, no aura. Reference hero and trap only for game palette. Ring silhouette should be fully circular, symmetrical left-right and top-bottom. No text, symbols, segmentation, decorations."
+  }
+]

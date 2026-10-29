@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TrapDefinition_DropHammer
   m_EditorClassIdentifier: Assembly-CSharp::ReTrap.TrapDefinition
   displayName: "\uB4DC\uB86D \uD574\uBA38"
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 3bc8758e0758b064d884f4a5e410cebe, type: 3}
   baseCost: 50
   dangerLevel: 8
   damageType: 4
@@ -24,3 +24,5 @@ MonoBehaviour:
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
+  activateClips: []
+  activateVolume: 1

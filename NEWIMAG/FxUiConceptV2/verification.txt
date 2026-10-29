@@ -1,0 +1,43 @@
+﻿Fx_Dash : cell 32x32, 5 frames; PNG dimensions / GIF decode / count PASS
+Fx_Death : cell 48x48, 6 frames; PNG dimensions / GIF decode / count PASS
+Fx_Dust : cell 16x16, 4 frames; PNG dimensions / GIF decode / count PASS
+Fx_EnemyPoof : cell 48x48, 6 frames; PNG dimensions / GIF decode / count PASS
+Fx_Hit : cell 32x32, 4 frames; PNG dimensions / GIF decode / count PASS
+Fx_Respawn : cell 48x48, 6 frames; PNG dimensions / GIF decode / count PASS
+Gauge_Ring24 : cell 24x24, 9 frames; PNG dimensions / GIF decode / count PASS
+Gauge_Ring32 : cell 32x32, 9 frames; PNG dimensions / GIF decode / count PASS
+GoalMarker : cell 32x32, 4 frames; PNG dimensions / GIF decode / count PASS
+Icon_ArrowShooter : cell 32x32, 1 frames; PNG dimensions / GIF decode / count PASS
+Icon_DropHammer : cell 32x32, 1 frames; PNG dimensions / GIF decode / count PASS
+Icon_Remove : cell 32x32, 1 frames; PNG dimensions / GIF decode / count PASS
+Icon_Spike : cell 32x32, 1 frames; PNG dimensions / GIF decode / count PASS
+Particle_Beneficial : cell 8x8, 1 frames; PNG dimensions / GIF decode / count PASS
+Particle_Critical : cell 8x8, 1 frames; PNG dimensions / GIF decode / count PASS
+Particle_Dud : cell 8x8, 1 frames; PNG dimensions / GIF decode / count PASS
+Fx_Dash.png : 160x32, 7 colors, palette/alpha PASS
+Fx_Death.png : 288x48, 11 colors, palette/alpha PASS
+Fx_Dust.png : 64x16, 5 colors, palette/alpha PASS
+Fx_EnemyPoof.png : 288x48, 8 colors, palette/alpha PASS
+Fx_Hit.png : 128x32, 8 colors, palette/alpha PASS
+Fx_Respawn.png : 288x48, 11 colors, palette/alpha PASS
+Gauge_Ring24.png : 216x24, 3 colors, palette/alpha PASS
+Gauge_Ring24_Background.png : 24x24, 2 colors, palette/alpha PASS
+Gauge_Ring32.png : 288x32, 7 colors, palette/alpha PASS
+Gauge_Ring32_Background.png : 32x32, 2 colors, palette/alpha PASS
+GoalMarker.png : 128x32, 11 colors, palette/alpha PASS
+Icon_ArrowShooter.png : 32x32, 11 colors, palette/alpha PASS
+Icon_DropHammer.png : 32x32, 10 colors, palette/alpha PASS
+Icon_Remove.png : 32x32, 9 colors, palette/alpha PASS
+Icon_Spike.png : 32x32, 10 colors, palette/alpha PASS
+Particle_Beneficial.png : 8x8, 3 colors, palette/alpha PASS
+Particle_Beneficial_4.png : 4x4, 2 colors, palette/alpha PASS
+Particle_Beneficial_8.png : 8x8, 3 colors, palette/alpha PASS
+Particle_Critical.png : 8x8, 7 colors, palette/alpha PASS
+Particle_Critical_4.png : 4x4, 3 colors, palette/alpha PASS
+Particle_Critical_8.png : 8x8, 7 colors, palette/alpha PASS
+Particle_Dud.png : 8x8, 5 colors, palette/alpha PASS
+Particle_Dud_4.png : 4x4, 3 colors, palette/alpha PASS
+Particle_Dud_8.png : 8x8, 5 colors, palette/alpha PASS
+Sheet_4x.png : 1920x4232, 16 colors, palette/alpha PASS
+Scene_3x.png : 1920x1080, 15 colors, palette/alpha PASS
+Hud_3x.png : 1920x252, 10 colors, palette/alpha PASS
