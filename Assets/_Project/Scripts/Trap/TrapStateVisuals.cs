@@ -20,6 +20,15 @@ namespace ReTrap
         [SerializeField] private Sprite critical;
         [SerializeField] private Sprite beneficial;
 
+        [Tooltip("빌드·AI 검증 페이즈 외형 (타일 Build 세트와 같은 분위기). 이 페이즈엔 변이가 없어 Normal 1장. 비우면 normal.")]
+        [SerializeField] private Sprite build;
+
+        /// <summary>
+        /// 페이즈까지 고려한 스프라이트: buildLook(빌드·AI 페이즈)이고 Normal 이면 build 외형(있을 때), 그 외 상태별.
+        /// </summary>
+        public Sprite Get(TrapState state, bool buildLook)
+            => buildLook && state == TrapState.Normal && build != null ? build : Get(state);
+
         /// <summary>상태에 대응하는 스프라이트. 미지정이면 null.</summary>
         public Sprite Get(TrapState state)
         {
@@ -68,15 +77,21 @@ namespace ReTrap
         [Tooltip("렌더러별 상태 스프라이트 목록.")]
         private List<Binding> bindings = new List<Binding>();
 
-        /// <summary>상태에 맞게 모든 바인딩의 스프라이트를 교체한다.</summary>
-        public void Apply(TrapState state)
+        /// <summary>상태에 맞게 모든 바인딩의 스프라이트를 교체한다 (플레이 외형).</summary>
+        public void Apply(TrapState state) => Apply(state, false);
+
+        /// <summary>
+        /// 상태·페이즈 외형에 맞게 모든 바인딩의 스프라이트를 교체한다.
+        /// buildLook = 빌드·AI 검증 페이즈 → 바인딩에 build 스프라이트가 있으면 그것.
+        /// </summary>
+        public void Apply(TrapState state, bool buildLook)
         {
             for (int i = 0; i < bindings.Count; i++)
             {
                 var b = bindings[i];
                 if (b == null || b.target == null) continue;
 
-                Sprite sprite = b.sprites.Get(state);
+                Sprite sprite = b.sprites.Get(state, buildLook);
                 b.target.sprite = sprite;
                 if (!b.transient)
                     b.target.enabled = sprite != null;

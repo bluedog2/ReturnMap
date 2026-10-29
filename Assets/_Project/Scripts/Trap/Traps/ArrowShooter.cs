@@ -269,7 +269,7 @@ namespace ReTrap
             }
 
             arrow.Initialize(_fireDir, arrowSpeed, isBeneficial, this);
-            arrow.SetSprite(arrowSprites.Get(CurrentState));
+            arrow.SetSprite(arrowSprites.Get(CurrentState, IsBuildLookNow));
             ShowMuzzleFlash();
             RaiseActivated();
         }

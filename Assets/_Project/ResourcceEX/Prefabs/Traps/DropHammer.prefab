@@ -5021,6 +5021,7 @@ MonoBehaviour:
       dud: {fileID: 21300000, guid: 8154f530ade71da72165c57a1511ac25, type: 3}
       critical: {fileID: 21300000, guid: 982e1b1296c01e7a9aa8ebea2e1b72b1, type: 3}
       beneficial: {fileID: 21300000, guid: 2e15d861d08e34ab23530137589bf97a, type: 3}
+      build: {fileID: 21300000, guid: 8e140236dd859da4d856a99c77c5b4ed, type: 3}
     transient: 0
   - target: {fileID: 4954216144124037052}
     sprites:
@@ -5028,6 +5029,7 @@ MonoBehaviour:
       dud: {fileID: 21300000, guid: 44cbf27d5dd17a2dd3bcff4bf1b2b73e, type: 3}
       critical: {fileID: 21300000, guid: 910b6b1049829e618de598e2659d3147, type: 3}
       beneficial: {fileID: 21300000, guid: c79374ab3d87ce6efff8d0aad2c11bcc, type: 3}
+      build: {fileID: 21300000, guid: fe1df113494f15f49841aee9f7365ee1, type: 3}
     transient: 0
   - target: {fileID: 3585210810619079964}
     sprites:
@@ -5035,6 +5037,7 @@ MonoBehaviour:
       dud: {fileID: -1060472282, guid: 06bf6eb5face46057a7c192edc46c76d, type: 3}
       critical: {fileID: 1954861703, guid: 85eb6095e678c07a4293f40f0425dbb4, type: 3}
       beneficial: {fileID: 450445669, guid: 9f60026efb923b01a00ff06023915ac3, type: 3}
+      build: {fileID: -312708648, guid: 2a1569a29c688974e971ceee0833c96c, type: 3}
     transient: 0
   - target: {fileID: 5373197217844355371}
     sprites:
@@ -5042,6 +5045,7 @@ MonoBehaviour:
       dud: {fileID: 21300000, guid: 948cdfd9340504de52e480dd055138e3, type: 3}
       critical: {fileID: 21300000, guid: 06921c377abc9ac5aafc7d25ec0f9bdf, type: 3}
       beneficial: {fileID: 21300000, guid: edabb132119f4ce5eac611626fa10693, type: 3}
+      build: {fileID: 21300000, guid: 653aa7c42e2c26b4fae319b410486b4b, type: 3}
     transient: 1
 --- !u!1 &2151494694178813110
 GameObject:

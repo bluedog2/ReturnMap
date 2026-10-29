@@ -5011,6 +5011,7 @@ MonoBehaviour:
       dud: {fileID: 21300000, guid: 31b123f50c4606986be057f4e98009d4, type: 3}
       critical: {fileID: 21300000, guid: 814bb99ab5e01d8e245f7ef6739525e7, type: 3}
       beneficial: {fileID: 21300000, guid: e8dc29b69123bfd28641f381d3c6c5f3, type: 3}
+      build: {fileID: 21300000, guid: f8a3bdd0e86a2b24f9fd88f9dfcbc946, type: 3}
     transient: 0
   - target: {fileID: 1953553352187169143}
     sprites:
@@ -5018,6 +5019,7 @@ MonoBehaviour:
       dud: {fileID: 0}
       critical: {fileID: 21300000, guid: 6edce746c8194a3f57ea24bb371ff132, type: 3}
       beneficial: {fileID: 21300000, guid: 1eb335d4195ad180ac58033dd87778db, type: 3}
+      build: {fileID: 0}
     transient: 0
   - target: {fileID: 5393731138498451471}
     sprites:
@@ -5025,6 +5027,7 @@ MonoBehaviour:
       dud: {fileID: 21300000, guid: d4dc048e28e188fbd4438621e21b23e6, type: 3}
       critical: {fileID: 21300000, guid: 9fa4a13d261ed7e70a76246f59659b7f, type: 3}
       beneficial: {fileID: 21300000, guid: 2cbe3f51fb50d7d7620f30d3f7d14228, type: 3}
+      build: {fileID: 21300000, guid: aaa7aa4a9b35b1c4dbd35515d9d14063, type: 3}
     transient: 0
 --- !u!1 &1296530837042979082
 GameObject:

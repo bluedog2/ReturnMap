@@ -81,6 +81,10 @@ namespace ReTrap.EditorTools
                 if (CropToAlphaBounds(PartPath("drop_hammer", state, "chain"))) count++;
                 if (CropToAlphaBounds(PartPath("spike",       state, "platform"))) count++;
             }
+            // 빌드·AI 외형 체인 (입고됐을 때만 — Tiled 렌더러용 알파 크롭)
+            string buildChain = PartPath("drop_hammer", "Build", "chain");
+            if (File.Exists(Path.Combine(Directory.GetParent(Application.dataPath).FullName, buildChain)) &&
+                CropToAlphaBounds(buildChain)) count++;
             return count;
         }
 
@@ -239,6 +243,7 @@ namespace ReTrap.EditorTools
                 var glows  = LoadStateSprites("spike", "glow");
                 glows[0] = null; // Normal
                 glows[1] = null; // Dud
+                glows[4] = null; // 빌드·AI 외형 = Normal → 글로우 없음
 
                 var platformBeneficial = LoadSprite(PartPath("spike", "Beneficial", "platform"));
 
@@ -557,16 +562,20 @@ namespace ReTrap.EditorTools
         private static Sprite LoadSprite(string path)
             => AssetDatabase.LoadAllAssetsAtPath(path).OfType<Sprite>().FirstOrDefault();
 
-        /// <summary>Normal, Dud, Critical, Beneficial 순서의 스프라이트 4종.</summary>
+        /// <summary>
+        /// Normal, Dud, Critical, Beneficial 순서의 스프라이트 4종 + [4] 빌드·AI 페이즈 외형
+        /// (<c>{trap}/Build/{part}.png</c>, 없으면 null — 플레이 외형 그대로).
+        /// </summary>
         private static Sprite[] LoadStateSprites(string trap, string part)
         {
-            var result = new Sprite[States.Length];
+            var result = new Sprite[States.Length + 1];
             for (int i = 0; i < States.Length; i++)
             {
                 result[i] = LoadSprite(PartPath(trap, States[i], part));
                 if (result[i] == null)
                     Debug.LogWarning($"[TrapStateVisualSetup] 스프라이트 없음: {PartPath(trap, States[i], part)}");
             }
+            result[States.Length] = LoadSprite(PartPath(trap, "Build", part));
             return result;
         }
 
@@ -648,6 +657,7 @@ namespace ReTrap.EditorTools
             prop.FindPropertyRelative("dud").objectReferenceValue        = sprites[1];
             prop.FindPropertyRelative("critical").objectReferenceValue   = sprites[2];
             prop.FindPropertyRelative("beneficial").objectReferenceValue = sprites[3];
+            prop.FindPropertyRelative("build").objectReferenceValue      = sprites.Length > 4 ? sprites[4] : null;
         }
 
         private static void SetObject(SerializedObject so, string field, Object value)

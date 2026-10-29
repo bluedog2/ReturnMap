@@ -297,6 +297,10 @@ namespace ReTrap
             // 기본 배경 타일 적용 (ConfigureForAnchor 미호출 — 수동/프리뷰 배치 대비)
             RefreshTileBackground();
 
+            // 설치 시점 페이즈 외형 (빌드 중 설치 → 빌드·AI 외형)
+            if (_stateVisuals != null)
+                _stateVisuals.Apply(CurrentState, IsBuildLookNow);
+
             ValidateTriggerRouting();
         }
 
@@ -545,8 +549,20 @@ namespace ReTrap
         /// </summary>
         private void RefreshTileBackground() => RefreshTileBackground(null);
 
-        /// <summary>페이즈 전환 시 지형 타일과 같은 페이즈 스프라이트로 갱신.</summary>
-        private void HandlePhaseChanged(GamePhase phase) => RefreshTileBackground(phase);
+        /// <summary>페이즈 전환 시 지형 타일과 같은 페이즈 스프라이트로 갱신 + 함정 외형(빌드·AI ↔ 플레이) 전환.</summary>
+        private void HandlePhaseChanged(GamePhase phase)
+        {
+            RefreshTileBackground(phase);
+            if (_stateVisuals != null)
+                _stateVisuals.Apply(CurrentState, IsBuildLook(phase));
+        }
+
+        /// <summary>빌드·AI 검증 페이즈 외형을 쓰는지 (플레이 외 페이즈). 타일 Build 세트와 같은 규칙.</summary>
+        public static bool IsBuildLook(GamePhase phase) => phase != GamePhase.Play;
+
+        /// <summary>현재 페이즈 기준 <see cref="IsBuildLook(GamePhase)"/>. 매니저가 없으면 플레이 외형.</summary>
+        protected static bool IsBuildLookNow
+            => GamePhaseManager.Instance != null && IsBuildLook(GamePhaseManager.Instance.currentPhase);
 
         private void RefreshTileBackground(GamePhase? phaseArg)
         {
@@ -649,7 +665,7 @@ namespace ReTrap
 
             // 상태별 스프라이트 스왑 (틴트 처리 이후 — 전용 스프라이트는 틴트 대상이 아님)
             if (_stateVisuals != null)
-                _stateVisuals.Apply(state);
+                _stateVisuals.Apply(state, IsBuildLookNow);
         }
 
         private void StopAllParticles()

@@ -245,6 +245,7 @@ MonoBehaviour:
     dud: {fileID: 21300000, guid: b2b7d114cfc99974b0b566cb37198258, type: 3}
     critical: {fileID: 21300000, guid: f3992e25db00ec2383d3bc2e504226c5, type: 3}
     beneficial: {fileID: 21300000, guid: cf8394326aaa6d4a3707f4e053c893e8, type: 3}
+    build: {fileID: 21300000, guid: a458488a81c62a740a0e99c0cfea7987, type: 3}
   muzzleFlash: {fileID: 2396729704732227287}
   muzzleFlashDuration: 0.08
 --- !u!114 &62275345464742350
@@ -266,6 +267,7 @@ MonoBehaviour:
       dud: {fileID: 21300000, guid: cff14dff2c97f6ae7f87c98b49d3dfe4, type: 3}
       critical: {fileID: 21300000, guid: fbaca91588110e5cc8f15e088d780334, type: 3}
       beneficial: {fileID: 21300000, guid: 260a2f935e4aadbc0b2c3001b198095a, type: 3}
+      build: {fileID: 21300000, guid: 83e0bb42d382ca447ae4448ae1afd6ec, type: 3}
     transient: 0
   - target: {fileID: 2396729704732227287}
     sprites:
@@ -273,6 +275,7 @@ MonoBehaviour:
       dud: {fileID: 21300000, guid: e657b60e6ef32ca1d57a399908fed8f5, type: 3}
       critical: {fileID: 21300000, guid: 381dd26b9f3abf179f7f2ec35e2b5671, type: 3}
       beneficial: {fileID: 21300000, guid: 800b59b1f21e1381090b761d75f13258, type: 3}
+      build: {fileID: 21300000, guid: f7dde7cf7f5559149bb9feea377a8e4d, type: 3}
     transient: 1
 --- !u!114 &7090571701161667372
 MonoBehaviour:

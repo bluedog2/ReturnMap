@@ -14,7 +14,8 @@ namespace ReTrap.EditorTools
     /// 메뉴 <b>ReTrap → Setup → Px32 함정 연결</b> (배치모드는 <see cref="Run"/>):
     /// <list type="number">
     ///   <item>NEWIMAG/Px32TrapV2/Parts/{함정}/{상태}/{부품}.png(1배)를 기존 Sprites/Traps/Parts 같은 경로에 덮어쓴다
-    ///         (.meta 유지 → GUID 유지) 후 32px 임포트 설정(PPU 32·Point·무압축·중앙 피벗) 적용.</item>
+    ///         (.meta 유지 → GUID 유지) 후 32px 임포트 설정(PPU 32·Point·무압축·중앙 피벗) 적용.
+    ///         상태 폴더 <c>Build</c>(빌드·AI 페이즈 외형)는 새 파일로 추가.</item>
     ///   <item>NEWIMAG/Px32TrapV2/Misc 의 슬롯 마커 4방향·봉인 타일을 Px32/Traps 로 복사, 어드레서블 등록,
     ///         TilePaletteConfig 의 slotMarkers·sealRef 연결(틴트 흰색). 덮어쓰기 전 값은 로그.</item>
     ///   <item><see cref="TrapStateVisualSetup.RunTraps"/> 로 프리팹 재배선(크롭·가시 끝·해머 오프셋 재계산).</item>
@@ -53,11 +54,14 @@ namespace ReTrap.EditorTools
             {
                 string rel  = src.Substring(inboxParts.Length + 1).Replace('\\', '/');
                 string dest = $"{PartsDir}/{rel}";
-                if (!File.Exists(Path.Combine(root, dest)))
+                // 빌드·AI 외형(Build 폴더)은 새 파일 허용, 그 외는 기존 파츠 덮어쓰기만 (GUID 유지)
+                bool buildLook = rel.Contains("/Build/");
+                if (!buildLook && !File.Exists(Path.Combine(root, dest)))
                 {
                     log.AppendLine("건너뜀(기존 파츠 경로 없음): " + rel);
                     continue;
                 }
+                Directory.CreateDirectory(Path.GetDirectoryName(Path.Combine(root, dest)));
                 File.Copy(src, Path.Combine(root, dest), true);
                 copied.Add(dest);
             }
