@@ -241,10 +241,15 @@ namespace ReTrap.EditorTools
                         if (!trapNames.Contains(name))
                             c.errors.Add($"{file}: allowedTraps 에 미존재 함정 이름: '{name}'");
 
+                // 맵 크기 규격 위반은 에러 (빌드·검증 뷰에 맵 전체가 안 보임 — 계획서 4절)
+                string spec = MapAuthoringValidator.ViewportSpecError(map.width, map.height);
+                if (spec != null)
+                    c.errors.Add($"{file}: {spec}");
+
                 List<string> msgs = MapAuthoringValidator.Validate(map);
                 if (msgs != null)
                     foreach (string m in msgs)
-                        c.warnings.Add($"{file}: {m}");
+                        if (m != spec) c.warnings.Add($"{file}: {m}");
 
                 string stem = Path.GetFileNameWithoutExtension(path);
                 if (map.mapId != stem)

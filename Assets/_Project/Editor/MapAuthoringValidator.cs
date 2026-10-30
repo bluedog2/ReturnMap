@@ -26,10 +26,30 @@ namespace ReTrap.EditorTools
     ///   <item>스폰 → 골 연결성 없음 (빈 칸 기준 — 근사 검사)</item>
     ///   <item>통행 높이 2칸 미만인 바닥 칸 (주인공 콜라이더 1.875칸)</item>
     ///   <item>허용 함정 이름 미존재·중복 및 슬롯 앵커별 호환 함정 부재</item>
+    ///   <item>맵 크기 규격 밖 (<see cref="ViewportSpecError"/> — CI 에서는 에러)</item>
     /// </list>
     /// </summary>
     public static class MapAuthoringValidator
     {
+        // ── 맵 크기 규격 (docs/px32-conversion-plan.md 4절, U3=a) ─────────────
+
+        /// <summary>허용 높이 (h ∈ {14, 18}). 프리셋 S 25×14 · L 32×18.</summary>
+        public static readonly int[] SpecHeights = { 14, 18 };
+
+        /// <summary>
+        /// 빌드·검증 뷰가 맵 전체를 16:9 화면에 맞추려면 <c>ceil(h×16/9) ≤ w ≤ ceil(h×16/9)+1</c>.
+        /// 위반이면 사유, 규격 안이면 null.
+        /// </summary>
+        public static string ViewportSpecError(int w, int h)
+        {
+            if (System.Array.IndexOf(SpecHeights, h) < 0)
+                return $"맵 높이 {h} 는 규격 밖 (허용 14·18 — 프리셋 25×14 / 32×18)";
+            int min = Mathf.CeilToInt(h * 16f / 9f);
+            if (w < min || w > min + 1)
+                return $"맵 {w}×{h} 너비는 높이 {h} 기준 {min}~{min + 1} 이어야 함 (16:9 화면에 맵 전체가 보이도록)";
+            return null;
+        }
+
         /// <summary>경고 목록 반환. 비어있으면 통과.</summary>
         public static List<string> Validate(MapData map)
         {
@@ -41,6 +61,9 @@ namespace ReTrap.EditorTools
             foreach (var s in map.trapSlots)
                 if (map.InBounds(s.x, s.y))
                     slotCells.Add(map.Index(s.x, s.y));
+
+            string spec = ViewportSpecError(map.width, map.height);
+            if (spec != null) warnings.Add(spec);
 
             CheckSpawnGoal(map, slotCells, warnings);
             CheckBorder(map, slotCells, warnings);

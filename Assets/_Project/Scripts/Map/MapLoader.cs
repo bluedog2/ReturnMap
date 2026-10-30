@@ -505,8 +505,9 @@ namespace ReTrap
             visual.transform.SetParent(go.transform, false);
 
             var sr     = visual.AddComponent<SpriteRenderer>();
-            GetLinks(map, x, y, type, out bool linkPrev, out bool linkNext);
-            Sprite sp  = _palette != null ? _palette.GetSprite(type, CurrentPhaseOrPlay(), x, y, linkPrev, linkNext) : null;
+            TileType look = VisualType(map, x, y, type); // 외형만 — 물리·충돌은 type 그대로
+            GetLinks(map, x, y, look, out bool linkPrev, out bool linkNext);
+            Sprite sp  = _palette != null ? _palette.GetSprite(look, CurrentPhaseOrPlay(), x, y, linkPrev, linkNext) : null;
             sr.sprite  = sp;
             sr.color   = sp != null ? Color.white
                         : (_palette != null ? _palette.GetColor(type)
@@ -530,7 +531,7 @@ namespace ReTrap
 
             // 페이즈별 스프라이트 교체 대상으로 등록 (프리팹 경로는 제외)
             if (_palette != null)
-                _phaseTiles.Add((sr, type, x, y, linkPrev, linkNext));
+                _phaseTiles.Add((sr, look, x, y, linkPrev, linkNext));
 
             // 솔리드 타일 → BoxCollider2D (부모 go, 스케일 1 → 루트 CompositeCollider2D 로 병합)
             if (_palette != null && _palette.IsSolid(type))
@@ -563,7 +564,20 @@ namespace ReTrap
         }
 
         private bool SameUnslotted(MapData map, int x, int y, TileType type)
-            => map.InBounds(x, y) && map.GetTile(x, y) == type && !_slotCells.Contains(map.Index(x, y));
+            => map.InBounds(x, y) && map.GetTile(x, y) != TileType.Empty
+               && VisualType(map, x, y, map.GetTile(x, y)) == type && !_slotCells.Contains(map.Index(x, y));
+
+        /// <summary>
+        /// 그릴 외형 타입. 위 칸이 지형(타일·함정 슬롯)으로 덮인 바닥은 윗면 줄이 없는 벽 콘크리트로 그린다
+        /// (계단·여러 줄 바닥에서 줄마다 윗면 띠가 보이던 문제). 충돌·솔리드 판정은 원래 타입.
+        /// </summary>
+        private TileType VisualType(MapData map, int x, int y, TileType type)
+        {
+            if (type != TileType.Floor) return type;
+            if (!map.InBounds(x, y + 1)) return type;
+            bool covered = map.GetTile(x, y + 1) != TileType.Empty || _slotCells.Contains(map.Index(x, y + 1));
+            return covered ? TileType.Wall : type;
+        }
 
         /// <summary>맵의 배경 그리드에 실제 등장하는 타일 인덱스 집합 (0=없음 제외).</summary>
         private static HashSet<int> CollectUsedBackgrounds(MapData map)

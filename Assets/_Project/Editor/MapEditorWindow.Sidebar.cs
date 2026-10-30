@@ -153,6 +153,20 @@ namespace ReTrap.EditorTools
                     $"현재  {curW} × {curH}  ({RatioText(curW, curH)}){AspectMatchMark(curW, curH)}",
                     EditorStyles.miniLabel);
 
+                // 맵 크기 규격 (계획서 4절): 높이 14·18, 너비 ceil(h×16/9)~+1 — 밖이면 경고 (CI 는 에러)
+                string specErr = MapAuthoringValidator.ViewportSpecError(curW, curH);
+                if (specErr != null)
+                    EditorGUILayout.HelpBox(specErr, MessageType.Warning);
+
+                EditorGUILayout.BeginHorizontal();
+                {
+                    if (GUILayout.Button("S 25×14", EditorStyles.miniButtonLeft))
+                    { _resizeW = 25; _resizeH = 14; _aspect = AspectPreset.Free; }
+                    if (GUILayout.Button("L 32×18", EditorStyles.miniButtonRight))
+                    { _resizeW = 32; _resizeH = 18; _aspect = AspectPreset.Free; }
+                }
+                EditorGUILayout.EndHorizontal();
+
                 // 화면 비율 프리셋 — 빌드 카메라가 맵에 딱 맞으려면 화면과 같은 비율로 제작
                 EditorGUI.BeginChangeCheck();
                 _aspect = (AspectPreset)EditorGUILayout.Popup("비율", (int)_aspect, AspectLabels);
