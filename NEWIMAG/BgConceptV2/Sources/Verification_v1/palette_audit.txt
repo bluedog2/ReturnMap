@@ -1,0 +1,4 @@
+﻿Play_Far.png | top opaque=640 | bottom opaque=640 | #19181F #191F2B #202735 #272D3B #302B36 #641F36
+Play_Near.png | top opaque=0 | bottom opaque=640 | #19181F #202735 #272D3B #2A282D #302B36 #303940 #38313D
+Verification_Far.png | top opaque=640 | bottom opaque=640 | #202735 #29323B #303940 #323D46 #3B454C #641F36
+Verification_Near.png | top opaque=0 | bottom opaque=640 | #29323B #2A282D #303940 #323D46 #3B454C #3D3940 #3D4850 #47525A #48535A

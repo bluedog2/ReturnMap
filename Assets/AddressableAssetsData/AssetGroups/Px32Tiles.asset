@@ -150,6 +150,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3fd948b317e0c74489d84aee6804bfed
+    m_Address: Px32/Backgrounds/Play_Near
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 45a5ee9cd6dd14847af94b7b745978f6
     m_Address: Px32/Tiles/Tile_Play_Wall_T2B0
     m_ReadOnly: 0
@@ -240,6 +245,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7c5f9320aa3c34144a905c5a4aa188e7
+    m_Address: Px32/Backgrounds/Play_Far
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 86f92735f4beb6a4ebc68132653ada4b
     m_Address: Px32/Tiles/Tile_Play_Ceiling_L0R2
     m_ReadOnly: 0
@@ -267,6 +277,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8a7c5ae3ddc7e0f4c8341310b41b6551
     m_Address: Px32/Tiles/Tile_Build_Floor_L0R1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 93f8a5f7e9bad954cb731c0736aed0eb
+    m_Address: Px32/Backgrounds/Verification_Far
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -357,6 +372,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d963c77b825847f4c88e369eb7daf1f8
     m_Address: Px32/Tiles/Tile_Build_Wall_T0B1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dddf1d4ded7cc2e45bca7715442bd784
+    m_Address: Px32/Backgrounds/Verification_Near
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

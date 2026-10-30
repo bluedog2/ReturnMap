@@ -99,6 +99,9 @@ namespace ReTrap
 
         [Tooltip("근경 층 (원경보다 빠르게 밀림).")]
         public ParallaxLayer near = new ParallaxLayer { factor = 0.45f, autoScroll = 0f,    verticalFactor = 0.05f };
+
+        [Tooltip("하늘 채움 색 — 1배 표시 32px 원경이 화면보다 낮을 때 그 위를 채운다 (원경 맨 윗줄 색). 알파 0 이면 채우지 않음.")]
+        public Color skyColor = Color.clear;
     }
 
     // ═══════════════════════════════════════════════════════════════════════════
@@ -512,6 +515,13 @@ namespace ReTrap
             var set = phase == GamePhase.Play ? playParallax : verificationParallax;
             if (set == null) return null;
             return near ? set.near : set.far;
+        }
+
+        /// <summary>페이즈에 맞는 하늘 채움 색 (<see cref="ParallaxSet.skyColor"/>). 세트 없으면 투명.</summary>
+        public Color GetParallaxSkyColor(GamePhase phase)
+        {
+            var set = phase == GamePhase.Play ? playParallax : verificationParallax;
+            return set != null ? set.skyColor : Color.clear;
         }
 
         /// <summary>페이즈에 맞는 패럴랙스 층 스프라이트. 미설정·미로드면 null.</summary>

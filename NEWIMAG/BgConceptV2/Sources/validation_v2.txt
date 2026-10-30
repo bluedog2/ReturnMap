@@ -1,0 +1,7 @@
+PLAY / FAR: 640x360, opaque colors=6, alpha=255, seam mismatches=0, mean luma=33.03, crimson=0.007%
+PLAY / NEAR: 640x256, opaque colors=7, alpha=0,255, seam mismatches=0, mean luma=33.24, crimson=0.000%
+VERIFICATION / FAR: 640x360, opaque colors=7, alpha=255, seam mismatches=0, mean luma=173.07, crimson=0.000%
+VERIFICATION / NEAR: 640x256, opaque colors=6, alpha=0,255, seam mismatches=0, mean luma=120.91, crimson=0.000%
+Play_Far.png SHA256 unchanged: 77D9E8078B65471050E2DA36089D700C6141B4264A185284F35248611EE7A45B
+Play_Near.png SHA256 unchanged: 7AF115101B3F138E006E3C4EF5ABC873C6E448023B77D374141D9B3D11B6E727
+Near top transparent: 640/640; bottom opaque: 640/640

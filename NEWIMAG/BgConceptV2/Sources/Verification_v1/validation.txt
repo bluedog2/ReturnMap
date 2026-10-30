@@ -1,0 +1,4 @@
+PLAY / FAR: 640x360, opaque colors=6, alpha=255, seam mismatches=0, mean luma=33.03, crimson=0.007%
+PLAY / NEAR: 640x256, opaque colors=7, alpha=0,255, seam mismatches=0, mean luma=33.24, crimson=0.000%
+VERIFICATION / FAR: 640x360, opaque colors=6, alpha=255, seam mismatches=0, mean luma=52.35, crimson=0.005%
+VERIFICATION / NEAR: 640x256, opaque colors=9, alpha=0,255, seam mismatches=0, mean luma=54.40, crimson=0.000%

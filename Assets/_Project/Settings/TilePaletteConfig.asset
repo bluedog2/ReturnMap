@@ -2604,9 +2604,10 @@ MonoBehaviour:
   verificationParallax:
     far:
       spriteRef:
-        m_AssetGUID: 7ea33f6450c7ed74da9001469ce4d2a1
-        m_SubObjectName: 
-        m_SubObjectType: 
+        m_AssetGUID: 93f8a5f7e9bad954cb731c0736aed0eb
+        m_SubObjectName: Verification_Far
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
         m_SubObjectGUID: 
         m_EditorAssetChanged: 0
       factor: 0.15
@@ -2614,20 +2615,23 @@ MonoBehaviour:
       verticalFactor: 0.05
     near:
       spriteRef:
-        m_AssetGUID: 5450172a008384c40b13681be5cf07e4
-        m_SubObjectName: 
-        m_SubObjectType: 
+        m_AssetGUID: dddf1d4ded7cc2e45bca7715442bd784
+        m_SubObjectName: Verification_Near
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
         m_SubObjectGUID: 
         m_EditorAssetChanged: 0
       factor: 0.45
       autoScroll: 0
       verticalFactor: 0.05
+    skyColor: {r: 0.8392157, g: 0.6431373, b: 0.6039216, a: 1}
   playParallax:
     far:
       spriteRef:
-        m_AssetGUID: 9f0c53e3f7afe554b889b63cf04de933
-        m_SubObjectName: 
-        m_SubObjectType: 
+        m_AssetGUID: 7c5f9320aa3c34144a905c5a4aa188e7
+        m_SubObjectName: Play_Far
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
         m_SubObjectGUID: 
         m_EditorAssetChanged: 0
       factor: 0.15
@@ -2635,14 +2639,16 @@ MonoBehaviour:
       verticalFactor: 0.05
     near:
       spriteRef:
-        m_AssetGUID: f188764c369b8324a8fae6d78d995297
-        m_SubObjectName: 
-        m_SubObjectType: 
+        m_AssetGUID: 3fd948b317e0c74489d84aee6804bfed
+        m_SubObjectName: Play_Near
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
         m_SubObjectGUID: 
         m_EditorAssetChanged: 0
       factor: 0.45
       autoScroll: 0
       verticalFactor: 0.05
+    skyColor: {r: 0.09803922, g: 0.12156863, b: 0.16862746, a: 1}
   sealRef:
     m_AssetGUID: a1719a963343d884fa0dcd8ae845a755
     m_SubObjectName: SlotSeal

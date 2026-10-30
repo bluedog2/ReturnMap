@@ -1,0 +1,23 @@
+# Re:Trap background-only palette additions (9 used; maximum 12)
+# Night navy / muted wine charcoal
+#191F2B
+#202735
+#272D3B
+#302B36
+#38313D
+# Overcast slate / dusty twilight
+#29323B
+#323D46
+#3D4850
+#48535A
+# All nine colors above occur in final layers; see Sources/palette_audit.txt.
+
+# Verification v2 warm sunset additions (8); original nine above preserved.
+#705E5B
+#89716B
+#A08078
+#B58B7D
+#C39486
+#D6A49A
+#DEB49E
+#E5C2AF
