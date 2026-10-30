@@ -615,20 +615,6 @@ namespace ReTrap.EditorTools
                 var res = ValidatePng(Path.Combine(ProjectRoot(), assetPath), baseName, category, palette, false);
                 if (res == null) { c.errors.Add($"{assetPath}: PNG 디코딩 실패"); continue; }
                 if (res.Passed) continue;
-
-                // 화풍 v2 과도기: 구 셀 규격으로는 통과하는 시트는 교체 대기 경고 (docs/hero-b-scale-impact.md)
-                var legacy = Px32Rules.GetLegacySheetSpec(category, baseName);
-                if (legacy != null)
-                {
-                    var lo = PixelArtSheetValidator.OptionsFor(category, baseName, palette, false);
-                    lo.cellW = legacy.cellW; lo.cellH = legacy.cellH; lo.frames = legacy.frames;
-                    var lres = ValidatePng(Path.Combine(ProjectRoot(), assetPath), lo);
-                    if (lres != null && lres.Passed)
-                    {
-                        c.warnings.Add($"{assetPath}: 구 규격(셀 {legacy.cellW}) — 화풍 v2 시트로 교체 대기");
-                        continue;
-                    }
-                }
                 c.errors.Add($"{assetPath}: {res.Summary().Replace("\n", " | ")}");
             }
         }

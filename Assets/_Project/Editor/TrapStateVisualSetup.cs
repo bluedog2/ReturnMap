@@ -2,14 +2,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEditor.U2D.Sprites;
 using UnityEngine;
 
 namespace ReTrap.EditorTools
 {
     // ═══════════════════════════════════════════════════════════════════════════
-    //  TrapStateVisualSetup — 함정 상태별 파츠 스프라이트 + 플레이어 이펙트 배선
+    //  TrapStateVisualSetup — 함정 상태별 파츠 스프라이트 배선
     // ═══════════════════════════════════════════════════════════════════════════
 
     /// <summary>
@@ -18,7 +17,6 @@ namespace ReTrap.EditorTools
     /// <list type="number">
     ///   <item>chain·platform 스프라이트를 알파 바운딩박스로 크롭(Multiple + 단일 rect)</item>
     ///   <item>SpikeTrap / ArrowShooter / Arrow / DropHammer 프리팹에 파츠 자식·TrapStateVisuals·참조 배선</item>
-    ///   <item>SampleScene 의 Player 에 PlayerEffects 부착 + 프레임 배열 배선</item>
     /// </list>
     /// <b>멱등성</b>: 자식은 이름으로 찾아 재사용하고 바인딩은 매번 다시 쓰므로 여러 번 실행해도 안전합니다.
     /// 함정 부분만 필요하면 <see cref="RunTraps"/> (TrapPrefabBuilder 재생성 시 호출).
@@ -26,9 +24,7 @@ namespace ReTrap.EditorTools
     public static class TrapStateVisualSetup
     {
         private const string PartsDir   = "Assets/_Project/ResourcceEX/Sprites/Traps/Parts";
-        private const string EffectsDir = "Assets/_Project/ResourcceEX/Sprites/Effects";
         private const string PrefabDir  = "Assets/_Project/ResourcceEX/Prefabs/Traps";
-        private const string ScenePath  = "Assets/_Project/ResourcceEX/Scenes/SampleScene.unity";
 
         private static readonly string[] States = { "Normal", "Dud", "Critical", "Beneficial" };
 
@@ -52,7 +48,6 @@ namespace ReTrap.EditorTools
             }
 
             RunTraps();
-            RunPlayerEffects();
             AssetDatabase.SaveAssets();
         }
 
@@ -477,70 +472,6 @@ namespace ReTrap.EditorTools
                 PrefabUtility.SaveAsPrefabAsset(root, path);
             }
             finally { PrefabUtility.UnloadPrefabContents(root); }
-        }
-
-        // ── 7. 플레이어 이펙트 (씬) ───────────────────────────────────────────
-
-        private static void RunPlayerEffects()
-        {
-            if (!File.Exists(Path.Combine(Directory.GetParent(Application.dataPath).FullName, ScenePath)))
-            {
-                Debug.LogWarning($"[TrapStateVisualSetup] 씬을 찾지 못했습니다: {ScenePath}");
-                return;
-            }
-
-            if (!Application.isBatchMode && !EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
-                return;
-
-            var scene = EditorSceneManager.OpenScene(ScenePath, OpenSceneMode.Single);
-
-            var player = Object.FindFirstObjectByType<PlayerController>();
-            if (player == null)
-            {
-                Debug.LogWarning("[TrapStateVisualSetup] 씬에서 PlayerController 를 찾지 못해 PlayerEffects 를 건너뜁니다.");
-                return;
-            }
-
-            var fx = player.GetComponent<PlayerEffects>();
-            bool added = fx == null;
-            if (added) fx = player.gameObject.AddComponent<PlayerEffects>();
-
-            var so = new SerializedObject(fx);
-            FillFrames(so.FindProperty("dashFrames"),    "Dash");
-            FillFrames(so.FindProperty("hitFrames"),     "Hit");
-            FillFrames(so.FindProperty("deathFrames"),   "Death");
-            FillFrames(so.FindProperty("respawnFrames"), "Respawn");
-
-            // 신규 부착 시에만 스케일 자동 산정 (이후 수동 튜닝 보존). 이펙트 스프라이트 1유닛 = 몸 높이 기준.
-            if (added)
-            {
-                var bodyTf = player.transform.Find("Visual");
-                var body   = bodyTf != null ? bodyTf.GetComponent<SpriteRenderer>()
-                                            : player.GetComponentInChildren<SpriteRenderer>();
-                float h = body != null && body.sprite != null ? body.bounds.size.y : 1f;
-                so.FindProperty("effectScale").floatValue = Mathf.Max(0.01f, h);
-            }
-            so.ApplyModifiedPropertiesWithoutUndo();
-
-            EditorSceneManager.MarkSceneDirty(scene);
-            EditorSceneManager.SaveScene(scene);
-            Debug.Log($"[TrapStateVisualSetup] SampleScene Player — PlayerEffects {(added ? "추가" : "갱신")} 후 씬 저장");
-        }
-
-        /// <summary>배열이 비어 있을 때만 {dir}/00..03.png 로 채운다 (수동 튜닝 보존).</summary>
-        private static void FillFrames(SerializedProperty arr, string dir)
-        {
-            if (arr.arraySize > 0) return;
-
-            var frames = new List<Sprite>();
-            for (int i = 0; i < 4; i++)
-            {
-                var s = LoadSprite($"{EffectsDir}/{dir}/{i:00}.png");
-                if (s != null) frames.Add(s);
-            }
-            arr.arraySize = frames.Count;
-            for (int i = 0; i < frames.Count; i++)
-                arr.GetArrayElementAtIndex(i).objectReferenceValue = frames[i];
         }
 
         // ── 공통 헬퍼 ────────────────────────────────────────────────────────

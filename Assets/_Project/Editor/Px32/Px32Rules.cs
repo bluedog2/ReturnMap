@@ -18,9 +18,8 @@ namespace ReTrap.EditorTools
     {
         public const int    Ppu        = 32;
         public const string RootFolder = "Assets/_Project/ResourcceEX/Sprites/Px32";
-        public const string PaletteRel = "NEWIMAG/palette_32px.txt";
-        /// <summary>화풍 v2 팔레트. 과도기에는 구 팔레트와 합집합으로 검사하고, 전환 완료 후 이것만 남긴다.</summary>
-        public const string PaletteV2Rel = "NEWIMAG/palette_v2.txt";
+        /// <summary>마스터 팔레트 (화풍 v2 — 주인공·적·함정·타일·배경 추가색 포함).</summary>
+        public const string PaletteRel = "NEWIMAG/palette_v2.txt";
 
         /// <summary>허용 카테고리 폴더 이름.</summary>
         public static readonly string[] Categories = { "Tiles", "Player", "Enemies", "Traps", "Effects", "Backgrounds", "UI" };
@@ -119,18 +118,6 @@ namespace ReTrap.EditorTools
             return null;
         }
 
-        /// <summary>
-        /// 화풍 v2 전환 과도기용 — 구 규격(주인공 셀 64, 적 48/64/96)의 셀 크기.
-        /// CI 가 아직 교체되지 않은 구 시트를 경고로만 처리할 때 씁니다. 가져오기(신규 입고)는 항상 새 규격.
-        /// 전환이 끝나면(구 시트 0장) 이 함수와 호출부를 제거합니다. 해당 없으면 null.
-        /// </summary>
-        public static SheetSpec GetLegacySheetSpec(string category, string baseName)
-        {
-            string anim = AnimOf(baseName);
-            if (anim.Length == 0) return null;
-            return CharacterSpec(category, baseName, anim, 64, LegacyEnemyCell(baseName));
-        }
-
         /// <summary>주인공 셀 (화풍 v2: 키 80px — docs/hero-b-scale-impact.md).</summary>
         public const int HeroCell = 96;
 
@@ -181,16 +168,6 @@ namespace ReTrap.EditorTools
             return 0;
         }
 
-        private static int LegacyEnemyCell(string baseName)
-        {
-            if (baseName.StartsWith("Goblin", StringComparison.OrdinalIgnoreCase) ||
-                baseName.StartsWith("Imp",    StringComparison.OrdinalIgnoreCase)) return 48;
-            if (baseName.StartsWith("Skeleton", StringComparison.OrdinalIgnoreCase) ||
-                baseName.StartsWith("Elite",    StringComparison.OrdinalIgnoreCase)) return 64;
-            if (baseName.StartsWith("Orc", StringComparison.OrdinalIgnoreCase)) return 96;
-            return 0;
-        }
-
         private static SheetSpec Sheet(int cell, int frames, float fps, bool loop, Vector2 pivot)
             => new SheetSpec { cellW = cell, cellH = cell, frames = frames, fps = fps, loop = loop, pivot = pivot };
 
@@ -212,18 +189,14 @@ namespace ReTrap.EditorTools
         public static string ProjectRoot() => Path.GetDirectoryName(Application.dataPath);
 
         /// <summary>
-        /// 팔레트 파일(구 + v2 합집합)의 #RRGGBB 줄(# 로 시작해도 6자리 hex 면 색, 그 외 주석 무시)을 읽습니다.
-        /// 구 팔레트 파일이 없으면 빈 배열(CI 가 "팔레트 없음"으로 실패).
+        /// 마스터 팔레트 파일의 #RRGGBB 줄(# 로 시작해도 6자리 hex 면 색, 그 외 주석 무시)을 읽습니다.
+        /// 파일이 없으면 빈 배열(CI 가 "팔레트 없음"으로 실패).
         /// </summary>
         public static Color32[] LoadPalette(bool forceReload = false)
         {
             if (_palette != null && !forceReload) return _palette;
             var list = new List<Color32>();
-            if (File.Exists(Path.Combine(ProjectRoot(), PaletteRel)))
-            {
-                ReadPaletteFile(PaletteRel, list);
-                ReadPaletteFile(PaletteV2Rel, list);
-            }
+            ReadPaletteFile(PaletteRel, list);
             _palette = list.ToArray();
             return _palette;
         }

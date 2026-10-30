@@ -30,7 +30,7 @@ namespace ReTrap.EditorTools
     public static class TrapPrefabBuilder
     {
         private const string PrefabDir     = "Assets/_Project/ResourcceEX/Prefabs/Traps";
-        private const string TileSprite    = "Assets/_Project/ResourcceEX/Sprites/Environment/CorruptedCastleTile.png";
+        private const string TileSprite    = "Assets/_Project/ResourcceEX/Sprites/Px32/Tiles/Tile_Play_Floor_A.png";
         private const string DefinitionDir = "Assets/_Project/Settings/TrapDefinitions";
 
         [MenuItem("ReTrap/Setup/3. 함정 프리팹 + Build UI 세팅", false, 3)]

@@ -299,7 +299,7 @@ namespace ReTrap.EditorTools
 
         private static void CheckPalette(Color32[] a, int w, int h, int cw, int ch, int frames, Options o, Item item)
         {
-            if (o.palette == null || o.palette.Length == 0) { item.Fail("팔레트가 비어 있음(NEWIMAG/palette_32px.txt)"); return; }
+            if (o.palette == null || o.palette.Length == 0) { item.Fail("팔레트가 비어 있음(" + Px32Rules.PaletteRel + ")"); return; }
             var cache = new Dictionary<uint, bool>();
             int outside = 0;
             string example = null;

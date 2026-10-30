@@ -229,9 +229,9 @@ MonoBehaviour:
   stateLight: {fileID: 1237985062533184264}
   tintTargets: []
   tileBackground: {fileID: 588273972767945076}
-  bgFloorSprite: {fileID: 21300000, guid: 5ca3c53d6eb591848987e7240cd02fda, type: 3}
-  bgWallSprite: {fileID: 21300000, guid: d1b3c17f28191134fa20a89724e2fe9b, type: 3}
-  bgCeilingSprite: {fileID: 21300000, guid: 5034b54cba5b97d4d9b60eb7b7251635, type: 3}
+  bgFloorSprite: {fileID: 21300000, guid: cb5c3b579321cfd4d93bdf21fed72d56, type: 3}
+  bgWallSprite: {fileID: 21300000, guid: be9eb732e2efcb7479018ee07ff705c5, type: 3}
+  bgCeilingSprite: {fileID: 21300000, guid: 89b0fc8f660923f47981a7d5a087c864, type: 3}
   backgroundCellSize: 1
   beneficialBlockSprite: {fileID: -1615564588, guid: 1844c9727a5683abe375de817fb77ec6, type: 3}
   baseCost: 25
@@ -5226,7 +5226,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 5ca3c53d6eb591848987e7240cd02fda, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cb5c3b579321cfd4d93bdf21fed72d56, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
