@@ -1,0 +1,303 @@
+{
+  "tool": "built-in image_gen",
+  "records": [
+    {
+      "sheet": "Goblin_Raider_Idle",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Production Re:Trap pixel-art animation sheet, genuinely transparent background. Reference image is the APPROVED old v2 design and animation, enlarged nearest-neighbor 4x ONLY for reference. Completely REDRAW at the NEW native resolution with added meaningful details; never just enlarge the old sprite. Keep same character, colors, costume, weapon, facing right in three-quarter side view. Flat 3-4 shade clusters, NO dithering, NO antialiasing, crisp 1 native pixel charcoal outline (#19181F), no pure black. Use at most 24 colors from this palette: #19181F #2A282D #3D3940 #555058 #74666A #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #334629 #58783B #88AE43 #B8D849 #D8EC76 #38284D #58377B #8050AD #B581D4. No text, labels, guides, shadows, ground, grid lines or effects. Every output pixel-art pixel must be an exact square 4x4 output pixel block aligned to origin. Equal square cells, no padding between cells. Each frame has a distinct meaningful animation pose. Same silhouette height to within 2 native pixels and horizontal bbox center to within 2 native pixels, except Death. Transparent top/left/right edge of each cell. Grounded figures feet on final cell row. Draw Goblin_Raider Idle: 4 frames, 2 columns x 2 rows in reading order. Native cells 96x96, rendered at EXACTLY 4x => output 768x768. 새 셀 96×96 프레임 4개 그리드 픽셀아트를 정확히 4배 블록으로. Goblin height exactly 64 native pixels (256 output pixels), positioned at native y=32..95 and horizontally centered in each cell. Small hunched green goblin in purple hood and ragged outfit carrying the same dark small weapon. Add articulated green fingers, separate pointed teeth and brow/eye expression, purple hood seam and 3-step folded cloth, small tears, straps and metal weapon glints. Four gentle breathing poses, no vertical height change.",
+      "source": "Sources/Goblin_Raider_Idle_attempt1.png",
+      "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a197c8-00bf-7002-a8d2-07640afe91f0\\exec-06d3c31f-6dc0-41bf-b44c-2e475a7b647c.png"
+    },
+    {
+      "sheet": "Goblin_Raider_Run",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Production Re:Trap pixel-art animation sheet, genuinely transparent background. Reference image is the APPROVED old v2 design and animation, enlarged nearest-neighbor 4x ONLY for reference. Completely REDRAW at the NEW native resolution with added meaningful details; never just enlarge the old sprite. Keep same character, colors, costume, weapon, facing right in three-quarter side view. Flat 3-4 shade clusters, NO dithering, NO antialiasing, crisp 1 native pixel charcoal outline (#19181F), no pure black. Use at most 24 colors from this palette: #19181F #2A282D #3D3940 #555058 #74666A #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #334629 #58783B #88AE43 #B8D849 #D8EC76 #38284D #58377B #8050AD #B581D4. No text, labels, guides, shadows, ground, grid lines or effects. Every output pixel-art pixel must be an exact square 4x4 output pixel block aligned to origin. Equal square cells, no padding between cells. Each frame has a distinct meaningful animation pose. Same silhouette height to within 2 native pixels and horizontal bbox center to within 2 native pixels, except Death. Transparent top/left/right edge of each cell. Grounded figures feet on final cell row. Goblin_Raider Run. Hunched green goblin, oversized pointed ears, purple hood, black ragged sleeves and pants, purple front cloth, metal shoulder and wrist guards, little dagger at hip and same handheld weapon as reference. New details: eyes and pointed teeth, hood stitch seam, cloth folds and tears, belt buckle, glove knuckles and metal highlights. Six clearly different sequential locomotion poses, complete alternating-leg running cycle, same overall height; imp does six wing-flapping forward-flight poses. Native cell 96x96; 6 frames arranged 3 columns by 2 rows, reading order. 셀 96×96 프레임 6개 그리드 픽셀아트를 정확히 4배 블록으로. Output 1152x768. Standing height exactly 64 native pixels, 256 output pixels. Grounded at each cell bottom.",
+      "source": "Sources/Goblin_Raider_Run_attempt1.png",
+      "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a197c8-00bf-7002-a8d2-07640afe91f0\\exec-4a96357a-5199-4a0d-b99d-2a0296d8bab1.png"
+    },
+    {
+      "sheet": "Goblin_Raider_Hit",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Production Re:Trap pixel-art animation sheet, genuinely transparent background. Reference image is the APPROVED old v2 design and animation, enlarged nearest-neighbor 4x ONLY for reference. Completely REDRAW at the NEW native resolution with added meaningful details; never just enlarge the old sprite. Keep same character, colors, costume, weapon, facing right in three-quarter side view. Flat 3-4 shade clusters, NO dithering, NO antialiasing, crisp 1 native pixel charcoal outline (#19181F), no pure black. Use at most 24 colors from this palette: #19181F #2A282D #3D3940 #555058 #74666A #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #334629 #58783B #88AE43 #B8D849 #D8EC76 #38284D #58377B #8050AD #B581D4. No text, labels, guides, shadows, ground, grid lines or effects. Every output pixel-art pixel must be an exact square 4x4 output pixel block aligned to origin. Equal square cells, no padding between cells. Each frame has a distinct meaningful animation pose. Same silhouette height to within 2 native pixels and horizontal bbox center to within 2 native pixels, except Death. Transparent top/left/right edge of each cell. Grounded figures feet on final cell row. Goblin_Raider Hit. Hunched green goblin, oversized pointed ears, purple hood, black ragged sleeves and pants, purple front cloth, metal shoulder and wrist guards, little dagger at hip and same handheld weapon as reference. New details: eyes and pointed teeth, hood stitch seam, cloth folds and tears, belt buckle, glove knuckles and metal highlights. Two clear damage reaction poses, first recoiling, second recovering, same overall height. Native cell 96x96; 2 frames arranged 2 columns by 1 rows, reading order. 셀 96×96 프레임 2개 그리드 픽셀아트를 정확히 4배 블록으로. Output 768x384. Standing height exactly 64 native pixels, 256 output pixels. Grounded at each cell bottom.",
+      "source": "Sources/Goblin_Raider_Hit_attempt1.png",
+      "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a197c8-00bf-7002-a8d2-07640afe91f0\\exec-3a26bcef-b36b-4c3c-baa0-33fe59e05b2e.png"
+    },
+    {
+      "sheet": "Goblin_Raider_Death",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Production Re:Trap pixel-art animation sheet, genuinely transparent background. Reference image is the APPROVED old v2 design and animation, enlarged nearest-neighbor 4x ONLY for reference. Completely REDRAW at the NEW native resolution with added meaningful details; never just enlarge the old sprite. Keep same character, colors, costume, weapon, facing right in three-quarter side view. Flat 3-4 shade clusters, NO dithering, NO antialiasing, crisp 1 native pixel charcoal outline (#19181F), no pure black. Use at most 24 colors from this palette: #19181F #2A282D #3D3940 #555058 #74666A #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #334629 #58783B #88AE43 #B8D849 #D8EC76 #38284D #58377B #8050AD #B581D4. No text, labels, guides, shadows, ground, grid lines or effects. Every output pixel-art pixel must be an exact square 4x4 output pixel block aligned to origin. Equal square cells, no padding between cells. Each frame has a distinct meaningful animation pose. Same silhouette height to within 2 native pixels and horizontal bbox center to within 2 native pixels, except Death. Transparent top/left/right edge of each cell. Grounded figures feet on final cell row. Goblin_Raider Death. Hunched green goblin, oversized pointed ears, purple hood, black ragged sleeves and pants, purple front cloth, metal shoulder and wrist guards, little dagger at hip and same handheld weapon as reference. New details: eyes and pointed teeth, hood stitch seam, cloth folds and tears, belt buckle, glove knuckles and metal highlights. Six progressive collapse poses, first standing, middle falling down, final two fully collapsed and lying horizontally on the bottom of their cells. For imp first hovering then tumbling down then lying on floor; no vertical-center requirement for Death. Native cell 96x96; 6 frames arranged 3 columns by 2 rows, reading order. 셀 96×96 프레임 6개 그리드 픽셀아트를 정확히 4배 블록으로. Output 1152x768. Standing height exactly 64 native pixels, 256 output pixels. Grounded at each cell bottom.",
+      "source": "Sources/Goblin_Raider_Death_attempt1.png",
+      "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a197c8-00bf-7002-a8d2-07640afe91f0\\exec-012e9012-5596-48cc-8519-0bf2fb21289b.png"
+    },
+    {
+      "sheet": "Imp_Flyer_Idle",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Production Re:Trap pixel-art animation sheet, genuinely transparent background. Reference image is the APPROVED old v2 design and animation, enlarged nearest-neighbor 4x ONLY for reference. Completely REDRAW at the NEW native resolution with added meaningful details; never just enlarge the old sprite. Keep same character, colors, costume, weapon, facing right in three-quarter side view. Flat 3-4 shade clusters, NO dithering, NO antialiasing, crisp 1 native pixel charcoal outline (#19181F), no pure black. Use at most 24 colors from this palette: #19181F #2A282D #3D3940 #555058 #74666A #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #334629 #58783B #88AE43 #B8D849 #D8EC76 #38284D #58377B #8050AD #B581D4. No text, labels, guides, shadows, ground, grid lines or effects. Every output pixel-art pixel must be an exact square 4x4 output pixel block aligned to origin. Equal square cells, no padding between cells. Each frame has a distinct meaningful animation pose. Same silhouette height to within 2 native pixels and horizontal bbox center to within 2 native pixels, except Death. Transparent top/left/right edge of each cell. Grounded figures feet on final cell row. Imp_Flyer Idle. Small flying imp with bone-white skull face, lime green horns, purple bat wings, black/purple little body, curled purple tail with lime bands and tiny clawed limbs. New details: skull cracks, individual teeth and angry sockets, segmented wing fingers and 3-shade membranes, tail bands and claw tips. Remain hovering with bounding-box vertical center at exact cell center. Four subtle breathing/hover poses. Native cells 96x96; 4 frames in 2 columns x 2 rows, reading order. 셀 96×96 프레임 4개 그리드 픽셀아트를 정확히 4배 블록으로. Output 768x768. Total hovering silhouette height exactly 64 native pixels (256 output pixels), including wings horns and tail. For non-death place bbox at native y16..79; wings must not change silhouette height across frames. Frame spacing is uniform.",
+      "source": "Sources/Imp_Flyer_Idle_attempt1.png",
+      "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a197c8-00bf-7002-a8d2-07640afe91f0\\exec-86696286-0105-4e90-877e-be485b2fc053.png"
+    },
+    {
+      "sheet": "Imp_Flyer_Run",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Production Re:Trap pixel-art animation sheet, genuinely transparent background. Reference image is the APPROVED old v2 design and animation, enlarged nearest-neighbor 4x ONLY for reference. Completely REDRAW at the NEW native resolution with added meaningful details; never just enlarge the old sprite. Keep same character, colors, costume, weapon, facing right in three-quarter side view. Flat 3-4 shade clusters, NO dithering, NO antialiasing, crisp 1 native pixel charcoal outline (#19181F), no pure black. Use at most 24 colors from this palette: #19181F #2A282D #3D3940 #555058 #74666A #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #334629 #58783B #88AE43 #B8D849 #D8EC76 #38284D #58377B #8050AD #B581D4. No text, labels, guides, shadows, ground, grid lines or effects. Every output pixel-art pixel must be an exact square 4x4 output pixel block aligned to origin. Equal square cells, no padding between cells. Each frame has a distinct meaningful animation pose. Same silhouette height to within 2 native pixels and horizontal bbox center to within 2 native pixels, except Death. Transparent top/left/right edge of each cell. Grounded figures feet on final cell row. Imp_Flyer Run. Small flying imp with bone-white skull face, lime green horns, purple bat wings, black/purple little body, curled purple tail with lime bands and tiny clawed limbs. New details: skull cracks, individual teeth and angry sockets, segmented wing fingers and 3-shade membranes, tail bands and claw tips. Remain hovering with bounding-box vertical center at exact cell center. Six clearly different sequential locomotion poses, complete alternating-leg running cycle, same overall height; imp does six wing-flapping forward-flight poses. Native cells 96x96; 6 frames in 3 columns x 2 rows, reading order. 셀 96×96 프레임 6개 그리드 픽셀아트를 정확히 4배 블록으로. Output 1152x768. Total hovering silhouette height exactly 64 native pixels (256 output pixels), including wings horns and tail. For non-death place bbox at native y16..79; wings must not change silhouette height across frames. Frame spacing is uniform.",
+      "source": "Sources/Imp_Flyer_Run_attempt1.png",
+      "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a197c8-00bf-7002-a8d2-07640afe91f0\\exec-6ef5ecf9-a3b8-4ac9-bc71-ac2112c3ab17.png"
+    },
+    {
+      "sheet": "Imp_Flyer_Hit",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Production Re:Trap pixel-art animation sheet, genuinely transparent background. Reference image is the APPROVED old v2 design and animation, enlarged nearest-neighbor 4x ONLY for reference. Completely REDRAW at the NEW native resolution with added meaningful details; never just enlarge the old sprite. Keep same character, colors, costume, weapon, facing right in three-quarter side view. Flat 3-4 shade clusters, NO dithering, NO antialiasing, crisp 1 native pixel charcoal outline (#19181F), no pure black. Use at most 24 colors from this palette: #19181F #2A282D #3D3940 #555058 #74666A #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #334629 #58783B #88AE43 #B8D849 #D8EC76 #38284D #58377B #8050AD #B581D4. No text, labels, guides, shadows, ground, grid lines or effects. Every output pixel-art pixel must be an exact square 4x4 output pixel block aligned to origin. Equal square cells, no padding between cells. Each frame has a distinct meaningful animation pose. Same silhouette height to within 2 native pixels and horizontal bbox center to within 2 native pixels, except Death. Transparent top/left/right edge of each cell. Grounded figures feet on final cell row. Imp_Flyer Hit. Small flying imp with bone-white skull face, lime green horns, purple bat wings, black/purple little body, curled purple tail with lime bands and tiny clawed limbs. New details: skull cracks, individual teeth and angry sockets, segmented wing fingers and 3-shade membranes, tail bands and claw tips. Remain hovering with bounding-box vertical center at exact cell center. Two clear damage reaction poses, first recoiling, second recovering, same overall height. Native cells 96x96; 2 frames in 2 columns x 1 rows, reading order. 셀 96×96 프레임 2개 그리드 픽셀아트를 정확히 4배 블록으로. Output 768x384. Total hovering silhouette height exactly 64 native pixels (256 output pixels), including wings horns and tail. For non-death place bbox at native y16..79; wings must not change silhouette height across frames. Frame spacing is uniform.",
+      "source": "Sources/Imp_Flyer_Hit_attempt1.png",
+      "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a197c8-00bf-7002-a8d2-07640afe91f0\\exec-a2931497-2b6a-46f4-8f54-277f124d77bc.png"
+    },
+    {
+      "sheet": "Imp_Flyer_Death",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Production Re:Trap pixel-art animation sheet, genuinely transparent background. Reference image is the APPROVED old v2 design and animation, enlarged nearest-neighbor 4x ONLY for reference. Completely REDRAW at the NEW native resolution with added meaningful details; never just enlarge the old sprite. Keep same character, colors, costume, weapon, facing right in three-quarter side view. Flat 3-4 shade clusters, NO dithering, NO antialiasing, crisp 1 native pixel charcoal outline (#19181F), no pure black. Use at most 24 colors from this palette: #19181F #2A282D #3D3940 #555058 #74666A #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #334629 #58783B #88AE43 #B8D849 #D8EC76 #38284D #58377B #8050AD #B581D4. No text, labels, guides, shadows, ground, grid lines or effects. Every output pixel-art pixel must be an exact square 4x4 output pixel block aligned to origin. Equal square cells, no padding between cells. Each frame has a distinct meaningful animation pose. Same silhouette height to within 2 native pixels and horizontal bbox center to within 2 native pixels, except Death. Transparent top/left/right edge of each cell. Grounded figures feet on final cell row. Imp_Flyer Death. Small flying imp with bone-white skull face, lime green horns, purple bat wings, black/purple little body, curled purple tail with lime bands and tiny clawed limbs. New details: skull cracks, individual teeth and angry sockets, segmented wing fingers and 3-shade membranes, tail bands and claw tips. Remain hovering with bounding-box vertical center at exact cell center. Six progressive collapse poses, first standing, middle falling down, final two fully collapsed and lying horizontally on the bottom of their cells. For imp first hovering then tumbling down then lying on floor; no vertical-center requirement for Death. Native cells 96x96; 6 frames in 3 columns x 2 rows, reading order. 셀 96×96 프레임 6개 그리드 픽셀아트를 정확히 4배 블록으로. Output 1152x768. Total hovering silhouette height exactly 64 native pixels (256 output pixels), including wings horns and tail. For non-death place bbox at native y16..79; wings must not change silhouette height across frames. Frame spacing is uniform.",
+      "source": "Sources/Imp_Flyer_Death_attempt1.png",
+      "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a197c8-00bf-7002-a8d2-07640afe91f0\\exec-00a29a21-d12a-4984-9323-69b53ef3ce8f.png"
+    },
+    {
+      "sheet": "Skeleton_Archer_Idle",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Production Re:Trap pixel-art animation sheet, genuinely transparent background. Reference image is the APPROVED old v2 design and animation, enlarged nearest-neighbor 4x ONLY for reference. Completely REDRAW at the NEW native resolution with added meaningful details; never just enlarge the old sprite. Keep same character, colors, costume, weapon, facing right in three-quarter side view. Flat 3-4 shade clusters, NO dithering, NO antialiasing, crisp 1 native pixel charcoal outline (#19181F), no pure black. Use at most 24 colors from this palette: #19181F #2A282D #3D3940 #555058 #74666A #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #334629 #58783B #88AE43 #B8D849 #D8EC76 #38284D #58377B #8050AD #B581D4. No text, labels, guides, shadows, ground, grid lines or effects. Every output pixel-art pixel must be an exact square 4x4 output pixel block aligned to origin. Equal square cells, no padding between cells. Each frame has a distinct meaningful animation pose. Same silhouette height to within 2 native pixels and horizontal bbox center to within 2 native pixels, except Death. Transparent top/left/right edge of each cell. Grounded figures feet on final cell row. Skeleton_Archer Idle. Thin bone-white skeleton with purple spiky mohawk, ragged purple scarf/cloth, dark lightweight armor with lime marks, holding same compact CROSSBOW, NOT longbow. New details: teeth and skull fissures, separate rib and finger bones, torn cloth folds, crossbow bowstring, trigger mechanism and tiny metal highlights. Four subtle breathing/hover poses. Native cells 128x128; 4 frames in 2 columns x 2 rows, reading order. 셀 128×128 프레임 4개 그리드 픽셀아트를 정확히 4배 블록으로. Output 1024x1024. Standing silhouette height exactly 96 native pixels. Feet at native cell y127, head top at y32 except Death falling poses. Draw crisp native-scale details, a crossbow bowstring one native pixel thick; no glow or blurred transparent halo.",
+      "source": "Sources/Skeleton_Archer_Idle_attempt1.png",
+      "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a197c8-00bf-7002-a8d2-07640afe91f0\\exec-6c792ba9-cd2f-4332-92e9-b4d113421f70.png"
+    },
+    {
+      "sheet": "Skeleton_Archer_Run",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Production Re:Trap pixel-art animation sheet, genuinely transparent background. Reference image is the APPROVED old v2 design and animation, enlarged nearest-neighbor 4x ONLY for reference. Completely REDRAW at the NEW native resolution with added meaningful details; never just enlarge the old sprite. Keep same character, colors, costume, weapon, facing right in three-quarter side view. Flat 3-4 shade clusters, NO dithering, NO antialiasing, crisp 1 native pixel charcoal outline (#19181F), no pure black. Use at most 24 colors from this palette: #19181F #2A282D #3D3940 #555058 #74666A #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #334629 #58783B #88AE43 #B8D849 #D8EC76 #38284D #58377B #8050AD #B581D4. No text, labels, guides, shadows, ground, grid lines or effects. Every output pixel-art pixel must be an exact square 4x4 output pixel block aligned to origin. Equal square cells, no padding between cells. Each frame has a distinct meaningful animation pose. Same silhouette height to within 2 native pixels and horizontal bbox center to within 2 native pixels, except Death. Transparent top/left/right edge of each cell. Grounded figures feet on final cell row. Skeleton_Archer Run. Thin bone-white skeleton with purple spiky mohawk, ragged purple scarf/cloth, dark lightweight armor with lime marks, holding same compact CROSSBOW, NOT longbow. New details: teeth and skull fissures, separate rib and finger bones, torn cloth folds, crossbow bowstring, trigger mechanism and tiny metal highlights. Six clearly different sequential locomotion poses, complete alternating-leg running cycle, same overall height; imp does six wing-flapping forward-flight poses. Native cells 128x128; 6 frames in 3 columns x 2 rows, reading order. 셀 128×128 프레임 6개 그리드 픽셀아트를 정확히 4배 블록으로. Output 1536x1024. Standing silhouette height exactly 96 native pixels. Feet at native cell y127, head top at y32 except Death falling poses. Draw crisp native-scale details, a crossbow bowstring one native pixel thick; no glow or blurred transparent halo.",
+      "source": "Sources/Skeleton_Archer_Run_attempt1.png",
+      "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a197c8-00bf-7002-a8d2-07640afe91f0\\exec-802c174a-97ca-449d-a5cb-e480d087cca7.png"
+    },
+    {
+      "sheet": "Skeleton_Archer_Run",
+      "attempt": 2,
+      "prompt": "Use case: stylized-concept. Production Re:Trap pixel-art animation sheet, genuinely transparent background. Reference image is the APPROVED old v2 design and animation, enlarged nearest-neighbor 4x ONLY for reference. Completely REDRAW at the NEW native resolution with added meaningful details; never just enlarge the old sprite. Keep same character, colors, costume, weapon, facing right in three-quarter side view. Flat 3-4 shade clusters, NO dithering, NO antialiasing, crisp 1 native pixel charcoal outline (#19181F), no pure black. Use at most 24 colors from this palette: #19181F #2A282D #3D3940 #555058 #74666A #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #334629 #58783B #88AE43 #B8D849 #D8EC76 #38284D #58377B #8050AD #B581D4. No text, labels, guides, shadows, ground, grid lines or effects. Every output pixel-art pixel must be an exact square 4x4 output pixel block aligned to origin. Equal square cells, no padding between cells. Each frame has a distinct meaningful animation pose. Same silhouette height to within 2 native pixels and horizontal bbox center to within 2 native pixels, except Death. Transparent top/left/right edge of each cell. Grounded figures feet on final cell row. Skeleton_Archer Run REDRAW RETRY 2. Thin bone-white skeleton with purple spiky mohawk, ragged purple scarf/cloth, dark lightweight armor with lime marks, holding same compact CROSSBOW, NOT longbow. New details: teeth and skull fissures, separate rib and finger bones, torn cloth folds, crossbow bowstring, trigger mechanism and tiny metal highlights. Six clearly different sequential locomotion poses, complete alternating-leg running cycle, same overall height; imp does six wing-flapping forward-flight poses. Image1 approved v2 animation, Image2 new v3 Idle for consistent face/body/equipment. Native 128x128 cells, 6 frames arranged 3 columns x 2 rows. 셀 128×128 프레임 6개 그리드 픽셀아트를 정확히 4배 블록으로. Output 1536x1024. Native standing height 96px. CRITICAL correction: extremely CLEAN flat shade regions, 3 tones per material, NO mottled texture, NO tiny light dots covering clothing, NO stippling, NO scattered pixels, NO damage particles. All extra detail must form deliberate connected pixel clusters: a clean crossbow string, clean fingers, skull teeth, cloth folds. Clean single-pixel charcoal silhouette border. Uniform character scale across poses; falling poses gradually reduce height. Fully transparent background and clean generous separation between all six figures.",
+      "source": "Sources/Skeleton_Archer_Run_attempt2.png",
+      "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a197c8-00bf-7002-a8d2-07640afe91f0\\exec-f639032a-998d-488b-b7dc-a1871327d602.png"
+    },
+    {
+      "sheet": "Skeleton_Archer_Hit",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Production Re:Trap pixel-art animation sheet, genuinely transparent background. Reference image is the APPROVED old v2 design and animation, enlarged nearest-neighbor 4x ONLY for reference. Completely REDRAW at the NEW native resolution with added meaningful details; never just enlarge the old sprite. Keep same character, colors, costume, weapon, facing right in three-quarter side view. Flat 3-4 shade clusters, NO dithering, NO antialiasing, crisp 1 native pixel charcoal outline (#19181F), no pure black. Use at most 24 colors from this palette: #19181F #2A282D #3D3940 #555058 #74666A #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #334629 #58783B #88AE43 #B8D849 #D8EC76 #38284D #58377B #8050AD #B581D4. No text, labels, guides, shadows, ground, grid lines or effects. Every output pixel-art pixel must be an exact square 4x4 output pixel block aligned to origin. Equal square cells, no padding between cells. Each frame has a distinct meaningful animation pose. Same silhouette height to within 2 native pixels and horizontal bbox center to within 2 native pixels, except Death. Transparent top/left/right edge of each cell. Grounded figures feet on final cell row. Skeleton_Archer Hit. Thin bone-white skeleton with purple spiky mohawk, ragged purple scarf/cloth, dark lightweight armor with lime marks, holding same compact CROSSBOW, NOT longbow. New details: teeth and skull fissures, separate rib and finger bones, torn cloth folds, crossbow bowstring, trigger mechanism and tiny metal highlights. Two clear damage reaction poses, first recoiling, second recovering, same overall height. Native cells 128x128; 2 frames in 2 columns x 1 rows, reading order. 셀 128×128 프레임 2개 그리드 픽셀아트를 정확히 4배 블록으로. Output 1024x512. Standing silhouette height exactly 96 native pixels. Feet at native cell y127, head top at y32 except Death falling poses. Draw crisp native-scale details, a crossbow bowstring one native pixel thick; no glow or blurred transparent halo.",
+      "source": "Sources/Skeleton_Archer_Hit_attempt1.png",
+      "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a197c8-00bf-7002-a8d2-07640afe91f0\\exec-f379ac5a-e76f-46db-8e32-04dbb521a30c.png"
+    },
+    {
+      "sheet": "Skeleton_Archer_Death",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Production Re:Trap pixel-art animation sheet, genuinely transparent background. Reference image is the APPROVED old v2 design and animation, enlarged nearest-neighbor 4x ONLY for reference. Completely REDRAW at the NEW native resolution with added meaningful details; never just enlarge the old sprite. Keep same character, colors, costume, weapon, facing right in three-quarter side view. Flat 3-4 shade clusters, NO dithering, NO antialiasing, crisp 1 native pixel charcoal outline (#19181F), no pure black. Use at most 24 colors from this palette: #19181F #2A282D #3D3940 #555058 #74666A #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #334629 #58783B #88AE43 #B8D849 #D8EC76 #38284D #58377B #8050AD #B581D4. No text, labels, guides, shadows, ground, grid lines or effects. Every output pixel-art pixel must be an exact square 4x4 output pixel block aligned to origin. Equal square cells, no padding between cells. Each frame has a distinct meaningful animation pose. Same silhouette height to within 2 native pixels and horizontal bbox center to within 2 native pixels, except Death. Transparent top/left/right edge of each cell. Grounded figures feet on final cell row. Skeleton_Archer Death. Thin bone-white skeleton with purple spiky mohawk, ragged purple scarf/cloth, dark lightweight armor with lime marks, holding same compact CROSSBOW, NOT longbow. New details: teeth and skull fissures, separate rib and finger bones, torn cloth folds, crossbow bowstring, trigger mechanism and tiny metal highlights. Six progressive collapse poses, first standing, middle falling down, final two fully collapsed and lying horizontally on the bottom of their cells. For imp first hovering then tumbling down then lying on floor; no vertical-center requirement for Death. Native cells 128x128; 6 frames in 3 columns x 2 rows, reading order. 셀 128×128 프레임 6개 그리드 픽셀아트를 정확히 4배 블록으로. Output 1536x1024. Standing silhouette height exactly 96 native pixels. Feet at native cell y127, head top at y32 except Death falling poses. Draw crisp native-scale details, a crossbow bowstring one native pixel thick; no glow or blurred transparent halo.",
+      "source": "Sources/Skeleton_Archer_Death_attempt1.png",
+      "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a197c8-00bf-7002-a8d2-07640afe91f0\\exec-5e6f15ff-e48b-4fb1-af0d-fe66883e7582.png"
+    },
+    {
+      "sheet": "Skeleton_Archer_Death",
+      "attempt": 2,
+      "prompt": "Use case: stylized-concept. Production Re:Trap pixel-art animation sheet, genuinely transparent background. Reference image is the APPROVED old v2 design and animation, enlarged nearest-neighbor 4x ONLY for reference. Completely REDRAW at the NEW native resolution with added meaningful details; never just enlarge the old sprite. Keep same character, colors, costume, weapon, facing right in three-quarter side view. Flat 3-4 shade clusters, NO dithering, NO antialiasing, crisp 1 native pixel charcoal outline (#19181F), no pure black. Use at most 24 colors from this palette: #19181F #2A282D #3D3940 #555058 #74666A #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #334629 #58783B #88AE43 #B8D849 #D8EC76 #38284D #58377B #8050AD #B581D4. No text, labels, guides, shadows, ground, grid lines or effects. Every output pixel-art pixel must be an exact square 4x4 output pixel block aligned to origin. Equal square cells, no padding between cells. Each frame has a distinct meaningful animation pose. Same silhouette height to within 2 native pixels and horizontal bbox center to within 2 native pixels, except Death. Transparent top/left/right edge of each cell. Grounded figures feet on final cell row. Skeleton_Archer Death REDRAW RETRY 2. Thin bone-white skeleton with purple spiky mohawk, ragged purple scarf/cloth, dark lightweight armor with lime marks, holding same compact CROSSBOW, NOT longbow. New details: teeth and skull fissures, separate rib and finger bones, torn cloth folds, crossbow bowstring, trigger mechanism and tiny metal highlights. Six progressive collapse poses, first standing, middle falling down, final two fully collapsed and lying horizontally on the bottom of their cells. For imp first hovering then tumbling down then lying on floor; no vertical-center requirement for Death. Image1 approved v2 animation, Image2 new v3 Idle for consistent face/body/equipment. Native 128x128 cells, 6 frames arranged 3 columns x 2 rows. 셀 128×128 프레임 6개 그리드 픽셀아트를 정확히 4배 블록으로. Output 1536x1024. Native standing height 96px. CRITICAL correction: extremely CLEAN flat shade regions, 3 tones per material, NO mottled texture, NO tiny light dots covering clothing, NO stippling, NO scattered pixels, NO damage particles. All extra detail must form deliberate connected pixel clusters: a clean crossbow string, clean fingers, skull teeth, cloth folds. Clean single-pixel charcoal silhouette border. Uniform character scale across poses; falling poses gradually reduce height. Fully transparent background and clean generous separation between all six figures.",
+      "source": "Sources/Skeleton_Archer_Death_attempt2.png",
+      "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a197c8-00bf-7002-a8d2-07640afe91f0\\exec-a1d49411-494f-461d-8668-05f9e34c4937.png"
+    },
+    {
+      "sheet": "Elite_Knight_Idle",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Production Re:Trap pixel-art animation sheet, genuinely transparent background. Reference image is the APPROVED old v2 design and animation, enlarged nearest-neighbor 4x ONLY for reference. Completely REDRAW at the NEW native resolution with added meaningful details; never just enlarge the old sprite. Keep same character, colors, costume, weapon, facing right in three-quarter side view. Flat 3-4 shade clusters, NO dithering, NO antialiasing, crisp 1 native pixel charcoal outline (#19181F), no pure black. Use at most 24 colors from this palette: #19181F #2A282D #3D3940 #555058 #74666A #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #334629 #58783B #88AE43 #B8D849 #D8EC76 #38284D #58377B #8050AD #B581D4. No text, labels, guides, shadows, ground, grid lines or effects. Every output pixel-art pixel must be an exact square 4x4 output pixel block aligned to origin. Equal square cells, no padding between cells. Each frame has a distinct meaningful animation pose. Same silhouette height to within 2 native pixels and horizontal bbox center to within 2 native pixels, except Death. Transparent top/left/right edge of each cell. Grounded figures feet on final cell row. Elite_Knight Idle. Heavy dark charcoal plate-armored knight with purple helmet and armor panels, narrow lime visor, same rectangular purple/charcoal shield carrying a big lime green painted X, same short weapon. New details: plate joints, helmet vent, articulated gauntlet, shield rivets and scratched X paint, visible chain links between plates, sharp 3-4 step metal highlights. Four subtle breathing/hover poses. Native cells 128x128; 4 frames in 2 columns x 2 rows, reading order. 셀 128×128 프레임 4개 그리드 픽셀아트를 정확히 4배 블록으로. Output 1024x1024. Standing silhouette height exactly 96 native pixels. Feet at native cell y127, head top at y32 except Death falling poses. Preserve original helmet silhouette, same shield and green X design. No glow, no dither/no noise: flat smooth pixel clusters.",
+      "source": "Sources/Elite_Knight_Idle_attempt1.png",
+      "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a197c8-00bf-7002-a8d2-07640afe91f0\\exec-e27ea229-7122-47f4-a5fc-4f74ed37ec97.png"
+    },
+    {
+      "sheet": "Elite_Knight_Run",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Production Re:Trap pixel-art animation sheet, genuinely transparent background. Reference image is the APPROVED old v2 design and animation, enlarged nearest-neighbor 4x ONLY for reference. Completely REDRAW at the NEW native resolution with added meaningful details; never just enlarge the old sprite. Keep same character, colors, costume, weapon, facing right in three-quarter side view. Flat 3-4 shade clusters, NO dithering, NO antialiasing, crisp 1 native pixel charcoal outline (#19181F), no pure black. Use at most 24 colors from this palette: #19181F #2A282D #3D3940 #555058 #74666A #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #334629 #58783B #88AE43 #B8D849 #D8EC76 #38284D #58377B #8050AD #B581D4. No text, labels, guides, shadows, ground, grid lines or effects. Every output pixel-art pixel must be an exact square 4x4 output pixel block aligned to origin. Equal square cells, no padding between cells. Each frame has a distinct meaningful animation pose. Same silhouette height to within 2 native pixels and horizontal bbox center to within 2 native pixels, except Death. Transparent top/left/right edge of each cell. Grounded figures feet on final cell row. Elite_Knight Run. Heavy dark charcoal plate-armored knight with purple helmet and armor panels, narrow lime visor, same rectangular purple/charcoal shield carrying a big lime green painted X, same short weapon. New details: plate joints, helmet vent, articulated gauntlet, shield rivets and scratched X paint, visible chain links between plates, sharp 3-4 step metal highlights. Six clearly different sequential locomotion poses, complete alternating-leg running cycle, same overall height; imp does six wing-flapping forward-flight poses. Native cells 128x128; 6 frames in 3 columns x 2 rows, reading order. 셀 128×128 프레임 6개 그리드 픽셀아트를 정확히 4배 블록으로. Output 1536x1024. Standing silhouette height exactly 96 native pixels. Feet at native cell y127, head top at y32 except Death falling poses. Preserve original helmet silhouette, same shield and green X design. No glow, no dither/no noise: flat smooth pixel clusters.",
+      "source": "Sources/Elite_Knight_Run_attempt1.png",
+      "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a197c8-00bf-7002-a8d2-07640afe91f0\\exec-5104a4fe-11b1-4b8c-8886-70c5e2c492f1.png"
+    },
+    {
+      "sheet": "Elite_Knight_Hit",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Production Re:Trap pixel-art animation sheet, genuinely transparent background. Reference image is the APPROVED old v2 design and animation, enlarged nearest-neighbor 4x ONLY for reference. Completely REDRAW at the NEW native resolution with added meaningful details; never just enlarge the old sprite. Keep same character, colors, costume, weapon, facing right in three-quarter side view. Flat 3-4 shade clusters, NO dithering, NO antialiasing, crisp 1 native pixel charcoal outline (#19181F), no pure black. Use at most 24 colors from this palette: #19181F #2A282D #3D3940 #555058 #74666A #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #334629 #58783B #88AE43 #B8D849 #D8EC76 #38284D #58377B #8050AD #B581D4. No text, labels, guides, shadows, ground, grid lines or effects. Every output pixel-art pixel must be an exact square 4x4 output pixel block aligned to origin. Equal square cells, no padding between cells. Each frame has a distinct meaningful animation pose. Same silhouette height to within 2 native pixels and horizontal bbox center to within 2 native pixels, except Death. Transparent top/left/right edge of each cell. Grounded figures feet on final cell row. Elite_Knight Hit. Heavy dark charcoal plate-armored knight with purple helmet and armor panels, narrow lime visor, same rectangular purple/charcoal shield carrying a big lime green painted X, same short weapon. New details: plate joints, helmet vent, articulated gauntlet, shield rivets and scratched X paint, visible chain links between plates, sharp 3-4 step metal highlights. Two clear damage reaction poses, first recoiling, second recovering, same overall height. Native cells 128x128; 2 frames in 2 columns x 1 rows, reading order. 셀 128×128 프레임 2개 그리드 픽셀아트를 정확히 4배 블록으로. Output 1024x512. Standing silhouette height exactly 96 native pixels. Feet at native cell y127, head top at y32 except Death falling poses. Preserve original helmet silhouette, same shield and green X design. No glow, no dither/no noise: flat smooth pixel clusters.",
+      "source": "Sources/Elite_Knight_Hit_attempt1.png",
+      "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a197c8-00bf-7002-a8d2-07640afe91f0\\exec-3d2da161-290b-4503-b398-078572c85a7a.png"
+    },
+    {
+      "sheet": "Elite_Knight_Death",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Production Re:Trap pixel-art animation sheet, genuinely transparent background. Reference image is the APPROVED old v2 design and animation, enlarged nearest-neighbor 4x ONLY for reference. Completely REDRAW at the NEW native resolution with added meaningful details; never just enlarge the old sprite. Keep same character, colors, costume, weapon, facing right in three-quarter side view. Flat 3-4 shade clusters, NO dithering, NO antialiasing, crisp 1 native pixel charcoal outline (#19181F), no pure black. Use at most 24 colors from this palette: #19181F #2A282D #3D3940 #555058 #74666A #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #334629 #58783B #88AE43 #B8D849 #D8EC76 #38284D #58377B #8050AD #B581D4. No text, labels, guides, shadows, ground, grid lines or effects. Every output pixel-art pixel must be an exact square 4x4 output pixel block aligned to origin. Equal square cells, no padding between cells. Each frame has a distinct meaningful animation pose. Same silhouette height to within 2 native pixels and horizontal bbox center to within 2 native pixels, except Death. Transparent top/left/right edge of each cell. Grounded figures feet on final cell row. Elite_Knight Death. Heavy dark charcoal plate-armored knight with purple helmet and armor panels, narrow lime visor, same rectangular purple/charcoal shield carrying a big lime green painted X, same short weapon. New details: plate joints, helmet vent, articulated gauntlet, shield rivets and scratched X paint, visible chain links between plates, sharp 3-4 step metal highlights. Six progressive collapse poses, first standing, middle falling down, final two fully collapsed and lying horizontally on the bottom of their cells. For imp first hovering then tumbling down then lying on floor; no vertical-center requirement for Death. Native cells 128x128; 6 frames in 3 columns x 2 rows, reading order. 셀 128×128 프레임 6개 그리드 픽셀아트를 정확히 4배 블록으로. Output 1536x1024. Standing silhouette height exactly 96 native pixels. Feet at native cell y127, head top at y32 except Death falling poses. Preserve original helmet silhouette, same shield and green X design. No glow, no dither/no noise: flat smooth pixel clusters.",
+      "source": "Sources/Elite_Knight_Death_attempt1.png",
+      "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a197c8-00bf-7002-a8d2-07640afe91f0\\exec-8a2ab3e6-eab3-4db3-ab7e-28fc56a4b56e.png"
+    },
+    {
+      "sheet": "Orc_Brute_Idle",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Production Re:Trap pixel-art animation sheet, genuinely transparent background. Reference image is the APPROVED old v2 design and animation, enlarged nearest-neighbor 4x ONLY for reference. Completely REDRAW at the NEW native resolution with added meaningful details; never just enlarge the old sprite. Keep same character, colors, costume, weapon, facing right in three-quarter side view. Flat 3-4 shade clusters, NO dithering, NO antialiasing, crisp 1 native pixel charcoal outline (#19181F), no pure black. Use at most 24 colors from this palette: #19181F #2A282D #3D3940 #555058 #74666A #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #334629 #58783B #88AE43 #B8D849 #D8EC76 #38284D #58377B #8050AD #B581D4. No text, labels, guides, shadows, ground, grid lines or effects. Every output pixel-art pixel must be an exact square 4x4 output pixel block aligned to origin. Equal square cells, no padding between cells. Each frame has a distinct meaningful animation pose. Same silhouette height to within 2 native pixels and horizontal bbox center to within 2 native pixels, except Death. Transparent top/left/right edge of each cell. Grounded figures feet on final cell row. Orc_Brute Idle. Huge muscular lime-green orc with purple mohawk, purple sleeveless vest, black trousers and heavy metal boots, large fangs, holding the same horizontal heavy metal PIPE with flanged end. New details: eye/brow/tooth expression, ear notch, vest seams and torn edges, chain necklace separate links, knuckle plates, segmented pipe collars and flange bolts with bright metal glints. Four subtle breathing/hover poses. Native cells 160x160; 4 frames in 2 columns x 2 rows, reading order. 셀 160×160 프레임 4개 그리드 픽셀아트를 정확히 4배 블록으로. Output 1280x1280. Standing silhouette height exactly 128 native pixels. Feet at native cell y159, head top at y32 except Death falling poses. At 128px native height the chain links, fangs, cloth creases, pipe flange and bolt holes must be distinctly drawn small details, not an enlarged old low-res sprite. True flat pixel clusters, no texture, no blur or glow.",
+      "source": "Sources/Orc_Brute_Idle_attempt1.png",
+      "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a197c8-00bf-7002-a8d2-07640afe91f0\\exec-2f3a1424-3c69-4c91-8db2-5f830af69193.png"
+    },
+    {
+      "sheet": "Orc_Brute_Run",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Production Re:Trap pixel-art animation sheet, genuinely transparent background. Reference image is the APPROVED old v2 design and animation, enlarged nearest-neighbor 4x ONLY for reference. Completely REDRAW at the NEW native resolution with added meaningful details; never just enlarge the old sprite. Keep same character, colors, costume, weapon, facing right in three-quarter side view. Flat 3-4 shade clusters, NO dithering, NO antialiasing, crisp 1 native pixel charcoal outline (#19181F), no pure black. Use at most 24 colors from this palette: #19181F #2A282D #3D3940 #555058 #74666A #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #334629 #58783B #88AE43 #B8D849 #D8EC76 #38284D #58377B #8050AD #B581D4. No text, labels, guides, shadows, ground, grid lines or effects. Every output pixel-art pixel must be an exact square 4x4 output pixel block aligned to origin. Equal square cells, no padding between cells. Each frame has a distinct meaningful animation pose. Same silhouette height to within 2 native pixels and horizontal bbox center to within 2 native pixels, except Death. Transparent top/left/right edge of each cell. Grounded figures feet on final cell row. Orc_Brute Run. Huge muscular lime-green orc with purple mohawk, purple sleeveless vest, black trousers and heavy metal boots, large fangs, holding the same horizontal heavy metal PIPE with flanged end. New details: eye/brow/tooth expression, ear notch, vest seams and torn edges, chain necklace separate links, knuckle plates, segmented pipe collars and flange bolts with bright metal glints. Six clearly different sequential locomotion poses, complete alternating-leg running cycle, same overall height; imp does six wing-flapping forward-flight poses. Native cells 160x160; 6 frames in 3 columns x 2 rows, reading order. 셀 160×160 프레임 6개 그리드 픽셀아트를 정확히 4배 블록으로. Output 1920x1280. Standing silhouette height exactly 128 native pixels. Feet at native cell y159, head top at y32 except Death falling poses. At 128px native height the chain links, fangs, cloth creases, pipe flange and bolt holes must be distinctly drawn small details, not an enlarged old low-res sprite. True flat pixel clusters, no texture, no blur or glow.",
+      "source": "Sources/Orc_Brute_Run_attempt1.png",
+      "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a197c8-00bf-7002-a8d2-07640afe91f0\\exec-d85dafea-8a79-4ecf-a0a0-020d3297e226.png"
+    },
+    {
+      "sheet": "Orc_Brute_Hit",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Production Re:Trap pixel-art animation sheet, genuinely transparent background. Reference image is the APPROVED old v2 design and animation, enlarged nearest-neighbor 4x ONLY for reference. Completely REDRAW at the NEW native resolution with added meaningful details; never just enlarge the old sprite. Keep same character, colors, costume, weapon, facing right in three-quarter side view. Flat 3-4 shade clusters, NO dithering, NO antialiasing, crisp 1 native pixel charcoal outline (#19181F), no pure black. Use at most 24 colors from this palette: #19181F #2A282D #3D3940 #555058 #74666A #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #334629 #58783B #88AE43 #B8D849 #D8EC76 #38284D #58377B #8050AD #B581D4. No text, labels, guides, shadows, ground, grid lines or effects. Every output pixel-art pixel must be an exact square 4x4 output pixel block aligned to origin. Equal square cells, no padding between cells. Each frame has a distinct meaningful animation pose. Same silhouette height to within 2 native pixels and horizontal bbox center to within 2 native pixels, except Death. Transparent top/left/right edge of each cell. Grounded figures feet on final cell row. Orc_Brute Hit. Huge muscular lime-green orc with purple mohawk, purple sleeveless vest, black trousers and heavy metal boots, large fangs, holding the same horizontal heavy metal PIPE with flanged end. New details: eye/brow/tooth expression, ear notch, vest seams and torn edges, chain necklace separate links, knuckle plates, segmented pipe collars and flange bolts with bright metal glints. Two clear damage reaction poses, first recoiling, second recovering, same overall height. Native cells 160x160; 2 frames in 2 columns x 1 rows, reading order. 셀 160×160 프레임 2개 그리드 픽셀아트를 정확히 4배 블록으로. Output 1280x640. Standing silhouette height exactly 128 native pixels. Feet at native cell y159, head top at y32 except Death falling poses. At 128px native height the chain links, fangs, cloth creases, pipe flange and bolt holes must be distinctly drawn small details, not an enlarged old low-res sprite. True flat pixel clusters, no texture, no blur or glow.",
+      "source": "Sources/Orc_Brute_Hit_attempt1.png",
+      "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a197c8-00bf-7002-a8d2-07640afe91f0\\exec-df648820-58de-4e93-b65f-c795ccf42b85.png"
+    },
+    {
+      "sheet": "Orc_Brute_Death",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Production Re:Trap pixel-art animation sheet, genuinely transparent background. Reference image is the APPROVED old v2 design and animation, enlarged nearest-neighbor 4x ONLY for reference. Completely REDRAW at the NEW native resolution with added meaningful details; never just enlarge the old sprite. Keep same character, colors, costume, weapon, facing right in three-quarter side view. Flat 3-4 shade clusters, NO dithering, NO antialiasing, crisp 1 native pixel charcoal outline (#19181F), no pure black. Use at most 24 colors from this palette: #19181F #2A282D #3D3940 #555058 #74666A #8D7B80 #B3A1A0 #D0BEB8 #E7D8CE #F7EEE4 #334629 #58783B #88AE43 #B8D849 #D8EC76 #38284D #58377B #8050AD #B581D4. No text, labels, guides, shadows, ground, grid lines or effects. Every output pixel-art pixel must be an exact square 4x4 output pixel block aligned to origin. Equal square cells, no padding between cells. Each frame has a distinct meaningful animation pose. Same silhouette height to within 2 native pixels and horizontal bbox center to within 2 native pixels, except Death. Transparent top/left/right edge of each cell. Grounded figures feet on final cell row. Orc_Brute Death. Huge muscular lime-green orc with purple mohawk, purple sleeveless vest, black trousers and heavy metal boots, large fangs, holding the same horizontal heavy metal PIPE with flanged end. New details: eye/brow/tooth expression, ear notch, vest seams and torn edges, chain necklace separate links, knuckle plates, segmented pipe collars and flange bolts with bright metal glints. Six progressive collapse poses, first standing, middle falling down, final two fully collapsed and lying horizontally on the bottom of their cells. For imp first hovering then tumbling down then lying on floor; no vertical-center requirement for Death. Native cells 160x160; 6 frames in 3 columns x 2 rows, reading order. 셀 160×160 프레임 6개 그리드 픽셀아트를 정확히 4배 블록으로. Output 1920x1280. Standing silhouette height exactly 128 native pixels. Feet at native cell y159, head top at y32 except Death falling poses. At 128px native height the chain links, fangs, cloth creases, pipe flange and bolt holes must be distinctly drawn small details, not an enlarged old low-res sprite. True flat pixel clusters, no texture, no blur or glow.",
+      "source": "Sources/Orc_Brute_Death_attempt1.png",
+      "original": "C:\\Users\\Owner\\.codex\\generated_images\\01a197c8-00bf-7002-a8d2-07640afe91f0\\exec-9c1cba50-2971-4930-b840-80288ad5e0df.png"
+    }
+  ],
+  "total_calls": 22,
+  "maximum_per_sheet": 3,
+  "sheets": [
+    {
+      "sheet": "Goblin_Raider_Idle",
+      "attempts": 1,
+      "selected_attempt": 1,
+      "selected_source": "Sources/Goblin_Raider_Idle_attempt1.png",
+      "reason": "First generation selected after grid recovery, visual review and automatic checks."
+    },
+    {
+      "sheet": "Goblin_Raider_Run",
+      "attempts": 1,
+      "selected_attempt": 1,
+      "selected_source": "Sources/Goblin_Raider_Run_attempt1.png",
+      "reason": "First generation selected after grid recovery, visual review and automatic checks."
+    },
+    {
+      "sheet": "Goblin_Raider_Hit",
+      "attempts": 1,
+      "selected_attempt": 1,
+      "selected_source": "Sources/Goblin_Raider_Hit_attempt1.png",
+      "reason": "First generation selected after grid recovery, visual review and automatic checks."
+    },
+    {
+      "sheet": "Goblin_Raider_Death",
+      "attempts": 1,
+      "selected_attempt": 1,
+      "selected_source": "Sources/Goblin_Raider_Death_attempt1.png",
+      "reason": "First generation selected after grid recovery, visual review and automatic checks."
+    },
+    {
+      "sheet": "Imp_Flyer_Idle",
+      "attempts": 1,
+      "selected_attempt": 1,
+      "selected_source": "Sources/Imp_Flyer_Idle_attempt1.png",
+      "reason": "First generation selected after grid recovery, visual review and automatic checks."
+    },
+    {
+      "sheet": "Imp_Flyer_Run",
+      "attempts": 1,
+      "selected_attempt": 1,
+      "selected_source": "Sources/Imp_Flyer_Run_attempt1.png",
+      "reason": "First generation selected after grid recovery, visual review and automatic checks."
+    },
+    {
+      "sheet": "Imp_Flyer_Hit",
+      "attempts": 1,
+      "selected_attempt": 1,
+      "selected_source": "Sources/Imp_Flyer_Hit_attempt1.png",
+      "reason": "First generation selected after grid recovery, visual review and automatic checks."
+    },
+    {
+      "sheet": "Imp_Flyer_Death",
+      "attempts": 1,
+      "selected_attempt": 1,
+      "selected_source": "Sources/Imp_Flyer_Death_attempt1.png",
+      "reason": "First generation selected after grid recovery, visual review and automatic checks."
+    },
+    {
+      "sheet": "Skeleton_Archer_Idle",
+      "attempts": 1,
+      "selected_attempt": 1,
+      "selected_source": "Sources/Skeleton_Archer_Idle_attempt1.png",
+      "reason": "First generation selected after grid recovery, visual review and automatic checks."
+    },
+    {
+      "sheet": "Skeleton_Archer_Run",
+      "attempts": 2,
+      "selected_attempt": 2,
+      "selected_source": "Sources/Skeleton_Archer_Run_attempt2.png",
+      "reason": "Second generation selected for cleaner flat shade clusters and less visual noise."
+    },
+    {
+      "sheet": "Skeleton_Archer_Hit",
+      "attempts": 1,
+      "selected_attempt": 1,
+      "selected_source": "Sources/Skeleton_Archer_Hit_attempt1.png",
+      "reason": "First generation selected after grid recovery, visual review and automatic checks."
+    },
+    {
+      "sheet": "Skeleton_Archer_Death",
+      "attempts": 2,
+      "selected_attempt": 2,
+      "selected_source": "Sources/Skeleton_Archer_Death_attempt2.png",
+      "reason": "Second generation selected for cleaner flat shade clusters and less visual noise."
+    },
+    {
+      "sheet": "Elite_Knight_Idle",
+      "attempts": 1,
+      "selected_attempt": 1,
+      "selected_source": "Sources/Elite_Knight_Idle_attempt1.png",
+      "reason": "First generation selected after grid recovery, visual review and automatic checks."
+    },
+    {
+      "sheet": "Elite_Knight_Run",
+      "attempts": 1,
+      "selected_attempt": 1,
+      "selected_source": "Sources/Elite_Knight_Run_attempt1.png",
+      "reason": "First generation selected after grid recovery, visual review and automatic checks."
+    },
+    {
+      "sheet": "Elite_Knight_Hit",
+      "attempts": 1,
+      "selected_attempt": 1,
+      "selected_source": "Sources/Elite_Knight_Hit_attempt1.png",
+      "reason": "First generation selected after grid recovery, visual review and automatic checks."
+    },
+    {
+      "sheet": "Elite_Knight_Death",
+      "attempts": 1,
+      "selected_attempt": 1,
+      "selected_source": "Sources/Elite_Knight_Death_attempt1.png",
+      "reason": "First generation selected after grid recovery, visual review and automatic checks."
+    },
+    {
+      "sheet": "Orc_Brute_Idle",
+      "attempts": 1,
+      "selected_attempt": 1,
+      "selected_source": "Sources/Orc_Brute_Idle_attempt1.png",
+      "reason": "First generation selected after grid recovery, visual review and automatic checks."
+    },
+    {
+      "sheet": "Orc_Brute_Run",
+      "attempts": 1,
+      "selected_attempt": 1,
+      "selected_source": "Sources/Orc_Brute_Run_attempt1.png",
+      "reason": "First generation selected after grid recovery, visual review and automatic checks."
+    },
+    {
+      "sheet": "Orc_Brute_Hit",
+      "attempts": 1,
+      "selected_attempt": 1,
+      "selected_source": "Sources/Orc_Brute_Hit_attempt1.png",
+      "reason": "First generation selected after grid recovery, visual review and automatic checks."
+    },
+    {
+      "sheet": "Orc_Brute_Death",
+      "attempts": 1,
+      "selected_attempt": 1,
+      "selected_source": "Sources/Orc_Brute_Death_attempt1.png",
+      "reason": "First generation selected after grid recovery, visual review and automatic checks."
+    }
+  ]
+}

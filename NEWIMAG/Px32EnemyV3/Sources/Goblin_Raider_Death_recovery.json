@@ -1,0 +1,72 @@
+{
+  "source": "Sources\\Goblin_Raider_Death_attempt1.png",
+  "method": "New image_gen source only; bbox block-grid recovery by 3x3 palette-mode sampling, binary alpha, isolated-point cleanup, translation. No v2 pixels used in final art.",
+  "frames": [
+    {
+      "frame": 1,
+      "source_bbox": [
+        85,
+        111,
+        493,
+        576
+      ],
+      "recovered_grid_step": 7.265625,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 2,
+      "source_bbox": [
+        19,
+        164,
+        487,
+        576
+      ],
+      "recovered_grid_step": 7.265625,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 3,
+      "source_bbox": [
+        31,
+        237,
+        424,
+        576
+      ],
+      "recovered_grid_step": 7.265625,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 4,
+      "source_bbox": [
+        29,
+        55,
+        488,
+        352
+      ],
+      "recovered_grid_step": 7.265625,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 5,
+      "source_bbox": [
+        16,
+        146,
+        512,
+        352
+      ],
+      "recovered_grid_step": 7.265625,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 6,
+      "source_bbox": [
+        11,
+        180,
+        497,
+        355
+      ],
+      "recovered_grid_step": 7.265625,
+      "isolated_removed": 0
+    }
+  ]
+}

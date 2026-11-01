@@ -1,0 +1,28 @@
+{
+  "source": "Sources\\Skeleton_Archer_Hit_attempt1.png",
+  "method": "New image_gen source only; bbox block-grid recovery by 3x3 palette-mode sampling, binary alpha, isolated-point cleanup, translation. No v2 pixels used in final art.",
+  "frames": [
+    {
+      "frame": 1,
+      "source_bbox": [
+        99,
+        171,
+        883,
+        887
+      ],
+      "recovered_grid_step": 7.458333333333333,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 2,
+      "source_bbox": [
+        89,
+        195,
+        737,
+        887
+      ],
+      "recovered_grid_step": 7.208333333333333,
+      "isolated_removed": 0
+    }
+  ]
+}

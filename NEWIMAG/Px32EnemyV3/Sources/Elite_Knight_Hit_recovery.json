@@ -1,0 +1,28 @@
+{
+  "source": "Sources\\Elite_Knight_Hit_attempt1.png",
+  "method": "New image_gen source only; bbox block-grid recovery by 3x3 palette-mode sampling, binary alpha, isolated-point cleanup, translation. No v2 pixels used in final art.",
+  "frames": [
+    {
+      "frame": 1,
+      "source_bbox": [
+        49,
+        121,
+        897,
+        869
+      ],
+      "recovered_grid_step": 7.791666666666667,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 2,
+      "source_bbox": [
+        50,
+        126,
+        797,
+        869
+      ],
+      "recovered_grid_step": 7.739583333333333,
+      "isolated_removed": 0
+    }
+  ]
+}

@@ -121,16 +121,16 @@ namespace ReTrap.EditorTools
 
         private static string PrefabPath(string sp) => $"{PrefabDir}/Enemy_{sp}.prefab";
 
-        /// <summary>화풍 v2 적 콜라이더 크기(칸) — docs/hero-b-scale-impact.md 3.4 확정 표.</summary>
+        /// <summary>적 콜라이더 크기(칸) — 3칸 기준(docs/scale-3tile.md): 키의 약 3/4, 칸 단위로 딱 떨어지게.</summary>
         private static Vector2 ColliderSize(string sp)
         {
             switch (sp)
             {
-                case "Goblin_Raider":   return new Vector2(0.75f,  1.25f);
-                case "Imp_Flyer":       return new Vector2(1.0f,   1.0f);
-                case "Skeleton_Archer": return new Vector2(0.75f,  1.75f);
-                case "Elite_Knight":    return new Vector2(0.875f, 2.0f);
-                case "Orc_Brute":       return new Vector2(1.25f,  2.25f);
+                case "Goblin_Raider":   return new Vector2(1.0f,   1.5f);   // 키 2칸
+                case "Imp_Flyer":       return new Vector2(1.25f,  1.25f);  // 키 2칸(비행)
+                case "Skeleton_Archer": return new Vector2(0.875f, 2.25f);  // 키 3칸
+                case "Elite_Knight":    return new Vector2(1.0f,   2.5f);   // 키 3칸
+                case "Orc_Brute":       return new Vector2(1.5f,   3.0f);   // 키 4칸
             }
             return Vector2.one;
         }

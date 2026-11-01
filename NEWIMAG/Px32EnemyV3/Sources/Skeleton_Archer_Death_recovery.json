@@ -1,0 +1,72 @@
+{
+  "source": "Sources\\Skeleton_Archer_Death_attempt2.png",
+  "method": "New image_gen source only; bbox block-grid recovery by 3x3 palette-mode sampling, binary alpha, isolated-point cleanup, translation. No v2 pixels used in final art.",
+  "frames": [
+    {
+      "frame": 1,
+      "source_bbox": [
+        64,
+        94,
+        457,
+        601
+      ],
+      "recovered_grid_step": 5.28125,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 2,
+      "source_bbox": [
+        50,
+        143,
+        464,
+        601
+      ],
+      "recovered_grid_step": 5.28125,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 3,
+      "source_bbox": [
+        25,
+        261,
+        496,
+        602
+      ],
+      "recovered_grid_step": 5.28125,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 4,
+      "source_bbox": [
+        45,
+        32,
+        483,
+        324
+      ],
+      "recovered_grid_step": 5.28125,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 5,
+      "source_bbox": [
+        29,
+        138,
+        510,
+        336
+      ],
+      "recovered_grid_step": 5.28125,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 6,
+      "source_bbox": [
+        12,
+        192,
+        495,
+        336
+      ],
+      "recovered_grid_step": 5.28125,
+      "isolated_removed": 0
+    }
+  ]
+}

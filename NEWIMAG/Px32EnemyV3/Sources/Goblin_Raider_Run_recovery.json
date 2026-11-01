@@ -1,0 +1,72 @@
+{
+  "source": "Sources\\Goblin_Raider_Run_attempt1.png",
+  "method": "New image_gen source only; bbox block-grid recovery by 3x3 palette-mode sampling, binary alpha, isolated-point cleanup, translation. No v2 pixels used in final art.",
+  "frames": [
+    {
+      "frame": 1,
+      "source_bbox": [
+        77,
+        91,
+        454,
+        512
+      ],
+      "recovered_grid_step": 6.578125,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 2,
+      "source_bbox": [
+        91,
+        84,
+        433,
+        512
+      ],
+      "recovered_grid_step": 6.6875,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 3,
+      "source_bbox": [
+        50,
+        91,
+        450,
+        512
+      ],
+      "recovered_grid_step": 6.578125,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 4,
+      "source_bbox": [
+        74,
+        30,
+        457,
+        468
+      ],
+      "recovered_grid_step": 6.84375,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 5,
+      "source_bbox": [
+        70,
+        41,
+        442,
+        467
+      ],
+      "recovered_grid_step": 6.65625,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 6,
+      "source_bbox": [
+        56,
+        43,
+        451,
+        468
+      ],
+      "recovered_grid_step": 6.640625,
+      "isolated_removed": 0
+    }
+  ]
+}

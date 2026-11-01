@@ -1,0 +1,28 @@
+{
+  "source": "Sources\\Imp_Flyer_Hit_attempt1.png",
+  "method": "New image_gen source only; bbox block-grid recovery by 3x3 palette-mode sampling, binary alpha, isolated-point cleanup, translation. No v2 pixels used in final art.",
+  "frames": [
+    {
+      "frame": 1,
+      "source_bbox": [
+        104,
+        159,
+        795,
+        758
+      ],
+      "recovered_grid_step": 9.359375,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 2,
+      "source_bbox": [
+        92,
+        141,
+        842,
+        766
+      ],
+      "recovered_grid_step": 9.765625,
+      "isolated_removed": 0
+    }
+  ]
+}

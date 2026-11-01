@@ -1,0 +1,50 @@
+{
+  "source": "Sources\\Skeleton_Archer_Idle_attempt1.png",
+  "method": "New image_gen source only; bbox block-grid recovery by 3x3 palette-mode sampling, binary alpha, isolated-point cleanup, translation. No v2 pixels used in final art.",
+  "frames": [
+    {
+      "frame": 1,
+      "source_bbox": [
+        139,
+        51,
+        593,
+        610
+      ],
+      "recovered_grid_step": 5.822916666666667,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 2,
+      "source_bbox": [
+        71,
+        53,
+        539,
+        610
+      ],
+      "recovered_grid_step": 5.802083333333333,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 3,
+      "source_bbox": [
+        106,
+        21,
+        593,
+        574
+      ],
+      "recovered_grid_step": 5.760416666666667,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 4,
+      "source_bbox": [
+        71,
+        26,
+        537,
+        574
+      ],
+      "recovered_grid_step": 5.708333333333333,
+      "isolated_removed": 0
+    }
+  ]
+}

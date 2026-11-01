@@ -166,14 +166,14 @@ namespace ReTrap.EditorTools
             return null;
         }
 
-        /// <summary>적 셀 (화풍 v2: 고블린 48·임프 44 → 64, 스켈레톤 72·기사 84 → 96, 오크 96 → 128).</summary>
+        /// <summary>적 셀 (3칸 기준: 고블린·임프 키 64 → 셀 96, 스켈레톤·기사 키 96 → 128, 오크 키 128 → 160).</summary>
         private static int EnemyCell(string baseName)
         {
             if (baseName.StartsWith("Goblin", StringComparison.OrdinalIgnoreCase) ||
-                baseName.StartsWith("Imp",    StringComparison.OrdinalIgnoreCase)) return 64;
+                baseName.StartsWith("Imp",    StringComparison.OrdinalIgnoreCase)) return 96;
             if (baseName.StartsWith("Skeleton", StringComparison.OrdinalIgnoreCase) ||
-                baseName.StartsWith("Elite",    StringComparison.OrdinalIgnoreCase)) return 96;
-            if (baseName.StartsWith("Orc", StringComparison.OrdinalIgnoreCase)) return 128;
+                baseName.StartsWith("Elite",    StringComparison.OrdinalIgnoreCase)) return 128;
+            if (baseName.StartsWith("Orc", StringComparison.OrdinalIgnoreCase)) return 160;
             return 0;
         }
 

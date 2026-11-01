@@ -1,0 +1,662 @@
+[
+  {
+    "path": "_1x/Elite_Knight_Death.png",
+    "bytes": 13487,
+    "sha256": "b2941f0df95c8e25f66f84073347183c21867afdac4d988741df45e2f82cf802"
+  },
+  {
+    "path": "_1x/Elite_Knight_Hit.png",
+    "bytes": 6304,
+    "sha256": "b0f4e3e6380fdf98f15481f375fd97bfc95717183b1d1158be00d2bb92402907"
+  },
+  {
+    "path": "_1x/Elite_Knight_Idle.png",
+    "bytes": 10447,
+    "sha256": "ad05a3dae38c3218d93f8bf33295f6cfa8a72af8337961badfa9d0de62e45ef4"
+  },
+  {
+    "path": "_1x/Elite_Knight_Run.png",
+    "bytes": 15306,
+    "sha256": "e527ec394343967f4039fd7ca481f2034686cc0ea789e9b1d8161a27429fb783"
+  },
+  {
+    "path": "_1x/Goblin_Raider_Death.png",
+    "bytes": 6322,
+    "sha256": "db047d39abf4db9e5af7f2bdd8d86902ffa7b871c9000d6f01f4ad311c764c0a"
+  },
+  {
+    "path": "_1x/Goblin_Raider_Hit.png",
+    "bytes": 3139,
+    "sha256": "0f349a778b1db213c491e9c823b56607e5fe6e6d8bda774e01d5166ea84b8553"
+  },
+  {
+    "path": "_1x/Goblin_Raider_Idle.png",
+    "bytes": 5417,
+    "sha256": "8b77ecf25d4ae9689f84e92e828a140692e8aa9ffb4406cf0e9e05aa3cc7f307"
+  },
+  {
+    "path": "_1x/Goblin_Raider_Run.png",
+    "bytes": 7956,
+    "sha256": "b2ac4efe79bb9bac8d520e2dfdb7098769c4324a32ce91e0d3816f77c1e17c74"
+  },
+  {
+    "path": "_1x/Imp_Flyer_Death.png",
+    "bytes": 7295,
+    "sha256": "98e0a11d03f7685998295eadac50c77958624f64c50d6b6a05c119c5e8dbc85e"
+  },
+  {
+    "path": "_1x/Imp_Flyer_Hit.png",
+    "bytes": 3039,
+    "sha256": "380b7135c107c702e48f0d0d45a5bdef514974db3888ae1b947cc53f3662417d"
+  },
+  {
+    "path": "_1x/Imp_Flyer_Idle.png",
+    "bytes": 5824,
+    "sha256": "025492a2735873a9937f4387ffc74c4faa1f793598c58e552bd94cc80ff57093"
+  },
+  {
+    "path": "_1x/Imp_Flyer_Run.png",
+    "bytes": 9490,
+    "sha256": "6643cd1a5b02e41f612644d0fa6aaac3231cd9114a5ecaf6548141fb05ba87c0"
+  },
+  {
+    "path": "_1x/Orc_Brute_Death.png",
+    "bytes": 19365,
+    "sha256": "b809c43b71e65268824b66dda80c31584e0ffa1dfec97a9dda87c951ac987567"
+  },
+  {
+    "path": "_1x/Orc_Brute_Hit.png",
+    "bytes": 9796,
+    "sha256": "d36e6a57fff8260052a02866b3472b6f5d3ff47c5c789040188f1862c9dc35d5"
+  },
+  {
+    "path": "_1x/Orc_Brute_Idle.png",
+    "bytes": 16400,
+    "sha256": "c17a7d77072c79a52bff2422fa99957a78abd6223c1ad652abaac983c682cd2e"
+  },
+  {
+    "path": "_1x/Orc_Brute_Run.png",
+    "bytes": 23627,
+    "sha256": "dcdedb3987eab1236bd4c0e40c9cd170d35af25351ad1714556d9e859656951c"
+  },
+  {
+    "path": "_1x/Skeleton_Archer_Death.png",
+    "bytes": 11708,
+    "sha256": "7fe3ff7912f20f68036a04106db1e6771e860a5746c580b80398055e2ef3bbc9"
+  },
+  {
+    "path": "_1x/Skeleton_Archer_Hit.png",
+    "bytes": 5085,
+    "sha256": "dbda093c0f3945de611442285bdd7f8b6e77c2a3970394dcf36ce353e7040c6e"
+  },
+  {
+    "path": "_1x/Skeleton_Archer_Idle.png",
+    "bytes": 10142,
+    "sha256": "e92576983a8a0170da46453896a72956cb412fabf5a55f87bc1cc3e8c238632e"
+  },
+  {
+    "path": "_1x/Skeleton_Archer_Run.png",
+    "bytes": 14076,
+    "sha256": "3cb9a9694430d476fcc818d4f2dbd089f906d02577cc843222339965c7720d19"
+  },
+  {
+    "path": "Animations/Elite_Knight_Death_3x.gif",
+    "bytes": 694167,
+    "sha256": "665968ba30be9e7a703b2b76c225fd078749b10937e3cc14228a8c3363676e33"
+  },
+  {
+    "path": "Animations/Elite_Knight_Hit_3x.gif",
+    "bytes": 231475,
+    "sha256": "15f776158acd776e5758c7764e869ffa58e40a350d0072e72e43b517be33c972"
+  },
+  {
+    "path": "Animations/Elite_Knight_Idle_3x.gif",
+    "bytes": 462821,
+    "sha256": "780bc94dc767e5dae403783f1b87d5352674ecab074414b4b17668abac2111a2"
+  },
+  {
+    "path": "Animations/Elite_Knight_Run_3x.gif",
+    "bytes": 694167,
+    "sha256": "2ba39e9a649016c357b31fe220fe3dacb0f00ee385f0ca653b12a8cd98558465"
+  },
+  {
+    "path": "Animations/Goblin_Raider_Death_3x.gif",
+    "bytes": 390585,
+    "sha256": "eabb10ed22e59e81a0341bc5d7b2f7e9596b08e5974de9aa3e0b6caaf609c879"
+  },
+  {
+    "path": "Animations/Goblin_Raider_Hit_3x.gif",
+    "bytes": 130281,
+    "sha256": "9802941dd3546904f6110b466b44c325f25e807dd8d2feabebbb87eba18d11b6"
+  },
+  {
+    "path": "Animations/Goblin_Raider_Idle_3x.gif",
+    "bytes": 260433,
+    "sha256": "29ee9111a5bfe97bed7559c26a201a872e2316aacbca88c29086ef24803fa8d0"
+  },
+  {
+    "path": "Animations/Goblin_Raider_Run_3x.gif",
+    "bytes": 390585,
+    "sha256": "11d49a3b70f4d3bf081ce40e6790c853fbea332e2455872a465398ca1616ca53"
+  },
+  {
+    "path": "Animations/Imp_Flyer_Death_3x.gif",
+    "bytes": 390585,
+    "sha256": "3adb0ef53f409d55f9eda53f3a5f60a7b3e6f1894c7da647d91e978cb146ddfe"
+  },
+  {
+    "path": "Animations/Imp_Flyer_Hit_3x.gif",
+    "bytes": 130281,
+    "sha256": "733857f098877b0967def021e19ee2b25ee9a3a04a327c86909014b6c1a604f3"
+  },
+  {
+    "path": "Animations/Imp_Flyer_Idle_3x.gif",
+    "bytes": 260433,
+    "sha256": "3ab6850737d5a44d5e19751cd56b36788d61e14347094162aaf2fe36e8e21ccd"
+  },
+  {
+    "path": "Animations/Imp_Flyer_Run_3x.gif",
+    "bytes": 390585,
+    "sha256": "bf6879cfaa3cf0ca18c05c5a381c765666386ae9089652866ac7c892b5935d31"
+  },
+  {
+    "path": "Animations/Orc_Brute_Death_3x.gif",
+    "bytes": 1084491,
+    "sha256": "6a656f6b04dcb41162ed288b4df7a9eba6849a7220bf70e1e52ee296624b3a95"
+  },
+  {
+    "path": "Animations/Orc_Brute_Hit_3x.gif",
+    "bytes": 361583,
+    "sha256": "7631cb5d2bb260fc136339d47a04acc1a9e8265978bd847917aa840b969839d6"
+  },
+  {
+    "path": "Animations/Orc_Brute_Idle_3x.gif",
+    "bytes": 723037,
+    "sha256": "93ca1414b43aedaa1082f867c17fe898a714967efaa046fa933d4d07ee1ae8a4"
+  },
+  {
+    "path": "Animations/Orc_Brute_Run_3x.gif",
+    "bytes": 1084491,
+    "sha256": "f640be83e5bd312a220284862b886337c45ddabc6327c3a82857acd43c75a83f"
+  },
+  {
+    "path": "Animations/Skeleton_Archer_Death_3x.gif",
+    "bytes": 694167,
+    "sha256": "b2f6cbc1aa897788f0eb5aa0ba28014e8532cb605146316005b9d257db2e7100"
+  },
+  {
+    "path": "Animations/Skeleton_Archer_Hit_3x.gif",
+    "bytes": 231475,
+    "sha256": "3ad9f88a0f6398a539bbaf4aaae5a74be62dd1b85193aaae05d50fc2102d23ba"
+  },
+  {
+    "path": "Animations/Skeleton_Archer_Idle_3x.gif",
+    "bytes": 462821,
+    "sha256": "6de1ab0eb83a1ce516b9c6dcf5c39898e5c5903bb0b6c53192bd1eb5b31890ad"
+  },
+  {
+    "path": "Animations/Skeleton_Archer_Run_3x.gif",
+    "bytes": 694167,
+    "sha256": "36482b2b82a1ec12731517db8e36a2cc2ebc7d49af9a9578733602d79529421d"
+  },
+  {
+    "path": "attempts.json",
+    "bytes": 59329,
+    "sha256": "0c23e248e65fb664115f930a348959405c9745d17b59e4b56a1bb46df1976884"
+  },
+  {
+    "path": "Compare_3x.png",
+    "bytes": 120368,
+    "sha256": "db2e3364bec6ab8751ec4fa8aa99945c43a780f1e7867337d3175063eb13e478"
+  },
+  {
+    "path": "Enemies/Elite_Knight_Death.png",
+    "bytes": 44623,
+    "sha256": "700b648e4966fa11b2a94a040d2da98647232565739da8068bc2e269e10e613c"
+  },
+  {
+    "path": "Enemies/Elite_Knight_Hit.png",
+    "bytes": 18887,
+    "sha256": "b4eca76f13fc776229191776048333d33b1c2bc376790c8664d088ec05ef805c"
+  },
+  {
+    "path": "Enemies/Elite_Knight_Idle.png",
+    "bytes": 36786,
+    "sha256": "6c471c8587a06059dc5aebd2f6f77f6ea2a752585da8d48cee5a81e1641498d6"
+  },
+  {
+    "path": "Enemies/Elite_Knight_Run.png",
+    "bytes": 57574,
+    "sha256": "36a3fb9bc22cd48776e86a6fabd48139812142f6ed13ef01f50b9fe87ff5ced3"
+  },
+  {
+    "path": "Enemies/Goblin_Raider_Death.png",
+    "bytes": 19707,
+    "sha256": "bee1ab4ae1a354403d0ace76f1fe9ba293df5cf99c672a188a7b8167852210bb"
+  },
+  {
+    "path": "Enemies/Goblin_Raider_Hit.png",
+    "bytes": 8424,
+    "sha256": "53c4b6333a9ec39ce923c86835dccd39928fb3940b082effa1e4c02939d1baac"
+  },
+  {
+    "path": "Enemies/Goblin_Raider_Idle.png",
+    "bytes": 17085,
+    "sha256": "2b00efed42c0544145927e66c661840d472f5b219f3983c2a0eceaf0928af947"
+  },
+  {
+    "path": "Enemies/Goblin_Raider_Run.png",
+    "bytes": 27524,
+    "sha256": "8e2007117ccebedb412d045345e452fa28447c32e054a066e5e675615809b2d8"
+  },
+  {
+    "path": "Enemies/Imp_Flyer_Death.png",
+    "bytes": 23640,
+    "sha256": "21abc435891cd47e7e1609b283c13aa1058fd9001a5ef948e01aa251ddb983f2"
+  },
+  {
+    "path": "Enemies/Imp_Flyer_Hit.png",
+    "bytes": 8331,
+    "sha256": "f449968ac1d8bec3c150ccaeacd890046a79e6427c37d6a47342d591752994ab"
+  },
+  {
+    "path": "Enemies/Imp_Flyer_Idle.png",
+    "bytes": 19369,
+    "sha256": "20ed8d854cdcfa2a957e4034edab572ebc2155af579bb9a25116ae7cc19768e6"
+  },
+  {
+    "path": "Enemies/Imp_Flyer_Run.png",
+    "bytes": 31728,
+    "sha256": "e9f61eb4ee6ceefe2e8f502621dd0bb1a11f2e00f55a3eaebd4134fd1a75013b"
+  },
+  {
+    "path": "Enemies/Orc_Brute_Death.png",
+    "bytes": 66903,
+    "sha256": "01e31a0b45adcdd592bc974cee4e574f9d9a7c976a51abffb3a036efab5d4f39"
+  },
+  {
+    "path": "Enemies/Orc_Brute_Hit.png",
+    "bytes": 30966,
+    "sha256": "4ffbd67db74c211178e5ddab9427ec27efa58da91654caa857420ef05d5020c0"
+  },
+  {
+    "path": "Enemies/Orc_Brute_Idle.png",
+    "bytes": 66925,
+    "sha256": "686389763810721ed7f0d56a09a22ae60d28f6c97d2708e1ed388bbdd0f158ca"
+  },
+  {
+    "path": "Enemies/Orc_Brute_Run.png",
+    "bytes": 92948,
+    "sha256": "3e694850a8c427a1134e2e537f8fa17923183b4a1b67ef476f52c59ca58581a1"
+  },
+  {
+    "path": "Enemies/Skeleton_Archer_Death.png",
+    "bytes": 36047,
+    "sha256": "d9aa5362a7f66c38bf366ef7268e1afdc4622fc6627a70b567420a13e58ca367"
+  },
+  {
+    "path": "Enemies/Skeleton_Archer_Hit.png",
+    "bytes": 15716,
+    "sha256": "1ae56b8efd0a47a90692528f8cb4148ac1ec8e8f89bc940ea566c45e92a8654b"
+  },
+  {
+    "path": "Enemies/Skeleton_Archer_Idle.png",
+    "bytes": 31545,
+    "sha256": "941305b6d83bc6b989db05928c3032e1c08b5309a54f2a255b8cbb131b0de77c"
+  },
+  {
+    "path": "Enemies/Skeleton_Archer_Run.png",
+    "bytes": 49068,
+    "sha256": "fea1377c3401960106facf20996f583692af6e5581f1c3f81f139ffa2c4af289"
+  },
+  {
+    "path": "README.md",
+    "bytes": 4403,
+    "sha256": "16c7edc95fe7948de3939b2cc657abdb5d03c5005a4868c694a93848333d8a69"
+  },
+  {
+    "path": "Sources/compare.ps1",
+    "bytes": 2912,
+    "sha256": "a19f8461516f1fcc18a086c44ec5ef109dab0fb5c75cea3e782dc775984ffda6"
+  },
+  {
+    "path": "Sources/Elite_Knight_Death_attempt1.png",
+    "bytes": 1884393,
+    "sha256": "53bc5cd929ef5f26b92cd63964662fd5a3c3de136382a8b9c187a59c93a204a6"
+  },
+  {
+    "path": "Sources/Elite_Knight_Death_recovery.json",
+    "bytes": 1373,
+    "sha256": "e48c747cfc7879382c1ccd78efa466329499ce5190cec81d1666c90fa61e8490"
+  },
+  {
+    "path": "Sources/Elite_Knight_Hit_attempt1.png",
+    "bytes": 1186491,
+    "sha256": "506be6c389790ae0990a2247790b9f22fe1df61cace2dc55d95cb47a3be64c6f"
+  },
+  {
+    "path": "Sources/Elite_Knight_Hit_recovery.json",
+    "bytes": 659,
+    "sha256": "af340c5b87aa2b5e55235019cbe305088fe1d6babd313002f454d4f7c6c8afe7"
+  },
+  {
+    "path": "Sources/Elite_Knight_Idle_attempt1.png",
+    "bytes": 1306577,
+    "sha256": "78b7dbfb61de171e11803eaf47ba2cad3ecaa50ef8643aa5902b0296d1d8189b"
+  },
+  {
+    "path": "Sources/Elite_Knight_Idle_recovery.json",
+    "bytes": 1056,
+    "sha256": "4f29796c7029b67bfd204cfa1fea6d5f00b6ecbf16101c43d45614b6892b4439"
+  },
+  {
+    "path": "Sources/Elite_Knight_Run_attempt1.png",
+    "bytes": 1972065,
+    "sha256": "edbe84b76b08eb3f96d59d7c54aec3891984847a7d8929d19ba42cd113f2d608"
+  },
+  {
+    "path": "Sources/Elite_Knight_Run_recovery.json",
+    "bytes": 1415,
+    "sha256": "73b15b6f5b0d7b226a324328e32f6eb218f82616e94fa3bd92105d9d1f6d0588"
+  },
+  {
+    "path": "Sources/finalize.py",
+    "bytes": 6643,
+    "sha256": "a932b656f1ed5eb434f8f12a49ed4e1a718da950ffe3cd3cdacacac2b773fa6b"
+  },
+  {
+    "path": "Sources/gif_validation.json",
+    "bytes": 3155,
+    "sha256": "0e630585bebf8dc56bc66b5103bd88107dc731fe6ca8762dc75cbe455b009173"
+  },
+  {
+    "path": "Sources/Goblin_Raider_Death_attempt1.png",
+    "bytes": 1763460,
+    "sha256": "ead60702b2b5245bff258fd00a4080a6409df710d79a93ccde5ba55efa139607"
+  },
+  {
+    "path": "Sources/Goblin_Raider_Death_recovery.json",
+    "bytes": 1407,
+    "sha256": "c2f9f0187d6ea16ba41cebba062d5411c84c770e6509d184f0fe77991362b27f"
+  },
+  {
+    "path": "Sources/Goblin_Raider_Hit_attempt1.png",
+    "bytes": 951896,
+    "sha256": "22f4d69241242ac65e827653653d26ac2b42f6d1a616c175228ddfbd8ddd9590"
+  },
+  {
+    "path": "Sources/Goblin_Raider_Hit_recovery.json",
+    "bytes": 642,
+    "sha256": "cab0ee7e59e24322b440e6055094b6f7fc61fbb2587e76838d927cbb6364ca6e"
+  },
+  {
+    "path": "Sources/Goblin_Raider_Idle_attempt1.png",
+    "bytes": 1021444,
+    "sha256": "30f062546dd7337a80002d63216d3df4a8fe17acf5014a1f3d1a725fa5ddb185"
+  },
+  {
+    "path": "Sources/Goblin_Raider_Idle_recovery.json",
+    "bytes": 1025,
+    "sha256": "913bdbd0e942fe62715e0e9000934037e4ec2fc8cbad8b8f8b1a23fa5aac7e6f"
+  },
+  {
+    "path": "Sources/Goblin_Raider_Run_attempt1.png",
+    "bytes": 1888648,
+    "sha256": "32ac9877ca21979b7bf3730b9383dd28e2cd769be5670bbf489a169df3c9cc89"
+  },
+  {
+    "path": "Sources/Goblin_Raider_Run_recovery.json",
+    "bytes": 1396,
+    "sha256": "74d010532f38a5faaf8d7217cb61800619d54796f073e8b642f58404ac96622b"
+  },
+  {
+    "path": "Sources/Imp_Flyer_Death_attempt1.png",
+    "bytes": 1667737,
+    "sha256": "c67438efb4a9d0fa9609ce71944e143f50f7b78dd128d3811c6a1b6e05580891"
+  },
+  {
+    "path": "Sources/Imp_Flyer_Death_recovery.json",
+    "bytes": 1390,
+    "sha256": "c1b62d617dca33a4f56b92c4c95be8bab5bb01b816882d663042f992278e7f1d"
+  },
+  {
+    "path": "Sources/Imp_Flyer_Hit_attempt1.png",
+    "bytes": 768753,
+    "sha256": "8b331133a9e49194980744b7834ccc9452dd2a1336fa2c35094dc35bd370480e"
+  },
+  {
+    "path": "Sources/Imp_Flyer_Hit_recovery.json",
+    "bytes": 639,
+    "sha256": "050851659b299b5b44b2be8480053de7204ad96ac55ac182269a428305c2c3ad"
+  },
+  {
+    "path": "Sources/Imp_Flyer_Idle_attempt1.png",
+    "bytes": 1091037,
+    "sha256": "ad514a95763f08a52de911f1513322bcba4df32ec2c2f4bb74c760896dbebb34"
+  },
+  {
+    "path": "Sources/Imp_Flyer_Idle_recovery.json",
+    "bytes": 1017,
+    "sha256": "920decae615a3ece52f1267ff5dd3dd13c7b4646e36a1a4a11b90edf01bf0153"
+  },
+  {
+    "path": "Sources/Imp_Flyer_Run_attempt1.png",
+    "bytes": 1836871,
+    "sha256": "e7ae80a28d0966529b485bdd6c1fa982d92f74675e9840816f8c225f44d90d9c"
+  },
+  {
+    "path": "Sources/Imp_Flyer_Run_recovery.json",
+    "bytes": 1388,
+    "sha256": "6b6df41dd06e84c89a34f1c7ef3ee8fd54a265b4cc7bf78ca0d98e5819209c12"
+  },
+  {
+    "path": "Sources/Orc_Brute_Death_attempt1.png",
+    "bytes": 2102037,
+    "sha256": "9264e7f6f6ece41ac2a80e4fdcd7ed9b9fe43f8f7b8f948678582446daac46ce"
+  },
+  {
+    "path": "Sources/Orc_Brute_Death_recovery.json",
+    "bytes": 1407,
+    "sha256": "84a8fdf32d086c4f7d430cda907ce66799580cea396bcffca6b1767dcc41ad6d"
+  },
+  {
+    "path": "Sources/Orc_Brute_Hit_attempt1.png",
+    "bytes": 1166507,
+    "sha256": "bc8d45bfabb3c395513661c4c4f392fc89233ae6ac3da8424609b579e816f9ae"
+  },
+  {
+    "path": "Sources/Orc_Brute_Hit_recovery.json",
+    "bytes": 628,
+    "sha256": "9f0861eb885f1e1d503704e95cfe7336f64370557f8834d913161ee9550ce772"
+  },
+  {
+    "path": "Sources/Orc_Brute_Idle_attempt1.png",
+    "bytes": 1356844,
+    "sha256": "ed436851966ad014c3d7b71e0efe086425e6e5ba605c3f371768d504ca5e23cb"
+  },
+  {
+    "path": "Sources/Orc_Brute_Idle_recovery.json",
+    "bytes": 1018,
+    "sha256": "e5611130a5b4bfb13bf7b464ce496a96ed3fa952758007c925869029b5e65641"
+  },
+  {
+    "path": "Sources/Orc_Brute_Run_attempt1.png",
+    "bytes": 2081866,
+    "sha256": "6ba7293ddb5c63d8fe4d606f77ecece6f883d293b879fa1b324017e30509b401"
+  },
+  {
+    "path": "Sources/Orc_Brute_Run_recovery.json",
+    "bytes": 1397,
+    "sha256": "b7ca7e2a8c22553ec0016bb82ac4c2362be5b2866917e192c06d1882f3918048"
+  },
+  {
+    "path": "Sources/process.py",
+    "bytes": 10274,
+    "sha256": "1aa9de6118ac7fbc25a9f591a7f080f56f9c350d4a86991b3e14ee12001c4cd9"
+  },
+  {
+    "path": "Sources/References/Elite_Knight_Death_v2_4x.png",
+    "bytes": 31743,
+    "sha256": "d1a66a0aac53b34becb6bfae7cedfdb04165db77be60ba91f55516c3fceadc68"
+  },
+  {
+    "path": "Sources/References/Elite_Knight_Hit_v2_4x.png",
+    "bytes": 13957,
+    "sha256": "898bf336ace4d8183dedbe837c72863d2e57bf15d311523a1fb02c60501a777c"
+  },
+  {
+    "path": "Sources/References/Elite_Knight_Idle_v2_4x.png",
+    "bytes": 26314,
+    "sha256": "600aebb4342f26e294099910e62b365385c0e66fcad25d7cb571b6b311a3ee35"
+  },
+  {
+    "path": "Sources/References/Elite_Knight_Run_v2_4x.png",
+    "bytes": 44027,
+    "sha256": "3a5e1474f4564ebace8ff72c0bc8c25e473180bb4fc279a3933f296affb44de1"
+  },
+  {
+    "path": "Sources/References/Goblin_Raider_Death_v2_4x.png",
+    "bytes": 11508,
+    "sha256": "d95701902ee730bad517e41257ff81e46089140fe0095a60ebd6446141a8859b"
+  },
+  {
+    "path": "Sources/References/Goblin_Raider_Hit_v2_4x.png",
+    "bytes": 4480,
+    "sha256": "b7a8a4042e0642e698f1ef2ecd93abd8f6b5aab920701bd1c1649ee70c513d9c"
+  },
+  {
+    "path": "Sources/References/Goblin_Raider_Idle_v2_4x.png",
+    "bytes": 9444,
+    "sha256": "c3640b3406cf25221bb93afba59e94fc43817632d814920fafc444018e38cc6e"
+  },
+  {
+    "path": "Sources/References/Goblin_Raider_Run_v2_4x.png",
+    "bytes": 14950,
+    "sha256": "83db7dd2511eab461f95d569eae5879546792ffe06857f86f14265ac10316c5e"
+  },
+  {
+    "path": "Sources/References/Imp_Flyer_Death_v2_4x.png",
+    "bytes": 10245,
+    "sha256": "37f99c068d9462f492d37a67cb5b08ecd10b522da91094aaf15b5bba6524d6de"
+  },
+  {
+    "path": "Sources/References/Imp_Flyer_Hit_v2_4x.png",
+    "bytes": 4434,
+    "sha256": "80959662230ad34021e9033f98d87d93e6bdf97e4cb2f89488d04eb3e51a3251"
+  },
+  {
+    "path": "Sources/References/Imp_Flyer_Idle_v2_4x.png",
+    "bytes": 9505,
+    "sha256": "eeba380e3640881df6bc0c2dab468dccdedcdc3def2b0567415200087c1bed45"
+  },
+  {
+    "path": "Sources/References/Imp_Flyer_Run_v2_4x.png",
+    "bytes": 15346,
+    "sha256": "ca995a0c8f8fd3fc664f0e24b4783bfa517e46316697ba84272e8b3c855b1b83"
+  },
+  {
+    "path": "Sources/References/Orc_Brute_Death_v2_4x.png",
+    "bytes": 41094,
+    "sha256": "8129ec3390ba7e0a6d8eef55cc067514bed32f186c60227f2d181ce017a6f372"
+  },
+  {
+    "path": "Sources/References/Orc_Brute_Hit_v2_4x.png",
+    "bytes": 19156,
+    "sha256": "52f61832e64b8603bf862a993f7696e2910925da9a0f48c520bbf65df61e981c"
+  },
+  {
+    "path": "Sources/References/Orc_Brute_Idle_v2_4x.png",
+    "bytes": 40504,
+    "sha256": "759575e102f27c7f719f711743b22b52f546880fd624b2a2d53cff4f490009fe"
+  },
+  {
+    "path": "Sources/References/Orc_Brute_Run_v2_4x.png",
+    "bytes": 55613,
+    "sha256": "1b3cedef6496148398f1c81273af92b576e88166d59148b1da4181fa5686e570"
+  },
+  {
+    "path": "Sources/References/Skeleton_Archer_Death_v2_4x.png",
+    "bytes": 23495,
+    "sha256": "8c9864b905dc27d3b4c36403b7323fc385c4a6e7b284cf4bcbd376123b0e317e"
+  },
+  {
+    "path": "Sources/References/Skeleton_Archer_Hit_v2_4x.png",
+    "bytes": 9297,
+    "sha256": "d69bffc1e3dddf70a3d8a585d2463d93f9f96c933644d98f8add2a4f091c604f"
+  },
+  {
+    "path": "Sources/References/Skeleton_Archer_Idle_v2_4x.png",
+    "bytes": 18224,
+    "sha256": "665b79aaf7cdf40afafc629d445ddd86909db9d427c59aa419d7dc7444431f3e"
+  },
+  {
+    "path": "Sources/References/Skeleton_Archer_Run_v2_4x.png",
+    "bytes": 27274,
+    "sha256": "fd38d8e97be6b1544b3b67a64badd460f20f02c5e59ac156c21f5e6c3d9ea2de"
+  },
+  {
+    "path": "Sources/Skeleton_Archer_Death_attempt1.png",
+    "bytes": 1884412,
+    "sha256": "e898179ce637d56261ede61b70c59d921b06d6c95fdf2453c7d55356b658dc24"
+  },
+  {
+    "path": "Sources/Skeleton_Archer_Death_attempt2.png",
+    "bytes": 1918891,
+    "sha256": "1454e10011a16a4d2ede9812ac560719856a5692954d210a0bdfd5916e28da70"
+  },
+  {
+    "path": "Sources/Skeleton_Archer_Death_attempt2_prompt.json",
+    "bytes": 2880,
+    "sha256": "93c73792a717fa367260eff73f153820772cbc16f61ea211d4e602c806ab22fa"
+  },
+  {
+    "path": "Sources/Skeleton_Archer_Death_recovery.json",
+    "bytes": 1402,
+    "sha256": "756d14d48b4a65d4992fecc33ba09e81cdf19a9f080d5208f5caaf76bbd5c4c7"
+  },
+  {
+    "path": "Sources/Skeleton_Archer_Hit_attempt1.png",
+    "bytes": 880443,
+    "sha256": "07ce67b930fcdc6da884fcd06ef2641de5001071a7489fd0d99b1d6a03de9ccf"
+  },
+  {
+    "path": "Sources/Skeleton_Archer_Hit_recovery.json",
+    "bytes": 662,
+    "sha256": "97c2517a86f5e5cff61261ac17e862a69455e799cfe66a8e9a0a23e00d69d7ee"
+  },
+  {
+    "path": "Sources/Skeleton_Archer_Idle_attempt1.png",
+    "bytes": 1313688,
+    "sha256": "6be8a2e0858fdf4dc6513b5a5d2cca7da4260a72532debeed4f21d69bf660f8e"
+  },
+  {
+    "path": "Sources/Skeleton_Archer_Idle_recovery.json",
+    "bytes": 1061,
+    "sha256": "2329df69b7606fd40e5b0e3c0403f18ee50537314a18f727902f3f070c904222"
+  },
+  {
+    "path": "Sources/Skeleton_Archer_Run_attempt1.png",
+    "bytes": 2007687,
+    "sha256": "37e8c08eab51a7756ba5722cb5f37371de48852d01db73d95e98d9fc9e78f939"
+  },
+  {
+    "path": "Sources/Skeleton_Archer_Run_attempt2.png",
+    "bytes": 2100768,
+    "sha256": "16b420c8832706448a446f36d44d32e03266521c8785dd49a4c8f6d3d0ad8f2a"
+  },
+  {
+    "path": "Sources/Skeleton_Archer_Run_attempt2_prompt.json",
+    "bytes": 2782,
+    "sha256": "b194a0e80af9e3a92dcafb5c53ebb2248dccc8386b47db36ab9be690441b694e"
+  },
+  {
+    "path": "Sources/Skeleton_Archer_Run_recovery.json",
+    "bytes": 1444,
+    "sha256": "3ed96c148cfb859709e9574125744d480fda4f65c5d8872896aaf3c488e6eb6a"
+  },
+  {
+    "path": "validation.json",
+    "bytes": 45276,
+    "sha256": "749f37162306c8f278b92fd844ba9f8bdde76fd5946e137f95d80e2247193fb6"
+  }
+]

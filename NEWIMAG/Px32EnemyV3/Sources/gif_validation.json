@@ -1,0 +1,142 @@
+﻿[
+    {
+        "file":  "Elite_Knight_Death_3x.gif",
+        "frames":  6,
+        "width":  384,
+        "height":  384,
+        "passed":  true
+    },
+    {
+        "file":  "Elite_Knight_Hit_3x.gif",
+        "frames":  2,
+        "width":  384,
+        "height":  384,
+        "passed":  true
+    },
+    {
+        "file":  "Elite_Knight_Idle_3x.gif",
+        "frames":  4,
+        "width":  384,
+        "height":  384,
+        "passed":  true
+    },
+    {
+        "file":  "Elite_Knight_Run_3x.gif",
+        "frames":  6,
+        "width":  384,
+        "height":  384,
+        "passed":  true
+    },
+    {
+        "file":  "Goblin_Raider_Death_3x.gif",
+        "frames":  6,
+        "width":  288,
+        "height":  288,
+        "passed":  true
+    },
+    {
+        "file":  "Goblin_Raider_Hit_3x.gif",
+        "frames":  2,
+        "width":  288,
+        "height":  288,
+        "passed":  true
+    },
+    {
+        "file":  "Goblin_Raider_Idle_3x.gif",
+        "frames":  4,
+        "width":  288,
+        "height":  288,
+        "passed":  true
+    },
+    {
+        "file":  "Goblin_Raider_Run_3x.gif",
+        "frames":  6,
+        "width":  288,
+        "height":  288,
+        "passed":  true
+    },
+    {
+        "file":  "Imp_Flyer_Death_3x.gif",
+        "frames":  6,
+        "width":  288,
+        "height":  288,
+        "passed":  true
+    },
+    {
+        "file":  "Imp_Flyer_Hit_3x.gif",
+        "frames":  2,
+        "width":  288,
+        "height":  288,
+        "passed":  true
+    },
+    {
+        "file":  "Imp_Flyer_Idle_3x.gif",
+        "frames":  4,
+        "width":  288,
+        "height":  288,
+        "passed":  true
+    },
+    {
+        "file":  "Imp_Flyer_Run_3x.gif",
+        "frames":  6,
+        "width":  288,
+        "height":  288,
+        "passed":  true
+    },
+    {
+        "file":  "Orc_Brute_Death_3x.gif",
+        "frames":  6,
+        "width":  480,
+        "height":  480,
+        "passed":  true
+    },
+    {
+        "file":  "Orc_Brute_Hit_3x.gif",
+        "frames":  2,
+        "width":  480,
+        "height":  480,
+        "passed":  true
+    },
+    {
+        "file":  "Orc_Brute_Idle_3x.gif",
+        "frames":  4,
+        "width":  480,
+        "height":  480,
+        "passed":  true
+    },
+    {
+        "file":  "Orc_Brute_Run_3x.gif",
+        "frames":  6,
+        "width":  480,
+        "height":  480,
+        "passed":  true
+    },
+    {
+        "file":  "Skeleton_Archer_Death_3x.gif",
+        "frames":  6,
+        "width":  384,
+        "height":  384,
+        "passed":  true
+    },
+    {
+        "file":  "Skeleton_Archer_Hit_3x.gif",
+        "frames":  2,
+        "width":  384,
+        "height":  384,
+        "passed":  true
+    },
+    {
+        "file":  "Skeleton_Archer_Idle_3x.gif",
+        "frames":  4,
+        "width":  384,
+        "height":  384,
+        "passed":  true
+    },
+    {
+        "file":  "Skeleton_Archer_Run_3x.gif",
+        "frames":  6,
+        "width":  384,
+        "height":  384,
+        "passed":  true
+    }
+]

@@ -1,0 +1,72 @@
+{
+  "source": "Sources\\Orc_Brute_Run_attempt1.png",
+  "method": "New image_gen source only; bbox block-grid recovery by 3x3 palette-mode sampling, binary alpha, isolated-point cleanup, translation. No v2 pixels used in final art.",
+  "frames": [
+    {
+      "frame": 1,
+      "source_bbox": [
+        35,
+        44,
+        477,
+        504
+      ],
+      "recovered_grid_step": 3.59375,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 2,
+      "source_bbox": [
+        55,
+        44,
+        463,
+        501
+      ],
+      "recovered_grid_step": 3.5703125,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 3,
+      "source_bbox": [
+        39,
+        41,
+        491,
+        504
+      ],
+      "recovered_grid_step": 3.6171875,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 4,
+      "source_bbox": [
+        31,
+        18,
+        481,
+        480
+      ],
+      "recovered_grid_step": 3.609375,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 5,
+      "source_bbox": [
+        49,
+        17,
+        463,
+        485
+      ],
+      "recovered_grid_step": 3.65625,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 6,
+      "source_bbox": [
+        30,
+        18,
+        500,
+        485
+      ],
+      "recovered_grid_step": 3.6484375,
+      "isolated_removed": 0
+    }
+  ]
+}

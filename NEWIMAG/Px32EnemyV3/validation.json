@@ -1,0 +1,1933 @@
+{
+  "passed": true,
+  "sheet_count": 20,
+  "exception": "Imp Death uses falling trajectory and final floor/prone pose; hover-center rule excluded to honor requested animation. Death center/height drift excluded for all species.",
+  "visual_checks": "Design consistency, 3-4 shade clusters and 1px contour are visually reviewed, not mathematically certified.",
+  "sheets": [
+    {
+      "sheet": "Goblin_Raider_Idle",
+      "cell": 96,
+      "frames": 4,
+      "colors": 19,
+      "palette_outside": 0,
+      "nonbinary_alpha": 0,
+      "edge_pixels": 0,
+      "max_center_drift": 0.5,
+      "max_height_drift": 0,
+      "idle_target": 64,
+      "ground_aligned": true,
+      "max_hover_center_error": null,
+      "imp_death_floor_and_prone": null,
+      "scale4_exact": true,
+      "passed": true,
+      "measurements": [
+        {
+          "frame": 1,
+          "bbox": [
+            24,
+            32,
+            71,
+            95
+          ],
+          "height": 64,
+          "width": 48,
+          "bottom_row": 95,
+          "horizontal_center": 47.5,
+          "vertical_center": 63.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            24,
+            32,
+            70,
+            95
+          ],
+          "height": 64,
+          "width": 47,
+          "bottom_row": 95,
+          "horizontal_center": 47.0,
+          "vertical_center": 63.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            24,
+            32,
+            70,
+            95
+          ],
+          "height": 64,
+          "width": 47,
+          "bottom_row": 95,
+          "horizontal_center": 47.0,
+          "vertical_center": 63.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            24,
+            32,
+            71,
+            95
+          ],
+          "height": 64,
+          "width": 48,
+          "bottom_row": 95,
+          "horizontal_center": 47.5,
+          "vertical_center": 63.5,
+          "edge_pixels": 0
+        }
+      ],
+      "attempts": 1,
+      "selected_source": "Sources/Goblin_Raider_Idle_attempt1.png"
+    },
+    {
+      "sheet": "Goblin_Raider_Run",
+      "cell": 96,
+      "frames": 6,
+      "colors": 18,
+      "palette_outside": 0,
+      "nonbinary_alpha": 0,
+      "edge_pixels": 0,
+      "max_center_drift": 0.5,
+      "max_height_drift": 0,
+      "idle_target": null,
+      "ground_aligned": true,
+      "max_hover_center_error": null,
+      "imp_death_floor_and_prone": null,
+      "scale4_exact": true,
+      "passed": true,
+      "measurements": [
+        {
+          "frame": 1,
+          "bbox": [
+            19,
+            32,
+            75,
+            95
+          ],
+          "height": 64,
+          "width": 57,
+          "bottom_row": 95,
+          "horizontal_center": 47.0,
+          "vertical_center": 63.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            22,
+            32,
+            72,
+            95
+          ],
+          "height": 64,
+          "width": 51,
+          "bottom_row": 95,
+          "horizontal_center": 47.0,
+          "vertical_center": 63.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            17,
+            32,
+            77,
+            95
+          ],
+          "height": 64,
+          "width": 61,
+          "bottom_row": 95,
+          "horizontal_center": 47.0,
+          "vertical_center": 63.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            20,
+            32,
+            75,
+            95
+          ],
+          "height": 64,
+          "width": 56,
+          "bottom_row": 95,
+          "horizontal_center": 47.5,
+          "vertical_center": 63.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            20,
+            32,
+            75,
+            95
+          ],
+          "height": 64,
+          "width": 56,
+          "bottom_row": 95,
+          "horizontal_center": 47.5,
+          "vertical_center": 63.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            18,
+            32,
+            76,
+            95
+          ],
+          "height": 64,
+          "width": 59,
+          "bottom_row": 95,
+          "horizontal_center": 47.0,
+          "vertical_center": 63.5,
+          "edge_pixels": 0
+        }
+      ],
+      "attempts": 1,
+      "selected_source": "Sources/Goblin_Raider_Run_attempt1.png"
+    },
+    {
+      "sheet": "Goblin_Raider_Hit",
+      "cell": 96,
+      "frames": 2,
+      "colors": 19,
+      "palette_outside": 0,
+      "nonbinary_alpha": 0,
+      "edge_pixels": 0,
+      "max_center_drift": 0.5,
+      "max_height_drift": 0,
+      "idle_target": null,
+      "ground_aligned": true,
+      "max_hover_center_error": null,
+      "imp_death_floor_and_prone": null,
+      "scale4_exact": true,
+      "passed": true,
+      "measurements": [
+        {
+          "frame": 1,
+          "bbox": [
+            14,
+            32,
+            81,
+            95
+          ],
+          "height": 64,
+          "width": 68,
+          "bottom_row": 95,
+          "horizontal_center": 47.5,
+          "vertical_center": 63.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            19,
+            32,
+            75,
+            95
+          ],
+          "height": 64,
+          "width": 57,
+          "bottom_row": 95,
+          "horizontal_center": 47.0,
+          "vertical_center": 63.5,
+          "edge_pixels": 0
+        }
+      ],
+      "attempts": 1,
+      "selected_source": "Sources/Goblin_Raider_Hit_attempt1.png"
+    },
+    {
+      "sheet": "Goblin_Raider_Death",
+      "cell": 96,
+      "frames": 6,
+      "colors": 18,
+      "palette_outside": 0,
+      "nonbinary_alpha": 0,
+      "edge_pixels": 0,
+      "max_center_drift": 0.5,
+      "max_height_drift": 40,
+      "idle_target": null,
+      "ground_aligned": true,
+      "max_hover_center_error": null,
+      "imp_death_floor_and_prone": null,
+      "scale4_exact": true,
+      "passed": true,
+      "measurements": [
+        {
+          "frame": 1,
+          "bbox": [
+            20,
+            32,
+            75,
+            95
+          ],
+          "height": 64,
+          "width": 56,
+          "bottom_row": 95,
+          "horizontal_center": 47.5,
+          "vertical_center": 63.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            16,
+            39,
+            79,
+            95
+          ],
+          "height": 57,
+          "width": 64,
+          "bottom_row": 95,
+          "horizontal_center": 47.5,
+          "vertical_center": 67.0,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            21,
+            49,
+            74,
+            95
+          ],
+          "height": 47,
+          "width": 54,
+          "bottom_row": 95,
+          "horizontal_center": 47.5,
+          "vertical_center": 72.0,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            16,
+            55,
+            78,
+            95
+          ],
+          "height": 41,
+          "width": 63,
+          "bottom_row": 95,
+          "horizontal_center": 47.0,
+          "vertical_center": 75.0,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            14,
+            68,
+            81,
+            95
+          ],
+          "height": 28,
+          "width": 68,
+          "bottom_row": 95,
+          "horizontal_center": 47.5,
+          "vertical_center": 81.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            14,
+            72,
+            80,
+            95
+          ],
+          "height": 24,
+          "width": 67,
+          "bottom_row": 95,
+          "horizontal_center": 47.0,
+          "vertical_center": 83.5,
+          "edge_pixels": 0
+        }
+      ],
+      "attempts": 1,
+      "selected_source": "Sources/Goblin_Raider_Death_attempt1.png"
+    },
+    {
+      "sheet": "Imp_Flyer_Idle",
+      "cell": 96,
+      "frames": 4,
+      "colors": 18,
+      "palette_outside": 0,
+      "nonbinary_alpha": 0,
+      "edge_pixels": 0,
+      "max_center_drift": 0.5,
+      "max_height_drift": 0,
+      "idle_target": 64,
+      "ground_aligned": null,
+      "max_hover_center_error": 0.0,
+      "imp_death_floor_and_prone": null,
+      "scale4_exact": true,
+      "passed": true,
+      "measurements": [
+        {
+          "frame": 1,
+          "bbox": [
+            11,
+            16,
+            84,
+            79
+          ],
+          "height": 64,
+          "width": 74,
+          "bottom_row": 79,
+          "horizontal_center": 47.5,
+          "vertical_center": 47.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            8,
+            16,
+            86,
+            79
+          ],
+          "height": 64,
+          "width": 79,
+          "bottom_row": 79,
+          "horizontal_center": 47.0,
+          "vertical_center": 47.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            9,
+            16,
+            86,
+            79
+          ],
+          "height": 64,
+          "width": 78,
+          "bottom_row": 79,
+          "horizontal_center": 47.5,
+          "vertical_center": 47.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            9,
+            16,
+            85,
+            79
+          ],
+          "height": 64,
+          "width": 77,
+          "bottom_row": 79,
+          "horizontal_center": 47.0,
+          "vertical_center": 47.5,
+          "edge_pixels": 0
+        }
+      ],
+      "attempts": 1,
+      "selected_source": "Sources/Imp_Flyer_Idle_attempt1.png"
+    },
+    {
+      "sheet": "Imp_Flyer_Run",
+      "cell": 96,
+      "frames": 6,
+      "colors": 19,
+      "palette_outside": 0,
+      "nonbinary_alpha": 0,
+      "edge_pixels": 0,
+      "max_center_drift": 0.5,
+      "max_height_drift": 0,
+      "idle_target": null,
+      "ground_aligned": null,
+      "max_hover_center_error": 0.0,
+      "imp_death_floor_and_prone": null,
+      "scale4_exact": true,
+      "passed": true,
+      "measurements": [
+        {
+          "frame": 1,
+          "bbox": [
+            8,
+            16,
+            87,
+            79
+          ],
+          "height": 64,
+          "width": 80,
+          "bottom_row": 79,
+          "horizontal_center": 47.5,
+          "vertical_center": 47.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            8,
+            16,
+            86,
+            79
+          ],
+          "height": 64,
+          "width": 79,
+          "bottom_row": 79,
+          "horizontal_center": 47.0,
+          "vertical_center": 47.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            5,
+            16,
+            89,
+            79
+          ],
+          "height": 64,
+          "width": 85,
+          "bottom_row": 79,
+          "horizontal_center": 47.0,
+          "vertical_center": 47.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            6,
+            16,
+            89,
+            79
+          ],
+          "height": 64,
+          "width": 84,
+          "bottom_row": 79,
+          "horizontal_center": 47.5,
+          "vertical_center": 47.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            11,
+            16,
+            84,
+            79
+          ],
+          "height": 64,
+          "width": 74,
+          "bottom_row": 79,
+          "horizontal_center": 47.5,
+          "vertical_center": 47.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            9,
+            16,
+            85,
+            79
+          ],
+          "height": 64,
+          "width": 77,
+          "bottom_row": 79,
+          "horizontal_center": 47.0,
+          "vertical_center": 47.5,
+          "edge_pixels": 0
+        }
+      ],
+      "attempts": 1,
+      "selected_source": "Sources/Imp_Flyer_Run_attempt1.png"
+    },
+    {
+      "sheet": "Imp_Flyer_Hit",
+      "cell": 96,
+      "frames": 2,
+      "colors": 18,
+      "palette_outside": 0,
+      "nonbinary_alpha": 0,
+      "edge_pixels": 0,
+      "max_center_drift": 0.5,
+      "max_height_drift": 0,
+      "idle_target": null,
+      "ground_aligned": null,
+      "max_hover_center_error": 0.0,
+      "imp_death_floor_and_prone": null,
+      "scale4_exact": true,
+      "passed": true,
+      "measurements": [
+        {
+          "frame": 1,
+          "bbox": [
+            11,
+            16,
+            84,
+            79
+          ],
+          "height": 64,
+          "width": 74,
+          "bottom_row": 79,
+          "horizontal_center": 47.5,
+          "vertical_center": 47.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            9,
+            16,
+            85,
+            79
+          ],
+          "height": 64,
+          "width": 77,
+          "bottom_row": 79,
+          "horizontal_center": 47.0,
+          "vertical_center": 47.5,
+          "edge_pixels": 0
+        }
+      ],
+      "attempts": 1,
+      "selected_source": "Sources/Imp_Flyer_Hit_attempt1.png"
+    },
+    {
+      "sheet": "Imp_Flyer_Death",
+      "cell": 96,
+      "frames": 6,
+      "colors": 19,
+      "palette_outside": 0,
+      "nonbinary_alpha": 0,
+      "edge_pixels": 0,
+      "max_center_drift": 0.5,
+      "max_height_drift": 38,
+      "idle_target": null,
+      "ground_aligned": null,
+      "max_hover_center_error": null,
+      "imp_death_floor_and_prone": true,
+      "scale4_exact": true,
+      "passed": true,
+      "measurements": [
+        {
+          "frame": 1,
+          "bbox": [
+            16,
+            16,
+            79,
+            79
+          ],
+          "height": 64,
+          "width": 64,
+          "bottom_row": 79,
+          "horizontal_center": 47.5,
+          "vertical_center": 47.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            18,
+            19,
+            77,
+            81
+          ],
+          "height": 63,
+          "width": 60,
+          "bottom_row": 81,
+          "horizontal_center": 47.5,
+          "vertical_center": 50.0,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            17,
+            27,
+            78,
+            83
+          ],
+          "height": 57,
+          "width": 62,
+          "bottom_row": 83,
+          "horizontal_center": 47.5,
+          "vertical_center": 55.0,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            14,
+            39,
+            80,
+            85
+          ],
+          "height": 47,
+          "width": 67,
+          "bottom_row": 85,
+          "horizontal_center": 47.0,
+          "vertical_center": 62.0,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            14,
+            56,
+            81,
+            89
+          ],
+          "height": 34,
+          "width": 68,
+          "bottom_row": 89,
+          "horizontal_center": 47.5,
+          "vertical_center": 72.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            13,
+            70,
+            82,
+            95
+          ],
+          "height": 26,
+          "width": 70,
+          "bottom_row": 95,
+          "horizontal_center": 47.5,
+          "vertical_center": 82.5,
+          "edge_pixels": 0
+        }
+      ],
+      "attempts": 1,
+      "selected_source": "Sources/Imp_Flyer_Death_attempt1.png"
+    },
+    {
+      "sheet": "Skeleton_Archer_Idle",
+      "cell": 128,
+      "frames": 4,
+      "colors": 19,
+      "palette_outside": 0,
+      "nonbinary_alpha": 0,
+      "edge_pixels": 0,
+      "max_center_drift": 0.5,
+      "max_height_drift": 0,
+      "idle_target": 96,
+      "ground_aligned": true,
+      "max_hover_center_error": null,
+      "imp_death_floor_and_prone": null,
+      "scale4_exact": true,
+      "passed": true,
+      "measurements": [
+        {
+          "frame": 1,
+          "bbox": [
+            25,
+            32,
+            102,
+            127
+          ],
+          "height": 96,
+          "width": 78,
+          "bottom_row": 127,
+          "horizontal_center": 63.5,
+          "vertical_center": 79.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            23,
+            32,
+            103,
+            127
+          ],
+          "height": 96,
+          "width": 81,
+          "bottom_row": 127,
+          "horizontal_center": 63.0,
+          "vertical_center": 79.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            21,
+            32,
+            105,
+            127
+          ],
+          "height": 96,
+          "width": 85,
+          "bottom_row": 127,
+          "horizontal_center": 63.0,
+          "vertical_center": 79.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            23,
+            32,
+            104,
+            127
+          ],
+          "height": 96,
+          "width": 82,
+          "bottom_row": 127,
+          "horizontal_center": 63.5,
+          "vertical_center": 79.5,
+          "edge_pixels": 0
+        }
+      ],
+      "attempts": 1,
+      "selected_source": "Sources/Skeleton_Archer_Idle_attempt1.png"
+    },
+    {
+      "sheet": "Skeleton_Archer_Run",
+      "cell": 128,
+      "frames": 6,
+      "colors": 18,
+      "palette_outside": 0,
+      "nonbinary_alpha": 0,
+      "edge_pixels": 0,
+      "max_center_drift": 0.5,
+      "max_height_drift": 0,
+      "idle_target": null,
+      "ground_aligned": true,
+      "max_hover_center_error": null,
+      "imp_death_floor_and_prone": null,
+      "scale4_exact": true,
+      "passed": true,
+      "measurements": [
+        {
+          "frame": 1,
+          "bbox": [
+            21,
+            32,
+            106,
+            127
+          ],
+          "height": 96,
+          "width": 86,
+          "bottom_row": 127,
+          "horizontal_center": 63.5,
+          "vertical_center": 79.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            21,
+            32,
+            105,
+            127
+          ],
+          "height": 96,
+          "width": 85,
+          "bottom_row": 127,
+          "horizontal_center": 63.0,
+          "vertical_center": 79.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            20,
+            32,
+            107,
+            127
+          ],
+          "height": 96,
+          "width": 88,
+          "bottom_row": 127,
+          "horizontal_center": 63.5,
+          "vertical_center": 79.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            20,
+            32,
+            106,
+            127
+          ],
+          "height": 96,
+          "width": 87,
+          "bottom_row": 127,
+          "horizontal_center": 63.0,
+          "vertical_center": 79.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            21,
+            32,
+            106,
+            127
+          ],
+          "height": 96,
+          "width": 86,
+          "bottom_row": 127,
+          "horizontal_center": 63.5,
+          "vertical_center": 79.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            20,
+            32,
+            107,
+            127
+          ],
+          "height": 96,
+          "width": 88,
+          "bottom_row": 127,
+          "horizontal_center": 63.5,
+          "vertical_center": 79.5,
+          "edge_pixels": 0
+        }
+      ],
+      "attempts": 2,
+      "selected_source": "Sources/Skeleton_Archer_Run_attempt2.png"
+    },
+    {
+      "sheet": "Skeleton_Archer_Hit",
+      "cell": 128,
+      "frames": 2,
+      "colors": 17,
+      "palette_outside": 0,
+      "nonbinary_alpha": 0,
+      "edge_pixels": 0,
+      "max_center_drift": 0.5,
+      "max_height_drift": 0,
+      "idle_target": null,
+      "ground_aligned": true,
+      "max_hover_center_error": null,
+      "imp_death_floor_and_prone": null,
+      "scale4_exact": true,
+      "passed": true,
+      "measurements": [
+        {
+          "frame": 1,
+          "bbox": [
+            11,
+            32,
+            115,
+            127
+          ],
+          "height": 96,
+          "width": 105,
+          "bottom_row": 127,
+          "horizontal_center": 63.0,
+          "vertical_center": 79.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            19,
+            32,
+            108,
+            127
+          ],
+          "height": 96,
+          "width": 90,
+          "bottom_row": 127,
+          "horizontal_center": 63.5,
+          "vertical_center": 79.5,
+          "edge_pixels": 0
+        }
+      ],
+      "attempts": 1,
+      "selected_source": "Sources/Skeleton_Archer_Hit_attempt1.png"
+    },
+    {
+      "sheet": "Skeleton_Archer_Death",
+      "cell": 128,
+      "frames": 6,
+      "colors": 19,
+      "palette_outside": 0,
+      "nonbinary_alpha": 0,
+      "edge_pixels": 0,
+      "max_center_drift": 0.5,
+      "max_height_drift": 69,
+      "idle_target": null,
+      "ground_aligned": true,
+      "max_hover_center_error": null,
+      "imp_death_floor_and_prone": null,
+      "scale4_exact": true,
+      "passed": true,
+      "measurements": [
+        {
+          "frame": 1,
+          "bbox": [
+            27,
+            32,
+            100,
+            127
+          ],
+          "height": 96,
+          "width": 74,
+          "bottom_row": 127,
+          "horizontal_center": 63.5,
+          "vertical_center": 79.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            25,
+            41,
+            102,
+            127
+          ],
+          "height": 87,
+          "width": 78,
+          "bottom_row": 127,
+          "horizontal_center": 63.5,
+          "vertical_center": 84.0,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            19,
+            63,
+            107,
+            127
+          ],
+          "height": 65,
+          "width": 89,
+          "bottom_row": 127,
+          "horizontal_center": 63.0,
+          "vertical_center": 95.0,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            22,
+            73,
+            104,
+            127
+          ],
+          "height": 55,
+          "width": 83,
+          "bottom_row": 127,
+          "horizontal_center": 63.0,
+          "vertical_center": 100.0,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            18,
+            91,
+            108,
+            127
+          ],
+          "height": 37,
+          "width": 91,
+          "bottom_row": 127,
+          "horizontal_center": 63.0,
+          "vertical_center": 109.0,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            18,
+            101,
+            108,
+            127
+          ],
+          "height": 27,
+          "width": 91,
+          "bottom_row": 127,
+          "horizontal_center": 63.0,
+          "vertical_center": 114.0,
+          "edge_pixels": 0
+        }
+      ],
+      "attempts": 2,
+      "selected_source": "Sources/Skeleton_Archer_Death_attempt2.png"
+    },
+    {
+      "sheet": "Elite_Knight_Idle",
+      "cell": 128,
+      "frames": 4,
+      "colors": 19,
+      "palette_outside": 0,
+      "nonbinary_alpha": 0,
+      "edge_pixels": 0,
+      "max_center_drift": 0.5,
+      "max_height_drift": 0,
+      "idle_target": 96,
+      "ground_aligned": true,
+      "max_hover_center_error": null,
+      "imp_death_floor_and_prone": null,
+      "scale4_exact": true,
+      "passed": true,
+      "measurements": [
+        {
+          "frame": 1,
+          "bbox": [
+            23,
+            32,
+            104,
+            127
+          ],
+          "height": 96,
+          "width": 82,
+          "bottom_row": 127,
+          "horizontal_center": 63.5,
+          "vertical_center": 79.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            23,
+            32,
+            103,
+            127
+          ],
+          "height": 96,
+          "width": 81,
+          "bottom_row": 127,
+          "horizontal_center": 63.0,
+          "vertical_center": 79.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            22,
+            32,
+            104,
+            127
+          ],
+          "height": 96,
+          "width": 83,
+          "bottom_row": 127,
+          "horizontal_center": 63.0,
+          "vertical_center": 79.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            21,
+            32,
+            105,
+            127
+          ],
+          "height": 96,
+          "width": 85,
+          "bottom_row": 127,
+          "horizontal_center": 63.0,
+          "vertical_center": 79.5,
+          "edge_pixels": 0
+        }
+      ],
+      "attempts": 1,
+      "selected_source": "Sources/Elite_Knight_Idle_attempt1.png"
+    },
+    {
+      "sheet": "Elite_Knight_Run",
+      "cell": 128,
+      "frames": 6,
+      "colors": 19,
+      "palette_outside": 0,
+      "nonbinary_alpha": 0,
+      "edge_pixels": 0,
+      "max_center_drift": 0.5,
+      "max_height_drift": 0,
+      "idle_target": null,
+      "ground_aligned": true,
+      "max_hover_center_error": null,
+      "imp_death_floor_and_prone": null,
+      "scale4_exact": true,
+      "passed": true,
+      "measurements": [
+        {
+          "frame": 1,
+          "bbox": [
+            21,
+            32,
+            106,
+            127
+          ],
+          "height": 96,
+          "width": 86,
+          "bottom_row": 127,
+          "horizontal_center": 63.5,
+          "vertical_center": 79.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            20,
+            32,
+            107,
+            127
+          ],
+          "height": 96,
+          "width": 88,
+          "bottom_row": 127,
+          "horizontal_center": 63.5,
+          "vertical_center": 79.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            21,
+            32,
+            105,
+            127
+          ],
+          "height": 96,
+          "width": 85,
+          "bottom_row": 127,
+          "horizontal_center": 63.0,
+          "vertical_center": 79.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            23,
+            32,
+            103,
+            127
+          ],
+          "height": 96,
+          "width": 81,
+          "bottom_row": 127,
+          "horizontal_center": 63.0,
+          "vertical_center": 79.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            18,
+            32,
+            108,
+            127
+          ],
+          "height": 96,
+          "width": 91,
+          "bottom_row": 127,
+          "horizontal_center": 63.0,
+          "vertical_center": 79.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            21,
+            32,
+            106,
+            127
+          ],
+          "height": 96,
+          "width": 86,
+          "bottom_row": 127,
+          "horizontal_center": 63.5,
+          "vertical_center": 79.5,
+          "edge_pixels": 0
+        }
+      ],
+      "attempts": 1,
+      "selected_source": "Sources/Elite_Knight_Run_attempt1.png"
+    },
+    {
+      "sheet": "Elite_Knight_Hit",
+      "cell": 128,
+      "frames": 2,
+      "colors": 19,
+      "palette_outside": 0,
+      "nonbinary_alpha": 0,
+      "edge_pixels": 0,
+      "max_center_drift": 0.0,
+      "max_height_drift": 0,
+      "idle_target": null,
+      "ground_aligned": true,
+      "max_hover_center_error": null,
+      "imp_death_floor_and_prone": null,
+      "scale4_exact": true,
+      "passed": true,
+      "measurements": [
+        {
+          "frame": 1,
+          "bbox": [
+            9,
+            32,
+            117,
+            127
+          ],
+          "height": 96,
+          "width": 109,
+          "bottom_row": 127,
+          "horizontal_center": 63.0,
+          "vertical_center": 79.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            15,
+            32,
+            111,
+            127
+          ],
+          "height": 96,
+          "width": 97,
+          "bottom_row": 127,
+          "horizontal_center": 63.0,
+          "vertical_center": 79.5,
+          "edge_pixels": 0
+        }
+      ],
+      "attempts": 1,
+      "selected_source": "Sources/Elite_Knight_Hit_attempt1.png"
+    },
+    {
+      "sheet": "Elite_Knight_Death",
+      "cell": 128,
+      "frames": 6,
+      "colors": 19,
+      "palette_outside": 0,
+      "nonbinary_alpha": 0,
+      "edge_pixels": 0,
+      "max_center_drift": 0.5,
+      "max_height_drift": 65,
+      "idle_target": null,
+      "ground_aligned": true,
+      "max_hover_center_error": null,
+      "imp_death_floor_and_prone": null,
+      "scale4_exact": true,
+      "passed": true,
+      "measurements": [
+        {
+          "frame": 1,
+          "bbox": [
+            21,
+            32,
+            105,
+            127
+          ],
+          "height": 96,
+          "width": 85,
+          "bottom_row": 127,
+          "horizontal_center": 63.0,
+          "vertical_center": 79.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            20,
+            42,
+            106,
+            127
+          ],
+          "height": 86,
+          "width": 87,
+          "bottom_row": 127,
+          "horizontal_center": 63.0,
+          "vertical_center": 84.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            20,
+            60,
+            107,
+            127
+          ],
+          "height": 68,
+          "width": 88,
+          "bottom_row": 127,
+          "horizontal_center": 63.5,
+          "vertical_center": 93.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            17,
+            75,
+            110,
+            127
+          ],
+          "height": 53,
+          "width": 94,
+          "bottom_row": 127,
+          "horizontal_center": 63.5,
+          "vertical_center": 101.0,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            14,
+            88,
+            112,
+            127
+          ],
+          "height": 40,
+          "width": 99,
+          "bottom_row": 127,
+          "horizontal_center": 63.0,
+          "vertical_center": 107.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            13,
+            97,
+            114,
+            127
+          ],
+          "height": 31,
+          "width": 102,
+          "bottom_row": 127,
+          "horizontal_center": 63.5,
+          "vertical_center": 112.0,
+          "edge_pixels": 0
+        }
+      ],
+      "attempts": 1,
+      "selected_source": "Sources/Elite_Knight_Death_attempt1.png"
+    },
+    {
+      "sheet": "Orc_Brute_Idle",
+      "cell": 160,
+      "frames": 4,
+      "colors": 19,
+      "palette_outside": 0,
+      "nonbinary_alpha": 0,
+      "edge_pixels": 0,
+      "max_center_drift": 0.5,
+      "max_height_drift": 0,
+      "idle_target": 128,
+      "ground_aligned": true,
+      "max_hover_center_error": null,
+      "imp_death_floor_and_prone": null,
+      "scale4_exact": true,
+      "passed": true,
+      "measurements": [
+        {
+          "frame": 1,
+          "bbox": [
+            18,
+            32,
+            140,
+            159
+          ],
+          "height": 128,
+          "width": 123,
+          "bottom_row": 159,
+          "horizontal_center": 79.0,
+          "vertical_center": 95.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            19,
+            32,
+            140,
+            159
+          ],
+          "height": 128,
+          "width": 122,
+          "bottom_row": 159,
+          "horizontal_center": 79.5,
+          "vertical_center": 95.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            16,
+            32,
+            143,
+            159
+          ],
+          "height": 128,
+          "width": 128,
+          "bottom_row": 159,
+          "horizontal_center": 79.5,
+          "vertical_center": 95.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            17,
+            32,
+            142,
+            159
+          ],
+          "height": 128,
+          "width": 126,
+          "bottom_row": 159,
+          "horizontal_center": 79.5,
+          "vertical_center": 95.5,
+          "edge_pixels": 0
+        }
+      ],
+      "attempts": 1,
+      "selected_source": "Sources/Orc_Brute_Idle_attempt1.png"
+    },
+    {
+      "sheet": "Orc_Brute_Run",
+      "cell": 160,
+      "frames": 6,
+      "colors": 18,
+      "palette_outside": 0,
+      "nonbinary_alpha": 0,
+      "edge_pixels": 0,
+      "max_center_drift": 0.5,
+      "max_height_drift": 0,
+      "idle_target": null,
+      "ground_aligned": true,
+      "max_hover_center_error": null,
+      "imp_death_floor_and_prone": null,
+      "scale4_exact": true,
+      "passed": true,
+      "measurements": [
+        {
+          "frame": 1,
+          "bbox": [
+            18,
+            32,
+            140,
+            159
+          ],
+          "height": 128,
+          "width": 123,
+          "bottom_row": 159,
+          "horizontal_center": 79.0,
+          "vertical_center": 95.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            23,
+            32,
+            136,
+            159
+          ],
+          "height": 128,
+          "width": 114,
+          "bottom_row": 159,
+          "horizontal_center": 79.5,
+          "vertical_center": 95.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            17,
+            32,
+            141,
+            159
+          ],
+          "height": 128,
+          "width": 125,
+          "bottom_row": 159,
+          "horizontal_center": 79.0,
+          "vertical_center": 95.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            17,
+            32,
+            141,
+            159
+          ],
+          "height": 128,
+          "width": 125,
+          "bottom_row": 159,
+          "horizontal_center": 79.0,
+          "vertical_center": 95.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            23,
+            32,
+            135,
+            159
+          ],
+          "height": 128,
+          "width": 113,
+          "bottom_row": 159,
+          "horizontal_center": 79.0,
+          "vertical_center": 95.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            15,
+            32,
+            143,
+            159
+          ],
+          "height": 128,
+          "width": 129,
+          "bottom_row": 159,
+          "horizontal_center": 79.0,
+          "vertical_center": 95.5,
+          "edge_pixels": 0
+        }
+      ],
+      "attempts": 1,
+      "selected_source": "Sources/Orc_Brute_Run_attempt1.png"
+    },
+    {
+      "sheet": "Orc_Brute_Hit",
+      "cell": 160,
+      "frames": 2,
+      "colors": 17,
+      "palette_outside": 0,
+      "nonbinary_alpha": 0,
+      "edge_pixels": 0,
+      "max_center_drift": 0.5,
+      "max_height_drift": 0,
+      "idle_target": null,
+      "ground_aligned": true,
+      "max_hover_center_error": null,
+      "imp_death_floor_and_prone": null,
+      "scale4_exact": true,
+      "passed": true,
+      "measurements": [
+        {
+          "frame": 1,
+          "bbox": [
+            9,
+            32,
+            149,
+            159
+          ],
+          "height": 128,
+          "width": 141,
+          "bottom_row": 159,
+          "horizontal_center": 79.0,
+          "vertical_center": 95.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            10,
+            32,
+            149,
+            159
+          ],
+          "height": 128,
+          "width": 140,
+          "bottom_row": 159,
+          "horizontal_center": 79.5,
+          "vertical_center": 95.5,
+          "edge_pixels": 0
+        }
+      ],
+      "attempts": 1,
+      "selected_source": "Sources/Orc_Brute_Hit_attempt1.png"
+    },
+    {
+      "sheet": "Orc_Brute_Death",
+      "cell": 160,
+      "frames": 6,
+      "colors": 18,
+      "palette_outside": 0,
+      "nonbinary_alpha": 0,
+      "edge_pixels": 0,
+      "max_center_drift": 0.5,
+      "max_height_drift": 88,
+      "idle_target": null,
+      "ground_aligned": true,
+      "max_hover_center_error": null,
+      "imp_death_floor_and_prone": null,
+      "scale4_exact": true,
+      "passed": true,
+      "measurements": [
+        {
+          "frame": 1,
+          "bbox": [
+            30,
+            32,
+            129,
+            159
+          ],
+          "height": 128,
+          "width": 100,
+          "bottom_row": 159,
+          "horizontal_center": 79.5,
+          "vertical_center": 95.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            28,
+            39,
+            131,
+            159
+          ],
+          "height": 121,
+          "width": 104,
+          "bottom_row": 159,
+          "horizontal_center": 79.5,
+          "vertical_center": 99.0,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            25,
+            69,
+            133,
+            159
+          ],
+          "height": 91,
+          "width": 109,
+          "bottom_row": 159,
+          "horizontal_center": 79.0,
+          "vertical_center": 114.0,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            28,
+            84,
+            131,
+            159
+          ],
+          "height": 76,
+          "width": 104,
+          "bottom_row": 159,
+          "horizontal_center": 79.5,
+          "vertical_center": 121.5,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            25,
+            109,
+            133,
+            159
+          ],
+          "height": 51,
+          "width": 109,
+          "bottom_row": 159,
+          "horizontal_center": 79.0,
+          "vertical_center": 134.0,
+          "edge_pixels": 0
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            22,
+            120,
+            136,
+            159
+          ],
+          "height": 40,
+          "width": 115,
+          "bottom_row": 159,
+          "horizontal_center": 79.0,
+          "vertical_center": 139.5,
+          "edge_pixels": 0
+        }
+      ],
+      "attempts": 1,
+      "selected_source": "Sources/Orc_Brute_Death_attempt1.png"
+    }
+  ],
+  "gif_checks": [
+    {
+      "file": "Elite_Knight_Death_3x.gif",
+      "frames": 6,
+      "width": 384,
+      "height": 384,
+      "passed": true
+    },
+    {
+      "file": "Elite_Knight_Hit_3x.gif",
+      "frames": 2,
+      "width": 384,
+      "height": 384,
+      "passed": true
+    },
+    {
+      "file": "Elite_Knight_Idle_3x.gif",
+      "frames": 4,
+      "width": 384,
+      "height": 384,
+      "passed": true
+    },
+    {
+      "file": "Elite_Knight_Run_3x.gif",
+      "frames": 6,
+      "width": 384,
+      "height": 384,
+      "passed": true
+    },
+    {
+      "file": "Goblin_Raider_Death_3x.gif",
+      "frames": 6,
+      "width": 288,
+      "height": 288,
+      "passed": true
+    },
+    {
+      "file": "Goblin_Raider_Hit_3x.gif",
+      "frames": 2,
+      "width": 288,
+      "height": 288,
+      "passed": true
+    },
+    {
+      "file": "Goblin_Raider_Idle_3x.gif",
+      "frames": 4,
+      "width": 288,
+      "height": 288,
+      "passed": true
+    },
+    {
+      "file": "Goblin_Raider_Run_3x.gif",
+      "frames": 6,
+      "width": 288,
+      "height": 288,
+      "passed": true
+    },
+    {
+      "file": "Imp_Flyer_Death_3x.gif",
+      "frames": 6,
+      "width": 288,
+      "height": 288,
+      "passed": true
+    },
+    {
+      "file": "Imp_Flyer_Hit_3x.gif",
+      "frames": 2,
+      "width": 288,
+      "height": 288,
+      "passed": true
+    },
+    {
+      "file": "Imp_Flyer_Idle_3x.gif",
+      "frames": 4,
+      "width": 288,
+      "height": 288,
+      "passed": true
+    },
+    {
+      "file": "Imp_Flyer_Run_3x.gif",
+      "frames": 6,
+      "width": 288,
+      "height": 288,
+      "passed": true
+    },
+    {
+      "file": "Orc_Brute_Death_3x.gif",
+      "frames": 6,
+      "width": 480,
+      "height": 480,
+      "passed": true
+    },
+    {
+      "file": "Orc_Brute_Hit_3x.gif",
+      "frames": 2,
+      "width": 480,
+      "height": 480,
+      "passed": true
+    },
+    {
+      "file": "Orc_Brute_Idle_3x.gif",
+      "frames": 4,
+      "width": 480,
+      "height": 480,
+      "passed": true
+    },
+    {
+      "file": "Orc_Brute_Run_3x.gif",
+      "frames": 6,
+      "width": 480,
+      "height": 480,
+      "passed": true
+    },
+    {
+      "file": "Skeleton_Archer_Death_3x.gif",
+      "frames": 6,
+      "width": 384,
+      "height": 384,
+      "passed": true
+    },
+    {
+      "file": "Skeleton_Archer_Hit_3x.gif",
+      "frames": 2,
+      "width": 384,
+      "height": 384,
+      "passed": true
+    },
+    {
+      "file": "Skeleton_Archer_Idle_3x.gif",
+      "frames": 4,
+      "width": 384,
+      "height": 384,
+      "passed": true
+    },
+    {
+      "file": "Skeleton_Archer_Run_3x.gif",
+      "frames": 6,
+      "width": 384,
+      "height": 384,
+      "passed": true
+    }
+  ],
+  "comparison": {
+    "path": "Compare_3x.png",
+    "scale": 3,
+    "hero": "NEWIMAG/Px32HeroV3/_1x/Hero_Idle.png",
+    "ruler_spacing_native_px": 32,
+    "v2_sprites_resampled_for_final_art": false
+  },
+  "limitations": [
+    "Generated sources did not obey exact 4x blocks or exact grid/canvas dimensions; new art was recovered onto the requested native grid using palette-mode block sampling, then translated into cells.",
+    "Imp Death is exempt from hover-center rule to satisfy requested fall and final prone pose.",
+    "Single-pixel charcoal contours and flat 3-4 tone shading were visually reviewed; local contour thickness and tiny clusters may vary. Palette and binary alpha checks alone do not certify all stylistic requirements.",
+    "GIF previews use 120ms per frame and loop, including Hit and Death. Engine timing was not specified or modified."
+  ]
+}

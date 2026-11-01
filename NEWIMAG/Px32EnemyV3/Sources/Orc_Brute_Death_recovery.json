@@ -1,0 +1,72 @@
+{
+  "source": "Sources\\Orc_Brute_Death_attempt1.png",
+  "method": "New image_gen source only; bbox block-grid recovery by 3x3 palette-mode sampling, binary alpha, isolated-point cleanup, translation. No v2 pixels used in final art.",
+  "frames": [
+    {
+      "frame": 1,
+      "source_bbox": [
+        75,
+        62,
+        498,
+        603
+      ],
+      "recovered_grid_step": 4.2265625,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 2,
+      "source_bbox": [
+        28,
+        92,
+        467,
+        605
+      ],
+      "recovered_grid_step": 4.2265625,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 3,
+      "source_bbox": [
+        28,
+        219,
+        488,
+        605
+      ],
+      "recovered_grid_step": 4.2265625,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 4,
+      "source_bbox": [
+        50,
+        23,
+        490,
+        343
+      ],
+      "recovered_grid_step": 4.2265625,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 5,
+      "source_bbox": [
+        15,
+        136,
+        474,
+        353
+      ],
+      "recovered_grid_step": 4.2265625,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 6,
+      "source_bbox": [
+        22,
+        185,
+        508,
+        353
+      ],
+      "recovered_grid_step": 4.2265625,
+      "isolated_removed": 0
+    }
+  ]
+}

@@ -192,8 +192,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.625}
-  m_Size: {x: 1.25, y: 2.25}
+  m_Offset: {x: 0, y: 1}
+  m_Size: {x: 1.5, y: 3}
   m_Direction: 0
 --- !u!95 &2542561721481046642
 Animator:
@@ -230,6 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReTrap.VerificationAgent
   baseMoveSpeed: 4
+  knockbackBaseCells: 1
 --- !u!114 &4212509851855890962
 MonoBehaviour:
   m_ObjectHideFlags: 0

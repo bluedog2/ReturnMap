@@ -1,0 +1,72 @@
+{
+  "source": "Sources\\Elite_Knight_Run_attempt1.png",
+  "method": "New image_gen source only; bbox block-grid recovery by 3x3 palette-mode sampling, binary alpha, isolated-point cleanup, translation. No v2 pixels used in final art.",
+  "frames": [
+    {
+      "frame": 1,
+      "source_bbox": [
+        46,
+        64,
+        431,
+        495
+      ],
+      "recovered_grid_step": 4.489583333333333,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 2,
+      "source_bbox": [
+        58,
+        64,
+        452,
+        496
+      ],
+      "recovered_grid_step": 4.5,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 3,
+      "source_bbox": [
+        75,
+        65,
+        458,
+        497
+      ],
+      "recovered_grid_step": 4.5,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 4,
+      "source_bbox": [
+        74,
+        29,
+        445,
+        470
+      ],
+      "recovered_grid_step": 4.59375,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 5,
+      "source_bbox": [
+        48,
+        31,
+        465,
+        470
+      ],
+      "recovered_grid_step": 4.572916666666667,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 6,
+      "source_bbox": [
+        61,
+        31,
+        456,
+        470
+      ],
+      "recovered_grid_step": 4.572916666666667,
+      "isolated_removed": 0
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "source": "Sources\\Orc_Brute_Hit_attempt1.png",
+  "method": "New image_gen source only; bbox block-grid recovery by 3x3 palette-mode sampling, binary alpha, isolated-point cleanup, translation. No v2 pixels used in final art.",
+  "frames": [
+    {
+      "frame": 1,
+      "source_bbox": [
+        79,
+        173,
+        852,
+        877
+      ],
+      "recovered_grid_step": 5.5,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 2,
+      "source_bbox": [
+        56,
+        173,
+        824,
+        877
+      ],
+      "recovered_grid_step": 5.5,
+      "isolated_removed": 0
+    }
+  ]
+}

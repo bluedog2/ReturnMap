@@ -1,0 +1,72 @@
+{
+  "source": "Sources\\Skeleton_Archer_Run_attempt2.png",
+  "method": "New image_gen source only; bbox block-grid recovery by 3x3 palette-mode sampling, binary alpha, isolated-point cleanup, translation. No v2 pixels used in final art.",
+  "frames": [
+    {
+      "frame": 1,
+      "source_bbox": [
+        57,
+        35,
+        469,
+        496
+      ],
+      "recovered_grid_step": 4.802083333333333,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 2,
+      "source_bbox": [
+        58,
+        36,
+        465,
+        496
+      ],
+      "recovered_grid_step": 4.791666666666667,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 3,
+      "source_bbox": [
+        48,
+        44,
+        461,
+        496
+      ],
+      "recovered_grid_step": 4.708333333333333,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 4,
+      "source_bbox": [
+        65,
+        28,
+        469,
+        476
+      ],
+      "recovered_grid_step": 4.666666666666667,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 5,
+      "source_bbox": [
+        44,
+        16,
+        464,
+        484
+      ],
+      "recovered_grid_step": 4.875,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 6,
+      "source_bbox": [
+        56,
+        24,
+        477,
+        484
+      ],
+      "recovered_grid_step": 4.791666666666667,
+      "isolated_removed": 0
+    }
+  ]
+}

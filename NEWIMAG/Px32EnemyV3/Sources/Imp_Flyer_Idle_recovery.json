@@ -1,0 +1,50 @@
+{
+  "source": "Sources\\Imp_Flyer_Idle_attempt1.png",
+  "method": "New image_gen source only; bbox block-grid recovery by 3x3 palette-mode sampling, binary alpha, isolated-point cleanup, translation. No v2 pixels used in final art.",
+  "frames": [
+    {
+      "frame": 1,
+      "source_bbox": [
+        33,
+        117,
+        581,
+        592
+      ],
+      "recovered_grid_step": 7.421875,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 2,
+      "source_bbox": [
+        33,
+        117,
+        617,
+        591
+      ],
+      "recovered_grid_step": 7.40625,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 3,
+      "source_bbox": [
+        33,
+        59,
+        621,
+        541
+      ],
+      "recovered_grid_step": 7.53125,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 4,
+      "source_bbox": [
+        14,
+        61,
+        587,
+        536
+      ],
+      "recovered_grid_step": 7.421875,
+      "isolated_removed": 0
+    }
+  ]
+}

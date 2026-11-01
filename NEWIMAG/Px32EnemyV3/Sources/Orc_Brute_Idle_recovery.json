@@ -1,0 +1,50 @@
+{
+  "source": "Sources\\Orc_Brute_Idle_attempt1.png",
+  "method": "New image_gen source only; bbox block-grid recovery by 3x3 palette-mode sampling, binary alpha, isolated-point cleanup, translation. No v2 pixels used in final art.",
+  "frames": [
+    {
+      "frame": 1,
+      "source_bbox": [
+        85,
+        106,
+        609,
+        652
+      ],
+      "recovered_grid_step": 4.265625,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 2,
+      "source_bbox": [
+        38,
+        100,
+        562,
+        652
+      ],
+      "recovered_grid_step": 4.3125,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 3,
+      "source_bbox": [
+        93,
+        28,
+        619,
+        554
+      ],
+      "recovered_grid_step": 4.109375,
+      "isolated_removed": 0
+    },
+    {
+      "frame": 4,
+      "source_bbox": [
+        35,
+        21,
+        559,
+        554
+      ],
+      "recovered_grid_step": 4.1640625,
+      "isolated_removed": 0
+    }
+  ]
+}
