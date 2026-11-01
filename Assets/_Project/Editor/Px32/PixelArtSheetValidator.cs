@@ -66,6 +66,7 @@ namespace ReTrap.EditorTools
             public int     cellW, cellH, frames;
             public bool    airborne;     // 기준선 드리프트 예외
             public bool    death;        // 수평·높이 드리프트 예외
+            public bool    squash;       // 높이 드리프트만 예외 (웅크림·착지·움찔)
             public int     maxColors;    // 0 이면 16
             public bool    detectGrid;   // true: 원본이 k배 업스케일. false: 이미 1배(가져온 결과)
             public Color32[] palette;
@@ -80,9 +81,10 @@ namespace ReTrap.EditorTools
                 // 이펙트(터짐·흩어짐)·게이지 단계는 프레임마다 크기·위치가 변하는 게 정상 → 기준선·드리프트 예외
                 airborne = category == "Effects" || Px32Rules.IsAirborne(baseName),
                 death    = category == "Effects" || Px32Rules.IsDeath(baseName),
+                squash   = Px32Rules.IsSquash(baseName),
                 // 캐릭터는 화풍 v2 팔레트(20색) 전체 사용 허용
                 maxColors = (category == "Tiles" || category == "Backgrounds") ? 24
-                          : (category == "Player" || category == "Enemies") ? 20 : 16,
+                          : (category == "Player" || category == "Enemies") ? 24 : 16, // 3칸 기준 디테일(docs/scale-3tile.md)
             };
             var spec = Px32Rules.GetSheetSpec(category, baseName);
             if (spec != null) { o.cellW = spec.cellW; o.cellH = spec.cellH; o.frames = spec.frames; }
@@ -410,7 +412,7 @@ namespace ReTrap.EditorTools
                         float hh = maxY[f] - minY[f] + 1;
                         if (Math.Abs(c - meanC) > DriftTolerance)
                             drift.Fail($"프레임 {f} 가로 중심 {c:F1} 이 평균 {meanC:F1} 에서 ±{DriftTolerance}px 초과");
-                        if (Math.Abs(hh - meanH) > DriftTolerance)
+                        if (!o.squash && Math.Abs(hh - meanH) > DriftTolerance)
                             drift.Fail($"프레임 {f} 높이 {hh} 가 평균 {meanH:F1} 에서 ±{DriftTolerance}px 초과");
                     }
                 }

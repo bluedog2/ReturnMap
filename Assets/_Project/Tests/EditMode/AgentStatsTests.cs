@@ -129,9 +129,9 @@ namespace ReTrap.Tests
         {
             foreach (var p in new[] { TraversalProfile.From(null), TraversalProfile.From(TagSet.Empty) })
             {
-                Assert.AreEqual(1, p.MaxJumpHeight);
-                Assert.AreEqual(2, p.MaxJumpDistance);
-                Assert.AreEqual(4, p.MaxFallHeight);
+                Assert.AreEqual(2, p.MaxJumpHeight);
+                Assert.AreEqual(3, p.MaxJumpDistance);
+                Assert.AreEqual(6, p.MaxFallHeight);
                 Assert.AreEqual(DamageType.None, p.Immunities);
                 Assert.IsFalse(p.RecklessDrop);
             }

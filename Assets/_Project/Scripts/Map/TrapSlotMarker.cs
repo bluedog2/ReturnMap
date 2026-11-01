@@ -20,6 +20,9 @@ namespace ReTrap
         public int        GridY      { get; private set; }
         public TrapAnchor Anchor     { get; private set; }
 
+        /// <summary>슬롯 한 변의 셀 수 (s). GridX/GridY 는 s×s 영역의 좌하단 셀.</summary>
+        public int        Size       { get; private set; } = 1;
+
         /// <summary>현재 이 슬롯에 설치된 함정 GameObject. null 이면 비어있음.</summary>
         public GameObject OccupiedBy { get; private set; }
 
@@ -44,13 +47,15 @@ namespace ReTrap
         /// <see cref="TrapSlotRegistry"/> 에 등록됩니다.
         /// (OnEnable 등록은 AddComponent 시점에 좌표가 0,0 이라 사용 불가)
         /// </summary>
-        public void Init(int x, int y, TrapAnchor anchor)
+        public void Init(int x, int y, TrapAnchor anchor, int size = 1)
         {
             GridX  = x;
             GridY  = y;
             Anchor = anchor;
+            Size   = Mathf.Max(1, size);
 
-            _guideSR = GetComponent<SpriteRenderer>();
+            // 가이드 렌더러는 MapLoader 가 자식 "Guide" 에 둔다 (Init 은 봉인 생성 전에 호출되므로 봉인과 섞이지 않음)
+            _guideSR = GetComponentInChildren<SpriteRenderer>(true);
             if (_guideSR != null)
                 _guideBaseTint = _guideSR.color;
 
@@ -118,28 +123,45 @@ namespace ReTrap
         /// <summary>
         /// 빈 슬롯을 Play 중 솔리드 타일로 막는 봉인 오브젝트를 구성합니다.
         /// 콜라이더는 맵 루트의 CompositeCollider2D 로 병합되어 이음새 없이 동작합니다.
+        /// <para>s×s 슬롯은 콜라이더 1개(s×s)와 셀마다 1×1 렌더러 s² 개로 구성합니다
+        /// (스프라이트를 늘리지 않고 같은 스프라이트를 셀 중심마다 반복).</para>
         /// </summary>
+        /// <param name="size">타일 한 변 길이(tileUnit).</param>
+        /// <param name="slotSize">슬롯 한 변의 셀 수 (s).</param>
         public void CreateSeal(Sprite sprite, Color color, Material material,
                                string sortingLayerName, int sortingOrder,
-                               int layerIndex, float size)
+                               int layerIndex, float size, int slotSize = 1)
         {
             if (_seal != null) return;
+
+            int s = Mathf.Max(1, slotSize);
 
             _seal = new GameObject("SlotSeal");
             _seal.transform.SetParent(transform, false);
             _seal.layer = layerIndex;
 
-            var sr    = _seal.AddComponent<SpriteRenderer>();
-            sr.sprite = sprite;
-            sr.color  = color;
-            if (material != null)
-                sr.sharedMaterial = material; // 일반 타일과 동일 조명·배칭
-            if (!string.IsNullOrEmpty(sortingLayerName))
-                sr.sortingLayerName = sortingLayerName;
-            sr.sortingOrder = sortingOrder;
+            // 셀마다 렌더러 1개 — 슬롯 중심(루트) 기준 셀 중심 오프셋 ((i - (s-1)/2) * size)
+            for (int cy = 0; cy < s; cy++)
+            for (int cx = 0; cx < s; cx++)
+            {
+                var cell = new GameObject(s == 1 ? "SealCell" : $"SealCell_{cx}_{cy}");
+                cell.transform.SetParent(_seal.transform, false);
+                cell.layer = layerIndex;
+                cell.transform.localPosition = new Vector3(
+                    (cx - (s - 1) * 0.5f) * size, (cy - (s - 1) * 0.5f) * size, 0f);
+
+                var sr    = cell.AddComponent<SpriteRenderer>();
+                sr.sprite = sprite;
+                sr.color  = color;
+                if (material != null)
+                    sr.sharedMaterial = material; // 일반 타일과 동일 조명·배칭
+                if (!string.IsNullOrEmpty(sortingLayerName))
+                    sr.sortingLayerName = sortingLayerName;
+                sr.sortingOrder = sortingOrder;
+            }
 
             var col  = _seal.AddComponent<BoxCollider2D>();
-            col.size = Vector2.one * size;
+            col.size = Vector2.one * (size * s);
             col.compositeOperation = Collider2D.CompositeOperation.Merge;
 
             RefreshSealActive();
@@ -187,7 +209,7 @@ namespace ReTrap
                 ? new Color(1f, 0.5f, 0f, 0.6f)
                 : new Color(0.2f, 0.9f, 0.3f, 0.6f);
 
-            Gizmos.DrawWireCube(transform.position, Vector3.one * 0.8f);
+            Gizmos.DrawWireCube(transform.position, Vector3.one * (0.8f * Size));
         }
 #endif
     }

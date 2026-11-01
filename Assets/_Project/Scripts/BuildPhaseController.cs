@@ -483,6 +483,7 @@ namespace ReTrap
                 {
                     EnsureGhost();
                     _ghost.transform.position = slot.transform.position;
+                    _ghost.transform.localScale = Vector3.one * slot.Size; // 철거 오버레이는 슬롯 영역(s×s)
                     _ghostSR.color = RemoveHover;
                     SetGhostVisible(true);
                 }
@@ -501,6 +502,7 @@ namespace ReTrap
             {
                 EnsureGhost();
                 _ghost.transform.position = slot.transform.position;
+                _ghost.transform.localScale = Vector3.one; // 설치 고스트는 함정 스프라이트 원본 크기
                 _ghostSR.color = _hoverValid ? GhostOk : GhostBad;
                 SetGhostVisible(true);
             }
@@ -590,24 +592,24 @@ namespace ReTrap
             if (!TrapSlotRegistry.TryGet(x, y, out var slot)) return;
             if (!CanPlaceAt(slot, out string reason))
             {
-                if (reason != null) Debug.Log($"[Build] 설치 불가 ({x},{y}): {reason}");
+                if (reason != null) Debug.Log($"[Build] 설치 불가 ({slot.GridX},{slot.GridY}): {reason}");
                 return;
             }
 
             var def    = SelectedDefinition();
             var prefab = SelectedPrefab();
             var inst   = Instantiate(prefab, slot.transform.position, Quaternion.identity, trapRoot);
-            inst.name  = $"{prefab.name}_{x}_{y}";
+            inst.name  = $"{prefab.name}_{slot.GridX}_{slot.GridY}";
 
             // 방향 자동 설정 — Start(OnNormal) 이전이므로 안전
             var trap = inst.GetComponent<TrapBase>();
-            trap.ConfigureForAnchor(slot.Anchor);
+            trap.ConfigureForAnchor(slot.Anchor, slot.Size, new GridCoord(slot.GridX, slot.GridY));
 
             slot.TryOccupy(inst);   // 가이드 숨김은 마커가 처리
             RemainingBudget -= def.BaseCost;
             RefreshSlotHighlights(); // 예산 변동 반영 (TryOccupy 알림 시점엔 옛 예산)
 
-            Debug.Log($"[Build] 설치: {prefab.name} @({x},{y})  잔여 예산 {RemainingBudget}");
+            Debug.Log($"[Build] 설치: {prefab.name} @({slot.GridX},{slot.GridY})  잔여 예산 {RemainingBudget}");
         }
 
         private void TryRemove(int x, int y)
@@ -622,7 +624,7 @@ namespace ReTrap
             RemainingBudget += refund;
             RefreshSlotHighlights(); // 환불 반영 (Vacate 알림 시점엔 옛 예산)
 
-            Debug.Log($"[Build] 철거 @({x},{y})  환불 {refund} → 잔여 예산 {RemainingBudget}");
+            Debug.Log($"[Build] 철거 @({slot.GridX},{slot.GridY})  환불 {refund} → 잔여 예산 {RemainingBudget}");
         }
 
         // ── 유틸 ─────────────────────────────────────────────────────────────

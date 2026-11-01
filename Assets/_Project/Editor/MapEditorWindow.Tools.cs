@@ -190,8 +190,9 @@ namespace ReTrap.EditorTools
 
                 case BrushMode.Slot:
                     // 드래그 중에는 추가/갱신만 (드래그 중 제거는 혼란)
-                    var existing = map.GetSlot(x, y);
-                    if (existing == null || existing.Anchor != _brushAnchor)
+                    // 슬롯은 s×s 영역 — 셀을 덮는 슬롯 기준으로 판단, 새로 놓을 땐 영역이 들어갈 때만
+                    var existing = map.FindSlotCovering(x, y);
+                    if (existing == null ? map.SlotFits(x, y) : existing.Anchor != _brushAnchor)
                     {
                         map.ToggleSlot(x, y, _brushAnchor);
                         MarkDirty();
@@ -229,9 +230,10 @@ namespace ReTrap.EditorTools
                 map.SetTile(x, y, TileType.Empty);
                 changed = true;
             }
-            if (map.GetSlot(x, y) != null)
+            var covering = map.FindSlotCovering(x, y); // 영역 안 어느 셀이든 슬롯 전체 제거
+            if (covering != null)
             {
-                map.trapSlots.RemoveAll(s => s.x == x && s.y == y);
+                map.trapSlots.Remove(covering);
                 changed = true;
             }
             if (changed) MarkDirty();

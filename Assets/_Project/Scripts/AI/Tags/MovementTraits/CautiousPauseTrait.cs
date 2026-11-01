@@ -29,11 +29,19 @@ namespace ReTrap
                 TrapBase trap = traps[i];
                 if (trap == null) continue;
 
-                GridCoord cell = WorldToCell(trap.transform.position);
-                if (Mathf.Abs(cell.y - q.From.y) > 1) continue;
+                // 슬롯 영역 [origin, origin+s-1] 기준 — 행이 ±1 범위와 겹치고, 영역의 어느 열이든
+                // 진행 방향 1~2칸 앞이면 감지 (s=1 이면 기존 단일 셀 판정과 동일)
+                GridCoord origin = trap.SlotOrigin;
+                int       size   = trap.SlotSize;
+                if (origin.y > q.From.y + 1 || origin.y + size - 1 < q.From.y - 1) continue;
 
-                int forward = (cell.x - q.From.x) * q.DirX;
-                if (forward < 1 || forward > 2) continue;
+                bool ahead = false;
+                for (int cx = origin.x; cx < origin.x + size && !ahead; cx++)
+                {
+                    int forward = (cx - q.From.x) * q.DirX;
+                    ahead = forward >= 1 && forward <= 2;
+                }
+                if (!ahead) continue;
 
                 s.counter = q.From.x + 1;
                 return new TraitAction { pauseSeconds = pauseSeconds };

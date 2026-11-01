@@ -31,6 +31,13 @@ namespace ReTrap
         private static readonly Dictionary<Vector2Int, TrapSlotMarker> _slots
             = new Dictionary<Vector2Int, TrapSlotMarker>();
 
+        /// <summary>
+        /// 슬롯 영역의 <b>모든 셀</b> → 마커. s×s 슬롯의 어느 셀을 조회해도 같은 마커가 나온다.
+        /// (<see cref="_slots"/> 는 좌하단 키로 슬롯당 1개만 두어 All/GetOccupied 가 중복되지 않게 한다.)
+        /// </summary>
+        private static readonly Dictionary<Vector2Int, TrapSlotMarker> _cells
+            = new Dictionary<Vector2Int, TrapSlotMarker>();
+
         // ── 이벤트 ────────────────────────────────────────────────────────────
 
         /// <summary>
@@ -47,13 +54,13 @@ namespace ReTrap
         /// <summary>모든 슬롯 (순서 비보장).</summary>
         public static IEnumerable<TrapSlotMarker> All => _slots.Values;
 
-        /// <summary>좌표로 슬롯 조회. 없으면 false.</summary>
+        /// <summary>좌표로 슬롯 조회 (영역 안 아무 셀이나 가능). 없으면 false.</summary>
         public static bool TryGet(int x, int y, out TrapSlotMarker slot)
-            => _slots.TryGetValue(new Vector2Int(x, y), out slot);
+            => _cells.TryGetValue(new Vector2Int(x, y), out slot);
 
-        /// <summary>좌표로 슬롯 조회. 없으면 null.</summary>
+        /// <summary>좌표로 슬롯 조회 (영역 안 아무 셀이나 가능). 없으면 null.</summary>
         public static TrapSlotMarker Get(int x, int y)
-            => _slots.TryGetValue(new Vector2Int(x, y), out var s) ? s : null;
+            => _cells.TryGetValue(new Vector2Int(x, y), out var s) ? s : null;
 
         /// <summary>특정 anchor 방향의 슬롯만 순회.</summary>
         public static IEnumerable<TrapSlotMarker> GetByAnchor(TrapAnchor anchor)
@@ -93,6 +100,7 @@ namespace ReTrap
                                  $"기존 '{existing.name}' 을 '{marker.name}' 으로 교체합니다.");
 
             _slots[key] = marker;
+            ForEachCell(marker, c => _cells[c] = marker);
             OnChanged?.Invoke();
         }
 
@@ -104,8 +112,20 @@ namespace ReTrap
             if (_slots.TryGetValue(key, out var current) && current == marker)
             {
                 _slots.Remove(key);
+                // 셀 매핑도 이 마커 것만 제거 (다른 마커가 덮어쓴 셀은 보호)
+                ForEachCell(marker, c =>
+                {
+                    if (_cells.TryGetValue(c, out var m) && m == marker) _cells.Remove(c);
+                });
                 OnChanged?.Invoke();
             }
+        }
+
+        private static void ForEachCell(TrapSlotMarker marker, Action<Vector2Int> action)
+        {
+            for (int dy = 0; dy < marker.Size; dy++)
+                for (int dx = 0; dx < marker.Size; dx++)
+                    action(new Vector2Int(marker.GridX + dx, marker.GridY + dy));
         }
 
         /// <summary>점유 상태 변화 통지 (TryOccupy / Vacate 에서 호출).</summary>

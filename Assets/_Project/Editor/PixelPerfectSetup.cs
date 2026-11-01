@@ -13,11 +13,11 @@ namespace ReTrap.EditorTools
     /// <summary>
     /// 메뉴 <b>ReTrap → Setup → 픽셀 퍼펙트 카메라 세팅</b> (멱등, 대화상자 없음 → 배치모드 가능):
     /// <list type="bullet">
-    ///   <item>SampleScene 의 Main Camera 에 <see cref="PixelPerfectCamera"/>(PPU 32 · ref 640×360 ·
+    ///   <item>SampleScene 의 Main Camera 에 <see cref="PixelPerfectCamera"/>(PPU 32 · ref 960×540 ·
     ///         gridSnapping None · cropFrame None)를 추가하고 <b>꺼진 상태</b>로 둔다
     ///         (Play 페이즈에서 <see cref="BuildCameraController"/> 가 켠다).</item>
     ///   <item>vcam PlayerFollowCamera 에 <see cref="CinemachinePixelPerfect"/> 확장을 추가하고
-    ///         렌즈 size 를 5.625(= 360 / 2 / 32)로 맞춘다.</item>
+    ///         렌즈 size 를 8.4375(= 540 / 2 / 32)로 맞춘다.</item>
     /// </list>
     /// <c>-executeMethod ReTrap.EditorTools.PixelPerfectSetup.Run</c>
     /// </summary>
@@ -26,8 +26,8 @@ namespace ReTrap.EditorTools
         private const string ScenePath = "Assets/_Project/ResourcceEX/Scenes/SampleScene.unity";
         private const string VcamName  = "PlayerFollowCamera";
         private const int    Ppu       = 32;
-        private const int    RefX      = 640;
-        private const int    RefY      = 360;
+        private const int    RefX      = 960;   // 3칸 기준 (docs/scale-3tile.md)
+        private const int    RefY      = 540;
 
         [MenuItem("ReTrap/Setup/픽셀 퍼펙트 카메라 세팅", false, 111)]
         public static void Run()

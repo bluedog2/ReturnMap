@@ -27,7 +27,7 @@ namespace ReTrap
     ///
     /// <para><b>플레이 페이즈</b>: CinemachineBrain 을 다시 켜서
     /// 기존 PlayerFollowCamera(플레이어 추적) 로 복원합니다.
-    /// 픽셀 퍼펙트(PixelPerfectCamera, 640×360·PPU 32)는 <b>Play 에서만 켜고</b>
+    /// 픽셀 퍼펙트(PixelPerfectCamera, 960×540·PPU 32)는 <b>Play 에서만 켜고</b>
     /// 빌드·검증의 직접 제어 중에는 끕니다 (pixelPerfectPlay 로 롤백 가능).</para>
     ///
     /// <para><b>경계 정책</b>: 줌아웃 상한을 "맵 밖이 보이지 않는 최대 size"(크롭)로
@@ -235,6 +235,14 @@ namespace ReTrap
                 float corrected = PlayOrthoSize();
                 if (vcam != null) SetLensSize(vcam, corrected);
             }
+
+            // 렌즈 크기가 바뀌었으니 컨파이너의 렌즈 캐시를 갱신 — 이전 크기 기준으로 가두면
+            // 실제 화면이 경계보다 넓어져 맵 밖이 보인다.
+            if (hasVcam)
+            {
+                var confiner = vcam.GetComponent<CinemachineConfiner2D>();
+                if (confiner != null) confiner.InvalidateLensCache();
+            }
         }
 
         /// <summary>
@@ -278,6 +286,10 @@ namespace ReTrap
         private Vector2 GlideTarget(CinemachineCamera vcam, float size)
         {
             Vector2 p = vcam.Follow != null ? (Vector2)vcam.Follow.position : (Vector2)transform.position;
+            // 추적 카메라 PositionComposer 의 대상 오프셋까지 포함 — 빠뜨리면 글라이드가 끝난 뒤
+            // Brain 이 켜지면서 오프셋만큼 한 번 더 움직여 "확대 → 넘어감" 처럼 보인다.
+            var composer = vcam.GetComponent<CinemachinePositionComposer>();
+            if (composer != null) p += (Vector2)composer.TargetOffset;
             return TryGetBounds(out Bounds b) ? ClampPoint(b, p, size) : p;
         }
 

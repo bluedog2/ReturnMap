@@ -15,13 +15,13 @@ namespace ReTrap
     /// </summary>
     public readonly struct TraversalProfile
     {
-        /// <summary>점프로 오를 수 있는 최대 칸수 (기본 1).</summary>
+        /// <summary>점프로 오를 수 있는 최대 칸수 (기본 2 — 3칸 기준, docs/scale-3tile.md).</summary>
         public readonly int MaxJumpHeight;
 
-        /// <summary>점프로 건널 수 있는 최대 가로 칸수 (기본 2).</summary>
+        /// <summary>점프로 건널 수 있는 최대 가로 칸수 (기본 3).</summary>
         public readonly int MaxJumpDistance;
 
-        /// <summary>자진 낙하를 감수하는 최대 낙차 (기본 4, 지름길 중독이면 int.MaxValue).</summary>
+        /// <summary>자진 낙하를 감수하는 최대 낙차 (기본 6, 지름길 중독이면 int.MaxValue).</summary>
         public readonly int MaxFallHeight;
 
         /// <summary>면역 함정의 위험 비용을 0으로 만드는 피해 타입 마스크.</summary>
@@ -40,9 +40,9 @@ namespace ReTrap
             RecklessDrop    = recklessDrop;
         }
 
-        /// <summary>태그가 하나도 없는 기본 개체의 프로파일 (1/2/4/면역없음/지름길중독아님).</summary>
+        /// <summary>태그가 하나도 없는 기본 개체의 프로파일 (2/3/6/면역없음/지름길중독아님) — 3칸 기준 몸집.</summary>
         public static TraversalProfile Default { get; } =
-            new TraversalProfile(1, 2, 4, DamageType.None, false);
+            new TraversalProfile(2, 3, 6, DamageType.None, false);
 
         /// <summary>
         /// 개체의 <see cref="TagSet"/> 에서 이동 능력 프로파일을 파생시킵니다. 로컬 초기값은

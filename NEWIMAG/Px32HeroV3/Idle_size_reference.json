@@ -1,0 +1,85 @@
+{
+  "path": "_1x/Hero_Idle.png",
+  "frame": 0,
+  "height": 101,
+  "bbox": [
+    30,
+    27,
+    98,
+    127
+  ],
+  "head_bbox": [
+    55,
+    35,
+    98,
+    74
+  ],
+  "head_size": [
+    44,
+    40
+  ],
+  "box_bbox": [
+    40,
+    84,
+    62,
+    102
+  ],
+  "box_size": [
+    23,
+    19
+  ],
+  "shoe_bboxes": [
+    [
+      48,
+      110,
+      67,
+      127
+    ],
+    [
+      77,
+      110,
+      94,
+      127
+    ]
+  ],
+  "shoe_sizes": [
+    [
+      20,
+      18
+    ],
+    [
+      18,
+      18
+    ]
+  ],
+  "measurement_method": "Manually delimited semantic rectangles, inclusive coordinates; opaque support measured inside each ROI. Head excludes ponytail and includes face and front bangs. Shoes include top cuff. Semantic boundaries are visually annotated, not a ground-truth instance mask.",
+  "sha256": "faa78a9a7317bd03715bb59c986ae0ea91834da64f09026b9896a6dd6727e218",
+  "verified_opaque_support": {
+    "head_bbox": [
+      55,
+      35,
+      98,
+      74
+    ],
+    "box_bbox": [
+      40,
+      84,
+      62,
+      102
+    ]
+  },
+  "verified_shoe_bboxes": [
+    [
+      48,
+      110,
+      67,
+      127
+    ],
+    [
+      77,
+      110,
+      94,
+      127
+    ]
+  ]
+}

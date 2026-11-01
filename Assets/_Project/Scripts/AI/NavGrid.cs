@@ -108,31 +108,20 @@ namespace ReTrap
                 TrapBase trap = slot.OccupiedTrap;
                 if (trap == null) continue;
 
-                // 2-a) 솔리드 마킹 (슬롯=지형 불변식) — 이동형 함정(DropHammer 등,
-                //      ActsAsSolidTile=false)은 opt-out. 함정 상태(Dud 등)와 무관하게 항상 지형.
-                if (trap.ActsAsSolidTile && g.InBounds(slot.GridX, slot.GridY))
-                    g._nodes[slot.GridY * g.Width + slot.GridX].solid = true;
-
-                // 2-b) 위험 비용 — anchor 별 위험 칸(밟고 지나가는 바깥쪽 1칸)에 부여.
-                //      Floor→(x,y+1) / Ceiling→(x,y-1) / LeftWall→(x+1,y) / RightWall→(x-1,y)
-                //      (TrapBase.OutwardOf 와 동일 규약 — 중복 구현하지 않고 그대로 재사용)
-                //      Dud(발사 정지)/Beneficial(무해 통과) 상태인 함정은 TrapBase.OnTriggerEnter2D
+                // 2-b 판정: Dud(발사 정지)/Beneficial(무해 통과) 상태인 함정은 TrapBase.OnTriggerEnter2D
                 //      에서도 이미 무해하게 통과시키므로 회피 대상에서 제외한다 — 그렇지 않으면
                 //      함정 혐오로 Mutate(Dud) 된 무해 함정을 다음 시도가 계속 회피하게 된다.
-                if (trap.CurrentState == TrapState.Dud || trap.CurrentState == TrapState.Beneficial)
-                    continue;
+                //      면역 반영: profile.Immunities 에 포함된 피해 타입의 함정은 위험 비용 0
+                //      (예: 둥글둥글이 가시밭을 최단거리로 지나는 것이 올바른 행동).
+                float danger = 0f;
+                bool harmless = trap.CurrentState == TrapState.Dud
+                             || trap.CurrentState == TrapState.Beneficial
+                             || (trap.DamageType & profile.Immunities) != DamageType.None;
+                if (!harmless)
+                    danger = trap.GetNodeCostWeight() * p.dangerCostMultiplier;
 
-                // 면역 반영: profile.Immunities 에 포함된 피해 타입의 함정은 위험 비용 0
-                // (예: 둥글둥글이 가시밭을 최단거리로 지나는 것이 올바른 행동).
-                if ((trap.DamageType & profile.Immunities) != DamageType.None) continue;
-
-                Vector2Int outward = TrapBase.OutwardOf(slot.Anchor);
-                int dx = slot.GridX + outward.x;
-                int dy = slot.GridY + outward.y;
-                if (!g.InBounds(dx, dy)) continue;
-
-                g._nodes[dy * g.Width + dx].dangerCost
-                    += trap.GetNodeCostWeight() * p.dangerCostMultiplier;
+                MarkTrapSlot(g._nodes, g.Width, g.Height, slot.GridX, slot.GridY, slot.Size,
+                             slot.Anchor, trap.ActsAsSolidTile, danger);
             }
 
             // 3) grounded 계산 — solid 확정 후 1패스. y==0 은 맵 바닥 밖이라 grounded 아님.
@@ -145,6 +134,56 @@ namespace ReTrap
             }
 
             return g;
+        }
+
+        /// <summary>
+        /// 설치 함정 1개의 슬롯 영역(origin 좌하단, size×size)을 노드 배열에 반영합니다.
+        /// <list type="bullet">
+        ///   <item><b>솔리드 마킹</b>(슬롯=지형 불변식): <paramref name="markSolid"/> 이면 영역 s² 칸 전부 solid.
+        ///         이동형 함정(DropHammer 등, ActsAsSolidTile=false)은 opt-out. 함정 상태(Dud 등)와 무관하게 항상 지형.</item>
+        ///   <item><b>위험 비용</b>: anchor 바깥 면에 접한 s칸 띠(밟고 지나가는 자리) 각 칸에 <paramref name="danger"/> 전체를 가산.
+        ///         Floor→y+s 행 / Ceiling→y-1 행 / LeftWall→x-1 열 / RightWall→x+s 열
+        ///         (방향 규약은 <see cref="TrapBase.OutwardOf"/> 재사용). s=1 이면 바깥 1칸.</item>
+        /// </list>
+        /// 범위 밖 칸은 무시합니다.
+        /// </summary>
+        internal static void MarkTrapSlot(NavNode[] nodes, int width, int height,
+                                          int originX, int originY, int size,
+                                          TrapAnchor anchor, bool markSolid, float danger)
+        {
+            size = Mathf.Max(1, size);
+
+            if (markSolid)
+            {
+                for (int dy = 0; dy < size; dy++)
+                for (int dx = 0; dx < size; dx++)
+                {
+                    int x = originX + dx, y = originY + dy;
+                    if (x >= 0 && x < width && y >= 0 && y < height)
+                        nodes[y * width + x].solid = true;
+                }
+            }
+
+            if (danger == 0f) return;
+
+            Vector2Int outward = TrapBase.OutwardOf(anchor);
+            for (int i = 0; i < size; i++)
+            {
+                int x, y;
+                if (outward.y != 0)
+                {
+                    x = originX + i;
+                    y = outward.y > 0 ? originY + size : originY - 1;
+                }
+                else
+                {
+                    y = originY + i;
+                    x = outward.x > 0 ? originX + size : originX - 1;
+                }
+
+                if (x >= 0 && x < width && y >= 0 && y < height)
+                    nodes[y * width + x].dangerCost += danger;
+            }
         }
 
         // ── 착지점 탐색 ───────────────────────────────────────────────────────

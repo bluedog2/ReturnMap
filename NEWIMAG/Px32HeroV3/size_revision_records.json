@@ -1,0 +1,1466 @@
+[
+  {
+    "name": "Run",
+    "attempt": 1,
+    "path": "C:/Users/Owner/.codex/generated_images/01a19610-c577-7ef0-b7d6-99859d06b910/exec-a3b99ae2-256b-4f1e-802e-901445fee956.png",
+    "source": "Sources/Hero_Run_sizefix_attempt1.png",
+    "recovery": {
+      "size": [
+        1774,
+        887
+      ],
+      "grid": [
+        {
+          "block_corner_agreement": 0.5535,
+          "translation": [
+            21,
+            27
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            85,
+            100
+          ],
+          "detected_source_box": [
+            12,
+            8,
+            97,
+            108
+          ],
+          "sample_pitch": 4
+        },
+        {
+          "block_corner_agreement": 0.5497,
+          "translation": [
+            21,
+            26
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            85,
+            101
+          ],
+          "detected_source_box": [
+            128,
+            7,
+            213,
+            108
+          ],
+          "sample_pitch": 4
+        },
+        {
+          "block_corner_agreement": 0.5394,
+          "translation": [
+            21,
+            26
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            85,
+            101
+          ],
+          "detected_source_box": [
+            236,
+            7,
+            321,
+            108
+          ],
+          "sample_pitch": 4
+        },
+        {
+          "block_corner_agreement": 0.5473,
+          "translation": [
+            23,
+            26
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            81,
+            101
+          ],
+          "detected_source_box": [
+            352,
+            7,
+            433,
+            108
+          ],
+          "sample_pitch": 4
+        },
+        {
+          "block_corner_agreement": 0.5508,
+          "translation": [
+            22,
+            25
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            82,
+            102
+          ],
+          "detected_source_box": [
+            12,
+            115,
+            94,
+            217
+          ],
+          "sample_pitch": 4
+        },
+        {
+          "block_corner_agreement": 0.5535,
+          "translation": [
+            23,
+            24
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            81,
+            103
+          ],
+          "detected_source_box": [
+            126,
+            114,
+            207,
+            217
+          ],
+          "sample_pitch": 4
+        },
+        {
+          "block_corner_agreement": 0.557,
+          "translation": [
+            21,
+            25
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            85,
+            102
+          ],
+          "detected_source_box": [
+            236,
+            115,
+            321,
+            217
+          ],
+          "sample_pitch": 4
+        },
+        {
+          "block_corner_agreement": 0.5525,
+          "translation": [
+            20,
+            27
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            87,
+            100
+          ],
+          "detected_source_box": [
+            350,
+            117,
+            437,
+            217
+          ],
+          "sample_pitch": 4
+        }
+      ]
+    },
+    "metrics": {
+      "frames": [
+        {
+          "frame": 0,
+          "bbox": [
+            21,
+            27,
+            106,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 101,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.062,
+          "height_deviation": -1.25
+        },
+        {
+          "frame": 1,
+          "bbox": [
+            21,
+            26,
+            106,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 102,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.062,
+          "height_deviation": -0.25
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            21,
+            26,
+            106,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 102,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.062,
+          "height_deviation": -0.25
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            23,
+            26,
+            104,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 102,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.062,
+          "height_deviation": -0.25
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            22,
+            25,
+            104,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.0,
+          "height": 103,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": -0.438,
+          "height_deviation": 0.75
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            23,
+            24,
+            104,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 104,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.062,
+          "height_deviation": 1.75
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            21,
+            25,
+            106,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 103,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.062,
+          "height_deviation": 0.75
+        },
+        {
+          "frame": 7,
+          "bbox": [
+            20,
+            27,
+            107,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 101,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.062,
+          "height_deviation": -1.25
+        }
+      ],
+      "color_count": 20,
+      "palette_outside": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "numeric_pass": true
+    },
+    "selection_score": 1.25
+  },
+  {
+    "name": "JumpStart",
+    "attempt": 1,
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a19610-c577-7ef0-b7d6-99859d06b910\\exec-94c5dba8-a63b-41c3-9f99-161afbe7fa36.png",
+    "prompt": "Re:Trap production pixel-art animation. Image 1 APPROVED IDLE SIZE AND DESIGN master, 128x128 at 4x. Image 2 is v2 POSE FLOW ONLY. Same size character within each logical 128 cell as Idle: full upright height 101 pixels; face plus front bangs bounding rectangle 44x40 pixels, tooth-box 22x20 pixels; shoes 23x18 and 18x18 pixels, all within 1 pixel of Idle. MATCH reference visually and proportionally, no enlargement or smaller chibi. Same face, cream ponytail, hair clip, cream/crimson jacket, black shorts and asymmetrical stockings, tooth-box and shoes. Detailed eye highlights, hair strands, folds, teeth, rivets, shoes like Idle. Strict uniform 4x4 square pixel grid, NO antialiasing. True transparent background. <=20 colors cream #F7EEE4 #E7D8CE #D0BEB8 skin #FFE7D2 #F8D4BF #EAB6A3 charcoal #19181F #2A282D #3D3940 #555058 crimson #641F36 #92223F #B83450 #DC526B. Right facing. 1 logical pixel charcoal outline. No captions or ground, no effects. Each character horizontally centered. Feet at bottom cell row. Logical top/left/right row clear.  Generate Hero_JumpStart, exactly 2 frames. 2 columns x 1 row. First crouches compressing legs, second takes off stretching legs. Head and box dimensions unchanged.",
+    "source": "Sources/Hero_JumpStart_sizefix_attempt1.png",
+    "recovery": {
+      "error": "native sampled silhouette exceeds cell; resizing forbidden",
+      "size": [
+        1774,
+        887
+      ],
+      "detected_boxes": [
+        [
+          46,
+          59,
+          196,
+          220
+        ],
+        [
+          247,
+          14,
+          403,
+          218
+        ]
+      ]
+    }
+  },
+  {
+    "name": "Fall",
+    "attempt": 1,
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a19610-c577-7ef0-b7d6-99859d06b910\\exec-59f3f0d6-8bee-4e2f-a8d2-e5149c3b8a40.png",
+    "prompt": "Re:Trap production pixel-art animation. Image 1 APPROVED IDLE SIZE AND DESIGN master, 128x128 at 4x. Image 2 is v2 POSE FLOW ONLY. Same size character within each logical 128 cell as Idle: full upright height 101 pixels; face plus front bangs bounding rectangle 44x40 pixels, tooth-box 22x20 pixels; shoes 23x18 and 18x18 pixels, all within 1 pixel of Idle. MATCH reference visually and proportionally, no enlargement or smaller chibi. Same face, cream ponytail, hair clip, cream/crimson jacket, black shorts and asymmetrical stockings, tooth-box and shoes. Detailed eye highlights, hair strands, folds, teeth, rivets, shoes like Idle. Strict uniform 4x4 square pixel grid, NO antialiasing. True transparent background. <=20 colors cream #F7EEE4 #E7D8CE #D0BEB8 skin #FFE7D2 #F8D4BF #EAB6A3 charcoal #19181F #2A282D #3D3940 #555058 crimson #641F36 #92223F #B83450 #DC526B. Right facing. 1 logical pixel charcoal outline. No captions or ground, no effects. Each character horizontally centered. Feet at bottom cell row. Logical top/left/right row clear.  Generate Hero_Fall, exactly 2 frames. 2 columns x 1 row. Two distinct airborne falling poses; upright torso and bent legs, same head and box dimensions. IMPORTANT OUTPUT: exactly 1024x512, 2 cells each 512x512. Each figure EXACTLY 404 OUTPUT PIXELS TALL. Do not fill larger image dimensions with larger figures. If canvas is larger, leave extra TRANSPARENT margin. Entire body including ponytail must fit 404 pixels tall. Head bbox 176x160 OUTPUT pixels, box 88x80 OUTPUT pixels.",
+    "source": "Sources/Hero_Fall_sizefix_attempt1.png",
+    "recovery": {
+      "error": "native sampled silhouette exceeds cell; resizing forbidden",
+      "size": [
+        1774,
+        887
+      ],
+      "detected_boxes": [
+        [
+          29,
+          23,
+          197,
+          217
+        ],
+        [
+          238,
+          24,
+          420,
+          217
+        ]
+      ]
+    }
+  },
+  {
+    "name": "Land",
+    "attempt": 1,
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a19610-c577-7ef0-b7d6-99859d06b910\\exec-e90b98c6-de8a-4dab-9bdb-4bde83dff6b5.png",
+    "prompt": "Re:Trap production pixel-art animation. Image 1 APPROVED IDLE SIZE AND DESIGN master, 128x128 at 4x. Image 2 is v2 POSE FLOW ONLY. Same size character within each logical 128 cell as Idle: full upright height 101 pixels; face plus front bangs bounding rectangle 44x40 pixels, tooth-box 22x20 pixels; shoes 23x18 and 18x18 pixels, all within 1 pixel of Idle. MATCH reference visually and proportionally, no enlargement or smaller chibi. Same face, cream ponytail, hair clip, cream/crimson jacket, black shorts and asymmetrical stockings, tooth-box and shoes. Detailed eye highlights, hair strands, folds, teeth, rivets, shoes like Idle. Strict uniform 4x4 square pixel grid, NO antialiasing. True transparent background. <=20 colors cream #F7EEE4 #E7D8CE #D0BEB8 skin #FFE7D2 #F8D4BF #EAB6A3 charcoal #19181F #2A282D #3D3940 #555058 crimson #641F36 #92223F #B83450 #DC526B. Right facing. 1 logical pixel charcoal outline. No captions or ground, no effects. Each character horizontally centered. Feet at bottom cell row. Logical top/left/right row clear.  Generate Hero_Land, exactly 3 frames. 3 columns x 1 row. First crouches on landing, second partly recovers, third upright at 101px. Head and box dimensions unchanged. Output 1536x512. Full figure only 404 output pixels tall. Do not magnify artwork to fill canvas.",
+    "source": "Sources/Hero_Land_sizefix_attempt1.png",
+    "recovery": {
+      "error": "native sampled silhouette exceeds cell; resizing forbidden",
+      "size": [
+        2172,
+        724
+      ],
+      "detected_boxes": [
+        [
+          39,
+          54,
+          151,
+          171
+        ],
+        [
+          221,
+          32,
+          324,
+          171
+        ],
+        [
+          398,
+          15,
+          497,
+          171
+        ]
+      ]
+    }
+  },
+  {
+    "name": "Dash",
+    "attempt": 1,
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a19610-c577-7ef0-b7d6-99859d06b910\\exec-73bda0b3-675e-48c5-82dc-9b381590fed6.png",
+    "prompt": "Re:Trap production pixel-art animation. Image 1 APPROVED IDLE SIZE AND DESIGN master, 128x128 at 4x. Image 2 is v2 POSE FLOW ONLY. Same size character within each logical 128 cell as Idle: full upright height 101 pixels; face plus front bangs bounding rectangle 44x40 pixels, tooth-box 22x20 pixels; shoes 23x18 and 18x18 pixels, all within 1 pixel of Idle. MATCH reference visually and proportionally, no enlargement or smaller chibi. Same face, cream ponytail, hair clip, cream/crimson jacket, black shorts and asymmetrical stockings, tooth-box and shoes. Detailed eye highlights, hair strands, folds, teeth, rivets, shoes like Idle. Strict uniform 4x4 square pixel grid, NO antialiasing. True transparent background. <=20 colors cream #F7EEE4 #E7D8CE #D0BEB8 skin #FFE7D2 #F8D4BF #EAB6A3 charcoal #19181F #2A282D #3D3940 #555058 crimson #641F36 #92223F #B83450 #DC526B. Right facing. 1 logical pixel charcoal outline. No captions or ground, no effects. Each character horizontally centered. Feet at bottom cell row. Logical top/left/right row clear.  Generate Hero_Dash, exactly 4 frames. 2 columns x 2 rows. Four forward-leaning sprint dash poses. No speed trails. Head and box MUST stay same size as Idle, do not use smaller old v2 proportions. Overall height about 92px from bent legs. Output 1024x1024. Each figure 368 OUTPUT pixels tall, face+bangs 176x160 OUTPUT pixels. Large clear gutters, exact square logical pixels.",
+    "source": "Sources/Hero_Dash_sizefix_attempt1.png",
+    "recovery": {
+      "error": "native sampled silhouette exceeds cell; resizing forbidden",
+      "size": [
+        1254,
+        1254
+      ],
+      "detected_boxes": [
+        [
+          16,
+          24,
+          148,
+          150
+        ],
+        [
+          165,
+          24,
+          298,
+          151
+        ],
+        [
+          15,
+          168,
+          148,
+          294
+        ],
+        [
+          162,
+          170,
+          300,
+          296
+        ]
+      ]
+    }
+  },
+  {
+    "name": "Hit",
+    "attempt": 1,
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a19610-c577-7ef0-b7d6-99859d06b910\\exec-e09259ba-ca43-416a-98ad-4314426dc8fe.png",
+    "prompt": "Re:Trap production pixel-art animation. Image 1 APPROVED IDLE SIZE AND DESIGN master, 128x128 at 4x. Image 2 is v2 POSE FLOW ONLY. Same size character within each logical 128 cell as Idle: full upright height 101 pixels; face plus front bangs bounding rectangle 44x40 pixels, tooth-box 22x20 pixels; shoes 23x18 and 18x18 pixels, all within 1 pixel of Idle. MATCH reference visually and proportionally, no enlargement or smaller chibi. Same face, cream ponytail, hair clip, cream/crimson jacket, black shorts and asymmetrical stockings, tooth-box and shoes. Detailed eye highlights, hair strands, folds, teeth, rivets, shoes like Idle. Strict uniform 4x4 square pixel grid, NO antialiasing. True transparent background. <=20 colors cream #F7EEE4 #E7D8CE #D0BEB8 skin #FFE7D2 #F8D4BF #EAB6A3 charcoal #19181F #2A282D #3D3940 #555058 crimson #641F36 #92223F #B83450 #DC526B. Right facing. 1 logical pixel charcoal outline. No captions or ground, no effects. Each character horizontally centered. Feet at bottom cell row. Logical top/left/right row clear.  Generate Hero_Hit, exactly 2 frames. 2 columns x 1 row. First recoils, second recovers, both 101px tall. Same head and box. Render two SMALL 404-pixel-high sprites in center of 1536x1024 transparent canvas. Vast empty transparent space around them. Do not fill canvas. Each sprite same on-screen size as 512px reference image 1.",
+    "source": "Sources/Hero_Hit_sizefix_attempt1.png",
+    "recovery": {
+      "size": [
+        1536,
+        1024
+      ],
+      "grid": [
+        {
+          "block_corner_agreement": 0.5563,
+          "translation": [
+            16,
+            35
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            95,
+            92
+          ],
+          "detected_source_box": [
+            95,
+            83,
+            190,
+            175
+          ],
+          "sample_pitch": 4
+        },
+        {
+          "block_corner_agreement": 0.551,
+          "translation": [
+            29,
+            35
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            69,
+            92
+          ],
+          "detected_source_box": [
+            202,
+            83,
+            271,
+            175
+          ],
+          "sample_pitch": 4
+        }
+      ]
+    },
+    "metrics": {
+      "frames": [
+        {
+          "frame": 0,
+          "bbox": [
+            16,
+            35,
+            111,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 93,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.0,
+          "height_deviation": 0.0
+        },
+        {
+          "frame": 1,
+          "bbox": [
+            29,
+            35,
+            98,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 93,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.0,
+          "height_deviation": 0.0
+        }
+      ],
+      "color_count": 20,
+      "palette_outside": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "numeric_pass": true
+    },
+    "selection_score": 8.0
+  },
+  {
+    "name": "Death",
+    "attempt": 1,
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a19610-c577-7ef0-b7d6-99859d06b910\\exec-db2429c3-26eb-43d1-9ac0-29f52e9b396a.png",
+    "prompt": "Re:Trap production pixel-art animation. Image 1 APPROVED IDLE SIZE AND DESIGN master, 128x128 at 4x. Image 2 is v2 POSE FLOW ONLY. Same size character within each logical 128 cell as Idle: full upright height 101 pixels; face plus front bangs bounding rectangle 44x40 pixels, tooth-box 22x20 pixels; shoes 23x18 and 18x18 pixels, all within 1 pixel of Idle. MATCH reference visually and proportionally, no enlargement or smaller chibi. Same face, cream ponytail, hair clip, cream/crimson jacket, black shorts and asymmetrical stockings, tooth-box and shoes. Detailed eye highlights, hair strands, folds, teeth, rivets, shoes like Idle. Strict uniform 4x4 square pixel grid, NO antialiasing. True transparent background. <=20 colors cream #F7EEE4 #E7D8CE #D0BEB8 skin #FFE7D2 #F8D4BF #EAB6A3 charcoal #19181F #2A282D #3D3940 #555058 crimson #641F36 #92223F #B83450 #DC526B. Right facing. 1 logical pixel charcoal outline. No captions or ground, no effects. Each character horizontally centered. Feet at bottom cell row. Logical top/left/right row clear.  Generate Hero_Death, exactly 6 frames. 3 columns x 2 rows. Gradually collapse: upright, knees buckle, kneeling, fall sideways, lying, resting. Head and box do not shrink; retain size even when lying. Output 1536x1024. Upright figure 404 output pixels tall; all heads same pixel size throughout. Preserve teeth and rivets. No glow.",
+    "source": "Sources/Hero_Death_sizefix_attempt1.png",
+    "recovery": {
+      "error": "detected frame count mismatch",
+      "size": [
+        1536,
+        1024
+      ],
+      "detected_boxes": [
+        [
+          19,
+          8,
+          120,
+          153
+        ],
+        [
+          148,
+          27,
+          251,
+          154
+        ],
+        [
+          260,
+          59,
+          370,
+          154
+        ],
+        [
+          8,
+          173,
+          256,
+          245
+        ],
+        [
+          261,
+          197,
+          377,
+          243
+        ]
+      ]
+    }
+  },
+  {
+    "name": "Run",
+    "attempt": 2,
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a19610-c577-7ef0-b7d6-99859d06b910\\exec-30aad28c-c9b1-4690-aed2-d819fcbd8ff5.png",
+    "prompt": "Use case precise-object-edit. Two references: APPROVED IDLE image1 is absolute SIZE AND DESIGN master, v2 image2 is POSES ONLY. Draw same character in new poses, strictly same pixel proportions and exact same details as image1. CRITICAL: tiny game sprite, NOT large illustration. 4x enlarged pixel art: every logical pixel is exactly 4x4 output square. Figure upright is exactly 404 output px high (=101 game pixels). Head face+bangs 176x160 output px (=44x40 logical). Box 92x76 (=23x19). Shoes 92x72 and72x72. No zoom, do not enlarge to occupy canvas. Leave generous empty space: sprites occupy ONLY 45 percent of cell height; transparent padding covers rest. Match approved character face hair jacket box shoes and level of details. Right facing. 20-color cream skin crimson charcoal palette. 4px charcoal outline. NO smooth curves, NO antialias, NO glow, NO shadow, NO backdrop, no checkerboard, actual transparent empty alpha.  Hero_Run, exactly 8 frames. 4 columns x 2 rows, full running cycle Keep all frames well separated with large transparent gutters, equal component size.",
+    "source": "Sources/Hero_Run_sizefix_attempt2.png",
+    "recovery": {
+      "size": [
+        1774,
+        887
+      ],
+      "grid": [
+        {
+          "block_corner_agreement": 0.5423,
+          "translation": [
+            32,
+            50
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            62,
+            77
+          ],
+          "detected_source_box": [
+            32,
+            30,
+            94,
+            107
+          ],
+          "sample_pitch": 4
+        },
+        {
+          "block_corner_agreement": 0.5555,
+          "translation": [
+            32,
+            50
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            63,
+            77
+          ],
+          "detected_source_box": [
+            139,
+            30,
+            202,
+            107
+          ],
+          "sample_pitch": 4
+        },
+        {
+          "block_corner_agreement": 0.5616,
+          "translation": [
+            33,
+            52
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            61,
+            75
+          ],
+          "detected_source_box": [
+            245,
+            30,
+            306,
+            105
+          ],
+          "sample_pitch": 4
+        },
+        {
+          "block_corner_agreement": 0.5381,
+          "translation": [
+            32,
+            51
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            62,
+            76
+          ],
+          "detected_source_box": [
+            350,
+            31,
+            412,
+            107
+          ],
+          "sample_pitch": 4
+        },
+        {
+          "block_corner_agreement": 0.5576,
+          "translation": [
+            30,
+            51
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            66,
+            76
+          ],
+          "detected_source_box": [
+            34,
+            130,
+            100,
+            206
+          ],
+          "sample_pitch": 4
+        },
+        {
+          "block_corner_agreement": 0.5489,
+          "translation": [
+            32,
+            50
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            62,
+            77
+          ],
+          "detected_source_box": [
+            140,
+            130,
+            202,
+            207
+          ],
+          "sample_pitch": 4
+        },
+        {
+          "block_corner_agreement": 0.558,
+          "translation": [
+            32,
+            49
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            62,
+            78
+          ],
+          "detected_source_box": [
+            247,
+            129,
+            309,
+            207
+          ],
+          "sample_pitch": 4
+        },
+        {
+          "block_corner_agreement": 0.5556,
+          "translation": [
+            30,
+            50
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            66,
+            77
+          ],
+          "detected_source_box": [
+            349,
+            130,
+            415,
+            207
+          ],
+          "sample_pitch": 4
+        }
+      ]
+    },
+    "metrics": {
+      "frames": [
+        {
+          "frame": 0,
+          "bbox": [
+            32,
+            50,
+            94,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.0,
+          "height": 78,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": -0.125,
+          "height_deviation": 0.375
+        },
+        {
+          "frame": 1,
+          "bbox": [
+            32,
+            50,
+            95,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 78,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.375,
+          "height_deviation": 0.375
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            33,
+            52,
+            94,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 76,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.375,
+          "height_deviation": -1.625
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            32,
+            51,
+            94,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.0,
+          "height": 77,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": -0.125,
+          "height_deviation": -0.625
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            30,
+            51,
+            96,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.0,
+          "height": 77,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": -0.125,
+          "height_deviation": -0.625
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            32,
+            50,
+            94,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.0,
+          "height": 78,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": -0.125,
+          "height_deviation": 0.375
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            32,
+            49,
+            94,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.0,
+          "height": 79,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": -0.125,
+          "height_deviation": 1.375
+        },
+        {
+          "frame": 7,
+          "bbox": [
+            30,
+            50,
+            96,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.0,
+          "height": 78,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": -0.125,
+          "height_deviation": 0.375
+        }
+      ],
+      "color_count": 20,
+      "palette_outside": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "numeric_pass": true
+    },
+    "selection_score": 23.375
+  },
+  {
+    "name": "JumpStart",
+    "attempt": 2,
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a19610-c577-7ef0-b7d6-99859d06b910\\exec-092eb887-ef6f-4ba1-83e0-8a7d375b3896.png",
+    "prompt": "Use case precise-object-edit. Two references: APPROVED IDLE image1 is absolute SIZE AND DESIGN master, v2 image2 is POSES ONLY. Draw same character in new poses, strictly same pixel proportions and exact same details as image1. CRITICAL: tiny game sprite, NOT large illustration. 4x enlarged pixel art: every logical pixel is exactly 4x4 output square. Figure upright is exactly 404 output px high (=101 game pixels). Head face+bangs 176x160 output px (=44x40 logical). Box 92x76 (=23x19). Shoes 92x72 and72x72. No zoom, do not enlarge to occupy canvas. Leave generous empty space: sprites occupy ONLY 45 percent of cell height; transparent padding covers rest. Match approved character face hair jacket box shoes and level of details. Right facing. 20-color cream skin crimson charcoal palette. 4px charcoal outline. NO smooth curves, NO antialias, NO glow, NO shadow, NO backdrop, no checkerboard, actual transparent empty alpha.  Hero_JumpStart, exactly 2 frames. 2 columns x 1 row. First crouches compressing legs, second takes off stretching legs. Head and box dimensions unchanged. Keep all frames well separated with large transparent gutters, equal component size.",
+    "source": "Sources/Hero_JumpStart_sizefix_attempt2.png",
+    "recovery": {
+      "error": "native sampled silhouette exceeds cell; resizing forbidden",
+      "size": [
+        1774,
+        887
+      ],
+      "detected_boxes": [
+        [
+          59,
+          69,
+          190,
+          215
+        ],
+        [
+          266,
+          42,
+          393,
+          215
+        ]
+      ]
+    }
+  },
+  {
+    "name": "Fall",
+    "attempt": 2,
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a19610-c577-7ef0-b7d6-99859d06b910\\exec-5c230b7b-71d5-4e13-939f-bdd4793ee242.png",
+    "prompt": "Use case precise-object-edit. Two references: APPROVED IDLE image1 is absolute SIZE AND DESIGN master, v2 image2 is POSES ONLY. Draw same character in new poses, strictly same pixel proportions and exact same details as image1. CRITICAL: tiny game sprite, NOT large illustration. 4x enlarged pixel art: every logical pixel is exactly 4x4 output square. Figure upright is exactly 404 output px high (=101 game pixels). Head face+bangs 176x160 output px (=44x40 logical). Box 92x76 (=23x19). Shoes 92x72 and72x72. No zoom, do not enlarge to occupy canvas. Leave generous empty space: sprites occupy ONLY 45 percent of cell height; transparent padding covers rest. Match approved character face hair jacket box shoes and level of details. Right facing. 20-color cream skin crimson charcoal palette. 4px charcoal outline. NO smooth curves, NO antialias, NO glow, NO shadow, NO backdrop, no checkerboard, actual transparent empty alpha.  Hero_Fall, exactly 2 frames. 2 columns x 1 row. Two distinct airborne falling poses; upright torso and bent legs, same head and box dimensions. Keep all frames well separated with large transparent gutters, equal component size.",
+    "source": "Sources/Hero_Fall_sizefix_attempt2.png",
+    "recovery": {
+      "error": "native sampled silhouette exceeds cell; resizing forbidden",
+      "size": [
+        1774,
+        887
+      ],
+      "detected_boxes": [
+        [
+          20,
+          37,
+          200,
+          213
+        ],
+        [
+          248,
+          40,
+          423,
+          204
+        ]
+      ]
+    }
+  },
+  {
+    "name": "Land",
+    "attempt": 2,
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a19610-c577-7ef0-b7d6-99859d06b910\\exec-d2b0db60-dcdf-4aec-b362-6da6a6708508.png",
+    "prompt": "Use case precise-object-edit. Two references: APPROVED IDLE image1 is absolute SIZE AND DESIGN master, v2 image2 is POSES ONLY. Draw same character in new poses, strictly same pixel proportions and exact same details as image1. CRITICAL: tiny game sprite, NOT large illustration. 4x enlarged pixel art: every logical pixel is exactly 4x4 output square. Figure upright is exactly 404 output px high (=101 game pixels). Head face+bangs 176x160 output px (=44x40 logical). Box 92x76 (=23x19). Shoes 92x72 and72x72. No zoom, do not enlarge to occupy canvas. Leave generous empty space: sprites occupy ONLY 45 percent of cell height; transparent padding covers rest. Match approved character face hair jacket box shoes and level of details. Right facing. 20-color cream skin crimson charcoal palette. 4px charcoal outline. NO smooth curves, NO antialias, NO glow, NO shadow, NO backdrop, no checkerboard, actual transparent empty alpha.  Hero_Land, exactly 3 frames. 3 columns x 1 row. First crouches on landing, second partly recovers, third upright at 101px. Head and box dimensions unchanged. Keep all frames well separated with large transparent gutters, equal component size.",
+    "source": "Sources/Hero_Land_sizefix_attempt2.png",
+    "recovery": {
+      "error": "native sampled silhouette exceeds cell; resizing forbidden",
+      "size": [
+        2172,
+        724
+      ],
+      "detected_boxes": [
+        [
+          36,
+          53,
+          136,
+          170
+        ],
+        [
+          225,
+          36,
+          320,
+          170
+        ],
+        [
+          397,
+          17,
+          497,
+          169
+        ]
+      ]
+    }
+  },
+  {
+    "name": "Dash",
+    "attempt": 2,
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a19610-c577-7ef0-b7d6-99859d06b910\\exec-cbd7bb95-b25d-4a35-a47e-aab93ef64284.png",
+    "prompt": "Use case precise-object-edit. Two references: APPROVED IDLE image1 is absolute SIZE AND DESIGN master, v2 image2 is POSES ONLY. Draw same character in new poses, strictly same pixel proportions and exact same details as image1. CRITICAL: tiny game sprite, NOT large illustration. 4x enlarged pixel art: every logical pixel is exactly 4x4 output square. Figure upright is exactly 404 output px high (=101 game pixels). Head face+bangs 176x160 output px (=44x40 logical). Box 92x76 (=23x19). Shoes 92x72 and72x72. No zoom, do not enlarge to occupy canvas. Leave generous empty space: sprites occupy ONLY 45 percent of cell height; transparent padding covers rest. Match approved character face hair jacket box shoes and level of details. Right facing. 20-color cream skin crimson charcoal palette. 4px charcoal outline. NO smooth curves, NO antialias, NO glow, NO shadow, NO backdrop, no checkerboard, actual transparent empty alpha.  Hero_Dash, exactly 4 frames. 2 columns x 2 rows. Four forward-leaning sprint dash poses. No speed trails. Head and box MUST stay same size as Idle, do not use smaller old v2 proportions. Overall height about 92px from bent legs. Keep all frames well separated with large transparent gutters, equal component size.",
+    "source": "Sources/Hero_Dash_sizefix_attempt2.png",
+    "recovery": {
+      "size": [
+        1233,
+        1276
+      ],
+      "grid": [
+        {
+          "block_corner_agreement": 0.6455,
+          "translation": [
+            4,
+            15
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            120,
+            112
+          ],
+          "detected_source_box": [
+            24,
+            48,
+            144,
+            160
+          ],
+          "sample_pitch": 4
+        },
+        {
+          "block_corner_agreement": 0.6513,
+          "translation": [
+            4,
+            10
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            119,
+            117
+          ],
+          "detected_source_box": [
+            164,
+            48,
+            283,
+            165
+          ],
+          "sample_pitch": 4
+        },
+        {
+          "block_corner_agreement": 0.6537,
+          "translation": [
+            2,
+            24
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            124,
+            103
+          ],
+          "detected_source_box": [
+            23,
+            186,
+            147,
+            289
+          ],
+          "sample_pitch": 4
+        },
+        {
+          "block_corner_agreement": 0.6469,
+          "translation": [
+            4,
+            11
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            119,
+            116
+          ],
+          "detected_source_box": [
+            163,
+            186,
+            282,
+            302
+          ],
+          "sample_pitch": 4
+        }
+      ]
+    },
+    "metrics": {
+      "frames": [
+        {
+          "frame": 0,
+          "bbox": [
+            4,
+            15,
+            124,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 64.0,
+          "height": 113,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.25,
+          "height_deviation": 0.0
+        },
+        {
+          "frame": 1,
+          "bbox": [
+            4,
+            10,
+            123,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 118,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": -0.25,
+          "height_deviation": 5.0
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            2,
+            24,
+            126,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 64.0,
+          "height": 104,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.25,
+          "height_deviation": -9.0
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            4,
+            11,
+            123,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 117,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": -0.25,
+          "height_deviation": 4.0
+        }
+      ],
+      "color_count": 20,
+      "palette_outside": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "numeric_pass": false
+    },
+    "selection_score": 21.0
+  },
+  {
+    "name": "Hit",
+    "attempt": 2,
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a19610-c577-7ef0-b7d6-99859d06b910\\exec-21c81c2b-8228-4e44-bd93-68b1e1565213.png",
+    "prompt": "Use case precise-object-edit. Two references: APPROVED IDLE image1 is absolute SIZE AND DESIGN master, v2 image2 is POSES ONLY. Draw same character in new poses, strictly same pixel proportions and exact same details as image1. CRITICAL: tiny game sprite, NOT large illustration. 4x enlarged pixel art: every logical pixel is exactly 4x4 output square. Figure upright is exactly 404 output px high (=101 game pixels). Head face+bangs 176x160 output px (=44x40 logical). Box 92x76 (=23x19). Shoes 92x72 and72x72. No zoom, do not enlarge to occupy canvas. Leave generous empty space: sprites occupy ONLY 45 percent of cell height; transparent padding covers rest. Match approved character face hair jacket box shoes and level of details. Right facing. 20-color cream skin crimson charcoal palette. 4px charcoal outline. NO smooth curves, NO antialias, NO glow, NO shadow, NO backdrop, no checkerboard, actual transparent empty alpha.  Hero_Hit, exactly 2 frames. 2 columns x 1 row. First recoils, second recovers, both 101px tall. Same head and box. Keep all frames well separated with large transparent gutters, equal component size.",
+    "source": "Sources/Hero_Hit_sizefix_attempt2.png",
+    "recovery": {
+      "error": "native sampled silhouette exceeds cell; resizing forbidden",
+      "size": [
+        1774,
+        887
+      ],
+      "detected_boxes": [
+        [
+          22,
+          34,
+          205,
+          217
+        ],
+        [
+          261,
+          32,
+          410,
+          217
+        ]
+      ]
+    }
+  },
+  {
+    "name": "Death",
+    "attempt": 2,
+    "path": "C:\\Users\\Owner\\.codex\\generated_images\\01a19610-c577-7ef0-b7d6-99859d06b910\\exec-83222cb1-3447-41b8-a500-4f85fdf7e232.png",
+    "prompt": "Use case precise-object-edit. Two references: APPROVED IDLE image1 is absolute SIZE AND DESIGN master, v2 image2 is POSES ONLY. Draw same character in new poses, strictly same pixel proportions and exact same details as image1. CRITICAL: tiny game sprite, NOT large illustration. 4x enlarged pixel art: every logical pixel is exactly 4x4 output square. Figure upright is exactly 404 output px high (=101 game pixels). Head face+bangs 176x160 output px (=44x40 logical). Box 92x76 (=23x19). Shoes 92x72 and72x72. No zoom, do not enlarge to occupy canvas. Leave generous empty space: sprites occupy ONLY 45 percent of cell height; transparent padding covers rest. Match approved character face hair jacket box shoes and level of details. Right facing. 20-color cream skin crimson charcoal palette. 4px charcoal outline. NO smooth curves, NO antialias, NO glow, NO shadow, NO backdrop, no checkerboard, actual transparent empty alpha.  Hero_Death, exactly 6 frames. 3 columns x 2 rows. Gradually collapse: upright, knees buckle, kneeling, fall sideways, lying, resting. Head and box do not shrink; retain size even when lying. Keep all frames well separated with large transparent gutters, equal component size.",
+    "source": "Sources/Hero_Death_sizefix_attempt2.png",
+    "recovery": {
+      "size": [
+        1536,
+        1024
+      ],
+      "grid": [
+        {
+          "block_corner_agreement": 0.604,
+          "translation": [
+            26,
+            18
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            76,
+            109
+          ],
+          "detected_source_box": [
+            30,
+            50,
+            106,
+            159
+          ],
+          "sample_pitch": 4
+        },
+        {
+          "block_corner_agreement": 0.6253,
+          "translation": [
+            24,
+            35
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            78,
+            92
+          ],
+          "detected_source_box": [
+            159,
+            67,
+            237,
+            159
+          ],
+          "sample_pitch": 4
+        },
+        {
+          "block_corner_agreement": 0.6269,
+          "translation": [
+            21,
+            52
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            85,
+            75
+          ],
+          "detected_source_box": [
+            278,
+            84,
+            363,
+            159
+          ],
+          "sample_pitch": 4
+        },
+        {
+          "block_corner_agreement": 0.5855,
+          "translation": [
+            10,
+            70
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            106,
+            57
+          ],
+          "detected_source_box": [
+            14,
+            189,
+            120,
+            246
+          ],
+          "sample_pitch": 4
+        },
+        {
+          "block_corner_agreement": 0.5932,
+          "translation": [
+            10,
+            79
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            108,
+            48
+          ],
+          "detected_source_box": [
+            138,
+            197,
+            246,
+            245
+          ],
+          "sample_pitch": 4
+        },
+        {
+          "block_corner_agreement": 0.5823,
+          "translation": [
+            8,
+            84
+          ],
+          "clipped_pixels": 0,
+          "raw_bbox": [
+            0,
+            0,
+            110,
+            43
+          ],
+          "detected_source_box": [
+            262,
+            203,
+            372,
+            246
+          ],
+          "sample_pitch": 4
+        }
+      ]
+    },
+    "metrics": {
+      "frames": [
+        {
+          "frame": 0,
+          "bbox": [
+            26,
+            18,
+            102,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 64.0,
+          "height": 110,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.583,
+          "height_deviation": 38.333
+        },
+        {
+          "frame": 1,
+          "bbox": [
+            24,
+            35,
+            102,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.0,
+          "height": 93,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": -0.417,
+          "height_deviation": 21.333
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            21,
+            52,
+            106,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 76,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.083,
+          "height_deviation": 4.333
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            10,
+            70,
+            116,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.0,
+          "height": 58,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": -0.417,
+          "height_deviation": -13.667
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            10,
+            79,
+            118,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 64.0,
+          "height": 49,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.583,
+          "height_deviation": -22.667
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            8,
+            84,
+            118,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.0,
+          "height": 44,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": -0.417,
+          "height_deviation": -27.667
+        }
+      ],
+      "color_count": 20,
+      "palette_outside": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "numeric_pass": true
+    },
+    "selection_score": 0.0
+  }
+]

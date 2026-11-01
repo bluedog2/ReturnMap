@@ -24,7 +24,7 @@ namespace ReTrap.EditorTools
     ///   <item>맵 테두리 뚫림 (플레이어 이탈 가능)</item>
     ///   <item>슬롯이 솔리드 타일과 같은 칸에 겹침 (지형 중복)</item>
     ///   <item>스폰 → 골 연결성 없음 (빈 칸 기준 — 근사 검사)</item>
-    ///   <item>통행 높이 2칸 미만인 바닥 칸 (주인공 콜라이더 1.875칸)</item>
+    ///   <item>통행 높이 3칸 미만인 바닥 칸 (주인공 콜라이더 2.25칸)</item>
     ///   <item>허용 함정 이름 미존재·중복 및 슬롯 앵커별 호환 함정 부재</item>
     ///   <item>맵 크기 규격 밖 (<see cref="ViewportSpecError"/> — CI 에서는 에러)</item>
     /// </list>
@@ -33,8 +33,8 @@ namespace ReTrap.EditorTools
     {
         // ── 맵 크기 규격 (docs/px32-conversion-plan.md 4절, U3=a) ─────────────
 
-        /// <summary>허용 높이 (h ∈ {14, 18}). 프리셋 S 25×14 · L 32×18.</summary>
-        public static readonly int[] SpecHeights = { 14, 18 };
+        /// <summary>허용 높이 (h ∈ {22, 27}). 프리셋 S 40×22 · L 48×27 (3칸 기준).</summary>
+        public static readonly int[] SpecHeights = { 22, 27 };
 
         /// <summary>
         /// 빌드·검증 뷰가 맵 전체를 16:9 화면에 맞추려면 <c>ceil(h×16/9) ≤ w ≤ ceil(h×16/9)+1</c>.
@@ -43,7 +43,7 @@ namespace ReTrap.EditorTools
         public static string ViewportSpecError(int w, int h)
         {
             if (System.Array.IndexOf(SpecHeights, h) < 0)
-                return $"맵 높이 {h} 는 규격 밖 (허용 14·18 — 프리셋 25×14 / 32×18)";
+                return $"맵 높이 {h} 는 규격 밖 (허용 22·27 — 프리셋 40×22 / 48×27, docs/scale-3tile.md)";
             int min = Mathf.CeilToInt(h * 16f / 9f);
             if (w < min || w > min + 1)
                 return $"맵 {w}×{h} 너비는 높이 {h} 기준 {min}~{min + 1} 이어야 함 (16:9 화면에 맵 전체가 보이도록)";
@@ -59,8 +59,9 @@ namespace ReTrap.EditorTools
             // 슬롯 좌표 인덱스 사전 구축 (BFS 등에서 O(1) 조회)
             var slotCells = new HashSet<int>();
             foreach (var s in map.trapSlots)
-                if (map.InBounds(s.x, s.y))
-                    slotCells.Add(map.Index(s.x, s.y));
+                foreach (var c in map.SlotCells(s))
+                    if (map.InBounds(c.x, c.y))
+                        slotCells.Add(map.Index(c.x, c.y));
 
             string spec = ViewportSpecError(map.width, map.height);
             if (spec != null) warnings.Add(spec);
@@ -136,14 +137,18 @@ namespace ReTrap.EditorTools
 
         /// <summary>
         /// 슬롯 칸은 그 자체가 지형이므로 부착면 검사는 하지 않습니다.
-        /// 솔리드 타일과 같은 칸에 겹친 경우만 제작 실수로 경고합니다.
+        /// 솔리드 타일과 같은 칸에 겹친 경우만 제작 실수로 경고합니다 (슬롯 영역 s×s 의 어느 칸이든).
         /// </summary>
         private static void CheckSlotBuried(MapData map, List<string> w)
         {
             foreach (var slot in map.trapSlots)
             {
-                if (IsSolidTile(map, slot.x, slot.y))
+                foreach (var c in map.SlotCells(slot))
+                {
+                    if (!IsSolidTile(map, c.x, c.y)) continue;
                     w.Add($"슬롯 ({slot.x},{slot.y}) 이 솔리드 타일과 같은 칸에 있습니다 — 지형 중복");
+                    break;
+                }
             }
         }
 
@@ -191,8 +196,8 @@ namespace ReTrap.EditorTools
 
         // ── 6. 통행 높이 ─────────────────────────────────────────────────────
 
-        /// <summary>주인공 콜라이더 키 1.875칸(화풍 v2) → 서서 지나가려면 빈 칸 2칸 이상.</summary>
-        private const int MinHeadroom = 2;
+        /// <summary>주인공 키 3칸(콜라이더 2.25칸, 3칸 기준) → 서서 지나가려면 빈 칸 3칸 이상.</summary>
+        private const int MinHeadroom = 3;
 
         /// <summary>
         /// 설 수 있는 칸(빈 칸 + 바로 아래 지형) 위로 빈 칸이 <see cref="MinHeadroom"/> 미만이면
@@ -211,7 +216,7 @@ namespace ReTrap.EditorTools
             }
 
             if (low.Count > 0)
-                w.Add($"통행 높이 {MinHeadroom}칸 미만인 바닥 칸 {low.Count}개 — 주인공(키 1.875칸)이 서서 지나갈 수 없습니다: " +
+                w.Add($"통행 높이 {MinHeadroom}칸 미만인 바닥 칸 {low.Count}개 — 주인공(키 3칸·콜라이더 2.25칸)이 서서 지나갈 수 없습니다: " +
                       string.Join(" ", low.GetRange(0, System.Math.Min(8, low.Count))) + (low.Count > 8 ? " …" : ""));
         }
 

@@ -14,9 +14,9 @@ namespace ReTrap
     ///   <item>ITrap 계약 구현 (상태·코스트·변이·NodeCost)</item>
     ///   <item>카르마 변이 4단계 시각 힌트 관리 (파티클·Light2D·스프라이트 틴트)</item>
     ///   <item>플레이어 충돌 감지 → Dud 상태 자동 차단</item>
-    ///   <item>솔리드 셀 — 함정은 타일처럼 1칸을 차지하며 캐릭터가 밟고 설 수 있음
-    ///         (<see cref="ActsAsSolidTile"/> 로 함정별 opt-out 가능)</item>
-    ///   <item>Beneficial 변이 — anchor 바깥 방향으로 황금 솔리드 블록 +1칸 생성
+    ///   <item>솔리드 셀 — 함정은 타일처럼 슬롯 영역(s×s 칸, <see cref="SlotSize"/>)을 차지하며
+    ///         캐릭터가 밟고 설 수 있음 (<see cref="ActsAsSolidTile"/> 로 함정별 opt-out 가능)</item>
+    ///   <item>Beneficial 변이 — anchor 바깥 방향으로 황금 솔리드 블록 +s칸(s×s) 생성
     ///         (<see cref="SpawnsBeneficialBlock"/> 로 함정별 opt-out 가능)</item>
     /// </list>
     ///
@@ -130,10 +130,14 @@ namespace ReTrap
         public virtual bool ActsAsSolidTile => true;
 
         /// <summary>
-        /// 함정 셀 타일 배경 렌더러 (없으면 null). 본체가 움직이는 함정(DropHammer)이
-        /// 배경을 슬롯 칸에 고정하기 위해 읽는다.
+        /// 함정 셀 타일 배경 컨테이너 "TileBackgroundRoot" (배경 템플릿이 없으면 null).
+        /// 슬롯 칸마다 복제한 배경 렌더러 s² 개가 자식으로 들어 있다. 본체가 움직이는 함정(DropHammer)이
+        /// 배경을 슬롯 칸에 고정하기 위해 컨테이너째 읽는다.
         /// </summary>
-        protected SpriteRenderer TileBackgroundRenderer => tileBackground;
+        protected Transform TileBackgroundRoot => _bgRoot;
+
+        private Transform                  _bgRoot;
+        private readonly List<SpriteRenderer> _bgCells = new List<SpriteRenderer>();
 
         /// <summary>
         /// Beneficial 변이 시 anchor 바깥 방향으로 황금 솔리드 블록(+1칸)을 만드는지.
@@ -143,6 +147,15 @@ namespace ReTrap
 
         /// <summary>설치된 슬롯의 anchor. ConfigureForAnchor 미호출 시 Floor.</summary>
         public TrapAnchor InstalledAnchor { get; private set; } = TrapAnchor.Floor;
+
+        /// <summary>설치된 슬롯 한 변의 셀 수 (s). ConfigureForAnchor 미호출 시 1.</summary>
+        public int SlotSize { get; private set; } = 1;
+
+        /// <summary>
+        /// 설치된 슬롯 영역의 좌하단 그리드 셀. ConfigureForAnchor 로 확정된다
+        /// (미호출 시에는 타일 배경 변형 선택용으로 위치에서 역산한 값).
+        /// </summary>
+        public GridCoord SlotOrigin { get; private set; }
 
         // ── 정적 레지스트리 — FindObjectsByType 씬 스캔 대체 ─────────────────
 
@@ -204,27 +217,39 @@ namespace ReTrap
         }
 
         /// <summary>
-        /// 설치 슬롯의 anchor 에 맞게 함정을 구성합니다.
-        /// anchor 저장(황금 블록 방향 결정) 후 서브클래스 훅을 호출합니다.
+        /// 설치 슬롯의 anchor·크기에 맞게 함정을 구성합니다.
+        /// anchor/크기 저장(솔리드 몸체·황금 블록·타일 배경 결정) 후 서브클래스 훅을 호출합니다.
         /// Build UI 가 Instantiate 직후(Start 이전)에 호출합니다.
         /// </summary>
-        public void ConfigureForAnchor(TrapAnchor anchor)
+        /// <param name="anchor">슬롯 부착 방향.</param>
+        /// <param name="slotSize">슬롯 한 변의 셀 수 (s). 함정은 슬롯 영역 <b>중심</b>에 놓인다.</param>
+        /// <param name="slotOrigin">슬롯 영역 좌하단 그리드 셀 (타일 배경 변형 선택에 사용).</param>
+        public void ConfigureForAnchor(TrapAnchor anchor, int slotSize = 1, GridCoord slotOrigin = default)
         {
             InstalledAnchor = anchor;
-            _tileCellCached = false; // 재배치 — 셀 좌표 재계산
-            OnConfigureAnchor(anchor);
+            SlotSize        = Mathf.Max(1, slotSize);
+            SlotOrigin      = slotOrigin;
+            _slotOriginSet  = true;
+
+            // 함정 칸 지형 콜라이더를 슬롯 영역(s×s)으로
+            if (_solidBody != null)
+                _solidBody.size = new Vector2(SlotSize, SlotSize);
+
+            OnConfigureAnchor(anchor, SlotSize);
             RefreshTileBackground();
         }
 
-        // 타일 변형 선택용 셀 좌표 캐시 (이동형 함정의 루트 이동에 영향받지 않도록)
+        // 타일 변형 선택용 셀 좌표 — ConfigureForAnchor 미호출(수동/프리뷰 배치) 시에만 위치에서 1회 역산해 캐시
+        // (이동형 함정의 루트 이동에 영향받지 않도록)
+        private bool _slotOriginSet;
         private bool _tileCellCached;
-        private int  _tileCellX, _tileCellY;
 
         /// <summary>
         /// 서브클래스 방향 설정 훅
         /// (예: 천장 스파이크 → isFlipped, 화살 슈터 → 발사 방향 _fireDir).
+        /// 호출 시점에 <see cref="SlotSize"/> 는 이미 갱신돼 있다.
         /// </summary>
-        protected virtual void OnConfigureAnchor(TrapAnchor anchor) { }
+        protected virtual void OnConfigureAnchor(TrapAnchor anchor, int slotSize) { }
 
         // ── Unity ─────────────────────────────────────────────────────────────
 
@@ -439,6 +464,9 @@ namespace ReTrap
         /// </summary>
         protected Collider2D DamageArea => damageArea;
 
+        /// <summary>Beneficial 발판 콜라이더 (읽기 전용 접근, 없으면 null). 슬롯 크기 s 에 맞춰 크기를 조정할 때 사용.</summary>
+        protected Collider2D PlatformArea => platformArea;
+
         // ── 내부 — 콜라이더 토글 ─────────────────────────────────────────────
 
         private void RefreshColliders(TrapState state)
@@ -461,7 +489,7 @@ namespace ReTrap
         }
 
         /// <summary>
-        /// 함정 칸 자체의 지형 콜라이더(1칸 솔리드 박스)를 생성합니다.
+        /// 함정 칸 자체의 지형 콜라이더(솔리드 박스)를 생성합니다 — 크기는 Configure 시 s×s 로 갱신.
         /// 플레이어 ground check 가 인식하도록 Ground 레이어 사용.
         /// </summary>
         private void EnsureSolidBody()
@@ -480,12 +508,14 @@ namespace ReTrap
         /// anchor 의 부착면 반대(바깥) 방향 단위 벡터.
         /// NavGrid 가 함정별 위험 셀(설치 칸 바깥 1칸)을 계산할 때도 재사용하므로
         /// internal 로 노출한다(같은 어셈블리인 NavGrid 에서 참조).
+        /// <para>벽 규약은 <see cref="TileType"/> 와 <c>ArrowShooter.OutwardDir</c> 와 동일:
+        /// LeftWall(오른쪽 가장자리 벽에 붙음)=왼쪽(-x), RightWall(왼쪽 가장자리 벽에 붙음)=오른쪽(+x).</para>
         /// </summary>
         internal static Vector2Int OutwardOf(TrapAnchor anchor) => anchor switch
         {
             TrapAnchor.Ceiling   => new Vector2Int( 0, -1),
-            TrapAnchor.LeftWall  => new Vector2Int( 1,  0),
-            TrapAnchor.RightWall => new Vector2Int(-1,  0),
+            TrapAnchor.LeftWall  => new Vector2Int(-1,  0),
+            TrapAnchor.RightWall => new Vector2Int( 1,  0),
             _                    => new Vector2Int( 0,  1), // Floor
         };
 
@@ -496,8 +526,9 @@ namespace ReTrap
             if (active)
             {
                 EnsureBeneficialBlock();
+                // 바깥으로 s칸 — 슬롯 영역(s×s) 바로 바깥에 같은 크기의 블록이 붙는다
                 Vector2Int o = OutwardOf(InstalledAnchor);
-                _beneficialBlock.transform.localPosition = new Vector3(o.x, o.y, 0f);
+                _beneficialBlock.transform.localPosition = new Vector3(o.x * SlotSize, o.y * SlotSize, 0f);
             }
 
             if (_beneficialBlock != null)
@@ -512,8 +543,9 @@ namespace ReTrap
             _beneficialBlock.transform.SetParent(transform, false);
             _beneficialBlock.layer = GroundLayerIndex();
 
+            float blockSize = SlotSize;                    // 황금 블록 한 변(유닛) = s
             var col  = _beneficialBlock.AddComponent<BoxCollider2D>();
-            col.size = Vector2.one;
+            col.size = Vector2.one * blockSize;
 
             var sr              = _beneficialBlock.AddComponent<SpriteRenderer>();
             sr.sortingLayerName = "Map";  // 타일과 같은 레이어라야 가려지지 않음
@@ -521,18 +553,25 @@ namespace ReTrap
 
             if (beneficialBlockSprite != null)
             {
-                // 전용 스프라이트 — 틴트 없이, 1×1 셀을 정확히 채우도록 스케일 보정
+                // 전용 스프라이트 — 틴트 없이, s×s 영역을 정확히 채우도록 스케일 보정
                 sr.sprite = beneficialBlockSprite;
                 sr.color  = Color.white;
 
                 Vector2 b = beneficialBlockSprite.bounds.size;
                 if (b.x > 0.0001f && b.y > 0.0001f)
-                    _beneficialBlock.transform.localScale = new Vector3(1f / b.x, 1f / b.y, 1f);
+                {
+                    _beneficialBlock.transform.localScale = new Vector3(blockSize / b.x, blockSize / b.y, 1f);
+                    // 스케일이 콜라이더 크기에도 곱해지므로 월드에서 정확히 s×s 가 되게 역보정
+                    // (s=1 + 스프라이트 1유닛이면 기존과 동일)
+                    col.size = new Vector2(b.x, b.y);
+                }
             }
             else
             {
                 sr.sprite = GetUnitSprite();
                 sr.color  = LIGHT_BENEFICIAL;
+                _beneficialBlock.transform.localScale = new Vector3(blockSize, blockSize, 1f);
+                col.size = Vector2.one;
             }
 
             _beneficialBlock.SetActive(false);
@@ -564,72 +603,121 @@ namespace ReTrap
         protected static bool IsBuildLookNow
             => GamePhaseManager.Instance != null && IsBuildLook(GamePhaseManager.Instance.currentPhase);
 
+        /// <summary>
+        /// 배경 컨테이너(TileBackgroundRoot)와 슬롯 칸 수(s²)만큼의 배경 렌더러를 보장합니다.
+        /// 인스펙터의 <c>tileBackground</c> 는 <b>템플릿</b>으로만 쓰고(비활성), 칸마다 복제해 컨테이너에 넣는다.
+        /// 칸 중심 오프셋은 슬롯 중심(함정 루트) 기준 <c>(i - (s-1)/2) * backgroundCellSize</c>.
+        /// </summary>
+        private void EnsureBackgroundCells()
+        {
+            int s = SlotSize;
+
+            if (_bgRoot == null)
+            {
+                var rootGo = new GameObject("TileBackgroundRoot");
+                rootGo.transform.SetParent(transform, false);
+                _bgRoot = rootGo.transform;
+            }
+
+            tileBackground.enabled = false; // 템플릿 자체는 그리지 않는다
+
+            // 칸 수 맞추기 (슬롯 크기가 바뀐 재배치 대비 — 초과분 제거)
+            while (_bgCells.Count > s * s)
+            {
+                int last = _bgCells.Count - 1;
+                if (_bgCells[last] != null) Destroy(_bgCells[last].gameObject);
+                _bgCells.RemoveAt(last);
+            }
+            while (_bgCells.Count < s * s)
+            {
+                var clone = Instantiate(tileBackground.gameObject, _bgRoot);
+                clone.name = "TileBackgroundCell";
+                _bgCells.Add(clone.GetComponent<SpriteRenderer>());
+            }
+
+            for (int i = 0; i < _bgCells.Count; i++)
+            {
+                int cx = i % s, cy = i / s;
+                _bgCells[i].transform.localPosition = new Vector3(
+                    (cx - (s - 1) * 0.5f) * backgroundCellSize,
+                    (cy - (s - 1) * 0.5f) * backgroundCellSize, 0f);
+            }
+        }
+
         private void RefreshTileBackground(GamePhase? phaseArg)
         {
             if (tileBackground == null) return;
 
+            EnsureBackgroundCells();
+            int s = SlotSize;
+
             // 팔레트의 지형 타일 스프라이트(페이즈별)를 우선 사용 — 매립 덮개가 주변 지형과 이어져 보이게
             TilePaletteConfig palette = MapLoader.Instance != null ? MapLoader.Instance.Palette : null;
-            Sprite sp = null;
-            if (palette != null)
+            TileType type = InstalledAnchor switch
             {
-                GamePhase phase = phaseArg
-                    ?? (GamePhaseManager.Instance != null ? GamePhaseManager.Instance.currentPhase : GamePhase.Play);
-                TileType type = InstalledAnchor switch
+                TrapAnchor.Ceiling   => TileType.Ceiling,
+                TrapAnchor.LeftWall  => TileType.Wall,
+                TrapAnchor.RightWall => TileType.Wall,
+                _                    => TileType.Floor,
+            };
+            MapData map = palette != null ? MapLoader.Instance.CurrentMap : null;
+
+            // ConfigureForAnchor 미호출(수동/프리뷰 배치)이면 위치에서 셀 좌표를 한 번만 역산해 캐시 — 이동형 함정 대비.
+            // MapData.CellToWorld(셀 중심 = origin + (x+0.5)*tileUnit) 의 역연산
+            if (map != null && !_slotOriginSet && !_tileCellCached)
+            {
+                Vector2 origin   = MapLoader.Instance.MapOrigin;
+                Vector2 pos      = transform.position;
+                float   tileUnit = Mathf.Max(0.0001f, map.tileUnit);
+                SlotOrigin = new GridCoord(Mathf.FloorToInt((pos.x - origin.x) / tileUnit),
+                                           Mathf.FloorToInt((pos.y - origin.y) / tileUnit));
+                _tileCellCached = true;
+            }
+
+            GamePhase phase = phaseArg
+                ?? (GamePhaseManager.Instance != null ? GamePhaseManager.Instance.currentPhase : GamePhase.Play);
+
+            for (int i = 0; i < _bgCells.Count; i++)
+            {
+                SpriteRenderer cell = _bgCells[i];
+                if (cell == null) continue;
+
+                Sprite sp = null;
+                if (palette != null)
                 {
-                    TrapAnchor.Ceiling   => TileType.Ceiling,
-                    TrapAnchor.LeftWall  => TileType.Wall,
-                    TrapAnchor.RightWall => TileType.Wall,
-                    _                    => TileType.Floor,
-                };
-                MapData map = MapLoader.Instance.CurrentMap;
-                if (map != null)
+                    // 칸마다 자기 그리드 셀 좌표로 변형 선택 (s=1 이면 기존과 동일)
+                    sp = map != null
+                        ? palette.GetSprite(type, phase, SlotOrigin.x + i % s, SlotOrigin.y + i / s)
+                        : palette.GetSprite(type, phase);
+                    if (sp != null && palette.SharedMaterial != null)
+                        cell.sharedMaterial = palette.SharedMaterial;
+                }
+
+                // 팔레트가 없거나 스프라이트가 비면 기존 고정 스프라이트로 폴백
+                if (sp == null)
                 {
-                    // 셀 좌표는 처음(루트가 슬롯 위치일 때) 한 번만 계산해 캐시 — 이동형 함정 대비.
-                    // MapData.CellToWorld(셀 중심 = origin + (x+0.5)*tileUnit) 의 역연산
-                    if (!_tileCellCached)
+                    sp = InstalledAnchor switch
                     {
-                        Vector2 origin   = MapLoader.Instance.MapOrigin;
-                        Vector2 pos      = transform.position;
-                        float   tileUnit = Mathf.Max(0.0001f, map.tileUnit);
-                        _tileCellX = Mathf.FloorToInt((pos.x - origin.x) / tileUnit);
-                        _tileCellY = Mathf.FloorToInt((pos.y - origin.y) / tileUnit);
-                        _tileCellCached = true;
-                    }
-                    sp = palette.GetSprite(type, phase, _tileCellX, _tileCellY);
+                        TrapAnchor.Ceiling   => bgCeilingSprite,
+                        TrapAnchor.LeftWall  => bgWallSprite,
+                        TrapAnchor.RightWall => bgWallSprite,
+                        _                    => bgFloorSprite,
+                    };
+
+                    // 해당 anchor 스프라이트가 비어 있으면 사용 가능한 것으로 폴백
+                    if (sp == null) sp = bgFloorSprite ?? bgWallSprite ?? bgCeilingSprite;
                 }
-                else
-                {
-                    sp = palette.GetSprite(type, phase);
-                }
-                if (sp != null && palette.SharedMaterial != null)
-                    tileBackground.sharedMaterial = palette.SharedMaterial;
+
+                cell.sprite = sp;
+                cell.enabled = sp != null;
+                if (sp == null) continue;
+
+                // PPU·해상도가 제각각이어도 정확히 1셀(backgroundCellSize)을 채우도록 스케일 보정
+                Vector2 b = sp.bounds.size;
+                if (b.x > 0.0001f && b.y > 0.0001f)
+                    cell.transform.localScale =
+                        new Vector3(backgroundCellSize / b.x, backgroundCellSize / b.y, 1f);
             }
-
-            // 팔레트가 없거나 스프라이트가 비면 기존 고정 스프라이트로 폴백
-            if (sp == null)
-            {
-                sp = InstalledAnchor switch
-                {
-                    TrapAnchor.Ceiling   => bgCeilingSprite,
-                    TrapAnchor.LeftWall  => bgWallSprite,
-                    TrapAnchor.RightWall => bgWallSprite,
-                    _                    => bgFloorSprite,
-                };
-
-                // 해당 anchor 스프라이트가 비어 있으면 사용 가능한 것으로 폴백
-                if (sp == null) sp = bgFloorSprite ?? bgWallSprite ?? bgCeilingSprite;
-            }
-
-            tileBackground.sprite = sp;
-            tileBackground.enabled = sp != null;
-            if (sp == null) return;
-
-            // PPU·해상도가 제각각이어도 정확히 1셀(backgroundCellSize)을 채우도록 스케일 보정
-            Vector2 b = sp.bounds.size;
-            if (b.x > 0.0001f && b.y > 0.0001f)
-                tileBackground.transform.localScale =
-                    new Vector3(backgroundCellSize / b.x, backgroundCellSize / b.y, 1f);
         }
 
         // ── 내부 — 시각 힌트 ──────────────────────────────────────────────────

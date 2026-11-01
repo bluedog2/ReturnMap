@@ -153,17 +153,17 @@ namespace ReTrap.EditorTools
                     $"현재  {curW} × {curH}  ({RatioText(curW, curH)}){AspectMatchMark(curW, curH)}",
                     EditorStyles.miniLabel);
 
-                // 맵 크기 규격 (계획서 4절): 높이 14·18, 너비 ceil(h×16/9)~+1 — 밖이면 경고 (CI 는 에러)
+                // 맵 크기 규격 (docs/scale-3tile.md): 높이 22·27, 너비 ceil(h×16/9)~+1 — 밖이면 경고 (CI 는 에러)
                 string specErr = MapAuthoringValidator.ViewportSpecError(curW, curH);
                 if (specErr != null)
                     EditorGUILayout.HelpBox(specErr, MessageType.Warning);
 
                 EditorGUILayout.BeginHorizontal();
                 {
-                    if (GUILayout.Button("S 25×14", EditorStyles.miniButtonLeft))
-                    { _resizeW = 25; _resizeH = 14; _aspect = AspectPreset.Free; }
-                    if (GUILayout.Button("L 32×18", EditorStyles.miniButtonRight))
-                    { _resizeW = 32; _resizeH = 18; _aspect = AspectPreset.Free; }
+                    if (GUILayout.Button("S 40×22", EditorStyles.miniButtonLeft))
+                    { _resizeW = 40; _resizeH = 22; _aspect = AspectPreset.Free; }
+                    if (GUILayout.Button("L 48×27", EditorStyles.miniButtonRight))
+                    { _resizeW = 48; _resizeH = 27; _aspect = AspectPreset.Free; }
                 }
                 EditorGUILayout.EndHorizontal();
 
@@ -363,7 +363,7 @@ namespace ReTrap.EditorTools
                 if (_doc.map.InBounds(_hoverX, _hoverY))
                 {
                     var t    = _doc.map.GetTile(_hoverX, _hoverY);
-                    var slot = _doc.map.GetSlot(_hoverX, _hoverY);
+                    var slot = _doc.map.FindSlotCovering(_hoverX, _hoverY);
                     string slotInfo = slot != null ? slot.Anchor.ToString() : "없음";
                     GUILayout.Label($"셀({_hoverX},{_hoverY}) · {t} · 슬롯:{slotInfo}");
                 }

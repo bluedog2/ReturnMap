@@ -1,0 +1,4221 @@
+{
+  "overall_pass": false,
+  "rules_note": "No silhouette resizing. Fixed integer 4x block-center recovery, palette mapping, alpha 128 threshold, isolated-singleton cleanup, translation, and approved Idle face/bangs pixel cutout only. Source grid is approximate. Size failures retained honestly after four generation attempts.",
+  "sheets": {
+    "Idle": {
+      "frames": [
+        {
+          "frame": 0,
+          "bbox": [
+            30,
+            27,
+            98,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 64.0,
+          "height": 101,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.333,
+          "height_deviation": -0.5,
+          "head_bbox": [
+            55,
+            35,
+            98,
+            74
+          ],
+          "head_size": [
+            44,
+            40
+          ],
+          "box_bbox": [
+            40,
+            84,
+            62,
+            102
+          ],
+          "box_size": [
+            23,
+            19
+          ],
+          "shoe_bboxes": [
+            [
+              48,
+              110,
+              67,
+              127
+            ],
+            [
+              77,
+              110,
+              94,
+              127
+            ]
+          ],
+          "shoe_sizes": [
+            [
+              20,
+              18
+            ],
+            [
+              18,
+              18
+            ]
+          ]
+        },
+        {
+          "frame": 1,
+          "bbox": [
+            30,
+            26,
+            97,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 102,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": -0.167,
+          "height_deviation": 0.5
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            30,
+            26,
+            98,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 64.0,
+          "height": 102,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.333,
+          "height_deviation": 0.5
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            30,
+            27,
+            97,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 101,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": -0.167,
+          "height_deviation": -0.5
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            29,
+            27,
+            98,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 101,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": -0.167,
+          "height_deviation": -0.5
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            30,
+            26,
+            97,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 102,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": -0.167,
+          "height_deviation": 0.5
+        }
+      ],
+      "color_count": 20,
+      "palette_outside": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "numeric_pass": true,
+      "selected_attempt": 4,
+      "generation_grid": {
+        "size": [
+          1536,
+          1024
+        ],
+        "grid": [
+          {
+            "block_corner_agreement": 0.5312,
+            "translation": [
+              30,
+              27
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              68,
+              100
+            ],
+            "detected_source_box": [
+              26,
+              26,
+              94,
+              126
+            ],
+            "sample_pitch": 4
+          },
+          {
+            "block_corner_agreement": 0.5243,
+            "translation": [
+              30,
+              26
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              67,
+              101
+            ],
+            "detected_source_box": [
+              156,
+              25,
+              223,
+              126
+            ],
+            "sample_pitch": 4
+          },
+          {
+            "block_corner_agreement": 0.5221,
+            "translation": [
+              30,
+              26
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              68,
+              101
+            ],
+            "detected_source_box": [
+              282,
+              25,
+              350,
+              126
+            ],
+            "sample_pitch": 4
+          },
+          {
+            "block_corner_agreement": 0.5273,
+            "translation": [
+              30,
+              27
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              67,
+              100
+            ],
+            "detected_source_box": [
+              28,
+              146,
+              95,
+              246
+            ],
+            "sample_pitch": 4
+          },
+          {
+            "block_corner_agreement": 0.5475,
+            "translation": [
+              29,
+              27
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              69,
+              100
+            ],
+            "detected_source_box": [
+              154,
+              146,
+              223,
+              246
+            ],
+            "sample_pitch": 4
+          },
+          {
+            "block_corner_agreement": 0.5399,
+            "translation": [
+              30,
+              26
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              67,
+              101
+            ],
+            "detected_source_box": [
+              284,
+              145,
+              351,
+              246
+            ],
+            "sample_pitch": 4
+          }
+        ]
+      },
+      "production_ready": true,
+      "grid_clean": false,
+      "visual_status": "User approved reference; unchanged.",
+      "dimensions_1x": [
+        768,
+        128
+      ],
+      "dimensions_4x": [
+        3072,
+        512
+      ],
+      "nearest_4x_exact": true,
+      "nonbinary_alpha_pixels": 0,
+      "user_approved": true
+    },
+    "Run": {
+      "frames": [
+        {
+          "frame": 0,
+          "bbox": [
+            21,
+            27,
+            106,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 101,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.062,
+          "height_deviation": -1.25,
+          "head_bbox": [
+            58,
+            39,
+            106,
+            82
+          ],
+          "head_size": [
+            49,
+            44
+          ],
+          "head_delta_idle": [
+            5,
+            4
+          ],
+          "generated_head_bbox": [
+            58,
+            39,
+            106,
+            82
+          ],
+          "generated_head_size": [
+            49,
+            44
+          ],
+          "box_bbox": [
+            29,
+            91,
+            53,
+            109
+          ],
+          "box_size": [
+            25,
+            19
+          ],
+          "box_delta_idle": [
+            2,
+            0
+          ],
+          "shoe_bboxes": [
+            [
+              38,
+              111,
+              57,
+              127
+            ],
+            null
+          ],
+          "shoe_sizes": [
+            [
+              20,
+              17
+            ],
+            null
+          ],
+          "shoe_deltas_idle": [
+            [
+              0,
+              -1
+            ],
+            null
+          ],
+          "head_cutout": true,
+          "final_translation": [
+            0,
+            0
+          ],
+          "measurement_note": "Opaque approved head pixels composited without scaling; generated fringe remains and is included in composite bbox. Semantic bounds are manually annotated visible-support estimates; rotated/occluded shoes cannot certify +/-1px. Null means occluded.",
+          "head_size_pass": false,
+          "box_size_pass": false,
+          "shoe_size_pass": false,
+          "head_cutout_bbox": [
+            61,
+            43,
+            104,
+            82
+          ],
+          "head_cutout_size": [
+            44,
+            40
+          ],
+          "head_cutout_pixel_exact": true,
+          "height_delta_idle": 0,
+          "height_exception": null,
+          "standing_height_pass": true,
+          "drift_height_deviation": -1.25,
+          "drift_pass": true,
+          "strict_size_pass": false
+        },
+        {
+          "frame": 1,
+          "bbox": [
+            21,
+            26,
+            106,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 102,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.062,
+          "height_deviation": -0.25,
+          "head_bbox": [
+            57,
+            39,
+            105,
+            82
+          ],
+          "head_size": [
+            49,
+            44
+          ],
+          "head_delta_idle": [
+            5,
+            4
+          ],
+          "generated_head_bbox": [
+            57,
+            39,
+            105,
+            82
+          ],
+          "generated_head_size": [
+            49,
+            44
+          ],
+          "box_bbox": [
+            29,
+            93,
+            51,
+            110
+          ],
+          "box_size": [
+            23,
+            18
+          ],
+          "box_delta_idle": [
+            0,
+            -1
+          ],
+          "shoe_bboxes": [
+            [
+              54,
+              111,
+              73,
+              127
+            ],
+            [
+              73,
+              113,
+              89,
+              127
+            ]
+          ],
+          "shoe_sizes": [
+            [
+              20,
+              17
+            ],
+            [
+              17,
+              15
+            ]
+          ],
+          "shoe_deltas_idle": [
+            [
+              0,
+              -1
+            ],
+            [
+              -1,
+              -3
+            ]
+          ],
+          "head_cutout": true,
+          "final_translation": [
+            0,
+            0
+          ],
+          "measurement_note": "Opaque approved head pixels composited without scaling; generated fringe remains and is included in composite bbox. Semantic bounds are manually annotated visible-support estimates; rotated/occluded shoes cannot certify +/-1px. Null means occluded.",
+          "head_size_pass": false,
+          "box_size_pass": true,
+          "shoe_size_pass": false,
+          "head_cutout_bbox": [
+            60,
+            43,
+            103,
+            82
+          ],
+          "head_cutout_size": [
+            44,
+            40
+          ],
+          "head_cutout_pixel_exact": true,
+          "height_delta_idle": 1,
+          "height_exception": null,
+          "standing_height_pass": true,
+          "drift_height_deviation": -0.25,
+          "drift_pass": true,
+          "strict_size_pass": false
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            21,
+            26,
+            106,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 102,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.062,
+          "height_deviation": -0.25,
+          "head_bbox": [
+            58,
+            38,
+            105,
+            81
+          ],
+          "head_size": [
+            48,
+            44
+          ],
+          "head_delta_idle": [
+            4,
+            4
+          ],
+          "generated_head_bbox": [
+            58,
+            38,
+            105,
+            81
+          ],
+          "generated_head_size": [
+            48,
+            44
+          ],
+          "box_bbox": [
+            30,
+            87,
+            53,
+            105
+          ],
+          "box_size": [
+            24,
+            19
+          ],
+          "box_delta_idle": [
+            1,
+            0
+          ],
+          "shoe_bboxes": [
+            [
+              26,
+              105,
+              41,
+              120
+            ],
+            [
+              80,
+              109,
+              104,
+              127
+            ]
+          ],
+          "shoe_sizes": [
+            [
+              16,
+              16
+            ],
+            [
+              25,
+              19
+            ]
+          ],
+          "shoe_deltas_idle": [
+            [
+              -4,
+              -2
+            ],
+            [
+              7,
+              1
+            ]
+          ],
+          "head_cutout": true,
+          "final_translation": [
+            0,
+            0
+          ],
+          "measurement_note": "Opaque approved head pixels composited without scaling; generated fringe remains and is included in composite bbox. Semantic bounds are manually annotated visible-support estimates; rotated/occluded shoes cannot certify +/-1px. Null means occluded.",
+          "head_size_pass": false,
+          "box_size_pass": true,
+          "shoe_size_pass": false,
+          "head_cutout_bbox": [
+            60,
+            42,
+            103,
+            81
+          ],
+          "head_cutout_size": [
+            44,
+            40
+          ],
+          "head_cutout_pixel_exact": true,
+          "height_delta_idle": 1,
+          "height_exception": null,
+          "standing_height_pass": true,
+          "drift_height_deviation": -0.25,
+          "drift_pass": true,
+          "strict_size_pass": false
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            23,
+            26,
+            104,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 102,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.062,
+          "height_deviation": -0.25,
+          "head_bbox": [
+            57,
+            38,
+            103,
+            81
+          ],
+          "head_size": [
+            47,
+            44
+          ],
+          "head_delta_idle": [
+            3,
+            4
+          ],
+          "generated_head_bbox": [
+            57,
+            38,
+            103,
+            81
+          ],
+          "generated_head_size": [
+            47,
+            44
+          ],
+          "box_bbox": [
+            30,
+            91,
+            54,
+            108
+          ],
+          "box_size": [
+            25,
+            18
+          ],
+          "box_delta_idle": [
+            2,
+            -1
+          ],
+          "shoe_bboxes": [
+            [
+              53,
+              113,
+              73,
+              127
+            ],
+            null
+          ],
+          "shoe_sizes": [
+            [
+              21,
+              15
+            ],
+            null
+          ],
+          "shoe_deltas_idle": [
+            [
+              1,
+              -3
+            ],
+            null
+          ],
+          "head_cutout": true,
+          "final_translation": [
+            0,
+            0
+          ],
+          "measurement_note": "Opaque approved head pixels composited without scaling; generated fringe remains and is included in composite bbox. Semantic bounds are manually annotated visible-support estimates; rotated/occluded shoes cannot certify +/-1px. Null means occluded.",
+          "head_size_pass": false,
+          "box_size_pass": false,
+          "shoe_size_pass": false,
+          "head_cutout_bbox": [
+            59,
+            42,
+            102,
+            81
+          ],
+          "head_cutout_size": [
+            44,
+            40
+          ],
+          "head_cutout_pixel_exact": true,
+          "height_delta_idle": 1,
+          "height_exception": null,
+          "standing_height_pass": true,
+          "drift_height_deviation": -0.25,
+          "drift_pass": true,
+          "strict_size_pass": false
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            22,
+            25,
+            104,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.0,
+          "height": 103,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": -0.438,
+          "height_deviation": 0.75,
+          "head_bbox": [
+            58,
+            37,
+            103,
+            79
+          ],
+          "head_size": [
+            46,
+            43
+          ],
+          "head_delta_idle": [
+            2,
+            3
+          ],
+          "generated_head_bbox": [
+            58,
+            37,
+            103,
+            79
+          ],
+          "generated_head_size": [
+            46,
+            43
+          ],
+          "box_bbox": [
+            30,
+            90,
+            55,
+            108
+          ],
+          "box_size": [
+            26,
+            19
+          ],
+          "box_delta_idle": [
+            3,
+            0
+          ],
+          "shoe_bboxes": [
+            [
+              49,
+              107,
+              67,
+              121
+            ],
+            [
+              52,
+              113,
+              75,
+              127
+            ]
+          ],
+          "shoe_sizes": [
+            [
+              19,
+              15
+            ],
+            [
+              24,
+              15
+            ]
+          ],
+          "shoe_deltas_idle": [
+            [
+              -1,
+              -3
+            ],
+            [
+              6,
+              -3
+            ]
+          ],
+          "head_cutout": true,
+          "final_translation": [
+            0,
+            0
+          ],
+          "measurement_note": "Opaque approved head pixels composited without scaling; generated fringe remains and is included in composite bbox. Semantic bounds are manually annotated visible-support estimates; rotated/occluded shoes cannot certify +/-1px. Null means occluded.",
+          "head_size_pass": false,
+          "box_size_pass": false,
+          "shoe_size_pass": false,
+          "head_cutout_bbox": [
+            58,
+            40,
+            101,
+            79
+          ],
+          "head_cutout_size": [
+            44,
+            40
+          ],
+          "head_cutout_pixel_exact": true,
+          "height_delta_idle": 2,
+          "height_exception": null,
+          "standing_height_pass": true,
+          "drift_height_deviation": 0.75,
+          "drift_pass": true,
+          "strict_size_pass": false
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            23,
+            24,
+            104,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 104,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.062,
+          "height_deviation": 1.75,
+          "head_bbox": [
+            58,
+            36,
+            104,
+            78
+          ],
+          "head_size": [
+            47,
+            43
+          ],
+          "head_delta_idle": [
+            3,
+            3
+          ],
+          "generated_head_bbox": [
+            58,
+            36,
+            104,
+            78
+          ],
+          "generated_head_size": [
+            47,
+            43
+          ],
+          "box_bbox": [
+            31,
+            88,
+            55,
+            107
+          ],
+          "box_size": [
+            25,
+            20
+          ],
+          "box_delta_idle": [
+            2,
+            1
+          ],
+          "shoe_bboxes": [
+            [
+              49,
+              105,
+              65,
+              121
+            ],
+            [
+              57,
+              111,
+              77,
+              127
+            ]
+          ],
+          "shoe_sizes": [
+            [
+              17,
+              17
+            ],
+            [
+              21,
+              17
+            ]
+          ],
+          "shoe_deltas_idle": [
+            [
+              -3,
+              -1
+            ],
+            [
+              3,
+              -1
+            ]
+          ],
+          "head_cutout": true,
+          "final_translation": [
+            0,
+            0
+          ],
+          "measurement_note": "Opaque approved head pixels composited without scaling; generated fringe remains and is included in composite bbox. Semantic bounds are manually annotated visible-support estimates; rotated/occluded shoes cannot certify +/-1px. Null means occluded.",
+          "head_size_pass": false,
+          "box_size_pass": false,
+          "shoe_size_pass": false,
+          "head_cutout_bbox": [
+            60,
+            39,
+            103,
+            78
+          ],
+          "head_cutout_size": [
+            44,
+            40
+          ],
+          "head_cutout_pixel_exact": true,
+          "height_delta_idle": 3,
+          "height_exception": null,
+          "standing_height_pass": true,
+          "drift_height_deviation": 1.75,
+          "drift_pass": true,
+          "strict_size_pass": false
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            21,
+            25,
+            106,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 103,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.062,
+          "height_deviation": 0.75,
+          "head_bbox": [
+            58,
+            37,
+            106,
+            80
+          ],
+          "head_size": [
+            49,
+            44
+          ],
+          "head_delta_idle": [
+            5,
+            4
+          ],
+          "generated_head_bbox": [
+            58,
+            37,
+            106,
+            80
+          ],
+          "generated_head_size": [
+            49,
+            44
+          ],
+          "box_bbox": [
+            33,
+            89,
+            56,
+            110
+          ],
+          "box_size": [
+            24,
+            22
+          ],
+          "box_delta_idle": [
+            1,
+            3
+          ],
+          "shoe_bboxes": [
+            [
+              41,
+              112,
+              61,
+              127
+            ],
+            [
+              82,
+              109,
+              106,
+              127
+            ]
+          ],
+          "shoe_sizes": [
+            [
+              21,
+              16
+            ],
+            [
+              25,
+              19
+            ]
+          ],
+          "shoe_deltas_idle": [
+            [
+              1,
+              -2
+            ],
+            [
+              7,
+              1
+            ]
+          ],
+          "head_cutout": true,
+          "final_translation": [
+            0,
+            0
+          ],
+          "measurement_note": "Opaque approved head pixels composited without scaling; generated fringe remains and is included in composite bbox. Semantic bounds are manually annotated visible-support estimates; rotated/occluded shoes cannot certify +/-1px. Null means occluded.",
+          "head_size_pass": false,
+          "box_size_pass": false,
+          "shoe_size_pass": false,
+          "head_cutout_bbox": [
+            61,
+            41,
+            104,
+            80
+          ],
+          "head_cutout_size": [
+            44,
+            40
+          ],
+          "head_cutout_pixel_exact": true,
+          "height_delta_idle": 2,
+          "height_exception": null,
+          "standing_height_pass": true,
+          "drift_height_deviation": 0.75,
+          "drift_pass": true,
+          "strict_size_pass": false
+        },
+        {
+          "frame": 7,
+          "bbox": [
+            20,
+            27,
+            107,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 101,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.062,
+          "height_deviation": -1.25,
+          "head_bbox": [
+            58,
+            38,
+            103,
+            80
+          ],
+          "head_size": [
+            46,
+            43
+          ],
+          "head_delta_idle": [
+            2,
+            3
+          ],
+          "generated_head_bbox": [
+            58,
+            38,
+            103,
+            80
+          ],
+          "generated_head_size": [
+            46,
+            43
+          ],
+          "box_bbox": [
+            28,
+            87,
+            52,
+            105
+          ],
+          "box_size": [
+            25,
+            19
+          ],
+          "box_delta_idle": [
+            2,
+            0
+          ],
+          "shoe_bboxes": [
+            [
+              23,
+              108,
+              43,
+              118
+            ],
+            [
+              82,
+              110,
+              105,
+              127
+            ]
+          ],
+          "shoe_sizes": [
+            [
+              21,
+              11
+            ],
+            [
+              24,
+              18
+            ]
+          ],
+          "shoe_deltas_idle": [
+            [
+              1,
+              -7
+            ],
+            [
+              6,
+              0
+            ]
+          ],
+          "head_cutout": true,
+          "final_translation": [
+            0,
+            0
+          ],
+          "measurement_note": "Opaque approved head pixels composited without scaling; generated fringe remains and is included in composite bbox. Semantic bounds are manually annotated visible-support estimates; rotated/occluded shoes cannot certify +/-1px. Null means occluded.",
+          "head_size_pass": false,
+          "box_size_pass": false,
+          "shoe_size_pass": false,
+          "head_cutout_bbox": [
+            59,
+            41,
+            102,
+            80
+          ],
+          "head_cutout_size": [
+            44,
+            40
+          ],
+          "head_cutout_pixel_exact": true,
+          "height_delta_idle": 0,
+          "height_exception": null,
+          "standing_height_pass": true,
+          "drift_height_deviation": -1.25,
+          "drift_pass": true,
+          "strict_size_pass": false
+        }
+      ],
+      "color_count": 20,
+      "palette_outside": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "numeric_pass": false,
+      "import_geometry_pass": true,
+      "strict_size_pass": false,
+      "selected_size_attempt": 1,
+      "size_attempt_count": 4,
+      "generation_grid": {
+        "size": [
+          1774,
+          887
+        ],
+        "grid": [
+          {
+            "block_corner_agreement": 0.5535,
+            "translation": [
+              21,
+              27
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              85,
+              100
+            ],
+            "detected_source_box": [
+              12,
+              8,
+              97,
+              108
+            ],
+            "sample_pitch": 4
+          },
+          {
+            "block_corner_agreement": 0.5497,
+            "translation": [
+              21,
+              26
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              85,
+              101
+            ],
+            "detected_source_box": [
+              128,
+              7,
+              213,
+              108
+            ],
+            "sample_pitch": 4
+          },
+          {
+            "block_corner_agreement": 0.5394,
+            "translation": [
+              21,
+              26
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              85,
+              101
+            ],
+            "detected_source_box": [
+              236,
+              7,
+              321,
+              108
+            ],
+            "sample_pitch": 4
+          },
+          {
+            "block_corner_agreement": 0.5473,
+            "translation": [
+              23,
+              26
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              81,
+              101
+            ],
+            "detected_source_box": [
+              352,
+              7,
+              433,
+              108
+            ],
+            "sample_pitch": 4
+          },
+          {
+            "block_corner_agreement": 0.5508,
+            "translation": [
+              22,
+              25
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              82,
+              102
+            ],
+            "detected_source_box": [
+              12,
+              115,
+              94,
+              217
+            ],
+            "sample_pitch": 4
+          },
+          {
+            "block_corner_agreement": 0.5535,
+            "translation": [
+              23,
+              24
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              81,
+              103
+            ],
+            "detected_source_box": [
+              126,
+              114,
+              207,
+              217
+            ],
+            "sample_pitch": 4
+          },
+          {
+            "block_corner_agreement": 0.557,
+            "translation": [
+              21,
+              25
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              85,
+              102
+            ],
+            "detected_source_box": [
+              236,
+              115,
+              321,
+              217
+            ],
+            "sample_pitch": 4
+          },
+          {
+            "block_corner_agreement": 0.5525,
+            "translation": [
+              20,
+              27
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              87,
+              100
+            ],
+            "detected_source_box": [
+              350,
+              117,
+              437,
+              217
+            ],
+            "sample_pitch": 4
+          }
+        ]
+      },
+      "production_ready": false,
+      "head_cutout_used": true,
+      "dimensions_1x": [
+        1024,
+        128
+      ],
+      "dimensions_4x": [
+        4096,
+        512
+      ],
+      "nonbinary_alpha_pixels": 0,
+      "visual_status": "Best available within 4 size attempts. Strict size rules are not fully met; inspect per-frame failures.",
+      "nearest_4x_exact": true
+    },
+    "JumpStart": {
+      "frames": [
+        {
+          "frame": 0,
+          "bbox": [
+            26,
+            44,
+            101,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 84,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": -0.25,
+          "height_deviation": -8.5,
+          "head_bbox": [
+            57,
+            51,
+            101,
+            90
+          ],
+          "head_size": [
+            45,
+            40
+          ],
+          "head_delta_idle": [
+            1,
+            0
+          ],
+          "generated_head_bbox": [
+            57,
+            54,
+            101,
+            90
+          ],
+          "generated_head_size": [
+            45,
+            37
+          ],
+          "box_bbox": [
+            33,
+            94,
+            54,
+            111
+          ],
+          "box_size": [
+            22,
+            18
+          ],
+          "box_delta_idle": [
+            -1,
+            -1
+          ],
+          "shoe_bboxes": [
+            [
+              46,
+              112,
+              63,
+              127
+            ],
+            [
+              73,
+              112,
+              90,
+              127
+            ]
+          ],
+          "shoe_sizes": [
+            [
+              18,
+              16
+            ],
+            [
+              18,
+              16
+            ]
+          ],
+          "shoe_deltas_idle": [
+            [
+              -2,
+              -2
+            ],
+            [
+              0,
+              -2
+            ]
+          ],
+          "head_cutout": true,
+          "final_translation": [
+            0,
+            0
+          ],
+          "measurement_note": "Opaque approved head pixels composited without scaling; generated fringe remains and is included in composite bbox. Semantic bounds are manually annotated visible-support estimates; rotated/occluded shoes cannot certify +/-1px. Null means occluded.",
+          "head_size_pass": true,
+          "box_size_pass": true,
+          "shoe_size_pass": false,
+          "head_cutout_bbox": [
+            58,
+            51,
+            101,
+            90
+          ],
+          "head_cutout_size": [
+            44,
+            40
+          ],
+          "head_cutout_pixel_exact": true,
+          "height_delta_idle": -17,
+          "height_exception": "crouch/recovery",
+          "standing_height_pass": true,
+          "drift_height_deviation": null,
+          "drift_pass": true,
+          "strict_size_pass": false
+        },
+        {
+          "frame": 1,
+          "bbox": [
+            28,
+            27,
+            100,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 64.0,
+          "height": 101,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.25,
+          "height_deviation": 8.5,
+          "head_bbox": [
+            57,
+            33,
+            100,
+            72
+          ],
+          "head_size": [
+            44,
+            40
+          ],
+          "head_delta_idle": [
+            0,
+            0
+          ],
+          "generated_head_bbox": [
+            58,
+            36,
+            99,
+            72
+          ],
+          "generated_head_size": [
+            42,
+            37
+          ],
+          "box_bbox": [
+            39,
+            83,
+            59,
+            96
+          ],
+          "box_size": [
+            21,
+            14
+          ],
+          "box_delta_idle": [
+            -2,
+            -5
+          ],
+          "shoe_bboxes": [
+            [
+              51,
+              110,
+              64,
+              127
+            ],
+            [
+              71,
+              97,
+              85,
+              114
+            ]
+          ],
+          "shoe_sizes": [
+            [
+              14,
+              18
+            ],
+            [
+              15,
+              18
+            ]
+          ],
+          "shoe_deltas_idle": [
+            [
+              -6,
+              0
+            ],
+            [
+              -3,
+              0
+            ]
+          ],
+          "head_cutout": true,
+          "final_translation": [
+            0,
+            0
+          ],
+          "measurement_note": "Opaque approved head pixels composited without scaling; generated fringe remains and is included in composite bbox. Semantic bounds are manually annotated visible-support estimates; rotated/occluded shoes cannot certify +/-1px. Null means occluded.",
+          "head_size_pass": true,
+          "box_size_pass": false,
+          "shoe_size_pass": false,
+          "head_cutout_bbox": [
+            57,
+            33,
+            100,
+            72
+          ],
+          "head_cutout_size": [
+            44,
+            40
+          ],
+          "head_cutout_pixel_exact": true,
+          "height_delta_idle": 0,
+          "height_exception": null,
+          "standing_height_pass": true,
+          "drift_height_deviation": 0.0,
+          "drift_pass": true,
+          "strict_size_pass": false
+        }
+      ],
+      "color_count": 20,
+      "palette_outside": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "numeric_pass": false,
+      "import_geometry_pass": true,
+      "strict_size_pass": false,
+      "selected_size_attempt": 4,
+      "size_attempt_count": 4,
+      "generation_grid": {
+        "size": [
+          1536,
+          1024
+        ],
+        "grid": [
+          {
+            "block_corner_agreement": 0.5086,
+            "translation": [
+              26,
+              44
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              75,
+              83
+            ],
+            "detected_source_box": [
+              62,
+              108,
+              137,
+              191
+            ],
+            "sample_pitch": 4
+          },
+          {
+            "block_corner_agreement": 0.5159,
+            "translation": [
+              28,
+              27
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              71,
+              100
+            ],
+            "detected_source_box": [
+              252,
+              91,
+              323,
+              191
+            ],
+            "sample_pitch": 4
+          }
+        ]
+      },
+      "production_ready": false,
+      "head_cutout_used": true,
+      "dimensions_1x": [
+        256,
+        128
+      ],
+      "dimensions_4x": [
+        1024,
+        512
+      ],
+      "nonbinary_alpha_pixels": 0,
+      "visual_status": "Best available within 4 size attempts. Strict size rules are not fully met; inspect per-frame failures.",
+      "nearest_4x_exact": true
+    },
+    "Fall": {
+      "frames": [
+        {
+          "frame": 0,
+          "bbox": [
+            20,
+            29,
+            108,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 64.0,
+          "height": 99,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.25,
+          "height_deviation": 1.0,
+          "head_bbox": [
+            45,
+            39,
+            88,
+            78
+          ],
+          "head_size": [
+            44,
+            40
+          ],
+          "head_delta_idle": [
+            0,
+            0
+          ],
+          "generated_head_bbox": [
+            45,
+            43,
+            88,
+            78
+          ],
+          "generated_head_size": [
+            44,
+            36
+          ],
+          "box_bbox": [
+            20,
+            80,
+            40,
+            98
+          ],
+          "box_size": [
+            21,
+            19
+          ],
+          "box_delta_idle": [
+            -2,
+            0
+          ],
+          "shoe_bboxes": [
+            [
+              66,
+              108,
+              86,
+              127
+            ],
+            [
+              89,
+              91,
+              108,
+              112
+            ]
+          ],
+          "shoe_sizes": [
+            [
+              21,
+              20
+            ],
+            [
+              20,
+              22
+            ]
+          ],
+          "shoe_deltas_idle": [
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              4
+            ]
+          ],
+          "head_cutout": true,
+          "final_translation": [
+            0,
+            0
+          ],
+          "measurement_note": "Opaque approved head pixels composited without scaling; generated fringe remains and is included in composite bbox. Semantic bounds are manually annotated visible-support estimates; rotated/occluded shoes cannot certify +/-1px. Null means occluded.",
+          "head_size_pass": true,
+          "box_size_pass": false,
+          "shoe_size_pass": false,
+          "head_cutout_bbox": [
+            45,
+            39,
+            88,
+            78
+          ],
+          "head_cutout_size": [
+            44,
+            40
+          ],
+          "head_cutout_pixel_exact": true,
+          "height_delta_idle": -2,
+          "height_exception": null,
+          "standing_height_pass": true,
+          "drift_height_deviation": 1.0,
+          "drift_pass": true,
+          "strict_size_pass": false
+        },
+        {
+          "frame": 1,
+          "bbox": [
+            17,
+            31,
+            110,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 97,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": -0.25,
+          "height_deviation": -1.0,
+          "head_bbox": [
+            41,
+            39,
+            84,
+            78
+          ],
+          "head_size": [
+            44,
+            40
+          ],
+          "head_delta_idle": [
+            0,
+            0
+          ],
+          "generated_head_bbox": [
+            42,
+            44,
+            83,
+            78
+          ],
+          "generated_head_size": [
+            42,
+            35
+          ],
+          "box_bbox": [
+            25,
+            88,
+            46,
+            105
+          ],
+          "box_size": [
+            22,
+            18
+          ],
+          "box_delta_idle": [
+            -1,
+            -1
+          ],
+          "shoe_bboxes": [
+            [
+              65,
+              108,
+              86,
+              127
+            ],
+            [
+              90,
+              91,
+              110,
+              110
+            ]
+          ],
+          "shoe_sizes": [
+            [
+              22,
+              20
+            ],
+            [
+              21,
+              20
+            ]
+          ],
+          "shoe_deltas_idle": [
+            [
+              2,
+              2
+            ],
+            [
+              3,
+              2
+            ]
+          ],
+          "head_cutout": true,
+          "final_translation": [
+            0,
+            0
+          ],
+          "measurement_note": "Opaque approved head pixels composited without scaling; generated fringe remains and is included in composite bbox. Semantic bounds are manually annotated visible-support estimates; rotated/occluded shoes cannot certify +/-1px. Null means occluded.",
+          "head_size_pass": true,
+          "box_size_pass": true,
+          "shoe_size_pass": false,
+          "head_cutout_bbox": [
+            41,
+            39,
+            84,
+            78
+          ],
+          "head_cutout_size": [
+            44,
+            40
+          ],
+          "head_cutout_pixel_exact": true,
+          "height_delta_idle": -4,
+          "height_exception": null,
+          "standing_height_pass": false,
+          "drift_height_deviation": -1.0,
+          "drift_pass": true,
+          "strict_size_pass": false
+        }
+      ],
+      "color_count": 20,
+      "palette_outside": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "numeric_pass": false,
+      "import_geometry_pass": true,
+      "strict_size_pass": false,
+      "selected_size_attempt": 4,
+      "size_attempt_count": 4,
+      "generation_grid": {
+        "size": [
+          1536,
+          1024
+        ],
+        "grid": [
+          {
+            "block_corner_agreement": 0.5237,
+            "translation": [
+              20,
+              29
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              88,
+              98
+            ],
+            "detected_source_box": [
+              62,
+              88,
+              150,
+              186
+            ],
+            "sample_pitch": 4
+          },
+          {
+            "block_corner_agreement": 0.5239,
+            "translation": [
+              17,
+              31
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              93,
+              96
+            ],
+            "detected_source_box": [
+              233,
+              90,
+              326,
+              186
+            ],
+            "sample_pitch": 4
+          }
+        ]
+      },
+      "production_ready": false,
+      "head_cutout_used": true,
+      "dimensions_1x": [
+        256,
+        128
+      ],
+      "dimensions_4x": [
+        1024,
+        512
+      ],
+      "nonbinary_alpha_pixels": 0,
+      "visual_status": "Best available within 4 size attempts. Strict size rules are not fully met; inspect per-frame failures.",
+      "nearest_4x_exact": true
+    },
+    "Land": {
+      "frames": [
+        {
+          "frame": 0,
+          "bbox": [
+            29,
+            54,
+            98,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 74,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": -0.167,
+          "height_deviation": -15.667,
+          "head_bbox": [
+            54,
+            63,
+            98,
+            102
+          ],
+          "head_size": [
+            45,
+            40
+          ],
+          "head_delta_idle": [
+            1,
+            0
+          ],
+          "generated_head_bbox": [
+            54,
+            66,
+            98,
+            102
+          ],
+          "generated_head_size": [
+            45,
+            37
+          ],
+          "box_bbox": [
+            35,
+            108,
+            57,
+            124
+          ],
+          "box_size": [
+            23,
+            17
+          ],
+          "box_delta_idle": [
+            0,
+            -2
+          ],
+          "shoe_bboxes": [
+            [
+              46,
+              120,
+              67,
+              127
+            ],
+            [
+              77,
+              121,
+              95,
+              127
+            ]
+          ],
+          "shoe_sizes": [
+            [
+              22,
+              8
+            ],
+            [
+              19,
+              7
+            ]
+          ],
+          "shoe_deltas_idle": [
+            [
+              2,
+              -10
+            ],
+            [
+              1,
+              -11
+            ]
+          ],
+          "head_cutout": true,
+          "final_translation": [
+            0,
+            0
+          ],
+          "measurement_note": "Opaque approved head pixels composited without scaling; generated fringe remains and is included in composite bbox. Semantic bounds are manually annotated visible-support estimates; rotated/occluded shoes cannot certify +/-1px. Null means occluded.",
+          "head_size_pass": true,
+          "box_size_pass": false,
+          "shoe_size_pass": false,
+          "head_cutout_bbox": [
+            54,
+            63,
+            97,
+            102
+          ],
+          "head_cutout_size": [
+            44,
+            40
+          ],
+          "head_cutout_pixel_exact": true,
+          "height_delta_idle": -27,
+          "height_exception": "crouch/recovery",
+          "standing_height_pass": true,
+          "drift_height_deviation": null,
+          "drift_pass": true,
+          "strict_size_pass": false
+        },
+        {
+          "frame": 1,
+          "bbox": [
+            29,
+            35,
+            98,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 93,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": -0.167,
+          "height_deviation": 3.333,
+          "head_bbox": [
+            55,
+            43,
+            98,
+            82
+          ],
+          "head_size": [
+            44,
+            40
+          ],
+          "head_delta_idle": [
+            0,
+            0
+          ],
+          "generated_head_bbox": [
+            56,
+            45,
+            98,
+            82
+          ],
+          "generated_head_size": [
+            43,
+            38
+          ],
+          "box_bbox": [
+            35,
+            94,
+            57,
+            109
+          ],
+          "box_size": [
+            23,
+            16
+          ],
+          "box_delta_idle": [
+            0,
+            -3
+          ],
+          "shoe_bboxes": [
+            [
+              45,
+              110,
+              63,
+              127
+            ],
+            [
+              73,
+              111,
+              91,
+              127
+            ]
+          ],
+          "shoe_sizes": [
+            [
+              19,
+              18
+            ],
+            [
+              19,
+              17
+            ]
+          ],
+          "shoe_deltas_idle": [
+            [
+              -1,
+              0
+            ],
+            [
+              1,
+              -1
+            ]
+          ],
+          "head_cutout": true,
+          "final_translation": [
+            -1,
+            0
+          ],
+          "measurement_note": "Opaque approved head pixels composited without scaling; generated fringe remains and is included in composite bbox. Semantic bounds are manually annotated visible-support estimates; rotated/occluded shoes cannot certify +/-1px. Null means occluded.",
+          "head_size_pass": true,
+          "box_size_pass": false,
+          "shoe_size_pass": true,
+          "head_cutout_bbox": [
+            55,
+            43,
+            98,
+            82
+          ],
+          "head_cutout_size": [
+            44,
+            40
+          ],
+          "head_cutout_pixel_exact": true,
+          "height_delta_idle": -8,
+          "height_exception": "crouch/recovery",
+          "standing_height_pass": true,
+          "drift_height_deviation": null,
+          "drift_pass": true,
+          "strict_size_pass": false
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            30,
+            26,
+            98,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 64.0,
+          "height": 102,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.333,
+          "height_deviation": 12.333,
+          "head_bbox": [
+            55,
+            34,
+            98,
+            73
+          ],
+          "head_size": [
+            44,
+            40
+          ],
+          "head_delta_idle": [
+            0,
+            0
+          ],
+          "generated_head_bbox": [
+            56,
+            35,
+            97,
+            73
+          ],
+          "generated_head_size": [
+            42,
+            39
+          ],
+          "box_bbox": [
+            40,
+            87,
+            61,
+            102
+          ],
+          "box_size": [
+            22,
+            16
+          ],
+          "box_delta_idle": [
+            -1,
+            -3
+          ],
+          "shoe_bboxes": [
+            [
+              47,
+              110,
+              65,
+              127
+            ],
+            [
+              77,
+              111,
+              94,
+              127
+            ]
+          ],
+          "shoe_sizes": [
+            [
+              19,
+              18
+            ],
+            [
+              18,
+              17
+            ]
+          ],
+          "shoe_deltas_idle": [
+            [
+              -1,
+              0
+            ],
+            [
+              0,
+              -1
+            ]
+          ],
+          "head_cutout": true,
+          "final_translation": [
+            0,
+            0
+          ],
+          "measurement_note": "Opaque approved head pixels composited without scaling; generated fringe remains and is included in composite bbox. Semantic bounds are manually annotated visible-support estimates; rotated/occluded shoes cannot certify +/-1px. Null means occluded.",
+          "head_size_pass": true,
+          "box_size_pass": false,
+          "shoe_size_pass": true,
+          "head_cutout_bbox": [
+            55,
+            34,
+            98,
+            73
+          ],
+          "head_cutout_size": [
+            44,
+            40
+          ],
+          "head_cutout_pixel_exact": true,
+          "height_delta_idle": 1,
+          "height_exception": null,
+          "standing_height_pass": true,
+          "drift_height_deviation": 0.0,
+          "drift_pass": true,
+          "strict_size_pass": false
+        }
+      ],
+      "color_count": 20,
+      "palette_outside": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "numeric_pass": false,
+      "import_geometry_pass": true,
+      "strict_size_pass": false,
+      "selected_size_attempt": 4,
+      "size_attempt_count": 4,
+      "generation_grid": {
+        "size": [
+          1536,
+          1024
+        ],
+        "grid": [
+          {
+            "block_corner_agreement": 0.5326,
+            "translation": [
+              29,
+              54
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              69,
+              73
+            ],
+            "detected_source_box": [
+              31,
+              118,
+              100,
+              191
+            ],
+            "sample_pitch": 4
+          },
+          {
+            "block_corner_agreement": 0.5411,
+            "translation": [
+              30,
+              35
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              68,
+              92
+            ],
+            "detected_source_box": [
+              157,
+              99,
+              225,
+              191
+            ],
+            "sample_pitch": 4
+          },
+          {
+            "block_corner_agreement": 0.5227,
+            "translation": [
+              30,
+              26
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              67,
+              101
+            ],
+            "detected_source_box": [
+              287,
+              90,
+              354,
+              191
+            ],
+            "sample_pitch": 4
+          }
+        ]
+      },
+      "production_ready": false,
+      "head_cutout_used": true,
+      "dimensions_1x": [
+        384,
+        128
+      ],
+      "dimensions_4x": [
+        1536,
+        512
+      ],
+      "nonbinary_alpha_pixels": 0,
+      "visual_status": "Best available within 4 size attempts. Strict size rules are not fully met; inspect per-frame failures.",
+      "nearest_4x_exact": true
+    },
+    "Dash": {
+      "frames": [
+        {
+          "frame": 0,
+          "bbox": [
+            20,
+            34,
+            106,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.0,
+          "height": 94,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": -0.375,
+          "height_deviation": 0.5,
+          "head_bbox": [
+            61,
+            43,
+            105,
+            82
+          ],
+          "head_size": [
+            45,
+            40
+          ],
+          "head_delta_idle": [
+            1,
+            0
+          ],
+          "generated_head_bbox": [
+            61,
+            44,
+            105,
+            82
+          ],
+          "generated_head_size": [
+            45,
+            39
+          ],
+          "box_bbox": [
+            35,
+            83,
+            56,
+            100
+          ],
+          "box_size": [
+            22,
+            18
+          ],
+          "box_delta_idle": [
+            -1,
+            -1
+          ],
+          "shoe_bboxes": [
+            [
+              28,
+              111,
+              47,
+              127
+            ],
+            [
+              62,
+              109,
+              80,
+              125
+            ]
+          ],
+          "shoe_sizes": [
+            [
+              20,
+              17
+            ],
+            [
+              19,
+              17
+            ]
+          ],
+          "shoe_deltas_idle": [
+            [
+              0,
+              -1
+            ],
+            [
+              1,
+              -1
+            ]
+          ],
+          "head_cutout": true,
+          "final_translation": [
+            0,
+            0
+          ],
+          "measurement_note": "Opaque approved head pixels composited without scaling; generated fringe remains and is included in composite bbox. Semantic bounds are manually annotated visible-support estimates; rotated/occluded shoes cannot certify +/-1px. Null means occluded.",
+          "head_size_pass": true,
+          "box_size_pass": true,
+          "shoe_size_pass": true,
+          "head_cutout_bbox": [
+            61,
+            43,
+            104,
+            82
+          ],
+          "head_cutout_size": [
+            44,
+            40
+          ],
+          "head_cutout_pixel_exact": true,
+          "height_delta_idle": -7,
+          "height_exception": "dash lean",
+          "standing_height_pass": true,
+          "drift_height_deviation": 0.5,
+          "drift_pass": true,
+          "strict_size_pass": true
+        },
+        {
+          "frame": 1,
+          "bbox": [
+            22,
+            34,
+            106,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 64.0,
+          "height": 94,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.625,
+          "height_deviation": 0.5,
+          "head_bbox": [
+            60,
+            44,
+            104,
+            83
+          ],
+          "head_size": [
+            45,
+            40
+          ],
+          "head_delta_idle": [
+            1,
+            0
+          ],
+          "generated_head_bbox": [
+            60,
+            44,
+            104,
+            83
+          ],
+          "generated_head_size": [
+            45,
+            40
+          ],
+          "box_bbox": [
+            34,
+            83,
+            54,
+            99
+          ],
+          "box_size": [
+            21,
+            17
+          ],
+          "box_delta_idle": [
+            -2,
+            -2
+          ],
+          "shoe_bboxes": [
+            [
+              22,
+              103,
+              40,
+              120
+            ],
+            [
+              84,
+              113,
+              106,
+              127
+            ]
+          ],
+          "shoe_sizes": [
+            [
+              19,
+              18
+            ],
+            [
+              23,
+              15
+            ]
+          ],
+          "shoe_deltas_idle": [
+            [
+              -1,
+              0
+            ],
+            [
+              5,
+              -3
+            ]
+          ],
+          "head_cutout": true,
+          "final_translation": [
+            0,
+            0
+          ],
+          "measurement_note": "Opaque approved head pixels composited without scaling; generated fringe remains and is included in composite bbox. Semantic bounds are manually annotated visible-support estimates; rotated/occluded shoes cannot certify +/-1px. Null means occluded.",
+          "head_size_pass": true,
+          "box_size_pass": false,
+          "shoe_size_pass": false,
+          "head_cutout_bbox": [
+            60,
+            44,
+            103,
+            83
+          ],
+          "head_cutout_size": [
+            44,
+            40
+          ],
+          "head_cutout_pixel_exact": true,
+          "height_delta_idle": -7,
+          "height_exception": "dash lean",
+          "standing_height_pass": true,
+          "drift_height_deviation": 0.5,
+          "drift_pass": true,
+          "strict_size_pass": false
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            20,
+            35,
+            106,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.0,
+          "height": 93,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": -0.375,
+          "height_deviation": -0.5,
+          "head_bbox": [
+            62,
+            45,
+            106,
+            84
+          ],
+          "head_size": [
+            45,
+            40
+          ],
+          "head_delta_idle": [
+            1,
+            0
+          ],
+          "generated_head_bbox": [
+            64,
+            46,
+            106,
+            84
+          ],
+          "generated_head_size": [
+            43,
+            39
+          ],
+          "box_bbox": [
+            34,
+            85,
+            55,
+            103
+          ],
+          "box_size": [
+            22,
+            19
+          ],
+          "box_delta_idle": [
+            -1,
+            0
+          ],
+          "shoe_bboxes": [
+            [
+              25,
+              110,
+              42,
+              127
+            ],
+            [
+              59,
+              108,
+              77,
+              122
+            ]
+          ],
+          "shoe_sizes": [
+            [
+              18,
+              18
+            ],
+            [
+              19,
+              15
+            ]
+          ],
+          "shoe_deltas_idle": [
+            [
+              -2,
+              0
+            ],
+            [
+              1,
+              -3
+            ]
+          ],
+          "head_cutout": true,
+          "final_translation": [
+            -2,
+            0
+          ],
+          "measurement_note": "Opaque approved head pixels composited without scaling; generated fringe remains and is included in composite bbox. Semantic bounds are manually annotated visible-support estimates; rotated/occluded shoes cannot certify +/-1px. Null means occluded.",
+          "head_size_pass": true,
+          "box_size_pass": true,
+          "shoe_size_pass": false,
+          "head_cutout_bbox": [
+            63,
+            45,
+            106,
+            84
+          ],
+          "head_cutout_size": [
+            44,
+            40
+          ],
+          "head_cutout_pixel_exact": true,
+          "height_delta_idle": -8,
+          "height_exception": "dash lean",
+          "standing_height_pass": true,
+          "drift_height_deviation": -0.5,
+          "drift_pass": true,
+          "strict_size_pass": false
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            21,
+            35,
+            106,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 93,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.125,
+          "height_deviation": -0.5,
+          "head_bbox": [
+            62,
+            45,
+            106,
+            84
+          ],
+          "head_size": [
+            45,
+            40
+          ],
+          "head_delta_idle": [
+            1,
+            0
+          ],
+          "generated_head_bbox": [
+            62,
+            46,
+            104,
+            84
+          ],
+          "generated_head_size": [
+            43,
+            39
+          ],
+          "box_bbox": [
+            35,
+            85,
+            56,
+            103
+          ],
+          "box_size": [
+            22,
+            19
+          ],
+          "box_delta_idle": [
+            -1,
+            0
+          ],
+          "shoe_bboxes": [
+            [
+              28,
+              111,
+              45,
+              127
+            ],
+            [
+              84,
+              114,
+              106,
+              127
+            ]
+          ],
+          "shoe_sizes": [
+            [
+              18,
+              17
+            ],
+            [
+              23,
+              14
+            ]
+          ],
+          "shoe_deltas_idle": [
+            [
+              -2,
+              -1
+            ],
+            [
+              5,
+              -4
+            ]
+          ],
+          "head_cutout": true,
+          "final_translation": [
+            0,
+            0
+          ],
+          "measurement_note": "Opaque approved head pixels composited without scaling; generated fringe remains and is included in composite bbox. Semantic bounds are manually annotated visible-support estimates; rotated/occluded shoes cannot certify +/-1px. Null means occluded.",
+          "head_size_pass": true,
+          "box_size_pass": true,
+          "shoe_size_pass": false,
+          "head_cutout_bbox": [
+            63,
+            45,
+            106,
+            84
+          ],
+          "head_cutout_size": [
+            44,
+            40
+          ],
+          "head_cutout_pixel_exact": true,
+          "height_delta_idle": -8,
+          "height_exception": "dash lean",
+          "standing_height_pass": true,
+          "drift_height_deviation": -0.5,
+          "drift_pass": true,
+          "strict_size_pass": false
+        }
+      ],
+      "color_count": 20,
+      "palette_outside": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "numeric_pass": false,
+      "import_geometry_pass": true,
+      "strict_size_pass": false,
+      "selected_size_attempt": 4,
+      "size_attempt_count": 4,
+      "generation_grid": {
+        "size": [
+          1536,
+          1024
+        ],
+        "grid": [
+          {
+            "block_corner_agreement": 0.5333,
+            "translation": [
+              20,
+              34
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              86,
+              93
+            ],
+            "detected_source_box": [
+              51,
+              26,
+              137,
+              119
+            ],
+            "sample_pitch": 4
+          },
+          {
+            "block_corner_agreement": 0.5257,
+            "translation": [
+              22,
+              34
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              84,
+              93
+            ],
+            "detected_source_box": [
+              244,
+              26,
+              328,
+              119
+            ],
+            "sample_pitch": 4
+          },
+          {
+            "block_corner_agreement": 0.5337,
+            "translation": [
+              22,
+              35
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              84,
+              92
+            ],
+            "detected_source_box": [
+              52,
+              147,
+              136,
+              239
+            ],
+            "sample_pitch": 4
+          },
+          {
+            "block_corner_agreement": 0.5338,
+            "translation": [
+              21,
+              35
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              85,
+              92
+            ],
+            "detected_source_box": [
+              243,
+              147,
+              328,
+              239
+            ],
+            "sample_pitch": 4
+          }
+        ]
+      },
+      "production_ready": false,
+      "head_cutout_used": true,
+      "dimensions_1x": [
+        512,
+        128
+      ],
+      "dimensions_4x": [
+        2048,
+        512
+      ],
+      "nonbinary_alpha_pixels": 0,
+      "visual_status": "Best available within 4 size attempts. Strict size rules are not fully met; inspect per-frame failures.",
+      "nearest_4x_exact": true
+    },
+    "Hit": {
+      "frames": [
+        {
+          "frame": 0,
+          "bbox": [
+            24,
+            26,
+            104,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 64.0,
+          "height": 102,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.25,
+          "height_deviation": 4.0,
+          "head_bbox": [
+            56,
+            35,
+            98,
+            75
+          ],
+          "head_size": [
+            43,
+            41
+          ],
+          "head_delta_idle": [
+            -1,
+            1
+          ],
+          "generated_head_bbox": [
+            56,
+            35,
+            98,
+            75
+          ],
+          "generated_head_size": [
+            43,
+            41
+          ],
+          "box_bbox": [
+            43,
+            90,
+            65,
+            106
+          ],
+          "box_size": [
+            23,
+            17
+          ],
+          "box_delta_idle": [
+            0,
+            -2
+          ],
+          "shoe_bboxes": [
+            [
+              51,
+              110,
+              71,
+              127
+            ],
+            [
+              87,
+              110,
+              104,
+              127
+            ]
+          ],
+          "shoe_sizes": [
+            [
+              21,
+              18
+            ],
+            [
+              18,
+              18
+            ]
+          ],
+          "shoe_deltas_idle": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "head_cutout": false,
+          "final_translation": [
+            0,
+            0
+          ],
+          "measurement_note": "Opaque approved head pixels composited without scaling; generated fringe remains and is included in composite bbox. Semantic bounds are manually annotated visible-support estimates; rotated/occluded shoes cannot certify +/-1px. Null means occluded.",
+          "head_size_pass": true,
+          "box_size_pass": false,
+          "shoe_size_pass": true,
+          "height_delta_idle": 1,
+          "height_exception": null,
+          "standing_height_pass": true,
+          "drift_height_deviation": 4.0,
+          "drift_pass": false,
+          "strict_size_pass": false
+        },
+        {
+          "frame": 1,
+          "bbox": [
+            24,
+            34,
+            103,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 94,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": -0.25,
+          "height_deviation": -4.0,
+          "head_bbox": [
+            56,
+            45,
+            97,
+            85
+          ],
+          "head_size": [
+            42,
+            41
+          ],
+          "head_delta_idle": [
+            -2,
+            1
+          ],
+          "generated_head_bbox": [
+            56,
+            45,
+            97,
+            85
+          ],
+          "generated_head_size": [
+            42,
+            41
+          ],
+          "box_bbox": [
+            38,
+            93,
+            61,
+            111
+          ],
+          "box_size": [
+            24,
+            19
+          ],
+          "box_delta_idle": [
+            1,
+            0
+          ],
+          "shoe_bboxes": [
+            [
+              45,
+              110,
+              64,
+              127
+            ],
+            [
+              75,
+              112,
+              92,
+              127
+            ]
+          ],
+          "shoe_sizes": [
+            [
+              20,
+              18
+            ],
+            [
+              18,
+              16
+            ]
+          ],
+          "shoe_deltas_idle": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              -2
+            ]
+          ],
+          "head_cutout": false,
+          "final_translation": [
+            0,
+            0
+          ],
+          "measurement_note": "Opaque approved head pixels composited without scaling; generated fringe remains and is included in composite bbox. Semantic bounds are manually annotated visible-support estimates; rotated/occluded shoes cannot certify +/-1px. Null means occluded.",
+          "head_size_pass": false,
+          "box_size_pass": true,
+          "shoe_size_pass": false,
+          "height_delta_idle": -7,
+          "height_exception": null,
+          "standing_height_pass": false,
+          "drift_height_deviation": -4.0,
+          "drift_pass": false,
+          "strict_size_pass": false
+        }
+      ],
+      "color_count": 20,
+      "palette_outside": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "numeric_pass": false,
+      "import_geometry_pass": false,
+      "strict_size_pass": false,
+      "selected_size_attempt": 4,
+      "size_attempt_count": 4,
+      "generation_grid": {
+        "size": [
+          1536,
+          1024
+        ],
+        "grid": [
+          {
+            "block_corner_agreement": 0.5416,
+            "translation": [
+              24,
+              26
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              80,
+              101
+            ],
+            "detected_source_box": [
+              55,
+              90,
+              135,
+              191
+            ],
+            "sample_pitch": 4
+          },
+          {
+            "block_corner_agreement": 0.5463,
+            "translation": [
+              24,
+              34
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              79,
+              93
+            ],
+            "detected_source_box": [
+              251,
+              98,
+              330,
+              191
+            ],
+            "sample_pitch": 4
+          }
+        ]
+      },
+      "production_ready": false,
+      "head_cutout_used": false,
+      "dimensions_1x": [
+        256,
+        128
+      ],
+      "dimensions_4x": [
+        1024,
+        512
+      ],
+      "nonbinary_alpha_pixels": 0,
+      "visual_status": "Best available within 4 size attempts. Strict size rules are not fully met; inspect per-frame failures.",
+      "nearest_4x_exact": true
+    },
+    "Death": {
+      "frames": [
+        {
+          "frame": 0,
+          "bbox": [
+            30,
+            26,
+            98,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 64.0,
+          "height": 102,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.5,
+          "height_deviation": 31.667,
+          "head_bbox": [
+            55,
+            35,
+            98,
+            74
+          ],
+          "head_size": [
+            44,
+            40
+          ],
+          "head_delta_idle": [
+            0,
+            0
+          ],
+          "generated_head_bbox": [
+            55,
+            35,
+            98,
+            74
+          ],
+          "generated_head_size": [
+            44,
+            40
+          ],
+          "box_bbox": [
+            40,
+            87,
+            61,
+            104
+          ],
+          "box_size": [
+            22,
+            18
+          ],
+          "box_delta_idle": [
+            -1,
+            -1
+          ],
+          "shoe_bboxes": [
+            [
+              48,
+              110,
+              67,
+              127
+            ],
+            [
+              77,
+              111,
+              94,
+              127
+            ]
+          ],
+          "shoe_sizes": [
+            [
+              20,
+              18
+            ],
+            [
+              18,
+              17
+            ]
+          ],
+          "shoe_deltas_idle": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              -1
+            ]
+          ],
+          "head_cutout": false,
+          "final_translation": [
+            0,
+            0
+          ],
+          "measurement_note": "Opaque approved head pixels composited without scaling; generated fringe remains and is included in composite bbox. Semantic bounds are manually annotated visible-support estimates; rotated/occluded shoes cannot certify +/-1px. Null means occluded.",
+          "head_size_pass": true,
+          "box_size_pass": true,
+          "shoe_size_pass": true,
+          "height_delta_idle": 1,
+          "height_exception": "death pose",
+          "standing_height_pass": true,
+          "drift_height_deviation": null,
+          "drift_pass": true,
+          "strict_size_pass": true
+        },
+        {
+          "frame": 1,
+          "bbox": [
+            28,
+            38,
+            98,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.0,
+          "height": 90,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": -0.5,
+          "height_deviation": 19.667,
+          "head_bbox": [
+            53,
+            49,
+            97,
+            87
+          ],
+          "head_size": [
+            45,
+            39
+          ],
+          "head_delta_idle": [
+            1,
+            -1
+          ],
+          "generated_head_bbox": [
+            53,
+            49,
+            97,
+            87
+          ],
+          "generated_head_size": [
+            45,
+            39
+          ],
+          "box_bbox": [
+            30,
+            94,
+            53,
+            111
+          ],
+          "box_size": [
+            24,
+            18
+          ],
+          "box_delta_idle": [
+            1,
+            -1
+          ],
+          "shoe_bboxes": [
+            [
+              38,
+              112,
+              58,
+              127
+            ],
+            [
+              67,
+              112,
+              84,
+              127
+            ]
+          ],
+          "shoe_sizes": [
+            [
+              21,
+              16
+            ],
+            [
+              18,
+              16
+            ]
+          ],
+          "shoe_deltas_idle": [
+            [
+              1,
+              -2
+            ],
+            [
+              0,
+              -2
+            ]
+          ],
+          "head_cutout": false,
+          "final_translation": [
+            0,
+            0
+          ],
+          "measurement_note": "Opaque approved head pixels composited without scaling; generated fringe remains and is included in composite bbox. Semantic bounds are manually annotated visible-support estimates; rotated/occluded shoes cannot certify +/-1px. Null means occluded.",
+          "head_size_pass": true,
+          "box_size_pass": true,
+          "shoe_size_pass": false,
+          "height_delta_idle": -11,
+          "height_exception": "death pose",
+          "standing_height_pass": true,
+          "drift_height_deviation": null,
+          "drift_pass": true,
+          "strict_size_pass": false
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            28,
+            56,
+            100,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 64.0,
+          "height": 72,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.5,
+          "height_deviation": 1.667,
+          "head_bbox": [
+            54,
+            70,
+            100,
+            105
+          ],
+          "head_size": [
+            47,
+            36
+          ],
+          "head_delta_idle": [
+            3,
+            -4
+          ],
+          "generated_head_bbox": [
+            54,
+            70,
+            100,
+            105
+          ],
+          "generated_head_size": [
+            47,
+            36
+          ],
+          "box_bbox": [
+            31,
+            108,
+            54,
+            125
+          ],
+          "box_size": [
+            24,
+            18
+          ],
+          "box_delta_idle": [
+            1,
+            -1
+          ],
+          "shoe_bboxes": [
+            null,
+            null
+          ],
+          "shoe_sizes": [
+            null,
+            null
+          ],
+          "shoe_deltas_idle": [
+            null,
+            null
+          ],
+          "head_cutout": false,
+          "final_translation": [
+            0,
+            0
+          ],
+          "measurement_note": "Opaque approved head pixels composited without scaling; generated fringe remains and is included in composite bbox. Semantic bounds are manually annotated visible-support estimates; rotated/occluded shoes cannot certify +/-1px. Null means occluded.",
+          "head_size_pass": false,
+          "box_size_pass": true,
+          "shoe_size_pass": false,
+          "height_delta_idle": -29,
+          "height_exception": "death pose",
+          "standing_height_pass": true,
+          "drift_height_deviation": null,
+          "drift_pass": true,
+          "strict_size_pass": false
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            16,
+            58,
+            111,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 70,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.0,
+          "height_deviation": -0.333,
+          "head_bbox": [
+            68,
+            71,
+            110,
+            108
+          ],
+          "head_size": [
+            43,
+            38
+          ],
+          "head_delta_idle": [
+            -1,
+            -2
+          ],
+          "generated_head_bbox": [
+            68,
+            71,
+            110,
+            108
+          ],
+          "generated_head_size": [
+            43,
+            38
+          ],
+          "box_bbox": [
+            38,
+            113,
+            60,
+            127
+          ],
+          "box_size": [
+            23,
+            15
+          ],
+          "box_delta_idle": [
+            0,
+            -4
+          ],
+          "shoe_bboxes": [
+            [
+              17,
+              105,
+              35,
+              123
+            ],
+            null
+          ],
+          "shoe_sizes": [
+            [
+              19,
+              19
+            ],
+            null
+          ],
+          "shoe_deltas_idle": [
+            [
+              -1,
+              1
+            ],
+            null
+          ],
+          "head_cutout": false,
+          "final_translation": [
+            0,
+            0
+          ],
+          "measurement_note": "Opaque approved head pixels composited without scaling; generated fringe remains and is included in composite bbox. Semantic bounds are manually annotated visible-support estimates; rotated/occluded shoes cannot certify +/-1px. Null means occluded.",
+          "head_size_pass": false,
+          "box_size_pass": false,
+          "shoe_size_pass": false,
+          "height_delta_idle": -31,
+          "height_exception": "death pose",
+          "standing_height_pass": true,
+          "drift_height_deviation": null,
+          "drift_pass": true,
+          "strict_size_pass": false
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            12,
+            84,
+            114,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.0,
+          "height": 44,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": -0.5,
+          "height_deviation": -26.333,
+          "head_bbox": [
+            77,
+            99,
+            113,
+            127
+          ],
+          "head_size": [
+            37,
+            29
+          ],
+          "head_delta_idle": [
+            -7,
+            -11
+          ],
+          "generated_head_bbox": [
+            77,
+            99,
+            113,
+            127
+          ],
+          "generated_head_size": [
+            37,
+            29
+          ],
+          "box_bbox": [
+            40,
+            114,
+            62,
+            127
+          ],
+          "box_size": [
+            23,
+            14
+          ],
+          "box_delta_idle": [
+            0,
+            -5
+          ],
+          "shoe_bboxes": [
+            [
+              12,
+              108,
+              31,
+              123
+            ],
+            null
+          ],
+          "shoe_sizes": [
+            [
+              20,
+              16
+            ],
+            null
+          ],
+          "shoe_deltas_idle": [
+            [
+              0,
+              -2
+            ],
+            null
+          ],
+          "head_cutout": false,
+          "final_translation": [
+            0,
+            0
+          ],
+          "measurement_note": "Opaque approved head pixels composited without scaling; generated fringe remains and is included in composite bbox. Semantic bounds are manually annotated visible-support estimates; rotated/occluded shoes cannot certify +/-1px. Null means occluded.",
+          "head_size_pass": false,
+          "box_size_pass": false,
+          "shoe_size_pass": false,
+          "height_delta_idle": -57,
+          "height_exception": "death pose",
+          "standing_height_pass": true,
+          "drift_height_deviation": null,
+          "drift_pass": true,
+          "strict_size_pass": false
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            9,
+            84,
+            118,
+            127
+          ],
+          "bottom_row": 127,
+          "center_x": 63.5,
+          "height": 44,
+          "color_count": 20,
+          "forbidden_edge_pixels": 0,
+          "center_deviation": 0.0,
+          "height_deviation": -26.333,
+          "head_bbox": [
+            81,
+            98,
+            117,
+            127
+          ],
+          "head_size": [
+            37,
+            30
+          ],
+          "head_delta_idle": [
+            -7,
+            -10
+          ],
+          "generated_head_bbox": [
+            81,
+            98,
+            117,
+            127
+          ],
+          "generated_head_size": [
+            37,
+            30
+          ],
+          "box_bbox": [
+            45,
+            114,
+            67,
+            127
+          ],
+          "box_size": [
+            23,
+            14
+          ],
+          "box_delta_idle": [
+            0,
+            -5
+          ],
+          "shoe_bboxes": [
+            [
+              10,
+              109,
+              29,
+              123
+            ],
+            null
+          ],
+          "shoe_sizes": [
+            [
+              20,
+              15
+            ],
+            null
+          ],
+          "shoe_deltas_idle": [
+            [
+              0,
+              -3
+            ],
+            null
+          ],
+          "head_cutout": false,
+          "final_translation": [
+            0,
+            0
+          ],
+          "measurement_note": "Opaque approved head pixels composited without scaling; generated fringe remains and is included in composite bbox. Semantic bounds are manually annotated visible-support estimates; rotated/occluded shoes cannot certify +/-1px. Null means occluded.",
+          "head_size_pass": false,
+          "box_size_pass": false,
+          "shoe_size_pass": false,
+          "height_delta_idle": -57,
+          "height_exception": "death pose",
+          "standing_height_pass": true,
+          "drift_height_deviation": null,
+          "drift_pass": true,
+          "strict_size_pass": false
+        }
+      ],
+      "color_count": 20,
+      "palette_outside": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "numeric_pass": false,
+      "import_geometry_pass": true,
+      "strict_size_pass": false,
+      "selected_size_attempt": 4,
+      "size_attempt_count": 4,
+      "generation_grid": {
+        "size": [
+          1536,
+          1024
+        ],
+        "grid": [
+          {
+            "block_corner_agreement": 0.5846,
+            "translation": [
+              30,
+              26
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              68,
+              101
+            ],
+            "detected_source_box": [
+              30,
+              23,
+              98,
+              124
+            ],
+            "sample_pitch": 4
+          },
+          {
+            "block_corner_agreement": 0.5239,
+            "translation": [
+              28,
+              38
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              70,
+              89
+            ],
+            "detected_source_box": [
+              162,
+              35,
+              232,
+              124
+            ],
+            "sample_pitch": 4
+          },
+          {
+            "block_corner_agreement": 0.5242,
+            "translation": [
+              28,
+              56
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              72,
+              71
+            ],
+            "detected_source_box": [
+              286,
+              53,
+              358,
+              124
+            ],
+            "sample_pitch": 4
+          },
+          {
+            "block_corner_agreement": 0.554,
+            "translation": [
+              16,
+              58
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              95,
+              69
+            ],
+            "detected_source_box": [
+              21,
+              167,
+              116,
+              236
+            ],
+            "sample_pitch": 4
+          },
+          {
+            "block_corner_agreement": 0.547,
+            "translation": [
+              12,
+              84
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              102,
+              43
+            ],
+            "detected_source_box": [
+              136,
+              193,
+              238,
+              236
+            ],
+            "sample_pitch": 4
+          },
+          {
+            "block_corner_agreement": 0.5378,
+            "translation": [
+              9,
+              84
+            ],
+            "clipped_pixels": 0,
+            "raw_bbox": [
+              0,
+              0,
+              109,
+              43
+            ],
+            "detected_source_box": [
+              264,
+              193,
+              373,
+              236
+            ],
+            "sample_pitch": 4
+          }
+        ]
+      },
+      "production_ready": false,
+      "head_cutout_used": false,
+      "dimensions_1x": [
+        768,
+        128
+      ],
+      "dimensions_4x": [
+        3072,
+        512
+      ],
+      "nonbinary_alpha_pixels": 0,
+      "visual_status": "Best available within 4 size attempts. Strict size rules are not fully met; inspect per-frame failures.",
+      "nearest_4x_exact": true
+    }
+  },
+  "idle_reference": {
+    "path": "_1x/Hero_Idle.png",
+    "frame": 0,
+    "height": 101,
+    "bbox": [
+      30,
+      27,
+      98,
+      127
+    ],
+    "head_bbox": [
+      55,
+      35,
+      98,
+      74
+    ],
+    "head_size": [
+      44,
+      40
+    ],
+    "box_bbox": [
+      40,
+      84,
+      62,
+      102
+    ],
+    "box_size": [
+      23,
+      19
+    ],
+    "shoe_bboxes": [
+      [
+        48,
+        110,
+        67,
+        127
+      ],
+      [
+        77,
+        110,
+        94,
+        127
+      ]
+    ],
+    "shoe_sizes": [
+      [
+        20,
+        18
+      ],
+      [
+        18,
+        18
+      ]
+    ],
+    "measurement_method": "Manually delimited semantic rectangles, inclusive coordinates; opaque support measured inside each ROI. Head excludes ponytail and includes face and front bangs. Shoes include top cuff. Semantic boundaries are visually annotated, not a ground-truth instance mask.",
+    "sha256": "faa78a9a7317bd03715bb59c986ae0ea91834da64f09026b9896a6dd6727e218",
+    "verified_opaque_support": {
+      "head_bbox": [
+        55,
+        35,
+        98,
+        74
+      ],
+      "box_bbox": [
+        40,
+        84,
+        62,
+        102
+      ]
+    },
+    "verified_shoe_bboxes": [
+      [
+        48,
+        110,
+        67,
+        127
+      ],
+      [
+        77,
+        110,
+        94,
+        127
+      ]
+    ]
+  },
+  "idle_hashes_before": {
+    "_1x/Hero_Idle.png": "faa78a9a7317bd03715bb59c986ae0ea91834da64f09026b9896a6dd6727e218",
+    "Player/Hero_Idle.png": "cfc3d052517340f2540cf75f60622b230c333057ac4461cf6ead88e63524659c",
+    "Animations/Hero_Idle_3x.gif": "6ea0e9407ff66c9af8a75fdc97d634c61bb4307e2d9fe2883564f09a117aedb4"
+  },
+  "idle_hashes_after": {
+    "_1x/Hero_Idle.png": "faa78a9a7317bd03715bb59c986ae0ea91834da64f09026b9896a6dd6727e218",
+    "Player/Hero_Idle.png": "cfc3d052517340f2540cf75f60622b230c333057ac4461cf6ead88e63524659c",
+    "Animations/Hero_Idle_3x.gif": "6ea0e9407ff66c9af8a75fdc97d634c61bb4307e2d9fe2883564f09a117aedb4"
+  },
+  "idle_unchanged": true,
+  "saved_artifact_verification": {
+    "sheets": {
+      "Run": {
+        "files_verified": 3,
+        "colors": 20,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "nearest_4x_exact": true,
+        "gif_frames": 8,
+        "edge_and_baseline_pass": true
+      },
+      "JumpStart": {
+        "files_verified": 3,
+        "colors": 20,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "nearest_4x_exact": true,
+        "gif_frames": 2,
+        "edge_and_baseline_pass": true
+      },
+      "Fall": {
+        "files_verified": 3,
+        "colors": 20,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "nearest_4x_exact": true,
+        "gif_frames": 2,
+        "edge_and_baseline_pass": true
+      },
+      "Land": {
+        "files_verified": 3,
+        "colors": 20,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "nearest_4x_exact": true,
+        "gif_frames": 3,
+        "edge_and_baseline_pass": true
+      },
+      "Dash": {
+        "files_verified": 3,
+        "colors": 20,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "nearest_4x_exact": true,
+        "gif_frames": 4,
+        "edge_and_baseline_pass": true
+      },
+      "Hit": {
+        "files_verified": 3,
+        "colors": 20,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "nearest_4x_exact": true,
+        "gif_frames": 2,
+        "edge_and_baseline_pass": true
+      },
+      "Death": {
+        "files_verified": 3,
+        "colors": 20,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "nearest_4x_exact": true,
+        "gif_frames": 6,
+        "edge_and_baseline_pass": true
+      }
+    },
+    "idle_unchanged": true,
+    "size_chart_dimensions": [
+      4368,
+      570
+    ],
+    "strict_size_success": false
+  }
+}

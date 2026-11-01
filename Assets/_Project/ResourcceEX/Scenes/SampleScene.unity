@@ -3285,7 +3285,7 @@ MonoBehaviour:
   playGlideDuration: 1.2
   playCamera: {fileID: 0}
   pixelPerfectPlay: 1
-  legacyPlayOrthoSize: 6
+  legacyPlayOrthoSize: 8.4375
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3300,8 +3300,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.PixelPerfectCamera
   m_ComponentVersion: 1
   m_AssetsPPU: 32
-  m_RefResolutionX: 640
-  m_RefResolutionY: 360
+  m_RefResolutionX: 960
+  m_RefResolutionY: 540
   m_CropFrame: 0
   m_GridSnapping: 0
   m_FilterMode: 0
@@ -7089,10 +7089,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62dd8f79f12181c4d8b32aba922a95de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReTrap.PlayerController
-  moveSpeed: 3
+  moveSpeed: 6
   acceleration: 50
   deceleration: 50
-  jumpForce: 11
+  jumpForce: 12.6
   gravityScale: 4
   fallGravityMultiplier: 1.5
   jumpHoldGravityMult: 0.35
@@ -7213,8 +7213,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.1825}
-  m_Size: {x: 0.75, y: 1.875}
+  m_Offset: {x: 0, y: 0.37}
+  m_Size: {x: 0.75, y: 2.25}
   m_Direction: 0
 --- !u!114 &1250373946
 MonoBehaviour:
@@ -7270,7 +7270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d24b396e40dcec439497df560c4ed9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReTrap.DashGaugeUI
-  offset: {x: 1, y: 1.7}
+  offset: {x: 1, y: 2.1}
   size: 1
   fillColor: {r: 1, g: 1, b: 1, a: 1}
   emptyColor: {r: 1, g: 1, b: 1, a: 1}
@@ -9644,7 +9644,7 @@ MonoBehaviour:
       Size: {x: 0.01, y: 0.01}
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 1, z: 0}
+  TargetOffset: {x: 0, y: 1.5, z: 0}
   Damping: {x: 0.05, y: 0.05, z: 0}
   Lookahead:
     Enabled: 0
@@ -9676,7 +9676,7 @@ MonoBehaviour:
     CustomLookAtTarget: 1
   Lens:
     FieldOfView: 40
-    OrthographicSize: 5.625
+    OrthographicSize: 8.4375
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0

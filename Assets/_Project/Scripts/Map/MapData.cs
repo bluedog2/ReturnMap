@@ -73,7 +73,7 @@ namespace ReTrap
         /// <see cref="Migrate"/> 의 switch 에 이전 버전 → 다음 버전 단계 변환
         /// case 를 추가합니다. (한 버전씩 순차 마이그레이션)</para>
         /// </summary>
-        public const int CurrentVersion = 1;
+        public const int CurrentVersion = 2;
 
         /// <summary>
         /// 데이터 스키마 버전. 필드 추가·의미 변경 시 올리고
@@ -91,6 +91,14 @@ namespace ReTrap
         public int   width    = 24;
         public int   height   = 16;
         public float tileUnit = 1f;
+
+        /// <summary>
+        /// 함정 슬롯 한 변의 셀 수 (s). 슬롯은 s×s 영역을 차지하며 (x, y) 는 영역의 <b>좌하단</b> 셀입니다.
+        /// 맵 단위 설정이라 한 맵의 모든 슬롯이 같은 크기를 씁니다.
+        /// <para>버전 1 맵(필드 없음)은 <see cref="Migrate"/> 에서 1 로 고정됩니다
+        /// (JsonUtility 는 누락 필드에 이 초기값 2 를 쓰므로 반드시 강제 필요).</para>
+        /// </summary>
+        public int slotSize = 2;
 
         /// <summary>
         /// 좌표 원점 규약. 항상 true(좌하단 원점)로 고정하며, 명시적으로 직렬화해
@@ -142,6 +150,7 @@ namespace ReTrap
             return new MapData
             {
                 version    = CurrentVersion,
+                slotSize   = 2,
                 width      = width,
                 height     = height,
                 grid       = new int[width * height],          // 전부 Empty(0)
@@ -199,14 +208,62 @@ namespace ReTrap
 
         // ── 함정 슬롯 ─────────────────────────────────────────────────────────
 
-        /// <summary>해당 좌표의 슬롯 반환 (없으면 null).</summary>
+        /// <summary>해당 좌표가 <b>앵커(좌하단)</b> 와 정확히 일치하는 슬롯 반환 (없으면 null).</summary>
         public TrapSlotData GetSlot(int x, int y)
             => trapSlots.Find(s => s.x == x && s.y == y);
+
+        /// <summary>슬롯 영역(slotSize×slotSize) 안에 (x, y) 셀이 포함되는 슬롯 반환 (없으면 null).</summary>
+        public TrapSlotData FindSlotCovering(int x, int y)
+        {
+            int size = Mathf.Max(1, slotSize);
+            for (int i = 0; i < trapSlots.Count; i++)
+            {
+                var s = trapSlots[i];
+                if (x >= s.x && x < s.x + size && y >= s.y && y < s.y + size)
+                    return s;
+            }
+            return null;
+        }
+
+        /// <summary>슬롯이 차지하는 모든 셀 (앵커 기준 x..x+s-1, y..y+s-1).</summary>
+        public IEnumerable<Vector2Int> SlotCells(TrapSlotData slot)
+        {
+            int size = Mathf.Max(1, slotSize);
+            for (int dy = 0; dy < size; dy++)
+                for (int dx = 0; dx < size; dx++)
+                    yield return new Vector2Int(slot.x + dx, slot.y + dy);
+        }
+
+        /// <summary>
+        /// (x, y) 를 앵커로 새 슬롯을 놓을 수 있는지: 영역 전체가 맵 안이고
+        /// 기존 슬롯 영역과 겹치지 않아야 합니다.
+        /// </summary>
+        public bool SlotFits(int x, int y)
+        {
+            int size = Mathf.Max(1, slotSize);
+            if (!InBounds(x, y) || !InBounds(x + size - 1, y + size - 1)) return false;
+
+            for (int i = 0; i < trapSlots.Count; i++)
+            {
+                var o = trapSlots[i];
+                // 두 s×s 정사각형이 겹치는 조건 (축별 구간 겹침)
+                if (x < o.x + size && o.x < x + size && y < o.y + size && o.y < y + size)
+                    return false;
+            }
+            return true;
+        }
+
+        /// <summary>슬롯 영역의 <b>중심</b> 월드 좌표 (slotSize=1 이면 <see cref="CellToWorld"/> 와 동일).</summary>
+        public Vector2 SlotCenterToWorld(TrapSlotData slot, Vector2 origin = default)
+        {
+            float half = Mathf.Max(1, slotSize) * 0.5f;
+            return origin + new Vector2((slot.x + half) * tileUnit, (slot.y + half) * tileUnit);
+        }
 
         /// <summary>
         /// 슬롯 토글. 에디터 클릭 동작용.
         /// <list type="bullet">
-        ///   <item>슬롯 없음 → 새 슬롯 추가</item>
+        ///   <item>셀을 덮는 슬롯 없음 → <see cref="SlotFits"/> 일 때만 새 슬롯 추가 (겹치면 무시)</item>
         ///   <item>슬롯 있음 + 같은 anchor → 제거</item>
         ///   <item>슬롯 있음 + 다른 anchor → anchor 갱신</item>
         /// </list>
@@ -215,10 +272,11 @@ namespace ReTrap
         {
             if (!InBounds(x, y)) return;
 
-            var existing = GetSlot(x, y);
+            var existing = FindSlotCovering(x, y);
             if (existing == null)
             {
-                trapSlots.Add(new TrapSlotData(x, y, anchor));
+                if (SlotFits(x, y))
+                    trapSlots.Add(new TrapSlotData(x, y, anchor));
             }
             else if (existing.Anchor == anchor)
             {
@@ -255,8 +313,9 @@ namespace ReTrap
                     newBg[y * newW + x]   = background[y * width + x];
                 }
 
-            // 범위 밖 슬롯 제거
-            trapSlots.RemoveAll(s => s.x >= newW || s.y >= newH);
+            // 영역이 새 범위를 벗어나는 슬롯 제거
+            int size = Mathf.Max(1, slotSize);
+            trapSlots.RemoveAll(s => s.x + size > newW || s.y + size > newH);
 
             // spawn/goal 클램프
             spawnPoint = new GridCoord(Mathf.Clamp(spawnPoint.x, 0, newW - 1),
@@ -299,14 +358,20 @@ namespace ReTrap
                 return false;
             }
 
+            if (slotSize < 1)
+            {
+                error = $"slotSize 는 1 이상이어야 합니다: {slotSize}";
+                return false;
+            }
+
             if (trapSlots != null)
             {
-                var seenCoords = new HashSet<(int, int)>();
+                var seenCells = new HashSet<(int, int)>();
                 foreach (var s in trapSlots)
                 {
-                    if (!InBounds(s.x, s.y))
+                    if (!InBounds(s.x, s.y) || !InBounds(s.x + slotSize - 1, s.y + slotSize - 1))
                     {
-                        error = $"trapSlot 범위 초과: ({s.x},{s.y})";
+                        error = $"trapSlot 범위 초과: ({s.x},{s.y}) 영역 {slotSize}x{slotSize}";
                         return false;
                     }
 
@@ -317,11 +382,14 @@ namespace ReTrap
                         return false;
                     }
 
-                    // 같은 좌표에 슬롯이 2개 이상이면 제작 실수 — 조용히 뒤 항목이 무시되는 것 방지
-                    if (!seenCoords.Add((s.x, s.y)))
+                    // 슬롯 영역이 겹치면 제작 실수 (같은 좌표 중복 포함) — 조용히 뒤 항목이 무시되는 것 방지
+                    foreach (var c in SlotCells(s))
                     {
-                        error = $"trapSlot 좌표 중복: ({s.x},{s.y})";
-                        return false;
+                        if (!seenCells.Add((c.x, c.y)))
+                        {
+                            error = $"trapSlot 영역 겹침/중복: ({s.x},{s.y}) 의 셀 ({c.x},{c.y})";
+                            return false;
+                        }
                     }
                 }
             }
@@ -388,8 +456,12 @@ namespace ReTrap
 
                 switch (fromVersion)
                 {
-                    // 현재는 버전 1 뿐이라 분기 없음.
-                    // 예) case 1: /* v1 → v2 변환 */ data.version = 2; break;
+                    case 1:
+                        // v1 → v2: slotSize 필드 도입. 구버전 맵은 1칸 슬롯이므로 1 로 강제
+                        // (JsonUtility 는 누락 필드에 필드 초기값 2 를 넣는다).
+                        data.slotSize = 1;
+                        data.version  = 2;
+                        break;
 
                     default:
                         // 알 수 없는 과거 버전 — 더 진행할 수 없으므로 강제로 최신 취급하고 루프 탈출
@@ -405,6 +477,7 @@ namespace ReTrap
             }
 
             // 버전 무관 안전 보정 (구버전 맵·null 대비)
+            if (data.slotSize < 1) data.slotSize = 1;
             data.EnsureBackground();
         }
     }

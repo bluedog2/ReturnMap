@@ -97,6 +97,9 @@ namespace ReTrap
         /// <summary>비행 중인 화살 (씬 루트로 분리돼 있으므로 슈터 철거 시 직접 정리).</summary>
         private readonly List<Arrow> _activeArrows = new List<Arrow>();
 
+        /// <summary>슬롯 중심에서 발사구까지의 기본 거리(유닛, s=1 기준). 슬롯 크기 s 에 비례한다.</summary>
+        private const float FirePointDistance = 0.45f;
+
         // ── Unity ─────────────────────────────────────────────────────────────
 
         protected override void Awake()
@@ -117,7 +120,7 @@ namespace ReTrap
         /// 벽 규약(맵 데이터 기준): RightWall 슬롯은 왼쪽 가장자리 벽에 붙어 오른쪽(맵 안)으로,
         /// LeftWall 슬롯은 오른쪽 가장자리 벽에 붙어 왼쪽(맵 안)으로 발사한다.
         /// </summary>
-        private static Vector2 OutwardDir(TrapAnchor anchor) => anchor switch
+        internal static Vector2 OutwardDir(TrapAnchor anchor) => anchor switch
         {
             TrapAnchor.Floor     => Vector2.up,
             TrapAnchor.Ceiling   => Vector2.down,
@@ -131,17 +134,14 @@ namespace ReTrap
         /// 발사구(firePoint)도 발사 방향 쪽으로 옮겨 — 안 하면 벽/바닥 안에서
         /// 화살이 생성돼 즉시 소멸한다.
         /// </summary>
-        protected override void OnConfigureAnchor(TrapAnchor anchor)
+        protected override void OnConfigureAnchor(TrapAnchor anchor, int slotSize)
         {
             _fireDir = OutwardDir(anchor);
 
-            // 발사구를 발사 방향으로 (벽/바닥 안에서 화살이 생기지 않도록)
+            // 발사구를 발사 방향으로 (벽/바닥 안에서 화살이 생기지 않도록).
+            // 거리는 상수 * s 로 매번 새로 계산 — 기존 localPosition 크기를 쓰면 재설정 시 누적/왜곡된다.
             if (firePoint != null)
-            {
-                float dist = firePoint.localPosition.magnitude;
-                if (dist < 0.01f) dist = 0.45f;
-                firePoint.localPosition = (Vector3)(_fireDir * dist);
-            }
+                firePoint.localPosition = (Vector3)(_fireDir * (FirePointDistance * slotSize));
 
             // 활 본체(Visual) 회전. 실제 발사 방향(_fireDir)·화살 비행은 건드리지 않고
             // 스프라이트만 돌린다. 위아래는 y 반전, 좌우는 스프라이트가 발사 방향과

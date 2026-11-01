@@ -28,8 +28,10 @@ namespace ReTrap
             {
                 if (!(traps[i] is ArrowShooter shooter) || shooter == null) continue;
 
-                GridCoord cell = WorldToCell(shooter.transform.position);
-                if (Mathf.Abs(cell.y - q.From.y) > 1) continue;
+                // 슬롯 영역 [origin.y, origin.y+s-1] 이 에이전트 행 ±1 범위와 겹치면 같은 행으로 본다
+                // (s=1 이면 기존 |cell.y - From.y| <= 1 과 동일)
+                GridCoord origin = shooter.SlotOrigin;
+                if (origin.y > q.From.y + 1 || origin.y + shooter.SlotSize - 1 < q.From.y - 1) continue;
 
                 s.phase = q.From.x + 1;
                 return new TraitAction { pauseSeconds = pauseSeconds };

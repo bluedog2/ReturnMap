@@ -291,8 +291,9 @@ namespace ReTrap
             // ── 2. 타일 생성 ─────────────────────────────────────────────────
             _slotCells.Clear();
             foreach (var slot in map.trapSlots)
-                if (map.InBounds(slot.x, slot.y))
-                    _slotCells.Add(map.Index(slot.x, slot.y));
+                foreach (var c in map.SlotCells(slot))
+                    if (map.InBounds(c.x, c.y))
+                        _slotCells.Add(map.Index(c.x, c.y));
 
             for (int y = 0; y < map.height; y++)
             {
@@ -629,13 +630,17 @@ namespace ReTrap
 
         private void BuildSlotMarker(MapData map, TrapSlotData slot, Vector2 origin)
         {
-            Vector2 worldPos = map.CellToWorld(slot.x, slot.y, origin);
+            int     slotSize = Mathf.Max(1, map.slotSize);
+            Vector2 worldPos = map.SlotCenterToWorld(slot, origin); // s×s 영역 중심 (s=1 이면 셀 중심)
 
             var go = new GameObject($"Slot_{slot.anchor}_{slot.x}_{slot.y}");
             go.transform.SetParent(_mapRoot, false);
             go.transform.position = worldPos;
 
-            var sr = go.AddComponent<SpriteRenderer>();
+            // 가이드는 자식 "Guide" 에 분리 — s×s 로 스케일해도 봉인(자식)·콜라이더가 영향받지 않게 한다.
+            var guide = new GameObject("Guide");
+            guide.transform.SetParent(go.transform, false);
+            var sr = guide.AddComponent<SpriteRenderer>();
             if (_palette != null)
             {
                 sr.sprite = _palette.GetSlotSprite(slot.Anchor);
@@ -655,9 +660,13 @@ namespace ReTrap
             if (sr.sprite == null)
                 sr.sprite = GetFallbackSprite();
 
+            // 가이드 스프라이트를 슬롯 영역(s×s 셀)에 맞춰 스케일 (s=1 은 기존과 동일하게 원본 크기 유지)
+            if (slotSize > 1)
+                FitGuideToSlot(sr, map.tileUnit * slotSize);
+
             // TrapSlotMarker 컴포넌트 — 5단계 런타임 레지스트리용
             var marker = go.AddComponent<TrapSlotMarker>();
-            marker.Init(slot.x, slot.y, slot.Anchor);
+            marker.Init(slot.x, slot.y, slot.Anchor, slotSize);
 
             // Play 페이즈에서 빈 슬롯을 막을 봉인 타일 구성
             // (anchor 방향에 어울리는 타일 외형 — 부착면과 같은 재질로 보이게)
@@ -697,7 +706,19 @@ namespace ReTrap
                 _palette != null ? _palette.TileSortingLayer : null,
                 _palette != null ? _palette.TileSortingOrder : 0,
                 _palette != null ? _palette.GetCollisionLayerIndex(sealType) : 0,
-                map.tileUnit);
+                map.tileUnit,
+                slotSize);
+        }
+
+        /// <summary>
+        /// 가이드 스프라이트를 정확히 extent×extent 유닛(슬롯 영역)으로 채웁니다.
+        /// s=1 에서는 호출하지 않아(기존 동작 유지) s&gt;1 일 때만 쓰인다.
+        /// </summary>
+        private static void FitGuideToSlot(SpriteRenderer sr, float extent)
+        {
+            Vector2 b = sr.sprite.bounds.size;
+            if (b.x > 0.0001f && b.y > 0.0001f)
+                sr.transform.localScale = new Vector3(extent / b.x, extent / b.y, 1f);
         }
 
         // ── 언로드 ────────────────────────────────────────────────────────────

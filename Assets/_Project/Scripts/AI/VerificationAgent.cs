@@ -437,8 +437,8 @@ namespace ReTrap
         }
 
         /// <summary>
-        /// 하강(아크 아님) 세그먼트 전용 이동 — 낙하의 중력가속 연출. 수평(x)은 등속,
-        /// 수직(y)은 진행도 t 를 t² 로 보간해 가속하는 느낌을 낸다(할당 없는 ease-in).
+        /// 하강(아크 아님) 세그먼트 전용 이동 — 발판 끝(옆 빈 칸)까지 수평으로 걸어 나간 뒤 수직 낙하.
+        /// 낙하는 진행도 t 를 t² 로 보간해 가속하는 느낌을 낸다(할당 없는 ease-in).
         /// 다만 Glide(낙하산) 보유 시에는 <see cref="ComputeFrameSpeed"/> 가 이미 하강
         /// 속도를 ×0.3 로 늦추고 있고, 활공은 가속 없이 등속 하강이 자연스러우므로 y 도
         /// t 그대로(선형) 사용한다. MoveArc(점프 포물선)와 혼동하지 않도록 별도 메서드로
@@ -447,8 +447,22 @@ namespace ReTrap
         private IEnumerator MoveFall(Vector2 target, MoveQuery q)
         {
             Vector2 start = transform.position;
-            float   dist  = Vector2.Distance(start, target);
-            if (dist < 0.0001f) yield break;
+            if (Vector2.Distance(start, target) < 0.0001f) yield break;
+
+            // 1) 같은 높이로 옆 칸(플래너가 보장한 빈 칸) 중심까지 걸어 나간다 — 발판 끝에서 떨어지기.
+            //    대각선으로 미끄러지며 떨어지면 발판 모서리·아래 칸을 뚫고 지나가 보였다.
+            Vector2 edge = new Vector2(target.x, start.y);
+            while (!IsDone && Mathf.Abs(transform.position.x - edge.x) > 0.0001f)
+            {
+                float step = ComputeFrameSpeed(in q) * Time.deltaTime;
+                transform.position = Vector2.MoveTowards(transform.position, edge, step);
+                yield return null;
+            }
+            if (IsDone) yield break;
+
+            // 2) 그 칸의 빈 기둥을 따라 수직 낙하
+            float dist = Mathf.Abs(edge.y - target.y);
+            if (dist < 0.0001f) { transform.position = target; yield break; }
 
             bool gliding = _ctx != null && _ctx.HasFlag(SpecialFlag.Glide);
 
@@ -459,11 +473,7 @@ namespace ReTrap
                 float t = Mathf.Clamp01(traveled / dist);
 
                 float ty = gliding ? t : t * t; // 일반 낙하만 가속(ease-in), 활공은 등속
-
-                Vector2 pos;
-                pos.x = Mathf.Lerp(start.x, target.x, t);
-                pos.y = Mathf.Lerp(start.y, target.y, ty);
-                transform.position = pos;
+                transform.position = new Vector2(target.x, Mathf.Lerp(edge.y, target.y, ty));
 
                 yield return null;
             }

@@ -78,7 +78,7 @@ namespace ReTrap
         // CompatibleAnchors 는 TrapBase 기본 구현(TrapDefinition 참조)을 그대로 사용.
 
         /// <summary>천장 슬롯이면 가시를 아래 방향으로 뒤집고 지오메트리 재계산.</summary>
-        protected override void OnConfigureAnchor(TrapAnchor anchor)
+        protected override void OnConfigureAnchor(TrapAnchor anchor, int slotSize)
         {
             isFlipped = anchor == TrapAnchor.Ceiling;
             RecalcGeometry();
@@ -101,31 +101,36 @@ namespace ReTrap
 
         /// <summary>
         /// 함정 칸이 솔리드 타일이 된 규칙에 맞춰 가시·트리거를 셀 표면 밖으로 배치.
+        /// 슬롯이 s×s 이면 표면은 ±0.5*s, 돌출 거리는 extendHeight*s (가시 끝 높이 spikeTipLocalY 는 스프라이트 고정값이라 비례하지 않음).
         /// <list type="bullet">
-        ///   <item>돌출: 표면(±0.5) 밖으로 extendHeight 만큼 솟음 — 밟으면 데미지</item>
+        ///   <item>돌출: 표면(±0.5*s) 밖으로 extendHeight*s 만큼 솟음 — 밟으면 데미지</item>
         ///   <item>수축: 셀 내부로 완전히 숨음 — 표면이 평범한 타일이 됨</item>
         ///   <item>데미지 트리거: 돌출 구역만 커버 (셀 내부는 솔리드 박스가 차지)</item>
         /// </list>
         /// </summary>
         private void RecalcGeometry()
         {
-            // isFlipped=false(바닥): 표면 = +0.5, 돌출 = 위쪽
-            // isFlipped=true(천장) : 표면 = -0.5, 돌출 = 아래쪽
+            int   s    = SlotSize;
+            float half = 0.5f * s;          // 슬롯 중심 → 표면 거리
+            float e    = extendHeight * s;  // 돌출 거리
+
+            // isFlipped=false(바닥): 표면 = +half, 돌출 = 위쪽
+            // isFlipped=true(천장) : 표면 = -half, 돌출 = 아래쪽
             float sign = isFlipped ? -1f : 1f;
 
             // 데미지 트리거 위치(시각과 분리 — 판정은 항상 동일)
-            float triggerY = sign * (0.5f + extendHeight * 0.5f);
+            float triggerY = sign * (half + e * 0.5f);
 
             if (spikeTipLocalY > 0f)
             {
-                // 측정된 가시 끝 높이 기준: 돌출 시 끝이 표면 + extendHeight, 수축 시 표면 + retractedReveal
-                extendedY  = sign * (0.5f + extendHeight   - spikeTipLocalY);
-                retractedY = sign * (0.5f + retractedReveal - spikeTipLocalY);
+                // 측정된 가시 끝 높이 기준: 돌출 시 끝이 표면 + e, 수축 시 표면 + retractedReveal
+                extendedY  = sign * (half + e              - spikeTipLocalY);
+                retractedY = sign * (half + retractedReveal - spikeTipLocalY);
             }
             else
             {
                 extendedY  = triggerY;
-                retractedY = extendedY - sign * extendHeight;
+                retractedY = extendedY - sign * e;
             }
 
             // 천장이면 가시·하우징·글로우 스프라이트를 상하 반전 (프리팹 루트는 회전/스케일하지 않음)
@@ -137,7 +142,7 @@ namespace ReTrap
             // 데미지 트리거를 표면 돌출 구역으로 이동
             if (DamageArea is BoxCollider2D box)
             {
-                box.size   = new Vector2(0.8f, extendHeight);
+                box.size   = new Vector2(0.8f * s, e);
                 box.offset = new Vector2(0f, triggerY);
             }
         }

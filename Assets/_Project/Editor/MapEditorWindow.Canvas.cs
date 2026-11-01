@@ -174,7 +174,7 @@ namespace ReTrap.EditorTools
             foreach (var slot in map.trapSlots)
             {
                 if (!map.InBounds(slot.x, slot.y)) continue;
-                Rect  rect = CellRect(map, origin, slot.x, slot.y);
+                Rect  rect = CellRect(map, origin, slot.x, slot.y, map.slotSize); // s×s 영역
                 Color tint = _palette != null
                     ? _palette.GetSlotTint(slot.Anchor)
                     : TilePaletteConfig.DefaultSlotTint;
@@ -278,6 +278,28 @@ namespace ReTrap.EditorTools
         private void DrawHover(MapData map, Vector2 origin)
         {
             if (!map.InBounds(_hoverX, _hoverY)) return;
+
+            // 슬롯 펜: 덮는 슬롯이 있으면 그 영역, 없으면 호버 셀을 좌하단으로 하는 s×s 프리뷰.
+            // 놓을 수 없으면(맵 밖·겹침) 빨간색.
+            if (_brushMode == BrushMode.Slot && _activeTool == ActiveTool.Pen && _editLayer == EditLayer.Foreground)
+            {
+                var covering = map.FindSlotCovering(_hoverX, _hoverY);
+                if (covering != null)
+                {
+                    Rect area = CellRect(map, origin, covering.x, covering.y, map.slotSize);
+                    EditorGUI.DrawRect(area, ColHover);
+                    DrawRectOutline(area, Color.white, 1f);
+                }
+                else
+                {
+                    bool fits = map.SlotFits(_hoverX, _hoverY);
+                    Rect preview = CellRect(map, origin, _hoverX, _hoverY, map.slotSize);
+                    EditorGUI.DrawRect(preview, fits ? ColHover : new Color(1f, 0.15f, 0.15f, 0.35f));
+                    DrawRectOutline(preview, fits ? Color.white : new Color(1f, 0.3f, 0.3f), 1f);
+                }
+                return;
+            }
+
             Rect rect = CellRect(map, origin, _hoverX, _hoverY);
             EditorGUI.DrawRect(rect, ColHover);
             DrawRectOutline(rect, Color.white, 1f);
@@ -288,12 +310,13 @@ namespace ReTrap.EditorTools
         /// <summary>
         /// 셀(x,y) → 스크롤 콘텐츠 내 Rect.
         /// originBottomLeft 규약: 데이터 y=0 이 화면 아래쪽에 오도록 y 뒤집기.
+        /// size&gt;1 이면 (x,y) 를 좌하단으로 하는 size×size 영역 Rect (슬롯 영역용).
         /// </summary>
-        private Rect CellRect(MapData map, Vector2 origin, int x, int y)
+        private Rect CellRect(MapData map, Vector2 origin, int x, int y, int size = 1)
         {
             float sx = origin.x + x * _cellSize;
-            float sy = origin.y + (map.height - 1 - y) * _cellSize;
-            return new Rect(sx, sy, _cellSize, _cellSize);
+            float sy = origin.y + (map.height - size - y) * _cellSize;
+            return new Rect(sx, sy, _cellSize * size, _cellSize * size);
         }
 
         private static void DrawRectOutline(Rect r, Color col, float t)

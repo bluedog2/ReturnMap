@@ -37,9 +37,9 @@ namespace ReTrap.EditorTools
         };
 
         // 화풍 v2 (docs/hero-b-scale-impact.md D1 ②): 아트 키 80px, 판정은 머리 꼭대기·포니테일 제외 60px
-        private static readonly Vector2 NewColliderSize = new Vector2(0.75f, 1.875f);
-        private const float   CameraTargetOffsetY = 1.0f;                     // 몸 중간이 화면 중심 근처에 오게
-        private static readonly Vector2 DashGaugeOffset = new Vector2(1.0f, 1.7f); // 새 키의 머리 옆
+        private static readonly Vector2 NewColliderSize = new Vector2(0.75f, 2.25f);   // 3칸(96px) 키의 3/4 — docs/scale-3tile.md
+        private const float   CameraTargetOffsetY = 1.5f;                     // 몸 중간이 화면 중심 근처에 오게
+        private static readonly Vector2 DashGaugeOffset = new Vector2(1.0f, 2.1f); // 새 키의 머리 옆
 
         [MenuItem("ReTrap/Setup/Px32 주인공 연결", false, 112)]
         public static void Run()

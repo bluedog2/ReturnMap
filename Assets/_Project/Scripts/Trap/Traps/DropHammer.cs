@@ -122,6 +122,15 @@ namespace ReTrap
 
         private Coroutine _impactCoroutine;
 
+        // 슬롯 크기 s 에 비례하는 값 (s=1 이면 인스펙터 값 그대로)
+        private float DetectionWidth => detectionWidth * SlotSize;
+        private float RayOriginOffset => rayOriginOffset * SlotSize;
+
+        // 콜라이더 원본 크기/오프셋 — 최초 1회 캐시해 재설정해도 s 가 누적 곱해지지 않게 한다
+        private bool    _colliderOriginalsCached;
+        private Vector2 _damageSize,   _damageOffset;
+        private Vector2 _platformSize, _platformOffset;
+
         private Rigidbody2D  rb;
         private Vector2      ceilingPosition;  // 원래 천장 위치
         private float        floorY;           // 낙하 목표 Y (지면 감지 결과)
@@ -135,6 +144,30 @@ namespace ReTrap
 
         private bool isTrapActive; // Normal/Critical 상태에서 활성
         private Coroutine activeCoroutine;
+
+        // ── 슬롯 크기 ─────────────────────────────────────────────────────────
+
+        /// <summary>슬롯이 s×s 이면 데미지·발판 박스를 원본 ×s 로 키운다 (감지 폭·지면 오프셋은 프로퍼티가 s 를 곱함).</summary>
+        protected override void OnConfigureAnchor(TrapAnchor anchor, int slotSize)
+        {
+            if (!_colliderOriginalsCached)
+            {
+                if (DamageArea is BoxCollider2D d)   { _damageSize = d.size;   _damageOffset = d.offset; }
+                if (PlatformArea is BoxCollider2D p) { _platformSize = p.size; _platformOffset = p.offset; }
+                _colliderOriginalsCached = true;
+            }
+
+            if (DamageArea is BoxCollider2D dmg)
+            {
+                dmg.size   = _damageSize   * slotSize;
+                dmg.offset = _damageOffset * slotSize;
+            }
+            if (PlatformArea is BoxCollider2D plat)
+            {
+                plat.size   = _platformSize   * slotSize;
+                plat.offset = _platformOffset * slotSize;
+            }
+        }
 
         // ── Unity ─────────────────────────────────────────────────────────────
 
@@ -178,10 +211,10 @@ namespace ReTrap
             if (mount != null)
                 mount.position = new Vector3(ceilingPosition.x, ceilingPosition.y, mount.position.z);
 
-            // 타일 배경도 슬롯 칸에 고정 — 루트 자식이라 그대로 두면 해머와 함께 떨어져 천장 타일이 깜빡여 보인다.
-            var bg = TileBackgroundRenderer;
+            // 타일 배경(컨테이너째)도 슬롯 칸에 고정 — 루트 자식이라 그대로 두면 해머와 함께 떨어져 천장 타일이 깜빡여 보인다.
+            var bg = TileBackgroundRoot;
             if (bg != null)
-                bg.transform.position = new Vector3(ceilingPosition.x, ceilingPosition.y, bg.transform.position.z);
+                bg.position = new Vector3(ceilingPosition.x, ceilingPosition.y, bg.position.z);
 
             if (chain == null) return;
 
@@ -284,7 +317,7 @@ namespace ReTrap
             float height = Mathf.Max(0.1f, ceilingPosition.y - floorY);
             Vector2 center = new Vector2(ceilingPosition.x,
                                          (ceilingPosition.y + floorY) * 0.5f);
-            Vector2 size   = new Vector2(detectionWidth, height);
+            Vector2 size   = new Vector2(DetectionWidth, height);
 
             int count = Physics2D.OverlapBox(center, size, 0f, detectionFilter, detectionHits);
             for (int i = 0; i < count; i++)
@@ -380,8 +413,8 @@ namespace ReTrap
             if (impact == null) return;
             if (_impactCoroutine != null) StopCoroutine(_impactCoroutine);
 
-            // 지면 표면 = floorY - rayOriginOffset. 스프라이트 하단(캔버스 바닥)을 지면에 맞춘다.
-            float groundY = floorY - rayOriginOffset;
+            // 지면 표면 = floorY - RayOriginOffset. 스프라이트 하단(캔버스 바닥)을 지면에 맞춘다.
+            float groundY = floorY - RayOriginOffset;
             float halfH   = impact.sprite != null ? impact.sprite.bounds.extents.y : 0f;
             impact.transform.position = new Vector3(
                 transform.position.x, groundY + halfH, impact.transform.position.z);
@@ -413,18 +446,20 @@ namespace ReTrap
         }
 
         /// <summary>
-        /// 해머 바닥에서 아래 방향으로 레이캐스트해 낙하 목표 Y 를 계산.
+        /// 해머 바닥에서 아래 방향으로 박스캐스트(폭 0.9*s)해 낙하 목표 Y 를 계산.
+        /// 폭을 가진 캐스트라 s×s 슬롯의 어느 쪽 가장자리 아래 지형이든 가장 높은 지면을 잡는다.
         /// Start() 에서 호출하며, 씬 구조가 바뀌면 재호출 필요.
         /// </summary>
         private void RefreshFloorY()
         {
-            Vector2 origin = (Vector2)transform.position + Vector2.down * rayOriginOffset;
-            RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, 100f, groundLayer);
+            Vector2 origin = (Vector2)transform.position + Vector2.down * RayOriginOffset;
+            RaycastHit2D hit = Physics2D.BoxCast(origin, new Vector2(0.9f * SlotSize, 0.05f), 0f,
+                                                 Vector2.down, 100f, groundLayer);
 
             if (hit.collider != null)
             {
                 // 지면 표면 Y + 해머 절반 높이 오프셋 (해머 바닥이 지면에 닿는 위치)
-                floorY = hit.point.y + rayOriginOffset;
+                floorY = hit.point.y + RayOriginOffset;
             }
             else
             {
@@ -450,9 +485,10 @@ namespace ReTrap
             else
             {
                 // 에디터 미리보기: 아래 방향 레이캐스트로 바닥 추정
-                Vector2 origin = top + Vector2.down * rayOriginOffset;
-                RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, 100f, groundLayer);
-                bottomY = hit.collider != null ? hit.point.y + rayOriginOffset : top.y - 10f;
+                Vector2 origin = top + Vector2.down * RayOriginOffset;
+                RaycastHit2D hit = Physics2D.BoxCast(origin, new Vector2(0.9f * SlotSize, 0.05f), 0f,
+                                                     Vector2.down, 100f, groundLayer);
+                bottomY = hit.collider != null ? hit.point.y + RayOriginOffset : top.y - 10f;
             }
 
             // 낙하 경로
@@ -464,7 +500,7 @@ namespace ReTrap
             float height = Mathf.Max(0.1f, top.y - bottomY);
             Vector3 center = new Vector3(top.x, (top.y + bottomY) * 0.5f, 0f);
             Gizmos.color = new Color(0.3f, 0.8f, 1f, 0.25f);
-            Gizmos.DrawCube(center, new Vector3(detectionWidth, height, 0.05f));
+            Gizmos.DrawCube(center, new Vector3(DetectionWidth, height, 0.05f));
         }
 #endif
     }

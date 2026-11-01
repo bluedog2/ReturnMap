@@ -70,6 +70,15 @@ namespace ReTrap.EditorTools
         public static bool IsDeath(string baseName)
             => AnimOf(baseName).Equals("Death", StringComparison.OrdinalIgnoreCase);
 
+        /// <summary>웅크림·착지 찌그러짐·움찔 애니(높이 드리프트 예외 — 자세 높이가 바뀌는 게 정상): JumpStart·Land·Hit.</summary>
+        public static bool IsSquash(string baseName)
+        {
+            string anim = AnimOf(baseName);
+            return anim.Equals("JumpStart", StringComparison.OrdinalIgnoreCase)
+                || anim.Equals("Land", StringComparison.OrdinalIgnoreCase)
+                || anim.Equals("Hit", StringComparison.OrdinalIgnoreCase);
+        }
+
         /// <summary>
         /// 카테고리·파일명(확장자 제외)에 해당하는 규격. 규격표에 없으면 null
         /// (Validator 가 셀=높이 정사각·프레임=가로/세로 로 추정).
@@ -118,8 +127,8 @@ namespace ReTrap.EditorTools
             return null;
         }
 
-        /// <summary>주인공 셀 (화풍 v2: 키 80px — docs/hero-b-scale-impact.md).</summary>
-        public const int HeroCell = 96;
+        /// <summary>주인공 셀 (3칸 기준: 키 96px — docs/scale-3tile.md).</summary>
+        public const int HeroCell = 128;
 
         private static SheetSpec CharacterSpec(string category, string baseName, string anim, int heroCell, int enemyCell)
         {
