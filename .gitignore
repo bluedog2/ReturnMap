@@ -107,3 +107,6 @@ InitTestScene*.unity*
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 .idea
 GeneratedAssets
+
+# pixelfx 비교 테스트 출력 (tools/vfx/pixelfx-render.ps1) — 게임 반영 금지, 커밋하지 않음
+/PIXELFX/

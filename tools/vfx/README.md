@@ -35,6 +35,7 @@ node tools/vfx/check-sheet.mjs NEWIMAG/FxHitV4/Fx_Hit.png NEWIMAG/palette_v2.txt
 
 `pixelfx-render.ps1` · `pixelfx-convert.mjs` · Unity 메뉴 `ReTrap → Art → pixelfx 이펙트 가져오기`(`PixelfxImporter`)는
 pixelfx 결과를 우리 규격(`Pfx_*`, `Sprites/Px32/Effects/Pixelfx/`)으로 바로 변환해 보는 도구다. GPT 버전과 비교할 때만 쓴다.
+출력 폴더 `PIXELFX/` 는 `.gitignore` 대상(커밋하지 않음).
 
 ## 금지
 
