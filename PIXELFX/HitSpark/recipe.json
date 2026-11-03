@@ -1,0 +1,10 @@
+﻿{
+    "effect":  "impacts/hit-spark",
+    "name":  "HitSpark",
+    "fps":  15,
+    "seed":  0,
+    "opts":  "",
+    "version":  "0.3.0",
+    "commit":  "a84159688af3ca37a4be05a0d422b94451b2e24e",
+    "command":  "tools\\vfx\\pixelfx-render.ps1 -Effect impacts/hit-spark -Name HitSpark -Fps 15"
+}

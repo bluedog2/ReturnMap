@@ -1,0 +1,8 @@
+{
+ "effect": "impacts/blunt-hit",
+ "cell": 100,
+ "frames": 12,
+ "fps": 15,
+ "loop": false,
+ "maxColors": 16
+}

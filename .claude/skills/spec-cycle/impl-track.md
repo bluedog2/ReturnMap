@@ -25,6 +25,9 @@ powershell -ExecutionPolicy Bypass -File tools\ci\spec-worktree.ps1 -Spec SPEC-n
   - 있다 → `Logs\ci-spec\SPEC-n\ci-summary.json` 의 `commit` 이 현재 HEAD 이고 `result=PASS` 이며 `SpecProbeN.txt`·`SmokeProbe.txt` 가 그 뒤에 만들어졌으면 → ⑭. 아니면 → ⑬.
 - 이전 rev 커밋이 있으면(재구현) 구현자에게 "기존 구현 위에 rev 차이만"이라고 알린다.
 
+## ⑪-0 이펙트 에셋 — 설계안에 `이펙트 에셋` 표가 있을 때만
+[`vfx-assets.md`](vfx-assets.md) 「구현 트랙 ⑪-0」대로 pixelfx 레퍼런스 → GPT 가 그림(`gpt-image.ps1`) → Claude 검수(재요청 최대 2회) → worktree 에 넣고 커밋한 뒤 ⑪ 로. 명세 파일에 그 파일의 문구를 추가한다. ⑭ 리포트에 「검증·리포트」 소절.
+
 ## ⑪ 구현 — GPT-6 Astra(`tools\ai\astra-implement.ps1`) → Opus 리뷰(`design-reviewer`)
 **명세 파일** `Logs\ci-spec\SPEC-n\impl-spec.md` 작성: 승인된 설계안 rev 전문 · 수용 기준 · 가정 · (재구현이면) "기존 구현 위에 rev 차이만" · 제약 — 설계 밖 변경 금지 · `.meta` 생성 금지 · 순수 로직이 바뀌면 `Assets/_Project/Tests/EditMode` 에 EditMode 테스트 추가(정적 상태는 SetUp/TearDown 초기화, 상수 재확인 금지). (CLAUDE.md·git 금지·worktree 밖 수정 금지·"설계로 해결 불가" 규칙은 스크립트가 프롬프트에 넣는다.)
 

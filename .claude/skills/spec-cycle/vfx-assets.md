@@ -1,0 +1,76 @@
+# spec-cycle — 이펙트 에셋 단계 (GPT 가 그리고 Claude 가 검수)
+
+설계안에 `이펙트 에셋` 표가 있을 때만 읽는다. 디스패처(SKILL.md)의 보안 규칙이 그대로 적용된다.
+**게임 이미지는 화풍 통일을 위해 전부 GPT 가 그린다.** pixelfx 는 동작·타이밍 **레퍼런스로만** 쓰고 게임에 넣지 않는다.
+역할: Claude(레퍼런스·요청서·검수·가져오기) → GPT(`tools/ai/gpt-image.ps1`, Codex 내장 image_gen 으로 그림) → Claude.
+Astra·code-implementer 는 이미지를 만들거나 고치지 않는다.
+
+## 설계 트랙 (design-track ⑥ 에서 design-reviewer 에게 함께 지시)
+시각 이펙트가 필요한 기획이면 설계안에 아래 표를 넣는다:
+
+| 이름 | 용도·재생 위치 | 동작 레퍼런스 (pixelfx id) | 셀 px × 프레임 · fps · 루프 | 피벗 | 화풍 참고 | 교체 |
+|---|---|---|---|---|---|---|
+| `Fx_<Name>` | 이벤트·위치 | `..\pixelfx\docs\CATALOG.md` 의 `<category>/<name>` | 예: 64 × 6 · 20 · 1회 | 중앙 / 하단 | 비슷한 기존 `Px32/` 스프라이트 경로 | 새 파일 / 기존 `Fx_X` 교체 |
+
+- 크기 기준: 3칸 기준(`docs/scale-3tile.md`) — 주인공 키 96px, 32px = 1칸. 이펙트 셀은 보통 32~96, 128 초과 금지.
+- 레퍼런스 id 는 CATALOG 에 실제로 있는 것만(`node tools/list.mjs <단어>` 로 찾기, 렌더해 눈으로 보고 고른다).
+- 매핑표(⑤)에 "보이는가" 항목: 화면 px 크기·Map 레이어·order. 수용 기준에 수동 항목 "인스펙터 연결 + 플레이로 크기·타이밍 확인".
+- 기존 GPT 이펙트 교체는 기획이 요구할 때만. 교체는 같은 경로 PNG 덮어쓰기(.meta·GUID 유지 → 기존 연결 유지).
+- 새 이름이고 피벗이 하단이거나 셀·프레임을 고정해야 하면 `Px32Rules.EffectSpec` 에 한 줄 추가를 설계에 포함(Astra 가 코드로).
+
+## 구현 트랙 ⑪-0 — Astra 구현 **전에**, 표의 행마다
+작업 폴더 `<wt>\NEWIMAG\<Name>V<rev>\` (예: `FxHitV4`). 도구 호출은 포그라운드, timeout 600000ms.
+
+1. **레퍼런스**:
+   ```
+   powershell -ExecutionPolicy Bypass -File tools/vfx/pixelfx-reference.ps1 -Effect <id> -Out <폴더> -Fps <fps> -Palette "<표의 램프, 예: #19181F,#641F36,#92223F,#B83450,#DC526B,#F7EEE4>"
+   ```
+   고정 커밋 아님 오류 → `보류`, 메모 "pixelfx 고정 커밋 아님 — `tools\vfx\pixelfx-setup.ps1` 수동 1회" (자동화는 setup 을 돌리지 않는다).
+   `motion_reference.png` 를 Read 로 보고, 레퍼런스의 몇 번 프레임을 결과의 몇 번 프레임으로 쓸지 정한다(프레임 계획).
+2. **재료**: 표의 화풍 참고 스프라이트를 `style_reference.png` 로, `NEWIMAG\palette_v2.txt` 를 폴더에 복사(Copy 도구 대신 Read→Write 불가한 PNG 는 `cp`).
+3. **요청서** `REQUEST.md` 를 Write 로 — 아래 「요청서 틀」을 채운다.
+4. **GPT 그리기**:
+   ```
+   powershell -ExecutionPolicy Bypass -File tools/ai/gpt-image.ps1 -Dir <폴더> -Expect Fx_<Name>.png -Images "motion_reference.png,style_reference.png"
+   ```
+   | RESULT | 처리 |
+   |---|---|
+   | `DONE` | 5 |
+   | `NO_OUTPUT`·`FAILED` | 1회 재실행. 또 실패면 `보류`, 메모 `GPT 이미지 실패: <_gpt\last.md 요약>` |
+   | `INFRA` | `보류`, 메모 `GPT 인프라: <메시지>` (codex 로그인 만료 등 — 사람이 `codex login`) |
+5. **검수** (Claude 가 직접):
+   ```
+   node tools/vfx/check-sheet.mjs <폴더>/Fx_<Name>.png NEWIMAG/palette_v2.txt --frames <N> --preview <폴더>/review.png --hero Assets/_Project/ResourcceEX/Sprites/Px32/Player/Hero_Idle.png [--old <교체 대상 기존 PNG>]
+   ```
+   - `RESULT=FAIL` → 규격 위반 → 그대로 지적.
+   - PASS 여도 `review.png`(주인공 옆 실제 크기)와 `Preview_4x.png` 를 **Read 로 보고** 판정: 프레임 계획대로인가 · 첫 프레임 타격감 · 프레임 간 흔들림·조각 · 화풍(외곽선·명암 단계)이 참고와 맞는가 · 주인공 대비 크기.
+   - 고칠 게 있으면 `REVIEW-k.md`(무엇이 · 어느 프레임 · 어떻게, 유지할 것 명시)를 쓰고
+     `gpt-image.ps1 … -Images "Fx_<Name>.png 의 이전본(round<k>_Fx_<Name>.png 로 복사),motion_reference.png,style_reference.png" -ReviewFile <폴더>/REVIEW-k.md`.
+   - **재요청은 최대 2회**(총 3장). 3장째도 미달이면 가장 나은 회차를 남기고 `보류`, 메모에 남은 지적 + `review.png` 경로 — 사람이 판단.
+6. **가져오기·커밋**: 통과본을 `<wt>\Assets\_Project\ResourcceEX\Sprites\Px32\Effects\Fx_<Name>.png` 로 복사(교체면 덮어쓰기, `.meta` 는 만들지 않음 — ⑬-1 `-HarvestMetaTo` 가 고정) →
+   `spec-worktree.ps1 -Commit`, 메시지 `[SPEC-n] 이펙트 에셋 (GPT)` / 빈 줄 / 행마다 `Fx_<Name> ← 레퍼런스 <id> (셀 px × 프레임 · fps · 검수 k회)` / 빈 줄 / Co-Authored-By. `NEWIMAG\<폴더>`(요청서·레퍼런스·회차별 결과·README)도 함께 커밋.
+7. 명세 파일(impl-spec.md)에 추가: "이펙트 시트는 이미 `Sprites/Px32/Effects/Fx_<Name>.png` 에 있다(셀·프레임·fps·피벗). 이미지·.meta 를 만들거나 고치지 말 것. 스프라이트는 `[SerializeField] Sprite[]`(기존 `PlayerEffects` 방식) 등 인스펙터 필드로 받고, 에셋 연결은 하지 않는다."
+
+### 요청서 틀 (REQUEST.md)
+```
+# 요청: Fx_<Name> (<용도 한 줄>) — 3칸 기준
+Re:Trap(2D 픽셀아트 플랫포머) <언제·어디서> 재생되는 이펙트. 이 폴더 안에서만 작업, git 금지.
+## 참고 이미지
+- motion_reference.png — 동작·타이밍 참고만(pixelfx <id>, <fps>fps 프레임 목록). 화풍은 따르지 말 것. 흐름: <한 줄>.
+- style_reference.png — 화풍 참고(<무엇>). 확대해서 쓰지 말고 새로 그릴 것.
+- palette_v2.txt — 쓸 수 있는 색 전체.
+## 결과물
+- Fx_<Name>.png: RGBA, <셀×N>×<셀>, <셀>×<셀> 셀 N개 가로 한 줄(간격 0), 1배. 재생 <fps>fps, <1회/루프>. 피벗 <중앙 (c,c) / 하단 중앙>.
+- 프레임 계획: 0. … / 1. … (레퍼런스 프레임 번호와 대응, 크기는 px 로)
+- 규칙(엔진 검사기가 그대로 검사): palette_v2 색만·프레임당 16색 이하·순흑 금지 / 알파 0·255 만(안티앨리어싱·그라데이션·디더 금지) /
+  각 셀 상·좌·우 1px 비움 / 빈 프레임 금지 / 파편 최소 2픽셀.
+- Preview_4x.png(정수 4배), README.md(크기·fps·피벗·사용 색·제작 과정·image_gen 호출 횟수·프롬프트 전문·자체 검사).
+## 제작 방식
+내장 image_gen 으로 새로 그림(확대 생성 후 논리 격자 복원 가능). 후처리는 격자 복원·최근접 팔레트 매핑·알파 임계 128·평행이동만. 코드로 도형을 그리지 말 것.
+```
+
+## 검증·리포트
+- ⑬-1 CI `sprites32` 가 최종 판정(check-sheet 는 사전 검사). FAIL 이면 이미지 문제 → Astra 에 넘기지 말고 5의 재요청(재요청 한도와 ⑬ 시도 한도 공유).
+- ⑭ 리포트에 "이펙트 에셋" 소절: 행마다 `Fx_<Name>` ← 레퍼런스 id · 셀·프레임·fps · 검수 회차와 회차별 지적 요약 · GPT 토큰·시간(`gpt-image` 출력 `TOKENS`·`DURATION_SEC`) · `review.png` 경로.
+  수동 확인 체크리스트: "인스펙터 연결 → 플레이로 크기·타이밍 확인".
+- 버그 트랙에서 이펙트가 필요해도 같은 절차(`<wt>` = `..\ReturnMap-spec\BUG-n`).

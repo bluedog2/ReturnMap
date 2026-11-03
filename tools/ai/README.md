@@ -45,3 +45,14 @@ exit 코드: 0은 변경 있음, 1은 변경 없음/DIRTY/FAILED, 3은 인프라
 - `OUTSIDE_ALLOWED=`: Scripts·Editor·Tests·Settings·ResourcceEX·Maps·probes 밖을 고친 파일 목록입니다. 자동으로 되돌리지 않으니 리뷰에서 판단합니다.
 - Codex sandbox는 `workspace-write`(worktree 안에서만 쓰기)로 실행됩니다. CLAUDE.md는 프롬프트에 직접 넣습니다(Codex는 CLAUDE.md를 자동으로 읽지 않음).
 - 비용: 입력 100만 토큰당 $10, 출력 100만 토큰당 $50 수준이므로 자동 주기 실행에 붙일 때 주의합니다.
+
+## 이미지 — `gpt-image.ps1`
+
+리소스 이미지(이펙트 포함)는 GPT 가 Codex 내장 **image_gen** 으로 그린다(화풍 통일). 전제: `codex features list` 에서 `image_generation` 이 켜져 있을 것.
+`NEWIMAG\<묶음>\REQUEST.md` + 참고 이미지 → `-Expect` 파일. 모델은 Codex 설정 기본값(`-Model` 로 지정 가능).
+이펙트의 동작 레퍼런스·요청서 틀·검수 기준은 `tools/vfx/README.md`, 자동화 절차는 `.claude/skills/spec-cycle/vfx-assets.md`.
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools\ai\gpt-image.ps1 -Dir NEWIMAG\FxHitV4 -Expect Fx_Hit.png -Images "motion_reference.png,style_reference.png"
+powershell -ExecutionPolicy Bypass -File tools\ai\gpt-image.ps1 -Dir NEWIMAG\FxHitV4 -Expect Fx_Hit.png -Images "round1_Fx_Hit.png,motion_reference.png" -ReviewFile NEWIMAG\FxHitV4\REVIEW-1.md
+```

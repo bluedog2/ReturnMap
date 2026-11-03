@@ -51,6 +51,12 @@
       "Bash(powershell -ExecutionPolicy Bypass -File tools/ci/unity-ci.ps1 *)",
       "Bash(powershell -ExecutionPolicy Bypass -File tools/ci/run-probe.ps1 *)",
       "Bash(powershell -ExecutionPolicy Bypass -File tools/ci/section-hash.ps1 *)",
+      "Bash(powershell -ExecutionPolicy Bypass -File tools/vfx/pixelfx-reference.ps1:*)",
+      "Bash(powershell -ExecutionPolicy Bypass -File tools/vfx/pixelfx-reference.ps1 *)",
+      "Bash(powershell -ExecutionPolicy Bypass -File tools/ai/gpt-image.ps1:*)",
+      "Bash(powershell -ExecutionPolicy Bypass -File tools/ai/gpt-image.ps1 *)",
+      "Bash(node tools/vfx/check-sheet.mjs:*)",
+      "Skill(pixelfx:pixelfx)",
       "Bash(git branch --list:*)",
       "Bash(git worktree list:*)",
       "Bash(git rev-parse:*)"

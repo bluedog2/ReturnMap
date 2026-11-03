@@ -6,7 +6,7 @@ description: Notion 기획안 DB 사이클 1회 실행(예약 작업 spec-cycle-
 # spec-cycle — 디스패처
 
 이 파일은 **매 실행 읽는 최소 절차**다. 트랙 상세는 대상이 있을 때만 읽는다:
-설계 트랙 → [`design-track.md`](design-track.md) · 구현 트랙 → [`impl-track.md`](impl-track.md). 사람용 규칙: Notion「🔁 개발 사이클 운영 가이드」.
+설계 트랙 → [`design-track.md`](design-track.md) · 구현 트랙 → [`impl-track.md`](impl-track.md) · 이펙트 이미지(설계안에 `이펙트 에셋` 표가 있을 때만) → [`vfx-assets.md`](vfx-assets.md) — **이펙트도 GPT 가 그린다(화풍 통일): Claude 가 pixelfx 레퍼런스·요청서를 만들고 검수**. 사람용 규칙: Notion「🔁 개발 사이클 운영 가이드」.
 **대상이 0건이면 트랙 파일을 읽지 않고, 서브에이전트도 띄우지 않는다.**
 
 ## 고정 정보
@@ -18,7 +18,7 @@ description: Notion 기획안 DB 사이클 1회 실행(예약 작업 spec-cycle-
 | 플레이테스트 DS | `collection://5a211da7-2b46-4ac9-8dfc-cb5f26fcdc01` |
 | 버그 DS | `collection://37ce0f0b-e477-8046-9fb4-000b696674eb` (「버그 및 개선사항」— 기존 칸 상태·작업 유형·담당자 등은 사이클이 읽지도 쓰지도 않는다) |
 | 허용 작성자 | `078d288c-98f6-4cc8-b5dc-d7cd4e919e85`(상은 김) · `212e653a-be79-4d0c-ae34-74cdfe09c4a4`(myo) — SQL 에선 `notion_user-<id>` |
-| 스크립트 | `tools/ci/` — cycle-guard · spec-worktree · unity-ci · run-probe · section-hash (모두 `powershell -ExecutionPolicy Bypass -File tools\ci\<이름>.ps1 …`, **이 형태 그대로** 호출해야 권한 허용 목록에 맞는다) |
+| 스크립트 | `tools/ci/` — cycle-guard · spec-worktree · unity-ci · run-probe · section-hash (모두 `powershell -ExecutionPolicy Bypass -File tools\ci\<이름>.ps1 …`, **이 형태 그대로** 호출해야 권한 허용 목록에 맞는다) · 이펙트: `tools/vfx/pixelfx-reference.ps1` · `tools/ai/gpt-image.ps1` (같은 형태) · `node tools/vfx/check-sheet.mjs` |
 
 기획안 속성: 문서 이름 · 개발 상태 · 설계 승인 · 설계 rev · 설계 해시 · 브랜치 · 마지막 처리 시각 · 사이클 메모 · 기획ID · 개발 질문
 질문 속성: 질문 · 기획 문서 · 상태(대기/답변됨/반영됨/취소) · 유형 · 배경 · 선택지 · 답변 · 최종 편집자
