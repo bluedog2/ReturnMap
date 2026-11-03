@@ -1,0 +1,8 @@
+Play_Far source=1672x941
+Play_Near source=1983x793
+Verification_Far source=1672x941
+Verification_Near source=1983x793
+| Play_Far.png | 960×540 | 6 | 6 | 255 | 0 | 0 | 0 | 0 |
+| Play_Near.png | 960×384 | 9 | 10 | 0/255 | 0 | 0 | 0 | 0 |
+| Verification_Far.png | 960×540 | 5 | 5 | 255 | 0 | 0 | 0 | 0 |
+| Verification_Near.png | 960×384 | 8 | 9 | 0/255 | 0 | 0 | 0 | 0 |

@@ -103,8 +103,17 @@ namespace ReTrap
             //    (TrapSlotRegistry.GetOccupied() 는 yield 이터레이터라 순회할 때마다 열거자가
             //    새로 할당된다 — 2회 순회하지 않도록 여기서 한 번에 끝낸다. GetComponent 도
             //    TrapSlotMarker.OccupiedTrap 캐시를 써서 슬롯당 1회조차 호출하지 않는다.)
-            foreach (var slot in TrapSlotRegistry.GetOccupied())
+            //    빈 슬롯: Build 외 페이즈에선 봉인 타일(TrapSlotMarker.RefreshSealActive)이 막으므로
+            //    물리와 맞게 솔리드로 마킹한다 (그렇지 않으면 AI 가 봉인 칸을 통로로 계획).
+            foreach (var slot in TrapSlotRegistry.All)
             {
+                if (slot.IsEmpty)
+                {
+                    MarkTrapSlot(g._nodes, g.Width, g.Height, slot.GridX, slot.GridY, slot.Size,
+                                 slot.Anchor, true, 0f);
+                    continue;
+                }
+
                 TrapBase trap = slot.OccupiedTrap;
                 if (trap == null) continue;
 

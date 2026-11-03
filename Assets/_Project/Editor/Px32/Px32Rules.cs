@@ -88,12 +88,12 @@ namespace ReTrap.EditorTools
             if (category == "Tiles")
                 return new SheetSpec { cellW = 32, cellH = 32, frames = 1, pivot = new Vector2(0.5f, 0.5f) };
 
-            // 배경: 원경 640×360, 근경 640×256 (이름 끝 _Near) — 규격으로 업스케일 배율을 확정해야
+            // 배경: 원경 960×540, 근경 960×384 (이름 끝 _Near) — 3칸 기준 화면(docs/scale-3tile.md) — 규격으로 업스케일 배율을 확정해야
             // 2×2 덩어리로 그린 그림을 4배로 잘못 추정하지 않는다
             if (category == "Backgrounds")
             {
                 bool near = baseName.EndsWith("_Near", StringComparison.OrdinalIgnoreCase);
-                return new SheetSpec { cellW = 640, cellH = near ? 256 : 360, frames = 1, pivot = new Vector2(0.5f, near ? 0f : 0.5f) };
+                return new SheetSpec { cellW = 960, cellH = near ? 384 : 540, frames = 1, pivot = new Vector2(0.5f, near ? 0f : 0.5f) };
             }
 
             if (category == "Effects")
@@ -120,7 +120,7 @@ namespace ReTrap.EditorTools
                 case "Fx_Respawn":   return Sheet(48, 6, 15f, false, bottom);
                 case "Fx_Dust":      return Sheet(16, 4, 15f, false, bottom);
                 case "Fx_EnemyPoof": return Sheet(48, 6, 15f, false, center);
-                case "Fx_GoalMarker": return Sheet(32, 4, 6f, true,  bottom);
+                case "Fx_GoalMarker": return Sheet(64, 4, 6f, true,  bottom); // 3칸 기준 2칸 (NEWIMAG/Px32FxV3)
                 case "Gauge_Ring24": return Sheet(24, 9,  0f, false, center);
                 case "Gauge_Ring32": return Sheet(32, 9,  0f, false, center);
             }

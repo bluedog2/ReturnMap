@@ -119,7 +119,7 @@ namespace ReTrap
             Vector2 b = sr.sprite.bounds.size;
             if (b.x < 0.0001f || b.y < 0.0001f) return;
 
-            // 32px 규격 배경(PPU 32: 원경 640×360·근경 640×256 하단 피벗)은 1배 그대로 — 늘리면 픽셀이 뭉개진다.
+            // 32px 규격 배경(PPU 32: 원경 960×540·근경 960×384 하단 피벗)은 1배 그대로 — 늘리면 픽셀이 뭉개진다.
             // 그 외(구 배경)는 화면 높이 × 마진에 맞춰 균일 스케일
             bool pixelArt = Mathf.Approximately(sr.sprite.pixelsPerUnit, PixelArtPpu);
             float s = pixelArt ? 1f : viewH * HeightMargin / b.y;

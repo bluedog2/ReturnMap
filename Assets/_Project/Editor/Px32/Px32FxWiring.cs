@@ -27,6 +27,7 @@ namespace ReTrap.EditorTools
     {
         private const string InboxEffects = "NEWIMAG/Px32FxV2/Effects";
         private const string InboxUI      = "NEWIMAG/Px32FxV2/UI";
+        private const string InboxEffectsV3 = "NEWIMAG/Px32FxV3/Effects"; // 3칸 기준 다시 그린 것(골 깃발 64px) — V2 위에 덮어씀
         private const string EffectsDir   = "Assets/_Project/ResourcceEX/Sprites/Px32/Effects";
         private const string UIDir        = "Assets/_Project/ResourcceEX/Sprites/Px32/UI";
         private const string ScenePath    = "Assets/_Project/ResourcceEX/Scenes/SampleScene.unity";
@@ -64,7 +65,7 @@ namespace ReTrap.EditorTools
         {
             string root = Directory.GetParent(Application.dataPath).FullName;
             int n = 0;
-            foreach (var (src, dst) in new[] { (InboxEffects, EffectsDir), (InboxUI, UIDir) })
+            foreach (var (src, dst) in new[] { (InboxEffects, EffectsDir), (InboxUI, UIDir), (InboxEffectsV3, EffectsDir) })
             {
                 string from = Path.Combine(root, src);
                 if (!Directory.Exists(from)) { Debug.LogWarning("[Px32FxWiring] 수신함 없음: " + src); continue; }

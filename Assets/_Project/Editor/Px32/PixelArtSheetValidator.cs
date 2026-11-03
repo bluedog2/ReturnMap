@@ -84,7 +84,9 @@ namespace ReTrap.EditorTools
                 squash   = Px32Rules.IsSquash(baseName),
                 // 캐릭터는 화풍 v2 팔레트(20색) 전체 사용 허용
                 maxColors = (category == "Tiles" || category == "Backgrounds") ? 24
-                          : (category == "Player" || category == "Enemies" || category == "Traps") ? 24 : 16, // 3칸 기준 디테일(docs/scale-3tile.md)
+                          : (category == "Player" || category == "Enemies" || category == "Traps") ? 24
+                          : (category == "UI" && baseName.StartsWith("Icon_") && baseName != "Icon_Remove") ? 24 // 함정 아이콘 = 64px 함정 파츠 합성
+                          : 16, // 3칸 기준 디테일(docs/scale-3tile.md)
             };
             var spec = Px32Rules.GetSheetSpec(category, baseName);
             if (spec != null) { o.cellW = spec.cellW; o.cellH = spec.cellH; o.frames = spec.frames; }
@@ -168,8 +170,8 @@ namespace ReTrap.EditorTools
             else if (o.category == "Backgrounds")
             {
                 cw = dw; ch = dh; frames = 1;
-                if (dw != 640 || (dh != 360 && dh != 256))
-                    dims.Fail($"배경 치수 {dw}×{dh} ≠ 640×360(원경) / 640×256(근경)");
+                if (dw != 960 || (dh != 540 && dh != 384))
+                    dims.Fail($"배경 치수 {dw}×{dh} ≠ 960×540(원경) / 960×384(근경)");
             }
             else if (sheet)
             {

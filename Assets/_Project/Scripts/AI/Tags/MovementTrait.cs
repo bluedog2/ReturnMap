@@ -123,8 +123,7 @@ namespace ReTrap
     /// <see cref="TraitState"/> 로 분리해 개체당 힙 할당을 없앤다.
     /// <para><b>주의</b>: 이 클래스의 모든 메서드는 <see cref="VerificationAgent"/> 의
     /// 프레임 루프/셀 루프에서 반복 호출되므로 내부에서 할당(new)·LINQ·GetComponent 를
-    /// 하지 않는다. 맵/함정 조회가 필요하면 <see cref="WorldToCell"/> 처럼 정적 유틸을
-    /// 통해 <see cref="MapLoader.Instance"/> 를 직접 참조한다.</para>
+    /// 하지 않는다. 맵/함정 조회가 필요하면 <see cref="MapLoader.Instance"/> 를 직접 참조한다.</para>
     /// </summary>
     public abstract class MovementTrait : ScriptableObject
     {
@@ -160,26 +159,5 @@ namespace ReTrap
         /// 하지 않음(이동 스펙에 영향 없는 태그).
         /// </summary>
         public virtual void ModifyTraversal(ref int maxJumpHeight, ref int maxJumpDistance, ref int maxFallHeight) { }
-
-        // ── 공용 유틸 — 월드 좌표 → 셀 좌표 ──────────────────────────────────
-
-        /// <summary>
-        /// 월드 좌표를 현재 로드된 맵의 셀 좌표로 환산합니다. 맵이 없으면 (0,0).
-        /// <see cref="MapData.CellToWorld"/> 의 역산(셀 중심 = origin + (x+0.5)*tileUnit)이며,
-        /// MapData 에 전용 WorldToCell API 가 없으므로 여기서 지역적으로 계산한다.
-        /// </summary>
-        protected static GridCoord WorldToCell(Vector2 worldPos)
-        {
-            MapLoader loader = MapLoader.Instance;
-            MapData   map    = loader != null ? loader.CurrentMap : null;
-            if (map == null) return default;
-
-            Vector2 origin   = loader.MapOrigin;
-            float   tileUnit = Mathf.Max(0.0001f, map.tileUnit);
-
-            int cx = Mathf.FloorToInt((worldPos.x - origin.x) / tileUnit);
-            int cy = Mathf.FloorToInt((worldPos.y - origin.y) / tileUnit);
-            return new GridCoord(cx, cy);
-        }
     }
 }

@@ -13,8 +13,8 @@ namespace ReTrap.EditorTools
     /// <summary>
     /// 메뉴 <b>ReTrap → Setup → Px32 배경 연결</b> (배치모드는 <see cref="Run"/>, 멱등):
     /// <list type="number">
-    ///   <item>NEWIMAG/BgConceptV2/_1x/{Play|Verification}_{Far|Near}.png(1배)를 Sprites/Px32/Backgrounds 에 덮어쓴다
-    ///         (.meta 유지). 규격·피벗은 Px32Rules(원경 640×360 중앙, 근경 640×256 하단).</item>
+    ///   <item>NEWIMAG/Px32BgV3/Backgrounds/{Play|Verification}_{Far|Near}.png(1배)를 Sprites/Px32/Backgrounds 에 덮어쓴다
+    ///         (.meta 유지). 규격·피벗은 Px32Rules(원경 960×540 중앙, 근경 960×384 하단 — 3칸 기준).</item>
     ///   <item>어드레서블 그룹 'Px32Tiles' 에 주소 'Px32/Backgrounds/{이름}' 등록.</item>
     ///   <item>TilePaletteConfig 의 playParallax·verificationParallax far/near 참조 연결 (이전 값 로그, 계수 유지)
     ///         + 하늘 채움 색(skyColor) = 원경 맨 윗줄 색.</item>
@@ -22,7 +22,7 @@ namespace ReTrap.EditorTools
     /// </summary>
     public static class Px32BackgroundWiring
     {
-        private const string Inbox       = "NEWIMAG/BgConceptV2/_1x";
+        private const string Inbox       = "NEWIMAG/Px32BgV3/Backgrounds";
         private const string BgDir       = "Assets/_Project/ResourcceEX/Sprites/Px32/Backgrounds";
         private const string PalettePath = "Assets/_Project/Settings/TilePaletteConfig.asset";
         private const string GroupName   = "Px32Tiles";

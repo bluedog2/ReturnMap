@@ -469,9 +469,11 @@ namespace ReTrap
 
             Vector3 world  = _cam.ScreenToWorldPoint(mouse.position.ReadValue());
             Vector2 origin = MapLoader.Instance != null ? MapLoader.Instance.MapOrigin : Vector2.zero;
+            var     map    = MapLoader.Instance != null ? MapLoader.Instance.CurrentMap : null;
+            float   unit   = map != null ? Mathf.Max(0.0001f, map.tileUnit) : 1f;
 
-            _hoverX = Mathf.FloorToInt(world.x - origin.x);
-            _hoverY = Mathf.FloorToInt(world.y - origin.y);
+            _hoverX = Mathf.FloorToInt((world.x - origin.x) / unit);
+            _hoverY = Mathf.FloorToInt((world.y - origin.y) / unit);
 
             bool hasSlot = TrapSlotRegistry.TryGet(_hoverX, _hoverY, out var slot);
 

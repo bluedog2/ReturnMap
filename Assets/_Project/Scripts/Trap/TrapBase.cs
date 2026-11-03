@@ -40,9 +40,6 @@ namespace ReTrap
         [Tooltip("위험도. 높을수록 BaseCost 가 낮아진다 (역코스트). TrapDefinition 미지정 시 fallback.")]
         private int dangerLevel = 5;
 
-        [SerializeField]
-        [Tooltip("타일맵 그리드에서 차지하는 셀 크기 (TilemapGridManager 참조용).")]
-        private Vector2Int cellSize = Vector2Int.one;
 
         [SerializeField]
         [Tooltip("이 함정이 가하는 피해 타입. AI 태그의 면역(DamageType 마스크) 판정에 사용됨. " +
@@ -193,9 +190,6 @@ namespace ReTrap
 
         /// <summary>이 함정이 가하는 피해 타입 (AI 태그 면역 판정용).</summary>
         public DamageType DamageType   => definition != null ? definition.DamageType  : damageType;
-
-        /// <summary>타일맵 그리드에서 차지하는 셀 크기.</summary>
-        public Vector2Int CellSize     => cellSize;
 
         // ── 슬롯 호환 (Build Phase) ───────────────────────────────────────────
 
@@ -501,7 +495,7 @@ namespace ReTrap
             go.layer = GroundLayerIndex();
 
             _solidBody      = go.AddComponent<BoxCollider2D>();
-            _solidBody.size = new Vector2(cellSize.x, cellSize.y);
+            _solidBody.size = new Vector2(SlotSize, SlotSize);
         }
 
         /// <summary>
@@ -814,10 +808,10 @@ namespace ReTrap
             string info = $"Cost:{BaseCost}  Danger:{DangerLevel}  [{CurrentState}]";
             UnityEditor.Handles.Label(transform.position + Vector3.up * 0.7f, info);
 
-            // 차지하는 그리드 셀 영역 표시 (TilemapGridManager 와 맞추기 위해 1셀 = 1unit 가정)
+            // 차지하는 슬롯 영역(s×s 칸) 표시 — 1칸 = 1unit (PPU 32)
             Gizmos.color = new Color(1f, 0.8f, 0f, 0.25f);
             Gizmos.DrawCube(transform.position,
-                            new Vector3(cellSize.x, cellSize.y, 0.05f));
+                            new Vector3(SlotSize, SlotSize, 0.05f));
         }
 #endif
     }

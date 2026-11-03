@@ -1,5 +1,7 @@
 # 32px 규격 전환 계획 (640×360 · 32px 타일 · PPU 32 · Pixel Perfect Camera)
 
+> **2026-10-30 이후 크기 기준은 [scale-3tile.md](scale-3tile.md)(3칸 기준: 960×540 · 주인공 96px · 적 64/96/128px · 함정 64px 2×2 · 맵 40×22/48×27)이 우선한다.** 이 문서의 해상도·캐릭터·함정·맵 크기 값은 당시 기록이다.
+
 작성 2026-10-24 · 영향 조사(Sonnet) + 설계(Opus) 종합. 시안: `Assets/_Project/ResourcceEX/Scenes/ScaleTest_32px.unity` (`ReTrap → Dev → 32px 규격 시안 씬 생성`).
 
 ## 0. 가정
