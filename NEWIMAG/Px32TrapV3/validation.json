@@ -1,0 +1,1573 @@
+{
+  "files": [
+    {
+      "file": "Misc/SlotMarker_Ceiling.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 20,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        63,
+        63
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 63,
+      "opaque_count": 1430,
+      "pass": true
+    },
+    {
+      "file": "Misc/SlotMarker_Floor.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 20,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        63,
+        63
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 63,
+      "opaque_count": 1437,
+      "pass": true
+    },
+    {
+      "file": "Misc/SlotMarker_LeftWall.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 21,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        63,
+        63
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 63,
+      "opaque_count": 1434,
+      "pass": true
+    },
+    {
+      "file": "Misc/SlotMarker_RightWall.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 21,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        63,
+        63
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 63,
+      "opaque_count": 1432,
+      "pass": true
+    },
+    {
+      "file": "Misc/SlotSeal.png",
+      "size": [
+        32,
+        32
+      ],
+      "expected_size": [
+        32,
+        32
+      ],
+      "size_pass": true,
+      "colors": 13,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        31,
+        31
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 31,
+      "opaque_count": 1024,
+      "pass": true
+    },
+    {
+      "file": "Parts/arrow_shooter/Beneficial/arrow.png",
+      "size": [
+        32,
+        16
+      ],
+      "expected_size": [
+        32,
+        16
+      ],
+      "size_pass": true,
+      "colors": 24,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        31,
+        15
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 15,
+      "opaque_count": 323,
+      "pass": true
+    },
+    {
+      "file": "Parts/arrow_shooter/Beneficial/body.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 24,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        0,
+        1,
+        63,
+        58
+      ],
+      "top_opaque_row": 1,
+      "bottom_opaque_row": 58,
+      "opaque_count": 2560,
+      "pass": true
+    },
+    {
+      "file": "Parts/arrow_shooter/Beneficial/muzzle_flash.png",
+      "size": [
+        32,
+        32
+      ],
+      "expected_size": [
+        32,
+        32
+      ],
+      "size_pass": true,
+      "colors": 20,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        16,
+        3,
+        30,
+        27
+      ],
+      "top_opaque_row": 3,
+      "bottom_opaque_row": 27,
+      "opaque_count": 186,
+      "pass": true
+    },
+    {
+      "file": "Parts/arrow_shooter/Critical/arrow.png",
+      "size": [
+        32,
+        16
+      ],
+      "expected_size": [
+        32,
+        16
+      ],
+      "size_pass": true,
+      "colors": 24,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        31,
+        15
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 15,
+      "opaque_count": 323,
+      "pass": true
+    },
+    {
+      "file": "Parts/arrow_shooter/Critical/body.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 24,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        0,
+        1,
+        63,
+        58
+      ],
+      "top_opaque_row": 1,
+      "bottom_opaque_row": 58,
+      "opaque_count": 2560,
+      "pass": true
+    },
+    {
+      "file": "Parts/arrow_shooter/Critical/muzzle_flash.png",
+      "size": [
+        32,
+        32
+      ],
+      "expected_size": [
+        32,
+        32
+      ],
+      "size_pass": true,
+      "colors": 22,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        16,
+        3,
+        30,
+        27
+      ],
+      "top_opaque_row": 3,
+      "bottom_opaque_row": 27,
+      "opaque_count": 186,
+      "pass": true
+    },
+    {
+      "file": "Parts/arrow_shooter/Dud/arrow.png",
+      "size": [
+        32,
+        16
+      ],
+      "expected_size": [
+        32,
+        16
+      ],
+      "size_pass": true,
+      "colors": 24,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        31,
+        15
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 15,
+      "opaque_count": 323,
+      "pass": true
+    },
+    {
+      "file": "Parts/arrow_shooter/Dud/body.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 24,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        0,
+        1,
+        63,
+        58
+      ],
+      "top_opaque_row": 1,
+      "bottom_opaque_row": 58,
+      "opaque_count": 2560,
+      "pass": true
+    },
+    {
+      "file": "Parts/arrow_shooter/Dud/muzzle_flash.png",
+      "size": [
+        32,
+        32
+      ],
+      "expected_size": [
+        32,
+        32
+      ],
+      "size_pass": true,
+      "colors": 17,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        16,
+        3,
+        30,
+        27
+      ],
+      "top_opaque_row": 3,
+      "bottom_opaque_row": 27,
+      "opaque_count": 186,
+      "pass": true
+    },
+    {
+      "file": "Parts/arrow_shooter/Normal/arrow.png",
+      "size": [
+        32,
+        16
+      ],
+      "expected_size": [
+        32,
+        16
+      ],
+      "size_pass": true,
+      "colors": 24,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        31,
+        15
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 15,
+      "opaque_count": 323,
+      "pass": true
+    },
+    {
+      "file": "Parts/arrow_shooter/Normal/body.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 24,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        0,
+        1,
+        63,
+        58
+      ],
+      "top_opaque_row": 1,
+      "bottom_opaque_row": 58,
+      "opaque_count": 2560,
+      "pass": true
+    },
+    {
+      "file": "Parts/arrow_shooter/Normal/muzzle_flash.png",
+      "size": [
+        32,
+        32
+      ],
+      "expected_size": [
+        32,
+        32
+      ],
+      "size_pass": true,
+      "colors": 24,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        16,
+        3,
+        30,
+        27
+      ],
+      "top_opaque_row": 3,
+      "bottom_opaque_row": 27,
+      "opaque_count": 186,
+      "pass": true
+    },
+    {
+      "file": "Parts/drop_hammer/Beneficial/chain.png",
+      "size": [
+        16,
+        16
+      ],
+      "expected_size": [
+        16,
+        16
+      ],
+      "size_pass": true,
+      "colors": 10,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        3,
+        0,
+        12,
+        15
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 15,
+      "opaque_count": 117,
+      "pass": true
+    },
+    {
+      "file": "Parts/drop_hammer/Beneficial/head.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 24,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        63,
+        63
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 63,
+      "opaque_count": 3306,
+      "pass": true
+    },
+    {
+      "file": "Parts/drop_hammer/Beneficial/impact.png",
+      "size": [
+        64,
+        32
+      ],
+      "expected_size": [
+        64,
+        32
+      ],
+      "size_pass": true,
+      "colors": 22,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        63,
+        31
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 31,
+      "opaque_count": 1085,
+      "pass": true
+    },
+    {
+      "file": "Parts/drop_hammer/Beneficial/mount.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 24,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        63,
+        63
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 63,
+      "opaque_count": 2219,
+      "pass": true
+    },
+    {
+      "file": "Parts/drop_hammer/Critical/chain.png",
+      "size": [
+        16,
+        16
+      ],
+      "expected_size": [
+        16,
+        16
+      ],
+      "size_pass": true,
+      "colors": 16,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        3,
+        0,
+        12,
+        15
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 15,
+      "opaque_count": 117,
+      "pass": true
+    },
+    {
+      "file": "Parts/drop_hammer/Critical/head.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 24,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        63,
+        63
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 63,
+      "opaque_count": 3306,
+      "pass": true
+    },
+    {
+      "file": "Parts/drop_hammer/Critical/impact.png",
+      "size": [
+        64,
+        32
+      ],
+      "expected_size": [
+        64,
+        32
+      ],
+      "size_pass": true,
+      "colors": 20,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        63,
+        31
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 31,
+      "opaque_count": 1085,
+      "pass": true
+    },
+    {
+      "file": "Parts/drop_hammer/Critical/mount.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 24,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        63,
+        63
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 63,
+      "opaque_count": 2219,
+      "pass": true
+    },
+    {
+      "file": "Parts/drop_hammer/Dud/chain.png",
+      "size": [
+        16,
+        16
+      ],
+      "expected_size": [
+        16,
+        16
+      ],
+      "size_pass": true,
+      "colors": 15,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        3,
+        0,
+        12,
+        15
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 15,
+      "opaque_count": 117,
+      "pass": true
+    },
+    {
+      "file": "Parts/drop_hammer/Dud/head.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 24,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        63,
+        63
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 63,
+      "opaque_count": 3306,
+      "pass": true
+    },
+    {
+      "file": "Parts/drop_hammer/Dud/impact.png",
+      "size": [
+        64,
+        32
+      ],
+      "expected_size": [
+        64,
+        32
+      ],
+      "size_pass": true,
+      "colors": 19,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        63,
+        31
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 31,
+      "opaque_count": 1085,
+      "pass": true
+    },
+    {
+      "file": "Parts/drop_hammer/Dud/mount.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 24,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        63,
+        63
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 63,
+      "opaque_count": 2219,
+      "pass": true
+    },
+    {
+      "file": "Parts/drop_hammer/Normal/chain.png",
+      "size": [
+        16,
+        16
+      ],
+      "expected_size": [
+        16,
+        16
+      ],
+      "size_pass": true,
+      "colors": 14,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        3,
+        0,
+        12,
+        15
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 15,
+      "opaque_count": 117,
+      "pass": true
+    },
+    {
+      "file": "Parts/drop_hammer/Normal/head.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 24,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        63,
+        63
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 63,
+      "opaque_count": 3306,
+      "pass": true
+    },
+    {
+      "file": "Parts/drop_hammer/Normal/impact.png",
+      "size": [
+        64,
+        32
+      ],
+      "expected_size": [
+        64,
+        32
+      ],
+      "size_pass": true,
+      "colors": 23,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        63,
+        31
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 31,
+      "opaque_count": 1085,
+      "pass": true
+    },
+    {
+      "file": "Parts/drop_hammer/Normal/mount.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 24,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        63,
+        63
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 63,
+      "opaque_count": 2219,
+      "pass": true
+    },
+    {
+      "file": "Parts/spike/Beneficial/base.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 24,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        63,
+        63
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 63,
+      "opaque_count": 4096,
+      "pass": true
+    },
+    {
+      "file": "Parts/spike/Beneficial/glow.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 1,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        2,
+        0,
+        61,
+        27
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 27,
+      "opaque_count": 388,
+      "pass": true
+    },
+    {
+      "file": "Parts/spike/Beneficial/platform.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 23,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        63,
+        63
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 63,
+      "opaque_count": 4096,
+      "pass": true
+    },
+    {
+      "file": "Parts/spike/Beneficial/spikes.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 18,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        2,
+        0,
+        61,
+        51
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 51,
+      "opaque_count": 1830,
+      "pass": true
+    },
+    {
+      "file": "Parts/spike/Critical/base.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 14,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        63,
+        63
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 63,
+      "opaque_count": 4096,
+      "pass": true
+    },
+    {
+      "file": "Parts/spike/Critical/glow.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 2,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        2,
+        0,
+        61,
+        27
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 27,
+      "opaque_count": 388,
+      "pass": true
+    },
+    {
+      "file": "Parts/spike/Critical/platform.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 23,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        63,
+        63
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 63,
+      "opaque_count": 4096,
+      "pass": true
+    },
+    {
+      "file": "Parts/spike/Critical/spikes.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 11,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        2,
+        0,
+        61,
+        51
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 51,
+      "opaque_count": 1830,
+      "pass": true
+    },
+    {
+      "file": "Parts/spike/Dud/base.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 20,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        63,
+        63
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 63,
+      "opaque_count": 4096,
+      "pass": true
+    },
+    {
+      "file": "Parts/spike/Dud/glow.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 2,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        2,
+        0,
+        61,
+        27
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 27,
+      "opaque_count": 388,
+      "pass": true
+    },
+    {
+      "file": "Parts/spike/Dud/platform.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 23,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        63,
+        63
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 63,
+      "opaque_count": 4096,
+      "pass": true
+    },
+    {
+      "file": "Parts/spike/Dud/spikes.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 19,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        2,
+        0,
+        61,
+        51
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 51,
+      "opaque_count": 1830,
+      "pass": true
+    },
+    {
+      "file": "Parts/spike/Normal/base.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 24,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        63,
+        63
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 63,
+      "opaque_count": 4096,
+      "pass": true
+    },
+    {
+      "file": "Parts/spike/Normal/glow.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 2,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        2,
+        0,
+        61,
+        27
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 27,
+      "opaque_count": 388,
+      "pass": true
+    },
+    {
+      "file": "Parts/spike/Normal/platform.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 23,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        255
+      ],
+      "bbox": [
+        0,
+        0,
+        63,
+        63
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 63,
+      "opaque_count": 4096,
+      "pass": true
+    },
+    {
+      "file": "Parts/spike/Normal/spikes.png",
+      "size": [
+        64,
+        64
+      ],
+      "expected_size": [
+        64,
+        64
+      ],
+      "size_pass": true,
+      "colors": 22,
+      "palette_outside_pixels": 0,
+      "banned_pixels": 0,
+      "pure_black_pixels": 0,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        2,
+        0,
+        61,
+        51
+      ],
+      "top_opaque_row": 0,
+      "bottom_opaque_row": 51,
+      "opaque_count": 1830,
+      "pass": true
+    }
+  ],
+  "checks": {
+    "file_count_49": true,
+    "spike_tip_rows": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "spike_tip_all_zero": true,
+    "spike_shafts_at_least_40_rows": true,
+    "spike_base_full_opaque": true,
+    "platform_full_opaque": true,
+    "platform_identical": true,
+    "glow_normal_dud_critical_identical": true,
+    "glow_in_top32": true,
+    "muzzle_at_right_center": true,
+    "flash_right_half": true,
+    "head_bottom_63": true,
+    "mount_top_0": true,
+    "impact_bottom_31": true,
+    "chain_seams": [
+      {
+        "state": "Normal",
+        "top_bottom_rgba_equal": true,
+        "connected_columns": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "width": 10,
+        "center": 7.5,
+        "pass": true
+      },
+      {
+        "state": "Dud",
+        "top_bottom_rgba_equal": true,
+        "connected_columns": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "width": 10,
+        "center": 7.5,
+        "pass": true
+      },
+      {
+        "state": "Critical",
+        "top_bottom_rgba_equal": true,
+        "connected_columns": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "width": 10,
+        "center": 7.5,
+        "pass": true
+      },
+      {
+        "state": "Beneficial",
+        "top_bottom_rgba_equal": true,
+        "connected_columns": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "width": 10,
+        "center": 7.5,
+        "pass": true
+      }
+    ],
+    "chain_seams_pass": true,
+    "silhouettes": {
+      "spike/base": true,
+      "spike/spikes": true,
+      "spike/glow": true,
+      "spike/platform": true,
+      "arrow_shooter/body": true,
+      "arrow_shooter/arrow": true,
+      "arrow_shooter/muzzle_flash": true,
+      "drop_hammer/head": true,
+      "drop_hammer/mount": true,
+      "drop_hammer/chain": true,
+      "drop_hammer/impact": true
+    },
+    "all_state_silhouettes_equal": true,
+    "marker_centers_transparent": true,
+    "seal_byte_identical": true
+  },
+  "production_ready": false,
+  "numeric_pass": true,
+  "limitations": [
+    "Generated source grids are not exact integer grids: per-part cell-center grid recovery uses recorded source crops and pitches.",
+    "Continuous 1px charcoal outlines and exactly 3-4 shades per material are not mechanically guaranteed.",
+    "Uniform silhouette uses intersection cutouts; some state-specific edge details are removed.",
+    "Preview hero is copied unscaled from existing Idle frame 0, regardless of its actual opaque height."
+  ]
+}

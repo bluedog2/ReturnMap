@@ -4983,7 +4983,7 @@ MonoBehaviour:
   baseCost: 10
   spikeVisual: {fileID: 8136893130560315858}
   extendHeight: 0.4
-  spikeTipLocalY: 0.5
+  spikeTipLocalY: 1
   retractedReveal: 0.08
   isFlipped: 0
   flipWithAnchor:

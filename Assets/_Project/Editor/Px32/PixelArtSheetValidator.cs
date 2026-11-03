@@ -84,7 +84,7 @@ namespace ReTrap.EditorTools
                 squash   = Px32Rules.IsSquash(baseName),
                 // 캐릭터는 화풍 v2 팔레트(20색) 전체 사용 허용
                 maxColors = (category == "Tiles" || category == "Backgrounds") ? 24
-                          : (category == "Player" || category == "Enemies") ? 24 : 16, // 3칸 기준 디테일(docs/scale-3tile.md)
+                          : (category == "Player" || category == "Enemies" || category == "Traps") ? 24 : 16, // 3칸 기준 디테일(docs/scale-3tile.md)
             };
             var spec = Px32Rules.GetSheetSpec(category, baseName);
             if (spec != null) { o.cellW = spec.cellW; o.cellH = spec.cellH; o.frames = spec.frames; }

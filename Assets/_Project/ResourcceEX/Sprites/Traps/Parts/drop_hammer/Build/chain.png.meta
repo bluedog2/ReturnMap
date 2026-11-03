@@ -103,10 +103,10 @@ TextureImporter:
       name: chain
       rect:
         serializedVersion: 2
-        x: 2
+        x: 3
         y: 0
-        width: 4
-        height: 8
+        width: 10
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,7 +115,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cee1bbe23be517c44a197cc43a71b6d3
+      spriteID: e33c02759348b8b47a84b545153a55da
       internalID: -312708648
       vertices: []
       indices: 

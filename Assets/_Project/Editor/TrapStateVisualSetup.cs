@@ -333,11 +333,14 @@ namespace ReTrap.EditorTools
                 PrepareRenderer(visualSr, 10);
                 visual.localScale = Vector3.one;
 
-                // 머즐 플래시 — Visual 자식이라 Visual 회전(발사 방향)을 그대로 따른다
-                var flash = EnsureChildRenderer(visual, "MuzzleFlash", 11, new Vector3(0.45f, 0f, 0f));
+                var bodies = LoadStateSprites("arrow_shooter", "body");
+
+                // 머즐 플래시 — Visual 자식이라 Visual 회전(발사 방향)을 그대로 따른다.
+                // 위치 = 본체 오른쪽 끝 근처 (32px 본체 0.45 · 64px 본체 0.9 — 함정 크기에 비례)
+                float muzzleX = bodies[0] != null ? bodies[0].bounds.extents.x * 0.9f : 0.45f;
+                var flash = EnsureChildRenderer(visual, "MuzzleFlash", 11, new Vector3(muzzleX, 0f, 0f));
                 flash.enabled = false;
 
-                var bodies = LoadStateSprites("arrow_shooter", "body");
                 var flashes = LoadStateSprites("arrow_shooter", "muzzle_flash");
                 var arrows = LoadStateSprites("arrow_shooter", "arrow");
 

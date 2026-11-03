@@ -23,7 +23,7 @@ namespace ReTrap
         // ── Inspector ─────────────────────────────────────────────────────────
 
         [Header("배치")]
-        [Tooltip("함정 중심 기준 게이지 위치 오프셋 (월드 좌표계 — 앵커 회전과 무관하게 항상 화면 위쪽).")]
+        [Tooltip("함정 중심 기준 게이지 위치 오프셋 (월드 좌표계 — 앵커 회전과 무관하게 항상 화면 위쪽). 1칸 슬롯 기준, 슬롯 크기만큼 곱해진다.")]
         [SerializeField] private Vector2 worldOffset = new Vector2(0f, 1.0f);
 
         [Tooltip("게이지 지름 (월드 유닛).")]
@@ -115,9 +115,9 @@ namespace ReTrap
             RefreshVisible();
             if (!_canvas.enabled) return;
 
-            // 앵커 회전과 무관하게 항상 화면 위쪽
+            // 앵커 회전과 무관하게 항상 화면 위쪽. 오프셋은 함정 칸 크기(2×2 슬롯이면 2배)에 비례
             _canvasRect.SetPositionAndRotation(
-                transform.position + (Vector3)worldOffset, Quaternion.identity);
+                transform.position + (Vector3)(worldOffset * _shooter.SlotSize), Quaternion.identity);
 
             SpriteUtil.SetRingFill(_fillImage, fillFrames, _shooter.CycleProgress01);
             Color fillColor = ColorFor(_shooter.CurrentState);
