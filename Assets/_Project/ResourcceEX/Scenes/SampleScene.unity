@@ -7089,7 +7089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62dd8f79f12181c4d8b32aba922a95de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReTrap.PlayerController
-  moveSpeed: 6
+  moveSpeed: 8
   acceleration: 50
   deceleration: 50
   jumpForce: 12.6
@@ -7102,13 +7102,13 @@ MonoBehaviour:
   jumpBufferTime: 0.15
   hangTimeThreshold: 1
   hangTimeGravityMult: 0.5
-  dashSpeed: 18
-  dashDuration: 0.2
+  dashSpeed: 24
+  dashDuration: 0.21
   dashCooldown: 0.1
   dashRechargeTime: 1
   maxDashCount: 3
   groundCheck: {fileID: 923383018}
-  groundCheckSize: {x: 0.74, y: 0.12}
+  groundCheckSize: {x: 0.68, y: 0.12}
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -9722,8 +9722,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineConfiner2D
   BoundingShape2D: {fileID: 512269907}
-  Damping: 0.3
-  SlowingDistance: 1
+  Damping: 0
+  SlowingDistance: 0
   OversizeWindow:
     Enabled: 0
     MaxWindowSize: 0

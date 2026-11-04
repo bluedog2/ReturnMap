@@ -46,9 +46,9 @@ namespace ReTrap
 
         [Header("Ground Detection")]
         [SerializeField] private Transform groundCheck;
-        [Tooltip("발밑 판정 박스. 폭은 캡슐 폭(0.6875)보다 약간 좁게 — 벽 접촉을 바닥으로 오인하지 않는 한계값.\n" +
+        [Tooltip("발밑 판정 박스. 폭은 캡슐 폭(0.75)보다 한쪽 0.03 이상 좁게 — 같거나 거의 같으면 공중에서 벽에 붙을 때 바닥으로 오인.\n" +
                  "원형 점 판정은 턱 모서리에 걸쳐 섰을 때 공중으로 오판하므로 박스를 사용합니다.")]
-        [SerializeField] private Vector2   groundCheckSize = new Vector2(0.64f, 0.12f);
+        [SerializeField] private Vector2   groundCheckSize = new Vector2(0.68f, 0.12f);
         [SerializeField] private LayerMask groundLayer;
 
         [Header("References")]
@@ -171,6 +171,9 @@ namespace ReTrap
 
         // ── Input ─────────────────────────────────────────────────────────────
 
+        /// <summary>카메라 전환 연출 중 — 이동·점프·대시를 막는다(입력값은 계속 받아 두었다가 연출이 끝나면 바로 반영).</summary>
+        private static bool ControlLocked => BuildCameraController.IsCinematicPlaying;
+
         private void HandleAction(InputAction.CallbackContext ctx)
         {
             switch (ctx.action.name)
@@ -181,11 +184,11 @@ namespace ReTrap
                     break;
 
                 case "Jump":
-                    HandleJumpInput(ctx);
+                    if (!ControlLocked) HandleJumpInput(ctx);
                     break;
 
                 case "Dash":
-                    if (ctx.started) TryDash();
+                    if (ctx.started && !ControlLocked) TryDash();
                     break;
             }
         }
@@ -364,7 +367,7 @@ namespace ReTrap
 
         private void ApplyMovement()
         {
-            float targetSpeed = MoveInput.x * moveSpeed;
+            float targetSpeed = ControlLocked ? 0f : MoveInput.x * moveSpeed;
             float speedDiff   = targetSpeed - rb.linearVelocity.x;
             float accelRate   = Mathf.Abs(targetSpeed) > 0.01f ? acceleration : deceleration;
             rb.AddForce(speedDiff * accelRate * Vector2.right, ForceMode2D.Force);

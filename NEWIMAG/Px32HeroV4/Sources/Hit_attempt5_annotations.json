@@ -1,0 +1,62 @@
+[
+  {
+    "head_translation": [
+      -1,
+      -1
+    ],
+    "head_bbox": [
+      29,
+      26,
+      97,
+      82
+    ],
+    "frame_translation": [
+      26,
+      21
+    ],
+    "neck_source": [
+      50,
+      51
+    ]
+  },
+  {
+    "head_translation": [
+      -12,
+      4
+    ],
+    "head_bbox": [
+      18,
+      31,
+      86,
+      87
+    ],
+    "frame_translation": [
+      16,
+      24
+    ],
+    "neck_source": [
+      49,
+      53
+    ]
+  },
+  {
+    "head_translation": [
+      0,
+      -1
+    ],
+    "head_bbox": [
+      30,
+      26,
+      98,
+      82
+    ],
+    "frame_translation": [
+      28,
+      21
+    ],
+    "neck_source": [
+      49,
+      51
+    ]
+  }
+]

@@ -153,17 +153,17 @@ namespace ReTrap.EditorTools
                     $"현재  {curW} × {curH}  ({RatioText(curW, curH)}){AspectMatchMark(curW, curH)}",
                     EditorStyles.miniLabel);
 
-                // 맵 크기 규격 (docs/scale-3tile.md): 높이 22·27, 너비 ceil(h×16/9)~+1 — 밖이면 경고 (CI 는 에러)
+                // 맵 크기 규격 (docs/scale-3tile.md): 높이 22·27·32, 너비 ceil(h×16/9) 이상 — 밖이면 경고 (CI 는 에러)
                 string specErr = MapAuthoringValidator.ViewportSpecError(curW, curH);
                 if (specErr != null)
                     EditorGUILayout.HelpBox(specErr, MessageType.Warning);
 
                 EditorGUILayout.BeginHorizontal();
                 {
-                    if (GUILayout.Button("S 40×22", EditorStyles.miniButtonLeft))
-                    { _resizeW = 40; _resizeH = 22; _aspect = AspectPreset.Free; }
-                    if (GUILayout.Button("L 48×27", EditorStyles.miniButtonRight))
-                    { _resizeW = 48; _resizeH = 27; _aspect = AspectPreset.Free; }
+                    if (GUILayout.Button("S 60×27", EditorStyles.miniButtonLeft))
+                    { _resizeW = 60; _resizeH = 27; _aspect = AspectPreset.Free; }
+                    if (GUILayout.Button("L 72×32", EditorStyles.miniButtonRight))
+                    { _resizeW = 72; _resizeH = 32; _aspect = AspectPreset.Free; }
                 }
                 EditorGUILayout.EndHorizontal();
 

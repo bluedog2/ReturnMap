@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -244,6 +245,10 @@ namespace ReTrap
                     playerController.transform.position.z);
 
                 playerController.ResetState();
+
+                // 순간이동한 위치로 추적 카메라를 즉시 맞춘다 — 이전 위치에서 감쇠로 따라오며 화면이 밀리지 않게
+                var vcam = FindFirstObjectByType<CinemachineCamera>();
+                if (vcam != null) vcam.PreviousStateIsValid = false;
             }
 
             // ── 5. HP 전체 회복 + 리스폰 무적 ────────────────────────────────

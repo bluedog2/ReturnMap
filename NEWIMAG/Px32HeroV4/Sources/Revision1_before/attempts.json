@@ -1,0 +1,550 @@
+{
+  "generator": "built-in image_gen",
+  "max_attempts_per_sheet": 3,
+  "sheets": {
+    "Run": {
+      "selected_attempt": 3,
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Use case: illustration-story. Generate NEW Re:Trap pixel sprite animation. Reference is approved Idle design, not an edit target. Same right-facing girl, ivory high ponytail crimson tie/hairpin, cream jacket crimson trim, black crop top/shorts, asymmetrical socks, chunky cream/crimson sneakers, tooth-mouth black box in left hand. Exactly 4x4 square blocks representing logical pixels, no antialiasing or gradients, charcoal 1 logical pixel outline, <=24 colors matching reference. Each cell 512x512 output =128x128 logical. Standing height 101 logical pixels (404 output); head+ponytail about 69x57 logical, body below neck about 48 logical pixels; keep body scale precisely reference. Transparent background, no labels, grid, shadow, trails, dust, effects. Full separated figures, no overlap between cells. RUN: eight distinct frames, FOUR columns TWO rows, output 2048x1024. Reading order: right foot contact, compression, push off, airborne; left foot contact, compression, push off, airborne. Strong readable alternating legs, slight forward torso lean, head bob only 1-2 logical pixels. Seamless cyclic motion at 18fps, frame8 connects to frame1. All feet near local baseline y127. Keep same design and scale across eight frames.",
+          "source": "Sources/Run_attempt1.png",
+          "original_output_hint": "Generated images are saved to C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d as C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d\\exec-7e778abb-a975-49de-9b68-e15bba9765bb.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "selected": false,
+          "sha256": "bc363db3b5469ce47e0458371b0c6cb542f63a4780e4a53798762adb10750151",
+          "source_dimensions": [
+            1774,
+            887
+          ],
+          "selection_reason": "포즈 8개 확보. 공중 높이 흔들림이 크며 머리 합성 시 어깨 수평 절단."
+        },
+        {
+          "attempt": 2,
+          "source": "Sources/Run_attempt2.png",
+          "original_output_hint": "Generated images are saved to C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d as C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d\\exec-11d90dee-4c00-429e-a094-c9fffbe7ccef.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "selected": false,
+          "sha256": "9fda22e72b272a85c3f95d9b6a4cc477a2375b3aacfc31fd3b58362765888df7",
+          "source_dimensions": [
+            1254,
+            1254
+          ],
+          "selection_reason": "원본 머리가 상단에 닿고 실제 캔버스/픽셀 격자 불일치. 체격과 포즈 일관성이 개선되지 않음."
+        },
+        {
+          "attempt": 3,
+          "source": "Sources/Run_attempt3.png",
+          "original_output_hint": "Generated images are saved to C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d as C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d\\exec-9c912a53-9493-422f-9b7d-fa7c082bc845.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "selected": true,
+          "sha256": "57ceca94b803e582900f7c5333c16f405f9a795f5dd151dd6a83fe2845a92b4e",
+          "source_dimensions": [
+            1774,
+            887
+          ],
+          "selection_reason": "선택: 머리 없는 몸이 생성되어 어깨 절단 없이 Idle 전체 머리 합성 가능. 상하 흔들림 및 몸 방향 전환 결함은 남음.",
+          "recovery": [
+            {
+              "source_cell": [
+                0,
+                0,
+                443,
+                443
+              ],
+              "sample_pitch": 4,
+              "sampled_bbox": [
+                27,
+                51,
+                85,
+                108
+              ],
+              "raw_size": [
+                59,
+                58
+              ]
+            },
+            {
+              "source_cell": [
+                443,
+                0,
+                887,
+                443
+              ],
+              "sample_pitch": 4,
+              "sampled_bbox": [
+                27,
+                55,
+                77,
+                108
+              ],
+              "raw_size": [
+                51,
+                54
+              ]
+            },
+            {
+              "source_cell": [
+                887,
+                0,
+                1330,
+                443
+              ],
+              "sample_pitch": 4,
+              "sampled_bbox": [
+                27,
+                50,
+                78,
+                108
+              ],
+              "raw_size": [
+                52,
+                59
+              ]
+            },
+            {
+              "source_cell": [
+                1330,
+                0,
+                1774,
+                443
+              ],
+              "sample_pitch": 4,
+              "sampled_bbox": [
+                26,
+                48,
+                80,
+                103
+              ],
+              "raw_size": [
+                55,
+                56
+              ]
+            },
+            {
+              "source_cell": [
+                0,
+                443,
+                443,
+                887
+              ],
+              "sample_pitch": 4,
+              "sampled_bbox": [
+                27,
+                51,
+                80,
+                107
+              ],
+              "raw_size": [
+                54,
+                57
+              ]
+            },
+            {
+              "source_cell": [
+                443,
+                443,
+                887,
+                887
+              ],
+              "sample_pitch": 4,
+              "sampled_bbox": [
+                27,
+                55,
+                80,
+                107
+              ],
+              "raw_size": [
+                54,
+                53
+              ]
+            },
+            {
+              "source_cell": [
+                887,
+                443,
+                1330,
+                887
+              ],
+              "sample_pitch": 4,
+              "sampled_bbox": [
+                27,
+                50,
+                80,
+                107
+              ],
+              "raw_size": [
+                54,
+                58
+              ]
+            },
+            {
+              "source_cell": [
+                1330,
+                443,
+                1774,
+                887
+              ],
+              "sample_pitch": 4,
+              "sampled_bbox": [
+                26,
+                48,
+                81,
+                101
+              ],
+              "raw_size": [
+                56,
+                54
+              ]
+            }
+          ],
+          "production_ready": false
+        }
+      ]
+    },
+    "JumpStart": {
+      "selected_attempt": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Use case: illustration-story. Generate NEW Re:Trap pixel sprite animation. Reference is approved Idle design, not an edit target. Same right-facing girl, ivory high ponytail crimson tie/hairpin, cream jacket crimson trim, black crop top/shorts, asymmetrical socks, chunky cream/crimson sneakers, tooth-mouth black box in left hand. Exactly 4x4 square blocks representing logical pixels, no antialiasing or gradients, charcoal 1 logical pixel outline, <=24 colors matching reference. Each cell 512x512 output =128x128 logical. Standing height 101 logical pixels (404 output); head+ponytail about 69x57 logical, body below neck about 48 logical pixels; keep body scale precisely reference. Transparent background, no labels, grid, shadow, trails, dust, effects. Full separated figures, no overlap between cells. JUMPSTART: exactly THREE frames in THREE columns ONE row, canvas 1536x512. Frame1 deep crouch compress knees preparing leap. Frame2 extend body and push off on tiptoes, near standing height101 logical. Frame3 ascending pose with knees raised, stable silhouette to hold throughout ascent. Preserve box in left hand throughout. No duplicated poses. Use exact 4px pixel blocks.",
+          "source": "Sources/JumpStart_attempt1.png",
+          "original_output_hint": "Generated images are saved to C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d as C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d\\exec-9e11fa78-7d36-4c92-8a75-45ef1200b050.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "selected": true,
+          "sha256": "8f040bb9d5dba5abbfd7b7bc485b21c1e4c0aa7569053d67f8d21a7cf600323b",
+          "source_dimensions": [
+            2172,
+            724
+          ],
+          "selection_reason": "선택: 웅크림·박차기·무릎 상승 포즈 구분이 가장 명확하고 다른 시도보다 체격이 기준에 가까움. 머리 합성은 어깨 잘림 때문에 포기하고 생성 머리 예외.",
+          "recovery": [
+            {
+              "source_cell": [
+                0,
+                0,
+                724,
+                724
+              ],
+              "sample_pitch": 6,
+              "sampled_bbox": [
+                24,
+                40,
+                93,
+                117
+              ],
+              "raw_size": [
+                70,
+                78
+              ]
+            },
+            {
+              "source_cell": [
+                724,
+                0,
+                1448,
+                724
+              ],
+              "sample_pitch": 6,
+              "sampled_bbox": [
+                24,
+                15,
+                92,
+                117
+              ],
+              "raw_size": [
+                69,
+                103
+              ]
+            },
+            {
+              "source_cell": [
+                1448,
+                0,
+                2172,
+                724
+              ],
+              "sample_pitch": 6,
+              "sampled_bbox": [
+                26,
+                3,
+                92,
+                94
+              ],
+              "raw_size": [
+                67,
+                92
+              ]
+            }
+          ],
+          "production_ready": false
+        },
+        {
+          "attempt": 2,
+          "source": "Sources/JumpStart_attempt2.png",
+          "original_output_hint": "Generated images are saved to C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d as C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d\\exec-17f61d70-91a9-4e96-86bc-8c7d3d011426.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "selected": false,
+          "sha256": "c8f238c6eeff2e67f3f1263a3f73d390a1524f521978bb6ae0cfc8c0fc220759",
+          "source_dimensions": [
+            1536,
+            1024
+          ],
+          "selection_reason": "실제 박차기 몸/다리가 길어 체격 편차가 커짐."
+        },
+        {
+          "attempt": 3,
+          "source": "Sources/JumpStart_attempt3.png",
+          "original_output_hint": "Generated images are saved to C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d as C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d\\exec-dc06ae38-dfc1-4b47-99e4-bfc2e9bf4b33.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "selected": false,
+          "sha256": "db42ea7071248785d76bf7b3e3032dfa44130028a992ec62fce430301f9b3116",
+          "source_dimensions": [
+            1536,
+            1024
+          ],
+          "selection_reason": "머리 없는 몸은 있으나 흰 배경과 그림자 포함. 4px 격자에서 목-발 몸 길이가 약94px로 기준54px를 크게 초과; 리샘플링 없이 셀 수용 불가."
+        }
+      ]
+    },
+    "Dash": {
+      "selected_attempt": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "source": "Sources/Dash_attempt1.png",
+          "original_output_hint": "Generated images are saved to C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d as C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d\\exec-a25deb8a-8b29-4da8-bab3-8d1929e284b2.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "selected": false,
+          "sha256": "dae7204a9ba213d9a68309684e9ce482f706fef2f02ee02803e36e2c9ce9cc33",
+          "source_dimensions": [
+            1536,
+            1024
+          ],
+          "selection_reason": "다섯 포즈 확보했으나 몸/상자 크기와 몸 기울기가 불안정하고 반투명 후광 발생."
+        },
+        {
+          "attempt": 2,
+          "source": "Sources/Dash_attempt2.png",
+          "original_output_hint": "Generated images are saved to C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d as C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d\\exec-e70d3524-9767-4f0e-a82a-f396560afd69.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "selected": true,
+          "sha256": "e5f00e9700162f87840a978d8e34e0caa54b1bfb5bd3373a271ead5379ffdef4",
+          "source_dimensions": [
+            1536,
+            1024
+          ],
+          "selection_reason": "선택: 준비·돌진3·감속 구분과 몸 비율이 상대적으로 양호. 후광은 알파128 이진화로 제거. 목/어깨 합성 부조화 때문에 생성 머리 예외.",
+          "recovery": [
+            {
+              "source_cell": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "sample_pitch": 4,
+              "sampled_bbox": [
+                33,
+                31,
+                101,
+                118
+              ],
+              "raw_size": [
+                69,
+                88
+              ]
+            },
+            {
+              "source_cell": [
+                512,
+                0,
+                1024,
+                512
+              ],
+              "sample_pitch": 4,
+              "sampled_bbox": [
+                23,
+                25,
+                103,
+                117
+              ],
+              "raw_size": [
+                81,
+                93
+              ]
+            },
+            {
+              "source_cell": [
+                1024,
+                0,
+                1536,
+                512
+              ],
+              "sample_pitch": 4,
+              "sampled_bbox": [
+                17,
+                27,
+                111,
+                110
+              ],
+              "raw_size": [
+                95,
+                84
+              ]
+            },
+            {
+              "source_cell": [
+                0,
+                512,
+                512,
+                1024
+              ],
+              "sample_pitch": 4,
+              "sampled_bbox": [
+                25,
+                26,
+                116,
+                111
+              ],
+              "raw_size": [
+                92,
+                86
+              ]
+            },
+            {
+              "source_cell": [
+                512,
+                512,
+                1024,
+                1024
+              ],
+              "sample_pitch": 4,
+              "sampled_bbox": [
+                25,
+                15,
+                95,
+                114
+              ],
+              "raw_size": [
+                71,
+                100
+              ]
+            }
+          ],
+          "production_ready": false
+        },
+        {
+          "attempt": 3,
+          "prompt": "undefined DASH5bodies reading order, bottom right cell blank. 1prepare low forward lean,2rush,3rush torso almost horizontal,4rush torso almost horizontal alternate leg,5decelerate rising torso. Clearly stronger forward lean than running. Keep neck stump and shoulders fully intact. No speed effects. No hair.",
+          "source": "Sources/Dash_attempt3.png",
+          "original_output_hint": "Generated images are saved to C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d as C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d\\exec-d8a0061a-fcd8-48b8-9a19-8c76352ecf10.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "selected": false,
+          "sha256": "23115b1776c135313e459dbe5ef92c07dd7e2ad6226e326ca1d154d2c19cec76",
+          "source_dimensions": [
+            1536,
+            1024
+          ],
+          "selection_reason": "지시와 달리 머리·문구·패널 배경이 생성되고 상자가 누락되어 즉시 탈락."
+        }
+      ]
+    },
+    "Hit": {
+      "selected_attempt": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Use case: illustration-story. Generate NEW Re:Trap pixel sprite animation. Reference is approved Idle design, not an edit target. Same right-facing girl, ivory high ponytail crimson tie/hairpin, cream jacket crimson trim, black crop top/shorts, asymmetrical socks, chunky cream/crimson sneakers, tooth-mouth black box in left hand. Exactly 4x4 square blocks representing logical pixels, no antialiasing or gradients, charcoal 1 logical pixel outline, <=24 colors matching reference. Each cell 512x512 output =128x128 logical. Standing height 101 logical pixels (404 output); head+ponytail about 69x57 logical, body below neck about 48 logical pixels; keep body scale precisely reference. Transparent background, no labels, grid, shadow, trails, dust, effects. Full separated figures, no overlap between cells. HIT: exactly THREE frames in THREE columns ONE row, canvas1536x512. 1 flinch, eyes closed, shoulders recoil. 2 strongly lean torso/head BACK TO LEFT from impact pushing left, both feet stay grounded. 3 recovery almost standing exactly reference height101 logical pixels. Hold tooth-mouth box in left hand. No impact effect. Distinct body acting, no frame clones. Preserve small head and body proportions.",
+          "source": "Sources/Hit_attempt1.png",
+          "original_output_hint": "Generated images are saved to C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d as C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d\\exec-d9f8eaab-1813-4cb9-abd8-50d79dfaa9fc.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "selected": true,
+          "sha256": "01b6e1fd2091bc7791f8a107755f00148ac04cf573cc2b74a0e43289137dd21d",
+          "source_dimensions": [
+            2172,
+            724
+          ],
+          "selection_reason": "선택: 눈 감은 움찔·뒤젖힘·복귀가 가장 명확. 목/어깨 합성선과 표정 소실 때문에 생성 머리 예외.",
+          "recovery": [
+            {
+              "source_cell": [
+                0,
+                0,
+                724,
+                724
+              ],
+              "sample_pitch": 6,
+              "sampled_bbox": [
+                27,
+                8,
+                97,
+                114
+              ],
+              "raw_size": [
+                71,
+                107
+              ]
+            },
+            {
+              "source_cell": [
+                724,
+                0,
+                1448,
+                724
+              ],
+              "sample_pitch": 6,
+              "sampled_bbox": [
+                3,
+                11,
+                95,
+                114
+              ],
+              "raw_size": [
+                93,
+                104
+              ]
+            },
+            {
+              "source_cell": [
+                1448,
+                0,
+                2172,
+                724
+              ],
+              "sample_pitch": 6,
+              "sampled_bbox": [
+                22,
+                8,
+                90,
+                114
+              ],
+              "raw_size": [
+                69,
+                107
+              ]
+            }
+          ],
+          "production_ready": false
+        },
+        {
+          "attempt": 2,
+          "prompt": "Use case: illustration-story. Generate NEW Re:Trap pixel sprite animation. Reference is approved Idle design, not an edit target. Same right-facing girl, ivory high ponytail crimson tie/hairpin, cream jacket crimson trim, black crop top/shorts, asymmetrical socks, chunky cream/crimson sneakers, tooth-mouth black box in left hand. Exactly 4x4 square blocks representing logical pixels, no antialiasing or gradients, charcoal 1 logical pixel outline, <=24 colors matching reference. Each cell 512x512 output =128x128 logical. Standing height 101 logical pixels (404 output); head+ponytail about 69x57 logical, body below neck about 48 logical pixels; keep body scale precisely reference. Transparent background, no labels, grid, shadow, trails, dust, effects. Full separated figures, no overlap between cells. HIT second attempt. EXACT1536x1024 canvas THREE columns TWO rows of512-square cells. ONLY TOP ROW has3 frames; bottom half EMPTY transparent. 1 flinch eyes tightly closed, shoulders retract;2 torso recoils BACK TOWARD LEFT with head shifted left;3 recovered standing like reference. Anatomical height101 logical=404output, neck-to-shoe54logical=216output for frames1 and3. Small anatomy, do not enlarge torso or head or box. Exact4px block grid with no halo, true transparentBG. No effects. Heads may later be replaced, preserve clear neckline.",
+          "source": "Sources/Hit_attempt2.png",
+          "original_output_hint": "Generated images are saved to C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d as C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d\\exec-22ff2adb-dc41-4024-9c2c-0cc45c816f1c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "selected": false,
+          "sha256": "2f8c50d8ea1e886024e34c9427fb534279dec3243892b8514cfaa4217a1d09f1",
+          "source_dimensions": [
+            1536,
+            1024
+          ],
+          "selection_reason": "몸이 더 커졌으며 뒤젖힘과 왼쪽 반동이 1차보다 약함."
+        },
+        {
+          "attempt": 3,
+          "source": "Sources/Hit_attempt3.png",
+          "original_output_hint": "Generated images are saved to C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d as C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d\\exec-e9e362ae-e042-4f81-a70c-8d89cc206be9.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "selected": false,
+          "sha256": "d14cfe08bfeadcc4c0709fa8ede072bd23e9391cc4699e59b1986edf840c1db3",
+          "source_dimensions": [
+            2172,
+            724
+          ],
+          "selection_reason": "머리 없음 요청에도 머리카락이 남음. 뒤로 젖힌 몸 동작이 약해지고 표정 복원 불가; 1차보다 동작 전달이 떨어져 탈락."
+        }
+      ]
+    }
+  },
+  "sampling_note": "Run/Dash selected sources use fixed k=4; JumpStart/Hit selected large2172x724 sources use fixed k=6 based on visible repeated pixel-step spacing. Source grid itself is approximate, not certified exact; no per-frame fitting or silhouette scaling. Head composition uses only integer translation.",
+  "head_fallback_note": "JumpStart frames1–3, Dash frames1–5, Hit frames1–3 use generated heads after failed complete Idle-head composition. Sources/Composite_before_bodyonly_3x.png preserves the rejected trial. Run frames1–8 use exact complete Idle head."
+}

@@ -1,0 +1,14 @@
+{
+  "Animations\\Hero_Dash_3x.gif": "9da467201f3efc9adeab96e6f60cb986597216b45f7e5da062e7a22dbbf1c395",
+  "Animations\\Hero_JumpStart_3x.gif": "c408f30683f1f0c45ef0e78c6dc0017554176de1553051e388c1c68abdc0f594",
+  "Sources\\Dash_attempt1.png": "dae7204a9ba213d9a68309684e9ce482f706fef2f02ee02803e36e2c9ce9cc33",
+  "Sources\\Dash_attempt2.png": "e5f00e9700162f87840a978d8e34e0caa54b1bfb5bd3373a271ead5379ffdef4",
+  "Sources\\Dash_attempt3.png": "23115b1776c135313e459dbe5ef92c07dd7e2ad6226e326ca1d154d2c19cec76",
+  "Sources\\Dash_recovered_3x.png": "2a6025d7775ef52253cf51ffec1043e70ce378050fd452a440dd8ab5e2e08340",
+  "Sources\\JumpStart_attempt1.png": "8f040bb9d5dba5abbfd7b7bc485b21c1e4c0aa7569053d67f8d21a7cf600323b",
+  "Sources\\JumpStart_attempt2.png": "c8f238c6eeff2e67f3f1263a3f73d390a1524f521978bb6ae0cfc8c0fc220759",
+  "Sources\\JumpStart_attempt3.png": "db42ea7071248785d76bf7b3e3032dfa44130028a992ec62fce430301f9b3116",
+  "Sources\\JumpStart_recovered_3x.png": "854418f8447045ad85e33d38969e29ceb0c6ed414f4f43a3cd9602edde09371f",
+  "_1x\\Hero_Dash.png": "acdc0245c4dce3c1b39f065d3ae3b7493fb999f11c12fa87d4742b2b8ea4ed58",
+  "_1x\\Hero_JumpStart.png": "5f84169efce0f6da2de1e86230d9ce3da190674c9483543694f7bbbbbb72c718"
+}

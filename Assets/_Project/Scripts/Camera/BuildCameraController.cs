@@ -69,6 +69,9 @@ namespace ReTrap
 
         // ── 런타임 ────────────────────────────────────────────────────────────
 
+        /// <summary>Play 진입 카메라 연출(글라이드) 중인가. 이 동안 플레이어 조작을 막는다(<see cref="PlayerController"/>).</summary>
+        public static bool IsCinematicPlaying { get; private set; }
+
         private Camera           _cam;
         private CinemachineBrain _brain;
         private Coroutine        _glide;
@@ -104,6 +107,7 @@ namespace ReTrap
         {
             GamePhaseManager.OnPhaseChanged -= HandlePhase;
             MapLoader.OnMapLoaded           -= HandleMapLoaded;
+            IsCinematicPlaying = false;
         }
 
         private void Start()
@@ -167,6 +171,7 @@ namespace ReTrap
             {
                 StopCoroutine(_glide);
                 _glide = null;
+                IsCinematicPlaying = false;
             }
 
             switch (phase)
@@ -256,6 +261,7 @@ namespace ReTrap
             _directControl = false;   // 입력 처리 중단 (Brain 은 아직 꺼진 채 유지)
             _inputEnabled  = false;
             _panning       = false;
+            IsCinematicPlaying = true; // 연출이 끝날 때까지 플레이어 조작 잠금
 
             Vector3 startPos   = transform.position;
             float   startSize  = _cam.orthographicSize;
@@ -279,6 +285,7 @@ namespace ReTrap
             SetLensSize(vcam, targetSize);
             vcam.ForceCameraPosition(transform.position, transform.rotation);
             _glide = null;
+            IsCinematicPlaying = false;
             ExitDirectControl();
         }
 
@@ -306,13 +313,20 @@ namespace ReTrap
         private float MaxCropSize(Bounds b)
             => Mathf.Min(b.extents.y, b.extents.x / _cam.aspect);
 
-        /// <summary>경계 중심으로 이동하고 줌아웃 상한(맵이 화면을 꽉 채우는 크롭)으로 맞춥니다.</summary>
+        /// <summary>맵 전체가 화면에 들어가는 size (가로가 화면보다 넓은 맵은 위아래에 배경이 보임).</summary>
+        private float ContainSize(Bounds b)
+            => Mathf.Max(b.extents.y, b.extents.x / _cam.aspect);
+
+        /// <summary>
+        /// 경계 중심으로 이동하고 뷰를 맞춥니다. 빌드(조작 가능)는 줌아웃 상한(맵이 화면을 꽉 채우는 크롭 —
+        /// 화면보다 넓은 맵은 패닝으로 봄), 검증 관전(조작 불가)은 맵 전체가 보이도록 맞춥니다.
+        /// </summary>
         private void FitToBounds()
         {
             if (IsPpcOn) return; // PPC 켜진 동안 ortho 쓰기 금지
             if (!TryGetBounds(out Bounds b)) return;
 
-            float maxSize = Mathf.Max(MaxCropSize(b), minOrthoSize);
+            float maxSize = _inputEnabled ? Mathf.Max(MaxCropSize(b), minOrthoSize) : ContainSize(b);
             _cam.orthographicSize = maxSize;
             transform.position = new Vector3(b.center.x, b.center.y, transform.position.z);
         }

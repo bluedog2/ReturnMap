@@ -39,7 +39,7 @@ namespace ReTrap.EditorTools
             public bool   Loop;
         }
 
-        // 상태별 규격 (계획서 2.2). 주인공 Idle 6@8 · Run 8@12 · JumpStart 2@12 · Fall 2@8 루프 · Land 3@12 · Dash 4@20 · Hit 2@10 · Death 6@10
+        // 상태별 규격 (docs/animation-plan.md V4). 주인공 Idle 6@8 · Run 8@18 · JumpStart 3@15 · Fall 2@8 루프 · Land 3@15 · Dash 5@24 · Hit 3@12 · Death 6@10
         private static List<Entry> BuildTable()
         {
             var t = new List<Entry>();
@@ -51,13 +51,13 @@ namespace ReTrap.EditorTools
             });
 
             Hero("Idle",       "Hero_Idle",      6, 8,  true);
-            Hero("Run",        "Hero_Run",       8, 12, true);
-            Hero("Jump_Start", "Hero_JumpStart", 2, 12, false);
+            Hero("Run",        "Hero_Run",       8, 18, true);
+            Hero("Jump_Start", "Hero_JumpStart", 3, 15, false);
             Hero("Jump_Loop",  "Hero_Fall",      2, 8,  true);   // Fall 공유
             Hero("Fall_Loop",  "Hero_Fall",      2, 8,  true);
-            Hero("Land",       "Hero_Land",      3, 12, false);
-            Hero("Dash",       "Hero_Dash",      4, 20, false);  // 대시 0.2s 와 길이 일치
-            Hero("Lord_Hit",   "Hero_Hit",       2, 10, false);
+            Hero("Land",       "Hero_Land",      3, 15, false);
+            Hero("Dash",       "Hero_Dash",      5, 24, false);  // 대시 0.21s 와 길이 일치
+            Hero("Lord_Hit",   "Hero_Hit",       3, 12, false);
             Hero("Death",      "Hero_Death",     6, 10, false);
 
             // 적: 5종 × 4상태 — 상태 규격은 종 공통 (Idle 4@6 · Run 6@10 · Hit 2@10 · Death 6@10)

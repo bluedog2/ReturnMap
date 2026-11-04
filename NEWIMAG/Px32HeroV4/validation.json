@@ -1,0 +1,1826 @@
+{
+  "overall_pass": false,
+  "idle_reference": {
+    "bbox": [
+      30,
+      27,
+      98,
+      127
+    ],
+    "head_bbox": [
+      30,
+      27,
+      98,
+      83
+    ],
+    "head_size": [
+      69,
+      57
+    ],
+    "head_mask_method": "Manually annotated row regions; see headmask() and Sources/Idle_head_mask_4x.png. Not automatic semantic ground truth.",
+    "sha256": "cd8db8384fcc54b2781eb09bb063975e4bf58b1dd234378f03aa8690ead018e1"
+  },
+  "rules_note": "Bottom row127 allowed; top and side borders transparent. Full transparent border conflicts with bottom127. Head measured from complete composited mask. No silhouette resize or rotation. GIF centisecond rounding documented.",
+  "sheets": {
+    "Run": {
+      "dimensions": [
+        1024,
+        128
+      ],
+      "frames": [
+        {
+          "frame": 1,
+          "pose": "right_contact",
+          "bbox": [
+            26,
+            27,
+            101,
+            127
+          ],
+          "height": 101,
+          "height_delta_idle": 0,
+          "height_exception": null,
+          "center_x": 63.5,
+          "center_delta_idle": -0.5,
+          "color_count": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "forbidden_edge_pixels": 0,
+          "head_bbox": [
+            26,
+            27,
+            94,
+            83
+          ],
+          "head_size": [
+            69,
+            57
+          ],
+          "head_delta_idle": [
+            0,
+            0
+          ],
+          "head_pixel_exact": true,
+          "head_mode": "idle_full_head_translation",
+          "head_measurement": "exact opaque support of approved full-head mask",
+          "neck_source": [
+            30,
+            3
+          ],
+          "head_translation": [
+            -4,
+            0
+          ],
+          "frame_translation": [
+            43,
+            70
+          ],
+          "clipped_pixels": 0,
+          "checks": {
+            "standing_height": true,
+            "head": true,
+            "center": true,
+            "palette": true,
+            "alpha": true,
+            "border": true,
+            "floor": true,
+            "head_bob": false
+          },
+          "numeric_pass": false,
+          "visual_pass": false,
+          "pass": false
+        },
+        {
+          "frame": 2,
+          "pose": "compression",
+          "bbox": [
+            29,
+            31,
+            97,
+            127
+          ],
+          "height": 97,
+          "height_delta_idle": -4,
+          "height_exception": "compression",
+          "center_x": 63.0,
+          "center_delta_idle": -1.0,
+          "color_count": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "forbidden_edge_pixels": 0,
+          "head_bbox": [
+            29,
+            31,
+            97,
+            87
+          ],
+          "head_size": [
+            69,
+            57
+          ],
+          "head_delta_idle": [
+            0,
+            0
+          ],
+          "head_pixel_exact": true,
+          "head_mode": "idle_full_head_translation",
+          "head_measurement": "exact opaque support of approved full-head mask",
+          "neck_source": [
+            32,
+            3
+          ],
+          "head_translation": [
+            -1,
+            4
+          ],
+          "frame_translation": [
+            44,
+            74
+          ],
+          "clipped_pixels": 0,
+          "checks": {
+            "standing_height": true,
+            "head": true,
+            "center": true,
+            "palette": true,
+            "alpha": true,
+            "border": true,
+            "floor": true,
+            "head_bob": false
+          },
+          "numeric_pass": false,
+          "visual_pass": false,
+          "pass": false
+        },
+        {
+          "frame": 3,
+          "pose": "push_off",
+          "bbox": [
+            30,
+            26,
+            98,
+            127
+          ],
+          "height": 102,
+          "height_delta_idle": 1,
+          "height_exception": null,
+          "center_x": 64.0,
+          "center_delta_idle": 0.0,
+          "color_count": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "forbidden_edge_pixels": 0,
+          "head_bbox": [
+            30,
+            26,
+            98,
+            82
+          ],
+          "head_size": [
+            69,
+            57
+          ],
+          "head_delta_idle": [
+            0,
+            0
+          ],
+          "head_pixel_exact": true,
+          "head_mode": "idle_full_head_translation",
+          "head_measurement": "exact opaque support of approved full-head mask",
+          "neck_source": [
+            31,
+            3
+          ],
+          "head_translation": [
+            0,
+            -1
+          ],
+          "frame_translation": [
+            46,
+            69
+          ],
+          "clipped_pixels": 0,
+          "checks": {
+            "standing_height": true,
+            "head": true,
+            "center": true,
+            "palette": true,
+            "alpha": true,
+            "border": true,
+            "floor": true,
+            "head_bob": false
+          },
+          "numeric_pass": false,
+          "visual_pass": false,
+          "pass": false
+        },
+        {
+          "frame": 4,
+          "pose": "airborne",
+          "bbox": [
+            29,
+            29,
+            98,
+            127
+          ],
+          "height": 99,
+          "height_delta_idle": -2,
+          "height_exception": "airborne",
+          "center_x": 63.5,
+          "center_delta_idle": -0.5,
+          "color_count": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "forbidden_edge_pixels": 0,
+          "head_bbox": [
+            29,
+            29,
+            97,
+            85
+          ],
+          "head_size": [
+            69,
+            57
+          ],
+          "head_delta_idle": [
+            0,
+            0
+          ],
+          "head_pixel_exact": true,
+          "head_mode": "idle_full_head_translation",
+          "head_measurement": "exact opaque support of approved full-head mask",
+          "neck_source": [
+            32,
+            3
+          ],
+          "head_translation": [
+            -1,
+            2
+          ],
+          "frame_translation": [
+            44,
+            72
+          ],
+          "clipped_pixels": 0,
+          "checks": {
+            "standing_height": true,
+            "head": true,
+            "center": true,
+            "palette": true,
+            "alpha": true,
+            "border": true,
+            "floor": true,
+            "head_bob": false
+          },
+          "numeric_pass": false,
+          "visual_pass": false,
+          "pass": false
+        },
+        {
+          "frame": 5,
+          "pose": "left_contact",
+          "bbox": [
+            25,
+            28,
+            101,
+            127
+          ],
+          "height": 100,
+          "height_delta_idle": -1,
+          "height_exception": null,
+          "center_x": 63.0,
+          "center_delta_idle": -1.0,
+          "color_count": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "forbidden_edge_pixels": 0,
+          "head_bbox": [
+            25,
+            28,
+            93,
+            84
+          ],
+          "head_size": [
+            69,
+            57
+          ],
+          "head_delta_idle": [
+            0,
+            0
+          ],
+          "head_pixel_exact": true,
+          "head_mode": "idle_full_head_translation",
+          "head_measurement": "exact opaque support of approved full-head mask",
+          "neck_source": [
+            24,
+            3
+          ],
+          "head_translation": [
+            -5,
+            1
+          ],
+          "frame_translation": [
+            48,
+            71
+          ],
+          "clipped_pixels": 0,
+          "checks": {
+            "standing_height": true,
+            "head": true,
+            "center": true,
+            "palette": true,
+            "alpha": true,
+            "border": true,
+            "floor": true,
+            "head_bob": false
+          },
+          "numeric_pass": false,
+          "visual_pass": false,
+          "pass": false
+        },
+        {
+          "frame": 6,
+          "pose": "compression",
+          "bbox": [
+            25,
+            32,
+            102,
+            127
+          ],
+          "height": 96,
+          "height_delta_idle": -5,
+          "height_exception": "compression",
+          "center_x": 63.5,
+          "center_delta_idle": -0.5,
+          "color_count": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "forbidden_edge_pixels": 0,
+          "head_bbox": [
+            25,
+            32,
+            93,
+            88
+          ],
+          "head_size": [
+            69,
+            57
+          ],
+          "head_delta_idle": [
+            0,
+            0
+          ],
+          "head_pixel_exact": true,
+          "head_mode": "idle_full_head_translation",
+          "head_measurement": "exact opaque support of approved full-head mask",
+          "neck_source": [
+            23,
+            3
+          ],
+          "head_translation": [
+            -5,
+            5
+          ],
+          "frame_translation": [
+            49,
+            75
+          ],
+          "clipped_pixels": 0,
+          "checks": {
+            "standing_height": true,
+            "head": true,
+            "center": true,
+            "palette": true,
+            "alpha": true,
+            "border": true,
+            "floor": true,
+            "head_bob": false
+          },
+          "numeric_pass": false,
+          "visual_pass": false,
+          "pass": false
+        },
+        {
+          "frame": 7,
+          "pose": "push_off",
+          "bbox": [
+            25,
+            27,
+            101,
+            127
+          ],
+          "height": 101,
+          "height_delta_idle": 0,
+          "height_exception": null,
+          "center_x": 63.0,
+          "center_delta_idle": -1.0,
+          "color_count": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "forbidden_edge_pixels": 0,
+          "head_bbox": [
+            25,
+            27,
+            93,
+            83
+          ],
+          "head_size": [
+            69,
+            57
+          ],
+          "head_delta_idle": [
+            0,
+            0
+          ],
+          "head_pixel_exact": true,
+          "head_mode": "idle_full_head_translation",
+          "head_measurement": "exact opaque support of approved full-head mask",
+          "neck_source": [
+            24,
+            3
+          ],
+          "head_translation": [
+            -5,
+            0
+          ],
+          "frame_translation": [
+            48,
+            70
+          ],
+          "clipped_pixels": 0,
+          "checks": {
+            "standing_height": true,
+            "head": true,
+            "center": true,
+            "palette": true,
+            "alpha": true,
+            "border": true,
+            "floor": true,
+            "head_bob": false
+          },
+          "numeric_pass": false,
+          "visual_pass": false,
+          "pass": false
+        },
+        {
+          "frame": 8,
+          "pose": "airborne",
+          "bbox": [
+            25,
+            31,
+            102,
+            127
+          ],
+          "height": 97,
+          "height_delta_idle": -4,
+          "height_exception": "airborne",
+          "center_x": 63.5,
+          "center_delta_idle": -0.5,
+          "color_count": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "forbidden_edge_pixels": 0,
+          "head_bbox": [
+            25,
+            31,
+            93,
+            87
+          ],
+          "head_size": [
+            69,
+            57
+          ],
+          "head_delta_idle": [
+            0,
+            0
+          ],
+          "head_pixel_exact": true,
+          "head_mode": "idle_full_head_translation",
+          "head_measurement": "exact opaque support of approved full-head mask",
+          "neck_source": [
+            25,
+            3
+          ],
+          "head_translation": [
+            -5,
+            4
+          ],
+          "frame_translation": [
+            47,
+            74
+          ],
+          "clipped_pixels": 0,
+          "checks": {
+            "standing_height": true,
+            "head": true,
+            "center": true,
+            "palette": true,
+            "alpha": true,
+            "border": true,
+            "floor": true,
+            "head_bob": false
+          },
+          "numeric_pass": false,
+          "visual_pass": false,
+          "pass": false
+        }
+      ],
+      "color_count": 20,
+      "numeric_pass": false,
+      "production_ready": false,
+      "visual_findings": [
+        "Idle ?? ?? 69?57px ?? ??. 3? ?? ???? ?? ??? ??.",
+        "?? ?? ??? 1~2px ??. 4?5?? ? ??/? ??? ???? 8?1 ?? ??. ?? ?? ???.",
+        "새 후보도 범위6px이고 7프레임이 낮아 곡선 불일치. 몸 방향/팔 전환도 개선되지 않아 기존3차 유지."
+      ],
+      "attempt_count": 4,
+      "selected_attempt": 3,
+      "recovery": [
+        {
+          "source_cell": [
+            0,
+            0,
+            443,
+            443
+          ],
+          "sample_pitch": 4,
+          "sampled_bbox": [
+            27,
+            51,
+            85,
+            108
+          ],
+          "raw_size": [
+            59,
+            58
+          ]
+        },
+        {
+          "source_cell": [
+            443,
+            0,
+            887,
+            443
+          ],
+          "sample_pitch": 4,
+          "sampled_bbox": [
+            27,
+            55,
+            77,
+            108
+          ],
+          "raw_size": [
+            51,
+            54
+          ]
+        },
+        {
+          "source_cell": [
+            887,
+            0,
+            1330,
+            443
+          ],
+          "sample_pitch": 4,
+          "sampled_bbox": [
+            27,
+            50,
+            78,
+            108
+          ],
+          "raw_size": [
+            52,
+            59
+          ]
+        },
+        {
+          "source_cell": [
+            1330,
+            0,
+            1774,
+            443
+          ],
+          "sample_pitch": 4,
+          "sampled_bbox": [
+            26,
+            48,
+            80,
+            103
+          ],
+          "raw_size": [
+            55,
+            56
+          ]
+        },
+        {
+          "source_cell": [
+            0,
+            443,
+            443,
+            887
+          ],
+          "sample_pitch": 4,
+          "sampled_bbox": [
+            27,
+            51,
+            80,
+            107
+          ],
+          "raw_size": [
+            54,
+            57
+          ]
+        },
+        {
+          "source_cell": [
+            443,
+            443,
+            887,
+            887
+          ],
+          "sample_pitch": 4,
+          "sampled_bbox": [
+            27,
+            55,
+            80,
+            107
+          ],
+          "raw_size": [
+            54,
+            53
+          ]
+        },
+        {
+          "source_cell": [
+            887,
+            443,
+            1330,
+            887
+          ],
+          "sample_pitch": 4,
+          "sampled_bbox": [
+            27,
+            50,
+            80,
+            107
+          ],
+          "raw_size": [
+            54,
+            58
+          ]
+        },
+        {
+          "source_cell": [
+            1330,
+            443,
+            1774,
+            887
+          ],
+          "sample_pitch": 4,
+          "sampled_bbox": [
+            26,
+            48,
+            81,
+            101
+          ],
+          "raw_size": [
+            56,
+            54
+          ]
+        }
+      ],
+      "gif": {
+        "fps_requested": 18,
+        "delay_centiseconds": [
+          6,
+          5,
+          6,
+          5,
+          6,
+          5,
+          6,
+          5
+        ],
+        "loop": true,
+        "last_frame_held": false
+      },
+      "head_vertical_range_px": 6,
+      "revision1": {
+        "selected_existing_attempt": 3,
+        "new_candidate_attempt": 4,
+        "candidate_heights": [
+          98,
+          100,
+          98,
+          99,
+          98,
+          100,
+          94,
+          100
+        ],
+        "candidate_height_range": 6,
+        "candidate_max_adjacent_delta_including_loop": 6,
+        "retained_original_bytes": true,
+        "reason": "새 후보도 범위6px이고 7프레임이 낮아 곡선 불일치. 몸 방향/팔 전환도 개선되지 않아 기존3차 유지.",
+        "required_head_y_pattern": "low,mid,high,mid x2 (screen y is reversed)",
+        "height_range_px": 6,
+        "head_y_range_px": 6,
+        "max_adjacent_head_delta_including_loop": 5,
+        "smooth_cycle_pass": false
+      }
+    },
+    "JumpStart": {
+      "dimensions": [
+        384,
+        128
+      ],
+      "frames": [
+        {
+          "frame": 1,
+          "pose": "crouch",
+          "bbox": [
+            29,
+            50,
+            98,
+            127
+          ],
+          "height": 78,
+          "height_delta_idle": -23,
+          "height_exception": "crouch",
+          "center_x": 63.5,
+          "center_delta_idle": -0.5,
+          "color_count": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "forbidden_edge_pixels": 0,
+          "head_bbox": [
+            29,
+            50,
+            98,
+            104
+          ],
+          "head_size": [
+            70,
+            55
+          ],
+          "head_delta_idle": [
+            1,
+            -2
+          ],
+          "head_pixel_exact": false,
+          "head_mode": "generated_fallback",
+          "head_measurement": "Manually delimited visible head support including ponytail; ROI may contain overlapping shoulder pixels",
+          "neck_source": [
+            48,
+            48
+          ],
+          "head_translation": null,
+          "frame_translation": [
+            29,
+            50
+          ],
+          "clipped_pixels": 0,
+          "checks": {
+            "standing_height": true,
+            "head": false,
+            "center": true,
+            "palette": true,
+            "alpha": true,
+            "border": true,
+            "floor": true
+          },
+          "numeric_pass": false,
+          "visual_pass": false,
+          "pass": false
+        },
+        {
+          "frame": 2,
+          "pose": "tiptoe_push",
+          "bbox": [
+            30,
+            25,
+            98,
+            127
+          ],
+          "height": 103,
+          "height_delta_idle": 2,
+          "height_exception": null,
+          "center_x": 64.0,
+          "center_delta_idle": 0.0,
+          "color_count": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "forbidden_edge_pixels": 0,
+          "head_bbox": [
+            30,
+            25,
+            98,
+            79
+          ],
+          "head_size": [
+            69,
+            55
+          ],
+          "head_delta_idle": [
+            0,
+            -2
+          ],
+          "head_pixel_exact": false,
+          "head_mode": "generated_fallback",
+          "head_measurement": "Manually delimited visible head support including ponytail; ROI may contain overlapping shoulder pixels",
+          "neck_source": [
+            48,
+            48
+          ],
+          "head_translation": null,
+          "frame_translation": [
+            30,
+            25
+          ],
+          "clipped_pixels": 0,
+          "checks": {
+            "standing_height": false,
+            "head": false,
+            "center": true,
+            "palette": true,
+            "alpha": true,
+            "border": true,
+            "floor": true
+          },
+          "numeric_pass": false,
+          "visual_pass": false,
+          "pass": false
+        },
+        {
+          "frame": 3,
+          "pose": "ascending_hold",
+          "bbox": [
+            30,
+            36,
+            96,
+            127
+          ],
+          "height": 92,
+          "height_delta_idle": -9,
+          "height_exception": "airborne",
+          "center_x": 63.0,
+          "center_delta_idle": -1.0,
+          "color_count": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "forbidden_edge_pixels": 0,
+          "head_bbox": [
+            30,
+            36,
+            96,
+            89
+          ],
+          "head_size": [
+            67,
+            54
+          ],
+          "head_delta_idle": [
+            -2,
+            -3
+          ],
+          "head_pixel_exact": false,
+          "head_mode": "generated_fallback",
+          "head_measurement": "Manually delimited visible head support including ponytail; ROI may contain overlapping shoulder pixels",
+          "neck_source": [
+            48,
+            45
+          ],
+          "head_translation": null,
+          "frame_translation": [
+            30,
+            36
+          ],
+          "clipped_pixels": 0,
+          "checks": {
+            "standing_height": true,
+            "head": false,
+            "center": true,
+            "palette": true,
+            "alpha": true,
+            "border": true,
+            "floor": true
+          },
+          "numeric_pass": false,
+          "visual_pass": false,
+          "pass": false
+        }
+      ],
+      "color_count": 20,
+      "numeric_pass": false,
+      "production_ready": false,
+      "visual_findings": [
+        "3??? ?? ?? ? ?? ? ?? ??? ??? ?? ???? ?? ?? ?? ?? ??. ?? ?? ?? ???? Sources? ??.",
+        "??? ?? Idle ?1px ??. ?? ?? ??/??/?? ??? ????."
+      ],
+      "attempt_count": 3,
+      "selected_attempt": 1,
+      "recovery": [
+        {
+          "source_cell": [
+            0,
+            0,
+            724,
+            724
+          ],
+          "sample_pitch": 6,
+          "sampled_bbox": [
+            24,
+            40,
+            93,
+            117
+          ],
+          "raw_size": [
+            70,
+            78
+          ]
+        },
+        {
+          "source_cell": [
+            724,
+            0,
+            1448,
+            724
+          ],
+          "sample_pitch": 6,
+          "sampled_bbox": [
+            24,
+            15,
+            92,
+            117
+          ],
+          "raw_size": [
+            69,
+            103
+          ]
+        },
+        {
+          "source_cell": [
+            1448,
+            0,
+            2172,
+            724
+          ],
+          "sample_pitch": 6,
+          "sampled_bbox": [
+            26,
+            3,
+            92,
+            94
+          ],
+          "raw_size": [
+            67,
+            92
+          ]
+        }
+      ],
+      "gif": {
+        "fps_requested": 15,
+        "delay_centiseconds": [
+          7,
+          6,
+          7
+        ],
+        "loop": false,
+        "last_frame_held": true
+      },
+      "head_vertical_range_px": 25
+    },
+    "Dash": {
+      "dimensions": [
+        640,
+        128
+      ],
+      "frames": [
+        {
+          "frame": 1,
+          "pose": "prepare",
+          "bbox": [
+            30,
+            40,
+            98,
+            127
+          ],
+          "height": 88,
+          "height_delta_idle": -13,
+          "height_exception": "lean",
+          "center_x": 64.0,
+          "center_delta_idle": 0.0,
+          "color_count": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "forbidden_edge_pixels": 0,
+          "head_bbox": [
+            30,
+            40,
+            98,
+            87
+          ],
+          "head_size": [
+            69,
+            48
+          ],
+          "head_delta_idle": [
+            0,
+            -9
+          ],
+          "head_pixel_exact": false,
+          "head_mode": "generated_fallback",
+          "head_measurement": "Manually delimited visible head support including ponytail; ROI may contain overlapping shoulder pixels",
+          "neck_source": [
+            48,
+            46
+          ],
+          "head_translation": null,
+          "frame_translation": [
+            30,
+            40
+          ],
+          "clipped_pixels": 0,
+          "checks": {
+            "standing_height": true,
+            "head": false,
+            "center": true,
+            "palette": true,
+            "alpha": true,
+            "border": true,
+            "floor": true
+          },
+          "numeric_pass": false,
+          "visual_pass": false,
+          "pass": false
+        },
+        {
+          "frame": 2,
+          "pose": "rush1",
+          "bbox": [
+            24,
+            35,
+            104,
+            127
+          ],
+          "height": 93,
+          "height_delta_idle": -8,
+          "height_exception": "lean",
+          "center_x": 64.0,
+          "center_delta_idle": 0.0,
+          "color_count": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "forbidden_edge_pixels": 0,
+          "head_bbox": [
+            27,
+            35,
+            104,
+            81
+          ],
+          "head_size": [
+            78,
+            47
+          ],
+          "head_delta_idle": [
+            9,
+            -10
+          ],
+          "head_pixel_exact": false,
+          "head_mode": "generated_fallback",
+          "head_measurement": "Manually delimited visible head support including ponytail; ROI may contain overlapping shoulder pixels",
+          "neck_source": [
+            60,
+            46
+          ],
+          "head_translation": null,
+          "frame_translation": [
+            24,
+            35
+          ],
+          "clipped_pixels": 0,
+          "checks": {
+            "standing_height": true,
+            "head": false,
+            "center": true,
+            "palette": true,
+            "alpha": true,
+            "border": true,
+            "floor": true
+          },
+          "numeric_pass": false,
+          "visual_pass": false,
+          "pass": false
+        },
+        {
+          "frame": 3,
+          "pose": "rush2",
+          "bbox": [
+            16,
+            44,
+            110,
+            127
+          ],
+          "height": 84,
+          "height_delta_idle": -17,
+          "height_exception": "lean",
+          "center_x": 63.0,
+          "center_delta_idle": -1.0,
+          "color_count": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "forbidden_edge_pixels": 0,
+          "head_bbox": [
+            28,
+            44,
+            110,
+            90
+          ],
+          "head_size": [
+            83,
+            47
+          ],
+          "head_delta_idle": [
+            14,
+            -10
+          ],
+          "head_pixel_exact": false,
+          "head_mode": "generated_fallback",
+          "head_measurement": "Manually delimited visible head support including ponytail; ROI may contain overlapping shoulder pixels",
+          "neck_source": [
+            77,
+            46
+          ],
+          "head_translation": null,
+          "frame_translation": [
+            16,
+            44
+          ],
+          "clipped_pixels": 0,
+          "checks": {
+            "standing_height": true,
+            "head": false,
+            "center": true,
+            "palette": true,
+            "alpha": true,
+            "border": true,
+            "floor": true
+          },
+          "numeric_pass": false,
+          "visual_pass": false,
+          "pass": false
+        },
+        {
+          "frame": 4,
+          "pose": "rush3",
+          "bbox": [
+            18,
+            42,
+            109,
+            127
+          ],
+          "height": 86,
+          "height_delta_idle": -15,
+          "height_exception": "lean",
+          "center_x": 63.5,
+          "center_delta_idle": -0.5,
+          "color_count": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "forbidden_edge_pixels": 0,
+          "head_bbox": [
+            28,
+            42,
+            109,
+            89
+          ],
+          "head_size": [
+            82,
+            48
+          ],
+          "head_delta_idle": [
+            13,
+            -9
+          ],
+          "head_pixel_exact": false,
+          "head_mode": "generated_fallback",
+          "head_measurement": "Manually delimited visible head support including ponytail; ROI may contain overlapping shoulder pixels",
+          "neck_source": [
+            77,
+            47
+          ],
+          "head_translation": null,
+          "frame_translation": [
+            18,
+            42
+          ],
+          "clipped_pixels": 0,
+          "checks": {
+            "standing_height": true,
+            "head": false,
+            "center": true,
+            "palette": true,
+            "alpha": true,
+            "border": true,
+            "floor": true
+          },
+          "numeric_pass": false,
+          "visual_pass": false,
+          "pass": false
+        },
+        {
+          "frame": 5,
+          "pose": "decelerate",
+          "bbox": [
+            28,
+            28,
+            98,
+            127
+          ],
+          "height": 100,
+          "height_delta_idle": -1,
+          "height_exception": "lean",
+          "center_x": 63.0,
+          "center_delta_idle": -1.0,
+          "color_count": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "forbidden_edge_pixels": 0,
+          "head_bbox": [
+            28,
+            28,
+            98,
+            83
+          ],
+          "head_size": [
+            71,
+            56
+          ],
+          "head_delta_idle": [
+            2,
+            -1
+          ],
+          "head_pixel_exact": false,
+          "head_mode": "generated_fallback",
+          "head_measurement": "Manually delimited visible head support including ponytail; ROI may contain overlapping shoulder pixels",
+          "neck_source": [
+            48,
+            47
+          ],
+          "head_translation": null,
+          "frame_translation": [
+            28,
+            28
+          ],
+          "clipped_pixels": 0,
+          "checks": {
+            "standing_height": true,
+            "head": false,
+            "center": true,
+            "palette": true,
+            "alpha": true,
+            "border": true,
+            "floor": true
+          },
+          "numeric_pass": false,
+          "visual_pass": false,
+          "pass": false
+        }
+      ],
+      "color_count": 20,
+      "numeric_pass": false,
+      "production_ready": false,
+      "visual_findings": [
+        "5??? ?? Idle ?? ?? ? ?/?? ?? ??? ?? ??-?? ? ???? ?? ?? ?? ??.",
+        "??3?? ?? ???? ??? ??? ??. ??/?/?? ?? ???? ? ??? ??."
+      ],
+      "attempt_count": 3,
+      "selected_attempt": 2,
+      "recovery": [
+        {
+          "source_cell": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "sample_pitch": 4,
+          "sampled_bbox": [
+            33,
+            31,
+            101,
+            118
+          ],
+          "raw_size": [
+            69,
+            88
+          ]
+        },
+        {
+          "source_cell": [
+            512,
+            0,
+            1024,
+            512
+          ],
+          "sample_pitch": 4,
+          "sampled_bbox": [
+            23,
+            25,
+            103,
+            117
+          ],
+          "raw_size": [
+            81,
+            93
+          ]
+        },
+        {
+          "source_cell": [
+            1024,
+            0,
+            1536,
+            512
+          ],
+          "sample_pitch": 4,
+          "sampled_bbox": [
+            17,
+            27,
+            111,
+            110
+          ],
+          "raw_size": [
+            95,
+            84
+          ]
+        },
+        {
+          "source_cell": [
+            0,
+            512,
+            512,
+            1024
+          ],
+          "sample_pitch": 4,
+          "sampled_bbox": [
+            25,
+            26,
+            116,
+            111
+          ],
+          "raw_size": [
+            92,
+            86
+          ]
+        },
+        {
+          "source_cell": [
+            512,
+            512,
+            1024,
+            1024
+          ],
+          "sample_pitch": 4,
+          "sampled_bbox": [
+            25,
+            15,
+            95,
+            114
+          ],
+          "raw_size": [
+            71,
+            100
+          ]
+        }
+      ],
+      "gif": {
+        "fps_requested": 24,
+        "delay_centiseconds": [
+          4,
+          4,
+          4,
+          5,
+          4
+        ],
+        "loop": false,
+        "last_frame_held": true
+      },
+      "head_vertical_range_px": 16
+    },
+    "Hit": {
+      "dimensions": [
+        384,
+        128
+      ],
+      "frames": [
+        {
+          "frame": 1,
+          "pose": "flinch",
+          "bbox": [
+            30,
+            27,
+            98,
+            127
+          ],
+          "height": 101,
+          "height_delta_idle": 0,
+          "height_exception": null,
+          "center_x": 64.0,
+          "center_delta_idle": 0.0,
+          "color_count": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "forbidden_edge_pixels": 0,
+          "head_translation": [
+            0,
+            0
+          ],
+          "head_bbox": [
+            30,
+            27,
+            98,
+            83
+          ],
+          "frame_translation": [
+            52,
+            71
+          ],
+          "neck_source": [
+            25,
+            2
+          ],
+          "head_size": [
+            69,
+            57
+          ],
+          "head_delta_idle": [
+            0,
+            0
+          ],
+          "head_pixel_exact": true,
+          "head_mode": "idle_full_head_translation",
+          "head_measurement": "Exact opaque support of approved full head mask; all 2180 pixels compared to saved PNG.",
+          "clipped_pixels": 0,
+          "checks": {
+            "standing_height": true,
+            "head": true,
+            "head_bbox": true,
+            "center": true,
+            "palette": true,
+            "alpha": true,
+            "border": true,
+            "floor": true
+          },
+          "numeric_pass": true,
+          "visual_pass": true,
+          "pass": true
+        },
+        {
+          "frame": 2,
+          "pose": "recoil_left",
+          "bbox": [
+            26,
+            34,
+            101,
+            127
+          ],
+          "height": 94,
+          "height_delta_idle": -7,
+          "height_exception": "recoil",
+          "center_x": 63.5,
+          "center_delta_idle": -0.5,
+          "color_count": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "forbidden_edge_pixels": 0,
+          "head_translation": [
+            -4,
+            7
+          ],
+          "head_bbox": [
+            26,
+            34,
+            94,
+            90
+          ],
+          "frame_translation": [
+            58,
+            78
+          ],
+          "neck_source": [
+            15,
+            2
+          ],
+          "head_size": [
+            69,
+            57
+          ],
+          "head_delta_idle": [
+            0,
+            0
+          ],
+          "head_pixel_exact": true,
+          "head_mode": "idle_full_head_translation",
+          "head_measurement": "Exact opaque support of approved full head mask; all 2180 pixels compared to saved PNG.",
+          "clipped_pixels": 0,
+          "checks": {
+            "standing_height": true,
+            "head": true,
+            "head_bbox": true,
+            "center": true,
+            "palette": true,
+            "alpha": true,
+            "border": true,
+            "floor": true
+          },
+          "numeric_pass": true,
+          "visual_pass": true,
+          "pass": true
+        },
+        {
+          "frame": 3,
+          "pose": "recover",
+          "bbox": [
+            30,
+            28,
+            98,
+            127
+          ],
+          "height": 100,
+          "height_delta_idle": -1,
+          "height_exception": null,
+          "center_x": 64.0,
+          "center_delta_idle": 0.0,
+          "color_count": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "forbidden_edge_pixels": 0,
+          "head_translation": [
+            0,
+            1
+          ],
+          "head_bbox": [
+            30,
+            28,
+            98,
+            84
+          ],
+          "frame_translation": [
+            52,
+            72
+          ],
+          "neck_source": [
+            25,
+            2
+          ],
+          "head_size": [
+            69,
+            57
+          ],
+          "head_delta_idle": [
+            0,
+            0
+          ],
+          "head_pixel_exact": true,
+          "head_mode": "idle_full_head_translation",
+          "head_measurement": "Exact opaque support of approved full head mask; all 2180 pixels compared to saved PNG.",
+          "clipped_pixels": 0,
+          "checks": {
+            "standing_height": true,
+            "head": true,
+            "head_bbox": true,
+            "center": true,
+            "palette": true,
+            "alpha": true,
+            "border": true,
+            "floor": true
+          },
+          "numeric_pass": true,
+          "visual_pass": true,
+          "pass": true
+        }
+      ],
+      "color_count": 20,
+      "numeric_pass": true,
+      "production_ready": true,
+      "visual_findings": [
+        "재요청 1: 새 headless 몸과 Idle 전체 머리 합성. 목·어깨 연결 확인.",
+        "젖힘 머리는 움찔보다 왼쪽4px/아래7px. 움찔은 어깨·몸 자세로 표현하며 눈 패치는 사용하지 않음.",
+        "생성 몸의 선/상자 세부는 Idle과 완전히 같지 않음. 실제 엔진 검수는 이번 범위 밖."
+      ],
+      "attempt_count": 4,
+      "selected_attempt": 4,
+      "recovery": [
+        {
+          "source_cell": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "sample_pitch": 6,
+          "sampled_bbox": [
+            20,
+            20,
+            60,
+            76
+          ],
+          "raw_size": [
+            41,
+            57
+          ]
+        },
+        {
+          "source_cell": [
+            512,
+            0,
+            1024,
+            512
+          ],
+          "sample_pitch": 6,
+          "sampled_bbox": [
+            20,
+            27,
+            63,
+            76
+          ],
+          "raw_size": [
+            44,
+            50
+          ]
+        },
+        {
+          "source_cell": [
+            1024,
+            0,
+            1536,
+            512
+          ],
+          "sample_pitch": 6,
+          "sampled_bbox": [
+            17,
+            21,
+            59,
+            76
+          ],
+          "raw_size": [
+            43,
+            56
+          ]
+        }
+      ],
+      "gif": {
+        "fps_requested": 12,
+        "delay_centiseconds": [
+          8,
+          9,
+          8
+        ],
+        "loop": false,
+        "last_frame_held": true
+      },
+      "head_vertical_range_px": 7
+    }
+  },
+  "read_only_reference_hashes": {
+    "Hero_Idle.png": "cd8db8384fcc54b2781eb09bb063975e4bf58b1dd234378f03aa8690ead018e1",
+    "Hero_Run.png": "84b118010251f4563687e60b68f03080dbc04add3771f4f64b72fde0c1a76b93",
+    "Hero_JumpStart.png": "0ace1497b8b84d03a14676c7fae6b72b3056027070c1fa9f2258f3ec22a254bd",
+    "Hero_Dash.png": "44cd5b1efca84c5ee2c77c230dc687a10db70a9ffaa9ef9646a2cf0acb760259",
+    "Hero_Hit.png": "cef25a96d2f531f876e8b527045f0e27a56cd821174989ddcb41387d8750b155"
+  },
+  "file_checks": {
+    "artifact_checks_pass": true,
+    "compare_dimensions": [
+      3456,
+      1536
+    ],
+    "sheets": {
+      "Run": {
+        "png_geometry_alpha_palette": true,
+        "gif_decode": true,
+        "gif_nearest3x_exact": true,
+        "gif_frame_count": 8,
+        "gif_delays_cs": [
+          6,
+          5,
+          6,
+          5,
+          6,
+          5,
+          6,
+          5
+        ],
+        "gif_loop": true,
+        "production_ready": false
+      },
+      "JumpStart": {
+        "png_geometry_alpha_palette": true,
+        "gif_decode": true,
+        "gif_nearest3x_exact": true,
+        "gif_frame_count": 3,
+        "gif_delays_cs": [
+          7,
+          6,
+          7
+        ],
+        "gif_loop": false,
+        "production_ready": false
+      },
+      "Dash": {
+        "png_geometry_alpha_palette": true,
+        "gif_decode": true,
+        "gif_nearest3x_exact": true,
+        "gif_frame_count": 5,
+        "gif_delays_cs": [
+          4,
+          4,
+          4,
+          5,
+          4
+        ],
+        "gif_loop": false,
+        "production_ready": false
+      },
+      "Hit": {
+        "png_geometry_alpha_palette": true,
+        "gif_decode": true,
+        "gif_nearest3x_exact": true,
+        "gif_frame_count": 3,
+        "gif_delays_cs": [
+          8,
+          9,
+          8
+        ],
+        "gif_loop": false,
+        "production_ready": false
+      }
+    }
+  },
+  "revision1": {
+    "scope": [
+      "Run",
+      "Hit"
+    ],
+    "protected_files_sha256": {
+      "Animations\\Hero_Dash_3x.gif": "9da467201f3efc9adeab96e6f60cb986597216b45f7e5da062e7a22dbbf1c395",
+      "Animations\\Hero_JumpStart_3x.gif": "c408f30683f1f0c45ef0e78c6dc0017554176de1553051e388c1c68abdc0f594",
+      "Sources\\Dash_attempt1.png": "dae7204a9ba213d9a68309684e9ce482f706fef2f02ee02803e36e2c9ce9cc33",
+      "Sources\\Dash_attempt2.png": "e5f00e9700162f87840a978d8e34e0caa54b1bfb5bd3373a271ead5379ffdef4",
+      "Sources\\Dash_attempt3.png": "23115b1776c135313e459dbe5ef92c07dd7e2ad6226e326ca1d154d2c19cec76",
+      "Sources\\Dash_recovered_3x.png": "2a6025d7775ef52253cf51ffec1043e70ce378050fd452a440dd8ab5e2e08340",
+      "Sources\\JumpStart_attempt1.png": "8f040bb9d5dba5abbfd7b7bc485b21c1e4c0aa7569053d67f8d21a7cf600323b",
+      "Sources\\JumpStart_attempt2.png": "c8f238c6eeff2e67f3f1263a3f73d390a1524f521978bb6ae0cfc8c0fc220759",
+      "Sources\\JumpStart_attempt3.png": "db42ea7071248785d76bf7b3e3032dfa44130028a992ec62fce430301f9b3116",
+      "Sources\\JumpStart_recovered_3x.png": "854418f8447045ad85e33d38969e29ceb0c6ed414f4f43a3cd9602edde09371f",
+      "_1x\\Hero_Dash.png": "acdc0245c4dce3c1b39f065d3ae3b7493fb999f11c12fa87d4742b2b8ea4ed58",
+      "_1x\\Hero_JumpStart.png": "5f84169efce0f6da2de1e86230d9ce3da190674c9483543694f7bbbbbb72c718"
+    },
+    "protected_files_unchanged": true,
+    "idle_source": "Sources/Idle_reference_4x.png (exact 4x reference recovery)",
+    "changes": "Hit replaced; Run fallback retained; JumpStart/Dash metadata and files preserved.",
+    "request_pass": {
+      "Run": false,
+      "Hit": true
+    },
+    "all_requested_sheets_pass": false
+  }
+}

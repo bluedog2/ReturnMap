@@ -1,6 +1,6 @@
 {"mapId":"stage_03","seedCount":5,"seedBase":3001,"placements":[
-{"trap":"TrapDefinition_DropHammer","x":14,"y":25},
-{"trap":"TrapDefinition_Spike","x":26,"y":25},
-{"trap":"TrapDefinition_ArrowShooter","x":20,"y":0},
-{"trap":"TrapDefinition_ArrowShooter","x":46,"y":14}
+{"trap":"TrapDefinition_DropHammer","x":16,"y":30},
+{"trap":"TrapDefinition_Spike","x":40,"y":30},
+{"trap":"TrapDefinition_ArrowShooter","x":22,"y":0},
+{"trap":"TrapDefinition_ArrowShooter","x":70,"y":14}
 ]}

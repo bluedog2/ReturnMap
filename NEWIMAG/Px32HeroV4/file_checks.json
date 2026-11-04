@@ -1,0 +1,68 @@
+{
+  "artifact_checks_pass": true,
+  "compare_dimensions": [
+    3456,
+    1536
+  ],
+  "sheets": {
+    "Run": {
+      "png_geometry_alpha_palette": true,
+      "gif_decode": true,
+      "gif_nearest3x_exact": true,
+      "gif_frame_count": 8,
+      "gif_delays_cs": [
+        6,
+        5,
+        6,
+        5,
+        6,
+        5,
+        6,
+        5
+      ],
+      "gif_loop": true,
+      "production_ready": false
+    },
+    "JumpStart": {
+      "png_geometry_alpha_palette": true,
+      "gif_decode": true,
+      "gif_nearest3x_exact": true,
+      "gif_frame_count": 3,
+      "gif_delays_cs": [
+        7,
+        6,
+        7
+      ],
+      "gif_loop": false,
+      "production_ready": false
+    },
+    "Dash": {
+      "png_geometry_alpha_palette": true,
+      "gif_decode": true,
+      "gif_nearest3x_exact": true,
+      "gif_frame_count": 5,
+      "gif_delays_cs": [
+        4,
+        4,
+        4,
+        5,
+        4
+      ],
+      "gif_loop": false,
+      "production_ready": false
+    },
+    "Hit": {
+      "png_geometry_alpha_palette": true,
+      "gif_decode": true,
+      "gif_nearest3x_exact": true,
+      "gif_frame_count": 3,
+      "gif_delays_cs": [
+        8,
+        9,
+        8
+      ],
+      "gif_loop": false,
+      "production_ready": true
+    }
+  }
+}

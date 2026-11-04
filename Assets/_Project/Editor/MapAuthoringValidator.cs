@@ -33,20 +33,21 @@ namespace ReTrap.EditorTools
     {
         // ── 맵 크기 규격 (docs/px32-conversion-plan.md 4절, U3=a) ─────────────
 
-        /// <summary>허용 높이 (h ∈ {22, 27}). 프리셋 S 40×22 · L 48×27 (3칸 기준).</summary>
-        public static readonly int[] SpecHeights = { 22, 27 };
+        /// <summary>허용 높이 (h ∈ {22, 27, 32}). 프리셋 S 60×27 · L 72×32 (가로 1.5배, docs/scale-3tile.md).</summary>
+        public static readonly int[] SpecHeights = { 22, 27, 32 };
 
         /// <summary>
-        /// 빌드·검증 뷰가 맵 전체를 16:9 화면에 맞추려면 <c>ceil(h×16/9) ≤ w ≤ ceil(h×16/9)+1</c>.
+        /// 16:9 화면보다 좁으면 빌드 뷰에 맵 밖이 보이므로 <c>w ≥ ceil(h×16/9)</c>.
+        /// 더 넓은 맵은 허용 — 빌드 뷰는 패닝, 검증 관전 뷰는 맵 전체(위아래 배경)로 본다.
         /// 위반이면 사유, 규격 안이면 null.
         /// </summary>
         public static string ViewportSpecError(int w, int h)
         {
             if (System.Array.IndexOf(SpecHeights, h) < 0)
-                return $"맵 높이 {h} 는 규격 밖 (허용 22·27 — 프리셋 40×22 / 48×27, docs/scale-3tile.md)";
+                return $"맵 높이 {h} 는 규격 밖 (허용 22·27·32 — 프리셋 60×27 / 72×32, docs/scale-3tile.md)";
             int min = Mathf.CeilToInt(h * 16f / 9f);
-            if (w < min || w > min + 1)
-                return $"맵 {w}×{h} 너비는 높이 {h} 기준 {min}~{min + 1} 이어야 함 (16:9 화면에 맵 전체가 보이도록)";
+            if (w < min)
+                return $"맵 {w}×{h} 너비는 높이 {h} 기준 {min} 이상이어야 함 (16:9 화면보다 좁으면 맵 밖이 보임)";
             return null;
         }
 

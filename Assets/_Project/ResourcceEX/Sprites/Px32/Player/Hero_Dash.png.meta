@@ -184,6 +184,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Hero_Dash_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da50bc67de7f8fe4b8d9162dd6754ada
+      internalID: 233977278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -202,6 +224,7 @@ TextureImporter:
       Hero_Dash_1: 2030018699
       Hero_Dash_2: 736192276
       Hero_Dash_3: 159251966
+      Hero_Dash_4: 233977278
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -241,7 +241,7 @@ namespace ReTrap.EditorTools
                         if (!trapNames.Contains(name))
                             c.errors.Add($"{file}: allowedTraps 에 미존재 함정 이름: '{name}'");
 
-                // 맵 크기 규격 위반은 에러 (빌드·검증 뷰에 맵 전체가 안 보임 — 계획서 4절)
+                // 맵 크기 규격 위반은 에러 (16:9 화면보다 좁으면 빌드 뷰에 맵 밖이 보임 — docs/scale-3tile.md)
                 string spec = MapAuthoringValidator.ViewportSpecError(map.width, map.height);
                 if (spec != null)
                     c.errors.Add($"{file}: {spec}");

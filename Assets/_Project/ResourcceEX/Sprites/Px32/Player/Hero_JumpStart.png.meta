@@ -140,6 +140,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Hero_JumpStart_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b942903796affc44984c6fd8627e3c4b
+      internalID: 664963437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -156,6 +178,7 @@ TextureImporter:
     nameFileIdTable:
       Hero_JumpStart_0: 1277205993
       Hero_JumpStart_1: 1652891413
+      Hero_JumpStart_2: 664963437
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

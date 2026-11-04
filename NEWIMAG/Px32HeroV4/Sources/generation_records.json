@@ -1,0 +1,103 @@
+{
+  "generator": "built-in image_gen",
+  "max_attempts_per_sheet": 3,
+  "sheets": {
+    "Run": {
+      "selected_attempt": 3,
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Use case: illustration-story. Generate NEW Re:Trap pixel sprite animation. Reference is approved Idle design, not an edit target. Same right-facing girl, ivory high ponytail crimson tie/hairpin, cream jacket crimson trim, black crop top/shorts, asymmetrical socks, chunky cream/crimson sneakers, tooth-mouth black box in left hand. Exactly 4x4 square blocks representing logical pixels, no antialiasing or gradients, charcoal 1 logical pixel outline, <=24 colors matching reference. Each cell 512x512 output =128x128 logical. Standing height 101 logical pixels (404 output); head+ponytail about 69x57 logical, body below neck about 48 logical pixels; keep body scale precisely reference. Transparent background, no labels, grid, shadow, trails, dust, effects. Full separated figures, no overlap between cells. RUN: eight distinct frames, FOUR columns TWO rows, output 2048x1024. Reading order: right foot contact, compression, push off, airborne; left foot contact, compression, push off, airborne. Strong readable alternating legs, slight forward torso lean, head bob only 1-2 logical pixels. Seamless cyclic motion at 18fps, frame8 connects to frame1. All feet near local baseline y127. Keep same design and scale across eight frames.",
+          "source": "Sources/Run_attempt1.png",
+          "original_output_hint": "Generated images are saved to C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d as C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d\\exec-7e778abb-a975-49de-9b68-e15bba9765bb.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "selected": false
+        },
+        {
+          "attempt": 2,
+          "source": "Sources/Run_attempt2.png",
+          "original_output_hint": "Generated images are saved to C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d as C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d\\exec-11d90dee-4c00-429e-a094-c9fffbe7ccef.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "selected": false
+        },
+        {
+          "attempt": 3,
+          "source": "Sources/Run_attempt3.png",
+          "original_output_hint": "Generated images are saved to C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d as C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d\\exec-9c912a53-9493-422f-9b7d-fa7c082bc845.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "selected": true
+        }
+      ]
+    },
+    "JumpStart": {
+      "selected_attempt": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Use case: illustration-story. Generate NEW Re:Trap pixel sprite animation. Reference is approved Idle design, not an edit target. Same right-facing girl, ivory high ponytail crimson tie/hairpin, cream jacket crimson trim, black crop top/shorts, asymmetrical socks, chunky cream/crimson sneakers, tooth-mouth black box in left hand. Exactly 4x4 square blocks representing logical pixels, no antialiasing or gradients, charcoal 1 logical pixel outline, <=24 colors matching reference. Each cell 512x512 output =128x128 logical. Standing height 101 logical pixels (404 output); head+ponytail about 69x57 logical, body below neck about 48 logical pixels; keep body scale precisely reference. Transparent background, no labels, grid, shadow, trails, dust, effects. Full separated figures, no overlap between cells. JUMPSTART: exactly THREE frames in THREE columns ONE row, canvas 1536x512. Frame1 deep crouch compress knees preparing leap. Frame2 extend body and push off on tiptoes, near standing height101 logical. Frame3 ascending pose with knees raised, stable silhouette to hold throughout ascent. Preserve box in left hand throughout. No duplicated poses. Use exact 4px pixel blocks.",
+          "source": "Sources/JumpStart_attempt1.png",
+          "original_output_hint": "Generated images are saved to C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d as C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d\\exec-9e11fa78-7d36-4c92-8a75-45ef1200b050.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "selected": true
+        },
+        {
+          "attempt": 2,
+          "source": "Sources/JumpStart_attempt2.png",
+          "original_output_hint": "Generated images are saved to C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d as C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d\\exec-17f61d70-91a9-4e96-86bc-8c7d3d011426.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "selected": false
+        },
+        {
+          "attempt": 3,
+          "source": "Sources/JumpStart_attempt3.png",
+          "original_output_hint": "Generated images are saved to C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d as C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d\\exec-dc06ae38-dfc1-4b47-99e4-bfc2e9bf4b33.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "selected": false
+        }
+      ]
+    },
+    "Dash": {
+      "selected_attempt": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "source": "Sources/Dash_attempt1.png",
+          "original_output_hint": "Generated images are saved to C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d as C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d\\exec-a25deb8a-8b29-4da8-bab3-8d1929e284b2.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "selected": false
+        },
+        {
+          "attempt": 2,
+          "source": "Sources/Dash_attempt2.png",
+          "original_output_hint": "Generated images are saved to C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d as C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d\\exec-e70d3524-9767-4f0e-a82a-f396560afd69.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "selected": true
+        },
+        {
+          "attempt": 3,
+          "prompt": "undefined DASH5bodies reading order, bottom right cell blank. 1prepare low forward lean,2rush,3rush torso almost horizontal,4rush torso almost horizontal alternate leg,5decelerate rising torso. Clearly stronger forward lean than running. Keep neck stump and shoulders fully intact. No speed effects. No hair.",
+          "source": "Sources/Dash_attempt3.png",
+          "original_output_hint": "Generated images are saved to C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d as C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d\\exec-d8a0061a-fcd8-48b8-9a19-8c76352ecf10.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "selected": false
+        }
+      ]
+    },
+    "Hit": {
+      "selected_attempt": 1,
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Use case: illustration-story. Generate NEW Re:Trap pixel sprite animation. Reference is approved Idle design, not an edit target. Same right-facing girl, ivory high ponytail crimson tie/hairpin, cream jacket crimson trim, black crop top/shorts, asymmetrical socks, chunky cream/crimson sneakers, tooth-mouth black box in left hand. Exactly 4x4 square blocks representing logical pixels, no antialiasing or gradients, charcoal 1 logical pixel outline, <=24 colors matching reference. Each cell 512x512 output =128x128 logical. Standing height 101 logical pixels (404 output); head+ponytail about 69x57 logical, body below neck about 48 logical pixels; keep body scale precisely reference. Transparent background, no labels, grid, shadow, trails, dust, effects. Full separated figures, no overlap between cells. HIT: exactly THREE frames in THREE columns ONE row, canvas1536x512. 1 flinch, eyes closed, shoulders recoil. 2 strongly lean torso/head BACK TO LEFT from impact pushing left, both feet stay grounded. 3 recovery almost standing exactly reference height101 logical pixels. Hold tooth-mouth box in left hand. No impact effect. Distinct body acting, no frame clones. Preserve small head and body proportions.",
+          "source": "Sources/Hit_attempt1.png",
+          "original_output_hint": "Generated images are saved to C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d as C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d\\exec-d9f8eaab-1813-4cb9-abd8-50d79dfaa9fc.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "selected": true
+        },
+        {
+          "attempt": 2,
+          "prompt": "Use case: illustration-story. Generate NEW Re:Trap pixel sprite animation. Reference is approved Idle design, not an edit target. Same right-facing girl, ivory high ponytail crimson tie/hairpin, cream jacket crimson trim, black crop top/shorts, asymmetrical socks, chunky cream/crimson sneakers, tooth-mouth black box in left hand. Exactly 4x4 square blocks representing logical pixels, no antialiasing or gradients, charcoal 1 logical pixel outline, <=24 colors matching reference. Each cell 512x512 output =128x128 logical. Standing height 101 logical pixels (404 output); head+ponytail about 69x57 logical, body below neck about 48 logical pixels; keep body scale precisely reference. Transparent background, no labels, grid, shadow, trails, dust, effects. Full separated figures, no overlap between cells. HIT second attempt. EXACT1536x1024 canvas THREE columns TWO rows of512-square cells. ONLY TOP ROW has3 frames; bottom half EMPTY transparent. 1 flinch eyes tightly closed, shoulders retract;2 torso recoils BACK TOWARD LEFT with head shifted left;3 recovered standing like reference. Anatomical height101 logical=404output, neck-to-shoe54logical=216output for frames1 and3. Small anatomy, do not enlarge torso or head or box. Exact4px block grid with no halo, true transparentBG. No effects. Heads may later be replaced, preserve clear neckline.",
+          "source": "Sources/Hit_attempt2.png",
+          "original_output_hint": "Generated images are saved to C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d as C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d\\exec-22ff2adb-dc41-4024-9c2c-0cc45c816f1c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "selected": false
+        },
+        {
+          "attempt": 3,
+          "source": "Sources/Hit_attempt3.png",
+          "original_output_hint": "Generated images are saved to C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d as C:\\Users\\Owner\\.codex\\generated_images\\01a1a724-d8f9-7c03-bbe2-3d0cac557e3d\\exec-e9e362ae-e042-4f81-a70c-8d89cc206be9.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "selected": false
+        }
+      ]
+    }
+  }
+}

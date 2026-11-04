@@ -70,13 +70,14 @@ namespace ReTrap.EditorTools
         public static bool IsDeath(string baseName)
             => AnimOf(baseName).Equals("Death", StringComparison.OrdinalIgnoreCase);
 
-        /// <summary>웅크림·착지 찌그러짐·움찔 애니(높이 드리프트 예외 — 자세 높이가 바뀌는 게 정상): JumpStart·Land·Hit.</summary>
+        /// <summary>웅크림·착지 찌그러짐·움찔·돌진 기울기 애니(높이 드리프트 예외 — 자세 높이가 바뀌는 게 정상): JumpStart·Land·Hit·Dash.</summary>
         public static bool IsSquash(string baseName)
         {
             string anim = AnimOf(baseName);
             return anim.Equals("JumpStart", StringComparison.OrdinalIgnoreCase)
                 || anim.Equals("Land", StringComparison.OrdinalIgnoreCase)
-                || anim.Equals("Hit", StringComparison.OrdinalIgnoreCase);
+                || anim.Equals("Hit", StringComparison.OrdinalIgnoreCase)
+                || anim.Equals("Dash", StringComparison.OrdinalIgnoreCase);
         }
 
         /// <summary>
@@ -138,12 +139,12 @@ namespace ReTrap.EditorTools
                 switch (anim)
                 {
                     case "Idle":      return Sheet(heroCell, 6,  8f, true,  bottom);
-                    case "Run":       return Sheet(heroCell, 8, 12f, true,  bottom);
-                    case "JumpStart": return Sheet(heroCell, 2, 12f, false, bottom);
+                    case "Run":       return Sheet(heroCell, 8, 18f, true,  bottom);  // 이동 8칸/초 — 한 걸음 1.8칸 (docs/animation-plan.md)
+                    case "JumpStart": return Sheet(heroCell, 3, 15f, false, bottom);
                     case "Fall":      return Sheet(heroCell, 2,  8f, true,  bottom);
-                    case "Land":      return Sheet(heroCell, 3, 12f, false, bottom);
-                    case "Dash":      return Sheet(heroCell, 4, 20f, false, bottom);  // 대시 0.2s(PlayerController.dashDuration)와 길이 일치
-                    case "Hit":       return Sheet(heroCell, 2, 10f, false, bottom);
+                    case "Land":      return Sheet(heroCell, 3, 15f, false, bottom);
+                    case "Dash":      return Sheet(heroCell, 5, 24f, false, bottom);  // 대시 0.21s(PlayerController.dashDuration)와 길이 일치
+                    case "Hit":       return Sheet(heroCell, 3, 12f, false, bottom);
                     case "Death":     return Sheet(heroCell, 6, 10f, false, bottom);
                 }
                 return null;

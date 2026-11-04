@@ -1,0 +1,288 @@
+{
+  "Run": {
+    "grid": [
+      4,
+      2
+    ],
+    "count": 8,
+    "k": 4,
+    "fps": 18,
+    "neck": [
+      [
+        30,
+        3
+      ],
+      [
+        32,
+        3
+      ],
+      [
+        31,
+        3
+      ],
+      [
+        32,
+        3
+      ],
+      [
+        24,
+        3
+      ],
+      [
+        23,
+        3
+      ],
+      [
+        24,
+        3
+      ],
+      [
+        25,
+        3
+      ]
+    ],
+    "poses": [
+      "right_contact",
+      "compression",
+      "push_off",
+      "airborne",
+      "left_contact",
+      "compression",
+      "push_off",
+      "airborne"
+    ],
+    "exceptions": [
+      null,
+      "compression",
+      null,
+      "airborne",
+      null,
+      "compression",
+      null,
+      "airborne"
+    ],
+    "findings": [
+      "Idle ?? ?? 69?57px ?? ??. 3? ?? ???? ?? ??? ??.",
+      "?? ?? ??? 1~2px ??. 4?5?? ? ??/? ??? ???? 8?1 ?? ??. ?? ?? ???."
+    ],
+    "attempt": 3,
+    "body_only": true,
+    "attempt_count": 3
+  },
+  "JumpStart": {
+    "grid": [
+      3,
+      1
+    ],
+    "count": 3,
+    "k": 6,
+    "fps": 15,
+    "neck": [
+      [
+        48,
+        48
+      ],
+      [
+        48,
+        48
+      ],
+      [
+        48,
+        45
+      ]
+    ],
+    "poses": [
+      "crouch",
+      "tiptoe_push",
+      "ascending_hold"
+    ],
+    "exceptions": [
+      "crouch",
+      null,
+      "airborne"
+    ],
+    "findings": [
+      "3??? ?? ?? ? ?? ? ?? ??? ??? ?? ???? ?? ?? ?? ?? ??. ?? ?? ?? ???? Sources? ??.",
+      "??? ?? Idle ?1px ??. ?? ?? ??/??/?? ??? ????."
+    ],
+    "attempt_count": 3,
+    "generated_head_frames": [
+      0,
+      1,
+      2
+    ],
+    "generated_head_roi": [
+      [
+        0,
+        0,
+        69,
+        54
+      ],
+      [
+        0,
+        0,
+        68,
+        54
+      ],
+      [
+        0,
+        0,
+        66,
+        53
+      ]
+    ]
+  },
+  "Dash": {
+    "grid": [
+      3,
+      2
+    ],
+    "count": 5,
+    "k": 4,
+    "fps": 24,
+    "attempt": 2,
+    "neck": [
+      [
+        48,
+        46
+      ],
+      [
+        60,
+        46
+      ],
+      [
+        77,
+        46
+      ],
+      [
+        77,
+        47
+      ],
+      [
+        48,
+        47
+      ]
+    ],
+    "poses": [
+      "prepare",
+      "rush1",
+      "rush2",
+      "rush3",
+      "decelerate"
+    ],
+    "exceptions": [
+      "lean",
+      "lean",
+      "lean",
+      "lean",
+      "lean"
+    ],
+    "findings": [
+      "5??? ?? Idle ?? ?? ? ?/?? ?? ??? ?? ??-?? ? ???? ?? ?? ?? ??.",
+      "??3?? ?? ???? ??? ??? ??. ??/?/?? ?? ???? ? ??? ??."
+    ],
+    "attempt_count": 3,
+    "generated_head_frames": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "generated_head_roi": [
+      [
+        0,
+        0,
+        68,
+        47
+      ],
+      [
+        0,
+        0,
+        80,
+        46
+      ],
+      [
+        12,
+        0,
+        94,
+        46
+      ],
+      [
+        9,
+        0,
+        91,
+        47
+      ],
+      [
+        0,
+        0,
+        70,
+        55
+      ]
+    ]
+  },
+  "Hit": {
+    "grid": [
+      3,
+      1
+    ],
+    "count": 3,
+    "k": 6,
+    "fps": 12,
+    "neck": [
+      [
+        50,
+        51
+      ],
+      [
+        59,
+        43
+      ],
+      [
+        49,
+        51
+      ]
+    ],
+    "poses": [
+      "flinch",
+      "recoil_left",
+      "recover"
+    ],
+    "exceptions": [
+      null,
+      "recoil",
+      null
+    ],
+    "findings": [
+      "3??? ?? Idle ?? ??? ?? ???? ???/??? ?? ?? ??? ?? ?? ?? ??.",
+      "??/?? ?? Idle ?1px ??. ?? bbox? ?? ????."
+    ],
+    "attempt_count": 3,
+    "generated_head_frames": [
+      0,
+      1,
+      2
+    ],
+    "generated_head_roi": [
+      [
+        0,
+        0,
+        70,
+        61
+      ],
+      [
+        0,
+        0,
+        76,
+        64
+      ],
+      [
+        0,
+        0,
+        68,
+        60
+      ]
+    ]
+  }
+}

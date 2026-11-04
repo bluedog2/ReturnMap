@@ -32,8 +32,8 @@ namespace ReTrap.EditorTools
 
         private static readonly (string sheet, int frames)[] Sheets =
         {
-            ("Hero_Idle", 6), ("Hero_Run", 8), ("Hero_JumpStart", 2), ("Hero_Fall", 2),
-            ("Hero_Land", 3), ("Hero_Dash", 4), ("Hero_Hit", 2), ("Hero_Death", 6),
+            ("Hero_Idle", 6), ("Hero_Run", 8), ("Hero_JumpStart", 3), ("Hero_Fall", 2),
+            ("Hero_Land", 3), ("Hero_Dash", 5), ("Hero_Hit", 3), ("Hero_Death", 6),
         };
 
         // 화풍 v2 (docs/hero-b-scale-impact.md D1 ②): 아트 키 80px, 판정은 머리 꼭대기·포니테일 제외 60px
