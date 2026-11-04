@@ -1,0 +1,54 @@
+{
+  "artifact_checks_pass": true,
+  "exact_head_all_frames": true,
+  "land_last_equals_idle": true,
+  "compare_dimensions": [
+    3840,
+    1152
+  ],
+  "sheets": {
+    "Run": {
+      "png_geometry_alpha_palette": true,
+      "gif_decode": true,
+      "gif_nearest3x_exact": true,
+      "gif_frame_count": 8,
+      "gif_delays_cs": [
+        6,
+        5,
+        6,
+        5,
+        6,
+        5,
+        6,
+        5
+      ],
+      "gif_loop": true,
+      "production_ready": false
+    },
+    "Fall": {
+      "png_geometry_alpha_palette": true,
+      "gif_decode": true,
+      "gif_nearest3x_exact": true,
+      "gif_frame_count": 2,
+      "gif_delays_cs": [
+        12,
+        13
+      ],
+      "gif_loop": true,
+      "production_ready": true
+    },
+    "Land": {
+      "png_geometry_alpha_palette": true,
+      "gif_decode": true,
+      "gif_nearest3x_exact": true,
+      "gif_frame_count": 3,
+      "gif_delays_cs": [
+        7,
+        6,
+        7
+      ],
+      "gif_loop": false,
+      "production_ready": false
+    }
+  }
+}
