@@ -274,7 +274,7 @@ namespace ReTrap
     {
         private readonly PlayerAnimationFSM fsm;
         private float timer;
-        private const float CLIP_DURATION = 0.25f; // Land 3프레임 @12fps
+        private const float CLIP_DURATION = 0.2f; // Land 3프레임 @15fps
 
         internal LandState(PlayerAnimationFSM fsm) => this.fsm = fsm;
 
@@ -328,18 +328,28 @@ namespace ReTrap
     /// <summary>
     /// Knockback — 피격 넉백 경직 (Lord_Hit).
     /// <see cref="PlayerController.IsKnockedBack"/> 가 false 가 되면 현재 상황에 맞는 상태로 복귀.
+    /// 경직(화살 0.15s)이 클립(0.25s)보다 짧아도 제자리에 서 있으면 복귀 프레임까지 재생한다
+    /// (이동·공중이면 Land 처럼 바로 전환).
     /// </summary>
     internal class KnockbackState : IPlayerAnimState
     {
         private readonly PlayerAnimationFSM fsm;
+        private float timer;
+        private const float CLIP_DURATION = 0.25f; // Hit 3프레임 @12fps
         internal KnockbackState(PlayerAnimationFSM fsm) => this.fsm = fsm;
 
-        public void OnEnter() => fsm.Play(PlayerAnimationFSM.HASH_KNOCKBACK);
+        public void OnEnter()
+        {
+            fsm.Play(PlayerAnimationFSM.HASH_KNOCKBACK);
+            timer = CLIP_DURATION;
+        }
 
         public void OnUpdate()
         {
             var c = fsm.Controller;
+            timer -= Time.deltaTime;
             if (c.IsKnockedBack) return; // 넉백 경직 지속 중 — Hit 모션 유지
+            if (timer > 0f && c.IsGrounded && Mathf.Abs(c.MoveInput.x) <= 0.01f) return; // 서 있으면 복귀 프레임까지
 
             // 넉백 종료 → 지면/공중 상황에 맞게 복귀 (HandleDashEnd 와 동일 규칙)
             if (c.IsGrounded)
