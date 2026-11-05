@@ -1,0 +1,7 @@
+{
+  "repo": "https://github.com/0x0funky/agent-sprite-forge.git",
+  "version": "0.4.0",
+  "commit": "5324342fdfab72430f4e9604f3fe427009f8596d",
+  "checkout": "..\\agent-sprite-forge",
+  "python": "3.12"
+}

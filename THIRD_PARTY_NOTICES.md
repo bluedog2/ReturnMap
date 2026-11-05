@@ -4,6 +4,14 @@ Re:Trap은 아래 서드파티 소프트웨어·에셋을 사용합니다.
 
 ---
 
+## Agent Sprite Forge
+
+- 출처: https://github.com/0x0funky/agent-sprite-forge (v0.4.0)
+- 용도: GPT 생성 캐릭터 시트의 후처리 도구(정렬·크기 통일·팔레트 잠금·검사). 저장소 밖(`..\agent-sprite-forge`)에서 실행하며 게임 빌드에 코드가 포함되지 않습니다.
+- 라이선스: MIT — Copyright (c) 2026 0x0funky
+
+---
+
 ## pixelfx
 
 - 출처: https://github.com/patch-gg/pixelfx

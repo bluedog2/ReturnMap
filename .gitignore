@@ -110,3 +110,6 @@ GeneratedAssets
 
 # pixelfx 비교 테스트 출력 (tools/vfx/pixelfx-render.ps1) — 게임 반영 금지, 커밋하지 않음
 /PIXELFX/
+
+# Agent Sprite Forge 후처리 중간 산출물·시험 (tools/sprite) — 커밋하지 않음
+/ASF/
