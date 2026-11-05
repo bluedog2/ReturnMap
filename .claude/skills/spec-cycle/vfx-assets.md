@@ -74,3 +74,62 @@ Re:Trap(2D 픽셀아트 플랫포머) <언제·어디서> 재생되는 이펙트
 - ⑭ 리포트에 "이펙트 에셋" 소절: 행마다 `Fx_<Name>` ← 레퍼런스 id · 셀·프레임·fps · 검수 회차와 회차별 지적 요약 · GPT 토큰·시간(`gpt-image` 출력 `TOKENS`·`DURATION_SEC`) · `review.png` 경로.
   수동 확인 체크리스트: "인스펙터 연결 → 플레이로 크기·타이밍 확인".
 - 버그 트랙에서 이펙트가 필요해도 같은 절차(`<wt>` = `..\ReturnMap-spec\BUG-n`).
+
+---
+
+# 캐릭터 시트 — GPT 원본 + ASF 후처리 (설계안에 `캐릭터 시트` 표가 있을 때만)
+
+주인공·적의 **동작 시트**(가로 한 줄, `Px32Rules` 규격 셀·프레임)를 새로 그리거나 교체할 때. 이펙트·함정·타일은 해당 없음(위 절차).
+그림은 GPT, 정리(배경 제거·크기 통일·몸통 정렬·팔레트 잠금)와 규격 검사는 Agent Sprite Forge(ASF) — `tools/sprite/README.md`.
+ASF 가 그린 그림·`route_media.py` 사용 금지. **이미 승인된 시트는 ASF 에 다시 넣지 않는다**(몸통 기준으로 최대 2px 옮김).
+
+## 설계 트랙 (design-track ⑥)
+
+| 이름 | 동작 | 셀 px × 프레임 · fps · 루프 (`Px32Rules`) | 원본 칸(행×열) | 몸 px | 화풍·정체성 참고 | 교체 |
+|---|---|---|---|---|---|---|
+| `Hero_<Anim>` / `<Enemy>_<Anim>` | 포즈 흐름 한 줄 | 예: 128 × 8 · 18 · 루프 | 예: 2×4 | 주인공 102 (적은 기존 시트 높이) | 승인 Idle 등 기존 `Px32/` 경로 | 새 파일 / 기존 교체 |
+
+- 새 동작 이름이면 `Px32Rules.CharacterSpec` 한 줄 추가를 설계에 포함(Astra 가 코드로). 몸 크기는 줄이지 않는다(메모리 「주인공 크기 고정」).
+
+## 구현 트랙 ⑪-0 — Astra 구현 **전에**, 표의 행마다
+작업 폴더 `<wt>\NEWIMAG\<Name>V<rev>\`. 도구는 **메인 저장소 경로**로 부른다(ASF 체크아웃 `..\agent-sprite-forge` 가 메인 기준) — 경로는 전부 절대 경로. 포그라운드, timeout 600000ms.
+
+1. **재료**: 화풍·정체성 참고 PNG 를 `identity_reference.png` 로, `NEWIMAG\palette_v2.txt` 를 폴더에 복사(`cp`).
+2. **요청서** `REQUEST.md` — 아래 「캐릭터 요청서 틀」.
+3. **GPT 그리기**: `powershell -ExecutionPolicy Bypass -File C:\Users\Owner\work\ReturnMap\tools\ai\gpt-image.ps1 -Dir <폴더> -Expect <Name>_raw.png -Images "identity_reference.png"` — RESULT 처리는 위 4번 표와 같다.
+4. **ASF 후처리 + 규격 검사**:
+   ```
+   powershell -ExecutionPolicy Bypass -File C:\Users\Owner\work\ReturnMap\tools\sprite\asf-post.ps1 -Raw <폴더>\<Name>_raw.png -Name <Name> -Rows <R> -Cols <C> [-Count <규격 프레임>] -BodyPx <몸 px> -Out <폴더>
+   ```
+   | RESULT | 처리 |
+   |---|---|
+   | `PASS` | 5 |
+   | `FAIL` | 출력의 `FAIL …` 줄·`크기·정렬 실패` 를 그대로 `REVIEW-k.md` 에 옮겨 3을 `-ReviewFile` 로 재요청(이전 원본은 `round<k>_<Name>_raw.png` 로 복사해 `-Images` 에 추가). `drift: 높이` = 프레임마다 몸 길이가 다름, `leave the canvas` = 칸 여백 부족 |
+   | `INFRA` | `보류`, 메모 "ASF 미설치·고정 커밋 아님 — `tools\sprite\asf-setup.ps1` 수동 1회" (자동화는 setup 을 돌리지 않는다) |
+5. **눈 검수**: `<Name>_Preview_4x.png` 를 Read 로 보고 — 얼굴·의상·소품이 참고와 같은가 · 프레임마다 소품 크기·모양 유지 · 동작 흐름 · 조각·잘림. 미달이면 4의 FAIL 과 같은 재요청. **재요청은 최대 2회**(총 3장), 3장째도 미달이면 가장 나은 회차를 남기고 `보류`(메모에 지적 + 미리보기 경로).
+6. **가져오기·커밋**: `<폴더>\<Name>.png` → `<wt>\Assets\_Project\ResourcceEX\Sprites\Px32\<Player|Enemies>\<Name>.png`(교체는 덮어쓰기, `.meta` 만들지 않음) →
+   `spec-worktree.ps1 -Commit`, 메시지 `[SPEC-n] 캐릭터 시트 (GPT + ASF)` / 빈 줄 / 행마다 `<Name> ← 셀 × 프레임 · fps · 검수 k회` / 빈 줄 / Co-Authored-By. `<폴더>` 의 요청서·원본·`<Name>.asf.json`(출처·설정·수치)도 함께 커밋(`ASF\` 중간 산출물은 커밋하지 않음).
+7. 명세 파일에: "캐릭터 시트는 이미 `Sprites/Px32/<…>/<Name>.png` 에 있다. 이미지·.meta 를 만들거나 고치지 말 것. 클립·애니메이터 배선은 기존 `Px32HeroWiring`/`Px32EnemyWiring`·`SpriteClipRebinder` 흐름을 따른다."
+
+### 캐릭터 요청서 틀 (REQUEST.md)
+```
+# 요청: <Name>_raw (<동작 한 줄>) — 원본 시트, 후처리는 Claude 쪽 도구가 함
+Re:Trap(2D 픽셀아트 플랫포머) <캐릭터>의 <동작>. 이 폴더 안에서만 작업, git 금지.
+## 참고 이미지
+- identity_reference.png — 이 캐릭터의 확정 모습. 얼굴·머리·의상·소품(모양·크기)을 모든 프레임에서 그대로.
+- palette_v2.txt — 쓸 수 있는 색(앞 20색이 캐릭터용).
+## 결과물
+- <Name>_raw.png: <R>행 × <C>열 격자, 칸마다 포즈 하나(읽는 순서 = 재생 순서), 오른쪽을 봄.
+  배경은 단색 #00FF00(그림자·바닥·글자·테두리 없음). 칸마다 사방 15% 이상 여백 — 머리카락·소품 끝도 칸을 넘지 말 것.
+  모든 프레임에서 몸 크기 같게(정수리~발끝 높이 일정), 지면 동작은 발이 같은 높이.
+- 포즈 계획: 0. … / 1. … (프레임마다 한 줄)
+- 픽셀아트 화풍(외곽선 #19181F, 순흑 금지, 안티앨리어싱 최소). 정확한 픽셀 격자·최종 크기는 맞출 필요 없다(후처리가 맞춤).
+- README.md(image_gen 호출 횟수·프롬프트 전문).
+## 제작 방식
+내장 image_gen 으로 새로 그림. 코드로 도형을 그리지 말 것. 후처리(배경 제거·축소·정렬)는 하지 말고 원본 그대로 둘 것.
+```
+
+## 검증·리포트 (캐릭터 시트)
+- ⑬-1 CI `sprites32` 가 최종 판정(`asf-post` 의 검사는 같은 규칙의 사전 검사). FAIL 이면 이미지 문제 → 4·5의 재요청(재요청 한도와 ⑬ 시도 한도 공유).
+- ⑭ 리포트 「캐릭터 시트」 소절: 행마다 `<Name>` · 셀·프레임·fps · 검수 회차와 회차별 FAIL·지적 요약 · `<Name>.asf.json` 의 ASF 커밋 · GPT 토큰·시간 · 미리보기 경로.
+  수동 확인 체크리스트: "플레이로 크기·발 위치·동작 흐름 확인".

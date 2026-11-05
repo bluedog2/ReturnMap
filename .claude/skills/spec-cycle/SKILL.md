@@ -6,7 +6,7 @@ description: Notion 기획안 DB 사이클 1회 실행(예약 작업 spec-cycle-
 # spec-cycle — 디스패처
 
 이 파일은 **매 실행 읽는 최소 절차**다. 트랙 상세는 대상이 있을 때만 읽는다:
-설계 트랙 → [`design-track.md`](design-track.md) · 구현 트랙 → [`impl-track.md`](impl-track.md) · 이펙트 이미지(설계안에 `이펙트 에셋` 표가 있을 때만) → [`vfx-assets.md`](vfx-assets.md) — **이펙트도 GPT 가 그린다(화풍 통일): Claude 가 pixelfx 레퍼런스·요청서를 만들고 검수**. 사람용 규칙: Notion「🔁 개발 사이클 운영 가이드」.
+설계 트랙 → [`design-track.md`](design-track.md) · 구현 트랙 → [`impl-track.md`](impl-track.md) · 이펙트·캐릭터 시트 이미지(설계안에 `이펙트 에셋`·`캐릭터 시트` 표가 있을 때만) → [`vfx-assets.md`](vfx-assets.md) — **이펙트도 GPT 가 그린다(화풍 통일): Claude 가 pixelfx 레퍼런스·요청서를 만들고 검수**. 사람용 규칙: Notion「🔁 개발 사이클 운영 가이드」.
 **대상이 0건이면 트랙 파일을 읽지 않고, 서브에이전트도 띄우지 않는다.**
 
 ## 고정 정보
