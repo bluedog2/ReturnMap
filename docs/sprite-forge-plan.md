@@ -72,7 +72,8 @@ C#·Unity 쪽 변경은 **없음**(어댑터가 지금 규격을 그대로 맞�
 - 2단계 완료: V2 GPT 원본 Run — `process` 기본은 몸통 28px 흔들림(탈락), `scale_frames --root-lock torso-x` 는 5px·20색(손 정리본 동급).
 - 3단계 완료: `asf-post.ps1`(한 줄 실행) + `asf-to-px32.py`(배치·시트·CI 규칙 미리 검사).
   CI 기준(발 행 일치·가로 bbox 중심 ±2)에 맞추려 정렬은 ASF(`--lock feet`) + 어댑터 정수 이동(발=127행, bbox 중심=64)으로 마무리.
-  결과: V2 Dash PASS · V2 Run 높이 드리프트 2프레임 FAIL(그림 문제 → GPT 재요청 근거). 승인 Idle·Run 은 이동 0 · PASS.
+  결과: V2 Dash 정렬·색 통과(단 4장 → 규격 5장 대조로 FAIL) · V2 Run 높이 드리프트 2프레임 FAIL(그림 문제 → GPT 재요청 근거). 승인 Idle·Run 은 이동 0 · PASS.
+- 점검 보완(2026-11-06): 어댑터가 이름으로 `Px32Rules` 규격(프레임 수·셀)을 대조 · ASF 게시 단계의 Windows 파일 잠금(WinError 5)은 3회 시도 후 `INFRA`(그림 문제로 오판해 GPT 재요청하지 않게).
 - 5단계 완료: spec-cycle `vfx-assets.md` 「캐릭터 시트」 절(설계안 `캐릭터 시트` 표 → GPT 원본 → `asf-post.ps1` → 눈 검수 → 재요청 최대 2회), SKILL·design-track·impl-track 진입 조건에 추가.
 - 남음: 4단계(가방 세션 끝난 뒤 새 시트에 실제 적용 — 첫 실제 CI `sprites32` 확인도 여기서).
 

@@ -104,8 +104,8 @@ ASF 가 그린 그림·`route_media.py` 사용 금지. **이미 승인된 시트
    | RESULT | 처리 |
    |---|---|
    | `PASS` | 5 |
-   | `FAIL` | 출력의 `FAIL …` 줄·`크기·정렬 실패` 를 그대로 `REVIEW-k.md` 에 옮겨 3을 `-ReviewFile` 로 재요청(이전 원본은 `round<k>_<Name>_raw.png` 로 복사해 `-Images` 에 추가). `drift: 높이` = 프레임마다 몸 길이가 다름, `leave the canvas` = 칸 여백 부족 |
-   | `INFRA` | `보류`, 메모 "ASF 미설치·고정 커밋 아님 — `tools\sprite\asf-setup.ps1` 수동 1회" (자동화는 setup 을 돌리지 않는다) |
+   | `FAIL` | 출력의 `FAIL …` 줄·`크기·정렬 실패` 를 그대로 `REVIEW-k.md` 에 옮겨 3을 `-ReviewFile` 로 재요청(이전 원본은 `round<k>_<Name>_raw.png` 로 복사해 `-Images` 에 추가). `drift: 높이` = 프레임마다 몸 길이가 다름, `leave the canvas` = 칸 여백 부족. 단 `dimensions: 규격 …` 이 `-Rows/-Cols/-Count`·`-Cell` 인자 실수면 재요청 없이 인자를 고쳐 다시 실행 |
+   | `INFRA` | 출력에 `WinError 5`(파일 잠금) → 같은 명령을 1번만 다시 실행, 또 `INFRA` 면 `보류`(메모 "Windows 파일 잠금"). 그 밖 → `보류`, 메모 "ASF 미설치·고정 커밋 아님 — `tools\sprite\asf-setup.ps1` 수동 1회" (자동화는 setup 을 돌리지 않는다). 어느 쪽도 GPT 재요청 횟수를 쓰지 않는다 |
 5. **눈 검수**: `<Name>_Preview_4x.png` 를 Read 로 보고 — 얼굴·의상·소품이 참고와 같은가 · 프레임마다 소품 크기·모양 유지 · 동작 흐름 · 조각·잘림. 미달이면 4의 FAIL 과 같은 재요청. **재요청은 최대 2회**(총 3장), 3장째도 미달이면 가장 나은 회차를 남기고 `보류`(메모에 지적 + 미리보기 경로).
 6. **가져오기·커밋**: `<폴더>\<Name>.png` → `<wt>\Assets\_Project\ResourcceEX\Sprites\Px32\<Player|Enemies>\<Name>.png`(교체는 덮어쓰기, `.meta` 만들지 않음) →
    `spec-worktree.ps1 -Commit`, 메시지 `[SPEC-n] 캐릭터 시트 (GPT + ASF)` / 빈 줄 / 행마다 `<Name> ← 셀 × 프레임 · fps · 검수 k회` / 빈 줄 / Co-Authored-By. `<폴더>` 의 요청서·원본·`<Name>.asf.json`(출처·설정·수치)도 함께 커밋(`ASF\` 중간 산출물은 커밋하지 않음).

@@ -60,15 +60,22 @@ function Step([string]$label, [string[]]$pyArgs) {
     $argLine = "$py -I " + (($pyArgs | ForEach-Object { '"' + ($_ -replace '"', '\"') + '"' }) -join ' ')
     $p = Start-Process py -ArgumentList $argLine -NoNewWindow -Wait -PassThru `
             -RedirectStandardOutput $log -RedirectStandardError $err
-    # ASF 는 임시 폴더를 만든 뒤 이름을 바꿔 게시한다 — Windows 가 순간 잠그면 WinError 5. 한 번만 다시 시도
-    if ($p.ExitCode -ne 0 -and (Select-String -Path $log, $err -Pattern 'WinError 5' -Quiet)) {
-        Get-ChildItem $work -Directory -Filter ".$label.stage-*" | Remove-Item -Recurse -Force
-        Start-Sleep -Seconds 2
+    # ASF 는 임시 폴더를 만든 뒤 이름을 바꿔 게시한다 — Windows(백신·색인)가 순간 잠그면 WinError 5. 최대 2번 더 시도
+    foreach ($wait in 2, 5) {
+        if ($p.ExitCode -eq 0 -or -not (Select-String -Path $log, $err -Pattern 'WinError 5' -Quiet)) { break }
+        Get-ChildItem $work -Directory -Force -Filter ".$label.stage-*" | Remove-Item -Recurse -Force
+        Start-Sleep -Seconds $wait
         $p = Start-Process py -ArgumentList $argLine -NoNewWindow -Wait -PassThru `
                 -RedirectStandardOutput $log -RedirectStandardError $err
     }
     $last = @(Get-Content $log, $err -Encoding UTF8 | Where-Object { $_ }) | Select-Object -Last 1
     Write-Host "[$label] exit $($p.ExitCode)  $last"
+    # 재시도 후에도 잠금이면 그림 문제가 아니다 → FAIL(GPT 재요청)이 아니라 INFRA 로 끝낸다.
+    # (이 함수의 출력은 호출부 $c 에 담기므로 Done 대신 Write-Host 로 결과 줄을 쓴다)
+    if ($p.ExitCode -ne 0 -and (Select-String -Path $log, $err -Pattern 'WinError 5' -Quiet)) {
+        Write-Host "[$label] Windows 파일 잠금(WinError 5)이 3번 연속 — 그림 문제 아님. 잠시 후 다시 실행 ($log)"
+        Write-Host 'RESULT=INFRA'; exit 3
+    }
     return $p.ExitCode
 }
 

@@ -39,6 +39,24 @@ def rules_for(name):
     }
 
 
+# Px32Rules.CharacterSpec 복사본: (셀, 프레임 수). Px32Rules.cs 가 바뀌면 같이 고친다.
+HERO_CELL = 128
+HERO_FRAMES = {'Idle': 6, 'Run': 8, 'JumpStart': 3, 'Fall': 2, 'Land': 3, 'Dash': 5, 'Hit': 3, 'Death': 6}
+ENEMY_FRAMES = {'Idle': 4, 'Run': 6, 'Hit': 2, 'Death': 6}
+ENEMY_CELL = (('Goblin', 96), ('Imp', 96), ('Skeleton', 128), ('Elite', 128), ('Orc', 160))
+
+
+def sheet_spec(name):
+    """규격표에 있으면 (셀, 프레임 수), 없으면 None. 대소문자: 접두사는 무시, 애니 이름은 Px32Rules 처럼 정확히."""
+    anim = anim_of(name)
+    if name.lower().startswith('hero_'):
+        return (HERO_CELL, HERO_FRAMES[anim]) if anim in HERO_FRAMES else None
+    for prefix, cell in ENEMY_CELL:
+        if name.lower().startswith(prefix.lower()):
+            return (cell, ENEMY_FRAMES[anim]) if anim in ENEMY_FRAMES else None
+    return None
+
+
 def load_palette(path):
     cols = set()
     for line in open(path, encoding='utf-8'):
@@ -159,7 +177,18 @@ def main():
         sheet.paste(placed, (i * a.cell, 0))
 
     fails, metrics = check(sheet, a.cell, a.expect_frames, load_palette(a.palette), rules)
-    fails = place_fails + fails
+    # 규격 대조: -Rows×-Cols(-Count) 가 규격과 다르면 시트는 CI dimensions 에서 떨어진다
+    spec = sheet_spec(a.name)
+    spec_fails = []
+    if spec is None:
+        print(f'WARN 규격표에 없는 이름: {a.name} — 프레임 수·셀을 대조하지 못함 (CI 는 셀=높이로 추정)')
+    else:
+        if a.expect_frames != spec[1]:
+            spec_fails.append(f'dimensions: 규격 {a.name} = {spec[1]}프레임인데 {a.expect_frames}프레임 '
+                              f'— GPT 가 칸 수를 다르게 그렸으면 재요청, -Rows/-Cols/-Count 를 잘못 줬으면 고쳐 다시 실행')
+        if a.cell != spec[0]:
+            spec_fails.append(f'dimensions: 규격 {a.name} 셀 = {spec[0]}px 인데 -Cell {a.cell} — -Cell {spec[0]} 으로 다시 실행')
+    fails = spec_fails + place_fails + fails
 
     os.makedirs(a.out, exist_ok=True)
     sheet_path = os.path.join(a.out, a.name + '.png')
