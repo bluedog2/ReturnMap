@@ -12,6 +12,14 @@ Re:Trap은 아래 서드파티 소프트웨어·에셋을 사용합니다.
 
 ---
 
+## PixelOE
+
+- 출처: https://github.com/KohakuBlueleaf/PixelOE (PyPI `pixeloe` 1.0.0)
+- 용도: GPT 생성 그림의 픽셀 격자 축소(외곽선 확장 기반) 후처리 도구 — 비교 시험 단계. 저장소 밖 venv(`..\pixeloe-venv`)에서 실행하며 게임 빌드에 코드가 포함되지 않습니다.
+- 라이선스: Apache License 2.0 — Copyright KohakuBlueleaf
+
+---
+
 ## pixelfx
 
 - 출처: https://github.com/patch-gg/pixelfx
