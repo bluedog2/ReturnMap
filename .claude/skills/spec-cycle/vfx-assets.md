@@ -101,6 +101,7 @@ ASF 가 그린 그림·`route_media.py` 사용 금지. **이미 승인된 시트
    ```
    powershell -ExecutionPolicy Bypass -File C:\Users\Owner\work\ReturnMap\tools\sprite\asf-post.ps1 -Raw <폴더>\<Name>_raw.png -Name <Name> -Rows <R> -Cols <C> [-Count <규격 프레임>] -BodyPx <몸 px> -Out <폴더>
    ```
+   축소는 기본 box 그대로 둔다. `-Downscale pixeloe` 는 사람이 기본값을 바꾸기로 정하기 전까지 자동화에서 쓰지 않는다.
    | RESULT | 처리 |
    |---|---|
    | `PASS` | 5 |

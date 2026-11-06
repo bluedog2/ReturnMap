@@ -2,11 +2,12 @@
 
 **게임 이미지는 화풍 통일을 위해 전부 GPT 가 그린다.** PixelOE(Apache-2.0, https://github.com/KohakuBlueleaf/PixelOE)는
 GPT 가 그린 고해상도 그림을 외곽선을 지키며 픽셀 격자로 줄이는 **후처리 부품**으로만 쓴다.
-자리는 ASF 후처리(`tools/sprite/asf-post.ps1`)의 "축소" 단계 — ASF 기본 축소(box)와 비교해 나은 쪽을 고른다. **아직 파이프라인에 연결하지 않았다.**
+자리는 ASF 후처리(`tools/sprite/asf-post.ps1`)의 "축소" 단계 — **선택 옵션 `-Downscale pixeloe`**(기본은 box). 기본값은 새 시트로 비교한 뒤 정한다(`tools/sprite/README.md`).
 
 ```
 pixeloe.lock.json    버전 고정: pixeloe 1.0.0 · torch 2.14.1+cpu · torchvision 0.29.2+cpu · kornia · slangpy · venv 위치
 pixeloe-setup.ps1    ..\pixeloe-venv(py 3.12) 생성 + 고정 버전 설치 + 불러오기 확인. -Check 는 확인만(exit 0/1)
+oe-sheet.py          asf-post 가 venv python 으로 부름: 원본 → (ASF 배율 × pixel) LANCZOS 리사이즈 → PixelOE 1/pixel 픽셀화
 ```
 
 ## 설치
@@ -25,7 +26,7 @@ powershell -ExecutionPolicy Bypass -File tools\pixeloe\pixeloe-setup.ps1 -Check 
 - 입력은 **4차원**(배치) 텐서: `to_tensor(img).unsqueeze(0)`. 3차원이면 Slang 백엔드가 실패한다.
 - `to_numpy(out)` 은 **리스트**를 돌려준다 → `[0]`.
 - 백엔드 `auto` = Slang CPU(첫 호출 때 Visual Studio 로 커널을 컴파일 — `C4819`·`D3D12`·`sm_6_0` 경고는 무시해도 됨). `backend="torch"` 와 결과 차이는 픽셀 0.6%·값 최대 9.
-- RGB 만 다룬다 — 투명 배경은 따로 처리해야 한다(ASF 연결 때 정할 것).
+- RGB 만 다룬다 — 크로마키 배경 원본만 받고, 투명 배경(`-Key none`)은 asf-post 가 FAIL로 막는다.
 - `pixel_size` = 원본 몇 px 를 1px 로 줄일지. 출력 크기 = 원본 ÷ pixel_size(`no_post_upscale=True`).
 
 ## 금지

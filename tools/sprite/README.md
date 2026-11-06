@@ -21,7 +21,16 @@ powershell -ExecutionPolicy Bypass -File tools\sprite\asf-setup.ps1          # �
 # GPT 원본(초록 배경 4×2 예) → 후처리
 powershell -ExecutionPolicy Bypass -File tools\sprite\asf-post.ps1 -Raw NEWIMAG\<묶음>\Sources\Hero_Run_raw.png -Name Hero_Run -Rows 2 -Cols 4 -Out NEWIMAG\<묶음>
 #   -Count N(앞 N칸만) · -Key green|magenta|blue|none · -BodyPx 102 · -Place ground-center|ground|asf
+#   -Downscale box|pixeloe(기본 box) · -OeThickness 1 · -OePixel 4
 ```
+
+### 축소 방식 `-Downscale` (선택, 2026-11-07)
+
+- **box**(기본): ASF `scale_frames` 가 원본을 box 로 줄인다.
+- **pixeloe**: box 로 한 번 돌려 배율만 잰 뒤 → `tools\pixeloe\oe-sheet.py` 가 같은 크기로 PixelOE 픽셀화(`oe_sheet.png`) → ASF 는 배율 1·nearest 로 같은 정렬만 → ③④ 는 같음.
+  준비 `tools\pixeloe\pixeloe-setup.ps1`(venv 없으면 INFRA). 크로마키 배경 원본 전용(`-Key none` 은 FAIL로 막음). `.asf.json` settings 에 `downscale`·`pixeloe` 기록.
+- V2 비교(Run·Dash): pixeloe 외곽선 1 은 외톨이 픽셀 약 −65%·실루엣 또렷, 대신 얼굴이 어둡고 1~2px 가는 선(대시 속도선)이 사라지고 몸이 ~1.5px 커짐. 외곽선 2 는 더 거칢.
+  **기본값은 다음 새 GPT 시트(V9 이후)를 두 방식으로 뽑아 눈으로 비교한 뒤 정한다.**
 
 - **PASS** → `<이름>_Preview_4x.png` 를 눈으로 본다(얼굴·의상·소품·동작) → 통과면 `Sprites/Px32/...` 로 덮어쓰기(.meta 유지) → `tools\ci\unity-ci.ps1`.
 - **FAIL** → 출력의 `FAIL ...` 줄을 그대로 GPT 재요청 REVIEW 에 옮긴다(`tools\ai\gpt-image.ps1 -ReviewFile`). 처음 + 재요청 최대 2회.
