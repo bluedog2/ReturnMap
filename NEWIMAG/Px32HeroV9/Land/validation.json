@@ -1,0 +1,338 @@
+{
+  "status": "partial_strict_one_frame_lag_not_met",
+  "frames": {
+    "F0": {
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 54,
+      "original_head_top": 54,
+      "bottom": 127,
+      "original_bottom": 127,
+      "bbox": [
+        23,
+        54,
+        100,
+        128
+      ],
+      "outside_mask_mismatch": 0,
+      "bag_layer_mismatch": 0,
+      "source_sha256": "64daa195de8c9e34599947c4f3646ca4efe82781c947e2f4168349644fa378fa"
+    },
+    "I0": {
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 54,
+      "original_head_top": 54,
+      "bottom": 127,
+      "original_bottom": 127,
+      "bbox": [
+        24,
+        54,
+        100,
+        128
+      ],
+      "outside_mask_mismatch": 0,
+      "bag_layer_mismatch": 0,
+      "source_sha256": "64daa195de8c9e34599947c4f3646ca4efe82781c947e2f4168349644fa378fa"
+    },
+    "F1": {
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 35,
+      "original_head_top": 35,
+      "bottom": 127,
+      "original_bottom": 127,
+      "bbox": [
+        27,
+        35,
+        102,
+        128
+      ],
+      "outside_mask_mismatch": 0,
+      "bag_layer_mismatch": 0,
+      "source_sha256": "3dca10400a04a7b1bbad00af7d5d68f4ba3406e4d62ff799e7df97396ffd399b"
+    },
+    "F2": {
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 26,
+      "original_head_top": 26,
+      "bottom": 127,
+      "original_bottom": 127,
+      "bbox": [
+        30,
+        26,
+        99,
+        128
+      ],
+      "outside_mask_mismatch": 0,
+      "bag_layer_mismatch": 0,
+      "source_sha256": "ddb503da2d2831cb633da8a164f691df5df793fd208b25d1b9236a1a79938ba7"
+    }
+  },
+  "previews": {
+    "animation": {
+      "frame_count": 4,
+      "total_ms": 200,
+      "visible_rgba_mismatch": 0,
+      "durations_ms": [
+        50,
+        50,
+        50,
+        50
+      ]
+    },
+    "compare": {
+      "frame_count": 4,
+      "total_ms": 200,
+      "visible_rgba_mismatch": 0,
+      "durations_ms": [
+        50,
+        50,
+        50,
+        50
+      ]
+    },
+    "transition": {
+      "frame_count": 6,
+      "total_ms": 300,
+      "visible_rgba_mismatch": 0,
+      "durations_ms": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        50
+      ]
+    }
+  },
+  "placement": {
+    "order": [
+      "F0",
+      "I0",
+      "F1",
+      "F2"
+    ],
+    "frames": {
+      "F0": {
+        "source_frame": 0,
+        "hip": [
+          62,
+          102
+        ],
+        "previous_hip": [
+          62,
+          102
+        ],
+        "offset": [
+          -11,
+          -2
+        ],
+        "inertia": [
+          0,
+          0
+        ],
+        "review_translation": [
+          0,
+          0
+        ],
+        "bag_position": [
+          51,
+          100
+        ],
+        "outside_mask_mismatch": 0
+      },
+      "I0": {
+        "source_frame": 0,
+        "hip": [
+          62,
+          102
+        ],
+        "previous_hip": [
+          62,
+          102
+        ],
+        "offset": [
+          -11,
+          -2
+        ],
+        "inertia": [
+          0,
+          2
+        ],
+        "review_translation": [
+          0,
+          0
+        ],
+        "bag_position": [
+          51,
+          102
+        ],
+        "outside_mask_mismatch": 0
+      },
+      "F1": {
+        "source_frame": 1,
+        "hip": [
+          62,
+          94
+        ],
+        "previous_hip": [
+          62,
+          102
+        ],
+        "offset": [
+          -11,
+          -2
+        ],
+        "inertia": [
+          0,
+          1
+        ],
+        "review_translation": [
+          0,
+          -6
+        ],
+        "bag_position": [
+          51,
+          95
+        ],
+        "outside_mask_mismatch": 0
+      },
+      "F2": {
+        "source_frame": 2,
+        "hip": [
+          63,
+          90
+        ],
+        "previous_hip": [
+          62,
+          94
+        ],
+        "offset": [
+          -11,
+          -2
+        ],
+        "inertia": [
+          0,
+          0
+        ],
+        "review_translation": [
+          0,
+          0
+        ],
+        "bag_position": [
+          51,
+          92
+        ],
+        "outside_mask_mismatch": 0
+      }
+    },
+    "entry_anchor": "Land contact pose initialized; not previous Fall anchor"
+  },
+  "asf": {
+    "stage": 4,
+    "scale_frames": false,
+    "place": false,
+    "rules": {
+      "airborne": false,
+      "death": false,
+      "squash": true
+    },
+    "failures": [],
+    "metrics": [
+      {
+        "frame": 0,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 74,
+        "center_x": 61.5
+      },
+      {
+        "frame": 1,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 74,
+        "center_x": 62.0
+      },
+      {
+        "frame": 2,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 93,
+        "center_x": 64.5
+      },
+      {
+        "frame": 3,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 102,
+        "center_x": 64.5
+      }
+    ],
+    "expected_spec_warning": "기존 3장 → 요청 4장",
+    "bbox_reason": "원본 착지 웅크림→일어서기 및 옆으로 벌린 균형 팔"
+  },
+  "input_sha256": {
+    "NEWIMAG\\Px32HeroV9\\Idle\\Hero_Idle_8.png": "56912896c3753517375ff834e26e3ff246aa7f0a6826bb75892bd85e674bd1d2",
+    "NEWIMAG\\Px32HeroRef\\Bag\\Bag_Hip_ThreeQuarter.png": "0cac9df72bec9fad11da05697677a3b0859c1a54ba536b04d1d2be5a22dd9453",
+    "NEWIMAG\\Px32HeroRef\\Sources\\R2_chain.png": "6882ded0cfe2807e3236173fb7a32a5f9fe5dee4776d1228ffd985897140ae92",
+    "Assets\\_Project\\ResourcceEX\\Sprites\\Px32\\Player\\Hero_Land.png": "3a3e50bdc3e2df06fb601848fef2af786a08dd5ee00b8c6f50bf87a60c8d7d7d"
+  },
+  "visual_3x": {
+    "reviewed": true,
+    "files": [
+      "Sheet_3x.png",
+      "Waist_8x.png",
+      "Sources/Transition_3x.png"
+    ],
+    "settings": {
+      "머리": "백금발 하이 포니테일·검정/빨강 밴드·Z핀 유지. 머리 꼭대기 원본 동일.",
+      "얼굴": "빨간 눈·웃음 원본 유지. 작은 송곳니·피어싱은 원본 보존도 근거로 사용.",
+      "외투": "어깨 노출, 흰 긴 퍼프 소매·빨간 안감 확인.",
+      "손": "소매 끝 검은 핑거리스 장갑·빈손 확인, 손가방 없음.",
+      "상의": "검정 크롭 탑·초커 유지. 작은 왕관 무늬는 원본 표현 한계 포함.",
+      "하의": "반바지·벨트·가터 유지, 옛 가방에 가려진 부분은 생성 복원.",
+      "다리": "원본 비대칭 검정/빨강 양말 유지. 복원 마스크 안의 가려졌던 허벅지만 생성.",
+      "신발": "두툼한 흰/검정 하이탑·빨간 스트랩 유지. 최하단 y127.",
+      "가방": "승인 Bag_Hip_ThreeQuarter 픽셀 그대로. 상자·빨간 띠·손잡이·리벳·맞물린 이빨 유지.",
+      "위치": "3배 시트·허리 8배 직접 확인. 손과 분리, 재킷 밑단 옆 뒤 허벅지 앞. 높이 보정과 엄밀한 지연 조건의 차이는 별도 미통과 기록.",
+      "긴 대기": "해당 없음.",
+      "크기": "리샘플·회전·축소 없음. 생성본 전체를 사용하지 않고 사전 지정 마스크만 합성."
+    },
+    "handheld_bag_frames": [],
+    "strict_one_frame_lag_pass": false
+  },
+  "inbetween": {
+    "interval": [
+      0,
+      1
+    ],
+    "selection": "가방 없는 수정 키의 인접 RGBA 변화량 최대",
+    "adjacent_changes": [
+      4563,
+      4073
+    ],
+    "scope": "앞 장 머리·몸·다리 유지; 팔·소매·자락 부분 보간"
+  },
+  "unmet_requirements": [
+    "Land F0 진입은 낙하 F3의 허리 (62,88) 대신 착지 접촉 기준 (62,102)으로 초기화함. 엄밀한 전환 1장 지연 아님.",
+    "Land F1은 이전 I0 허리 기준 수식의 (51,101)에서 위로 6px 이동해 (51,95). 엄밀한 고정 오프셋 1장 지연 아님."
+  ]
+}

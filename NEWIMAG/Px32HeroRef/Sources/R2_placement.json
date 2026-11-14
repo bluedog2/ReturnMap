@@ -1,0 +1,86 @@
+{
+  "Front": {
+    "asset": "Bag/Bag_Hip_Front.png",
+    "translation": [
+      70,
+      101
+    ],
+    "box_top": 104,
+    "bottom": 116,
+    "chain_translation": [
+      76,
+      89
+    ],
+    "chain_length": 12,
+    "chain_width": 2,
+    "visible_bbox": [
+      70,
+      101,
+      87,
+      117
+    ]
+  },
+  "ThreeQuarter": {
+    "asset": "Bag/Bag_Hip_ThreeQuarter.png",
+    "translation": [
+      75,
+      101
+    ],
+    "box_top": 104,
+    "bottom": 116,
+    "chain_translation": [
+      80,
+      89
+    ],
+    "chain_length": 12,
+    "chain_width": 2,
+    "visible_bbox": [
+      75,
+      101,
+      93,
+      117
+    ]
+  },
+  "Side": {
+    "asset": "Bag/Bag_Hip_ThreeQuarter.png",
+    "translation": [
+      66,
+      101
+    ],
+    "box_top": 104,
+    "bottom": 116,
+    "chain_translation": [
+      80,
+      89
+    ],
+    "chain_length": 12,
+    "chain_width": 2,
+    "visible_bbox": [
+      79,
+      102,
+      84,
+      117
+    ]
+  },
+  "Back": {
+    "asset": "Bag/Bag_Hip_Side.png",
+    "translation": [
+      40,
+      100
+    ],
+    "box_top": 104,
+    "bottom": 119,
+    "chain_translation": [
+      45,
+      89
+    ],
+    "chain_length": 12,
+    "chain_width": 2,
+    "visible_bbox": [
+      40,
+      100,
+      51,
+      120
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "tool": "built-in image_gen",
+  "max_per_frame": 3,
+  "frames": {
+    "F0": {
+      "attempts": 1,
+      "selected": 1,
+      "prompt": "Sources/F0_prompt1.txt",
+      "generated": "Sources/F0_generated1.png"
+    },
+    "F1": {
+      "attempts": 1,
+      "selected": 1,
+      "prompt": "Sources/F1_prompt1.txt",
+      "generated": "Sources/F1_generated1.png"
+    },
+    "F2": {
+      "attempts": 1,
+      "selected": 1,
+      "prompt": "Sources/F2_prompt1.txt",
+      "generated": "Sources/F2_generated1.png"
+    },
+    "I0": {
+      "attempts": 2,
+      "selected": 2,
+      "prompt": "Sources/I0_prompt2.txt",
+      "generated": "Sources/I0_generated2.png",
+      "rejected": "1: fixed bag concealed folded hand; regenerate visibly empty hand left of bag"
+    }
+  }
+}

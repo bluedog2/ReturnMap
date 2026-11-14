@@ -1,0 +1,495 @@
+[
+  {
+    "frame": "LongIdle_F0",
+    "bag_kind": "Held_ThreeQuarter",
+    "position": [
+      58,
+      83
+    ],
+    "arm_rects": [
+      [
+        43,
+        73,
+        65,
+        95
+      ],
+      [
+        63,
+        77,
+        75,
+        86
+      ]
+    ],
+    "hand_rect": [
+      65,
+      79,
+      74,
+      85
+    ],
+    "bag_visible_mismatch": 0
+  },
+  {
+    "frame": "LongIdle_F1",
+    "bag_kind": "Held_ThreeQuarter",
+    "position": [
+      58,
+      83
+    ],
+    "arm_rects": [
+      [
+        43,
+        73,
+        65,
+        95
+      ],
+      [
+        63,
+        77,
+        75,
+        86
+      ]
+    ],
+    "hand_rect": [
+      65,
+      79,
+      74,
+      85
+    ],
+    "bag_visible_mismatch": 0
+  },
+  {
+    "frame": "LongIdle_F2",
+    "bag_kind": "Held_ThreeQuarter",
+    "position": [
+      58,
+      82
+    ],
+    "arm_rects": [
+      [
+        43,
+        73,
+        65,
+        95
+      ],
+      [
+        63,
+        76,
+        75,
+        85
+      ]
+    ],
+    "hand_rect": [
+      65,
+      78,
+      74,
+      84
+    ],
+    "bag_visible_mismatch": 0
+  },
+  {
+    "frame": "LongIdle_F3",
+    "bag_kind": "Held_Open",
+    "position": [
+      58,
+      81
+    ],
+    "arm_rects": [
+      [
+        43,
+        73,
+        65,
+        95
+      ],
+      [
+        63,
+        75,
+        75,
+        84
+      ]
+    ],
+    "hand_rect": [
+      65,
+      77,
+      74,
+      83
+    ],
+    "bag_visible_mismatch": 0
+  },
+  {
+    "frame": "LongIdle_F4",
+    "bag_kind": "Held_Open",
+    "position": [
+      58,
+      82
+    ],
+    "arm_rects": [
+      [
+        43,
+        73,
+        65,
+        95
+      ],
+      [
+        63,
+        76,
+        75,
+        85
+      ]
+    ],
+    "hand_rect": [
+      65,
+      78,
+      74,
+      84
+    ],
+    "bag_visible_mismatch": 0
+  },
+  {
+    "frame": "LongIdle_F5",
+    "bag_kind": "Held_ThreeQuarter",
+    "position": [
+      59,
+      84
+    ],
+    "arm_rects": [
+      [
+        43,
+        73,
+        65,
+        95
+      ],
+      [
+        64,
+        78,
+        76,
+        87
+      ]
+    ],
+    "hand_rect": [
+      66,
+      80,
+      75,
+      86
+    ],
+    "bag_visible_mismatch": 0
+  },
+  {
+    "frame": "LongIdle_F6",
+    "bag_kind": "Held_ThreeQuarter",
+    "position": [
+      59,
+      85
+    ],
+    "arm_rects": [
+      [
+        43,
+        73,
+        65,
+        95
+      ],
+      [
+        64,
+        79,
+        76,
+        88
+      ]
+    ],
+    "hand_rect": [
+      66,
+      81,
+      75,
+      87
+    ],
+    "bag_visible_mismatch": 0
+  },
+  {
+    "frame": "LongIdle_F7",
+    "bag_kind": "Held_ThreeQuarter",
+    "position": [
+      59,
+      84
+    ],
+    "arm_rects": [
+      [
+        43,
+        73,
+        65,
+        95
+      ],
+      [
+        64,
+        78,
+        76,
+        87
+      ]
+    ],
+    "hand_rect": [
+      66,
+      80,
+      75,
+      86
+    ],
+    "bag_visible_mismatch": 0
+  },
+  {
+    "frame": "LongIdle_F8",
+    "bag_kind": "Held_Open",
+    "position": [
+      58,
+      83
+    ],
+    "arm_rects": [
+      [
+        43,
+        73,
+        65,
+        95
+      ],
+      [
+        63,
+        77,
+        75,
+        86
+      ]
+    ],
+    "hand_rect": [
+      65,
+      79,
+      74,
+      85
+    ],
+    "bag_visible_mismatch": 0
+  },
+  {
+    "frame": "LongIdle_F9",
+    "bag_kind": "Held_Open",
+    "position": [
+      57,
+      82
+    ],
+    "arm_rects": [
+      [
+        43,
+        73,
+        65,
+        95
+      ],
+      [
+        62,
+        76,
+        74,
+        85
+      ]
+    ],
+    "hand_rect": [
+      64,
+      78,
+      73,
+      84
+    ],
+    "bag_visible_mismatch": 0
+  },
+  {
+    "frame": "LongIdle_F10",
+    "bag_kind": "Held_Open",
+    "position": [
+      57,
+      83
+    ],
+    "arm_rects": [
+      [
+        43,
+        73,
+        65,
+        95
+      ],
+      [
+        62,
+        77,
+        74,
+        86
+      ]
+    ],
+    "hand_rect": [
+      64,
+      79,
+      73,
+      85
+    ],
+    "bag_visible_mismatch": 0
+  },
+  {
+    "frame": "LongIdle_F11",
+    "bag_kind": "Held_ThreeQuarter",
+    "position": [
+      58,
+      83
+    ],
+    "arm_rects": [
+      [
+        43,
+        73,
+        65,
+        95
+      ],
+      [
+        63,
+        77,
+        75,
+        86
+      ]
+    ],
+    "hand_rect": [
+      65,
+      79,
+      74,
+      85
+    ],
+    "bag_visible_mismatch": 0
+  },
+  {
+    "frame": "BagOut_F1",
+    "bag_kind": "Hip_ThreeQuarter",
+    "position": [
+      51,
+      95
+    ],
+    "arm_rects": [
+      [
+        43,
+        73,
+        65,
+        98
+      ]
+    ],
+    "hand_rect": [
+      52,
+      91,
+      63,
+      98
+    ],
+    "bag_visible_mismatch": 0
+  },
+  {
+    "frame": "BagOut_F2",
+    "bag_kind": "Held_ThreeQuarter",
+    "position": [
+      45,
+      92
+    ],
+    "arm_rects": [
+      [
+        43,
+        73,
+        66,
+        96
+      ]
+    ],
+    "hand_rect": [
+      48,
+      88,
+      61,
+      96
+    ],
+    "bag_visible_mismatch": 0
+  },
+  {
+    "frame": "BagOut_F3",
+    "bag_kind": "Held_ThreeQuarter",
+    "position": [
+      55,
+      87
+    ],
+    "arm_rects": [
+      [
+        43,
+        73,
+        65,
+        95
+      ],
+      [
+        65,
+        80,
+        72,
+        90
+      ]
+    ],
+    "hand_rect": [
+      60,
+      83,
+      71,
+      90
+    ],
+    "bag_visible_mismatch": 0
+  },
+  {
+    "frame": "BagOut_F4",
+    "bag_kind": "Held_ThreeQuarter",
+    "position": [
+      58,
+      84
+    ],
+    "arm_rects": [
+      [
+        43,
+        73,
+        65,
+        95
+      ],
+      [
+        63,
+        78,
+        75,
+        87
+      ]
+    ],
+    "hand_rect": [
+      64,
+      79,
+      75,
+      87
+    ],
+    "bag_visible_mismatch": 0
+  },
+  {
+    "frame": "BagIn_F1",
+    "bag_kind": "Held_ThreeQuarter",
+    "position": [
+      47,
+      93
+    ],
+    "arm_rects": [
+      [
+        43,
+        73,
+        65,
+        96
+      ]
+    ],
+    "hand_rect": [
+      52,
+      89,
+      62,
+      96
+    ],
+    "bag_visible_mismatch": 0
+  },
+  {
+    "frame": "BagIn_F2",
+    "bag_kind": "Hip_ThreeQuarter",
+    "position": [
+      51,
+      95
+    ],
+    "arm_rects": [
+      [
+        43,
+        73,
+        65,
+        94
+      ]
+    ],
+    "hand_rect": null,
+    "bag_visible_mismatch": 0
+  }
+]

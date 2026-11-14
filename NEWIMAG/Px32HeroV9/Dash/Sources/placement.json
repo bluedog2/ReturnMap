@@ -1,0 +1,181 @@
+{
+  "order": [
+    "F0",
+    "F1",
+    "F2",
+    "F3",
+    "I3",
+    "F4"
+  ],
+  "frames": {
+    "F0": {
+      "source_frame": 0,
+      "hip": [
+        61,
+        94
+      ],
+      "previous_hip": [
+        63,
+        96
+      ],
+      "offset": [
+        -11,
+        -2
+      ],
+      "inertia": [
+        -2,
+        0
+      ],
+      "review_translation": [
+        0,
+        0
+      ],
+      "bag_position": [
+        50,
+        94
+      ],
+      "outside_mask_mismatch": 0
+    },
+    "F1": {
+      "source_frame": 1,
+      "hip": [
+        63,
+        93
+      ],
+      "previous_hip": [
+        61,
+        94
+      ],
+      "offset": [
+        -11,
+        -2
+      ],
+      "inertia": [
+        -3,
+        0
+      ],
+      "review_translation": [
+        0,
+        0
+      ],
+      "bag_position": [
+        47,
+        92
+      ],
+      "outside_mask_mismatch": 0
+    },
+    "F2": {
+      "source_frame": 2,
+      "hip": [
+        66,
+        97
+      ],
+      "previous_hip": [
+        63,
+        93
+      ],
+      "offset": [
+        -11,
+        -2
+      ],
+      "inertia": [
+        -3,
+        0
+      ],
+      "review_translation": [
+        0,
+        0
+      ],
+      "bag_position": [
+        49,
+        91
+      ],
+      "outside_mask_mismatch": 0
+    },
+    "F3": {
+      "source_frame": 3,
+      "hip": [
+        65,
+        96
+      ],
+      "previous_hip": [
+        66,
+        97
+      ],
+      "offset": [
+        -11,
+        -2
+      ],
+      "inertia": [
+        -3,
+        0
+      ],
+      "review_translation": [
+        0,
+        0
+      ],
+      "bag_position": [
+        52,
+        95
+      ],
+      "outside_mask_mismatch": 0
+    },
+    "I3": {
+      "source_frame": 3,
+      "hip": [
+        65,
+        96
+      ],
+      "previous_hip": [
+        65,
+        96
+      ],
+      "offset": [
+        -11,
+        -2
+      ],
+      "inertia": [
+        -3,
+        0
+      ],
+      "review_translation": [
+        0,
+        0
+      ],
+      "bag_position": [
+        51,
+        94
+      ],
+      "outside_mask_mismatch": 0
+    },
+    "F4": {
+      "source_frame": 4,
+      "hip": [
+        63,
+        88
+      ],
+      "previous_hip": [
+        65,
+        96
+      ],
+      "offset": [
+        -11,
+        -2
+      ],
+      "inertia": [
+        -2,
+        0
+      ],
+      "review_translation": [
+        0,
+        -6
+      ],
+      "bag_position": [
+        52,
+        88
+      ],
+      "outside_mask_mismatch": 0
+    }
+  },
+  "entry_anchor": "previous Run I7 body hip (63,96)"
+}

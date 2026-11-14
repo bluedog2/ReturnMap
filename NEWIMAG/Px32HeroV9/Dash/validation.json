@@ -1,0 +1,579 @@
+{
+  "status": "partial_strict_one_frame_lag_not_met",
+  "frames": {
+    "F0": {
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 40,
+      "original_head_top": 40,
+      "bottom": 127,
+      "original_bottom": 127,
+      "bbox": [
+        31,
+        40,
+        99,
+        128
+      ],
+      "outside_mask_mismatch": 0,
+      "bag_layer_mismatch": 0,
+      "source_sha256": "aedead9d98b5e62fad351eb013e81e4016e76cd06902bea221fd0e40e141d036"
+    },
+    "F1": {
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 35,
+      "original_head_top": 35,
+      "bottom": 127,
+      "original_bottom": 127,
+      "bbox": [
+        24,
+        35,
+        105,
+        128
+      ],
+      "outside_mask_mismatch": 0,
+      "bag_layer_mismatch": 0,
+      "source_sha256": "ca1791a99898152dbb179345c38fd4268e467f15b89f11388b1998f0133e706f"
+    },
+    "F2": {
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 44,
+      "original_head_top": 44,
+      "bottom": 127,
+      "original_bottom": 127,
+      "bbox": [
+        16,
+        44,
+        111,
+        128
+      ],
+      "outside_mask_mismatch": 0,
+      "bag_layer_mismatch": 0,
+      "source_sha256": "539f92aa449596380692828544035ac4803b19c597f342cad19d503d5cb61594"
+    },
+    "F3": {
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 42,
+      "original_head_top": 42,
+      "bottom": 127,
+      "original_bottom": 127,
+      "bbox": [
+        18,
+        42,
+        110,
+        128
+      ],
+      "outside_mask_mismatch": 0,
+      "bag_layer_mismatch": 0,
+      "source_sha256": "1fa333ae196af336cdf239ede6929a742ee3a8357a004e6aca5df3bb9a62b007"
+    },
+    "I3": {
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 42,
+      "original_head_top": 42,
+      "bottom": 127,
+      "original_bottom": 127,
+      "bbox": [
+        18,
+        42,
+        110,
+        128
+      ],
+      "outside_mask_mismatch": 0,
+      "bag_layer_mismatch": 0,
+      "source_sha256": "1fa333ae196af336cdf239ede6929a742ee3a8357a004e6aca5df3bb9a62b007"
+    },
+    "F4": {
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 28,
+      "original_head_top": 28,
+      "bottom": 127,
+      "original_bottom": 127,
+      "bbox": [
+        28,
+        28,
+        99,
+        128
+      ],
+      "outside_mask_mismatch": 0,
+      "bag_layer_mismatch": 0,
+      "source_sha256": "f0feced32c6b25a553503f268c97171321f8301480fe7bb6a513d71e94c33cd0"
+    }
+  },
+  "previews": {
+    "animation": {
+      "frame_count": 42,
+      "total_ms": 1500,
+      "visible_rgba_mismatch": 0,
+      "durations_ms": [
+        40,
+        30,
+        40,
+        30,
+        40,
+        30,
+        40,
+        40,
+        30,
+        40,
+        30,
+        40,
+        30,
+        40,
+        40,
+        30,
+        40,
+        30,
+        40,
+        30,
+        40,
+        40,
+        30,
+        40,
+        30,
+        40,
+        30,
+        40,
+        40,
+        30,
+        40,
+        30,
+        40,
+        30,
+        40,
+        40,
+        30,
+        40,
+        30,
+        40,
+        30,
+        40
+      ]
+    },
+    "compare": {
+      "frame_count": 42,
+      "total_ms": 1500,
+      "visible_rgba_mismatch": 0,
+      "durations_ms": [
+        40,
+        30,
+        40,
+        30,
+        40,
+        30,
+        40,
+        40,
+        30,
+        40,
+        30,
+        40,
+        30,
+        40,
+        40,
+        30,
+        40,
+        30,
+        40,
+        30,
+        40,
+        40,
+        30,
+        40,
+        30,
+        40,
+        30,
+        40,
+        40,
+        30,
+        40,
+        30,
+        40,
+        30,
+        40,
+        40,
+        30,
+        40,
+        30,
+        40,
+        30,
+        40
+      ]
+    },
+    "transition": {
+      "frame_count": 56,
+      "total_ms": 2000,
+      "visible_rgba_mismatch": 0,
+      "durations_ms": [
+        40,
+        30,
+        40,
+        30,
+        40,
+        30,
+        40,
+        40,
+        30,
+        40,
+        30,
+        40,
+        30,
+        40,
+        40,
+        30,
+        40,
+        30,
+        40,
+        30,
+        40,
+        40,
+        30,
+        40,
+        30,
+        40,
+        30,
+        40,
+        40,
+        30,
+        40,
+        30,
+        40,
+        30,
+        40,
+        40,
+        30,
+        40,
+        30,
+        40,
+        30,
+        40,
+        40,
+        30,
+        40,
+        30,
+        40,
+        30,
+        40,
+        40,
+        30,
+        40,
+        30,
+        40,
+        30,
+        40
+      ]
+    }
+  },
+  "placement": {
+    "order": [
+      "F0",
+      "F1",
+      "F2",
+      "F3",
+      "I3",
+      "F4"
+    ],
+    "frames": {
+      "F0": {
+        "source_frame": 0,
+        "hip": [
+          61,
+          94
+        ],
+        "previous_hip": [
+          63,
+          96
+        ],
+        "offset": [
+          -11,
+          -2
+        ],
+        "inertia": [
+          -2,
+          0
+        ],
+        "review_translation": [
+          0,
+          0
+        ],
+        "bag_position": [
+          50,
+          94
+        ],
+        "outside_mask_mismatch": 0
+      },
+      "F1": {
+        "source_frame": 1,
+        "hip": [
+          63,
+          93
+        ],
+        "previous_hip": [
+          61,
+          94
+        ],
+        "offset": [
+          -11,
+          -2
+        ],
+        "inertia": [
+          -3,
+          0
+        ],
+        "review_translation": [
+          0,
+          0
+        ],
+        "bag_position": [
+          47,
+          92
+        ],
+        "outside_mask_mismatch": 0
+      },
+      "F2": {
+        "source_frame": 2,
+        "hip": [
+          66,
+          97
+        ],
+        "previous_hip": [
+          63,
+          93
+        ],
+        "offset": [
+          -11,
+          -2
+        ],
+        "inertia": [
+          -3,
+          0
+        ],
+        "review_translation": [
+          0,
+          0
+        ],
+        "bag_position": [
+          49,
+          91
+        ],
+        "outside_mask_mismatch": 0
+      },
+      "F3": {
+        "source_frame": 3,
+        "hip": [
+          65,
+          96
+        ],
+        "previous_hip": [
+          66,
+          97
+        ],
+        "offset": [
+          -11,
+          -2
+        ],
+        "inertia": [
+          -3,
+          0
+        ],
+        "review_translation": [
+          0,
+          0
+        ],
+        "bag_position": [
+          52,
+          95
+        ],
+        "outside_mask_mismatch": 0
+      },
+      "I3": {
+        "source_frame": 3,
+        "hip": [
+          65,
+          96
+        ],
+        "previous_hip": [
+          65,
+          96
+        ],
+        "offset": [
+          -11,
+          -2
+        ],
+        "inertia": [
+          -3,
+          0
+        ],
+        "review_translation": [
+          0,
+          0
+        ],
+        "bag_position": [
+          51,
+          94
+        ],
+        "outside_mask_mismatch": 0
+      },
+      "F4": {
+        "source_frame": 4,
+        "hip": [
+          63,
+          88
+        ],
+        "previous_hip": [
+          65,
+          96
+        ],
+        "offset": [
+          -11,
+          -2
+        ],
+        "inertia": [
+          -2,
+          0
+        ],
+        "review_translation": [
+          0,
+          -6
+        ],
+        "bag_position": [
+          52,
+          88
+        ],
+        "outside_mask_mismatch": 0
+      }
+    },
+    "entry_anchor": "previous Run I7 body hip (63,96)"
+  },
+  "asf": {
+    "stage": 4,
+    "scale_frames": false,
+    "place": false,
+    "rules": {
+      "airborne": false,
+      "death": false,
+      "squash": true
+    },
+    "failures": [],
+    "metrics": [
+      {
+        "frame": 0,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 88,
+        "center_x": 65.0
+      },
+      {
+        "frame": 1,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 93,
+        "center_x": 64.5
+      },
+      {
+        "frame": 2,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 84,
+        "center_x": 63.5
+      },
+      {
+        "frame": 3,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 86,
+        "center_x": 64.0
+      },
+      {
+        "frame": 4,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 86,
+        "center_x": 64.0
+      },
+      {
+        "frame": 5,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 100,
+        "center_x": 63.5
+      }
+    ],
+    "expected_spec_warning": "기존 5장 → 요청 6장",
+    "bbox_reason": "원본 대시 몸 기울기·포니테일·다리 벌림 변화 보존"
+  },
+  "input_sha256": {
+    "NEWIMAG\\Px32HeroV9\\Idle\\Hero_Idle_8.png": "56912896c3753517375ff834e26e3ff246aa7f0a6826bb75892bd85e674bd1d2",
+    "NEWIMAG\\Px32HeroRef\\Bag\\Bag_Hip_ThreeQuarter.png": "0cac9df72bec9fad11da05697677a3b0859c1a54ba536b04d1d2be5a22dd9453",
+    "NEWIMAG\\Px32HeroRef\\Sources\\R2_chain.png": "6882ded0cfe2807e3236173fb7a32a5f9fe5dee4776d1228ffd985897140ae92",
+    "Assets\\_Project\\ResourcceEX\\Sprites\\Px32\\Player\\Hero_Dash.png": "acdc0245c4dce3c1b39f065d3ae3b7493fb999f11c12fa87d4742b2b8ea4ed58"
+  },
+  "visual_3x": {
+    "reviewed": true,
+    "files": [
+      "Sheet_3x.png",
+      "Waist_8x.png",
+      "Sources/Transition_3x.png"
+    ],
+    "settings": {
+      "머리": "백금발 하이 포니테일·검정/빨강 밴드·Z핀 유지. 머리 꼭대기 원본 동일.",
+      "얼굴": "빨간 눈·웃음 원본 유지. 작은 송곳니·피어싱은 원본 보존도 근거로 사용.",
+      "외투": "어깨 노출, 흰 긴 퍼프 소매·빨간 안감 확인.",
+      "손": "소매 끝 검은 핑거리스 장갑·빈손 확인, 손가방 없음.",
+      "상의": "검정 크롭 탑·초커 유지. 작은 왕관 무늬는 원본 표현 한계 포함.",
+      "하의": "반바지·벨트·가터 유지, 옛 가방에 가려진 부분은 생성 복원.",
+      "다리": "원본 비대칭 검정/빨강 양말 유지. 복원 마스크 안의 가려졌던 허벅지만 생성.",
+      "신발": "두툼한 흰/검정 하이탑·빨간 스트랩 유지. 최하단 y127.",
+      "가방": "승인 Bag_Hip_ThreeQuarter 픽셀 그대로. 상자·빨간 띠·손잡이·리벳·맞물린 이빨 유지.",
+      "위치": "3배 시트·허리 8배 직접 확인. 손과 분리, 재킷 밑단 옆 뒤 허벅지 앞. 높이 보정과 엄밀한 지연 조건의 차이는 별도 미통과 기록.",
+      "긴 대기": "해당 없음.",
+      "크기": "리샘플·회전·축소 없음. 생성본 전체를 사용하지 않고 사전 지정 마스크만 합성."
+    },
+    "handheld_bag_frames": [],
+    "strict_one_frame_lag_pass": false
+  },
+  "inbetween": {
+    "interval": [
+      3,
+      4
+    ],
+    "selection": "가방 없는 수정 키의 인접 RGBA 변화량 최대",
+    "adjacent_changes": [
+      3766,
+      4299,
+      3474,
+      4905
+    ],
+    "scope": "앞 장 머리·몸·다리 유지; 팔·소매·자락 부분 보간"
+  },
+  "unmet_requirements": [
+    "Dash F4는 이전 I3 허리 기준 수식의 (52,94)에서 위로 6px 이동해 (52,88). 엄밀한 고정 오프셋 1장 지연 아님."
+  ]
+}

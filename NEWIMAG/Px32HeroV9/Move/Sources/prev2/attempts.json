@@ -1,0 +1,63 @@
+{
+  "total_including_previous": 4,
+  "previous": 2,
+  "this_session": 2,
+  "unique_generated_frames": {
+    "RunStart_F1": {
+      "used": 1,
+      "limit": 3,
+      "selected": 1,
+      "resumed_existing": true,
+      "generated": "Sources/RunStart_F1_generated1.png",
+      "prompt": null
+    },
+    "RunStop_F1": {
+      "used": 1,
+      "limit": 3,
+      "selected": 1,
+      "resumed_existing": true,
+      "generated": "Sources/RunStop_F1_generated1.png",
+      "prompt": "Sources/RunStop_F1_prompt1.txt"
+    },
+    "RunStop_F2": {
+      "used": 1,
+      "limit": 3,
+      "selected": 1,
+      "resumed_existing": false,
+      "generated": "Sources/RunStop_F2_generated1.png",
+      "prompt": "Sources/RunStop_F2_prompt1.txt"
+    },
+    "Turn_F1": {
+      "used": 1,
+      "limit": 3,
+      "selected": 1,
+      "resumed_existing": false,
+      "generated": "Sources/Turn_F1_generated1.png",
+      "prompt": "Sources/Turn_F1_prompt1.txt"
+    }
+  },
+  "reused_frames": {
+    "RunStart": [
+      "Idle0",
+      "RunStart_F1",
+      "Run0"
+    ],
+    "RunStop": [
+      "Run9",
+      "RunStop_F1",
+      "RunStop_F2",
+      "Idle0"
+    ],
+    "Turn": [
+      "RunStop_F1",
+      "Turn_F1",
+      "Run0"
+    ]
+  },
+  "note": "RunStart F1 prior prompt missing on resume; original generated image/recovery preserved. Turn F0 reuses RunStop F1, no new generation.",
+  "screen_side_bag": {
+    "new_imagegen_calls": 0,
+    "method": "approved pixel mask compositing, integer translation, body mirror; no drawing",
+    "limit_per_frame": 3
+  }
+}

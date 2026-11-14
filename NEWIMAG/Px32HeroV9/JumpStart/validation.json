@@ -1,0 +1,344 @@
+{
+  "frames": {
+    "F0": {
+      "recovery": {
+        "pitch": 10,
+        "origin": [
+          -16,
+          -14
+        ],
+        "head_registration_error": 6512078.666666666
+      },
+      "hip": [
+        62,
+        100
+      ],
+      "lag": -1,
+      "bag_position": [
+        51,
+        97
+      ],
+      "outside_mask_mismatch": 0,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 50,
+      "original_head_top": 50,
+      "bottom": 127,
+      "original_bottom": 127,
+      "bottom_row_mismatch": 0,
+      "head_mismatch": 0,
+      "front_arm_mismatch": 0,
+      "bag_layer_mismatch": 0,
+      "visual_3x": {
+        "머리": "백금발·밴드·Z핀 유지; 머리 상단 보호 띠 불일치 0",
+        "얼굴": "빨간 눈·표정 원본 유지; 작은 송곳니·피어싱은 원본 보존 근거",
+        "외투": "흰 긴 퍼프 소매·빨강 안감 확인",
+        "손": "검은 핑거리스 장갑·빈손; 소매가 손목까지 연결",
+        "상의": "검은 크롭 탑·초커 유지",
+        "하의": "반바지·벨트 유지, 가방 가림 있음",
+        "다리": "검정/빨강 비대칭 유지",
+        "신발": "두툼한 하이탑 유지",
+        "가방": "승인 상자·빨간 띠·맞물린 흰 이빨 픽셀 재사용",
+        "평소 가방 위치": "무릎 아래로 내려가지 않음; 허리 부근 확인",
+        "긴 대기 가방 위치": "해당 없음",
+        "크기": "머리 꼭대기·최하단 행 원본과 동일"
+      },
+      "held_bag": false
+    },
+    "F1": {
+      "recovery": {
+        "pitch": 10,
+        "origin": [
+          -15,
+          -10
+        ],
+        "head_registration_error": 5156806.0
+      },
+      "hip": [
+        65,
+        86
+      ],
+      "lag": 2,
+      "bag_position": [
+        54,
+        86
+      ],
+      "outside_mask_mismatch": 0,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 25,
+      "original_head_top": 25,
+      "bottom": 127,
+      "original_bottom": 127,
+      "bottom_row_mismatch": 0,
+      "head_mismatch": 0,
+      "front_arm_mismatch": 0,
+      "bag_layer_mismatch": 0,
+      "visual_3x": {
+        "머리": "백금발·밴드·Z핀 유지; 머리 상단 보호 띠 불일치 0",
+        "얼굴": "빨간 눈·표정 원본 유지; 작은 송곳니·피어싱은 원본 보존 근거",
+        "외투": "흰 긴 퍼프 소매·빨강 안감 확인",
+        "손": "검은 핑거리스 장갑·빈손; 소매가 손목까지 연결",
+        "상의": "검은 크롭 탑·초커 유지",
+        "하의": "반바지·벨트 유지, 가방 가림 있음",
+        "다리": "검정/빨강 비대칭 유지",
+        "신발": "두툼한 하이탑 유지",
+        "가방": "승인 상자·빨간 띠·맞물린 흰 이빨 픽셀 재사용",
+        "평소 가방 위치": "무릎 아래로 내려가지 않음; 허리 부근 확인",
+        "긴 대기 가방 위치": "해당 없음",
+        "크기": "머리 꼭대기·최하단 행 원본과 동일"
+      },
+      "held_bag": false
+    },
+    "F2": {
+      "recovery": {
+        "pitch": 10,
+        "origin": [
+          -14,
+          -10
+        ],
+        "head_registration_error": 3395772.6666666665
+      },
+      "hip": [
+        65,
+        87
+      ],
+      "lag": -1,
+      "bag_position": [
+        54,
+        84
+      ],
+      "outside_mask_mismatch": 0,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 29,
+      "original_head_top": 29,
+      "bottom": 120,
+      "original_bottom": 120,
+      "bottom_row_mismatch": 0,
+      "head_mismatch": 0,
+      "front_arm_mismatch": 0,
+      "bag_layer_mismatch": 0,
+      "visual_3x": {
+        "머리": "백금발·밴드·Z핀 유지; 머리 상단 보호 띠 불일치 0",
+        "얼굴": "빨간 눈·표정 원본 유지; 작은 송곳니·피어싱은 원본 보존 근거",
+        "외투": "흰 긴 퍼프 소매·빨강 안감 확인",
+        "손": "검은 핑거리스 장갑·빈손; 소매가 손목까지 연결",
+        "상의": "검은 크롭 탑·초커 유지",
+        "하의": "반바지·벨트 유지, 가방 가림 있음",
+        "다리": "검정/빨강 비대칭 유지",
+        "신발": "두툼한 하이탑 유지",
+        "가방": "승인 상자·빨간 띠·맞물린 흰 이빨 픽셀 재사용",
+        "평소 가방 위치": "무릎 아래로 내려가지 않음; 허리 부근 확인",
+        "긴 대기 가방 위치": "해당 없음",
+        "크기": "머리 꼭대기·최하단 행 원본과 동일"
+      },
+      "held_bag": false
+    },
+    "I0": {
+      "recovery": {
+        "pitch": 10,
+        "origin": [
+          -16,
+          -15
+        ],
+        "head_registration_error": 5147202.666666666
+      },
+      "bag_position": [
+        53,
+        92
+      ],
+      "outside_mask_mismatch": 0,
+      "reference": "F0",
+      "interpolation": "rear arm, sleeve and jacket only; head and legs retained",
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 50,
+      "original_head_top": 50,
+      "bottom": 127,
+      "original_bottom": 127,
+      "bottom_row_mismatch": 0,
+      "head_mismatch": 0,
+      "front_arm_mismatch": 0,
+      "bag_layer_mismatch": 0,
+      "visual_3x": {
+        "머리": "백금발·밴드·Z핀 유지; 머리 상단 보호 띠 불일치 0",
+        "얼굴": "빨간 눈·표정 원본 유지; 작은 송곳니·피어싱은 원본 보존 근거",
+        "외투": "흰 긴 퍼프 소매·빨강 안감 확인",
+        "손": "검은 핑거리스 장갑·빈손; 소매가 손목까지 연결",
+        "상의": "검은 크롭 탑·초커 유지",
+        "하의": "반바지·벨트 유지, 가방 가림 있음",
+        "다리": "검정/빨강 비대칭 유지",
+        "신발": "두툼한 하이탑 유지",
+        "가방": "승인 상자·빨간 띠·맞물린 흰 이빨 픽셀 재사용",
+        "평소 가방 위치": "미통과: 중간 위치가 고정된 웅크린 몸의 허리보다 높음",
+        "긴 대기 가방 위치": "해당 없음",
+        "크기": "머리 꼭대기·최하단 행 원본과 동일"
+      },
+      "held_bag": false
+    }
+  },
+  "order": [
+    "F0",
+    "I0",
+    "F1",
+    "F2"
+  ],
+  "changes": [
+    4753,
+    3398
+  ],
+  "selected_interval": [
+    0,
+    1
+  ],
+  "asf": {
+    "3": {
+      "failures": [],
+      "metrics": [
+        {
+          "frame": 0,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 78,
+          "center_x": 64.0
+        },
+        {
+          "frame": 1,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 103,
+          "center_x": 64.5
+        },
+        {
+          "frame": 2,
+          "colors": 20,
+          "feet_row": 120,
+          "height": 92,
+          "center_x": 63.5
+        }
+      ]
+    },
+    "4": {
+      "failures": [],
+      "metrics": [
+        {
+          "frame": 0,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 78,
+          "center_x": 64.0
+        },
+        {
+          "frame": 1,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 78,
+          "center_x": 64.0
+        },
+        {
+          "frame": 2,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 103,
+          "center_x": 64.5
+        },
+        {
+          "frame": 3,
+          "colors": 20,
+          "feet_row": 120,
+          "height": 92,
+          "center_x": 63.5
+        }
+      ]
+    }
+  },
+  "expected_spec_warning": "dimensions: Hero_JumpStart 규격 3장 대 새 기준 4장 (예상 경고)",
+  "previews": {
+    "3": {
+      "frames": 3,
+      "total_ms": 200,
+      "visible_mismatch": 0,
+      "durations_ms": [
+        70,
+        60,
+        70
+      ]
+    },
+    "4": {
+      "frames": 4,
+      "total_ms": 200,
+      "visible_mismatch": 0,
+      "durations_ms": [
+        50,
+        50,
+        50,
+        50
+      ]
+    },
+    "compare": {
+      "frames": 6,
+      "total_ms": 200,
+      "visible_mismatch": 0,
+      "durations_ms": [
+        50,
+        20,
+        30,
+        40,
+        10,
+        50
+      ]
+    },
+    "transition": {
+      "frames": 6,
+      "total_ms": 300,
+      "visible_mismatch": 0,
+      "durations_ms": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        50
+      ]
+    }
+  },
+  "input_sha256": {
+    "Assets/_Project/ResourcceEX/Sprites/Px32/Player/Hero_JumpStart.png": "4cc74b146aab1b58a309d121d0176ee452c58ea16b08e2b7b19d4d915b410b8d",
+    "Assets/_Project/ResourcceEX/Sprites/Px32/Player/Hero_Fall.png": "d349ec0628451f24d268a24a3c15b28822bc21407258e7b2f8ce24a1c9283d01",
+    "NEWIMAG/Px32HeroV9/Idle/Hero_Idle_8.png": "56912896c3753517375ff834e26e3ff246aa7f0a6826bb75892bd85e674bd1d2",
+    "NEWIMAG/Px32HeroV9/Run/Hero_Run_10.png": "f2a8b19b20d707e4bc64882c3166d98b284cf687aacc7e712082831832b51f90",
+    "NEWIMAG/Px32HeroRef/Bag/Bag_Hip_ThreeQuarter.png": "0cac9df72bec9fad11da05697677a3b0859c1a54ba536b04d1d2be5a22dd9453",
+    "NEWIMAG/Px32HeroRef/Sources/R2_chain.png": "6882ded0cfe2807e3236173fb7a32a5f9fe5dee4776d1228ffd985897140ae92"
+  },
+  "visual_review": "PARTIAL: I0 waist-height requirement failed; not approved",
+  "timing": {
+    "original_frames": 3,
+    "original_fps": 15,
+    "new_frames": 4,
+    "new_fps": 20,
+    "seconds": 0.2
+  },
+  "overall": "PARTIAL_FAIL",
+  "limitations": [
+    "I0 preserves preceding crouched head and legs like approved Run partial interpolation, but midpoint bag (53,92) is too high relative to this unchanged body.",
+    "Bounded vertical lag (-1,+2,-1) implements the requested 1-2px response, not a literal copy of the previous hip position: launch hip delta exceeds 1-2px.",
+    "Original Fall reference in Transition still carries its original hand-held bag and was not edited; no JumpStart output holds a bag."
+  ]
+}

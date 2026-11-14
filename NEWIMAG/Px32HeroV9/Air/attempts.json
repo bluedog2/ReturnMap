@@ -1,0 +1,68 @@
+{
+  "tool": "built-in image_gen",
+  "limit_per_frame": 3,
+  "frames": {
+    "Fall_F0": {
+      "attempts_reserved": 1,
+      "selected": 1,
+      "prompt": "Sources/Fall_F0_prompt1.txt",
+      "generated": "Sources/Fall_F0_generated1.png",
+      "note": "직전 실행 생성 1회, 완성 파일 보존"
+    },
+    "Fall_F1": {
+      "attempts_reserved": 1,
+      "selected": 1,
+      "prompt": "Sources/Fall_F1_prompt1.txt",
+      "generated": "Sources/Fall_F1_generated1.png"
+    },
+    "Fall_F2": {
+      "attempts_reserved": 2,
+      "selected": 2,
+      "prompt": "Sources/Fall_F2_prompt2.txt",
+      "generated": "Sources/Fall_F2_generated2.png",
+      "note": "기존 prompt1은 undefined 10바이트이며 결과 없음. 과거 호출 여부 확인 불가: 보수적으로 1회 예약, 이번 성공 호출은 2번으로 기록."
+    },
+    "Fall_F3": {
+      "attempts_reserved": 1,
+      "selected": 1,
+      "prompt": "Sources/Fall_F3_prompt1.txt",
+      "generated": "Sources/Fall_F3_generated1.png"
+    },
+    "Rise_F0": {
+      "attempts_reserved": 1,
+      "selected": 1,
+      "prompt": "Sources/Rise_F0_prompt1.txt",
+      "generated": "Sources/Rise_F0_generated1.png"
+    },
+    "Rise_F1": {
+      "attempts_reserved": 1,
+      "selected": 1,
+      "prompt": "Sources/Rise_F1_prompt1.txt",
+      "generated": "Sources/Rise_F1_generated1.png"
+    },
+    "Rise_F2": {
+      "attempts_reserved": 1,
+      "selected": 1,
+      "prompt": "Sources/Rise_F2_prompt1.txt",
+      "generated": "Sources/Rise_F2_generated1.png"
+    },
+    "Apex_F0": {
+      "attempts_reserved": 1,
+      "selected": 1,
+      "prompt": "Sources/Apex_F0_prompt1.txt",
+      "generated": "Sources/Apex_F0_generated1.png"
+    },
+    "Apex_F1": {
+      "attempts_reserved": 1,
+      "selected": 1,
+      "prompt": "Sources/Apex_F1_prompt1.txt",
+      "generated": "Sources/Apex_F1_generated1.png"
+    },
+    "Apex_F2": {
+      "attempts_reserved": 1,
+      "selected": 1,
+      "prompt": "Sources/Apex_F2_prompt1.txt",
+      "generated": "Sources/Apex_F2_generated1.png"
+    }
+  }
+}

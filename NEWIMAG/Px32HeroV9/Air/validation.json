@@ -1,0 +1,964 @@
+{
+  "status": "artifacts_complete_with_asf_apex_height_findings",
+  "approved_Fall_F0_sha256": "ede3ee6547d4206034dbbe85db7d1eac55f182dc6568d0c5189b642f4ce4e53d",
+  "frames": {
+    "Fall_F0": {
+      "source": "NEWIMAG\\Px32HeroV9\\Air\\Sources\\Fall_original0.png",
+      "source_sha256": "f48efdca3c8b15ef62aa33ead4ab52992915544d5f55506d195604d9ada5749a",
+      "recovery": {
+        "pitch": 10,
+        "origin": [
+          -14,
+          -9
+        ],
+        "head_registration_error": 4165641.0
+      },
+      "bag_position": [
+        51,
+        84
+      ],
+      "chain_position": [
+        56,
+        78
+      ],
+      "attempt": 1,
+      "outside_mask_mismatch": 0,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 29,
+      "bottom": 127,
+      "visual_review": "3배 시트 및 허리 8배 확인: 빈손·허리춤 가방 통과",
+      "reference": "NEWIMAG\\Px32HeroV9\\Air\\Sources\\Fall_original0.png",
+      "reference_sha256": "f48efdca3c8b15ef62aa33ead4ab52992915544d5f55506d195604d9ada5749a",
+      "bag_layer_mismatch": 0,
+      "reference_head_top": 29,
+      "head_crown_mismatch": 0,
+      "visual_3x": {
+        "머리": "백금발 하이 포니테일·검정/빨강 밴드·Z핀 유지. 상승 끝머리 아래, 꼭대기 옆으로 뜸, 낙하 원본 위 방향.",
+        "얼굴": "빨간 눈·표정 원본 보존. 작은 송곳니·피어싱은 원본 픽셀 보존 근거 병행.",
+        "외투": "어깨 노출·흰 긴 퍼프 소매·빨강 안감 확인.",
+        "손": "소매에서 검은 장갑으로 연결. 손은 빈손, 손가방 없음.",
+        "상의": "검정 크롭 탑·초커 유지.",
+        "하의": "검정 반바지·벨트·가터 유지. 작은 고리는 가방에 일부 가림.",
+        "다리": "검정/빨강 비대칭 유지. Apex F1만 다리 중간 자세 생성.",
+        "신발": "흰/검정 두툼한 하이탑·빨강 스트랩 확인.",
+        "가방": "승인 Bag_Hip_ThreeQuarter·R2_chain 위 6행 그대로, 이빨·띠·상자 유지.",
+        "가방 위치": "재킷 밑단 아래 뒤 허벅지 앞 허리춤. 가슴/무릎 아래 배치 없음.",
+        "긴 대기": "해당 없음.",
+        "크기": "축소 없음. 머리 꼭대기 y29~31, 기준 장과 동일. 꼭대기는 다리 펴기 때문에 bbox 높이가 달라짐."
+      },
+      "bag_vertical_lag_px": -1,
+      "hip_landmark": [
+        62,
+        87
+      ],
+      "temporal_bag_lag": {
+        "current_hip": [
+          62,
+          87
+        ],
+        "previous_frame": "Fall_F3",
+        "previous_hip": [
+          62,
+          88
+        ],
+        "base_offset": [
+          -11,
+          -2
+        ],
+        "inertial_y": -2,
+        "bag_position": [
+          51,
+          84
+        ],
+        "relative_current_hip_y": -1
+      }
+    },
+    "Fall_F1": {
+      "source": "NEWIMAG\\Px32HeroV9\\Air\\Sources\\Fall_F0_bagless.png",
+      "source_sha256": "f344caaf63646280e10ff0c73e4707a29b2054b67241c99f9fe3dca375263037",
+      "recovery": {
+        "pitch": 10,
+        "origin": [
+          -13,
+          -9
+        ],
+        "head_registration_error": 4916714.333333334
+      },
+      "bag_position": [
+        51,
+        84
+      ],
+      "chain_position": [
+        56,
+        78
+      ],
+      "attempt": 1,
+      "outside_mask_mismatch": 0,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 29,
+      "bottom": 127,
+      "visual_review": "3배 시트 및 허리 8배 확인: 빈손·허리춤 가방 통과",
+      "reference": "NEWIMAG\\Px32HeroV9\\Air\\Fall_F0.png",
+      "reference_sha256": "ede3ee6547d4206034dbbe85db7d1eac55f182dc6568d0c5189b642f4ce4e53d",
+      "bag_layer_mismatch": 0,
+      "reference_head_top": 29,
+      "head_crown_mismatch": 0,
+      "visual_3x": {
+        "머리": "백금발 하이 포니테일·검정/빨강 밴드·Z핀 유지. 상승 끝머리 아래, 꼭대기 옆으로 뜸, 낙하 원본 위 방향.",
+        "얼굴": "빨간 눈·표정 원본 보존. 작은 송곳니·피어싱은 원본 픽셀 보존 근거 병행.",
+        "외투": "어깨 노출·흰 긴 퍼프 소매·빨강 안감 확인.",
+        "손": "소매에서 검은 장갑으로 연결. 손은 빈손, 손가방 없음.",
+        "상의": "검정 크롭 탑·초커 유지.",
+        "하의": "검정 반바지·벨트·가터 유지. 작은 고리는 가방에 일부 가림.",
+        "다리": "검정/빨강 비대칭 유지. Apex F1만 다리 중간 자세 생성.",
+        "신발": "흰/검정 두툼한 하이탑·빨강 스트랩 확인.",
+        "가방": "승인 Bag_Hip_ThreeQuarter·R2_chain 위 6행 그대로, 이빨·띠·상자 유지.",
+        "가방 위치": "재킷 밑단 아래 뒤 허벅지 앞 허리춤. 가슴/무릎 아래 배치 없음.",
+        "긴 대기": "해당 없음.",
+        "크기": "축소 없음. 머리 꼭대기 y29~31, 기준 장과 동일. 꼭대기는 다리 펴기 때문에 bbox 높이가 달라짐."
+      },
+      "bag_vertical_lag_px": -1,
+      "hip_landmark": [
+        62,
+        87
+      ],
+      "temporal_bag_lag": {
+        "current_hip": [
+          62,
+          87
+        ],
+        "previous_frame": "Fall_F0",
+        "previous_hip": [
+          62,
+          87
+        ],
+        "base_offset": [
+          -11,
+          -2
+        ],
+        "inertial_y": -1,
+        "bag_position": [
+          51,
+          84
+        ],
+        "relative_current_hip_y": -1
+      }
+    },
+    "Fall_F2": {
+      "source": "NEWIMAG\\Px32HeroV9\\Air\\Sources\\Fall_original1.png",
+      "source_sha256": "eca882e8026a8d604474f31890ffc47bb7c359bf41961444d9b4b306d9376829",
+      "recovery": {
+        "pitch": 10,
+        "origin": [
+          -13,
+          -10
+        ],
+        "head_registration_error": 4256344.0
+      },
+      "bag_position": [
+        51,
+        84
+      ],
+      "chain_position": [
+        56,
+        78
+      ],
+      "attempt": 2,
+      "outside_mask_mismatch": 0,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 31,
+      "bottom": 127,
+      "visual_review": "3배 시트 및 허리 8배 확인: 빈손·허리춤 가방 통과",
+      "reference": "NEWIMAG\\Px32HeroV9\\Air\\Sources\\Fall_original1.png",
+      "reference_sha256": "eca882e8026a8d604474f31890ffc47bb7c359bf41961444d9b4b306d9376829",
+      "bag_layer_mismatch": 0,
+      "reference_head_top": 31,
+      "head_crown_mismatch": 0,
+      "visual_3x": {
+        "머리": "백금발 하이 포니테일·검정/빨강 밴드·Z핀 유지. 상승 끝머리 아래, 꼭대기 옆으로 뜸, 낙하 원본 위 방향.",
+        "얼굴": "빨간 눈·표정 원본 보존. 작은 송곳니·피어싱은 원본 픽셀 보존 근거 병행.",
+        "외투": "어깨 노출·흰 긴 퍼프 소매·빨강 안감 확인.",
+        "손": "소매에서 검은 장갑으로 연결. 손은 빈손, 손가방 없음.",
+        "상의": "검정 크롭 탑·초커 유지.",
+        "하의": "검정 반바지·벨트·가터 유지. 작은 고리는 가방에 일부 가림.",
+        "다리": "검정/빨강 비대칭 유지. Apex F1만 다리 중간 자세 생성.",
+        "신발": "흰/검정 두툼한 하이탑·빨강 스트랩 확인.",
+        "가방": "승인 Bag_Hip_ThreeQuarter·R2_chain 위 6행 그대로, 이빨·띠·상자 유지.",
+        "가방 위치": "재킷 밑단 아래 뒤 허벅지 앞 허리춤. 가슴/무릎 아래 배치 없음.",
+        "긴 대기": "해당 없음.",
+        "크기": "축소 없음. 머리 꼭대기 y29~31, 기준 장과 동일. 꼭대기는 다리 펴기 때문에 bbox 높이가 달라짐."
+      },
+      "bag_vertical_lag_px": -2,
+      "hip_landmark": [
+        62,
+        88
+      ],
+      "temporal_bag_lag": {
+        "current_hip": [
+          62,
+          88
+        ],
+        "previous_frame": "Fall_F1",
+        "previous_hip": [
+          62,
+          87
+        ],
+        "base_offset": [
+          -11,
+          -2
+        ],
+        "inertial_y": -1,
+        "bag_position": [
+          51,
+          84
+        ],
+        "relative_current_hip_y": -2
+      }
+    },
+    "Fall_F3": {
+      "source": "NEWIMAG\\Px32HeroV9\\Air\\Sources\\Fall_F2_bagless.png",
+      "source_sha256": "05c2095bf963c8157f19e8b388d47da9f6e2328d92fb744f89cf91296cb21cd8",
+      "recovery": {
+        "pitch": 10,
+        "origin": [
+          -12,
+          -10
+        ],
+        "head_registration_error": 4425882.0
+      },
+      "bag_position": [
+        51,
+        85
+      ],
+      "chain_position": [
+        56,
+        79
+      ],
+      "attempt": 1,
+      "outside_mask_mismatch": 0,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 31,
+      "bottom": 127,
+      "visual_review": "3배 시트 및 허리 8배 확인: 빈손·허리춤 가방 통과",
+      "reference": "NEWIMAG\\Px32HeroV9\\Air\\Fall_F2.png",
+      "reference_sha256": "08936b989ddf6099fa6c67ea56cccaf39811cd20cf82224708129f76834b923c",
+      "bag_layer_mismatch": 0,
+      "reference_head_top": 31,
+      "head_crown_mismatch": 0,
+      "visual_3x": {
+        "머리": "백금발 하이 포니테일·검정/빨강 밴드·Z핀 유지. 상승 끝머리 아래, 꼭대기 옆으로 뜸, 낙하 원본 위 방향.",
+        "얼굴": "빨간 눈·표정 원본 보존. 작은 송곳니·피어싱은 원본 픽셀 보존 근거 병행.",
+        "외투": "어깨 노출·흰 긴 퍼프 소매·빨강 안감 확인.",
+        "손": "소매에서 검은 장갑으로 연결. 손은 빈손, 손가방 없음.",
+        "상의": "검정 크롭 탑·초커 유지.",
+        "하의": "검정 반바지·벨트·가터 유지. 작은 고리는 가방에 일부 가림.",
+        "다리": "검정/빨강 비대칭 유지. Apex F1만 다리 중간 자세 생성.",
+        "신발": "흰/검정 두툼한 하이탑·빨강 스트랩 확인.",
+        "가방": "승인 Bag_Hip_ThreeQuarter·R2_chain 위 6행 그대로, 이빨·띠·상자 유지.",
+        "가방 위치": "재킷 밑단 아래 뒤 허벅지 앞 허리춤. 가슴/무릎 아래 배치 없음.",
+        "긴 대기": "해당 없음.",
+        "크기": "축소 없음. 머리 꼭대기 y29~31, 기준 장과 동일. 꼭대기는 다리 펴기 때문에 bbox 높이가 달라짐."
+      },
+      "bag_vertical_lag_px": -1,
+      "hip_landmark": [
+        62,
+        88
+      ],
+      "temporal_bag_lag": {
+        "current_hip": [
+          62,
+          88
+        ],
+        "previous_frame": "Fall_F2",
+        "previous_hip": [
+          62,
+          88
+        ],
+        "base_offset": [
+          -11,
+          -2
+        ],
+        "inertial_y": -1,
+        "bag_position": [
+          51,
+          85
+        ],
+        "relative_current_hip_y": -1
+      }
+    },
+    "Rise_F0": {
+      "source": "NEWIMAG\\Px32HeroV9\\Air\\Sources\\Rise_target.png",
+      "source_sha256": "dff0711fe897d207461cec7eb109512627d89dc0d678e54568b263efe881fea9",
+      "recovery": {
+        "pitch": 10,
+        "origin": [
+          -14,
+          -5
+        ],
+        "head_registration_error": 2527958.6666666665
+      },
+      "bag_position": [
+        54,
+        86
+      ],
+      "chain_position": [
+        59,
+        80
+      ],
+      "attempt": 1,
+      "outside_mask_mismatch": 0,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 29,
+      "bottom": 120,
+      "visual_review": "3배 시트 및 허리 8배 확인: 빈손·허리춤 가방 통과",
+      "reference": "NEWIMAG\\Px32HeroV9\\JumpStart\\JumpStart_F2.png",
+      "reference_sha256": "2c31b8d4a4a499eee5b873285abf77bba92900fc83e71a053f287681ee9d6758",
+      "bag_layer_mismatch": 0,
+      "reference_head_top": 29,
+      "head_crown_mismatch": 0,
+      "visual_3x": {
+        "머리": "백금발 하이 포니테일·검정/빨강 밴드·Z핀 유지. 상승 끝머리 아래, 꼭대기 옆으로 뜸, 낙하 원본 위 방향.",
+        "얼굴": "빨간 눈·표정 원본 보존. 작은 송곳니·피어싱은 원본 픽셀 보존 근거 병행.",
+        "외투": "어깨 노출·흰 긴 퍼프 소매·빨강 안감 확인.",
+        "손": "소매에서 검은 장갑으로 연결. 손은 빈손, 손가방 없음.",
+        "상의": "검정 크롭 탑·초커 유지.",
+        "하의": "검정 반바지·벨트·가터 유지. 작은 고리는 가방에 일부 가림.",
+        "다리": "검정/빨강 비대칭 유지. Apex F1만 다리 중간 자세 생성.",
+        "신발": "흰/검정 두툼한 하이탑·빨강 스트랩 확인.",
+        "가방": "승인 Bag_Hip_ThreeQuarter·R2_chain 위 6행 그대로, 이빨·띠·상자 유지.",
+        "가방 위치": "재킷 밑단 아래 뒤 허벅지 앞 허리춤. 가슴/무릎 아래 배치 없음.",
+        "긴 대기": "해당 없음.",
+        "크기": "축소 없음. 머리 꼭대기 y29~31, 기준 장과 동일. 꼭대기는 다리 펴기 때문에 bbox 높이가 달라짐."
+      },
+      "bag_vertical_lag_px": 1,
+      "hip_landmark": [
+        65,
+        87
+      ],
+      "temporal_bag_lag": {
+        "current_hip": [
+          65,
+          87
+        ],
+        "previous_frame": "Rise_F2",
+        "previous_hip": [
+          65,
+          87
+        ],
+        "base_offset": [
+          -11,
+          -2
+        ],
+        "inertial_y": 1,
+        "bag_position": [
+          54,
+          86
+        ],
+        "relative_current_hip_y": 1
+      }
+    },
+    "Rise_F1": {
+      "source": "NEWIMAG\\Px32HeroV9\\Air\\Sources\\Rise_target.png",
+      "source_sha256": "dff0711fe897d207461cec7eb109512627d89dc0d678e54568b263efe881fea9",
+      "recovery": {
+        "pitch": 10,
+        "origin": [
+          -15,
+          -6
+        ],
+        "head_registration_error": 2029561.6666666667
+      },
+      "bag_position": [
+        54,
+        87
+      ],
+      "chain_position": [
+        59,
+        81
+      ],
+      "attempt": 1,
+      "outside_mask_mismatch": 0,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 29,
+      "bottom": 120,
+      "visual_review": "3배 시트 및 허리 8배 확인: 빈손·허리춤 가방 통과",
+      "reference": "NEWIMAG\\Px32HeroV9\\JumpStart\\JumpStart_F2.png",
+      "reference_sha256": "2c31b8d4a4a499eee5b873285abf77bba92900fc83e71a053f287681ee9d6758",
+      "bag_layer_mismatch": 0,
+      "reference_head_top": 29,
+      "head_crown_mismatch": 0,
+      "visual_3x": {
+        "머리": "백금발 하이 포니테일·검정/빨강 밴드·Z핀 유지. 상승 끝머리 아래, 꼭대기 옆으로 뜸, 낙하 원본 위 방향.",
+        "얼굴": "빨간 눈·표정 원본 보존. 작은 송곳니·피어싱은 원본 픽셀 보존 근거 병행.",
+        "외투": "어깨 노출·흰 긴 퍼프 소매·빨강 안감 확인.",
+        "손": "소매에서 검은 장갑으로 연결. 손은 빈손, 손가방 없음.",
+        "상의": "검정 크롭 탑·초커 유지.",
+        "하의": "검정 반바지·벨트·가터 유지. 작은 고리는 가방에 일부 가림.",
+        "다리": "검정/빨강 비대칭 유지. Apex F1만 다리 중간 자세 생성.",
+        "신발": "흰/검정 두툼한 하이탑·빨강 스트랩 확인.",
+        "가방": "승인 Bag_Hip_ThreeQuarter·R2_chain 위 6행 그대로, 이빨·띠·상자 유지.",
+        "가방 위치": "재킷 밑단 아래 뒤 허벅지 앞 허리춤. 가슴/무릎 아래 배치 없음.",
+        "긴 대기": "해당 없음.",
+        "크기": "축소 없음. 머리 꼭대기 y29~31, 기준 장과 동일. 꼭대기는 다리 펴기 때문에 bbox 높이가 달라짐."
+      },
+      "bag_vertical_lag_px": 2,
+      "hip_landmark": [
+        65,
+        87
+      ],
+      "temporal_bag_lag": {
+        "current_hip": [
+          65,
+          87
+        ],
+        "previous_frame": "Rise_F0",
+        "previous_hip": [
+          65,
+          87
+        ],
+        "base_offset": [
+          -11,
+          -2
+        ],
+        "inertial_y": 2,
+        "bag_position": [
+          54,
+          87
+        ],
+        "relative_current_hip_y": 2
+      }
+    },
+    "Rise_F2": {
+      "source": "NEWIMAG\\Px32HeroV9\\Air\\Sources\\Rise_target.png",
+      "source_sha256": "dff0711fe897d207461cec7eb109512627d89dc0d678e54568b263efe881fea9",
+      "recovery": {
+        "pitch": 10,
+        "origin": [
+          -14,
+          -5
+        ],
+        "head_registration_error": 3727070.6666666665
+      },
+      "bag_position": [
+        54,
+        86
+      ],
+      "chain_position": [
+        59,
+        80
+      ],
+      "attempt": 1,
+      "outside_mask_mismatch": 0,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 29,
+      "bottom": 120,
+      "visual_review": "3배 시트 및 허리 8배 확인: 빈손·허리춤 가방 통과",
+      "reference": "NEWIMAG\\Px32HeroV9\\JumpStart\\JumpStart_F2.png",
+      "reference_sha256": "2c31b8d4a4a499eee5b873285abf77bba92900fc83e71a053f287681ee9d6758",
+      "bag_layer_mismatch": 0,
+      "reference_head_top": 29,
+      "head_crown_mismatch": 0,
+      "visual_3x": {
+        "머리": "백금발 하이 포니테일·검정/빨강 밴드·Z핀 유지. 상승 끝머리 아래, 꼭대기 옆으로 뜸, 낙하 원본 위 방향.",
+        "얼굴": "빨간 눈·표정 원본 보존. 작은 송곳니·피어싱은 원본 픽셀 보존 근거 병행.",
+        "외투": "어깨 노출·흰 긴 퍼프 소매·빨강 안감 확인.",
+        "손": "소매에서 검은 장갑으로 연결. 손은 빈손, 손가방 없음.",
+        "상의": "검정 크롭 탑·초커 유지.",
+        "하의": "검정 반바지·벨트·가터 유지. 작은 고리는 가방에 일부 가림.",
+        "다리": "검정/빨강 비대칭 유지. Apex F1만 다리 중간 자세 생성.",
+        "신발": "흰/검정 두툼한 하이탑·빨강 스트랩 확인.",
+        "가방": "승인 Bag_Hip_ThreeQuarter·R2_chain 위 6행 그대로, 이빨·띠·상자 유지.",
+        "가방 위치": "재킷 밑단 아래 뒤 허벅지 앞 허리춤. 가슴/무릎 아래 배치 없음.",
+        "긴 대기": "해당 없음.",
+        "크기": "축소 없음. 머리 꼭대기 y29~31, 기준 장과 동일. 꼭대기는 다리 펴기 때문에 bbox 높이가 달라짐."
+      },
+      "bag_vertical_lag_px": 1,
+      "hip_landmark": [
+        65,
+        87
+      ],
+      "temporal_bag_lag": {
+        "current_hip": [
+          65,
+          87
+        ],
+        "previous_frame": "Rise_F1",
+        "previous_hip": [
+          65,
+          87
+        ],
+        "base_offset": [
+          -11,
+          -2
+        ],
+        "inertial_y": 1,
+        "bag_position": [
+          54,
+          86
+        ],
+        "relative_current_hip_y": 1
+      }
+    },
+    "Apex_F0": {
+      "source": "NEWIMAG\\Px32HeroV9\\Air\\Sources\\Rise_F2_bagless.png",
+      "source_sha256": "f931e0aa0df5e06035d0eccd93f147bcafc5776a00a67f3d83c0aa05b5b0cf58",
+      "recovery": {
+        "pitch": 10,
+        "origin": [
+          -30,
+          -5
+        ],
+        "head_registration_error": 5284866.666666667
+      },
+      "bag_position": [
+        54,
+        85
+      ],
+      "chain_position": [
+        59,
+        79
+      ],
+      "attempt": 1,
+      "outside_mask_mismatch": 0,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 29,
+      "bottom": 120,
+      "visual_review": "3배 시트 및 허리 8배 확인: 빈손·허리춤 가방 통과",
+      "reference": "NEWIMAG\\Px32HeroV9\\Air\\Rise_F2.png",
+      "reference_sha256": "c999e99acc1246b0301aa6dd5ab0a0921a85b0ef4ca6f6da3f2bd296d03d7f77",
+      "bag_layer_mismatch": 0,
+      "reference_head_top": 29,
+      "head_crown_mismatch": 0,
+      "visual_3x": {
+        "머리": "백금발 하이 포니테일·검정/빨강 밴드·Z핀 유지. 상승 끝머리 아래, 꼭대기 옆으로 뜸, 낙하 원본 위 방향.",
+        "얼굴": "빨간 눈·표정 원본 보존. 작은 송곳니·피어싱은 원본 픽셀 보존 근거 병행.",
+        "외투": "어깨 노출·흰 긴 퍼프 소매·빨강 안감 확인.",
+        "손": "소매에서 검은 장갑으로 연결. 손은 빈손, 손가방 없음.",
+        "상의": "검정 크롭 탑·초커 유지.",
+        "하의": "검정 반바지·벨트·가터 유지. 작은 고리는 가방에 일부 가림.",
+        "다리": "검정/빨강 비대칭 유지. Apex F1만 다리 중간 자세 생성.",
+        "신발": "흰/검정 두툼한 하이탑·빨강 스트랩 확인.",
+        "가방": "승인 Bag_Hip_ThreeQuarter·R2_chain 위 6행 그대로, 이빨·띠·상자 유지.",
+        "가방 위치": "재킷 밑단 아래 뒤 허벅지 앞 허리춤. 가슴/무릎 아래 배치 없음.",
+        "긴 대기": "해당 없음.",
+        "크기": "축소 없음. 머리 꼭대기 y29~31, 기준 장과 동일. 꼭대기는 다리 펴기 때문에 bbox 높이가 달라짐."
+      },
+      "bag_vertical_lag_px": 0,
+      "hip_landmark": [
+        65,
+        87
+      ],
+      "temporal_bag_lag": {
+        "current_hip": [
+          65,
+          87
+        ],
+        "previous_frame": "Rise_F2",
+        "previous_hip": [
+          65,
+          87
+        ],
+        "base_offset": [
+          -11,
+          -2
+        ],
+        "inertial_y": 0,
+        "bag_position": [
+          54,
+          85
+        ],
+        "relative_current_hip_y": 0
+      }
+    },
+    "Apex_F1": {
+      "source": "NEWIMAG\\Px32HeroV9\\Air\\Sources\\Rise_F2_bagless.png",
+      "source_sha256": "f931e0aa0df5e06035d0eccd93f147bcafc5776a00a67f3d83c0aa05b5b0cf58",
+      "recovery": {
+        "pitch": 10,
+        "origin": [
+          -16,
+          -8
+        ],
+        "head_registration_error": 1983734.3333333333
+      },
+      "bag_position": [
+        54,
+        85
+      ],
+      "chain_position": [
+        59,
+        79
+      ],
+      "attempt": 1,
+      "outside_mask_mismatch": 0,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 29,
+      "bottom": 120,
+      "visual_review": "3배 시트 및 허리 8배 확인: 빈손·허리춤 가방 통과",
+      "reference": "NEWIMAG\\Px32HeroV9\\Air\\Rise_F2.png",
+      "reference_sha256": "c999e99acc1246b0301aa6dd5ab0a0921a85b0ef4ca6f6da3f2bd296d03d7f77",
+      "bag_layer_mismatch": 0,
+      "reference_head_top": 29,
+      "head_crown_mismatch": 0,
+      "visual_3x": {
+        "머리": "백금발 하이 포니테일·검정/빨강 밴드·Z핀 유지. 상승 끝머리 아래, 꼭대기 옆으로 뜸, 낙하 원본 위 방향.",
+        "얼굴": "빨간 눈·표정 원본 보존. 작은 송곳니·피어싱은 원본 픽셀 보존 근거 병행.",
+        "외투": "어깨 노출·흰 긴 퍼프 소매·빨강 안감 확인.",
+        "손": "소매에서 검은 장갑으로 연결. 손은 빈손, 손가방 없음.",
+        "상의": "검정 크롭 탑·초커 유지.",
+        "하의": "검정 반바지·벨트·가터 유지. 작은 고리는 가방에 일부 가림.",
+        "다리": "검정/빨강 비대칭 유지. Apex F1만 다리 중간 자세 생성.",
+        "신발": "흰/검정 두툼한 하이탑·빨강 스트랩 확인.",
+        "가방": "승인 Bag_Hip_ThreeQuarter·R2_chain 위 6행 그대로, 이빨·띠·상자 유지.",
+        "가방 위치": "재킷 밑단 아래 뒤 허벅지 앞 허리춤. 가슴/무릎 아래 배치 없음.",
+        "긴 대기": "해당 없음.",
+        "크기": "축소 없음. 머리 꼭대기 y29~31, 기준 장과 동일. 꼭대기는 다리 펴기 때문에 bbox 높이가 달라짐."
+      },
+      "bag_vertical_lag_px": 0,
+      "hip_landmark": [
+        64,
+        87
+      ],
+      "temporal_bag_lag": {
+        "current_hip": [
+          64,
+          87
+        ],
+        "previous_frame": "Apex_F0",
+        "previous_hip": [
+          65,
+          87
+        ],
+        "base_offset": [
+          -11,
+          -2
+        ],
+        "inertial_y": 0,
+        "bag_position": [
+          54,
+          85
+        ],
+        "relative_current_hip_y": 0
+      }
+    },
+    "Apex_F2": {
+      "source": "NEWIMAG\\Px32HeroV9\\Air\\Sources\\Fall_F0_bagless.png",
+      "source_sha256": "f344caaf63646280e10ff0c73e4707a29b2054b67241c99f9fe3dca375263037",
+      "recovery": {
+        "pitch": 10,
+        "origin": [
+          -13,
+          -6
+        ],
+        "head_registration_error": 2907885.0
+      },
+      "bag_position": [
+        53,
+        85
+      ],
+      "chain_position": [
+        58,
+        79
+      ],
+      "attempt": 1,
+      "outside_mask_mismatch": 0,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 29,
+      "bottom": 127,
+      "visual_review": "3배 시트 및 허리 8배 확인: 빈손·허리춤 가방 통과",
+      "reference": "NEWIMAG\\Px32HeroV9\\Air\\Fall_F0.png",
+      "reference_sha256": "ede3ee6547d4206034dbbe85db7d1eac55f182dc6568d0c5189b642f4ce4e53d",
+      "bag_layer_mismatch": 0,
+      "reference_head_top": 29,
+      "head_crown_mismatch": 0,
+      "visual_3x": {
+        "머리": "백금발 하이 포니테일·검정/빨강 밴드·Z핀 유지. 상승 끝머리 아래, 꼭대기 옆으로 뜸, 낙하 원본 위 방향.",
+        "얼굴": "빨간 눈·표정 원본 보존. 작은 송곳니·피어싱은 원본 픽셀 보존 근거 병행.",
+        "외투": "어깨 노출·흰 긴 퍼프 소매·빨강 안감 확인.",
+        "손": "소매에서 검은 장갑으로 연결. 손은 빈손, 손가방 없음.",
+        "상의": "검정 크롭 탑·초커 유지.",
+        "하의": "검정 반바지·벨트·가터 유지. 작은 고리는 가방에 일부 가림.",
+        "다리": "검정/빨강 비대칭 유지. Apex F1만 다리 중간 자세 생성.",
+        "신발": "흰/검정 두툼한 하이탑·빨강 스트랩 확인.",
+        "가방": "승인 Bag_Hip_ThreeQuarter·R2_chain 위 6행 그대로, 이빨·띠·상자 유지.",
+        "가방 위치": "재킷 밑단 아래 뒤 허벅지 앞 허리춤. 가슴/무릎 아래 배치 없음.",
+        "긴 대기": "해당 없음.",
+        "크기": "축소 없음. 머리 꼭대기 y29~31, 기준 장과 동일. 꼭대기는 다리 펴기 때문에 bbox 높이가 달라짐."
+      },
+      "bag_vertical_lag_px": 0,
+      "hip_landmark": [
+        62,
+        87
+      ],
+      "temporal_bag_lag": {
+        "current_hip": [
+          62,
+          87
+        ],
+        "previous_frame": "Apex_F1",
+        "previous_hip": [
+          64,
+          87
+        ],
+        "base_offset": [
+          -11,
+          -2
+        ],
+        "inertial_y": 0,
+        "bag_position": [
+          53,
+          85
+        ],
+        "relative_current_hip_y": 0
+      }
+    }
+  },
+  "previews": {
+    "Fall": {
+      "frames": 4,
+      "total_ms": 400,
+      "visible_rgba_mismatch": 0,
+      "durations_ms": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": true
+    },
+    "Rise": {
+      "frames": 3,
+      "total_ms": 300,
+      "visible_rgba_mismatch": 0,
+      "durations_ms": [
+        100,
+        100,
+        100
+      ],
+      "loop": true
+    },
+    "Apex": {
+      "frames": 3,
+      "total_ms": 250,
+      "visible_rgba_mismatch": 0,
+      "durations_ms": [
+        80,
+        90,
+        80
+      ],
+      "loop": false
+    },
+    "Jump_Flow": {
+      "frames": 21,
+      "total_ms": 1850,
+      "visible_rgba_mismatch": 0,
+      "durations_ms": [
+        50,
+        50,
+        50,
+        50,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        80,
+        90,
+        80,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": true
+    }
+  },
+  "asf": {
+    "Fall": {
+      "stage": 4,
+      "scale_frames": false,
+      "placement": false,
+      "rules": {
+        "airborne": true,
+        "death": false,
+        "squash": false
+      },
+      "failures": [],
+      "metrics": [
+        {
+          "frame": 0,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 99,
+          "center_x": 64.5
+        },
+        {
+          "frame": 1,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 99,
+          "center_x": 64.5
+        },
+        {
+          "frame": 2,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 97,
+          "center_x": 64.0
+        },
+        {
+          "frame": 3,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 97,
+          "center_x": 64.0
+        }
+      ],
+      "expected_spec_warning": "기존 규격 2장 → 요청 4장"
+    },
+    "Rise": {
+      "stage": 4,
+      "scale_frames": false,
+      "placement": false,
+      "rules": {
+        "airborne": true,
+        "death": false,
+        "squash": false
+      },
+      "failures": [],
+      "metrics": [
+        {
+          "frame": 0,
+          "colors": 20,
+          "feet_row": 120,
+          "height": 92,
+          "center_x": 64.0
+        },
+        {
+          "frame": 1,
+          "colors": 20,
+          "feet_row": 120,
+          "height": 92,
+          "center_x": 66.0
+        },
+        {
+          "frame": 2,
+          "colors": 20,
+          "feet_row": 120,
+          "height": 92,
+          "center_x": 65.5
+        }
+      ],
+      "expected_spec_warning": "Hero_Rise: 기존 규격표에 없는 신규 공중 동작"
+    },
+    "Apex": {
+      "stage": 4,
+      "scale_frames": false,
+      "placement": false,
+      "rules": {
+        "airborne": true,
+        "death": false,
+        "squash": false
+      },
+      "failures": [
+        "drift: 프레임 0 높이 92 가 평균 94.3 에서 ±2px 초과",
+        "drift: 프레임 1 높이 92 가 평균 94.3 에서 ±2px 초과",
+        "drift: 프레임 2 높이 99 가 평균 94.3 에서 ±2px 초과"
+      ],
+      "metrics": [
+        {
+          "frame": 0,
+          "colors": 20,
+          "feet_row": 120,
+          "height": 92,
+          "center_x": 64.0
+        },
+        {
+          "frame": 1,
+          "colors": 20,
+          "feet_row": 120,
+          "height": 92,
+          "center_x": 63.5
+        },
+        {
+          "frame": 2,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 99,
+          "center_x": 63.5
+        }
+      ],
+      "expected_spec_warning": "Hero_Apex: 기존 규격표에 없는 신규 공중 동작",
+      "interpretation": "높이 드리프트 FAIL 3건 유지. 승인 상승(바닥120)과 낙하(바닥127)의 다리 자세 연결. 규격표 부재 경고와는 별개이며 전체 ASF 통과로 간주하지 않음."
+    }
+  },
+  "review_images": [
+    "Sheet_3x.png",
+    "Waist_8x.png"
+  ],
+  "bag_lag_scope": "이전 장 허리 좌표 + (-11,-2) + 방향별 세로 관성. 현재 허리 중립 대비 상승 +1/+2/+1, 낙하 -1/-1/-2/-1, 꼭대기 0. Sources/bag_lag.json에 반복 경계와 전체 흐름 진입 경계 포함.",
+  "prohibited_operations": {
+    "scale_frames": false,
+    "resample": false,
+    "rotate": false,
+    "code_drawing_art": false,
+    "assets_modified": false,
+    "other_newimag_modified": false,
+    "git_used": false
+  }
+}

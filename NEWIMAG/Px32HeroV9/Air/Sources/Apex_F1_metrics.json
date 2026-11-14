@@ -1,0 +1,31 @@
+{
+  "source": "NEWIMAG\\Px32HeroV9\\Air\\Sources\\Rise_F2_bagless.png",
+  "source_sha256": "f931e0aa0df5e06035d0eccd93f147bcafc5776a00a67f3d83c0aa05b5b0cf58",
+  "recovery": {
+    "pitch": 10,
+    "origin": [
+      -16,
+      -8
+    ],
+    "head_registration_error": 1983734.3333333333
+  },
+  "bag_position": [
+    54,
+    85
+  ],
+  "chain_position": [
+    59,
+    79
+  ],
+  "attempt": 1,
+  "outside_mask_mismatch": 0,
+  "colors": 20,
+  "outside_palette": 0,
+  "alpha": [
+    0,
+    255
+  ],
+  "head_top": 29,
+  "bottom": 120,
+  "visual_review": "pending"
+}

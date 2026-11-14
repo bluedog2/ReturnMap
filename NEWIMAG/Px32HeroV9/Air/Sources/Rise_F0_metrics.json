@@ -1,0 +1,31 @@
+{
+  "source": "NEWIMAG\\Px32HeroV9\\Air\\Sources\\Rise_target.png",
+  "source_sha256": "dff0711fe897d207461cec7eb109512627d89dc0d678e54568b263efe881fea9",
+  "recovery": {
+    "pitch": 10,
+    "origin": [
+      -14,
+      -5
+    ],
+    "head_registration_error": 2527958.6666666665
+  },
+  "bag_position": [
+    54,
+    86
+  ],
+  "chain_position": [
+    59,
+    80
+  ],
+  "attempt": 1,
+  "outside_mask_mismatch": 0,
+  "colors": 20,
+  "outside_palette": 0,
+  "alpha": [
+    0,
+    255
+  ],
+  "head_top": 29,
+  "bottom": 120,
+  "visual_review": "pending"
+}

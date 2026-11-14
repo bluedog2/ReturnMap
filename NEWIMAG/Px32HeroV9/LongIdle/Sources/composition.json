@@ -1,0 +1,350 @@
+[
+  {
+    "frame": "LongIdle_F0",
+    "position": [
+      62,
+      83
+    ],
+    "open": false,
+    "body_width": 18,
+    "asset_size": [
+      18,
+      16
+    ],
+    "body_rows_equal_hip": true,
+    "hand_overlap": 14,
+    "outside_revision_mask": 0
+  },
+  {
+    "frame": "LongIdle_F1",
+    "position": [
+      62,
+      83
+    ],
+    "open": false,
+    "body_width": 18,
+    "asset_size": [
+      18,
+      16
+    ],
+    "body_rows_equal_hip": true,
+    "hand_overlap": 14,
+    "outside_revision_mask": 0
+  },
+  {
+    "frame": "LongIdle_F2",
+    "position": [
+      62,
+      82
+    ],
+    "open": false,
+    "body_width": 18,
+    "asset_size": [
+      18,
+      16
+    ],
+    "body_rows_equal_hip": true,
+    "hand_overlap": 14,
+    "outside_revision_mask": 0
+  },
+  {
+    "frame": "LongIdle_F3",
+    "position": [
+      62,
+      78
+    ],
+    "open": true,
+    "body_width": 18,
+    "asset_size": [
+      18,
+      21
+    ],
+    "body_rows_equal_hip": true,
+    "hand_overlap": 18,
+    "outside_revision_mask": 0
+  },
+  {
+    "frame": "LongIdle_F4",
+    "position": [
+      62,
+      79
+    ],
+    "open": true,
+    "body_width": 18,
+    "asset_size": [
+      18,
+      21
+    ],
+    "body_rows_equal_hip": true,
+    "hand_overlap": 18,
+    "outside_revision_mask": 0
+  },
+  {
+    "frame": "LongIdle_F5",
+    "position": [
+      63,
+      84
+    ],
+    "open": false,
+    "body_width": 18,
+    "asset_size": [
+      18,
+      16
+    ],
+    "body_rows_equal_hip": true,
+    "hand_overlap": 14,
+    "outside_revision_mask": 0
+  },
+  {
+    "frame": "LongIdle_F6",
+    "position": [
+      63,
+      85
+    ],
+    "open": false,
+    "body_width": 18,
+    "asset_size": [
+      18,
+      16
+    ],
+    "body_rows_equal_hip": true,
+    "hand_overlap": 14,
+    "outside_revision_mask": 0
+  },
+  {
+    "frame": "LongIdle_F7",
+    "position": [
+      63,
+      84
+    ],
+    "open": false,
+    "body_width": 18,
+    "asset_size": [
+      18,
+      16
+    ],
+    "body_rows_equal_hip": true,
+    "hand_overlap": 14,
+    "outside_revision_mask": 0
+  },
+  {
+    "frame": "LongIdle_F8",
+    "position": [
+      62,
+      80
+    ],
+    "open": true,
+    "body_width": 18,
+    "asset_size": [
+      18,
+      21
+    ],
+    "body_rows_equal_hip": true,
+    "hand_overlap": 18,
+    "outside_revision_mask": 0
+  },
+  {
+    "frame": "LongIdle_F9",
+    "position": [
+      61,
+      79
+    ],
+    "open": true,
+    "body_width": 18,
+    "asset_size": [
+      18,
+      21
+    ],
+    "body_rows_equal_hip": true,
+    "hand_overlap": 18,
+    "outside_revision_mask": 0
+  },
+  {
+    "frame": "LongIdle_F10",
+    "position": [
+      61,
+      80
+    ],
+    "open": true,
+    "body_width": 18,
+    "asset_size": [
+      18,
+      21
+    ],
+    "body_rows_equal_hip": true,
+    "hand_overlap": 18,
+    "outside_revision_mask": 0
+  },
+  {
+    "frame": "LongIdle_F11",
+    "position": [
+      62,
+      83
+    ],
+    "open": false,
+    "body_width": 18,
+    "asset_size": [
+      18,
+      16
+    ],
+    "body_rows_equal_hip": true,
+    "hand_overlap": 14,
+    "outside_revision_mask": 0
+  },
+  {
+    "frame": "BagOut_F1",
+    "position": [
+      51,
+      95
+    ],
+    "open": false,
+    "body_width": 18,
+    "asset_size": [
+      18,
+      16
+    ],
+    "body_rows_equal_hip": true,
+    "hand_overlap": 19,
+    "outside_revision_mask": 0
+  },
+  {
+    "frame": "BagOut_F2",
+    "position": [
+      55,
+      91
+    ],
+    "open": false,
+    "body_width": 18,
+    "asset_size": [
+      18,
+      16
+    ],
+    "body_rows_equal_hip": true,
+    "hand_overlap": 21,
+    "outside_revision_mask": 0
+  },
+  {
+    "frame": "BagOut_F3",
+    "position": [
+      59,
+      87
+    ],
+    "open": false,
+    "body_width": 18,
+    "asset_size": [
+      18,
+      16
+    ],
+    "body_rows_equal_hip": true,
+    "hand_overlap": 19,
+    "outside_revision_mask": 0
+  },
+  {
+    "frame": "BagOut_F4",
+    "position": [
+      62,
+      84
+    ],
+    "open": false,
+    "body_width": 18,
+    "asset_size": [
+      18,
+      16
+    ],
+    "body_rows_equal_hip": true,
+    "hand_overlap": 21,
+    "outside_revision_mask": 0
+  },
+  {
+    "frame": "BagIn_F1",
+    "position": [
+      51,
+      93
+    ],
+    "open": false,
+    "body_width": 18,
+    "asset_size": [
+      18,
+      16
+    ],
+    "body_rows_equal_hip": true,
+    "hand_overlap": 14,
+    "outside_revision_mask": 0
+  },
+  {
+    "frame": "BagIn_F2",
+    "position": [
+      51,
+      95
+    ],
+    "open": false,
+    "body_width": 18,
+    "asset_size": [
+      18,
+      16
+    ],
+    "body_rows_equal_hip": true,
+    "hand_overlap": 0,
+    "outside_revision_mask": 0
+  },
+  {
+    "frame": "BagOut_F0",
+    "position": [
+      51,
+      95
+    ],
+    "open": false,
+    "body_width": 18,
+    "asset_size": [
+      18,
+      16
+    ],
+    "body_rows_equal_hip": true,
+    "endpoint_copy": true
+  },
+  {
+    "frame": "BagOut_F5",
+    "position": [
+      62,
+      83
+    ],
+    "open": false,
+    "body_width": 18,
+    "asset_size": [
+      18,
+      16
+    ],
+    "body_rows_equal_hip": true,
+    "endpoint_copy": true
+  },
+  {
+    "frame": "BagIn_F0",
+    "position": [
+      62,
+      83
+    ],
+    "open": false,
+    "body_width": 18,
+    "asset_size": [
+      18,
+      16
+    ],
+    "body_rows_equal_hip": true,
+    "endpoint_copy": true
+  },
+  {
+    "frame": "BagIn_F3",
+    "position": [
+      51,
+      95
+    ],
+    "open": false,
+    "body_width": 18,
+    "asset_size": [
+      18,
+      16
+    ],
+    "body_rows_equal_hip": true,
+    "endpoint_copy": true
+  }
+]

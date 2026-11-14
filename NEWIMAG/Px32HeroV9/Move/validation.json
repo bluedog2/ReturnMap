@@ -1,0 +1,2252 @@
+{
+  "status": "completed; ASF stage 4 has 3 existing center-drift failures",
+  "frames": {
+    "RunStart_F0": {
+      "source": "Idle0",
+      "generated_pose": false,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 27,
+      "floor": 127,
+      "bag_position": [
+        51,
+        95
+      ],
+      "outside_composite_mask_mismatch": 0,
+      "approved_endpoint_mismatch": 0,
+      "alignment": null
+    },
+    "RunStart_F1": {
+      "source": "RunStart_F1",
+      "generated_pose": true,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 27,
+      "floor": 127,
+      "bag_position": [
+        50,
+        95
+      ],
+      "outside_composite_mask_mismatch": 0,
+      "approved_endpoint_mismatch": null,
+      "alignment": {
+        "head_translation": [
+          0,
+          0
+        ],
+        "lower_translation": [
+          0,
+          3
+        ],
+        "composite_seam_y": 104
+      }
+    },
+    "RunStart_F2": {
+      "source": "Run0",
+      "generated_pose": false,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 27,
+      "floor": 127,
+      "bag_position": [
+        52,
+        95
+      ],
+      "outside_composite_mask_mismatch": 0,
+      "approved_endpoint_mismatch": 0,
+      "alignment": null
+    },
+    "RunStop_F0": {
+      "source": "Run9",
+      "generated_pose": false,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 27,
+      "floor": 127,
+      "bag_position": [
+        52,
+        94
+      ],
+      "outside_composite_mask_mismatch": 0,
+      "approved_endpoint_mismatch": 0,
+      "alignment": null
+    },
+    "RunStop_F1": {
+      "source": "RunStop_F1",
+      "generated_pose": true,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 27,
+      "floor": 127,
+      "bag_position": [
+        55,
+        94
+      ],
+      "outside_composite_mask_mismatch": 0,
+      "approved_endpoint_mismatch": null,
+      "alignment": {
+        "head_translation": [
+          0,
+          -1
+        ],
+        "lower_translation": [
+          0,
+          2
+        ],
+        "composite_seam_y": 104
+      }
+    },
+    "RunStop_F2": {
+      "source": "RunStop_F2",
+      "generated_pose": true,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 27,
+      "floor": 127,
+      "bag_position": [
+        57,
+        93
+      ],
+      "outside_composite_mask_mismatch": 0,
+      "approved_endpoint_mismatch": null,
+      "alignment": {
+        "head_translation": [
+          0,
+          0
+        ],
+        "lower_translation": [
+          0,
+          2
+        ],
+        "composite_seam_y": 104
+      },
+      "approved_head_mismatch": 0
+    },
+    "RunStop_F3": {
+      "source": "Idle0",
+      "generated_pose": false,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 27,
+      "floor": 127,
+      "bag_position": [
+        51,
+        95
+      ],
+      "outside_composite_mask_mismatch": 0,
+      "approved_endpoint_mismatch": 0,
+      "alignment": null
+    },
+    "Turn_F0": {
+      "source": "RunStop_F1",
+      "generated_pose": true,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 27,
+      "floor": 127,
+      "bag_position": [
+        55,
+        94
+      ],
+      "outside_composite_mask_mismatch": 0,
+      "approved_endpoint_mismatch": null,
+      "alignment": {
+        "head_translation": [
+          0,
+          -1
+        ],
+        "lower_translation": [
+          0,
+          2
+        ],
+        "composite_seam_y": 104
+      }
+    },
+    "Turn_F1": {
+      "source": "Turn_F1",
+      "generated_pose": true,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 27,
+      "floor": 127,
+      "bag_position": [
+        54,
+        94
+      ],
+      "outside_composite_mask_mismatch": 0,
+      "approved_endpoint_mismatch": null,
+      "alignment": {
+        "head_translation": [
+          0,
+          0
+        ],
+        "lower_translation": [
+          0,
+          2
+        ],
+        "composite_seam_y": 104
+      },
+      "approved_head_mismatch": 0
+    },
+    "Turn_F2": {
+      "source": "Run0",
+      "generated_pose": false,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 27,
+      "floor": 127,
+      "bag_position": [
+        52,
+        95
+      ],
+      "outside_composite_mask_mismatch": 0,
+      "approved_endpoint_mismatch": 0,
+      "alignment": null
+    }
+  },
+  "previews": {
+    "RunStart": {
+      "logical_frames": 3,
+      "encoded_frames": 3,
+      "duration_ms": 150,
+      "fps": 20,
+      "visible_mismatch": 0
+    },
+    "RunStop": {
+      "logical_frames": 4,
+      "encoded_frames": 4,
+      "duration_ms": 200,
+      "fps": 20,
+      "visible_mismatch": 0
+    },
+    "Turn": {
+      "logical_frames": 3,
+      "encoded_frames": 3,
+      "duration_ms": 150,
+      "fps": 20,
+      "visible_mismatch": 0
+    },
+    "Start": {
+      "logical_frames": 27,
+      "encoded_frames": 26,
+      "duration_ms": 1350,
+      "fps": 20,
+      "visible_mismatch": 0
+    },
+    "Stop": {
+      "logical_frames": 22,
+      "encoded_frames": 20,
+      "duration_ms": 1100,
+      "fps": 20,
+      "visible_mismatch": 0
+    },
+    "Turn_transition": {
+      "logical_frames": 23,
+      "encoded_frames": 22,
+      "duration_ms": 1150,
+      "fps": 20,
+      "visible_mismatch": 0
+    }
+  },
+  "asf": {
+    "RunStart": {
+      "failures": [],
+      "metrics": [
+        {
+          "frame": 0,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 1,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 62.0
+        },
+        {
+          "frame": 2,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.0
+        }
+      ],
+      "stage": 4,
+      "scale_frames": false
+    },
+    "RunStop": {
+      "failures": [
+        "drift: 프레임 1 가로 중심 59.0 이 평균 63.0 에서 ±2px 초과"
+      ],
+      "metrics": [
+        {
+          "frame": 0,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.0
+        },
+        {
+          "frame": 1,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 59.0
+        },
+        {
+          "frame": 2,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 3,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        }
+      ],
+      "stage": 4,
+      "scale_frames": false
+    },
+    "Turn": {
+      "failures": [
+        "drift: 프레임 1 가로 중심 51.5 이 평균 58.2 에서 ±2px 초과",
+        "drift: 프레임 2 가로 중심 64.0 이 평균 58.2 에서 ±2px 초과"
+      ],
+      "metrics": [
+        {
+          "frame": 0,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 59.0
+        },
+        {
+          "frame": 1,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 51.5
+        },
+        {
+          "frame": 2,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.0
+        }
+      ],
+      "stage": 4,
+      "scale_frames": false
+    }
+  },
+  "endpoint_checks": {
+    "start_first": 0,
+    "start_last": 0,
+    "stop_last": 0,
+    "turn_flipped_last_to_run0": 0
+  },
+  "approved_input_sha256": {
+    "NEWIMAG\\Px32HeroV9\\Idle\\Hero_Idle_8.png": "56912896c3753517375ff834e26e3ff246aa7f0a6826bb75892bd85e674bd1d2",
+    "NEWIMAG\\Px32HeroV9\\Run\\Hero_Run_10.png": "f2a8b19b20d707e4bc64882c3166d98b284cf687aacc7e712082831832b51f90"
+  },
+  "visual_review": {
+    "performed": true,
+    "images": [
+      "Sheet_3x.png",
+      "Waist_8x.png",
+      "Sources/Turn_flip_boundary_3x.png"
+    ],
+    "bag_height": "jacket hem / upper thigh; not below knee or at chest",
+    "hands": "empty, black fingerless gloves, long sleeves",
+    "details": "See README Korean model-setting review table",
+    "limitations": [
+      "ASF center drift: stop 1, turn 2",
+      "Generated torso width and proportions not quantitatively identical to approved Idle",
+      "Backward braking lean is mild",
+      "All arbitrary Run entry phases not runtime-tested",
+      "Prior RunStart F1 prompt missing at resume"
+    ]
+  },
+  "bag_rule": {
+    "offset": [
+      -11,
+      -2
+    ],
+    "delay": "previous pose hip for generated middle frames; exact approved endpoint positions override settling",
+    "placements": {
+      "RunStart_F1": {
+        "previous_hip": [
+          62,
+          97
+        ],
+        "inertia": [
+          -1,
+          0
+        ]
+      },
+      "RunStop_F1": {
+        "previous_hip": [
+          63,
+          96
+        ],
+        "inertia": [
+          3,
+          0
+        ]
+      },
+      "RunStop_F2": {
+        "previous_hip": [
+          65,
+          95
+        ],
+        "inertia": [
+          3,
+          0
+        ]
+      },
+      "Turn_F1": {
+        "previous_hip": [
+          65,
+          95
+        ],
+        "inertia": [
+          0,
+          1
+        ]
+      }
+    }
+  },
+  "bag_source_mismatch": {
+    "RunStart_F1": 0,
+    "RunStop_F1": 0,
+    "RunStop_F2": 0,
+    "Turn_F1": 0
+  },
+  "current_revision": "left_view_flipx",
+  "screen_side_bag": {
+    "date": "2026-11-14",
+    "backup": "Sources/prev1",
+    "frames": {
+      "RunStart_F0": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "RunStart_F1": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "RunStart_F2": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "RunStop_F0": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "RunStop_F1": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "RunStop_F2": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "RunStop_F3": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "Turn_F0": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "Turn_F1": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "Turn_F2": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      }
+    },
+    "left_frames": {
+      "Run_L_F0": {
+        "previous_frame": 9,
+        "previous_hip_R": [
+          63,
+          96
+        ],
+        "previous_hip_L": [
+          64,
+          96
+        ],
+        "offset": [
+          -14,
+          -2
+        ],
+        "bag_position": [
+          50,
+          94
+        ],
+        "outside_bag_mirror_mismatch": 0,
+        "bag_layer_mismatch": 0,
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "Run_L_F1": {
+        "previous_frame": 0,
+        "previous_hip_R": [
+          63,
+          96
+        ],
+        "previous_hip_L": [
+          64,
+          96
+        ],
+        "offset": [
+          -14,
+          -2
+        ],
+        "bag_position": [
+          50,
+          94
+        ],
+        "outside_bag_mirror_mismatch": 0,
+        "bag_layer_mismatch": 0,
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "Run_L_F2": {
+        "previous_frame": 1,
+        "previous_hip_R": [
+          61,
+          93
+        ],
+        "previous_hip_L": [
+          66,
+          93
+        ],
+        "offset": [
+          -14,
+          -2
+        ],
+        "bag_position": [
+          52,
+          91
+        ],
+        "outside_bag_mirror_mismatch": 0,
+        "bag_layer_mismatch": 0,
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "Run_L_F3": {
+        "previous_frame": 2,
+        "previous_hip_R": [
+          61,
+          93
+        ],
+        "previous_hip_L": [
+          66,
+          93
+        ],
+        "offset": [
+          -14,
+          -2
+        ],
+        "bag_position": [
+          52,
+          91
+        ],
+        "outside_bag_mirror_mismatch": 0,
+        "bag_layer_mismatch": 0,
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "Run_L_F4": {
+        "previous_frame": 3,
+        "previous_hip_R": [
+          62,
+          95
+        ],
+        "previous_hip_L": [
+          65,
+          95
+        ],
+        "offset": [
+          -14,
+          -2
+        ],
+        "bag_position": [
+          51,
+          93
+        ],
+        "outside_bag_mirror_mismatch": 0,
+        "bag_layer_mismatch": 0,
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "Run_L_F5": {
+        "previous_frame": 4,
+        "previous_hip_R": [
+          63,
+          94
+        ],
+        "previous_hip_L": [
+          64,
+          94
+        ],
+        "offset": [
+          -14,
+          -2
+        ],
+        "bag_position": [
+          50,
+          92
+        ],
+        "outside_bag_mirror_mismatch": 0,
+        "bag_layer_mismatch": 0,
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "Run_L_F6": {
+        "previous_frame": 5,
+        "previous_hip_R": [
+          62,
+          92
+        ],
+        "previous_hip_L": [
+          65,
+          92
+        ],
+        "offset": [
+          -14,
+          -2
+        ],
+        "bag_position": [
+          51,
+          90
+        ],
+        "outside_bag_mirror_mismatch": 0,
+        "bag_layer_mismatch": 0,
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "Run_L_F7": {
+        "previous_frame": 6,
+        "previous_hip_R": [
+          62,
+          93
+        ],
+        "previous_hip_L": [
+          65,
+          93
+        ],
+        "offset": [
+          -14,
+          -2
+        ],
+        "bag_position": [
+          51,
+          91
+        ],
+        "outside_bag_mirror_mismatch": 0,
+        "bag_layer_mismatch": 0,
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "Run_L_F8": {
+        "previous_frame": 7,
+        "previous_hip_R": [
+          63,
+          94
+        ],
+        "previous_hip_L": [
+          64,
+          94
+        ],
+        "offset": [
+          -14,
+          -2
+        ],
+        "bag_position": [
+          50,
+          92
+        ],
+        "outside_bag_mirror_mismatch": 0,
+        "bag_layer_mismatch": 0,
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "Run_L_F9": {
+        "previous_frame": 8,
+        "previous_hip_R": [
+          63,
+          96
+        ],
+        "previous_hip_L": [
+          64,
+          96
+        ],
+        "offset": [
+          -14,
+          -2
+        ],
+        "bag_position": [
+          50,
+          94
+        ],
+        "outside_bag_mirror_mismatch": 0,
+        "bag_layer_mismatch": 0,
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      }
+    },
+    "turn_bag_positions": [
+      [
+        50,
+        94
+      ],
+      [
+        48,
+        94
+      ],
+      [
+        50,
+        94
+      ]
+    ],
+    "turn_max_axis_delta": 2,
+    "turn_max_euclidean_delta": 2.0,
+    "bag_symmetry_rgba_mismatch": 100,
+    "bag_mirrored": false,
+    "turn_head_offset": [
+      -20,
+      -4
+    ],
+    "turn_head_template_mismatch": 0,
+    "endpoint_mismatch": {
+      "start_to_run0": 0,
+      "run9_to_stop0": 0,
+      "turn2_to_left_run0": 0
+    },
+    "previews": {
+      "RunStart": {
+        "logical_frames": 3,
+        "decoded_frames": 3,
+        "duration_ms": 150,
+        "fps": 20,
+        "visible_mismatch": 0
+      },
+      "RunStop": {
+        "logical_frames": 4,
+        "decoded_frames": 4,
+        "duration_ms": 200,
+        "fps": 20,
+        "visible_mismatch": 0
+      },
+      "Turn": {
+        "logical_frames": 3,
+        "decoded_frames": 3,
+        "duration_ms": 150,
+        "fps": 20,
+        "visible_mismatch": 0
+      },
+      "Start": {
+        "logical_frames": 27,
+        "decoded_frames": 26,
+        "duration_ms": 1350,
+        "fps": 20,
+        "visible_mismatch": 0
+      },
+      "Stop": {
+        "logical_frames": 22,
+        "decoded_frames": 20,
+        "duration_ms": 1100,
+        "fps": 20,
+        "visible_mismatch": 0
+      },
+      "Turn_transition": {
+        "logical_frames": 23,
+        "decoded_frames": 22,
+        "duration_ms": 1150,
+        "fps": 20,
+        "visible_mismatch": 0
+      },
+      "Run_L": {
+        "logical_frames": 110,
+        "decoded_frames": 110,
+        "duration_ms": 5000,
+        "fps": 22,
+        "visible_mismatch": 0
+      }
+    },
+    "asf": {
+      "RunStart": {
+        "stage": 4,
+        "scale_frames": false,
+        "failures": [],
+        "metrics": [
+          {
+            "frame": 0,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 64.5
+          },
+          {
+            "frame": 1,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 62.0
+          },
+          {
+            "frame": 2,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 64.0
+          }
+        ]
+      },
+      "RunStop": {
+        "stage": 4,
+        "scale_frames": false,
+        "failures": [
+          "drift: 프레임 1 가로 중심 59.0 이 평균 63.0 에서 ±2px 초과"
+        ],
+        "metrics": [
+          {
+            "frame": 0,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 64.0
+          },
+          {
+            "frame": 1,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 59.0
+          },
+          {
+            "frame": 2,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 64.5
+          },
+          {
+            "frame": 3,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 64.5
+          }
+        ]
+      },
+      "Turn": {
+        "stage": 4,
+        "scale_frames": false,
+        "failures": [
+          "drift: 프레임 1 가로 중심 51.5 이 평균 58.2 에서 ±2px 초과",
+          "drift: 프레임 2 가로 중심 64.0 이 평균 58.2 에서 ±2px 초과"
+        ],
+        "metrics": [
+          {
+            "frame": 0,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 59.0
+          },
+          {
+            "frame": 1,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 51.5
+          },
+          {
+            "frame": 2,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 64.0
+          }
+        ]
+      },
+      "Run_L": {
+        "stage": 4,
+        "scale_frames": false,
+        "failures": [],
+        "metrics": [
+          {
+            "frame": 0,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 64.0
+          },
+          {
+            "frame": 1,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 102,
+            "center_x": 64.0
+          },
+          {
+            "frame": 2,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 102,
+            "center_x": 64.0
+          },
+          {
+            "frame": 3,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 102,
+            "center_x": 63.0
+          },
+          {
+            "frame": 4,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 103,
+            "center_x": 63.5
+          },
+          {
+            "frame": 5,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 104,
+            "center_x": 63.0
+          },
+          {
+            "frame": 6,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 104,
+            "center_x": 63.0
+          },
+          {
+            "frame": 7,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 103,
+            "center_x": 64.0
+          },
+          {
+            "frame": 8,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 64.0
+          },
+          {
+            "frame": 9,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 64.0
+          }
+        ]
+      }
+    },
+    "new_imagegen_calls": 0,
+    "visual_review": {
+      "status": "reviewed",
+      "artifacts": [
+        "Sources/Turn_boundary_3x.png",
+        "Sheet_3x.png",
+        "Run_L_10_3x.png"
+      ],
+      "observations": "Head template retains expression and size; root/neck continuous at inspection scale; flying ponytail retained. Bag stays viewer-left, in front of thigh. GIF content verified by decoded frame equality."
+    },
+    "outside_mask_checks": {
+      "Turn_F0_outside_mask_mismatch": 0,
+      "Turn_F1_outside_mask_mismatch": 0
+    }
+  },
+  "head_bundle_lock": {
+    "frames": {
+      "RunStart_F0": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0
+      },
+      "RunStart_F1": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0
+      },
+      "RunStart_F2": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0
+      },
+      "RunStop_F0": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0
+      },
+      "RunStop_F1": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0
+      },
+      "RunStop_F2": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0
+      },
+      "RunStop_F3": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0
+      },
+      "Turn_F0": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0
+      },
+      "Turn_F1": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0
+      },
+      "Turn_F2": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0
+      }
+    },
+    "left_frames": {
+      "0": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0
+      },
+      "1": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0
+      },
+      "2": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0
+      },
+      "3": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0
+      },
+      "4": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0
+      },
+      "5": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0
+      },
+      "6": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0
+      },
+      "7": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0
+      },
+      "8": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0
+      },
+      "9": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0
+      }
+    },
+    "previews": {
+      "RunStart": {
+        "logical_frames": 3,
+        "decoded_frames": 3,
+        "duration_ms": 150,
+        "fps": 20,
+        "visible_mismatch": 0
+      },
+      "RunStop": {
+        "logical_frames": 4,
+        "decoded_frames": 4,
+        "duration_ms": 200,
+        "fps": 20,
+        "visible_mismatch": 0
+      },
+      "Turn": {
+        "logical_frames": 23,
+        "decoded_frames": 22,
+        "duration_ms": 1150,
+        "fps": 20,
+        "visible_mismatch": 0
+      },
+      "Start": {
+        "logical_frames": 27,
+        "decoded_frames": 26,
+        "duration_ms": 1350,
+        "fps": 20,
+        "visible_mismatch": 0
+      },
+      "Stop": {
+        "logical_frames": 22,
+        "decoded_frames": 20,
+        "duration_ms": 1100,
+        "fps": 20,
+        "visible_mismatch": 0
+      },
+      "Run_L": {
+        "logical_frames": 110,
+        "decoded_frames": 110,
+        "duration_ms": 5000,
+        "fps": 22,
+        "visible_mismatch": 0
+      }
+    },
+    "asf": {
+      "RunStart": {
+        "stage": 4,
+        "scale_frames": false,
+        "failures": [],
+        "metrics": [
+          {
+            "frame": 0,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 64.5
+          },
+          {
+            "frame": 1,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 62.0
+          },
+          {
+            "frame": 2,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 64.0
+          }
+        ]
+      },
+      "RunStop": {
+        "stage": 4,
+        "scale_frames": false,
+        "failures": [
+          "drift: 프레임 1 가로 중심 59.0 이 평균 63.0 에서 ±2px 초과"
+        ],
+        "metrics": [
+          {
+            "frame": 0,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 103,
+            "center_x": 64.0
+          },
+          {
+            "frame": 1,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 59.0
+          },
+          {
+            "frame": 2,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 64.5
+          },
+          {
+            "frame": 3,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 64.5
+          }
+        ]
+      },
+      "Turn": {
+        "stage": 4,
+        "scale_frames": false,
+        "failures": [
+          "drift: 프레임 0 높이 105 가 평균 102.3 에서 ±2px 초과",
+          "drift: 프레임 1 가로 중심 51.5 이 평균 58.2 에서 ±2px 초과",
+          "drift: 프레임 2 가로 중심 64.0 이 평균 58.2 에서 ±2px 초과"
+        ],
+        "metrics": [
+          {
+            "frame": 0,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 105,
+            "center_x": 59.0
+          },
+          {
+            "frame": 1,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 51.5
+          },
+          {
+            "frame": 2,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 64.0
+          }
+        ]
+      },
+      "Run_L": {
+        "stage": 4,
+        "scale_frames": false,
+        "failures": [],
+        "metrics": [
+          {
+            "frame": 0,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 64.0
+          },
+          {
+            "frame": 1,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 64.0
+          },
+          {
+            "frame": 2,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 102,
+            "center_x": 64.0
+          },
+          {
+            "frame": 3,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 63.0
+          },
+          {
+            "frame": 4,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 103,
+            "center_x": 63.5
+          },
+          {
+            "frame": 5,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 103,
+            "center_x": 63.0
+          },
+          {
+            "frame": 6,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 103,
+            "center_x": 63.0
+          },
+          {
+            "frame": 7,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 102,
+            "center_x": 64.0
+          },
+          {
+            "frame": 8,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 103,
+            "center_x": 64.0
+          },
+          {
+            "frame": 9,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 103,
+            "center_x": 64.0
+          }
+        ]
+      }
+    },
+    "backup": "Sources/prev2",
+    "imagegen_calls": 1,
+    "turn_template_mismatch": 0,
+    "endpoints_mismatch": {
+      "start": 0,
+      "stop": 0,
+      "turn_left": 0
+    },
+    "date": "2026-11-14",
+    "visual_review": {
+      "status": "passed",
+      "reviewed": [
+        "Run/HeadBack_6x.png",
+        "Run/Sources/HeadBack_first5_6x.png",
+        "Run/Sources/HeadBack_last5_6x.png",
+        "Run/Sources/HeadBundle_review3x.png",
+        "Move/Sources/Turn_boundary_3x.png"
+      ],
+      "findings": "Key0 tie/root/back-skull rigidly attached; flowing tail seam continuous; no detached fragments or seam holes observed; body and accessories preserved."
+    },
+    "head_source": "Run/Sources/prev3/Run_Key0.png",
+    "core_mask": "Run/Masks/HeadBundle_core.png",
+    "offsets_y": [
+      0,
+      0,
+      -1,
+      0,
+      -2,
+      -2,
+      -2,
+      -1,
+      -2,
+      -2
+    ],
+    "asf_notes": "ASF ? ??: Run?Run_L?RunStart ?? 0. Move RunStop F1 ?? ??, Turn F1/F2 ?? ??? ???? ?? ???. Turn F0? ?? (-20,-4) ????? ???????? ????? ?? 101?105px? ?? ?? ?? ?2px ?? ??? ????. ?? ??? ? ?? ?? ??? ?? ???? ? ???? ????. ??????? ?? ??? ??."
+  },
+  "whole_head_redraw": {
+    "frames": {
+      "RunStart_F0": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0,
+        "visual_review": "reviewed: coherent head/neck, no slab or upper/lower separation in changed heads"
+      },
+      "RunStart_F1": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0,
+        "visual_review": "reviewed: coherent head/neck, no slab or upper/lower separation in changed heads"
+      },
+      "RunStart_F2": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0,
+        "visual_review": "reviewed: coherent head/neck, no slab or upper/lower separation in changed heads"
+      },
+      "RunStop_F0": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0,
+        "visual_review": "reviewed: coherent head/neck, no slab or upper/lower separation in changed heads"
+      },
+      "RunStop_F1": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0,
+        "visual_review": "reviewed: coherent head/neck, no slab or upper/lower separation in changed heads"
+      },
+      "RunStop_F2": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0,
+        "visual_review": "reviewed: coherent head/neck, no slab or upper/lower separation in changed heads"
+      },
+      "RunStop_F3": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0,
+        "visual_review": "reviewed: coherent head/neck, no slab or upper/lower separation in changed heads"
+      },
+      "Turn_F0": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0,
+        "visual_review": "reviewed: coherent head/neck, no slab or upper/lower separation in changed heads"
+      },
+      "Turn_F1": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0,
+        "visual_review": "reviewed: coherent head/neck, no slab or upper/lower separation in changed heads"
+      },
+      "Turn_F2": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0,
+        "visual_review": "reviewed: coherent head/neck, no slab or upper/lower separation in changed heads"
+      }
+    },
+    "left_frames": {
+      "0": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0,
+        "head_mirror_mismatch": 0
+      },
+      "1": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0,
+        "head_mirror_mismatch": 0
+      },
+      "2": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0,
+        "head_mirror_mismatch": 0
+      },
+      "3": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0,
+        "head_mirror_mismatch": 0
+      },
+      "4": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0,
+        "head_mirror_mismatch": 0
+      },
+      "5": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0,
+        "head_mirror_mismatch": 0
+      },
+      "6": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0,
+        "head_mirror_mismatch": 0
+      },
+      "7": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0,
+        "head_mirror_mismatch": 0
+      },
+      "8": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0,
+        "head_mirror_mismatch": 0
+      },
+      "9": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "outside_mask_mismatch": 0,
+        "head_mirror_mismatch": 0
+      }
+    },
+    "previews": {
+      "RunStart": {
+        "logical_frames": 3,
+        "decoded_frames": 3,
+        "duration_ms": 150,
+        "fps": 20,
+        "visible_mismatch": 0
+      },
+      "RunStop": {
+        "logical_frames": 4,
+        "decoded_frames": 4,
+        "duration_ms": 200,
+        "fps": 20,
+        "visible_mismatch": 0
+      },
+      "Turn": {
+        "logical_frames": 23,
+        "decoded_frames": 22,
+        "duration_ms": 1150,
+        "fps": 20,
+        "visible_mismatch": 0
+      },
+      "Start": {
+        "logical_frames": 27,
+        "decoded_frames": 26,
+        "duration_ms": 1350,
+        "fps": 20,
+        "visible_mismatch": 0
+      },
+      "Stop": {
+        "logical_frames": 22,
+        "decoded_frames": 20,
+        "duration_ms": 1100,
+        "fps": 20,
+        "visible_mismatch": 0
+      },
+      "Run_L": {
+        "logical_frames": 110,
+        "decoded_frames": 110,
+        "duration_ms": 5000,
+        "fps": 22,
+        "visible_mismatch": 0
+      }
+    },
+    "asf": {
+      "RunStart": {
+        "stage": 4,
+        "scale_frames": false,
+        "failures": [],
+        "metrics": [
+          {
+            "frame": 0,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 64.5
+          },
+          {
+            "frame": 1,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 62.0
+          },
+          {
+            "frame": 2,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 64.5
+          }
+        ]
+      },
+      "RunStop": {
+        "stage": 4,
+        "scale_frames": false,
+        "failures": [
+          "drift: 프레임 1 가로 중심 59.0 이 평균 63.1 에서 ±2px 초과"
+        ],
+        "metrics": [
+          {
+            "frame": 0,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 103,
+            "center_x": 64.5
+          },
+          {
+            "frame": 1,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 59.0
+          },
+          {
+            "frame": 2,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 64.5
+          },
+          {
+            "frame": 3,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 64.5
+          }
+        ]
+      },
+      "Turn": {
+        "stage": 4,
+        "scale_frames": false,
+        "failures": [
+          "drift: 프레임 0 높이 105 가 평균 102.3 에서 ±2px 초과",
+          "drift: 프레임 1 가로 중심 51.5 이 평균 57.8 에서 ±2px 초과",
+          "drift: 프레임 2 가로 중심 63.5 이 평균 57.8 에서 ±2px 초과"
+        ],
+        "metrics": [
+          {
+            "frame": 0,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 105,
+            "center_x": 58.5
+          },
+          {
+            "frame": 1,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 51.5
+          },
+          {
+            "frame": 2,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 63.5
+          }
+        ]
+      },
+      "Run_L": {
+        "stage": 4,
+        "scale_frames": false,
+        "failures": [],
+        "metrics": [
+          {
+            "frame": 0,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 63.5
+          },
+          {
+            "frame": 1,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 63.0
+          },
+          {
+            "frame": 2,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 102,
+            "center_x": 63.5
+          },
+          {
+            "frame": 3,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 63.0
+          },
+          {
+            "frame": 4,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 103,
+            "center_x": 62.5
+          },
+          {
+            "frame": 5,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 103,
+            "center_x": 64.5
+          },
+          {
+            "frame": 6,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 103,
+            "center_x": 62.0
+          },
+          {
+            "frame": 7,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 102,
+            "center_x": 62.5
+          },
+          {
+            "frame": 8,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 103,
+            "center_x": 63.0
+          },
+          {
+            "frame": 9,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 103,
+            "center_x": 63.5
+          }
+        ]
+      }
+    },
+    "backup": "Sources/prev3",
+    "endpoints_mismatch": {
+      "start": 0,
+      "stop": 0,
+      "turn_left": 0
+    },
+    "date": "2026-11-14",
+    "visual_review": {
+      "status": "reviewed",
+      "reviewer": "Codex",
+      "method": "Direct viewing of integer pixel-repeat 6x before/after crops and 3x full sprites",
+      "flat_slab": false,
+      "upper_lower_separation": false,
+      "interior_black_hole": false,
+      "face_consistency": "same character, red eyes and mischievous smile reviewed visually; independently generated pixels are not pixel-identical",
+      "files": [
+        "Sources/WholeHead_Turn_review6x.png",
+        "Sources/WholeHead_Turn_boundary_3x.png"
+      ]
+    },
+    "method": "One image_gen drawing for each complete head and neck; no separate face/skull/tail patches; integer block recovery, palette mapping, binary alpha, whole-head integer registration, mask composite.",
+    "offsets_y": [
+      0,
+      0,
+      -1,
+      0,
+      -2,
+      -2,
+      -2,
+      -1,
+      -2,
+      -2
+    ],
+    "imagegen_calls_including_previous_session": 1,
+    "imagegen_calls_this_session": 1,
+    "resampling": false,
+    "rotation": false,
+    "code_drawing": false,
+    "asf_scope": "stage 4 check only; no automatic alignment or scaling",
+    "asf_previous_failures": {
+      "RunStart": [],
+      "RunStop": [
+        "drift: 프레임 1 가로 중심 59.0 이 평균 63.0 에서 ±2px 초과"
+      ],
+      "Turn": [
+        "drift: 프레임 0 높이 105 가 평균 102.3 에서 ±2px 초과",
+        "drift: 프레임 1 가로 중심 51.5 이 평균 58.2 에서 ±2px 초과",
+        "drift: 프레임 2 가로 중심 64.0 이 평균 58.2 에서 ±2px 초과"
+      ],
+      "Run_L": []
+    },
+    "asf_status": "RunStart and Run_L pass; RunStop and Turn retain position/height drift failures; not an all-pass result"
+  },
+  "left_view_flipx": {
+    "date": "2026-11-15",
+    "backup": "Sources/prev4",
+    "storage": "F0 right, F1 front, F2 right; flipX starts at F2",
+    "bag_top_left_display": [
+      [
+        50,
+        94
+      ],
+      [
+        54,
+        94
+      ],
+      [
+        58,
+        95
+      ]
+    ],
+    "lag": "F1 y94 retains F0 attachment height; horizontal x54 is integer midpoint of display endpoints (50,58).",
+    "F1_occluded_pixels": 122,
+    "F0_unchanged": true,
+    "F1_outside_edit_mismatch": 0,
+    "F1_head_mismatch": 0,
+    "F2_to_Run0_mismatch": 0,
+    "frames": [
+      {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      }
+    ],
+    "previews": {
+      "turn": {
+        "logical_frames": 3,
+        "decoded_frames": 3,
+        "duration_ms": 150,
+        "fps": 20,
+        "visible_mismatch": 0
+      },
+      "transition": {
+        "logical_frames": 23,
+        "decoded_frames": 22,
+        "duration_ms": 1150,
+        "fps": 20,
+        "visible_mismatch": 0
+      }
+    },
+    "asf": {
+      "RunStart": {
+        "stage": 4,
+        "scale_frames": false,
+        "failures": [],
+        "metrics": [
+          {
+            "frame": 0,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 64.5
+          },
+          {
+            "frame": 1,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 62.0
+          },
+          {
+            "frame": 2,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 64.5
+          }
+        ]
+      },
+      "RunStop": {
+        "stage": 4,
+        "scale_frames": false,
+        "failures": [
+          "drift: 프레임 1 가로 중심 59.0 이 평균 63.1 에서 ±2px 초과"
+        ],
+        "metrics": [
+          {
+            "frame": 0,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 103,
+            "center_x": 64.5
+          },
+          {
+            "frame": 1,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 59.0
+          },
+          {
+            "frame": 2,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 64.5
+          },
+          {
+            "frame": 3,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 64.5
+          }
+        ]
+      },
+      "Turn": {
+        "stage": 4,
+        "scale_frames": false,
+        "failures": [
+          "drift: 프레임 0 높이 105 가 평균 102.3 에서 ±2px 초과",
+          "drift: 프레임 1 가로 중심 51.5 이 평균 58.2 에서 ±2px 초과",
+          "drift: 프레임 2 가로 중심 64.5 이 평균 58.2 에서 ±2px 초과"
+        ],
+        "metrics": [
+          {
+            "frame": 0,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 105,
+            "center_x": 58.5
+          },
+          {
+            "frame": 1,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 51.5
+          },
+          {
+            "frame": 2,
+            "colors": 20,
+            "feet_row": 127,
+            "height": 101,
+            "center_x": 64.5
+          }
+        ]
+      }
+    },
+    "new_imagegen_calls": 0,
+    "visual_review": {
+      "boundary_and_waist": "directly inspected; bag shifts left to center to right rear thigh; foreground hand/thigh occlusion visible",
+      "live_animation": "not verified: browser host unavailable, native Chrome access denied"
+    }
+  }
+}

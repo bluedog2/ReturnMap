@@ -1,0 +1,162 @@
+{
+  "0": {
+    "source": "WholeHead_00_generated2.png",
+    "pitch": 10,
+    "origin": [
+      -17,
+      -25
+    ],
+    "whole_head_translation": [
+      0,
+      0
+    ],
+    "error": 22293367.666666668,
+    "old_top": 27,
+    "new_top": 27,
+    "outside_mask_mismatch": 0
+  },
+  "5": {
+    "source": "WholeHead_05_generated2.png",
+    "pitch": 10,
+    "origin": [
+      -12,
+      -22
+    ],
+    "whole_head_translation": [
+      0,
+      -2
+    ],
+    "error": 3442618.0,
+    "old_top": 25,
+    "new_top": 25,
+    "outside_mask_mismatch": 0
+  },
+  "1": {
+    "source": "WholeHead_01_generated1.png",
+    "pitch": 10,
+    "origin": [
+      -14,
+      -21
+    ],
+    "whole_head_translation": [
+      0,
+      -2
+    ],
+    "error": 3043674.333333333,
+    "old_top": 27,
+    "new_top": 27,
+    "outside_mask_mismatch": 0
+  },
+  "2": {
+    "source": "WholeHead_02_generated1.png",
+    "pitch": 10,
+    "origin": [
+      -15,
+      -22
+    ],
+    "whole_head_translation": [
+      0,
+      -2
+    ],
+    "error": 6598405.666666666,
+    "old_top": 26,
+    "new_top": 26,
+    "outside_mask_mismatch": 0
+  },
+  "3": {
+    "source": "WholeHead_03_generated1.png",
+    "pitch": 10,
+    "origin": [
+      -13,
+      -21
+    ],
+    "whole_head_translation": [
+      0,
+      -2
+    ],
+    "error": 1625363.0,
+    "old_top": 27,
+    "new_top": 27,
+    "outside_mask_mismatch": 0
+  },
+  "4": {
+    "source": "WholeHead_04_generated2.png",
+    "pitch": 10,
+    "origin": [
+      -13,
+      -22
+    ],
+    "whole_head_translation": [
+      0,
+      -1
+    ],
+    "error": 2275185.666666667,
+    "old_top": 25,
+    "new_top": 25,
+    "outside_mask_mismatch": 0
+  },
+  "6": {
+    "source": "WholeHead_06_generated1.png",
+    "pitch": 10,
+    "origin": [
+      -15,
+      -5
+    ],
+    "whole_head_translation": [
+      0,
+      -2
+    ],
+    "error": 6844259.333333333,
+    "old_top": 25,
+    "new_top": 25,
+    "outside_mask_mismatch": 0
+  },
+  "7": {
+    "source": "WholeHead_07_generated1.png",
+    "pitch": 10,
+    "origin": [
+      -15,
+      -22
+    ],
+    "whole_head_translation": [
+      0,
+      -3
+    ],
+    "error": 6647353.333333333,
+    "old_top": 26,
+    "new_top": 26,
+    "outside_mask_mismatch": 0
+  },
+  "8": {
+    "source": "WholeHead_08_generated1.png",
+    "pitch": 10,
+    "origin": [
+      -16,
+      -23
+    ],
+    "whole_head_translation": [
+      0,
+      -2
+    ],
+    "error": 5321160.666666666,
+    "old_top": 25,
+    "new_top": 25,
+    "outside_mask_mismatch": 0
+  },
+  "9": {
+    "source": "WholeHead_09_generated1.png",
+    "pitch": 10,
+    "origin": [
+      -16,
+      -22
+    ],
+    "whole_head_translation": [
+      0,
+      -3
+    ],
+    "error": 5408759.0,
+    "old_top": 25,
+    "new_top": 25,
+    "outside_mask_mismatch": 0
+  }
+}

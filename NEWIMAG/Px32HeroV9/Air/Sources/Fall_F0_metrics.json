@@ -1,0 +1,31 @@
+{
+  "source": "NEWIMAG\\Px32HeroV9\\Air\\Sources\\Fall_original0.png",
+  "source_sha256": "f48efdca3c8b15ef62aa33ead4ab52992915544d5f55506d195604d9ada5749a",
+  "recovery": {
+    "pitch": 10,
+    "origin": [
+      -14,
+      -9
+    ],
+    "head_registration_error": 4165641.0
+  },
+  "bag_position": [
+    51,
+    84
+  ],
+  "chain_position": [
+    56,
+    78
+  ],
+  "attempt": 1,
+  "outside_mask_mismatch": 0,
+  "colors": 20,
+  "outside_palette": 0,
+  "alpha": [
+    0,
+    255
+  ],
+  "head_top": 29,
+  "bottom": 127,
+  "visual_review": "pending"
+}

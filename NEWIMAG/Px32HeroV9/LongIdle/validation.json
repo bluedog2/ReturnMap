@@ -1,0 +1,1606 @@
+{
+  "frames": [
+    {
+      "frame": "BagOut_F0",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "BagOut_F1",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "BagOut_F2",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "BagOut_F3",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "BagOut_F4",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "BagOut_F5",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "LongIdle_F0",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "LongIdle_F1",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "LongIdle_F2",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "LongIdle_F3",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "LongIdle_F4",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "LongIdle_F5",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "LongIdle_F6",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "LongIdle_F7",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "LongIdle_F8",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "LongIdle_F9",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "LongIdle_F10",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "LongIdle_F11",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "BagIn_F0",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "BagIn_F1",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "BagIn_F2",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "BagIn_F3",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    }
+  ],
+  "asf_4": {
+    "BagOut": {
+      "failures": [],
+      "metrics": [
+        {
+          "frame": 0,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 1,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 2,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 3,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 4,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 5,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        }
+      ],
+      "legacy_spec": null,
+      "expected_warning": "기존 규격표에 전환/LongIdle 장수 항목 없음. 요청 규격 6/12/4장으로 ④ 검사. ② 미실행."
+    },
+    "LongIdle": {
+      "failures": [],
+      "metrics": [
+        {
+          "frame": 0,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 1,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 2,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 3,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 4,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 5,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 6,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 7,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 8,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 9,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 10,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 11,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        }
+      ],
+      "legacy_spec": null,
+      "expected_warning": "기존 규격표에 전환/LongIdle 장수 항목 없음. 요청 규격 6/12/4장으로 ④ 검사. ② 미실행."
+    },
+    "BagIn": {
+      "failures": [],
+      "metrics": [
+        {
+          "frame": 0,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 1,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 2,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 3,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        }
+      ],
+      "legacy_spec": null,
+      "expected_warning": "기존 규격표에 전환/LongIdle 장수 항목 없음. 요청 규격 6/12/4장으로 ④ 검사. ② 미실행."
+    }
+  },
+  "gifs": {
+    "Hero_BagOut_3x.gif": {
+      "duration_ms": 1000,
+      "durations": [
+        80,
+        90,
+        80,
+        80,
+        90,
+        580
+      ],
+      "decoded_visible_mismatch": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "loop": false
+    },
+    "Hero_LongIdle_3x.gif": {
+      "duration_ms": 1200,
+      "durations": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "decoded_visible_mismatch": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "loop": true
+    },
+    "Hero_BagIn_3x.gif": {
+      "duration_ms": 830,
+      "durations": [
+        80,
+        90,
+        80,
+        580
+      ],
+      "decoded_visible_mismatch": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "loop": false
+    },
+    "Flow_3x.gif": {
+      "duration_ms": 5230,
+      "durations": [
+        120,
+        130,
+        120,
+        130,
+        120,
+        130,
+        120,
+        130,
+        80,
+        90,
+        80,
+        80,
+        90,
+        180,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        80,
+        90,
+        80,
+        200,
+        130,
+        120,
+        130,
+        120,
+        130,
+        120,
+        130
+      ],
+      "decoded_visible_mismatch": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "loop": true
+    },
+    "Compare_3x.gif": {
+      "duration_ms": 5230,
+      "durations": [
+        120,
+        130,
+        120,
+        130,
+        120,
+        130,
+        120,
+        130,
+        80,
+        90,
+        80,
+        80,
+        90,
+        180,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        80,
+        90,
+        80,
+        200,
+        130,
+        120,
+        130,
+        120,
+        130,
+        120,
+        130
+      ],
+      "decoded_visible_mismatch": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "loop": true
+    }
+  },
+  "status": "?? ?? ?? ??? ??; ??? GIF ?? ?? ???",
+  "bag_size": [
+    {
+      "frame": "LongIdle_F0",
+      "position": [
+        62,
+        83
+      ],
+      "body_width_px": 18,
+      "asset_height_px": 16,
+      "asset_exact_translation": true,
+      "lower_body_pixel_mismatch": 0,
+      "lower_body_rows": "Hip 10:16 == Open 15:21",
+      "hand_overlap": 14,
+      "revision_mask_mismatch": 0
+    },
+    {
+      "frame": "LongIdle_F1",
+      "position": [
+        62,
+        83
+      ],
+      "body_width_px": 18,
+      "asset_height_px": 16,
+      "asset_exact_translation": true,
+      "lower_body_pixel_mismatch": 0,
+      "lower_body_rows": "Hip 10:16 == Open 15:21",
+      "hand_overlap": 14,
+      "revision_mask_mismatch": 0
+    },
+    {
+      "frame": "LongIdle_F2",
+      "position": [
+        62,
+        82
+      ],
+      "body_width_px": 18,
+      "asset_height_px": 16,
+      "asset_exact_translation": true,
+      "lower_body_pixel_mismatch": 0,
+      "lower_body_rows": "Hip 10:16 == Open 15:21",
+      "hand_overlap": 14,
+      "revision_mask_mismatch": 0
+    },
+    {
+      "frame": "LongIdle_F3",
+      "position": [
+        62,
+        78
+      ],
+      "body_width_px": 18,
+      "asset_height_px": 21,
+      "asset_exact_translation": true,
+      "lower_body_pixel_mismatch": 0,
+      "lower_body_rows": "Hip 10:16 == Open 15:21",
+      "hand_overlap": 18,
+      "revision_mask_mismatch": 0
+    },
+    {
+      "frame": "LongIdle_F4",
+      "position": [
+        62,
+        79
+      ],
+      "body_width_px": 18,
+      "asset_height_px": 21,
+      "asset_exact_translation": true,
+      "lower_body_pixel_mismatch": 0,
+      "lower_body_rows": "Hip 10:16 == Open 15:21",
+      "hand_overlap": 18,
+      "revision_mask_mismatch": 0
+    },
+    {
+      "frame": "LongIdle_F5",
+      "position": [
+        63,
+        84
+      ],
+      "body_width_px": 18,
+      "asset_height_px": 16,
+      "asset_exact_translation": true,
+      "lower_body_pixel_mismatch": 0,
+      "lower_body_rows": "Hip 10:16 == Open 15:21",
+      "hand_overlap": 14,
+      "revision_mask_mismatch": 0
+    },
+    {
+      "frame": "LongIdle_F6",
+      "position": [
+        63,
+        85
+      ],
+      "body_width_px": 18,
+      "asset_height_px": 16,
+      "asset_exact_translation": true,
+      "lower_body_pixel_mismatch": 0,
+      "lower_body_rows": "Hip 10:16 == Open 15:21",
+      "hand_overlap": 14,
+      "revision_mask_mismatch": 0
+    },
+    {
+      "frame": "LongIdle_F7",
+      "position": [
+        63,
+        84
+      ],
+      "body_width_px": 18,
+      "asset_height_px": 16,
+      "asset_exact_translation": true,
+      "lower_body_pixel_mismatch": 0,
+      "lower_body_rows": "Hip 10:16 == Open 15:21",
+      "hand_overlap": 14,
+      "revision_mask_mismatch": 0
+    },
+    {
+      "frame": "LongIdle_F8",
+      "position": [
+        62,
+        80
+      ],
+      "body_width_px": 18,
+      "asset_height_px": 21,
+      "asset_exact_translation": true,
+      "lower_body_pixel_mismatch": 0,
+      "lower_body_rows": "Hip 10:16 == Open 15:21",
+      "hand_overlap": 18,
+      "revision_mask_mismatch": 0
+    },
+    {
+      "frame": "LongIdle_F9",
+      "position": [
+        61,
+        79
+      ],
+      "body_width_px": 18,
+      "asset_height_px": 21,
+      "asset_exact_translation": true,
+      "lower_body_pixel_mismatch": 0,
+      "lower_body_rows": "Hip 10:16 == Open 15:21",
+      "hand_overlap": 18,
+      "revision_mask_mismatch": 0
+    },
+    {
+      "frame": "LongIdle_F10",
+      "position": [
+        61,
+        80
+      ],
+      "body_width_px": 18,
+      "asset_height_px": 21,
+      "asset_exact_translation": true,
+      "lower_body_pixel_mismatch": 0,
+      "lower_body_rows": "Hip 10:16 == Open 15:21",
+      "hand_overlap": 18,
+      "revision_mask_mismatch": 0
+    },
+    {
+      "frame": "LongIdle_F11",
+      "position": [
+        62,
+        83
+      ],
+      "body_width_px": 18,
+      "asset_height_px": 16,
+      "asset_exact_translation": true,
+      "lower_body_pixel_mismatch": 0,
+      "lower_body_rows": "Hip 10:16 == Open 15:21",
+      "hand_overlap": 14,
+      "revision_mask_mismatch": 0
+    },
+    {
+      "frame": "BagOut_F1",
+      "position": [
+        51,
+        95
+      ],
+      "body_width_px": 18,
+      "asset_height_px": 16,
+      "asset_exact_translation": true,
+      "lower_body_pixel_mismatch": 0,
+      "lower_body_rows": "Hip 10:16 == Open 15:21",
+      "hand_overlap": 19,
+      "revision_mask_mismatch": 0
+    },
+    {
+      "frame": "BagOut_F2",
+      "position": [
+        55,
+        91
+      ],
+      "body_width_px": 18,
+      "asset_height_px": 16,
+      "asset_exact_translation": true,
+      "lower_body_pixel_mismatch": 0,
+      "lower_body_rows": "Hip 10:16 == Open 15:21",
+      "hand_overlap": 21,
+      "revision_mask_mismatch": 0
+    },
+    {
+      "frame": "BagOut_F3",
+      "position": [
+        59,
+        87
+      ],
+      "body_width_px": 18,
+      "asset_height_px": 16,
+      "asset_exact_translation": true,
+      "lower_body_pixel_mismatch": 0,
+      "lower_body_rows": "Hip 10:16 == Open 15:21",
+      "hand_overlap": 19,
+      "revision_mask_mismatch": 0
+    },
+    {
+      "frame": "BagOut_F4",
+      "position": [
+        62,
+        84
+      ],
+      "body_width_px": 18,
+      "asset_height_px": 16,
+      "asset_exact_translation": true,
+      "lower_body_pixel_mismatch": 0,
+      "lower_body_rows": "Hip 10:16 == Open 15:21",
+      "hand_overlap": 21,
+      "revision_mask_mismatch": 0
+    },
+    {
+      "frame": "BagIn_F1",
+      "position": [
+        51,
+        93
+      ],
+      "body_width_px": 18,
+      "asset_height_px": 16,
+      "asset_exact_translation": true,
+      "lower_body_pixel_mismatch": 0,
+      "lower_body_rows": "Hip 10:16 == Open 15:21",
+      "hand_overlap": 14,
+      "revision_mask_mismatch": 0
+    },
+    {
+      "frame": "BagIn_F2",
+      "position": [
+        51,
+        95
+      ],
+      "body_width_px": 18,
+      "asset_height_px": 16,
+      "asset_exact_translation": true,
+      "lower_body_pixel_mismatch": 0,
+      "lower_body_rows": "Hip 10:16 == Open 15:21",
+      "hand_overlap": 0,
+      "revision_mask_mismatch": 0
+    },
+    {
+      "frame": "BagOut_F0",
+      "position": [
+        51,
+        95
+      ],
+      "body_width_px": 18,
+      "asset_height_px": 16,
+      "asset_exact_translation": true,
+      "lower_body_pixel_mismatch": 0,
+      "lower_body_rows": "Hip 10:16 == Open 15:21",
+      "hand_overlap": null,
+      "revision_mask_mismatch": 0
+    },
+    {
+      "frame": "BagOut_F5",
+      "position": [
+        62,
+        83
+      ],
+      "body_width_px": 18,
+      "asset_height_px": 16,
+      "asset_exact_translation": true,
+      "lower_body_pixel_mismatch": 0,
+      "lower_body_rows": "Hip 10:16 == Open 15:21",
+      "hand_overlap": null,
+      "revision_mask_mismatch": 0
+    },
+    {
+      "frame": "BagIn_F0",
+      "position": [
+        62,
+        83
+      ],
+      "body_width_px": 18,
+      "asset_height_px": 16,
+      "asset_exact_translation": true,
+      "lower_body_pixel_mismatch": 0,
+      "lower_body_rows": "Hip 10:16 == Open 15:21",
+      "hand_overlap": null,
+      "revision_mask_mismatch": 0
+    },
+    {
+      "frame": "BagIn_F3",
+      "position": [
+        51,
+        95
+      ],
+      "body_width_px": 18,
+      "asset_height_px": 16,
+      "asset_exact_translation": true,
+      "lower_body_pixel_mismatch": 0,
+      "lower_body_rows": "Hip 10:16 == Open 15:21",
+      "hand_overlap": null,
+      "revision_mask_mismatch": 0
+    }
+  ],
+  "joins": {
+    "Idle0_to_BagOut0": 0,
+    "BagOut5_to_LongIdle0": 0,
+    "LongIdle0_to_BagIn0": 0,
+    "BagIn3_to_Idle0": 0,
+    "LongIdle11_to_0": 260
+  },
+  "bagout_path": [
+    [
+      51,
+      95
+    ],
+    [
+      51,
+      95
+    ],
+    [
+      55,
+      91
+    ],
+    [
+      59,
+      87
+    ],
+    [
+      62,
+      84
+    ],
+    [
+      62,
+      83
+    ]
+  ],
+  "open_asset": {
+    "size": [
+      18,
+      21
+    ],
+    "height_extension": 5,
+    "unchanged_lower_rows": 6,
+    "lower_body_mismatch": 0
+  },
+  "attempts": {
+    "tool": "built-in image_gen",
+    "total_calls_conservative": 25,
+    "saved_generated_images": 24,
+    "current_run_calls": 0,
+    "frames": [
+      {
+        "frame": "BagOut_F0",
+        "calls": 0,
+        "limit": 3,
+        "prior_run_calls": 0,
+        "generated_files": [],
+        "note": ""
+      },
+      {
+        "frame": "BagOut_F1",
+        "calls": 3,
+        "limit": 3,
+        "prior_run_calls": 2,
+        "generated_files": [
+          "BagOut_F1_generated1.png",
+          "BagOut_F1_generated3.png"
+        ],
+        "note": "이전 prompt2 존재, 원본 없음: 이전 호출 여부 불명으로 1회 사용을 보수적으로 포함"
+      },
+      {
+        "frame": "BagOut_F2",
+        "calls": 3,
+        "limit": 3,
+        "prior_run_calls": 0,
+        "generated_files": [
+          "BagOut_F2_generated1.png",
+          "BagOut_F2_generated2.png",
+          "BagOut_F2_generated3.png"
+        ],
+        "note": ""
+      },
+      {
+        "frame": "BagOut_F3",
+        "calls": 2,
+        "limit": 3,
+        "prior_run_calls": 0,
+        "generated_files": [
+          "BagOut_F3_generated1.png",
+          "BagOut_F3_generated2.png"
+        ],
+        "note": ""
+      },
+      {
+        "frame": "BagOut_F4",
+        "calls": 1,
+        "limit": 3,
+        "prior_run_calls": 0,
+        "generated_files": [
+          "BagOut_F4_generated1.png"
+        ],
+        "note": ""
+      },
+      {
+        "frame": "BagOut_F5",
+        "calls": 0,
+        "limit": 3,
+        "prior_run_calls": 0,
+        "generated_files": [],
+        "note": ""
+      },
+      {
+        "frame": "LongIdle_F0",
+        "calls": 1,
+        "limit": 3,
+        "prior_run_calls": 1,
+        "generated_files": [
+          "LongIdle_F0_generated1.png"
+        ],
+        "note": ""
+      },
+      {
+        "frame": "LongIdle_F1",
+        "calls": 1,
+        "limit": 3,
+        "prior_run_calls": 1,
+        "generated_files": [
+          "LongIdle_F1_generated1.png"
+        ],
+        "note": ""
+      },
+      {
+        "frame": "LongIdle_F2",
+        "calls": 1,
+        "limit": 3,
+        "prior_run_calls": 1,
+        "generated_files": [
+          "LongIdle_F2_generated1.png"
+        ],
+        "note": ""
+      },
+      {
+        "frame": "LongIdle_F3",
+        "calls": 1,
+        "limit": 3,
+        "prior_run_calls": 1,
+        "generated_files": [
+          "LongIdle_F3_generated1.png"
+        ],
+        "note": ""
+      },
+      {
+        "frame": "LongIdle_F4",
+        "calls": 1,
+        "limit": 3,
+        "prior_run_calls": 1,
+        "generated_files": [
+          "LongIdle_F4_generated1.png"
+        ],
+        "note": ""
+      },
+      {
+        "frame": "LongIdle_F5",
+        "calls": 1,
+        "limit": 3,
+        "prior_run_calls": 1,
+        "generated_files": [
+          "LongIdle_F5_generated1.png"
+        ],
+        "note": ""
+      },
+      {
+        "frame": "LongIdle_F6",
+        "calls": 1,
+        "limit": 3,
+        "prior_run_calls": 1,
+        "generated_files": [
+          "LongIdle_F6_generated1.png"
+        ],
+        "note": ""
+      },
+      {
+        "frame": "LongIdle_F7",
+        "calls": 1,
+        "limit": 3,
+        "prior_run_calls": 1,
+        "generated_files": [
+          "LongIdle_F7_generated1.png"
+        ],
+        "note": ""
+      },
+      {
+        "frame": "LongIdle_F8",
+        "calls": 1,
+        "limit": 3,
+        "prior_run_calls": 1,
+        "generated_files": [
+          "LongIdle_F8_generated1.png"
+        ],
+        "note": ""
+      },
+      {
+        "frame": "LongIdle_F9",
+        "calls": 1,
+        "limit": 3,
+        "prior_run_calls": 1,
+        "generated_files": [
+          "LongIdle_F9_generated1.png"
+        ],
+        "note": ""
+      },
+      {
+        "frame": "LongIdle_F10",
+        "calls": 1,
+        "limit": 3,
+        "prior_run_calls": 1,
+        "generated_files": [
+          "LongIdle_F10_generated1.png"
+        ],
+        "note": ""
+      },
+      {
+        "frame": "LongIdle_F11",
+        "calls": 1,
+        "limit": 3,
+        "prior_run_calls": 1,
+        "generated_files": [
+          "LongIdle_F11_generated1.png"
+        ],
+        "note": ""
+      },
+      {
+        "frame": "BagIn_F0",
+        "calls": 0,
+        "limit": 3,
+        "prior_run_calls": 0,
+        "generated_files": [],
+        "note": ""
+      },
+      {
+        "frame": "BagIn_F1",
+        "calls": 1,
+        "limit": 3,
+        "prior_run_calls": 0,
+        "generated_files": [
+          "BagIn_F1_generated1.png"
+        ],
+        "note": ""
+      },
+      {
+        "frame": "BagIn_F2",
+        "calls": 1,
+        "limit": 3,
+        "prior_run_calls": 0,
+        "generated_files": [
+          "BagIn_F2_generated1.png"
+        ],
+        "note": ""
+      },
+      {
+        "frame": "BagIn_F3",
+        "calls": 0,
+        "limit": 3,
+        "prior_run_calls": 0,
+        "generated_files": [],
+        "note": ""
+      }
+    ],
+    "resumed_session_calls": 0,
+    "previous_frame_calls": 23,
+    "shared_assets": [
+      {
+        "asset": "Bag_Open_Same",
+        "calls": 1,
+        "limit": 3,
+        "source": "Bag_Open_generated1.png",
+        "reused": true
+      },
+      {
+        "asset": "BodyRestore",
+        "calls": 1,
+        "source": "BodyRestore_generated1.png",
+        "reused": true
+      }
+    ],
+    "note": "이전 장별 호출 23회(원본 없는 F1 2회차 포함) + 열린 가방 1회 + 공용 몸 복원 1회 = 누적 25회. 이번 재개는 생성 0회. F1/F2는 이미 3회 사용하여 추가 생성하지 않음."
+  },
+  "method": "기존 내장 image_gen 원본 재사용; 정수 이동, 마스크 합성, 조립, 검증. 확대는 정수 픽셀 반복. ASF ④만.",
+  "visual_review": {
+    "status": "?????? ??? ? ?? ??; ??? ?? ?? ???",
+    "files": [
+      "Sheet_3x.png",
+      "Waist_8x.png",
+      "BagSize_8x.png",
+      "Sources/Bag_Compare_3x.png",
+      "Sources/Bag_Compare_8x.png",
+      "Sources/Flow_strip_8.png",
+      "Sources/Flow_strip_14.png",
+      "Sources/Flow_strip_20.png",
+      "Sources/Flow_strip_38.png"
+    ],
+    "bag": "? ? ?? ? 18px. ?? ?? ?? 5px ??; ?? 6? ??. ? ? ??.",
+    "grip": "?? ???? ?? ??? ??? ??? ??. BagIn F2? ?? ?? ??? ???? ??.",
+    "path": "F1 (51,95) ? F2 (55,91) ? F3 (59,87). ?? ?? ? ??.",
+    "loop": "F11?F0 ?? ????? ??, ? ?? ?? 260px. ?? ???? ??.",
+    "playback_verified": false,
+    "playback_blocker": "Browser access host unavailable; Computer Use was not approved to use Chrome"
+  },
+  "backup": {
+    "path": "Sources/prev1",
+    "files": 217,
+    "sha256": {
+      "attempts.json": "77f7d72b2f21c582f28a02101fc8900ca077fbe69169dd772ef37cbd8e2f8943",
+      "BagIn_F0.png": "0ba0acf93802fb83ca913edafa690b8f177272d08e857cbcae22678e18d3cc2c",
+      "BagIn_F1.png": "b4d9b5cf372fcd270cad7922bdfab23e1e44c347447202c55a5e93c7b54808ad",
+      "BagIn_F2.png": "fd8e3e970d85f2e71a2c08121bfd631c80f455c01a95e4d590fc45825049fe2b",
+      "BagIn_F3.png": "db43e7ffe0f7251a8bd3f47ef5ebe198bb462bd3093e18d10cdd666e2197c570",
+      "BagOut_F0.png": "db43e7ffe0f7251a8bd3f47ef5ebe198bb462bd3093e18d10cdd666e2197c570",
+      "BagOut_F1.png": "4a4c24b1ebc6687630652e92d9b8ccd2859c99b0c3e2218f1e527efaf5247dcf",
+      "BagOut_F2.png": "1ad8a415a92f0098e367c1cdc77e7b5bba04b5ded3d848d3b49bc76420987ee1",
+      "BagOut_F3.png": "c4aedfa49c46b870ca220df8fffe3ccab87dd789f2731ce4216c1a3833c9f71b",
+      "BagOut_F4.png": "1f9380a8e935a48208307c19dcc2eaa8dfc1151fd884016773272f65d282d29c",
+      "BagOut_F5.png": "0ba0acf93802fb83ca913edafa690b8f177272d08e857cbcae22678e18d3cc2c",
+      "Flow_3x.gif": "7c07a45a8b4f1e3adcdeb8616e117a1fcf6773d583cabf043c77f3d620ef8f17",
+      "Hero_BagIn_3x.gif": "290a8778211fe59dc7c0ba138bcdcd63eddd5d9c517fd38baff7fa84bf634b08",
+      "Hero_BagIn_4.png": "24923e4de6921b0b23661a67f8350252c7402c8deabca38ee351a911739c8371",
+      "Hero_BagOut_3x.gif": "30c01ceef898f3ed4e64fcf25855d68184a5a0df943cfc6fb53d05d0324aa9ff",
+      "Hero_BagOut_6.png": "582e891db9885bd2e61292f93bf7034fc171b92baac155660700e1a143382ea6",
+      "Hero_LongIdle_12.png": "ee63b2929a4a2feac2a72cf487478a7385d69ee16d2a6584f363ce76a024082b",
+      "Hero_LongIdle_3x.gif": "94d4fe3e455b628fa1a9abef268edee54a81f2403fdaeeb3106b28357100163a",
+      "LongIdle_F0.png": "0ba0acf93802fb83ca913edafa690b8f177272d08e857cbcae22678e18d3cc2c",
+      "LongIdle_F1.png": "fb49d115a5085f61cb17f83c5d53ae92c7e25ff94b87c78d94ebe98961d1a6d3",
+      "LongIdle_F10.png": "886e72c6335deb86232dc568e12286e349772efafe8538795cc2160caeeb005c",
+      "LongIdle_F11.png": "0395e97b9a38fca2ca1b0171058db8100f5a8d0c23e9673199a12cfa81c9d698",
+      "LongIdle_F2.png": "f10a92a981ace7520946e3d8a2e04502da64a9a7f68ab4cd205fb63a90f63444",
+      "LongIdle_F3.png": "7a626de8abb2ee1f397553930402ddf9b8efe1cd3c797b141290663c22bc7d7a",
+      "LongIdle_F4.png": "f69dcbea207ba339320a3c707b1f67f3d3ee57e562e3191ba3012f3b96c4ca97",
+      "LongIdle_F5.png": "8e786ef796e4f1b999fd538fe7dc04f36aed266243c47ee191ecfa5cc37b5b8d",
+      "LongIdle_F6.png": "2eecc2a1a9d26d1ded86009894fe912b28ef2e7c44b0f4e0e8a7975ef0641384",
+      "LongIdle_F7.png": "8f7be2a6aff82df4e173a0ca409674e0a868208556896c274b5a899c1bc5f742",
+      "LongIdle_F8.png": "7052ca875a4297acff9898e59c06b13fbe51ce95be08c0a3f01c17f0653bda6a",
+      "LongIdle_F9.png": "bd4ce092371f19e2edf2e07e2abd1ce0376f726971f33bc2a4fee85d89363093",
+      "README.md": "31e920e578716ef5ee99321f13c92cc8342725ec0d2e84e9967a6199a4df447f",
+      "Sheet_3x.png": "119f116c42f3b9bd53324f1c9ffbaecfe6fb5e9d02fdb28a056ed3542fe1c64c",
+      "validation.json": "8e34dfe1cb20ed9d2888413d3b22025bc25c4162660f4d0ba97fceb2f0133f68",
+      "Waist_8x.png": "f02d0d8336046aadffa8596f57a18b3707ce423cc317c7b991fce6e0fbaca8ce",
+      "Masks\\BagIn_F0.png": "0c0901ad0f879839f9bfe70a72e98fee18540a69fc083a6e1beafa6dd8e4e96d",
+      "Masks\\BagIn_F1.png": "a5bb58fda60a8c357fcbd3d5776c90442617c796e2eca1833196ecf138e6bcc0",
+      "Masks\\BagIn_F1_hand.png": "4a25fb7aca0971025d8ea16f24cabe5fc45905240ba57e033023f85938a7b83c",
+      "Masks\\BagIn_F2.png": "51a9d35e7c77dca0149b7e03d911a7cf2ecf5667458a248449581febf57d2003",
+      "Masks\\BagIn_F2_hand.png": "99ff0b3aac9b9f3f257ac04938f62d1817c6fdadd2c6a4040830dc3965598968",
+      "Masks\\BagIn_F3.png": "99ff0b3aac9b9f3f257ac04938f62d1817c6fdadd2c6a4040830dc3965598968",
+      "Masks\\BagOut_F0.png": "99ff0b3aac9b9f3f257ac04938f62d1817c6fdadd2c6a4040830dc3965598968",
+      "Masks\\BagOut_F1.png": "055b8fbbab3634271113d2240d4238eab7e85350584e6c8c3f909c69283c6ae7",
+      "Masks\\BagOut_F1_hand.png": "35d4f673ffcc78f2f6db1a37a37a14d8e0db02883bd648cd8ac088a3f49070e6",
+      "Masks\\BagOut_F2.png": "43a92332dc4e30cb95ef92845a7b044bcdb6d254aa20bf2e92acb6c5d49f094a",
+      "Masks\\BagOut_F2_hand.png": "bb9ea9f32207e95d89b3ad98430842f945f0f359a680971c009ac29141e2f15b",
+      "Masks\\BagOut_F3.png": "42e6ee2180e31b657b072ccd059ca1387b7311ad1dc831c1c09f4903f79d7c28",
+      "Masks\\BagOut_F3_hand.png": "7f70496b48a5884f82c9ced8fab66f853ccfa402bb82ff7883a163d5a7978c9c",
+      "Masks\\BagOut_F4.png": "3c764e38e9496c20fd22588dc67e52168631d7e766e8dc80c30dfc9589ca612b",
+      "Masks\\BagOut_F4_hand.png": "66a9d14c4d837476d06227f6b42385bba01a57655cdbf791fa18724cdbe51e2b",
+      "Masks\\BagOut_F5.png": "0c0901ad0f879839f9bfe70a72e98fee18540a69fc083a6e1beafa6dd8e4e96d",
+      "Masks\\LongIdle_F0.png": "0c0901ad0f879839f9bfe70a72e98fee18540a69fc083a6e1beafa6dd8e4e96d",
+      "Masks\\LongIdle_F0_hand.png": "38c33791631e682b6ac65ded059e03f20796ebae0e9bdedca5c15b6ca0d08c2b",
+      "Masks\\LongIdle_F1.png": "0c0901ad0f879839f9bfe70a72e98fee18540a69fc083a6e1beafa6dd8e4e96d",
+      "Masks\\LongIdle_F10.png": "9b5d9be1309d704838f6b75d9fec6d81c480dda33f52ddea8ba9c421fdc80a7f",
+      "Masks\\LongIdle_F10_hand.png": "57a74d2d730d980f3a9872a7434d09887c913e3243b420ce6d132f96880ed612",
+      "Masks\\LongIdle_F11.png": "0c0901ad0f879839f9bfe70a72e98fee18540a69fc083a6e1beafa6dd8e4e96d",
+      "Masks\\LongIdle_F11_hand.png": "38c33791631e682b6ac65ded059e03f20796ebae0e9bdedca5c15b6ca0d08c2b",
+      "Masks\\LongIdle_F1_hand.png": "38c33791631e682b6ac65ded059e03f20796ebae0e9bdedca5c15b6ca0d08c2b",
+      "Masks\\LongIdle_F2.png": "9e2f4da5584e07f6a0994f53e1cc9d37af2a9ecbb6c674e427b67742f9f7ff73",
+      "Masks\\LongIdle_F2_hand.png": "fd99bbbacbed7abf83c4eba8e23e6976e1c80bc68eaa9c682e482e2dcdee511d",
+      "Masks\\LongIdle_F3.png": "bc168af8564714e3a0b6f36a3dadfb85aef9b468de8914106cb53d02bac84189",
+      "Masks\\LongIdle_F3_hand.png": "623e202ebc491a3d5d508d9f41cd3b11ab05dc1d19a65b2fec9184c1f2bcb0de",
+      "Masks\\LongIdle_F4.png": "33b92568718ddb1dbb6334b4a2219967284ff4c74803a07d3ef9de558f9fc141",
+      "Masks\\LongIdle_F4_hand.png": "fd99bbbacbed7abf83c4eba8e23e6976e1c80bc68eaa9c682e482e2dcdee511d",
+      "Masks\\LongIdle_F5.png": "fcbe1de7f2ed593f2dae24f8faada70c58c8b2693c8bced846fc9ef41122291c",
+      "Masks\\LongIdle_F5_hand.png": "1e6c1873056339554ef3e06a319f538f8d2c4bd20c05e2e865a9e378c6adcde7",
+      "Masks\\LongIdle_F6.png": "3e09299e49386d49d7ad163f14f8013aaf74fb81e27d07ca82138519fb742ab3",
+      "Masks\\LongIdle_F6_hand.png": "ba6c48e4cfdfab28e77e07026e1cbc9f74849d01a1f63fe967eaf9982756c164",
+      "Masks\\LongIdle_F7.png": "fcbe1de7f2ed593f2dae24f8faada70c58c8b2693c8bced846fc9ef41122291c",
+      "Masks\\LongIdle_F7_hand.png": "1e6c1873056339554ef3e06a319f538f8d2c4bd20c05e2e865a9e378c6adcde7",
+      "Masks\\LongIdle_F8.png": "e6b41c439c49a41203509d2d71e040762e9a9fc9fff5047a93ad3c591ac8954c",
+      "Masks\\LongIdle_F8_hand.png": "38c33791631e682b6ac65ded059e03f20796ebae0e9bdedca5c15b6ca0d08c2b",
+      "Masks\\LongIdle_F9.png": "20de84acbcea354e02bbde657b147d3f98534092560cb3c603b50657027d1241",
+      "Masks\\LongIdle_F9_hand.png": "7ed06aa1d82c5854ac732a5fd36dee2318490d5c7fd13d4bc5cff20696581318",
+      "Sources\\AllLong_blocks_3x.png": "bcd70d0e8ce2ac4760bda0020a60a24a5e3d55b9ca5d054422d8254694e979fc",
+      "Sources\\assemble.py": "5be517d100b1e4d029d0e8650f74eb8abea00448213ae92f9e9c546ebc23832f",
+      "Sources\\BagIn_F1_bag_layer.png": "6aac537ae0b39a2e94d4e703aad6ed79686a1827731bcfb6240b35bc9f6524fb",
+      "Sources\\BagIn_F1_generated1.png": "414ca9a2981c5225931d144b0baf9402bca22910e6fe83de86d77acf2675e5d1",
+      "Sources\\BagIn_F1_prompt1.txt": "09484e0581ba822e27c2ba3ca3695b58ee073f61207fc59ab356382cd55b5d0e",
+      "Sources\\BagIn_F1_selected_blocks.png": "497a9ba89c44052b8453f8b25709ddfd8aa64f8cd210032477718eb520db66d8",
+      "Sources\\BagIn_F1_selected_recovery.json": "e5da659a060741b2ff61cb0a47f6c58caa4cf1f2eb44d619fafd9b5b3134dcb8",
+      "Sources\\BagIn_F1_waist.png": "b10e9234b1b9f3a006e499ce0a80ae96f9f229d50926f78b852df77d13733b8c",
+      "Sources\\BagIn_F2_bag_layer.png": "e4796e96129411905d4df88400fc402f444eb54df34fa341454535b6e28ebf70",
+      "Sources\\BagIn_F2_generated1.png": "12915edd9eb1b0022ac19b327486b7cce34514d0199e68f251b78ba1bd6eea5b",
+      "Sources\\BagIn_F2_prompt1.txt": "ba09a9eadd3d9779ec5151164c7b523faf2ebd6060bc80ed5dfc42e26f911a63",
+      "Sources\\BagIn_F2_selected_blocks.png": "06044eea4bfa53c532a4d7973229e968c0282f85801f8b9aa3fd5f6162fdba7e",
+      "Sources\\BagIn_F2_selected_recovery.json": "e4b4c7e4f0e24efd7b207a136f7c304314dd25fd4a1b10733f8e7f5ad480317f",
+      "Sources\\BagIn_F2_waist.png": "741cb34adcf2d92bf587ffe74345afd8f55414c170827abf60402be27cd27aa7",
+      "Sources\\BagIn_review_3x.png": "c2c2e6c68de2f132e8a28d9df9313b7ef97847370ab179228cdeb39ce2bbe532",
+      "Sources\\BagOut_F1_bag_layer.png": "e4796e96129411905d4df88400fc402f444eb54df34fa341454535b6e28ebf70",
+      "Sources\\BagOut_F1_blocks.png": "a421628c8d8408ce2c46374d58ccbe7b8bd713082945668eb383ddfea1ad7a1e",
+      "Sources\\BagOut_F1_blocks3.png": "72d6ccadf5f635b96ee756b92fddd16f79d5283422561710d30b2a30b394917c",
+      "Sources\\BagOut_F1_blocks3_3x.png": "2b90cd97d21f311e96824855aa8c78f963ea493e055126ea0a17e81b25f276ed",
+      "Sources\\BagOut_F1_blocks_3x.png": "eea818981220b56f9bd6f486654b04b384391d8409ca08ddf29904bc201e41c7",
+      "Sources\\BagOut_F1_generated1.png": "96e796a9c5f4438323c4d85e6cc3a7ffe16e6a93b5d8100d30a92e999503551d",
+      "Sources\\BagOut_F1_generated3.png": "0afed6f2ce51f73301de32052740d6d9a4a2a939c33e26d6799c869e04469aaa",
+      "Sources\\BagOut_F1_prompt1.txt": "7b9977fed63270c6b4bd206998abb458b8c6e79b542450bd91a4370524b02794",
+      "Sources\\BagOut_F1_prompt2.txt": "4276a528dacf87321f3c6aca938aaeb19f0a276a94c031a49f2e85572263cc55",
+      "Sources\\BagOut_F1_prompt3.txt": "9dd5db971abb3db9c7d595e2ff86d7a1e0c58ae9aaf9d159cb60b09c80d30bf0",
+      "Sources\\BagOut_F1_recovery.json": "5b5082690822120f2fe2b4345a59fb7b487d73749c5afebe17dc7f878e6739f0",
+      "Sources\\BagOut_F1_selected_blocks.png": "72d6ccadf5f635b96ee756b92fddd16f79d5283422561710d30b2a30b394917c",
+      "Sources\\BagOut_F1_selected_recovery.json": "df42370059167e938a7a8835ae133b54c8655f208c2368e303a6810979d47257",
+      "Sources\\BagOut_F1_waist.png": "5a817cd1758b4b892e542076fa91bde50017e5c597c9b25d65675c8f58cd890b",
+      "Sources\\BagOut_F2_bag_layer.png": "11e0199040a764b84e537180ef451753de86369dd8c7999d1ebe1a1f0ac1476c",
+      "Sources\\BagOut_F2_generated1.png": "d42000fc17ceaf960f25d13b894251df64b8cd6ff8ca7b9316493f4518c4a335",
+      "Sources\\BagOut_F2_generated2.png": "a9cd30faa9f78adad2800e744e0da587d150b42026a89e63db366e7d05fcf011",
+      "Sources\\BagOut_F2_prompt1.txt": "e3e88ece185514c25eb69cc202f63939143c4482268f0fa15fed2f2ecf593cf8",
+      "Sources\\BagOut_F2_prompt2.txt": "f50e851422c8c701d05ca9e5343ec136fb3f71e09a0e2d1464200302f32066a3",
+      "Sources\\BagOut_F2_selected_blocks.png": "43f5f9eec072b20eec3bd19c44571634a26795481d8fcc4c0c972c460b8db7bd",
+      "Sources\\BagOut_F2_selected_recovery.json": "43b4c5b4f960d9f585022ad24ea757681ad8377b6d42a897193dd2f17c9f3dd4",
+      "Sources\\BagOut_F2_waist.png": "ca5e1d1416b8d3e250163c24c00987fd8728cc365340e41a34c7b6ed11204630",
+      "Sources\\BagOut_F3_bag_layer.png": "da2d3c22b39d90bd52af35972a36046689499071a4b8b5fa69fdb581564851c8",
+      "Sources\\BagOut_F3_generated1.png": "fcccd0cdf95f64f99a6226566612984735c2be3c7a81187dd95645e75501167b",
+      "Sources\\BagOut_F3_generated2.png": "a020d67bde472c8302d7d689baff987245daf87b49d8c80e6917dcd7cc3b6639",
+      "Sources\\BagOut_F3_prompt1.txt": "030b9ef79a751f6779e899e2994d8b1b08b447cc62f9cc9e83f205d826a6c19a",
+      "Sources\\BagOut_F3_prompt2.txt": "5e0f833d178b8254fe9e15781f7cb365683ff2fdb6460bfd34006e473a8decb3",
+      "Sources\\BagOut_F3_selected_blocks.png": "2892360fdcb5341ff5ef936eb326d8947dcf1692b71f111cb457e3713e921dc5",
+      "Sources\\BagOut_F3_selected_recovery.json": "47d3a83e882eb9e4acd2695ddfb53480ef958d6a4bda75983c6e1fd271bd49ad",
+      "Sources\\BagOut_F3_waist.png": "d639fa77e67071dbbc5f49771f16ab0df146c536aaad27c6b2fede201bdd79d0",
+      "Sources\\BagOut_F4_bag_layer.png": "54f8c36d3eba47a03ed1cf37f95996ccc917109b375231d4902fa1e8d72acff6",
+      "Sources\\BagOut_F4_generated1.png": "62cc8f999ec254e28a234fd9a3143935871344ba8e01f577249944b985b3d860",
+      "Sources\\BagOut_F4_prompt1.txt": "85ddfddabd1066157e6dda9f1c39ced71068c8f27c166b13cf74d8c42a77c941",
+      "Sources\\BagOut_F4_selected_blocks.png": "0ee7f56cf162d4292d1b38ff9b902b9cf5156f36fd5fd71b59f46268e16285ba",
+      "Sources\\BagOut_F4_selected_recovery.json": "236b1495ab2111bdcdf072e1cc3aee0ef3c5af5a2327c3bb79ebd82e4db24e5f",
+      "Sources\\BagOut_F4_waist.png": "47c121575cc171190392dfe82411450ff475b898f598022421b26cbbf1f1dd97",
+      "Sources\\BagOut_review_3x.png": "70e7f0a64e964f30cd4db8fca8c081775eb7ee850c5a18f855ca041e727793a5",
+      "Sources\\Body_base.png": "c9ecd1ff6a2bd7eb59e6354084f758f78637de50fce74bd1073164a9668c76e7",
+      "Sources\\build.py": "a6b7b30723c46753c29f83a0b62f580d39373eb84f799b3a90533da2fd847029",
+      "Sources\\compose.py": "7e78bd09428a4b93fce746b0dddacf964786bb8a47310a03524a0178d28a4b31",
+      "Sources\\composition.json": "8ef68b56eec8a7c0fe5702e680146742b03e7de350ca7aac4df832d65c2ab8f3",
+      "Sources\\finalize.py": "326334528c44218d37da4f04994c1bb4aa87a11060ad309a5d8529b155649a83",
+      "Sources\\Idle0.png": "db43e7ffe0f7251a8bd3f47ef5ebe198bb462bd3093e18d10cdd666e2197c570",
+      "Sources\\Idle0_8x.png": "351b9a2ee076268795d214743f9967c70ac4244fe33dd5e71fd36374cb626617",
+      "Sources\\init_attempts.py": "a3807ccbf29fec1ab152612b6d603f3686c28e20e0808a4226a2faf8e6bf95fd",
+      "Sources\\Keys_blocks_3x.png": "274cc69a009461e36b8be52c0fd944561674ccf166dd55a898f061aad4ed8a84",
+      "Sources\\Keys_composed_3x.png": "74ee00ae13b4b08e39008bc10fb0ff301eca97abb2a6bf2576876daf33bacabd",
+      "Sources\\LongIdle_F0_bag_layer.png": "058effd403153c8dfeff38deedd6dfeee1a5f6362a22c4c4e46c20d15a43028f",
+      "Sources\\LongIdle_F0_blocks.png": "654b1daaff7479c376f6c6d48debd04a2da61245c8eb427952801ce781c61e60",
+      "Sources\\LongIdle_F0_blocks_3x.png": "9e5c6a39c5066d661198b40076487b43ffc639922df1ef9cda571910f8eff9e6",
+      "Sources\\LongIdle_F0_generated1.png": "63e00611c95b4fe8e415df2c2b427ba244d5a3f998ec15b0e6340ce1c3f884de",
+      "Sources\\LongIdle_F0_prompt1.txt": "bc6da58611690caf5c03bd5bc91d3c06e2808609372e165d34f06f9824ede346",
+      "Sources\\LongIdle_F0_recovery.json": "3371e3f291fc81cd97dbf15b303e5f588718b206fd932d42aedebdea22f0914b",
+      "Sources\\LongIdle_F0_ref8x.png": "b979683d10cce5bd4dfc7cb32856129bf15613477fb2a543bd676ad28a1efd2c",
+      "Sources\\LongIdle_F10_bag_layer.png": "79f4a7055efce1ca89bf364c890a8314eec70c58e96bf48fbf390acbdcc0fe22",
+      "Sources\\LongIdle_F10_blocks.png": "3228def6768e4e27281ffa02dad88ea48d400d9d33d69f1b372f93f0cb2c49a0",
+      "Sources\\LongIdle_F10_blocks_3x.png": "ac933768086bfa80484e03c68a65723df543474d1d56113b87209a721d787394",
+      "Sources\\LongIdle_F10_generated1.png": "9f8fe08581f65421a2bb967b20e625803cff8b9b756c96c9d8ecccfd67ab1985",
+      "Sources\\LongIdle_F10_prompt1.txt": "57b94d0715d39e95856a1ee713e7c8774dd158aaa85f73e863c879f9537e53c8",
+      "Sources\\LongIdle_F10_recovery.json": "2e8ad31cda142b1596f415d002b33cb2af2160113ea856c031914ab1fc2048ad",
+      "Sources\\LongIdle_F11_bag_layer.png": "058effd403153c8dfeff38deedd6dfeee1a5f6362a22c4c4e46c20d15a43028f",
+      "Sources\\LongIdle_F11_blocks.png": "2da85069d8172b4188b1faa57939f61bde496b7f897e104fafce658f20135a1a",
+      "Sources\\LongIdle_F11_blocks_3x.png": "bfef2e4ba322f3e46f4e64b668898cd49977393ce62173104393bf48aac0a584",
+      "Sources\\LongIdle_F11_generated1.png": "2eb6012ca480defe299c8eb8202ce0cc3403a61b3e4c8c08eb7d21f3f03d1cb4",
+      "Sources\\LongIdle_F11_prompt1.txt": "30529e9d31d0fdb26c6058c63c3606bc1bb543a42d55c7bf1232b7be69d51210",
+      "Sources\\LongIdle_F11_recovery.json": "78364bee77f00bdbd5306ca2d2b03e26de4eb434b83b77e668b3c54733d50f75",
+      "Sources\\LongIdle_F1_bag_layer.png": "058effd403153c8dfeff38deedd6dfeee1a5f6362a22c4c4e46c20d15a43028f",
+      "Sources\\LongIdle_F1_blocks.png": "c1368bf44586c9baf55d16f498263168b9572031171ad70085b6e33b87db2f11",
+      "Sources\\LongIdle_F1_blocks_3x.png": "ee11f470daf6948fa1c9abdbd9bb3f7212740b29e740cd4c7d9a513189c8e792",
+      "Sources\\LongIdle_F1_generated1.png": "881df90be86d1f523ea836be1148030396069b727a1905e3f010bf9b90292c68",
+      "Sources\\LongIdle_F1_prompt1.txt": "6ecd6c3d13a71b7ea9cba5ea1929e72dee8dc78eb16e4d60c58e336ab945e791",
+      "Sources\\LongIdle_F1_recovery.json": "e80a9190427b56c42c755c663f633f1e9d7288cce0cb0a3fff6031b86e60334c",
+      "Sources\\LongIdle_F2_bag_layer.png": "8472c57032efc96474b39915cf4768369e363ba64e10c4288be14c0e1897c220",
+      "Sources\\LongIdle_F2_blocks.png": "1c2ee9cad53d79a45f03a1828b5e1daebd6fe49d7394e7e3d4457e4c4d59007f",
+      "Sources\\LongIdle_F2_blocks_3x.png": "5b878f86bbf4081f7ba6c85729f5121bee5940f35adf0ddb22561d6511281f9c",
+      "Sources\\LongIdle_F2_generated1.png": "4b1f1a2a34db20eb5e15016d75550378ec258af1d08537a2b0a74eb80c9556a5",
+      "Sources\\LongIdle_F2_prompt1.txt": "044799e772d36afca1f426e49ea790665cc74b0cf008360bf7627dfd7ce5f3fe",
+      "Sources\\LongIdle_F2_recovery.json": "4103a8b58567e031b8b1d1b5138422f70fc35d2af7e04fd7bd8dd90fb0b0ad9c",
+      "Sources\\LongIdle_F3_bag_layer.png": "39302f33e4cf526b8200bfe559a1191a0de766a86a283c88c5ecd98992be84fe",
+      "Sources\\LongIdle_F3_blocks.png": "f5a0818fdeec9f9108bbf15f048130f62ada7e556eb8758505e83c0b20098561",
+      "Sources\\LongIdle_F3_blocks_3x.png": "4c876dc7e625f788f8a2e88d5685691bcf1f15d122fee6f149a5de8761df85c7",
+      "Sources\\LongIdle_F3_generated1.png": "00d2c7b93bf2fb90d947df580ad45d8e9e7e6e1b53b7a5d418c64d9ef90f6d79",
+      "Sources\\LongIdle_F3_prompt1.txt": "054389da756959196c13a71b2439b07d782b29d7ca4cd1dbc2e529e98c53b078",
+      "Sources\\LongIdle_F3_recovery.json": "bc180b09fde555e0d77df2394e70aa1e5824b0ffc0cfd4c8c81c69109bf7f7f3",
+      "Sources\\LongIdle_F3_ref8x.png": "6319f18de1f8139093af54a719d1a9e736a74492e008e6455ffef3f903bc8069",
+      "Sources\\LongIdle_F4_bag_layer.png": "5899ed4557296a4be93f306d6ef3cb47ff2e895f1e527648b9e602f408510850",
+      "Sources\\LongIdle_F4_blocks.png": "f3417fa80e028e0c6e284f7707cf18e44d59290f0700b0692436c0b89d7edb72",
+      "Sources\\LongIdle_F4_blocks_3x.png": "713c14cf832c9c2bc676c26d1162a42ddb1dfc21556a5014fca5822b89b1a580",
+      "Sources\\LongIdle_F4_generated1.png": "f597511e12bcf3535aceabbff07d1992f3809ec6cdf7aa3adbe97c045384c7ed",
+      "Sources\\LongIdle_F4_prompt1.txt": "17816db5ddab3c6cdffea01cf9a612235289e3466dbda39787b2484d6deacc71",
+      "Sources\\LongIdle_F4_recovery.json": "80cb99884eb2e95148d3bce32b1184214494f5c7c4a3c65160b798cb6db11ce1",
+      "Sources\\LongIdle_F5_bag_layer.png": "8f68e2de3d5daa0b7b69f142c8a89240af57f5fc485ca1e0cdef3c473a61293b",
+      "Sources\\LongIdle_F5_blocks.png": "704eca7b22ba511787d465c20c9bd9aa82d00fd0ae43906948a3ed0d5ef64e2b",
+      "Sources\\LongIdle_F5_blocks_3x.png": "d8f529c987e6e401794eebf8488130952c7528142c75c333d2065a226304091a",
+      "Sources\\LongIdle_F5_generated1.png": "7a9c6e2f7e6feb550e02bf2237721cb317ebe308556a85b7c727c3b62241590f",
+      "Sources\\LongIdle_F5_prompt1.txt": "a0568c5e716f765be1b9f0d9e78ef45825385c37f63620a2e21c2b600171481f",
+      "Sources\\LongIdle_F5_recovery.json": "324aecdffa7835e5a67435d72f2ec59a2fdc7352c8581564e283f482f2843615",
+      "Sources\\LongIdle_F6_bag_layer.png": "399e661cc9bf7cca02842fe61d05c5132d89dab247ac562a913f183a50c6174f",
+      "Sources\\LongIdle_F6_blocks.png": "6a776b5c68fcfc9fe1c1b691df271b3937628c0aee969172bf30e63c1adcd7cd",
+      "Sources\\LongIdle_F6_blocks_3x.png": "e1c723e7c753317a470fa4ada2227b377a02736dc6ebc2917e247b7085fa8f9c",
+      "Sources\\LongIdle_F6_generated1.png": "70213886a5afa8a1ba0d0dee4234cec74ccb8c62fa6a425a560ce8b2ef369529",
+      "Sources\\LongIdle_F6_prompt1.txt": "977b9d5c8a1dd8ffb9aa869a14a74729623bbfe1e48e58d36fff90aeb9fbd1e7",
+      "Sources\\LongIdle_F6_recovery.json": "50443ea2f097d8801d14bc01c6f811fca58a0b74e5a2e85c91bdfdd9533f3ff4",
+      "Sources\\LongIdle_F6_ref8x.png": "9227c10d6959b4481cccdb059d78de88a02403dfb0c8e3a9359dae1424bbec45",
+      "Sources\\LongIdle_F7_bag_layer.png": "8f68e2de3d5daa0b7b69f142c8a89240af57f5fc485ca1e0cdef3c473a61293b",
+      "Sources\\LongIdle_F7_blocks.png": "e1612b1936eefa849f1c7807c1b5f084a47a39397fd228d4b760ab012dd5522b",
+      "Sources\\LongIdle_F7_blocks_3x.png": "d8392cde3593551f6b3b450808b555d6c81e3a5288e2f78c3b32db41cbbbe0f2",
+      "Sources\\LongIdle_F7_generated1.png": "7610cdb1aaf1830a55dd786aa71909e229ba2a8c01095a04911fe38ca2b77e21",
+      "Sources\\LongIdle_F7_prompt1.txt": "6b70554ff8717c4906aaa580737e7c147165b611540caf74f5b9a96bf8937ef7",
+      "Sources\\LongIdle_F7_recovery.json": "506a9a09f5387e1d769bdfb7ca76b0ef0c3734c2c2eae0d490be04c08eaf89ee",
+      "Sources\\LongIdle_F8_bag_layer.png": "c7e8a56c6cfa119c2bc4cfb281fe1b54fb1c093bf028cb260a752b5d3de6589a",
+      "Sources\\LongIdle_F8_blocks.png": "3d4e3895f5abe3127cd10c38230405ea54206b9260dbc846741829085e9742d9",
+      "Sources\\LongIdle_F8_blocks_3x.png": "df2fe99a08f5ce7b69bcec48a26dd07cb8cc252d911437c661adf5f8233393b3",
+      "Sources\\LongIdle_F8_generated1.png": "d7bcf40667443b4ea3da40e80553d64898f0ffae21024db67b432193bdc1436b",
+      "Sources\\LongIdle_F8_prompt1.txt": "7c970ee8c8856412a73c668b2409ab33364b992884283a932bc48123633556bd",
+      "Sources\\LongIdle_F8_recovery.json": "2d298ea46689664fbd382008a7a7f16cf8fb730500d6bc5972b59fb7d6f6fda5",
+      "Sources\\LongIdle_F9_bag_layer.png": "f0a56a4aa9bd7e5bd020bc5b6d462a413cf493a5e1d69e90d4a96365d1bb0e43",
+      "Sources\\LongIdle_F9_blocks.png": "f814977dd798de8840e944f12893c26f97111cfaea89d39225995d4975779d3f",
+      "Sources\\LongIdle_F9_blocks_3x.png": "77c8907fe89927bebb179661dbf6a73bbfe02ea9612b04da5a42a6fe261d8677",
+      "Sources\\LongIdle_F9_generated1.png": "f6cc94d4e5fb1f00f53cf26c35b60cf0762aee51052cf92fbafd74d1a27bebd5",
+      "Sources\\LongIdle_F9_prompt1.txt": "139d05f2f610e3bc513229d0b7123b509a2a1422de30e9d444ddd3f3168dc4f9",
+      "Sources\\LongIdle_F9_recovery.json": "9d1d6842423f24f98c3b51a111c99711366739bec06fe5d75a4d5f493b70c9a7",
+      "Sources\\LongIdle_F9_ref8x.png": "47ad6d86559e16398d36b91e342c522ce0f14803c2473e956b14953272638904",
+      "Sources\\LongIdle_review_3x.png": "83da81b6407937c3432413d0a2d7db0689ade9aa97136189d9538d5a686776e5",
+      "Sources\\Long_review0_3x.png": "bc7da7c37db7a57147466132c488a10040bbefdd3129a96e32388c0a537e880b",
+      "Sources\\Long_review6_3x.png": "f5ec30fb508625f71016180db3e7228b1658858a7f951efad5bda74688784af8",
+      "Sources\\recovery_reference.py": "614a03bcb766f547cbe9b75fe9586d7f195b1e35bf4ddb9444dc6ee6767139a3",
+      "Sources\\Transition_blocks_3x.png": "ca51321c03e93547ea5ebf40f0cd8fd2e43ff00680cb74e13d36d73f77dcdb61"
+    }
+  }
+}

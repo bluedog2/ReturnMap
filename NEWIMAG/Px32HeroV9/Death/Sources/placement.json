@@ -1,0 +1,306 @@
+{
+  "order": [
+    "F0",
+    "I0",
+    "F1",
+    "I1",
+    "F2",
+    "I2",
+    "F3",
+    "I3",
+    "F4",
+    "F5"
+  ],
+  "offset": [
+    -11,
+    -2
+  ],
+  "frames": {
+    "F0": {
+      "source_frame": 0,
+      "waist": [
+        63,
+        92
+      ],
+      "previous_waist": [
+        63,
+        92
+      ],
+      "impulse": [
+        0,
+        0
+      ],
+      "strict_position": [
+        52,
+        90
+      ],
+      "bag_position": [
+        52,
+        90
+      ],
+      "correction": [
+        0,
+        0
+      ],
+      "arm_reuse_translation": [
+        0,
+        0
+      ]
+    },
+    "I0": {
+      "source_frame": 0,
+      "waist": [
+        63,
+        92
+      ],
+      "previous_waist": [
+        63,
+        92
+      ],
+      "impulse": [
+        0,
+        0
+      ],
+      "strict_position": [
+        52,
+        90
+      ],
+      "bag_position": [
+        52,
+        90
+      ],
+      "correction": [
+        0,
+        0
+      ],
+      "arm_reuse_translation": [
+        -1,
+        0
+      ]
+    },
+    "F1": {
+      "source_frame": 1,
+      "waist": [
+        61,
+        100
+      ],
+      "previous_waist": [
+        63,
+        92
+      ],
+      "impulse": [
+        0,
+        0
+      ],
+      "strict_position": [
+        52,
+        90
+      ],
+      "bag_position": [
+        50,
+        97
+      ],
+      "correction": [
+        -2,
+        7
+      ],
+      "arm_reuse_translation": null
+    },
+    "I1": {
+      "source_frame": 1,
+      "waist": [
+        61,
+        100
+      ],
+      "previous_waist": [
+        61,
+        100
+      ],
+      "impulse": [
+        0,
+        0
+      ],
+      "strict_position": [
+        50,
+        98
+      ],
+      "bag_position": [
+        50,
+        98
+      ],
+      "correction": [
+        0,
+        0
+      ],
+      "arm_reuse_translation": null
+    },
+    "F2": {
+      "source_frame": 2,
+      "waist": [
+        64,
+        115
+      ],
+      "previous_waist": [
+        61,
+        100
+      ],
+      "impulse": [
+        0,
+        0
+      ],
+      "strict_position": [
+        50,
+        98
+      ],
+      "bag_position": [
+        53,
+        110
+      ],
+      "correction": [
+        3,
+        12
+      ],
+      "arm_reuse_translation": null
+    },
+    "I2": {
+      "source_frame": 2,
+      "waist": [
+        64,
+        115
+      ],
+      "previous_waist": [
+        64,
+        115
+      ],
+      "impulse": [
+        0,
+        0
+      ],
+      "strict_position": [
+        53,
+        113
+      ],
+      "bag_position": [
+        53,
+        112
+      ],
+      "correction": [
+        0,
+        -1
+      ],
+      "arm_reuse_translation": null
+    },
+    "F3": {
+      "source_frame": 3,
+      "waist": [
+        51,
+        112
+      ],
+      "previous_waist": [
+        64,
+        115
+      ],
+      "impulse": [
+        0,
+        0
+      ],
+      "strict_position": [
+        53,
+        113
+      ],
+      "bag_position": [
+        40,
+        111
+      ],
+      "correction": [
+        -13,
+        -2
+      ],
+      "arm_reuse_translation": null
+    },
+    "I3": {
+      "source_frame": 3,
+      "waist": [
+        51,
+        112
+      ],
+      "previous_waist": [
+        51,
+        112
+      ],
+      "impulse": [
+        0,
+        0
+      ],
+      "strict_position": [
+        40,
+        110
+      ],
+      "bag_position": [
+        40,
+        112
+      ],
+      "correction": [
+        0,
+        2
+      ],
+      "arm_reuse_translation": null
+    },
+    "F4": {
+      "source_frame": 4,
+      "waist": [
+        49,
+        115
+      ],
+      "previous_waist": [
+        51,
+        112
+      ],
+      "impulse": [
+        0,
+        0
+      ],
+      "strict_position": [
+        40,
+        110
+      ],
+      "bag_position": [
+        32,
+        112
+      ],
+      "correction": [
+        -8,
+        2
+      ],
+      "arm_reuse_translation": null
+    },
+    "F5": {
+      "source_frame": 5,
+      "waist": [
+        48,
+        115
+      ],
+      "previous_waist": [
+        49,
+        115
+      ],
+      "impulse": [
+        0,
+        0
+      ],
+      "strict_position": [
+        38,
+        113
+      ],
+      "bag_position": [
+        31,
+        112
+      ],
+      "correction": [
+        -7,
+        -1
+      ],
+      "arm_reuse_translation": null
+    }
+  }
+}

@@ -1,0 +1,238 @@
+{
+  "Fall_F0": {
+    "current_hip": [
+      62,
+      87
+    ],
+    "previous_frame": "Fall_F3",
+    "previous_hip": [
+      62,
+      88
+    ],
+    "base_offset": [
+      -11,
+      -2
+    ],
+    "inertial_y": -2,
+    "bag_position": [
+      51,
+      84
+    ],
+    "relative_current_hip_y": -1
+  },
+  "Fall_F1": {
+    "current_hip": [
+      62,
+      87
+    ],
+    "previous_frame": "Fall_F0",
+    "previous_hip": [
+      62,
+      87
+    ],
+    "base_offset": [
+      -11,
+      -2
+    ],
+    "inertial_y": -1,
+    "bag_position": [
+      51,
+      84
+    ],
+    "relative_current_hip_y": -1
+  },
+  "Fall_F2": {
+    "current_hip": [
+      62,
+      88
+    ],
+    "previous_frame": "Fall_F1",
+    "previous_hip": [
+      62,
+      87
+    ],
+    "base_offset": [
+      -11,
+      -2
+    ],
+    "inertial_y": -1,
+    "bag_position": [
+      51,
+      84
+    ],
+    "relative_current_hip_y": -2
+  },
+  "Fall_F3": {
+    "current_hip": [
+      62,
+      88
+    ],
+    "previous_frame": "Fall_F2",
+    "previous_hip": [
+      62,
+      88
+    ],
+    "base_offset": [
+      -11,
+      -2
+    ],
+    "inertial_y": -1,
+    "bag_position": [
+      51,
+      85
+    ],
+    "relative_current_hip_y": -1
+  },
+  "Rise_F0": {
+    "current_hip": [
+      65,
+      87
+    ],
+    "previous_frame": "Rise_F2",
+    "previous_hip": [
+      65,
+      87
+    ],
+    "base_offset": [
+      -11,
+      -2
+    ],
+    "inertial_y": 1,
+    "bag_position": [
+      54,
+      86
+    ],
+    "relative_current_hip_y": 1
+  },
+  "Rise_F1": {
+    "current_hip": [
+      65,
+      87
+    ],
+    "previous_frame": "Rise_F0",
+    "previous_hip": [
+      65,
+      87
+    ],
+    "base_offset": [
+      -11,
+      -2
+    ],
+    "inertial_y": 2,
+    "bag_position": [
+      54,
+      87
+    ],
+    "relative_current_hip_y": 2
+  },
+  "Rise_F2": {
+    "current_hip": [
+      65,
+      87
+    ],
+    "previous_frame": "Rise_F1",
+    "previous_hip": [
+      65,
+      87
+    ],
+    "base_offset": [
+      -11,
+      -2
+    ],
+    "inertial_y": 1,
+    "bag_position": [
+      54,
+      86
+    ],
+    "relative_current_hip_y": 1
+  },
+  "Apex_F0": {
+    "current_hip": [
+      65,
+      87
+    ],
+    "previous_frame": "Rise_F2",
+    "previous_hip": [
+      65,
+      87
+    ],
+    "base_offset": [
+      -11,
+      -2
+    ],
+    "inertial_y": 0,
+    "bag_position": [
+      54,
+      85
+    ],
+    "relative_current_hip_y": 0
+  },
+  "Apex_F1": {
+    "current_hip": [
+      64,
+      87
+    ],
+    "previous_frame": "Apex_F0",
+    "previous_hip": [
+      65,
+      87
+    ],
+    "base_offset": [
+      -11,
+      -2
+    ],
+    "inertial_y": 0,
+    "bag_position": [
+      54,
+      85
+    ],
+    "relative_current_hip_y": 0
+  },
+  "Apex_F2": {
+    "current_hip": [
+      62,
+      87
+    ],
+    "previous_frame": "Apex_F1",
+    "previous_hip": [
+      64,
+      87
+    ],
+    "base_offset": [
+      -11,
+      -2
+    ],
+    "inertial_y": 0,
+    "bag_position": [
+      53,
+      85
+    ],
+    "relative_current_hip_y": 0
+  },
+  "flow_boundary": {
+    "Fall_F0": {
+      "previous_frame": "Apex_F2",
+      "previous_hip": [
+        62,
+        87
+      ],
+      "inertial_y": -1,
+      "bag_position": [
+        51,
+        84
+      ]
+    },
+    "Rise_F0": {
+      "previous_frame": "JumpStart_F2",
+      "previous_hip": [
+        65,
+        87
+      ],
+      "inertial_y": 1,
+      "bag_position": [
+        54,
+        86
+      ]
+    }
+  }
+}

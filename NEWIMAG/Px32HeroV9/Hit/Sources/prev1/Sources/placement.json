@@ -1,0 +1,138 @@
+{
+  "order": [
+    "F0",
+    "I0",
+    "F1",
+    "F2"
+  ],
+  "offset": [
+    -11,
+    -2
+  ],
+  "frames": {
+    "F0": {
+      "source_frame": 0,
+      "waist": [
+        69,
+        94
+      ],
+      "previous_waist": [
+        69,
+        94
+      ],
+      "impulse": [
+        0,
+        0
+      ],
+      "strict_position": [
+        58,
+        92
+      ],
+      "bag_position": [
+        58,
+        92
+      ],
+      "correction": [
+        0,
+        0
+      ],
+      "arm_reuse_translation": [
+        0,
+        0
+      ]
+    },
+    "I0": {
+      "source_frame": 0,
+      "waist": [
+        69,
+        94
+      ],
+      "previous_waist": [
+        69,
+        94
+      ],
+      "impulse": [
+        2,
+        0
+      ],
+      "strict_position": [
+        60,
+        92
+      ],
+      "bag_position": [
+        60,
+        92
+      ],
+      "correction": [
+        0,
+        0
+      ],
+      "arm_reuse_translation": [
+        1,
+        0
+      ]
+    },
+    "F1": {
+      "source_frame": 1,
+      "waist": [
+        71,
+        99
+      ],
+      "previous_waist": [
+        69,
+        94
+      ],
+      "impulse": [
+        2,
+        0
+      ],
+      "strict_position": [
+        60,
+        92
+      ],
+      "bag_position": [
+        60,
+        92
+      ],
+      "correction": [
+        0,
+        0
+      ],
+      "arm_reuse_translation": [
+        3,
+        6
+      ]
+    },
+    "F2": {
+      "source_frame": 2,
+      "waist": [
+        69,
+        94
+      ],
+      "previous_waist": [
+        71,
+        99
+      ],
+      "impulse": [
+        0,
+        0
+      ],
+      "strict_position": [
+        60,
+        97
+      ],
+      "bag_position": [
+        58,
+        92
+      ],
+      "correction": [
+        -2,
+        -5
+      ],
+      "arm_reuse_translation": [
+        0,
+        1
+      ]
+    }
+  }
+}

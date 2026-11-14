@@ -1,0 +1,245 @@
+{
+  "status": "부분 완료 — 동작 표현 제한",
+  "source_body": "승인 Hero_Idle_8.png 0번만 사용; 옛 Hit 몸 사용 없음",
+  "frames": [
+    {
+      "frame": "F0",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "approved_palette": true,
+      "bag_offset_from_idle0": [
+        1,
+        0
+      ],
+      "bag_top_left": [
+        52,
+        95
+      ],
+      "bag_chain_visible_mismatch": 0,
+      "protected_lower_leg_mismatch": 0,
+      "head_translation": [
+        -3,
+        0
+      ],
+      "difference_from_idle0": 3035
+    },
+    {
+      "frame": "F1",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "approved_palette": true,
+      "bag_offset_from_idle0": [
+        2,
+        0
+      ],
+      "bag_top_left": [
+        53,
+        95
+      ],
+      "bag_chain_visible_mismatch": 0,
+      "protected_lower_leg_mismatch": 0,
+      "head_translation": [
+        -4,
+        0
+      ],
+      "difference_from_idle0": 3212
+    },
+    {
+      "frame": "F2",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "approved_palette": true,
+      "bag_offset_from_idle0": [
+        2,
+        0
+      ],
+      "bag_top_left": [
+        53,
+        95
+      ],
+      "bag_chain_visible_mismatch": 0,
+      "protected_lower_leg_mismatch": 0,
+      "head_translation": [
+        -1,
+        0
+      ],
+      "difference_from_idle0": 2437
+    },
+    {
+      "frame": "F3",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "approved_palette": true,
+      "bag_offset_from_idle0": [
+        0,
+        0
+      ],
+      "bag_top_left": [
+        51,
+        95
+      ],
+      "bag_chain_visible_mismatch": 0,
+      "protected_lower_leg_mismatch": 0,
+      "head_translation": [
+        0,
+        0
+      ],
+      "difference_from_idle0": 248
+    }
+  ],
+  "frame_spec": {
+    "count": 4,
+    "fps": 16,
+    "duration_seconds": 0.25,
+    "sheet_size": [
+      512,
+      128
+    ]
+  },
+  "gifs": {
+    "Hero_Hit_3x.gif": {
+      "frames": 4,
+      "durations_ms": [
+        60,
+        60,
+        70,
+        60
+      ],
+      "total_ms": 250,
+      "visible_pixel_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "Compare_3x.gif": {
+      "frames": 4,
+      "durations_ms": [
+        60,
+        60,
+        70,
+        60
+      ],
+      "total_ms": 250,
+      "visible_pixel_mismatches": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "Transition_3x.gif": {
+      "frames": 13,
+      "durations_ms": [
+        120,
+        60,
+        60,
+        70,
+        60,
+        120,
+        130,
+        120,
+        130,
+        120,
+        130,
+        120,
+        130
+      ],
+      "total_ms": 1370,
+      "visible_pixel_mismatches": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "asf_4": {
+    "failures": [],
+    "metrics": [
+      {
+        "frame": 0,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 101,
+        "center_x": 61.5
+      },
+      {
+        "frame": 1,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 101,
+        "center_x": 60.5
+      },
+      {
+        "frame": 2,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 101,
+        "center_x": 63.5
+      },
+      {
+        "frame": 3,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 101,
+        "center_x": 64.5
+      }
+    ],
+    "legacy_spec": [
+      128,
+      3
+    ],
+    "legacy_warning": "기존 ASF Hit 3장 규격; 요청은 4장. 검사만 실행, ②/배치/스케일링 미실행"
+  },
+  "bag_coordinate_note": "승인 시트 0번의 실제 가방은 (51,95). README의 (53,95)는 별도 마스터 좌표. F3는 시트 0번과 정확히 동일한 가방 위치로 복귀.",
+  "visual_review": {
+    "reference": "Sheet_3x.png, Sources/F0~3_review_3x.png, Waist_8x.png",
+    "direction": "승인 머리 외곽·몸통 핵심 원본 보존, 팔 교차/뒤틀림 없음",
+    "scale": "머리 외곽 정수 이동만, 하체 원본, 머리 꼭대기 27·바닥127",
+    "neck": "옛 Hit의 목 왼쪽 네모 결함 없음",
+    "hands": "F0/F1 빈손 양팔 가드, 긴 소매·검은 장갑; F2 낮춤; F3 C 복귀",
+    "bag": "승인 가방·체인 정수 이동만, 손에 든 가방 없음",
+    "limitation": "고개가 추가로 꺾이는 변형 및 머리카락·재킷 자락의 독립적인 앞쪽 휘날림을 충분히 만들지 못함. F0/F1 소매는 같은 생성 픽셀의 1px 이동으로 차이를 표현."
+  },
+  "source_sha256": {
+    "NEWIMAG\\Px32HeroV9\\Idle\\Hero_Idle_8.png": "56912896c3753517375ff834e26e3ff246aa7f0a6826bb75892bd85e674bd1d2",
+    "NEWIMAG\\Px32HeroV9\\Idle\\Sources\\Body_patch.png": "e4ae4c2137e931d681c7fc43d7231328d62c9d642b0bdaa23ed1ac77291a08b1",
+    "NEWIMAG\\Px32HeroV9\\Idle\\Sources\\Bag_layer.png": "19f7a70f7559cc2f8994dd98cd0b7ff6d1ae8fca09a50b1bdb1cf46783cb101a"
+  },
+  "method": "내장 image_gen + 정수 블록 중심 복원/승인 팔레트 매핑/알파 이진화/정수 이동/마스크 합성/조립. 리샘플·회전·코드 그림 없음."
+}

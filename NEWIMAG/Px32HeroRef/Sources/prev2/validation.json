@@ -1,0 +1,629 @@
+{
+  "stage": 1,
+  "status": "revision_complete_pending_user_review",
+  "production_ready": false,
+  "approval_note": "자체 검수 통과. 사용자 최종 승인 전이며 다음 단계/Assets 반영 없음.",
+  "settings": [
+    {
+      "item": "머리",
+      "status": "통과",
+      "evidence": "백금발 포니테일·밴드·삐침·Z핀: 승인 픽셀 보존"
+    },
+    {
+      "item": "얼굴",
+      "status": "통과",
+      "evidence": "빨간 눈·송곳니·웃음·피어싱: 승인 픽셀 보존"
+    },
+    {
+      "item": "외투",
+      "status": "통과",
+      "evidence": "오버사이즈 재킷·빨간 안감·손목까지 긴 소매 보존"
+    },
+    {
+      "item": "손",
+      "status": "통과",
+      "evidence": "승인된 검은 장갑과 팔 4자세 픽셀 보존"
+    },
+    {
+      "item": "상의",
+      "status": "통과",
+      "evidence": "검은 크롭 탑·빨간 무늬·초커 보존"
+    },
+    {
+      "item": "하의",
+      "status": "통과",
+      "evidence": "기존 가방 영역만 생성 복구; 반바지·벨트 연결"
+    },
+    {
+      "item": "다리",
+      "status": "통과",
+      "evidence": "검정 니하이·빨간 양말 비대칭 보존"
+    },
+    {
+      "item": "신발",
+      "status": "통과",
+      "evidence": "하이탑·빨간 스트랩·발바닥 행 보존"
+    },
+    {
+      "item": "가방",
+      "status": "통과",
+      "evidence": "검은 입 틈, 큰 흰 상하 삼각 이빨; 닫힌 가방 장식 보존, Open 2종 재생성"
+    },
+    {
+      "item": "가방 위치(평소)",
+      "status": "통과",
+      "evidence": "캐릭터 왼쪽 앞옆 허리; 네 면 본체 윗변-벨트 2px"
+    },
+    {
+      "item": "가방 위치(긴 대기)",
+      "status": "해당 없음",
+      "evidence": "든 크기 자산만 수정. 긴 대기 애니메이션은 이번 단계 범위 밖"
+    },
+    {
+      "item": "크기",
+      "status": "통과",
+      "evidence": "128셀, 머리 26~28·바닥 127 유지; 인체 축소 없음"
+    }
+  ],
+  "summary": [
+    [
+      "몸·얼굴·머리·행 정렬",
+      "통과",
+      "머리 27 / 27 / 26 / 28, 바닥 모두 127"
+    ],
+    [
+      "긴 소매·장갑·팔 4자세",
+      "통과",
+      "실제 팔 픽셀 불일치 0"
+    ],
+    [
+      "가방 위치 4면",
+      "통과",
+      "앞·3/4 오른쪽, 뒤 왼쪽, 옆은 앞 모서리만 노출"
+    ],
+    [
+      "가방 높이·걸이",
+      "통과",
+      "본체 윗변-벨트 2px, 상단 걸이 구간 3~4px"
+    ],
+    [
+      "가방 이빨·입 벌림 2종",
+      "통과",
+      "검은 틈·엇갈린 삼각 이빨, 열린 뚜껑·내부 복원"
+    ],
+    [
+      "팔 시트 재합성",
+      "통과",
+      "4장 모두 가방 위치 (78, 85), 보이는 가방 픽셀 불일치 0"
+    ],
+    [
+      "팔레트·알파·마스크",
+      "통과",
+      "승인 팔레트 20색 이하, 알파 0/255, Idle 0 기준 마스크 밖 불일치 0"
+    ],
+    [
+      "백업·확대본·마무리 문서",
+      "완료",
+      "Sources/prev, BagTeeth_16x.png, README·validation·attempts"
+    ]
+  ],
+  "landmark_rows": {
+    "Front": {
+      "head_top": 27,
+      "shoulder": 73,
+      "belt": 87,
+      "sole": 127
+    },
+    "ThreeQuarter": {
+      "head_top": 27,
+      "shoulder": 70,
+      "belt": 86,
+      "sole": 127
+    },
+    "Side": {
+      "head_top": 26,
+      "shoulder": 73,
+      "belt": 86,
+      "sole": 127
+    },
+    "Back": {
+      "head_top": 28,
+      "shoulder": 70,
+      "belt": 87,
+      "sole": 127
+    }
+  },
+  "landmark_method": "머리·발바닥 알파 경계 자동 측정; 어깨·벨트는 이전 의미 부위 측정값 유지(이번 승인 사항)",
+  "placements": {
+    "Front": {
+      "asset": "Bag/Bag_Hip_Front.png",
+      "translation": [
+        70,
+        86
+      ],
+      "visible_bbox": [
+        70,
+        86,
+        78,
+        102
+      ],
+      "visible_pixels": 78,
+      "belt_row": 87,
+      "attachment_top": 86,
+      "box_top": 89,
+      "box_top_belt_gap": 2,
+      "attachment_span": 3
+    },
+    "ThreeQuarter": {
+      "asset": "Bag/Bag_Hip_ThreeQuarter.png",
+      "translation": [
+        78,
+        85
+      ],
+      "visible_bbox": [
+        78,
+        85,
+        88,
+        101
+      ],
+      "visible_pixels": 121,
+      "belt_row": 86,
+      "attachment_top": 85,
+      "box_top": 88,
+      "box_top_belt_gap": 2,
+      "attachment_span": 3
+    },
+    "Side": {
+      "asset": "Bag/Bag_Hip_ThreeQuarter.png",
+      "translation": [
+        64,
+        85
+      ],
+      "visible_bbox": [
+        80,
+        88,
+        82,
+        100
+      ],
+      "visible_pixels": 23,
+      "belt_row": 86,
+      "attachment_top": 85,
+      "box_top": 88,
+      "box_top_belt_gap": 2,
+      "attachment_span": 3
+    },
+    "Back": {
+      "asset": "Bag/Bag_Hip_Side.png",
+      "translation": [
+        40,
+        85
+      ],
+      "visible_bbox": [
+        40,
+        85,
+        51,
+        105
+      ],
+      "visible_pixels": 149,
+      "belt_row": 87,
+      "attachment_top": 85,
+      "box_top": 89,
+      "box_top_belt_gap": 2,
+      "attachment_span": 4
+    }
+  },
+  "artifacts": [
+    {
+      "size": [
+        128,
+        128
+      ],
+      "bbox": [
+        32,
+        28,
+        79,
+        128
+      ],
+      "colors": 17,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 127,
+      "path": "Turnaround/Hero_Back.png",
+      "palette_subset_of_idle0": true
+    },
+    {
+      "size": [
+        128,
+        128
+      ],
+      "bbox": [
+        26,
+        27,
+        92,
+        128
+      ],
+      "colors": 20,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 127,
+      "path": "Turnaround/Hero_Front.png",
+      "palette_subset_of_idle0": true
+    },
+    {
+      "size": [
+        128,
+        128
+      ],
+      "bbox": [
+        26,
+        26,
+        92,
+        128
+      ],
+      "colors": 18,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 127,
+      "path": "Turnaround/Hero_Side.png",
+      "palette_subset_of_idle0": true
+    },
+    {
+      "size": [
+        128,
+        128
+      ],
+      "bbox": [
+        30,
+        27,
+        99,
+        128
+      ],
+      "colors": 20,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 127,
+      "path": "Turnaround/Hero_ThreeQuarter.png",
+      "palette_subset_of_idle0": true
+    },
+    {
+      "size": [
+        128,
+        128
+      ],
+      "bbox": [
+        30,
+        27,
+        99,
+        128
+      ],
+      "colors": 20,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 127,
+      "path": "Arms/Arm_Back.png",
+      "palette_subset_of_idle0": true
+    },
+    {
+      "size": [
+        128,
+        128
+      ],
+      "bbox": [
+        30,
+        27,
+        99,
+        128
+      ],
+      "colors": 20,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 127,
+      "path": "Arms/Arm_Down.png",
+      "palette_subset_of_idle0": true
+    },
+    {
+      "size": [
+        128,
+        128
+      ],
+      "bbox": [
+        30,
+        27,
+        104,
+        128
+      ],
+      "colors": 20,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 127,
+      "path": "Arms/Arm_Forward.png",
+      "palette_subset_of_idle0": true
+    },
+    {
+      "size": [
+        128,
+        128
+      ],
+      "bbox": [
+        30,
+        27,
+        99,
+        128
+      ],
+      "colors": 20,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 127,
+      "path": "Arms/Arm_HandOnHip.png",
+      "palette_subset_of_idle0": true
+    },
+    {
+      "size": [
+        22,
+        20
+      ],
+      "bbox": [
+        0,
+        0,
+        22,
+        20
+      ],
+      "colors": 9,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 19,
+      "path": "Bag/Bag_Held_Front.png",
+      "palette_subset_of_idle0": true
+    },
+    {
+      "size": [
+        28,
+        30
+      ],
+      "bbox": [
+        0,
+        0,
+        28,
+        30
+      ],
+      "colors": 12,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 29,
+      "path": "Bag/Bag_Held_Open.png",
+      "palette_subset_of_idle0": true
+    },
+    {
+      "size": [
+        15,
+        19
+      ],
+      "bbox": [
+        0,
+        0,
+        15,
+        19
+      ],
+      "colors": 12,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 18,
+      "path": "Bag/Bag_Held_Side.png",
+      "palette_subset_of_idle0": true
+    },
+    {
+      "size": [
+        25,
+        22
+      ],
+      "bbox": [
+        0,
+        0,
+        25,
+        22
+      ],
+      "colors": 11,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 21,
+      "path": "Bag/Bag_Held_ThreeQuarter.png",
+      "palette_subset_of_idle0": true
+    },
+    {
+      "size": [
+        17,
+        16
+      ],
+      "bbox": [
+        0,
+        0,
+        17,
+        16
+      ],
+      "colors": 10,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 15,
+      "path": "Bag/Bag_Hip_Front.png",
+      "palette_subset_of_idle0": true
+    },
+    {
+      "size": [
+        20,
+        23
+      ],
+      "bbox": [
+        0,
+        0,
+        20,
+        23
+      ],
+      "colors": 11,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 22,
+      "path": "Bag/Bag_Hip_Open.png",
+      "palette_subset_of_idle0": true
+    },
+    {
+      "size": [
+        11,
+        20
+      ],
+      "bbox": [
+        0,
+        0,
+        11,
+        20
+      ],
+      "colors": 10,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 19,
+      "path": "Bag/Bag_Hip_Side.png",
+      "palette_subset_of_idle0": true
+    },
+    {
+      "size": [
+        18,
+        16
+      ],
+      "bbox": [
+        0,
+        0,
+        18,
+        16
+      ],
+      "colors": 10,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 15,
+      "path": "Bag/Bag_Hip_ThreeQuarter.png",
+      "palette_subset_of_idle0": true
+    }
+  ],
+  "preservation": {
+    "Front": {
+      "outside_edit_mask_mismatch_vs_previous": 0,
+      "head_and_face_mismatch": 0,
+      "head_row_unchanged": true
+    },
+    "ThreeQuarter": {
+      "outside_edit_mask_mismatch_vs_previous": 0,
+      "head_and_face_mismatch": 0,
+      "head_row_unchanged": true
+    },
+    "Side": {
+      "outside_edit_mask_mismatch_vs_previous": 0,
+      "head_and_face_mismatch": 0,
+      "head_row_unchanged": true
+    },
+    "Back": {
+      "outside_edit_mask_mismatch_vs_previous": 0,
+      "head_and_face_mismatch": 0,
+      "head_row_unchanged": true
+    }
+  },
+  "idle0_outside_mask_mismatch": {
+    "ThreeQuarter": 0,
+    "Down": 0,
+    "HandOnHip": 0,
+    "Forward": 0,
+    "Back": 0
+  },
+  "arm_checks": {
+    "Down": {
+      "actual_arm_pixel_mismatch_vs_previous": 0,
+      "outside_pose_mask_mismatch_vs_threequarter": 0,
+      "bag_pixel_mismatch_where_unoccluded": 0,
+      "translation": [
+        78,
+        85
+      ],
+      "actual_arm_mask_definition": "original pose mask"
+    },
+    "HandOnHip": {
+      "actual_arm_pixel_mismatch_vs_previous": 0,
+      "outside_pose_mask_mismatch_vs_threequarter": 0,
+      "bag_pixel_mismatch_where_unoccluded": 0,
+      "translation": [
+        78,
+        85
+      ],
+      "actual_arm_mask_definition": "original pose mask"
+    },
+    "Forward": {
+      "actual_arm_pixel_mismatch_vs_previous": 0,
+      "outside_pose_mask_mismatch_vs_threequarter": 0,
+      "bag_pixel_mismatch_where_unoccluded": 0,
+      "translation": [
+        78,
+        85
+      ],
+      "actual_arm_mask_definition": "original pose mask; Forward restricted to y<88 (sleeve/glove), background restoration below excluded"
+    },
+    "Back": {
+      "actual_arm_pixel_mismatch_vs_previous": 0,
+      "outside_pose_mask_mismatch_vs_threequarter": 0,
+      "bag_pixel_mismatch_where_unoccluded": 0,
+      "translation": [
+        78,
+        85
+      ],
+      "actual_arm_mask_definition": "original pose mask"
+    }
+  },
+  "all_native_palette_and_alpha_pass": true,
+  "all_character_floor_rows_127": true,
+  "visual_review": [
+    "Turnaround/Turnaround_4x.png",
+    "Sources/Turnaround_review_3x.png",
+    "Arms/Arms_4x.png",
+    "Sources/Arms_review_3x.png",
+    "Bag/Bag_8x.png",
+    "Bag/BagTeeth_16x.png"
+  ],
+  "processing": "image_gen 그림 생성; 고정 정수 블록 복원·승인 팔레트 매핑·알파 이진화·영역 추출·마스크 합성·정수 평행이동·시트 조립. 생산 스프라이트 resize/rotate/코드 그림 없음. 확대 검수용만 정수 픽셀 반복.",
+  "limitations": [
+    "생성기가 요청 격자를 정확히 지키지 않아 고정 간격 복원 후 육안 확인함. 원본 생성 이미지와 최종 픽셀의 형태가 완전히 같지는 않음.",
+    "앞면과 3/4의 가방 일부는 승인된 소매·장갑에 가려짐. 옆면은 x80..81 두 열만 보임.",
+    "Open은 뚜껑이 열려 닫힌 가방보다 큼: 허리 20×23, 든 크기 28×30.",
+    "명목 96px 대신 승인된 실제 알파 높이 100~102행 유지. 어깨 70/73행 차이는 사용자 승인 범위로 보존."
+  ],
+  "reference": {
+    "path": "Sources/Idle0.png",
+    "sha256": "d2afd2feb976b56190d610f6d1ac3991f9b2d6c0deac6cbf235caf22601c15db"
+  }
+}

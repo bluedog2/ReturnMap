@@ -1,0 +1,268 @@
+{
+  "frames": {
+    "0": {
+      "hip": [
+        63,
+        96
+      ],
+      "previous_hip": [
+        63,
+        96
+      ],
+      "bounce": 1,
+      "bag_position": [
+        52,
+        95
+      ],
+      "chain_position": [
+        57,
+        89
+      ],
+      "recovery": null,
+      "outside_mask_mismatch": 0,
+      "colors": 20,
+      "head_top": 27,
+      "floor": 127,
+      "head_mismatch": 0,
+      "front_arm_mismatch": 0
+    },
+    "1": {
+      "hip": [
+        61,
+        93
+      ],
+      "previous_hip": [
+        63,
+        96
+      ],
+      "bounce": 0,
+      "bag_position": [
+        52,
+        94
+      ],
+      "chain_position": [
+        57,
+        88
+      ],
+      "recovery": {
+        "pitch": 10,
+        "origin": [
+          -17,
+          -11
+        ],
+        "head_registration_error": 7814832.0
+      },
+      "outside_mask_mismatch": 0,
+      "colors": 20,
+      "head_top": 26,
+      "floor": 127,
+      "head_mismatch": 0,
+      "front_arm_mismatch": 0
+    },
+    "2": {
+      "hip": [
+        61,
+        93
+      ],
+      "previous_hip": [
+        61,
+        93
+      ],
+      "bounce": -1,
+      "bag_position": [
+        50,
+        90
+      ],
+      "chain_position": [
+        55,
+        84
+      ],
+      "recovery": null,
+      "outside_mask_mismatch": 0,
+      "colors": 20,
+      "head_top": 26,
+      "floor": 127,
+      "head_mismatch": 0,
+      "front_arm_mismatch": 0
+    },
+    "3": {
+      "hip": [
+        62,
+        95
+      ],
+      "previous_hip": [
+        61,
+        93
+      ],
+      "bounce": 0,
+      "bag_position": [
+        50,
+        91
+      ],
+      "chain_position": [
+        55,
+        85
+      ],
+      "recovery": {
+        "pitch": 10,
+        "origin": [
+          -17,
+          -11
+        ],
+        "head_registration_error": 8085165.666666666
+      },
+      "outside_mask_mismatch": 0,
+      "colors": 20,
+      "head_top": 26,
+      "floor": 127,
+      "head_mismatch": 0,
+      "front_arm_mismatch": 0
+    },
+    "4": {
+      "hip": [
+        63,
+        94
+      ],
+      "previous_hip": [
+        62,
+        95
+      ],
+      "bounce": 1,
+      "bag_position": [
+        51,
+        94
+      ],
+      "chain_position": [
+        56,
+        88
+      ],
+      "recovery": {
+        "pitch": 10,
+        "origin": [
+          -17,
+          -11
+        ],
+        "head_registration_error": 6316050.333333334
+      },
+      "outside_mask_mismatch": 0,
+      "colors": 20,
+      "head_top": 25,
+      "floor": 127,
+      "head_mismatch": 0,
+      "front_arm_mismatch": 0
+    },
+    "5": {
+      "hip": [
+        62,
+        92
+      ],
+      "previous_hip": [
+        63,
+        94
+      ],
+      "bounce": 0,
+      "bag_position": [
+        52,
+        92
+      ],
+      "chain_position": [
+        57,
+        86
+      ],
+      "recovery": {
+        "pitch": 10,
+        "origin": [
+          -17,
+          -11
+        ],
+        "head_registration_error": 6404296.333333334
+      },
+      "outside_mask_mismatch": 0,
+      "colors": 20,
+      "head_top": 24,
+      "floor": 127,
+      "head_mismatch": 0,
+      "front_arm_mismatch": 0
+    },
+    "6": {
+      "hip": [
+        63,
+        94
+      ],
+      "previous_hip": [
+        62,
+        92
+      ],
+      "bounce": -1,
+      "bag_position": [
+        51,
+        89
+      ],
+      "chain_position": [
+        56,
+        83
+      ],
+      "recovery": {
+        "pitch": 10,
+        "origin": [
+          -17,
+          -11
+        ],
+        "head_registration_error": 8214832.0
+      },
+      "outside_mask_mismatch": 0,
+      "colors": 20,
+      "head_top": 25,
+      "floor": 127,
+      "head_mismatch": 0,
+      "front_arm_mismatch": 0
+    },
+    "7": {
+      "hip": [
+        63,
+        96
+      ],
+      "previous_hip": [
+        63,
+        94
+      ],
+      "bounce": 0,
+      "bag_position": [
+        52,
+        92
+      ],
+      "chain_position": [
+        57,
+        86
+      ],
+      "recovery": {
+        "pitch": 10,
+        "origin": [
+          -17,
+          -11
+        ],
+        "head_registration_error": 10310825.333333334
+      },
+      "outside_mask_mismatch": 0,
+      "colors": 20,
+      "head_top": 27,
+      "floor": 127,
+      "head_mismatch": 0,
+      "front_arm_mismatch": 0
+    }
+  },
+  "cyclic_changes": [
+    3938,
+    4524,
+    4121,
+    3767,
+    3852,
+    4815,
+    4560,
+    4988
+  ],
+  "selected_intervals": [
+    5,
+    7
+  ]
+}

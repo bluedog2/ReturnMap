@@ -1,0 +1,16 @@
+Use case: precise-object-edit. Edit the attached approved Idle0 pixel sprite into F0 IMPACT, one sprite only. Output 1024x1024 transparent, exact logical 128x128 grid of flat 8x8 blocks. Preserve canvas and foot positions, bottom at logical y127. Same full head and body size, no shrinking or recentering.
+Make recoil OBVIOUS: head center 6 logical pixels LEFT of the reference, shoulders 5 pixels LEFT. Head bends BACK with chin lifted up-right and eyes squeezed shut. Upper body leans backward screen LEFT but retains exactly the original THREE-QUARTER FACING RIGHT orientation; absolutely no chest twisting or turning toward viewer. Both black gloved EMPTY hands are separated in front of chest in reflex guard; long white puff sleeves go to wrists, no bare forearms. Ponytail, bangs and jacket tails whip strongly FORWARD toward screen RIGHT from inertia, not straight down. Keep the original head volume and neck connected. Slightly bend knees to balance but feet remain pinned. Remove bag and chain, those will be composited later.
+Settings:
+|Part|Required|
+|Hair|Long platinum high ponytail, black/red scrunchie, jagged bangs, red Z pin|
+|Face|Red eyes (squeezed shut for impact), fang, ear piercing|
+|Jacket|Oversized white off-shoulder, exposed shoulders/collarbones, red lining/collar, long puff sleeves to wrists|
+|Hands|Black fingerless gloves directly at sleeve ends; empty, separated|
+|Top|Black crop top with red crown, black choker|
+|Bottom|Black shorts, silver buckle, O ring, dangling belt, thigh garter|
+|Legs|Asymmetric black thigh-high and red knee sock|
+|Shoes|Chunky white/black high-tops, red straps; exact original location and size|
+|Bag|Approved dark mimic box with red band and white interlocking teeth restored separately, do not draw|
+|Scale|Exact original head/body size on 128 cell, never shrink|
+Preserve palette, coarse pixel density, boots and lower legs. No text, smooth gradients, antialiasing, effects or new props. This is a stronger hit recoil, not a small flinch.
+Absolute priority: Preserve the reference's exact sprite construction and big HEAD SIZE. Do not redraw from imagination. This edit should still look almost identical to the reference in proportions and perspective. Head center at logical (73,60), chin lifted, shoulders centered (70,76), hips stay at original (75,91). Do NOT change lower half below row 90. Keep 3/4 rightward face, rightward chest, do not make symmetrical front chest. Bend the head backward only moderately, but obvious upward chin. Hair swishes right. Use the same hard pixel grid as reference and genuine transparency. Output exactly same framing as reference. No glow, shadows, background or extra pixels.

@@ -1,0 +1,18 @@
+{
+  "0": {
+    "pitch": 10,
+    "origin": [
+      -17,
+      -11
+    ],
+    "head_registration_error": 6327878.666666666
+  },
+  "2": {
+    "pitch": 10,
+    "origin": [
+      -17,
+      -11
+    ],
+    "head_registration_error": 5569351.666666666
+  }
+}

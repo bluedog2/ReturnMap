@@ -1,0 +1,67 @@
+{
+  "stage": 4,
+  "scale_frames": false,
+  "place": false,
+  "checks": {
+    "3": {
+      "failures": [],
+      "metrics": [
+        {
+          "frame": 0,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 78,
+          "center_x": 64.0
+        },
+        {
+          "frame": 1,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 103,
+          "center_x": 64.5
+        },
+        {
+          "frame": 2,
+          "colors": 20,
+          "feet_row": 120,
+          "height": 92,
+          "center_x": 63.5
+        }
+      ]
+    },
+    "4": {
+      "failures": [],
+      "metrics": [
+        {
+          "frame": 0,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 78,
+          "center_x": 64.0
+        },
+        {
+          "frame": 1,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 78,
+          "center_x": 64.0
+        },
+        {
+          "frame": 2,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 103,
+          "center_x": 64.5
+        },
+        {
+          "frame": 3,
+          "colors": 20,
+          "feet_row": 120,
+          "height": 92,
+          "center_x": 63.5
+        }
+      ]
+    }
+  },
+  "expected_spec_warning": "dimensions: Hero_JumpStart 규격 3장 대 새 기준 4장 (예상 경고)"
+}

@@ -1,0 +1,14 @@
+{
+  "pitch": 78,
+  "origin": [
+    0,
+    0
+  ],
+  "crop": [
+    5,
+    5,
+    10,
+    11
+  ],
+  "source": "Chain_generated1.png"
+}

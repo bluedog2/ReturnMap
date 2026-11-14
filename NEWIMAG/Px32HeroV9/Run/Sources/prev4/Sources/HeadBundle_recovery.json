@@ -1,0 +1,92 @@
+{
+  "01": {
+    "pitch": 10,
+    "origin": [
+      -18,
+      -11
+    ],
+    "registration_error": 2392359.333333333,
+    "attempts": 1
+  },
+  "02": {
+    "pitch": 10,
+    "origin": [
+      -18,
+      -11
+    ],
+    "registration_error": 2772736.0,
+    "attempts": 1
+  },
+  "03": {
+    "pitch": 10,
+    "origin": [
+      -18,
+      -11
+    ],
+    "registration_error": 2345633.333333333,
+    "attempts": 1
+  },
+  "04": {
+    "pitch": 10,
+    "origin": [
+      -18,
+      -11
+    ],
+    "registration_error": 2219884.0,
+    "attempts": 1
+  },
+  "05": {
+    "pitch": 10,
+    "origin": [
+      -18,
+      -11
+    ],
+    "registration_error": 2527383.666666667,
+    "attempts": 1
+  },
+  "06": {
+    "pitch": 10,
+    "origin": [
+      -18,
+      -11
+    ],
+    "registration_error": 2495273.3333333335,
+    "attempts": 1
+  },
+  "07": {
+    "pitch": 10,
+    "origin": [
+      -18,
+      -11
+    ],
+    "registration_error": 2630366.6666666665,
+    "attempts": 1
+  },
+  "08": {
+    "pitch": 10,
+    "origin": [
+      -18,
+      -11
+    ],
+    "registration_error": 2026202.6666666667,
+    "attempts": 1
+  },
+  "09": {
+    "pitch": 10,
+    "origin": [
+      -18,
+      -11
+    ],
+    "registration_error": 2137665.666666667,
+    "attempts": 1
+  },
+  "Turn": {
+    "pitch": 10,
+    "origin": [
+      -14,
+      -10
+    ],
+    "registration_error": 3017984.6666666665,
+    "attempts": 1
+  }
+}

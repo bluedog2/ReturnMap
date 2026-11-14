@@ -1,0 +1,1866 @@
+{
+  "0": {
+    "hip": [
+      63,
+      96
+    ],
+    "delta": [
+      -1,
+      6
+    ],
+    "bounce": 1,
+    "reference_hip": [
+      64,
+      90
+    ],
+    "bag_translation": [
+      52,
+      102
+    ],
+    "chain_translation": [
+      57,
+      96
+    ],
+    "chain_length": 6,
+    "bag_hidden_pixels": 81,
+    "size": [
+      128,
+      128
+    ],
+    "colors": 20,
+    "outside_idle_palette": 0,
+    "alpha": [
+      0,
+      255
+    ],
+    "head_top": 27,
+    "original_head_top": 27,
+    "bottom": 127,
+    "outside_mask_mismatch": 0,
+    "head_region_mismatch": 0,
+    "front_arm_region_mismatch": 0,
+    "floor_row_mismatch": 0,
+    "visible_bag_pixel_mismatch": 0,
+    "visual_3x": {
+      "머리": "통과 — 백금발 포니테일·밴드·Z핀 원본 보존, y77 위 불일치 0",
+      "얼굴": "통과 — 빨간 눈·웃음 등 승인 얼굴 픽셀 보존. 작은 송곳니·피어싱은 원본 보존 근거 병기",
+      "외투": "통과 — 흰 긴 퍼프 소매와 빨간 안감, 뒤팔 손목까지 소매 연결",
+      "손": "통과 — 뒤팔 소매 끝에서 검은 핑거리스 장갑으로 연결, 맨 팔뚝 없음",
+      "상의": "통과 — 검은 크롭 탑·초커 원본 유지",
+      "하의": "통과 — 반바지·벨트 원본 유지, 가방/체인 가림 부분 제외",
+      "다리": "통과 — 비대칭 검정/빨강 양말과 원본 자세 유지, 앞 다리가 가방보다 위",
+      "신발": "통과 — 흰/검정 하이탑·빨간 스트랩 원본 보존",
+      "가방": "통과 — 승인 3/4 가방의 빨간 띠·리벳·맞물린 이빨 그대로, 가려진 부분 제외",
+      "가방 위치(평소)": "통과 — 왼쪽 뒤 다리 허벅지 앞, 엉덩이 이동에 세로 ±1px 추가",
+      "가방 위치(긴 대기)": "해당 없음 — Run 키 포즈만 작업",
+      "크기": "통과 — 128셀, 원본 머리 꼭대기와 바닥 127 유지, 축소·회전 없음"
+    },
+    "visual_review_files": [
+      "Keys_3x.png",
+      "Keys_8x_hip.png"
+    ],
+    "image_gen_attempts": 1
+  },
+  "2": {
+    "hip": [
+      61,
+      93
+    ],
+    "delta": [
+      -3,
+      3
+    ],
+    "bounce": -1,
+    "reference_hip": [
+      64,
+      90
+    ],
+    "bag_translation": [
+      50,
+      97
+    ],
+    "chain_translation": [
+      55,
+      91
+    ],
+    "chain_length": 6,
+    "bag_hidden_pixels": 15,
+    "size": [
+      128,
+      128
+    ],
+    "colors": 20,
+    "outside_idle_palette": 0,
+    "alpha": [
+      0,
+      255
+    ],
+    "head_top": 26,
+    "original_head_top": 26,
+    "bottom": 127,
+    "outside_mask_mismatch": 0,
+    "head_region_mismatch": 0,
+    "front_arm_region_mismatch": 0,
+    "floor_row_mismatch": 0,
+    "visible_bag_pixel_mismatch": 0,
+    "visual_3x": {
+      "머리": "통과 — 백금발 포니테일·밴드·Z핀 원본 보존, y77 위 불일치 0",
+      "얼굴": "통과 — 빨간 눈·웃음 등 승인 얼굴 픽셀 보존. 작은 송곳니·피어싱은 원본 보존 근거 병기",
+      "외투": "통과 — 흰 긴 퍼프 소매와 빨간 안감, 뒤팔 손목까지 소매 연결",
+      "손": "통과 — 뒤팔 소매 끝에서 검은 핑거리스 장갑으로 연결, 맨 팔뚝 없음",
+      "상의": "통과 — 검은 크롭 탑·초커 원본 유지",
+      "하의": "통과 — 반바지·벨트 원본 유지, 가방/체인 가림 부분 제외",
+      "다리": "통과 — 비대칭 검정/빨강 양말과 원본 자세 유지, 앞 다리가 가방보다 위",
+      "신발": "통과 — 흰/검정 하이탑·빨간 스트랩 원본 보존",
+      "가방": "통과 — 승인 3/4 가방의 빨간 띠·리벳·맞물린 이빨 그대로, 가려진 부분 제외",
+      "가방 위치(평소)": "통과 — 왼쪽 뒤 다리 허벅지 앞, 엉덩이 이동에 세로 ±1px 추가",
+      "가방 위치(긴 대기)": "해당 없음 — Run 키 포즈만 작업",
+      "크기": "통과 — 128셀, 원본 머리 꼭대기와 바닥 127 유지, 축소·회전 없음"
+    },
+    "visual_review_files": [
+      "Keys_3x.png",
+      "Keys_8x_hip.png"
+    ],
+    "image_gen_attempts": 1
+  },
+  "method": {
+    "art": "built-in image_gen only",
+    "postprocess": [
+      "integer block recovery pitch 10 origin (-17,-11)",
+      "approved Idle palette mapping",
+      "alpha threshold 128",
+      "predefined region mask compositing",
+      "integer translation of original bag and cropped 6px chain",
+      "pixel repetition for previews"
+    ],
+    "hip_measurement": "3x/8x visual landmark: upper outer corner of rear hip/shorts; integer point selection, not whole-body image registration",
+    "lag": "Only keys: specified bounce approximation (+1/-1). Full 10-frame one-frame temporal lag is deferred until key approval.",
+    "preview_order": [
+      "original 0",
+      "original 2",
+      "new 0",
+      "new 2"
+    ],
+    "user_approval": "pending"
+  },
+  "source_sha256": {
+    "Assets/_Project/ResourcceEX/Sprites/Px32/Player/Hero_Run.png": "84b118010251f4563687e60b68f03080dbc04add3771f4f64b72fde0c1a76b93",
+    "Assets/_Project/ResourcceEX/Sprites/Px32/Player/Hero_Idle.png": "cd8db8384fcc54b2781eb09bb063975e4bf58b1dd234378f03aa8690ead018e1",
+    "NEWIMAG/Px32HeroRef/Arms/Arm_Forward.png": "84d2b204b01210fdcaa8bc5de8c1b1f8060894e54f21548ce237fa5aa10deb4c",
+    "NEWIMAG/Px32HeroRef/Arms/Arm_Back.png": "e76f9727b8ff7a421c55109e652be054584cde34d7eb6e563df905a8e933b9b4",
+    "NEWIMAG/Px32HeroRef/Bag/Bag_Hip_ThreeQuarter.png": "0cac9df72bec9fad11da05697677a3b0859c1a54ba536b04d1d2be5a22dd9453",
+    "NEWIMAG/Px32HeroRef/Sources/R2_chain.png": "6882ded0cfe2807e3236173fb7a32a5f9fe5dee4776d1228ffd985897140ae92"
+  },
+  "remaining_and_10": {
+    "frames": {
+      "I5": {
+        "recovery": {
+          "pitch": 10,
+          "origin": [
+            -17,
+            -11
+          ],
+          "head_registration_error": 5100095.666666666
+        },
+        "bag_position": [
+          52,
+          91
+        ],
+        "preceding_frame": 5,
+        "following_frame": 6,
+        "outside_mask_mismatch": 0,
+        "head_mismatch": 0,
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "original_head_top": 24,
+        "head_top": 24,
+        "floor_row_mismatch": 0,
+        "visual_3x": {
+          "머리·얼굴": "통과: 원본 백금 포니테일·밴드·Z핀·눈·표정 보존. 작은 송곳니/피어싱은 원본 보존 근거 병기",
+          "외투·긴 소매": "통과: 흰 퍼프 소매가 손목까지 연결, 빨간 안감, 맨 팔뚝 없음",
+          "검은 장갑": "통과: 소매 끝에 검은 핑거리스 장갑, 빈손",
+          "상의·하의": "통과: 크롭 탑·초커·반바지·벨트 원본 유지, 허리 가방 가림 제외",
+          "비대칭 다리·신발": "통과: 검정/빨강 양말 및 원본 달리기 다리·하이탑 유지, 새 허리 가방 가림 제외",
+          "가방 이빨": "통과: 승인 상자·빨간 띠·리벳·맞물린 이빨 원본 레이어 그대로",
+          "허리춤 높이": "통과: 승인 키의 7px 상향 기준, 재킷 밑단 아래·엉덩이 옆·뒤 허벅지 앞",
+          "손에 든 가방": "없음: 옛 큰 가방 제거, 빈손과 허리 가방 분리",
+          "크기": "통과: 축소·회전 없음, 원본 머리 꼭대기와 바닥 보존"
+        },
+        "visual_review_file": "Sources/I5_review_3x.png",
+        "visible_bag_pixel_mismatch": 0
+      },
+      "I7": {
+        "recovery": {
+          "pitch": 10,
+          "origin": [
+            -17,
+            -11
+          ],
+          "head_registration_error": 5024495.0
+        },
+        "bag_position": [
+          52,
+          94
+        ],
+        "preceding_frame": 7,
+        "following_frame": 0,
+        "outside_mask_mismatch": 0,
+        "head_mismatch": 0,
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "original_head_top": 27,
+        "head_top": 27,
+        "floor_row_mismatch": 0,
+        "visual_3x": {
+          "머리·얼굴": "통과: 원본 백금 포니테일·밴드·Z핀·눈·표정 보존. 작은 송곳니/피어싱은 원본 보존 근거 병기",
+          "외투·긴 소매": "통과: 흰 퍼프 소매가 손목까지 연결, 빨간 안감, 맨 팔뚝 없음",
+          "검은 장갑": "통과: 소매 끝에 검은 핑거리스 장갑, 빈손",
+          "상의·하의": "통과: 크롭 탑·초커·반바지·벨트 원본 유지, 허리 가방 가림 제외",
+          "비대칭 다리·신발": "통과: 검정/빨강 양말 및 원본 달리기 다리·하이탑 유지, 새 허리 가방 가림 제외",
+          "가방 이빨": "통과: 승인 상자·빨간 띠·리벳·맞물린 이빨 원본 레이어 그대로",
+          "허리춤 높이": "통과: 승인 키의 7px 상향 기준, 재킷 밑단 아래·엉덩이 옆·뒤 허벅지 앞",
+          "손에 든 가방": "없음: 옛 큰 가방 제거, 빈손과 허리 가방 분리",
+          "크기": "통과: 축소·회전 없음, 원본 머리 꼭대기와 바닥 보존"
+        },
+        "visual_review_file": "Sources/I7_review_3x.png",
+        "visible_bag_pixel_mismatch": 0
+      },
+      "F0": {
+        "hip": [
+          63,
+          96
+        ],
+        "previous_hip": [
+          63,
+          96
+        ],
+        "bounce": 1,
+        "bag_position": [
+          52,
+          95
+        ],
+        "chain_position": [
+          57,
+          89
+        ],
+        "recovery": null,
+        "outside_mask_mismatch": 0,
+        "colors": 20,
+        "head_top": 27,
+        "floor": 127,
+        "head_mismatch": 0,
+        "front_arm_mismatch": 0,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "original_head_top": 27,
+        "floor_row_mismatch": 0,
+        "visual_3x": {
+          "머리·얼굴": "통과: 원본 백금 포니테일·밴드·Z핀·눈·표정 보존. 작은 송곳니/피어싱은 원본 보존 근거 병기",
+          "외투·긴 소매": "통과: 흰 퍼프 소매가 손목까지 연결, 빨간 안감, 맨 팔뚝 없음",
+          "검은 장갑": "통과: 소매 끝에 검은 핑거리스 장갑, 빈손",
+          "상의·하의": "통과: 크롭 탑·초커·반바지·벨트 원본 유지, 허리 가방 가림 제외",
+          "비대칭 다리·신발": "통과: 검정/빨강 양말 및 원본 달리기 다리·하이탑 유지, 새 허리 가방 가림 제외",
+          "가방 이빨": "통과: 승인 상자·빨간 띠·리벳·맞물린 이빨 원본 레이어 그대로",
+          "허리춤 높이": "통과: 승인 키의 7px 상향 기준, 재킷 밑단 아래·엉덩이 옆·뒤 허벅지 앞",
+          "손에 든 가방": "없음: 옛 큰 가방 제거, 빈손과 허리 가방 분리",
+          "크기": "통과: 축소·회전 없음, 원본 머리 꼭대기와 바닥 보존"
+        },
+        "visual_review_file": "Sources/F0_review_3x.png",
+        "visible_bag_pixel_mismatch": 0
+      },
+      "F1": {
+        "hip": [
+          61,
+          93
+        ],
+        "previous_hip": [
+          63,
+          96
+        ],
+        "bounce": 0,
+        "bag_position": [
+          52,
+          94
+        ],
+        "chain_position": [
+          57,
+          88
+        ],
+        "recovery": {
+          "pitch": 10,
+          "origin": [
+            -17,
+            -11
+          ],
+          "head_registration_error": 7814832.0
+        },
+        "outside_mask_mismatch": 0,
+        "colors": 20,
+        "head_top": 26,
+        "floor": 127,
+        "head_mismatch": 0,
+        "front_arm_mismatch": 0,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "original_head_top": 26,
+        "floor_row_mismatch": 0,
+        "visual_3x": {
+          "머리·얼굴": "통과: 원본 백금 포니테일·밴드·Z핀·눈·표정 보존. 작은 송곳니/피어싱은 원본 보존 근거 병기",
+          "외투·긴 소매": "통과: 흰 퍼프 소매가 손목까지 연결, 빨간 안감, 맨 팔뚝 없음",
+          "검은 장갑": "통과: 소매 끝에 검은 핑거리스 장갑, 빈손",
+          "상의·하의": "통과: 크롭 탑·초커·반바지·벨트 원본 유지, 허리 가방 가림 제외",
+          "비대칭 다리·신발": "통과: 검정/빨강 양말 및 원본 달리기 다리·하이탑 유지, 새 허리 가방 가림 제외",
+          "가방 이빨": "통과: 승인 상자·빨간 띠·리벳·맞물린 이빨 원본 레이어 그대로",
+          "허리춤 높이": "통과: 승인 키의 7px 상향 기준, 재킷 밑단 아래·엉덩이 옆·뒤 허벅지 앞",
+          "손에 든 가방": "없음: 옛 큰 가방 제거, 빈손과 허리 가방 분리",
+          "크기": "통과: 축소·회전 없음, 원본 머리 꼭대기와 바닥 보존"
+        },
+        "visual_review_file": "Sources/F1_review_3x.png",
+        "visible_bag_pixel_mismatch": 0
+      },
+      "F2": {
+        "hip": [
+          61,
+          93
+        ],
+        "previous_hip": [
+          61,
+          93
+        ],
+        "bounce": -1,
+        "bag_position": [
+          50,
+          90
+        ],
+        "chain_position": [
+          55,
+          84
+        ],
+        "recovery": null,
+        "outside_mask_mismatch": 0,
+        "colors": 20,
+        "head_top": 26,
+        "floor": 127,
+        "head_mismatch": 0,
+        "front_arm_mismatch": 0,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "original_head_top": 26,
+        "floor_row_mismatch": 0,
+        "visual_3x": {
+          "머리·얼굴": "통과: 원본 백금 포니테일·밴드·Z핀·눈·표정 보존. 작은 송곳니/피어싱은 원본 보존 근거 병기",
+          "외투·긴 소매": "통과: 흰 퍼프 소매가 손목까지 연결, 빨간 안감, 맨 팔뚝 없음",
+          "검은 장갑": "통과: 소매 끝에 검은 핑거리스 장갑, 빈손",
+          "상의·하의": "통과: 크롭 탑·초커·반바지·벨트 원본 유지, 허리 가방 가림 제외",
+          "비대칭 다리·신발": "통과: 검정/빨강 양말 및 원본 달리기 다리·하이탑 유지, 새 허리 가방 가림 제외",
+          "가방 이빨": "통과: 승인 상자·빨간 띠·리벳·맞물린 이빨 원본 레이어 그대로",
+          "허리춤 높이": "통과: 승인 키의 7px 상향 기준, 재킷 밑단 아래·엉덩이 옆·뒤 허벅지 앞",
+          "손에 든 가방": "없음: 옛 큰 가방 제거, 빈손과 허리 가방 분리",
+          "크기": "통과: 축소·회전 없음, 원본 머리 꼭대기와 바닥 보존"
+        },
+        "visual_review_file": "Sources/F2_review_3x.png",
+        "visible_bag_pixel_mismatch": 0
+      },
+      "F3": {
+        "hip": [
+          62,
+          95
+        ],
+        "previous_hip": [
+          61,
+          93
+        ],
+        "bounce": 0,
+        "bag_position": [
+          50,
+          91
+        ],
+        "chain_position": [
+          55,
+          85
+        ],
+        "recovery": {
+          "pitch": 10,
+          "origin": [
+            -17,
+            -11
+          ],
+          "head_registration_error": 8085165.666666666
+        },
+        "outside_mask_mismatch": 0,
+        "colors": 20,
+        "head_top": 26,
+        "floor": 127,
+        "head_mismatch": 0,
+        "front_arm_mismatch": 0,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "original_head_top": 26,
+        "floor_row_mismatch": 0,
+        "visual_3x": {
+          "머리·얼굴": "통과: 원본 백금 포니테일·밴드·Z핀·눈·표정 보존. 작은 송곳니/피어싱은 원본 보존 근거 병기",
+          "외투·긴 소매": "통과: 흰 퍼프 소매가 손목까지 연결, 빨간 안감, 맨 팔뚝 없음",
+          "검은 장갑": "통과: 소매 끝에 검은 핑거리스 장갑, 빈손",
+          "상의·하의": "통과: 크롭 탑·초커·반바지·벨트 원본 유지, 허리 가방 가림 제외",
+          "비대칭 다리·신발": "통과: 검정/빨강 양말 및 원본 달리기 다리·하이탑 유지, 새 허리 가방 가림 제외",
+          "가방 이빨": "통과: 승인 상자·빨간 띠·리벳·맞물린 이빨 원본 레이어 그대로",
+          "허리춤 높이": "통과: 승인 키의 7px 상향 기준, 재킷 밑단 아래·엉덩이 옆·뒤 허벅지 앞",
+          "손에 든 가방": "없음: 옛 큰 가방 제거, 빈손과 허리 가방 분리",
+          "크기": "통과: 축소·회전 없음, 원본 머리 꼭대기와 바닥 보존"
+        },
+        "visual_review_file": "Sources/F3_review_3x.png",
+        "visible_bag_pixel_mismatch": 0
+      },
+      "F4": {
+        "hip": [
+          63,
+          94
+        ],
+        "previous_hip": [
+          62,
+          95
+        ],
+        "bounce": 1,
+        "bag_position": [
+          51,
+          94
+        ],
+        "chain_position": [
+          56,
+          88
+        ],
+        "recovery": {
+          "pitch": 10,
+          "origin": [
+            -17,
+            -11
+          ],
+          "head_registration_error": 6316050.333333334
+        },
+        "outside_mask_mismatch": 0,
+        "colors": 20,
+        "head_top": 25,
+        "floor": 127,
+        "head_mismatch": 0,
+        "front_arm_mismatch": 0,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "original_head_top": 25,
+        "floor_row_mismatch": 0,
+        "visual_3x": {
+          "머리·얼굴": "통과: 원본 백금 포니테일·밴드·Z핀·눈·표정 보존. 작은 송곳니/피어싱은 원본 보존 근거 병기",
+          "외투·긴 소매": "통과: 흰 퍼프 소매가 손목까지 연결, 빨간 안감, 맨 팔뚝 없음",
+          "검은 장갑": "통과: 소매 끝에 검은 핑거리스 장갑, 빈손",
+          "상의·하의": "통과: 크롭 탑·초커·반바지·벨트 원본 유지, 허리 가방 가림 제외",
+          "비대칭 다리·신발": "통과: 검정/빨강 양말 및 원본 달리기 다리·하이탑 유지, 새 허리 가방 가림 제외",
+          "가방 이빨": "통과: 승인 상자·빨간 띠·리벳·맞물린 이빨 원본 레이어 그대로",
+          "허리춤 높이": "통과: 승인 키의 7px 상향 기준, 재킷 밑단 아래·엉덩이 옆·뒤 허벅지 앞",
+          "손에 든 가방": "없음: 옛 큰 가방 제거, 빈손과 허리 가방 분리",
+          "크기": "통과: 축소·회전 없음, 원본 머리 꼭대기와 바닥 보존"
+        },
+        "visual_review_file": "Sources/F4_review_3x.png",
+        "visible_bag_pixel_mismatch": 0
+      },
+      "F5": {
+        "hip": [
+          62,
+          92
+        ],
+        "previous_hip": [
+          63,
+          94
+        ],
+        "bounce": 0,
+        "bag_position": [
+          52,
+          92
+        ],
+        "chain_position": [
+          57,
+          86
+        ],
+        "recovery": {
+          "pitch": 10,
+          "origin": [
+            -17,
+            -11
+          ],
+          "head_registration_error": 6404296.333333334
+        },
+        "outside_mask_mismatch": 0,
+        "colors": 20,
+        "head_top": 24,
+        "floor": 127,
+        "head_mismatch": 0,
+        "front_arm_mismatch": 0,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "original_head_top": 24,
+        "floor_row_mismatch": 0,
+        "visual_3x": {
+          "머리·얼굴": "통과: 원본 백금 포니테일·밴드·Z핀·눈·표정 보존. 작은 송곳니/피어싱은 원본 보존 근거 병기",
+          "외투·긴 소매": "통과: 흰 퍼프 소매가 손목까지 연결, 빨간 안감, 맨 팔뚝 없음",
+          "검은 장갑": "통과: 소매 끝에 검은 핑거리스 장갑, 빈손",
+          "상의·하의": "통과: 크롭 탑·초커·반바지·벨트 원본 유지, 허리 가방 가림 제외",
+          "비대칭 다리·신발": "통과: 검정/빨강 양말 및 원본 달리기 다리·하이탑 유지, 새 허리 가방 가림 제외",
+          "가방 이빨": "통과: 승인 상자·빨간 띠·리벳·맞물린 이빨 원본 레이어 그대로",
+          "허리춤 높이": "통과: 승인 키의 7px 상향 기준, 재킷 밑단 아래·엉덩이 옆·뒤 허벅지 앞",
+          "손에 든 가방": "없음: 옛 큰 가방 제거, 빈손과 허리 가방 분리",
+          "크기": "통과: 축소·회전 없음, 원본 머리 꼭대기와 바닥 보존"
+        },
+        "visual_review_file": "Sources/F5_review_3x.png",
+        "visible_bag_pixel_mismatch": 0
+      },
+      "F6": {
+        "hip": [
+          63,
+          94
+        ],
+        "previous_hip": [
+          62,
+          92
+        ],
+        "bounce": -1,
+        "bag_position": [
+          51,
+          89
+        ],
+        "chain_position": [
+          56,
+          83
+        ],
+        "recovery": {
+          "pitch": 10,
+          "origin": [
+            -17,
+            -11
+          ],
+          "head_registration_error": 8214832.0
+        },
+        "outside_mask_mismatch": 0,
+        "colors": 20,
+        "head_top": 25,
+        "floor": 127,
+        "head_mismatch": 0,
+        "front_arm_mismatch": 0,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "original_head_top": 25,
+        "floor_row_mismatch": 0,
+        "visual_3x": {
+          "머리·얼굴": "통과: 원본 백금 포니테일·밴드·Z핀·눈·표정 보존. 작은 송곳니/피어싱은 원본 보존 근거 병기",
+          "외투·긴 소매": "통과: 흰 퍼프 소매가 손목까지 연결, 빨간 안감, 맨 팔뚝 없음",
+          "검은 장갑": "통과: 소매 끝에 검은 핑거리스 장갑, 빈손",
+          "상의·하의": "통과: 크롭 탑·초커·반바지·벨트 원본 유지, 허리 가방 가림 제외",
+          "비대칭 다리·신발": "통과: 검정/빨강 양말 및 원본 달리기 다리·하이탑 유지, 새 허리 가방 가림 제외",
+          "가방 이빨": "통과: 승인 상자·빨간 띠·리벳·맞물린 이빨 원본 레이어 그대로",
+          "허리춤 높이": "통과: 승인 키의 7px 상향 기준, 재킷 밑단 아래·엉덩이 옆·뒤 허벅지 앞",
+          "손에 든 가방": "없음: 옛 큰 가방 제거, 빈손과 허리 가방 분리",
+          "크기": "통과: 축소·회전 없음, 원본 머리 꼭대기와 바닥 보존"
+        },
+        "visual_review_file": "Sources/F6_review_3x.png",
+        "visible_bag_pixel_mismatch": 0
+      },
+      "F7": {
+        "hip": [
+          63,
+          96
+        ],
+        "previous_hip": [
+          63,
+          94
+        ],
+        "bounce": 0,
+        "bag_position": [
+          52,
+          92
+        ],
+        "chain_position": [
+          57,
+          86
+        ],
+        "recovery": {
+          "pitch": 10,
+          "origin": [
+            -17,
+            -11
+          ],
+          "head_registration_error": 10310825.333333334
+        },
+        "outside_mask_mismatch": 0,
+        "colors": 20,
+        "head_top": 27,
+        "floor": 127,
+        "head_mismatch": 0,
+        "front_arm_mismatch": 0,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "original_head_top": 27,
+        "floor_row_mismatch": 0,
+        "visual_3x": {
+          "머리·얼굴": "통과: 원본 백금 포니테일·밴드·Z핀·눈·표정 보존. 작은 송곳니/피어싱은 원본 보존 근거 병기",
+          "외투·긴 소매": "통과: 흰 퍼프 소매가 손목까지 연결, 빨간 안감, 맨 팔뚝 없음",
+          "검은 장갑": "통과: 소매 끝에 검은 핑거리스 장갑, 빈손",
+          "상의·하의": "통과: 크롭 탑·초커·반바지·벨트 원본 유지, 허리 가방 가림 제외",
+          "비대칭 다리·신발": "통과: 검정/빨강 양말 및 원본 달리기 다리·하이탑 유지, 새 허리 가방 가림 제외",
+          "가방 이빨": "통과: 승인 상자·빨간 띠·리벳·맞물린 이빨 원본 레이어 그대로",
+          "허리춤 높이": "통과: 승인 키의 7px 상향 기준, 재킷 밑단 아래·엉덩이 옆·뒤 허벅지 앞",
+          "손에 든 가방": "없음: 옛 큰 가방 제거, 빈손과 허리 가방 분리",
+          "크기": "통과: 축소·회전 없음, 원본 머리 꼭대기와 바닥 보존"
+        },
+        "visual_review_file": "Sources/F7_review_3x.png",
+        "visible_bag_pixel_mismatch": 0
+      }
+    },
+    "order": [
+      "F0",
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F5",
+      "I5",
+      "F6",
+      "F7",
+      "I7"
+    ],
+    "approved_key_sha256": {
+      "0": "09b6c454947d4acf130f1ec789d250a3d8f25673d2d3bc48cf8cf2591d76d63b",
+      "2": "a5c9d08080c2b90b20163c592fd087b2b0123ffe5a617db58da090def655c9ac"
+    },
+    "asf": {
+      "failures": [],
+      "spec_warning": "dimensions: Hero_Run specification 8 frames versus approved new count 10"
+    },
+    "previews": {
+      "8": {
+        "frames": 72,
+        "total_ms": 4000,
+        "fps": 18,
+        "visible_mismatch": 0
+      },
+      "10": {
+        "frames": 110,
+        "total_ms": 5000,
+        "fps": 22,
+        "visible_mismatch": 0
+      },
+      "compare": {
+        "order": [
+          "original @18",
+          "8 @18",
+          "10 @22"
+        ],
+        "duration_ms": 20000,
+        "visible_mismatch": 0
+      }
+    },
+    "cyclic_changes": [
+      3938,
+      4524,
+      4121,
+      3767,
+      3852,
+      4815,
+      4560,
+      4988
+    ],
+    "visual_review": "PASS: individual 3x images and final two-row 3x sheet; 8x hip supplement",
+    "method": {
+      "art": "built-in image_gen only",
+      "recovery": "integer pitch 10 / origin (-17,-11), nearest approved palette, binary alpha",
+      "bag_rule": "previous original-frame hip + (-11,-2) + vertical bounce; approved keys untouched",
+      "inbetween": "local rear sleeve/jacket pose; preceding head/front arm/legs/shoes preserved; bag integer midpoint round half up",
+      "mask_fix": "F1 removal polygon bottom extended 110 to 112 to remove old bag bottom line",
+      "asf": "import stage 4 check() and sheet_spec(); no placement or scale_frames",
+      "key_history": "existing top-level key metrics predate Claude raise; this remaining_and_10 section validates current approved key pixels"
+    }
+  },
+  "current_revision": "whole_head_redraw",
+  "face_lock": {
+    "date": "2026-11-14",
+    "backup": "Sources/prev2",
+    "frames": {
+      "Run_Key0": {
+        "offset": [
+          0,
+          0
+        ],
+        "shoulder_registration": {
+          "reference_region": [
+            68,
+            83,
+            86,
+            94
+          ],
+          "dy_candidates": [
+            -2,
+            -1,
+            0,
+            1,
+            2
+          ],
+          "rgba_mismatch_scores": [
+            152,
+            130,
+            0,
+            129,
+            148
+          ]
+        },
+        "outside_mask_mismatch": 0,
+        "head_template_mismatch": 0,
+        "below_head_y82_mismatch": 0,
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "Run_F1": {
+        "offset": [
+          0,
+          0
+        ],
+        "shoulder_registration": {
+          "reference_region": [
+            68,
+            83,
+            86,
+            94
+          ],
+          "dy_candidates": [
+            -2,
+            -1,
+            0,
+            1,
+            2
+          ],
+          "rgba_mismatch_scores": [
+            163,
+            148,
+            107,
+            128,
+            146
+          ]
+        },
+        "outside_mask_mismatch": 0,
+        "head_template_mismatch": 0,
+        "below_head_y82_mismatch": 0,
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "Run_Key2": {
+        "offset": [
+          0,
+          -1
+        ],
+        "shoulder_registration": {
+          "reference_region": [
+            68,
+            83,
+            86,
+            94
+          ],
+          "dy_candidates": [
+            -2,
+            -1,
+            0,
+            1,
+            2
+          ],
+          "rgba_mismatch_scores": [
+            156,
+            120,
+            131,
+            156,
+            163
+          ]
+        },
+        "outside_mask_mismatch": 0,
+        "head_template_mismatch": 0,
+        "below_head_y82_mismatch": 0,
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "Run_F3": {
+        "offset": [
+          0,
+          0
+        ],
+        "shoulder_registration": {
+          "reference_region": [
+            68,
+            83,
+            86,
+            94
+          ],
+          "dy_candidates": [
+            -2,
+            -1,
+            0,
+            1,
+            2
+          ],
+          "rgba_mismatch_scores": [
+            153,
+            132,
+            126,
+            151,
+            162
+          ]
+        },
+        "outside_mask_mismatch": 0,
+        "head_template_mismatch": 0,
+        "below_head_y82_mismatch": 0,
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "Run_F4": {
+        "offset": [
+          0,
+          -2
+        ],
+        "shoulder_registration": {
+          "reference_region": [
+            68,
+            83,
+            86,
+            94
+          ],
+          "dy_candidates": [
+            -2,
+            -1,
+            0,
+            1,
+            2
+          ],
+          "rgba_mismatch_scores": [
+            143,
+            156,
+            172,
+            172,
+            184
+          ]
+        },
+        "outside_mask_mismatch": 0,
+        "head_template_mismatch": 0,
+        "below_head_y82_mismatch": 0,
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "Run_F5": {
+        "offset": [
+          0,
+          -2
+        ],
+        "shoulder_registration": {
+          "reference_region": [
+            68,
+            83,
+            86,
+            94
+          ],
+          "dy_candidates": [
+            -2,
+            -1,
+            0,
+            1,
+            2
+          ],
+          "rgba_mismatch_scores": [
+            149,
+            168,
+            174,
+            173,
+            170
+          ]
+        },
+        "outside_mask_mismatch": 0,
+        "head_template_mismatch": 0,
+        "below_head_y82_mismatch": 0,
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "Run_I5-6": {
+        "offset": [
+          0,
+          -2
+        ],
+        "shoulder_registration": {
+          "reference_region": [
+            68,
+            83,
+            86,
+            94
+          ],
+          "dy_candidates": [
+            -2,
+            -1,
+            0,
+            1,
+            2
+          ],
+          "rgba_mismatch_scores": [
+            149,
+            168,
+            174,
+            173,
+            170
+          ]
+        },
+        "outside_mask_mismatch": 0,
+        "head_template_mismatch": 0,
+        "below_head_y82_mismatch": 0,
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "Run_F6": {
+        "offset": [
+          0,
+          -1
+        ],
+        "shoulder_registration": {
+          "reference_region": [
+            68,
+            83,
+            86,
+            94
+          ],
+          "dy_candidates": [
+            -2,
+            -1,
+            0,
+            1,
+            2
+          ],
+          "rgba_mismatch_scores": [
+            139,
+            137,
+            152,
+            159,
+            170
+          ]
+        },
+        "outside_mask_mismatch": 0,
+        "head_template_mismatch": 0,
+        "below_head_y82_mismatch": 0,
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "Run_F7": {
+        "offset": [
+          0,
+          -2
+        ],
+        "shoulder_registration": {
+          "reference_region": [
+            68,
+            83,
+            86,
+            94
+          ],
+          "dy_candidates": [
+            -2,
+            -1,
+            0,
+            1,
+            2
+          ],
+          "rgba_mismatch_scores": [
+            128,
+            136,
+            150,
+            157,
+            170
+          ]
+        },
+        "outside_mask_mismatch": 0,
+        "head_template_mismatch": 0,
+        "below_head_y82_mismatch": 0,
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "Run_I7-0": {
+        "offset": [
+          0,
+          -2
+        ],
+        "shoulder_registration": {
+          "reference_region": [
+            68,
+            83,
+            86,
+            94
+          ],
+          "dy_candidates": [
+            -2,
+            -1,
+            0,
+            1,
+            2
+          ],
+          "rgba_mismatch_scores": [
+            128,
+            136,
+            150,
+            157,
+            168
+          ]
+        },
+        "outside_mask_mismatch": 0,
+        "head_template_mismatch": 0,
+        "below_head_y82_mismatch": 0,
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      }
+    },
+    "previews": {
+      "run10": {
+        "logical_frames": 110,
+        "decoded_frames": 110,
+        "duration_ms": 5000,
+        "fps": 22,
+        "visible_mismatch": 0
+      },
+      "run8": {
+        "logical_frames": 72,
+        "decoded_frames": 72,
+        "duration_ms": 4000,
+        "fps": 18,
+        "visible_mismatch": 0
+      },
+      "compare": {
+        "logical_frames": 110,
+        "decoded_frames": 110,
+        "duration_ms": 5000,
+        "fps": 22,
+        "visible_mismatch": 0
+      }
+    },
+    "asf": {
+      "stage": 4,
+      "scale_frames": false,
+      "failures": [],
+      "metrics": [
+        {
+          "frame": 0,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.0
+        },
+        {
+          "frame": 1,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 102,
+          "center_x": 64.0
+        },
+        {
+          "frame": 2,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 102,
+          "center_x": 64.0
+        },
+        {
+          "frame": 3,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 102,
+          "center_x": 65.0
+        },
+        {
+          "frame": 4,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 103,
+          "center_x": 64.5
+        },
+        {
+          "frame": 5,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 104,
+          "center_x": 65.0
+        },
+        {
+          "frame": 6,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 104,
+          "center_x": 65.0
+        },
+        {
+          "frame": 7,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 103,
+          "center_x": 64.0
+        },
+        {
+          "frame": 8,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.0
+        },
+        {
+          "frame": 9,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.0
+        }
+      ]
+    },
+    "head_source": "prev2/Run_Key0.png",
+    "core_mask": "Masks/FaceLock_core.png",
+    "offsets_y": [
+      0,
+      0,
+      -1,
+      0,
+      -2,
+      -2,
+      -2,
+      -1,
+      -2,
+      -2
+    ],
+    "new_imagegen_calls": 0,
+    "visual_review": {
+      "status": "reviewed",
+      "artifacts": [
+        "FaceLock_3x.png",
+        "FaceLock_4x.png",
+        "Sources/FaceLock_review_3x.png"
+      ],
+      "observations": "Head template retains expression and size; root/neck continuous at inspection scale; flying ponytail retained. Bag stays viewer-left, in front of thigh. GIF content verified by decoded frame equality."
+    }
+  },
+  "status": "completed; ASF stage 4 pass",
+  "head_bundle_lock": {
+    "frames": {
+      "Run_Key0": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "offset": [
+          0,
+          0
+        ],
+        "outside_mask_mismatch": 0,
+        "head_template_mismatch": 0,
+        "body_y82_mismatch": 0,
+        "distant_tail_mismatch": 0
+      },
+      "Run_F1": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "offset": [
+          0,
+          0
+        ],
+        "outside_mask_mismatch": 0,
+        "head_template_mismatch": 0,
+        "body_y82_mismatch": 0,
+        "distant_tail_mismatch": 0
+      },
+      "Run_Key2": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "offset": [
+          0,
+          -1
+        ],
+        "outside_mask_mismatch": 0,
+        "head_template_mismatch": 0,
+        "body_y82_mismatch": 0,
+        "distant_tail_mismatch": 0
+      },
+      "Run_F3": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "offset": [
+          0,
+          0
+        ],
+        "outside_mask_mismatch": 0,
+        "head_template_mismatch": 0,
+        "body_y82_mismatch": 0,
+        "distant_tail_mismatch": 0
+      },
+      "Run_F4": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "offset": [
+          0,
+          -2
+        ],
+        "outside_mask_mismatch": 0,
+        "head_template_mismatch": 0,
+        "body_y82_mismatch": 0,
+        "distant_tail_mismatch": 0
+      },
+      "Run_F5": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "offset": [
+          0,
+          -2
+        ],
+        "outside_mask_mismatch": 0,
+        "head_template_mismatch": 0,
+        "body_y82_mismatch": 0,
+        "distant_tail_mismatch": 0
+      },
+      "Run_I5-6": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "offset": [
+          0,
+          -2
+        ],
+        "outside_mask_mismatch": 0,
+        "head_template_mismatch": 0,
+        "body_y82_mismatch": 0,
+        "distant_tail_mismatch": 0
+      },
+      "Run_F6": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "offset": [
+          0,
+          -1
+        ],
+        "outside_mask_mismatch": 0,
+        "head_template_mismatch": 0,
+        "body_y82_mismatch": 0,
+        "distant_tail_mismatch": 0
+      },
+      "Run_F7": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "offset": [
+          0,
+          -2
+        ],
+        "outside_mask_mismatch": 0,
+        "head_template_mismatch": 0,
+        "body_y82_mismatch": 0,
+        "distant_tail_mismatch": 0
+      },
+      "Run_I7-0": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "offset": [
+          0,
+          -2
+        ],
+        "outside_mask_mismatch": 0,
+        "head_template_mismatch": 0,
+        "body_y82_mismatch": 0,
+        "distant_tail_mismatch": 0
+      }
+    },
+    "previews": {
+      "run10": {
+        "logical_frames": 110,
+        "decoded_frames": 110,
+        "duration_ms": 5000,
+        "fps": 22,
+        "visible_mismatch": 0
+      },
+      "run8": {
+        "logical_frames": 72,
+        "decoded_frames": 72,
+        "duration_ms": 4000,
+        "fps": 18,
+        "visible_mismatch": 0
+      },
+      "compare": {
+        "logical_frames": 110,
+        "decoded_frames": 110,
+        "duration_ms": 5000,
+        "fps": 22,
+        "visible_mismatch": 0
+      }
+    },
+    "asf": {
+      "stage": 4,
+      "scale_frames": false,
+      "failures": [],
+      "metrics": [
+        {
+          "frame": 0,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.0
+        },
+        {
+          "frame": 1,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.0
+        },
+        {
+          "frame": 2,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 102,
+          "center_x": 64.0
+        },
+        {
+          "frame": 3,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 65.0
+        },
+        {
+          "frame": 4,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 103,
+          "center_x": 64.5
+        },
+        {
+          "frame": 5,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 103,
+          "center_x": 65.0
+        },
+        {
+          "frame": 6,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 103,
+          "center_x": 65.0
+        },
+        {
+          "frame": 7,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 102,
+          "center_x": 64.0
+        },
+        {
+          "frame": 8,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 103,
+          "center_x": 64.0
+        },
+        {
+          "frame": 9,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 103,
+          "center_x": 64.0
+        }
+      ]
+    },
+    "backup": "Sources/prev3",
+    "imagegen_calls": 9,
+    "date": "2026-11-14",
+    "visual_review": {
+      "status": "passed",
+      "reviewed": [
+        "Run/HeadBack_6x.png",
+        "Run/Sources/HeadBack_first5_6x.png",
+        "Run/Sources/HeadBack_last5_6x.png",
+        "Run/Sources/HeadBundle_review3x.png",
+        "Move/Sources/Turn_boundary_3x.png"
+      ],
+      "findings": "Key0 tie/root/back-skull rigidly attached; flowing tail seam continuous; no detached fragments or seam holes observed; body and accessories preserved."
+    },
+    "head_source": "Run/Sources/prev3/Run_Key0.png",
+    "core_mask": "Run/Masks/HeadBundle_core.png",
+    "offsets_y": [
+      0,
+      0,
+      -1,
+      0,
+      -2,
+      -2,
+      -2,
+      -1,
+      -2,
+      -2
+    ],
+    "asf_notes": "ASF ? ??: Run?Run_L?RunStart ?? 0. Move RunStop F1 ?? ??, Turn F1/F2 ?? ??? ???? ?? ???. Turn F0? ?? (-20,-4) ????? ???????? ????? ?? 101?105px? ?? ?? ?? ?2px ?? ??? ????. ?? ??? ? ?? ?? ??? ?? ???? ? ???? ????. ??????? ?? ??? ??."
+  },
+  "whole_head_redraw": {
+    "frames": {
+      "Run_Key0": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "offset": [
+          0,
+          0
+        ],
+        "outside_mask_mismatch": 0,
+        "body_y87_mismatch": 0,
+        "old_top": 27,
+        "new_top": 27,
+        "visual_review": "reviewed: coherent head/neck, no slab or upper/lower separation in changed heads"
+      },
+      "Run_F1": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "offset": [
+          0,
+          0
+        ],
+        "outside_mask_mismatch": 0,
+        "body_y87_mismatch": 0,
+        "old_top": 27,
+        "new_top": 27,
+        "visual_review": "reviewed: coherent head/neck, no slab or upper/lower separation in changed heads"
+      },
+      "Run_Key2": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "offset": [
+          0,
+          -1
+        ],
+        "outside_mask_mismatch": 0,
+        "body_y87_mismatch": 0,
+        "old_top": 26,
+        "new_top": 26,
+        "visual_review": "reviewed: coherent head/neck, no slab or upper/lower separation in changed heads"
+      },
+      "Run_F3": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "offset": [
+          0,
+          0
+        ],
+        "outside_mask_mismatch": 0,
+        "body_y87_mismatch": 0,
+        "old_top": 27,
+        "new_top": 27,
+        "visual_review": "reviewed: coherent head/neck, no slab or upper/lower separation in changed heads"
+      },
+      "Run_F4": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "offset": [
+          0,
+          -2
+        ],
+        "outside_mask_mismatch": 0,
+        "body_y87_mismatch": 0,
+        "old_top": 25,
+        "new_top": 25,
+        "visual_review": "reviewed: coherent head/neck, no slab or upper/lower separation in changed heads"
+      },
+      "Run_F5": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "offset": [
+          0,
+          -2
+        ],
+        "outside_mask_mismatch": 0,
+        "body_y87_mismatch": 0,
+        "old_top": 25,
+        "new_top": 25,
+        "visual_review": "reviewed: coherent head/neck, no slab or upper/lower separation in changed heads"
+      },
+      "Run_I5-6": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "offset": [
+          0,
+          -2
+        ],
+        "outside_mask_mismatch": 0,
+        "body_y87_mismatch": 0,
+        "old_top": 25,
+        "new_top": 25,
+        "visual_review": "reviewed: coherent head/neck, no slab or upper/lower separation in changed heads"
+      },
+      "Run_F6": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "offset": [
+          0,
+          -1
+        ],
+        "outside_mask_mismatch": 0,
+        "body_y87_mismatch": 0,
+        "old_top": 26,
+        "new_top": 26,
+        "visual_review": "reviewed: coherent head/neck, no slab or upper/lower separation in changed heads"
+      },
+      "Run_F7": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "offset": [
+          0,
+          -2
+        ],
+        "outside_mask_mismatch": 0,
+        "body_y87_mismatch": 0,
+        "old_top": 25,
+        "new_top": 25,
+        "visual_review": "reviewed: coherent head/neck, no slab or upper/lower separation in changed heads"
+      },
+      "Run_I7-0": {
+        "colors": 20,
+        "outside_idle_palette": 0,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "offset": [
+          0,
+          -2
+        ],
+        "outside_mask_mismatch": 0,
+        "body_y87_mismatch": 0,
+        "old_top": 25,
+        "new_top": 25,
+        "visual_review": "reviewed: coherent head/neck, no slab or upper/lower separation in changed heads"
+      }
+    },
+    "previews": {
+      "run10": {
+        "logical_frames": 110,
+        "decoded_frames": 110,
+        "duration_ms": 5000,
+        "fps": 22,
+        "visible_mismatch": 0
+      },
+      "run8": {
+        "logical_frames": 72,
+        "decoded_frames": 72,
+        "duration_ms": 4000,
+        "fps": 18,
+        "visible_mismatch": 0
+      },
+      "compare": {
+        "logical_frames": 110,
+        "decoded_frames": 110,
+        "duration_ms": 5000,
+        "fps": 22,
+        "visible_mismatch": 0
+      }
+    },
+    "asf": {
+      "stage": 4,
+      "scale_frames": false,
+      "failures": [],
+      "metrics": [
+        {
+          "frame": 0,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 1,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 65.0
+        },
+        {
+          "frame": 2,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 102,
+          "center_x": 64.5
+        },
+        {
+          "frame": 3,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 65.0
+        },
+        {
+          "frame": 4,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 103,
+          "center_x": 65.5
+        },
+        {
+          "frame": 5,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 103,
+          "center_x": 63.5
+        },
+        {
+          "frame": 6,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 103,
+          "center_x": 66.0
+        },
+        {
+          "frame": 7,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 102,
+          "center_x": 65.5
+        },
+        {
+          "frame": 8,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 103,
+          "center_x": 65.0
+        },
+        {
+          "frame": 9,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 103,
+          "center_x": 64.5
+        }
+      ]
+    },
+    "backup": "Sources/prev4",
+    "date": "2026-11-14",
+    "visual_review": {
+      "status": "reviewed",
+      "reviewer": "Codex",
+      "method": "Direct viewing of integer pixel-repeat 6x before/after crops and 3x full sprites",
+      "flat_slab": false,
+      "upper_lower_separation": false,
+      "interior_black_hole": false,
+      "face_consistency": "same character, red eyes and mischievous smile reviewed visually; independently generated pixels are not pixel-identical",
+      "files": [
+        "HeadBack_6x.png",
+        "Sources/WholeHead_pair0_6x.png",
+        "Sources/WholeHead_pair1_6x.png",
+        "Sources/WholeHead_pair2_6x.png",
+        "Sources/WholeHead_pair3_6x.png",
+        "Sources/WholeHead_pair4_6x.png",
+        "Sources/WholeHead_review3x.png"
+      ]
+    },
+    "method": "One image_gen drawing for each complete head and neck; no separate face/skull/tail patches; integer block recovery, palette mapping, binary alpha, whole-head integer registration, mask composite.",
+    "offsets_y": [
+      0,
+      0,
+      -1,
+      0,
+      -2,
+      -2,
+      -2,
+      -1,
+      -2,
+      -2
+    ],
+    "imagegen_calls_including_previous_session": 13,
+    "imagegen_calls_this_session": 9,
+    "resampling": false,
+    "rotation": false,
+    "code_drawing": false,
+    "asf_scope": "stage 4 check only; no automatic alignment or scaling",
+    "preserved_completed_sources": {
+      "0": {
+        "path": "Sources/WholeHead_00_final.png",
+        "sha256": "3b50a7b84e0ddd929ad8f82a60dc23d445a3292bca71f90f3ee0487152759059",
+        "regenerated_this_session": false,
+        "rgba_mismatch_to_output": 0
+      },
+      "5": {
+        "path": "Sources/WholeHead_05_final.png",
+        "sha256": "a0913166b1ca10de5acf0539336573d666c08296dbdef14b5a84f098ac9d920a",
+        "regenerated_this_session": false,
+        "rgba_mismatch_to_output": 0
+      }
+    },
+    "asf_status": "pass"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "source": "NEWIMAG\\Px32HeroV9\\Air\\Sources\\Fall_F0_bagless.png",
+  "source_sha256": "f344caaf63646280e10ff0c73e4707a29b2054b67241c99f9fe3dca375263037",
+  "recovery": {
+    "pitch": 10,
+    "origin": [
+      -13,
+      -9
+    ],
+    "head_registration_error": 4916714.333333334
+  },
+  "bag_position": [
+    51,
+    84
+  ],
+  "chain_position": [
+    56,
+    78
+  ],
+  "attempt": 1,
+  "outside_mask_mismatch": 0,
+  "colors": 20,
+  "outside_palette": 0,
+  "alpha": [
+    0,
+    255
+  ],
+  "head_top": 29,
+  "bottom": 127,
+  "visual_review": "pending"
+}

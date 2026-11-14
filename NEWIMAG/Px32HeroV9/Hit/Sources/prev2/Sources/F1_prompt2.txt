@@ -1,0 +1,18 @@
+Use case: precise-object-edit. Edit ONLY the attached approved Idle0 pixel sprite into ONE hit-reaction animation frame. Input is 128x128 pixel art displayed as EXACT 8x8 square blocks on a 1024x1024 transparent canvas. Keep this exact pixel block lattice, canvas, location, scale and style. Do not crop or recenter. Output transparent PNG. Preserve original legs, shorts, shoes and floor at logical y127 EXACTLY. Preserve hair top row logical y27. Character stays SAME three-quarter facing screen RIGHT; torso MUST NOT rotate toward viewer or twist. Face, chest, pelvis keep original aligned perspective. Change upper body/hair/arms only. Empty hands with long white puff sleeves all the way to black fingerless gloves, NO exposed forearms. Do NOT hug an object or cross/tangle arms. Keep chest readable, hands separated. Platinum ponytail must connect naturally beside left neck with no rectangular cutout. Existing hip bag will be composited from original approved pixels afterward: remove ONLY bag and its chain from generated image, restore body/transparent background under it; keep hands away from its old location. NOT a whole-character redesign. Invariants: original body size, head scale, palette, costume, leg and foot placement. No text, labels, shadows, antialiasing or new background.
+Settings table (hit expression overrides default smile only):
+| 부위 | 설정 | 자주 틀린 것 |
+|---|---|---|
+| 머리 | 긴 백금발 하이 포니테일, 검정·빨강 곱창 밴드, 앞머리 삐침, 빨간 지그재그(Z) 핀 | — |
+| 얼굴 | 빨간 눈, 송곳니, 장난스러운 웃음, 귀 피어싱 | — |
+| 외투 | **오버사이즈 흰 재킷, 어깨에서 흘러내려 걸침**(어깨·쇄골 노출), 안감·옷깃 빨강, **긴 퍼프 소매가 손목까지** | 반팔·맨 팔뚝(V8) |
+| 손 | 소매 끝에서 바로 **검은 핑거리스 장갑**. 맨 팔뚝 없음 | 손이 덩어리로 뭉개짐 |
+| 상의 | 검은 크롭 탑(빨간 왕관 무늬), 검은 초커 | — |
+| 하의 | 검은 반바지, 은색 버클 벨트, O링, 늘어진 벨트 끈, 허벅지 가터 벨트 | — |
+| 다리 | **비대칭**: 한쪽 검은 니하이, 다른 쪽 빨간 무릎 양말 | 스타킹 사라짐(V7) |
+| 신발 | 두툼한 흰·검정 하이탑, 빨간 스트랩 | 신발 작아짐(V6) |
+| 가방 | **상자형 미믹 가방**: 진회색·검정 금속 상자, 뚜껑에 빨간 가로띠, 위에 손잡이, 모서리 리벳, 앞면 가로로 **크고 뾰족한 흰 지그재그 이빨(위아래 맞물림)**, 입 안 어두운 빨강 | "XXX"·T자 이빨·단순 사각형 |
+| 가방 위치(평소) | 벨트에 끈/고리로 **옆 허리에 매달림** — 화면에 보이는 쪽 옆구리(벨트 옆, 엉덩이 옆면), 몸 중심선보다 살짝 앞. 컨셉 전신과 같은 자리 | 손에 든 것처럼 보임, 뒤쪽 엉덩이(V8) |
+| 가방 위치(긴 대기) | 허리에서 떼어 손에 듦(현재 승인 Idle 의 든 자세) | — |
+| 크기 | 주인공 96px(셀 128), 승인 Idle 과 머리 꼭대기·발바닥 행 동일 — **절대 축소 금지** | 몸 작아짐(V5·V6) |
+F1 peak recoil: head and shoulders recoil screen LEFT by 4 logical pixels (32 displayed pixels), slightly more bowed/compressed than initial impact, eyes tightly shut and painful grimace. Keep highest ponytail tip at y27. Both EMPTY gloved hands guard in front of chest, separated uncrossed; near hand at chest height, far hand a little higher. Long sleeves fully cover forearms. Chest and belly retain clear original three-quarter facing right without twist. Hips and legs stay original; hair ends and coat tails flick forward screen right.
+CRITICAL: Pixel identity preservation, not illustration. Original head is large, around logical x65..95 face and y40..72 face/hair. Only displace head/shoulders by FOUR pixels left, face center ~75 not ~63. Keep all original hair silhouette and pixel clusters except slight forward flick tips. Original crop top narrow diagonal facing RIGHT, not front view. No chest rotating. Guard hands separately at x66 y78 and x91 y79. Same 128x128 logical cell, no enlargement of details. Keep the hip bag unchanged for now. Use original image pixels as much as possible.

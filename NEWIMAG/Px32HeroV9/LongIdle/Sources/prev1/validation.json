@@ -1,0 +1,703 @@
+{
+  "status": "부분 완료: 원본 가방 크기 상충 및 호흡 연기 제한",
+  "frames": [
+    {
+      "frame": "BagOut_F0",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "BagOut_F1",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "BagOut_F2",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "BagOut_F3",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "BagOut_F4",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "BagOut_F5",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "LongIdle_F0",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "LongIdle_F1",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "LongIdle_F2",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "LongIdle_F3",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "LongIdle_F4",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "LongIdle_F5",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "LongIdle_F6",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "LongIdle_F7",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "LongIdle_F8",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "LongIdle_F9",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "LongIdle_F10",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "LongIdle_F11",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "BagIn_F0",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "BagIn_F1",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "BagIn_F2",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    },
+    {
+      "frame": "BagIn_F3",
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mask_mismatch": 0,
+      "head_mismatch": 0,
+      "boots_mismatch": 0,
+      "approved_palette": true
+    }
+  ],
+  "asf_4": {
+    "BagOut": {
+      "failures": [],
+      "metrics": [
+        {
+          "frame": 0,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 1,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 2,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 3,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 4,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 5,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        }
+      ],
+      "legacy_spec": null,
+      "expected_warning": "기존 규격표에 전환/LongIdle 장수 항목 없음. 요청 규격 6/12/4장으로 ④ 검사. ② 미실행."
+    },
+    "LongIdle": {
+      "failures": [],
+      "metrics": [
+        {
+          "frame": 0,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 1,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 2,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 3,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 4,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 5,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 6,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 7,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 8,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 9,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 10,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 11,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        }
+      ],
+      "legacy_spec": null,
+      "expected_warning": "기존 규격표에 전환/LongIdle 장수 항목 없음. 요청 규격 6/12/4장으로 ④ 검사. ② 미실행."
+    },
+    "BagIn": {
+      "failures": [],
+      "metrics": [
+        {
+          "frame": 0,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 1,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 2,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 3,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        }
+      ],
+      "legacy_spec": null,
+      "expected_warning": "기존 규격표에 전환/LongIdle 장수 항목 없음. 요청 규격 6/12/4장으로 ④ 검사. ② 미실행."
+    }
+  },
+  "gifs": {
+    "Hero_BagOut_3x.gif": {
+      "duration_ms": 1000,
+      "durations": [
+        80,
+        90,
+        80,
+        80,
+        90,
+        580
+      ],
+      "decoded_visible_mismatch": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "loop": false
+    },
+    "Hero_LongIdle_3x.gif": {
+      "duration_ms": 1200,
+      "durations": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "decoded_visible_mismatch": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "loop": true
+    },
+    "Hero_BagIn_3x.gif": {
+      "duration_ms": 830,
+      "durations": [
+        80,
+        90,
+        80,
+        580
+      ],
+      "decoded_visible_mismatch": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "loop": false
+    },
+    "Flow_3x.gif": {
+      "duration_ms": 5230,
+      "durations": [
+        120,
+        130,
+        120,
+        130,
+        120,
+        130,
+        120,
+        130,
+        80,
+        90,
+        80,
+        80,
+        90,
+        180,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        80,
+        90,
+        80,
+        200,
+        130,
+        120,
+        130,
+        120,
+        130,
+        120,
+        130
+      ],
+      "decoded_visible_mismatch": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "loop": true
+    }
+  },
+  "joins": {
+    "Idle0_to_BagOut0": 0,
+    "BagOut5_to_LongIdle0": 0,
+    "LongIdle0_to_BagIn0": 0,
+    "BagIn3_to_Idle0": 0,
+    "LongIdle11_to_0_changed_pixels": 261
+  },
+  "visual_review": {
+    "reviewed_files": [
+      "Sheet_3x.png",
+      "Waist_8x.png",
+      "Sources/BagOut_review_3x.png",
+      "Sources/BagIn_review_3x.png"
+    ],
+    "body_orientation": "3/4 유지, 머리/다리/신발 승인 픽셀 보존",
+    "sleeve": "긴 퍼프 소매와 검은 장갑, 맨 팔뚝 없음",
+    "bag": "승인 Hip/Held/Open 자산만 정수 이동. 자산 사이 크기 자체는 다름",
+    "grip": "?? 3?/8??? ??? ? ?? ?? ??. F5~7 ?? ??",
+    "breathing": "팔/소매 변화만; 몸통 전체 호흡은 구현하지 않음",
+    "chain": "허리 (56,89)에 R2_chain 상단 6px 유지",
+    "final_sheet_directly_viewed": true
+  },
+  "limitations": [
+    "Hip18x16/Held25x22/Open28x30으로 원본 규격이 달라 모든 장 동일 크기 조건 미충족",
+    "몸통 전체 호흡 부족",
+    "꺼내기 F2 바깥 이동 및 F4→F5 손 위치 변화가 커 부드러움 제한"
+  ],
+  "method": "내장 image_gen 원본 재사용, 블록 복원/팔레트 매핑/이진 알파/정수 이동/마스크 합성/조립/④ 검사만",
+  "settings_review": {
+    "hair_face": "?? ?? ?? 0",
+    "jacket_sleeve_glove": "? ?? ??/?? ???? ?? ?? ??",
+    "crop_top_choker": "?? ??? ??",
+    "shorts_belt_garter": "??? ?? ???",
+    "asymmetric_socks_boots": "?? ??",
+    "bag_design": "?? ??",
+    "bag_constant_size": "???: ?? ?? ??",
+    "orientation": "3/4 ??",
+    "size": "??27/?127, ?? ??"
+  }
+}

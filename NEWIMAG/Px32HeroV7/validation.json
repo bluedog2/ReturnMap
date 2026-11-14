@@ -1,0 +1,707 @@
+{
+  "revision": "재요청 1",
+  "production_ready": false,
+  "source_policy": "Only exact 4x cached original repetition inverted; Assets never opened in R1",
+  "processing": {
+    "fixed_grid_pitch": {
+      "Idle": 10,
+      "Run": 3,
+      "pouch": 40
+    },
+    "note": "Generated grid irregularity remains; no fitted resize, no rotation. Integer centers, palette cleanup, alpha threshold, cropped generated components and integer translation only."
+  },
+  "pouch_body_size": [
+    17,
+    14
+  ],
+  "pouch_master_sha256": "98eb6353bcbf35dcacfbfc9bced798859ab58c1dfb4d911b321235ea4f92c8bb",
+  "sheets": {
+    "Idle": {
+      "production_ready": false,
+      "attempts_this_revision": 3,
+      "frames": [
+        {
+          "frame": 0,
+          "mask": "Masks/Idle_00.png",
+          "outside_mask_mismatch_count": 0,
+          "pouch_size": [
+            17,
+            14
+          ],
+          "pouch_xy": [
+            51,
+            87
+          ],
+          "belt_row": 86,
+          "belt_measurement_method": "manual original waistline inspection; row recorded before insertion",
+          "belt_reference_roi": [
+            68,
+            85,
+            83,
+            88
+          ],
+          "belt_distance_px": 1,
+          "loop_length_px": 4,
+          "loop_visible": true,
+          "loop_attachment_visual_pass": false,
+          "pouch_identical_under_translation": true,
+          "hand_gap_px": 2,
+          "arm_end_x": 73.5,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "production_ready": false,
+          "hand_annotation_roi": [
+            70,
+            81,
+            78,
+            88
+          ],
+          "hand_measurement_method": "Conservative manually annotated black-glove ROI; dark pixels <95, excluding inserted pouch. Chebyshev empty-pixel clearance to body AND loop; glove center x is distal-arm landmark. Occluded pixels cannot be certified.",
+          "hand_gap_pass": true,
+          "mask_sha256": "23e3ca396b5b6c97b5caa738ba0f362304d6d853f878944c6bfe36e2e92aa1b7"
+        },
+        {
+          "frame": 1,
+          "mask": "Masks/Idle_01.png",
+          "outside_mask_mismatch_count": 0,
+          "pouch_size": [
+            17,
+            14
+          ],
+          "pouch_xy": [
+            51,
+            87
+          ],
+          "belt_row": 86,
+          "belt_measurement_method": "manual original waistline inspection; row recorded before insertion",
+          "belt_reference_roi": [
+            68,
+            85,
+            83,
+            88
+          ],
+          "belt_distance_px": 1,
+          "loop_length_px": 4,
+          "loop_visible": true,
+          "loop_attachment_visual_pass": false,
+          "pouch_identical_under_translation": true,
+          "hand_gap_px": 2,
+          "arm_end_x": 74.0,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "production_ready": false,
+          "hand_annotation_roi": [
+            70,
+            81,
+            78,
+            88
+          ],
+          "hand_measurement_method": "Conservative manually annotated black-glove ROI; dark pixels <95, excluding inserted pouch. Chebyshev empty-pixel clearance to body AND loop; glove center x is distal-arm landmark. Occluded pixels cannot be certified.",
+          "hand_gap_pass": true,
+          "mask_sha256": "23e3ca396b5b6c97b5caa738ba0f362304d6d853f878944c6bfe36e2e92aa1b7"
+        },
+        {
+          "frame": 2,
+          "mask": "Masks/Idle_02.png",
+          "outside_mask_mismatch_count": 0,
+          "pouch_size": [
+            17,
+            14
+          ],
+          "pouch_xy": [
+            51,
+            87
+          ],
+          "belt_row": 86,
+          "belt_measurement_method": "manual original waistline inspection; row recorded before insertion",
+          "belt_reference_roi": [
+            68,
+            85,
+            83,
+            88
+          ],
+          "belt_distance_px": 1,
+          "loop_length_px": 4,
+          "loop_visible": true,
+          "loop_attachment_visual_pass": false,
+          "pouch_identical_under_translation": true,
+          "hand_gap_px": 2,
+          "arm_end_x": 73.5,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "production_ready": false,
+          "hand_annotation_roi": [
+            70,
+            81,
+            78,
+            88
+          ],
+          "hand_measurement_method": "Conservative manually annotated black-glove ROI; dark pixels <95, excluding inserted pouch. Chebyshev empty-pixel clearance to body AND loop; glove center x is distal-arm landmark. Occluded pixels cannot be certified.",
+          "hand_gap_pass": true,
+          "mask_sha256": "23e3ca396b5b6c97b5caa738ba0f362304d6d853f878944c6bfe36e2e92aa1b7"
+        },
+        {
+          "frame": 3,
+          "mask": "Masks/Idle_03.png",
+          "outside_mask_mismatch_count": 0,
+          "pouch_size": [
+            17,
+            14
+          ],
+          "pouch_xy": [
+            51,
+            87
+          ],
+          "belt_row": 86,
+          "belt_measurement_method": "manual original waistline inspection; row recorded before insertion",
+          "belt_reference_roi": [
+            68,
+            85,
+            83,
+            88
+          ],
+          "belt_distance_px": 1,
+          "loop_length_px": 4,
+          "loop_visible": true,
+          "loop_attachment_visual_pass": false,
+          "pouch_identical_under_translation": true,
+          "hand_gap_px": 2,
+          "arm_end_x": 74.0,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "production_ready": false,
+          "hand_annotation_roi": [
+            70,
+            81,
+            78,
+            88
+          ],
+          "hand_measurement_method": "Conservative manually annotated black-glove ROI; dark pixels <95, excluding inserted pouch. Chebyshev empty-pixel clearance to body AND loop; glove center x is distal-arm landmark. Occluded pixels cannot be certified.",
+          "hand_gap_pass": true,
+          "mask_sha256": "23e3ca396b5b6c97b5caa738ba0f362304d6d853f878944c6bfe36e2e92aa1b7"
+        },
+        {
+          "frame": 4,
+          "mask": "Masks/Idle_04.png",
+          "outside_mask_mismatch_count": 0,
+          "pouch_size": [
+            17,
+            14
+          ],
+          "pouch_xy": [
+            51,
+            87
+          ],
+          "belt_row": 86,
+          "belt_measurement_method": "manual original waistline inspection; row recorded before insertion",
+          "belt_reference_roi": [
+            68,
+            85,
+            83,
+            88
+          ],
+          "belt_distance_px": 1,
+          "loop_length_px": 4,
+          "loop_visible": true,
+          "loop_attachment_visual_pass": false,
+          "pouch_identical_under_translation": true,
+          "hand_gap_px": 2,
+          "arm_end_x": 73.5,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "production_ready": false,
+          "hand_annotation_roi": [
+            70,
+            81,
+            78,
+            88
+          ],
+          "hand_measurement_method": "Conservative manually annotated black-glove ROI; dark pixels <95, excluding inserted pouch. Chebyshev empty-pixel clearance to body AND loop; glove center x is distal-arm landmark. Occluded pixels cannot be certified.",
+          "hand_gap_pass": true,
+          "mask_sha256": "23e3ca396b5b6c97b5caa738ba0f362304d6d853f878944c6bfe36e2e92aa1b7"
+        },
+        {
+          "frame": 5,
+          "mask": "Masks/Idle_05.png",
+          "outside_mask_mismatch_count": 0,
+          "pouch_size": [
+            17,
+            14
+          ],
+          "pouch_xy": [
+            51,
+            87
+          ],
+          "belt_row": 86,
+          "belt_measurement_method": "manual original waistline inspection; row recorded before insertion",
+          "belt_reference_roi": [
+            68,
+            85,
+            83,
+            88
+          ],
+          "belt_distance_px": 1,
+          "loop_length_px": 4,
+          "loop_visible": true,
+          "loop_attachment_visual_pass": false,
+          "pouch_identical_under_translation": true,
+          "hand_gap_px": 2,
+          "arm_end_x": 74.0,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "production_ready": false,
+          "hand_annotation_roi": [
+            70,
+            81,
+            78,
+            88
+          ],
+          "hand_measurement_method": "Conservative manually annotated black-glove ROI; dark pixels <95, excluding inserted pouch. Chebyshev empty-pixel clearance to body AND loop; glove center x is distal-arm landmark. Occluded pixels cannot be certified.",
+          "hand_gap_pass": true,
+          "mask_sha256": "23e3ca396b5b6c97b5caa738ba0f362304d6d853f878944c6bfe36e2e92aa1b7"
+        }
+      ],
+      "colors": 20,
+      "gif_delays_cs": [
+        12,
+        13,
+        13,
+        12,
+        12,
+        13
+      ],
+      "failure_reasons": [
+        "Idle 팔이 자연스럽게 내려오지 않고 앞쪽으로 굽음",
+        "고리와 원본 벨트의 접합이 불명확",
+        "생성 소매와 원본 어깨·몸통의 음영 접합 미달"
+      ],
+      "arm_end_x_range_px": 0.5,
+      "arm_swing_range_pass": true,
+      "visual_review_3x": {
+        "completed": true,
+        "belt_hung_pouch_unambiguous": false,
+        "sleeve_matches_original_shading": false,
+        "old_bag_region_restored": true,
+        "stocking_seam_quality_pass": false,
+        "leg_counterphase_pass": null,
+        "hip_lag_1_2px_verified": null
+      }
+    },
+    "Run": {
+      "production_ready": false,
+      "attempts_this_revision": 3,
+      "frames": [
+        {
+          "frame": 0,
+          "mask": "Masks/Run_00.png",
+          "outside_mask_mismatch_count": 0,
+          "pouch_size": [
+            17,
+            14
+          ],
+          "pouch_xy": [
+            49,
+            93
+          ],
+          "belt_row": 92,
+          "belt_measurement_method": "manual original waistline inspection; row recorded before insertion",
+          "belt_reference_roi": [
+            68,
+            91,
+            83,
+            94
+          ],
+          "belt_distance_px": 1,
+          "loop_length_px": 4,
+          "loop_visible": true,
+          "loop_attachment_visual_pass": false,
+          "pouch_identical_under_translation": true,
+          "hand_gap_px": 1,
+          "arm_end_x": 49.5,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "production_ready": false,
+          "hand_annotation_roi": [
+            43,
+            80,
+            56,
+            91
+          ],
+          "hand_measurement_method": "Conservative manually annotated black-glove ROI; dark pixels <95, excluding inserted pouch. Chebyshev empty-pixel clearance to body AND loop; glove center x is distal-arm landmark. Occluded pixels cannot be certified.",
+          "hand_gap_pass": false,
+          "mask_sha256": "faa4fd77c41bf99e0cb8307fa3190283dee1652d0261cd3195de57f56ef82e61"
+        },
+        {
+          "frame": 1,
+          "mask": "Masks/Run_01.png",
+          "outside_mask_mismatch_count": 0,
+          "pouch_size": [
+            17,
+            14
+          ],
+          "pouch_xy": [
+            50,
+            94
+          ],
+          "belt_row": 93,
+          "belt_measurement_method": "manual original waistline inspection; row recorded before insertion",
+          "belt_reference_roi": [
+            68,
+            92,
+            83,
+            95
+          ],
+          "belt_distance_px": 1,
+          "loop_length_px": 4,
+          "loop_visible": true,
+          "loop_attachment_visual_pass": false,
+          "pouch_identical_under_translation": true,
+          "hand_gap_px": 0,
+          "arm_end_x": 57.5,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "production_ready": false,
+          "hand_annotation_roi": [
+            52,
+            83,
+            64,
+            93
+          ],
+          "hand_measurement_method": "Conservative manually annotated black-glove ROI; dark pixels <95, excluding inserted pouch. Chebyshev empty-pixel clearance to body AND loop; glove center x is distal-arm landmark. Occluded pixels cannot be certified.",
+          "hand_gap_pass": false,
+          "mask_sha256": "e8c27a90375fcc3badb0159b192e45f0bf5804a5b6deffe2609fff08897e7776"
+        },
+        {
+          "frame": 2,
+          "mask": "Masks/Run_02.png",
+          "outside_mask_mismatch_count": 0,
+          "pouch_size": [
+            17,
+            14
+          ],
+          "pouch_xy": [
+            50,
+            90
+          ],
+          "belt_row": 89,
+          "belt_measurement_method": "manual original waistline inspection; row recorded before insertion",
+          "belt_reference_roi": [
+            68,
+            88,
+            83,
+            91
+          ],
+          "belt_distance_px": 1,
+          "loop_length_px": 4,
+          "loop_visible": true,
+          "loop_attachment_visual_pass": false,
+          "pouch_identical_under_translation": true,
+          "hand_gap_px": 0,
+          "arm_end_x": 65.0,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "production_ready": false,
+          "hand_annotation_roi": [
+            59,
+            79,
+            71,
+            90
+          ],
+          "hand_measurement_method": "Conservative manually annotated black-glove ROI; dark pixels <95, excluding inserted pouch. Chebyshev empty-pixel clearance to body AND loop; glove center x is distal-arm landmark. Occluded pixels cannot be certified.",
+          "hand_gap_pass": false,
+          "mask_sha256": "013d36dd71c0ca7d5a53a9c8f9197cff86c840840359a07fd4647bf8ac806755"
+        },
+        {
+          "frame": 3,
+          "mask": "Masks/Run_03.png",
+          "outside_mask_mismatch_count": 0,
+          "pouch_size": [
+            17,
+            14
+          ],
+          "pouch_xy": [
+            48,
+            92
+          ],
+          "belt_row": 91,
+          "belt_measurement_method": "manual original waistline inspection; row recorded before insertion",
+          "belt_reference_roi": [
+            68,
+            90,
+            83,
+            93
+          ],
+          "belt_distance_px": 1,
+          "loop_length_px": 4,
+          "loop_visible": true,
+          "loop_attachment_visual_pass": false,
+          "pouch_identical_under_translation": true,
+          "hand_gap_px": 0,
+          "arm_end_x": 67.0,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "production_ready": false,
+          "hand_annotation_roi": [
+            61,
+            83,
+            73,
+            93
+          ],
+          "hand_measurement_method": "Conservative manually annotated black-glove ROI; dark pixels <95, excluding inserted pouch. Chebyshev empty-pixel clearance to body AND loop; glove center x is distal-arm landmark. Occluded pixels cannot be certified.",
+          "hand_gap_pass": false,
+          "mask_sha256": "b8387afc41e0924c6c233688835ed61dbbe5818b4a372a072fc4f9ae89055e61"
+        },
+        {
+          "frame": 4,
+          "mask": "Masks/Run_04.png",
+          "outside_mask_mismatch_count": 0,
+          "pouch_size": [
+            17,
+            14
+          ],
+          "pouch_xy": [
+            49,
+            93
+          ],
+          "belt_row": 92,
+          "belt_measurement_method": "manual original waistline inspection; row recorded before insertion",
+          "belt_reference_roi": [
+            68,
+            91,
+            83,
+            94
+          ],
+          "belt_distance_px": 1,
+          "loop_length_px": 4,
+          "loop_visible": true,
+          "loop_attachment_visual_pass": false,
+          "pouch_identical_under_translation": true,
+          "hand_gap_px": 0,
+          "arm_end_x": 67.5,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "production_ready": false,
+          "hand_annotation_roi": [
+            60,
+            82,
+            74,
+            93
+          ],
+          "hand_measurement_method": "Conservative manually annotated black-glove ROI; dark pixels <95, excluding inserted pouch. Chebyshev empty-pixel clearance to body AND loop; glove center x is distal-arm landmark. Occluded pixels cannot be certified.",
+          "hand_gap_pass": false,
+          "mask_sha256": "faa4fd77c41bf99e0cb8307fa3190283dee1652d0261cd3195de57f56ef82e61"
+        },
+        {
+          "frame": 5,
+          "mask": "Masks/Run_05.png",
+          "outside_mask_mismatch_count": 0,
+          "pouch_size": [
+            17,
+            14
+          ],
+          "pouch_xy": [
+            50,
+            91
+          ],
+          "belt_row": 90,
+          "belt_measurement_method": "manual original waistline inspection; row recorded before insertion",
+          "belt_reference_roi": [
+            68,
+            89,
+            83,
+            92
+          ],
+          "belt_distance_px": 1,
+          "loop_length_px": 4,
+          "loop_visible": true,
+          "loop_attachment_visual_pass": false,
+          "pouch_identical_under_translation": true,
+          "hand_gap_px": 0,
+          "arm_end_x": 57.0,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "production_ready": false,
+          "hand_annotation_roi": [
+            51,
+            80,
+            64,
+            91
+          ],
+          "hand_measurement_method": "Conservative manually annotated black-glove ROI; dark pixels <95, excluding inserted pouch. Chebyshev empty-pixel clearance to body AND loop; glove center x is distal-arm landmark. Occluded pixels cannot be certified.",
+          "hand_gap_pass": false,
+          "mask_sha256": "cabba4fdc0f75ca01141a7ecc3ce493a6a1f528c2e6d5a0321574b59cad5cd8d"
+        },
+        {
+          "frame": 6,
+          "mask": "Masks/Run_06.png",
+          "outside_mask_mismatch_count": 0,
+          "pouch_size": [
+            17,
+            14
+          ],
+          "pouch_xy": [
+            51,
+            92
+          ],
+          "belt_row": 91,
+          "belt_measurement_method": "manual original waistline inspection; row recorded before insertion",
+          "belt_reference_roi": [
+            68,
+            90,
+            83,
+            93
+          ],
+          "belt_distance_px": 1,
+          "loop_length_px": 4,
+          "loop_visible": true,
+          "loop_attachment_visual_pass": false,
+          "pouch_identical_under_translation": true,
+          "hand_gap_px": 0,
+          "arm_end_x": 52.5,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "production_ready": false,
+          "hand_annotation_roi": [
+            46,
+            81,
+            59,
+            92
+          ],
+          "hand_measurement_method": "Conservative manually annotated black-glove ROI; dark pixels <95, excluding inserted pouch. Chebyshev empty-pixel clearance to body AND loop; glove center x is distal-arm landmark. Occluded pixels cannot be certified.",
+          "hand_gap_pass": false,
+          "mask_sha256": "01858a4a21734f794965fbd71629b74b21aeea122d6ae525c4f720a8302bd694"
+        },
+        {
+          "frame": 7,
+          "mask": "Masks/Run_07.png",
+          "outside_mask_mismatch_count": 0,
+          "pouch_size": [
+            17,
+            14
+          ],
+          "pouch_xy": [
+            49,
+            89
+          ],
+          "belt_row": 88,
+          "belt_measurement_method": "manual original waistline inspection; row recorded before insertion",
+          "belt_reference_roi": [
+            68,
+            87,
+            83,
+            90
+          ],
+          "belt_distance_px": 1,
+          "loop_length_px": 4,
+          "loop_visible": true,
+          "loop_attachment_visual_pass": false,
+          "pouch_identical_under_translation": true,
+          "hand_gap_px": 0,
+          "arm_end_x": 43.5,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "production_ready": false,
+          "hand_annotation_roi": [
+            37,
+            80,
+            50,
+            91
+          ],
+          "hand_measurement_method": "Conservative manually annotated black-glove ROI; dark pixels <95, excluding inserted pouch. Chebyshev empty-pixel clearance to body AND loop; glove center x is distal-arm landmark. Occluded pixels cannot be certified.",
+          "hand_gap_pass": false,
+          "mask_sha256": "ca2631bca605234d9e0edef72782c6a4a024fa1226c70e92040ed641970dac1b"
+        }
+      ],
+      "colors": 20,
+      "gif_delays_cs": [
+        6,
+        5,
+        6,
+        5,
+        6,
+        5,
+        6,
+        5
+      ],
+      "failure_reasons": [
+        "일부 프레임 손-파우치 고리 간격 2px 미달",
+        "원본 어깨와 생성 소매 연결 및 드러난 스타킹 경계에 각진 잔여부",
+        "팔 왕복 폭은 확보했지만 다리 반대 위상·엉덩이 지연 1~2px 검증 미달",
+        "벨트 접합이 모든 프레임에서 명확하지 않음"
+      ],
+      "arm_end_x_range_px": 24.0,
+      "arm_swing_range_pass": true,
+      "visual_review_3x": {
+        "completed": true,
+        "belt_hung_pouch_unambiguous": false,
+        "sleeve_matches_original_shading": false,
+        "old_bag_region_restored": true,
+        "stocking_seam_quality_pass": false,
+        "leg_counterphase_pass": false,
+        "hip_lag_1_2px_verified": false
+      }
+    }
+  },
+  "measurement_limitations": [
+    "belt rows and glove ROIs are manual semantic annotations",
+    "loop is present but its connection to native belt is not visually approved",
+    "no original Assets read; original equality is to cached exact4x sources from previous run",
+    "fixed grid recovery is imperfect; generated art was never fitted to a bounding box"
+  ]
+}

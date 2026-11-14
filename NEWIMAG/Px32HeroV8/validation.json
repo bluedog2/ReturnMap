@@ -1,0 +1,443 @@
+{
+  "source_sha256": "cd8db8384fcc54b2781eb09bb063975e4bf58b1dd234378f03aa8690ead018e1",
+  "source_unchanged": true,
+  "frames": [
+    {
+      "stage": "Option1_HipBag",
+      "frame": 0,
+      "mask": "Masks\\Option1_HipBag_00.png",
+      "outside_mismatch": 0,
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "floor": 127
+    },
+    {
+      "stage": "Option1_HipBag",
+      "frame": 1,
+      "mask": "Masks\\Option1_HipBag_01.png",
+      "outside_mismatch": 0,
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "floor": 127
+    },
+    {
+      "stage": "Option1_HipBag",
+      "frame": 2,
+      "mask": "Masks\\Option1_HipBag_02.png",
+      "outside_mismatch": 0,
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "floor": 127
+    },
+    {
+      "stage": "Option1_HipBag",
+      "frame": 3,
+      "mask": "Masks\\Option1_HipBag_03.png",
+      "outside_mismatch": 0,
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "floor": 127
+    },
+    {
+      "stage": "Option1_HipBag",
+      "frame": 4,
+      "mask": "Masks\\Option1_HipBag_04.png",
+      "outside_mismatch": 0,
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "floor": 127
+    },
+    {
+      "stage": "Option1_HipBag",
+      "frame": 5,
+      "mask": "Masks\\Option1_HipBag_05.png",
+      "outside_mismatch": 0,
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "floor": 127
+    },
+    {
+      "stage": "Option2_NoBag",
+      "frame": 0,
+      "mask": "Masks\\Option2_NoBag_00.png",
+      "outside_mismatch": 0,
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "floor": 127
+    },
+    {
+      "stage": "Option2_NoBag",
+      "frame": 1,
+      "mask": "Masks\\Option2_NoBag_01.png",
+      "outside_mismatch": 0,
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "floor": 127
+    },
+    {
+      "stage": "Option2_NoBag",
+      "frame": 2,
+      "mask": "Masks\\Option2_NoBag_02.png",
+      "outside_mismatch": 0,
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "floor": 127
+    },
+    {
+      "stage": "Option2_NoBag",
+      "frame": 3,
+      "mask": "Masks\\Option2_NoBag_03.png",
+      "outside_mismatch": 0,
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "floor": 127
+    },
+    {
+      "stage": "Option2_NoBag",
+      "frame": 4,
+      "mask": "Masks\\Option2_NoBag_04.png",
+      "outside_mismatch": 0,
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "floor": 127
+    },
+    {
+      "stage": "Option2_NoBag",
+      "frame": 5,
+      "mask": "Masks\\Option2_NoBag_05.png",
+      "outside_mismatch": 0,
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "floor": 127
+    },
+    {
+      "stage": "BagStow",
+      "frame": 1,
+      "mask": "Masks\\BagStow_01.png",
+      "outside_mismatch": 0,
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "floor": 127
+    },
+    {
+      "stage": "BagStow",
+      "frame": 2,
+      "mask": "Masks\\BagStow_02.png",
+      "outside_mismatch": 0,
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "floor": 127
+    },
+    {
+      "stage": "BagStow",
+      "frame": 0,
+      "mask": "Masks\\BagStow_00.png",
+      "outside_mismatch": 0,
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "floor": 127
+    },
+    {
+      "stage": "BagStow",
+      "frame": 3,
+      "mask": "Masks\\BagStow_03.png",
+      "outside_mismatch": 0,
+      "colors": 20,
+      "alpha": [
+        0,
+        255
+      ],
+      "floor": 127
+    }
+  ],
+  "shared_arm_equal": true,
+  "idle_translations": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ]
+  ],
+  "hand": {
+    "roi": [
+      60,
+      82,
+      65,
+      86
+    ],
+    "size": [
+      5,
+      4
+    ],
+    "belt_row": 86,
+    "belt_contact": true,
+    "visual_3x": "pass",
+    "highlight_pixels": 1,
+    "highlight_position": [
+      62,
+      83
+    ],
+    "wrist_not_larger_than_sleeve": true
+  },
+  "bag": {
+    "body_size": [
+      19,
+      15
+    ],
+    "top": 88,
+    "belt_distance": 2,
+    "hand_gap": 2,
+    "loop_height": 3,
+    "fangs": "upper and lower tapered fangs, visual pass",
+    "loop_source_crop": [
+      9,
+      6,
+      12,
+      9
+    ],
+    "loop_position": [
+      67,
+      85
+    ]
+  },
+  "stow": [
+    {
+      "frame": 1,
+      "translation": [
+        -8,
+        -9
+      ],
+      "visible_bag_pixels": 196
+    },
+    {
+      "frame": 2,
+      "translation": [
+        0,
+        -31
+      ],
+      "visible_bag_pixels": 0
+    }
+  ],
+  "stow_first_exact": true,
+  "stow_last_exact": true,
+  "comparison_ready": true,
+  "selected_option": null,
+  "original_arm_bag_retained_in_edit_patch": 0,
+  "visual_review": {
+    "hand_on_hip": true,
+    "elbow_below_shoulder": true,
+    "small_triangle_gap": true,
+    "no_old_bag_arm_fragments": true,
+    "hipbag_fangs": true,
+    "method": "3x and 8x static visual review; GIF decoded separately"
+  },
+  "recovery": {
+    "character": {
+      "pitch": 10,
+      "phase": 5
+    },
+    "bag": {
+      "pitch": 46,
+      "phase": 23
+    },
+    "glove": {
+      "pitch": 78,
+      "origin": [
+        469,
+        489
+      ],
+      "phase": 39
+    },
+    "note": "Fixed integer block samples, palette mapping and binary alpha; generated grids are approximate, not resized to a target bounding box."
+  },
+  "independent_checks": {
+    "pass_all": true,
+    "frames": [
+      {
+        "stage": "Option1_HipBag",
+        "frame": 0,
+        "outside_mismatch": 0
+      },
+      {
+        "stage": "Option1_HipBag",
+        "frame": 1,
+        "outside_mismatch": 0
+      },
+      {
+        "stage": "Option1_HipBag",
+        "frame": 2,
+        "outside_mismatch": 0
+      },
+      {
+        "stage": "Option1_HipBag",
+        "frame": 3,
+        "outside_mismatch": 0
+      },
+      {
+        "stage": "Option1_HipBag",
+        "frame": 4,
+        "outside_mismatch": 0
+      },
+      {
+        "stage": "Option1_HipBag",
+        "frame": 5,
+        "outside_mismatch": 0
+      },
+      {
+        "stage": "Option2_NoBag",
+        "frame": 0,
+        "outside_mismatch": 0
+      },
+      {
+        "stage": "Option2_NoBag",
+        "frame": 1,
+        "outside_mismatch": 0
+      },
+      {
+        "stage": "Option2_NoBag",
+        "frame": 2,
+        "outside_mismatch": 0
+      },
+      {
+        "stage": "Option2_NoBag",
+        "frame": 3,
+        "outside_mismatch": 0
+      },
+      {
+        "stage": "Option2_NoBag",
+        "frame": 4,
+        "outside_mismatch": 0
+      },
+      {
+        "stage": "Option2_NoBag",
+        "frame": 5,
+        "outside_mismatch": 0
+      },
+      {
+        "stage": "BagStow",
+        "frame": 1,
+        "outside_mismatch": 0
+      },
+      {
+        "stage": "BagStow",
+        "frame": 2,
+        "outside_mismatch": 0
+      },
+      {
+        "stage": "BagStow",
+        "frame": 0,
+        "outside_mismatch": 0
+      },
+      {
+        "stage": "BagStow",
+        "frame": 3,
+        "outside_mismatch": 0
+      }
+    ],
+    "gifs": [
+      {
+        "path": "Option1_HipBag\\Hero_Idle_3x.gif",
+        "frames": 6,
+        "durations_ms": [
+          120,
+          130,
+          130,
+          120,
+          120,
+          130
+        ],
+        "decoded_pixels_match": true
+      },
+      {
+        "path": "Option2_NoBag\\Hero_BagStow_3x.gif",
+        "frames": 4,
+        "durations_ms": [
+          80,
+          90,
+          80,
+          80
+        ],
+        "decoded_pixels_match": true
+      },
+      {
+        "path": "Option2_NoBag\\Hero_Idle_3x.gif",
+        "frames": 6,
+        "durations_ms": [
+          120,
+          130,
+          130,
+          120,
+          120,
+          130
+        ],
+        "decoded_pixels_match": true
+      }
+    ],
+    "translation_reuse": true,
+    "endpoint_equality": true
+  }
+}

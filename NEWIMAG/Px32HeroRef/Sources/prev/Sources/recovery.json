@@ -1,0 +1,171 @@
+{
+  "Front": {
+    "attempt": 3,
+    "pitch": 10,
+    "origin": [
+      0,
+      0
+    ],
+    "translation": [
+      0,
+      3
+    ]
+  },
+  "Side": {
+    "attempt": 3,
+    "pitch": 10,
+    "origin": [
+      0,
+      0
+    ],
+    "translation": [
+      0,
+      3
+    ]
+  },
+  "Back": {
+    "attempt": 1,
+    "pitch": 11,
+    "origin": [
+      0,
+      0
+    ],
+    "translation": [
+      0,
+      15
+    ]
+  },
+  "Bag_Hip_Front": {
+    "attempt": 1,
+    "pitch": 40,
+    "origin": [
+      0,
+      0
+    ],
+    "bbox_size": [
+      17,
+      16
+    ]
+  },
+  "Bag_Hip_Side": {
+    "attempt": 1,
+    "pitch": 40,
+    "origin": [
+      0,
+      0
+    ],
+    "bbox_size": [
+      11,
+      20
+    ]
+  },
+  "Bag_Hip_ThreeQuarter": {
+    "attempt": 1,
+    "pitch": 50,
+    "origin": [
+      0,
+      0
+    ],
+    "bbox_size": [
+      18,
+      16
+    ]
+  },
+  "Bag_Hip_Open": {
+    "attempt": 2,
+    "pitch": 50,
+    "origin": [
+      0,
+      0
+    ],
+    "bbox_size": [
+      17,
+      19
+    ]
+  },
+  "Bag_Held_Front": {
+    "attempt": 1,
+    "pitch": 40,
+    "origin": [
+      0,
+      0
+    ],
+    "bbox_size": [
+      22,
+      20
+    ]
+  },
+  "Bag_Held_Side": {
+    "attempt": 2,
+    "pitch": 35,
+    "origin": [
+      0,
+      0
+    ],
+    "bbox_size": [
+      15,
+      19
+    ]
+  },
+  "Bag_Held_ThreeQuarter": {
+    "attempt": 1,
+    "pitch": 45,
+    "origin": [
+      0,
+      0
+    ],
+    "bbox_size": [
+      25,
+      22
+    ]
+  },
+  "Bag_Held_Open": {
+    "attempt": 2,
+    "pitch": 45,
+    "origin": [
+      0,
+      0
+    ],
+    "bbox_size": [
+      18,
+      22
+    ]
+  },
+  "ThreeQuarter": {
+    "attempt": 1,
+    "pitch": 10,
+    "origin": [
+      -15,
+      -40
+    ],
+    "bag_source": "Bag/Bag_Hip_ThreeQuarter.png",
+    "bag_translation": [
+      60,
+      87
+    ]
+  },
+  "Arm_HandOnHip": {
+    "attempt": 2,
+    "pitch": 10,
+    "origin": [
+      -10,
+      -10
+    ]
+  },
+  "Arm_Forward": {
+    "attempt": 2,
+    "pitch": 10,
+    "origin": [
+      -10,
+      -10
+    ]
+  },
+  "Arm_Back": {
+    "attempt": 2,
+    "pitch": 10,
+    "origin": [
+      -10,
+      -10
+    ]
+  }
+}

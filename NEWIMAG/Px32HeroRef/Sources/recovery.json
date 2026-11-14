@@ -1,0 +1,230 @@
+{
+  "Front": {
+    "attempt": 3,
+    "pitch": 10,
+    "origin": [
+      0,
+      0
+    ],
+    "translation": [
+      0,
+      3
+    ]
+  },
+  "Side": {
+    "attempt": 3,
+    "pitch": 10,
+    "origin": [
+      0,
+      0
+    ],
+    "translation": [
+      0,
+      3
+    ]
+  },
+  "Back": {
+    "attempt": 1,
+    "pitch": 11,
+    "origin": [
+      0,
+      0
+    ],
+    "translation": [
+      0,
+      15
+    ]
+  },
+  "Bag_Hip_Front": {
+    "attempt": 1,
+    "pitch": 40,
+    "origin": [
+      0,
+      0
+    ],
+    "bbox_size": [
+      17,
+      16
+    ]
+  },
+  "Bag_Hip_Side": {
+    "attempt": 1,
+    "pitch": 40,
+    "origin": [
+      0,
+      0
+    ],
+    "bbox_size": [
+      11,
+      20
+    ]
+  },
+  "Bag_Hip_ThreeQuarter": {
+    "attempt": 1,
+    "pitch": 50,
+    "origin": [
+      0,
+      0
+    ],
+    "bbox_size": [
+      18,
+      16
+    ]
+  },
+  "Bag_Hip_Open": {
+    "attempt": 2,
+    "pitch": 50,
+    "origin": [
+      0,
+      0
+    ],
+    "bbox_size": [
+      17,
+      19
+    ]
+  },
+  "Bag_Held_Front": {
+    "attempt": 1,
+    "pitch": 40,
+    "origin": [
+      0,
+      0
+    ],
+    "bbox_size": [
+      22,
+      20
+    ]
+  },
+  "Bag_Held_Side": {
+    "attempt": 2,
+    "pitch": 35,
+    "origin": [
+      0,
+      0
+    ],
+    "bbox_size": [
+      15,
+      19
+    ]
+  },
+  "Bag_Held_ThreeQuarter": {
+    "attempt": 1,
+    "pitch": 45,
+    "origin": [
+      0,
+      0
+    ],
+    "bbox_size": [
+      25,
+      22
+    ]
+  },
+  "Bag_Held_Open": {
+    "attempt": 2,
+    "pitch": 45,
+    "origin": [
+      0,
+      0
+    ],
+    "bbox_size": [
+      18,
+      22
+    ]
+  },
+  "ThreeQuarter": {
+    "attempt": 1,
+    "pitch": 10,
+    "origin": [
+      -15,
+      -40
+    ],
+    "bag_source": "Bag/Bag_Hip_ThreeQuarter.png",
+    "bag_translation": [
+      60,
+      87
+    ]
+  },
+  "Arm_HandOnHip": {
+    "attempt": 2,
+    "pitch": 10,
+    "origin": [
+      -10,
+      -10
+    ]
+  },
+  "Arm_Forward": {
+    "attempt": 2,
+    "pitch": 10,
+    "origin": [
+      -10,
+      -10
+    ]
+  },
+  "Arm_Back": {
+    "attempt": 2,
+    "pitch": 10,
+    "origin": [
+      -10,
+      -10
+    ]
+  },
+  "v9_fix": {
+    "placement_file": "Sources/V9Fix_placement.json",
+    "entrypoint": "Sources/fix_assemble.py",
+    "previous_recovery": "Sources/prev/Sources/recovery.json",
+    "generation_calls": 9,
+    "mouth_recovery": {
+      "hip": {
+        "source": "V9Fix_Bag_Hip_Front_2_generated.png",
+        "pitch": 114,
+        "origin": [
+          64,
+          24
+        ],
+        "size": [
+          15,
+          7
+        ],
+        "assembly": "upper 13 columns; lower source columns 3..14 translated to columns 0..11; retain generated column 12"
+      },
+      "held": {
+        "source": "V9Fix_Bag_Held_Front_2_generated.png",
+        "pitch": 106,
+        "origin": [
+          0,
+          0
+        ],
+        "size": [
+          20,
+          7
+        ],
+        "assembly": "upper 18 columns; lower source columns 3..19 translated to columns 0..16; retain generated column 17"
+      }
+    },
+    "open_recovery": {
+      "hip": {
+        "pitch": 52,
+        "size": [
+          20,
+          23
+        ]
+      },
+      "held": {
+        "pitch": 40,
+        "size": [
+          28,
+          30
+        ]
+      }
+    },
+    "restoration_recovery": {
+      "pitch": 10,
+      "origin": [
+        -5,
+        -5
+      ],
+      "local_masks": "Sources/fix_assemble.py restore_boxes"
+    },
+    "note": "Top-level entries describe inherited generation; use v9_fix entrypoint for current outputs."
+  }
+}

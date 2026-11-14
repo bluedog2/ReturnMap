@@ -1,0 +1,61 @@
+{
+  "tool": "built-in image_gen",
+  "per_frame_limit": 3,
+  "frames": [
+    {
+      "frame": "F0",
+      "calls": 3,
+      "generated_files": [
+        "Sources/F0_generated1.png",
+        "Sources/F0_generated2.png",
+        "Sources/F0_generated3.png"
+      ],
+      "prompts": [
+        "Sources/F0_prompt1.txt",
+        "Sources/F0_prompt2.txt",
+        "Sources/F0_prompt3.txt"
+      ]
+    },
+    {
+      "frame": "F1",
+      "calls": 3,
+      "generated_files": [
+        "Sources/F1_generated1.png",
+        "Sources/F1_generated2.png",
+        "Sources/F1_generated3.png"
+      ],
+      "prompts": [
+        "Sources/F1_prompt1.txt",
+        "Sources/F1_prompt2.txt",
+        "Sources/F1_prompt3.txt"
+      ]
+    },
+    {
+      "frame": "F2",
+      "calls": 1,
+      "generated_files": [
+        "Sources/F2_generated1.png"
+      ],
+      "prompts": [
+        "Sources/F2_prompt1.txt"
+      ]
+    },
+    {
+      "frame": "F3",
+      "calls": 1,
+      "generated_files": [
+        "Sources/F3_generated1.png"
+      ],
+      "prompts": [
+        "Sources/F3_prompt1.txt"
+      ]
+    }
+  ],
+  "selection": {
+    "F0": "3회차 표정 + F1 3회차 소매 공유. 머리·핵심 몸통 Idle 정수 이동 보존. 1·2회차 전신 미채택.",
+    "F1": "3회차 표정·소매. 1·2회차 미채택. 머리·핵심 몸통 Idle 정수 이동 보존.",
+    "F2": "1회차 표정·소매 부분 사용, 머리·핵심 몸통 Idle 보존.",
+    "F3": "1회차 얼굴 내부만; 나머지 Idle0 그대로."
+  },
+  "total_calls": 8
+}

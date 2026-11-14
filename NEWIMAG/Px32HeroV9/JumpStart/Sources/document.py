@@ -1,0 +1,79 @@
+from build import *
+v=json.loads((O/'validation.json').read_text(encoding='utf-8'))
+for name,e in v['frames'].items():
+ e['visual_3x']={'머리':'백금발·밴드·Z핀 유지; 머리 상단 보호 띠 불일치 0','얼굴':'빨간 눈·표정 원본 유지; 작은 송곳니·피어싱은 원본 보존 근거','외투':'흰 긴 퍼프 소매·빨강 안감 확인','손':'검은 핑거리스 장갑·빈손; 소매가 손목까지 연결','상의':'검은 크롭 탑·초커 유지','하의':'반바지·벨트 유지, 가방 가림 있음','다리':'검정/빨강 비대칭 유지','신발':'두툼한 하이탑 유지','가방':'승인 상자·빨간 띠·맞물린 흰 이빨 픽셀 재사용','평소 가방 위치':'미통과: 중간 위치가 고정된 웅크린 몸의 허리보다 높음' if name=='I0' else '무릎 아래로 내려가지 않음; 허리 부근 확인','긴 대기 가방 위치':'해당 없음','크기':'머리 꼭대기·최하단 행 원본과 동일'}
+ e['held_bag']=False
+v['visual_review']='PARTIAL: I0 waist-height requirement failed; not approved'
+v['overall']='PARTIAL_FAIL'
+v['limitations']=['I0 preserves preceding crouched head and legs like approved Run partial interpolation, but midpoint bag (53,92) is too high relative to this unchanged body.','Bounded vertical lag (-1,+2,-1) implements the requested 1-2px response, not a literal copy of the previous hip position: launch hip delta exceeds 1-2px.','Original Fall reference in Transition still carries its original hand-held bag and was not edited; no JumpStart output holds a bag.']
+dump('validation.json',v)
+text='''# Re:Trap V9 — JumpStart 3단계
+
+2026-11-07. **부분 완료·전체 승인 조건 미통과**. 요청한 파일은 생성했지만, 사이 장 I0의 가방이 고정된 웅크림 몸에 비해 높다. 이를 통과로 기록하지 않았다. Assets 및 다른 NEWIMAG 폴더 수정, git 실행 없음.
+
+| 항목 | 결과 | 검증 |
+|---|---|---|
+| 원본 3장 수정 | Hero_JumpStart_3.png · 384×128 · 15fps | 각 image_gen 1/3회 |
+| 새 4장 | Hero_JumpStart_4.png · 512×128 · 20fps · 0.2초 | F0 → I0 → F1 → F2; I0 2/3회 |
+| 손가방·팔 | 4장 모두 빈손·긴 소매·검은 장갑 | 3배 눈 검사, 손가방 없음 |
+| 허리 가방 | **I0 높이 미통과** | 정수 중간 위치가 웅크린 몸의 허리보다 높음 |
+| 픽셀 검증 | 20색·알파 0/255 | 마스크 밖 불일치 0, 머리 꼭대기·최하단 행 원본 동일 |
+| ASF ④ | 3장·4장 수치 검사 통과 | 기존 3장 규격과 4장 차이는 예상 경고; ② 미실행 |
+| 미리보기 | 3·4장 GIF, Compare, Transition, 3배·허리 8배 시트 | GIF 재디코딩 불일치 0 |
+| 최종 상태 | **부분 완료** | I0 가방 높이 해결 전 전체 통과 아님 |
+
+## 장별 처리
+
+| 장 | 엉덩이 상단 기준점 | 가방 좌상단 | 세로 지연 | 생성 횟수 | 머리 꼭대기 / 최하단 | 마스크 밖 |
+|---|---|---|---|---|---|---|
+| F0 | (62,100) | (51,97) | -1px | 1/3 | 50 / 127 | 0 |
+| I0 | 앞 장 몸 유지 | (53,92) | 양끝 정수 평균 | 2/3 | 50 / 127 | 0 |
+| F1 | (65,86) | (54,86) | +2px | 1/3 | 25 / 127 | 0 |
+| F2 | (65,87) | (54,84) | -1px | 1/3 | 29 / 120 | 0 |
+
+엉덩이는 Run과 같은 반바지 뒤쪽 상단의 육안 랜드마크다. F0 최초 후보 (66,106)는 낮아서 무릎 쪽으로 가방이 내려갔다. `Sources/Crouch_placements_6x.png`의 비교 후 상단 기준점 (62,100)으로 보정했다. 가방 기준 오프셋은 Run 최종의 (-11,-2), 체인은 가방 +(5,-6), R2_chain 위 6행이다. F0·F2는 아래 움직임을 1px 덜 따라가고 F1은 상승을 2px 덜 따라간다. 이는 **1~2px로 제한한 지연 표현**이며 이전 장 엉덩이 좌표를 그대로 복사한 엄밀한 1장 지연은 아니다. 도약 시 엉덩이의 큰 높이 차이 때문에 두 조건을 동일하게 취급할 수 없다.
+
+가방·체인은 승인 PNG의 정수 평행이동만 했다. I0의 체인이 원본 머리 보호 띠를 덮지 않도록 y91 위는 원본을 우선 합성했다. 가림 전 레이어는 `Sources/I0_bag_layer_full.png`, 가림 마스크는 `Masks/I0_occlusion.png`에 보존했다. 보이는 가방 레이어 불일치 0이다.
+
+## 사이 장과 미통과 항목
+
+최종 3장 RGBA 변화량은 F0→F1 **4753**, F1→F2 **3398**픽셀이다. 가장 큰 F0→F1에 한 장을 생성했다. 앞뒤 가방 없는 장을 참조하고, Run·Idle처럼 앞 장의 머리·앞팔·다리·신발을 유지한 채 뒤팔·소매·밑단만 부분 합성했다. **전신 상승 보간은 아니다.**
+
+첫 생성은 접힌 손이 중간 가방에 가려져 폐기했다. 두 번째는 가방 왼쪽에 빈손이 보인다. 하지만 양 끝 가방의 정수 평균 (53,92)이 앞 장의 고정된 몸에 비해 높다. 손가방은 아니지만 요청한 ‘재킷 밑단 바로 아래 허리춤’ 조건은 I0에서 미통과다. 원본 머리·다리 유지, 부분 팔 보간, 가방 중간 좌표를 동시에 적용한 결과이며 해결된 것으로 간주하지 않는다.
+
+## 설정표 3배 눈 검사
+
+`Sources/Final_review_3x.png` 및 개별 `*_review_3x.png`, `Waist_4_8x.png` 확인.
+
+| 항목 | F0 | I0 | F1 | F2 |
+|---|---|---|---|---|
+| 백금발 포니테일·밴드·Z핀 | 유지 | 유지 | 유지 | 유지 |
+| 빨간 눈·얼굴 | 원본 유지 | 앞 장 유지 | 원본 유지 | 원본 유지 |
+| 긴 흰 퍼프 소매·빨강 안감 | 확인 | 확인 | 확인 | 확인 |
+| 장갑·맨 팔뚝 없음·빈손 | 확인 | 확인 | 확인 | 확인 |
+| 크롭 탑·초커·반바지·벨트 | 유지 | 유지 | 유지 | 유지 |
+| 비대칭 양말·하이탑 | 유지 | 앞 장 유지 | 유지 | 유지 |
+| 상자·붉은 띠·맞물린 이빨 | 승인 픽셀 | 승인 픽셀 | 승인 픽셀 | 승인 픽셀 |
+| 허리 높이 | 허리 부근 | **너무 높음** | 허리 부근 | 허리 부근 |
+| 머리 꼭대기·발 최하단 | 원본 동일 | F0 동일 | 원본 동일 | 원본 동일 |
+
+작은 송곳니·피어싱 등은 원본 얼굴 유지도 근거로 사용했다. 머리 불일치 수치는 F0/I0 y0..90, F1/F2 y0..64 보호 띠 기준이며 머리 전체의 독립 분할 검증으로 확대 해석하지 않는다. 앞팔 확인 영역 불일치 0. 새 가방이 가리는 몸 영역은 원본 보존 비교에서 별도 합성 영역이다.
+
+## 검증·미리보기
+
+ASF는 `tools/sprite/asf-to-px32.py`의 check, rules_for, sheet_spec만 사용했다. scale_frames·place·리샘플·회전 없음. 4장 중심 x64/64/64.5/63.5, 색 20, 팔레트 밖 0, 알파 0/255. JumpStart의 높이·발 행 예외를 적용하며 F2의 최하단 y120을 원본대로 유지했다. 기존 규격 Hero_JumpStart=3과 새 4장의 dimensions 차이를 예상 경고로 기록했다.
+
+- `Hero_JumpStart_3_3x.gif`: 70/60/70ms, 평균 15fps·200ms.
+- `Hero_JumpStart_4_3x.gif`: 각 50ms, 20fps·200ms.
+- `Compare_3x.gif`: 왼쪽 원본 @15 / 가운데 수정 3장 @15 / 오른쪽 4장 @20. 공통 200ms 주기, GIF 10ms 단위로 시간축 양자화.
+- `Transition_3x.gif`: 승인 Run 10장 마지막 → F0 → I0 → F1 → F2 → 원본 Fall 첫 장. 6장 각 50ms, 300ms. **Fall 원본의 손가방은 의도적으로 보존된 참조**이며 JumpStart 빈손 판정 대상이 아니다.
+- `Hero_JumpStart_3_3x.png`, `Hero_JumpStart_4_3x.png`, `Sheet_3x.png`, `Waist_3_8x.png`, `Waist_4_8x.png`: 정수 픽셀 반복 확대.
+
+## 출처·재현
+
+그림은 내장 image_gen만 사용했다. 요청서에는 설정표를 포함했다. 정확한 프롬프트는 `Sources/F0_prompt1.txt`, `F1_prompt1.txt`, `F2_prompt1.txt`, `I0_prompt1.txt`, `I0_prompt2.txt`. 생성 원본과 폐기본도 Sources에 보존했다. 1254×1254 생성본을 정수 간격 10 블록 중심으로 복원하고 승인 Idle 팔레트 최근접 매핑·알파 128 이진화·마스크 합성만 했다. 코드는 선이나 신체 픽셀을 그리지 않았다.
+
+재현: 루트에서 `python NEWIMAG/Px32HeroV9/JumpStart/Sources/build.py`, `python NEWIMAG/Px32HeroV9/JumpStart/Sources/finish.py`, `python NEWIMAG/Px32HeroV9/JumpStart/Sources/document.py`. 모든 프로젝트 출력은 JumpStart 안에만 작성한다. 입력 SHA256은 validation.json에 기록했다.
+'''
+(O/'README.md').write_text(text,encoding='utf-8')
+print('README and honest partial-failure validation written.')

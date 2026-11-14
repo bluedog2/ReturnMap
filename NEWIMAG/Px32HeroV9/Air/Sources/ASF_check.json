@@ -1,0 +1,119 @@
+{
+  "Fall": {
+    "stage": 4,
+    "scale_frames": false,
+    "placement": false,
+    "rules": {
+      "airborne": true,
+      "death": false,
+      "squash": false
+    },
+    "failures": [],
+    "metrics": [
+      {
+        "frame": 0,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 99,
+        "center_x": 64.5
+      },
+      {
+        "frame": 1,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 99,
+        "center_x": 64.5
+      },
+      {
+        "frame": 2,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 97,
+        "center_x": 64.0
+      },
+      {
+        "frame": 3,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 97,
+        "center_x": 64.0
+      }
+    ],
+    "expected_spec_warning": "기존 규격 2장 → 요청 4장"
+  },
+  "Rise": {
+    "stage": 4,
+    "scale_frames": false,
+    "placement": false,
+    "rules": {
+      "airborne": true,
+      "death": false,
+      "squash": false
+    },
+    "failures": [],
+    "metrics": [
+      {
+        "frame": 0,
+        "colors": 20,
+        "feet_row": 120,
+        "height": 92,
+        "center_x": 64.0
+      },
+      {
+        "frame": 1,
+        "colors": 20,
+        "feet_row": 120,
+        "height": 92,
+        "center_x": 66.0
+      },
+      {
+        "frame": 2,
+        "colors": 20,
+        "feet_row": 120,
+        "height": 92,
+        "center_x": 65.5
+      }
+    ],
+    "expected_spec_warning": "Hero_Rise: 기존 규격표에 없는 신규 공중 동작"
+  },
+  "Apex": {
+    "stage": 4,
+    "scale_frames": false,
+    "placement": false,
+    "rules": {
+      "airborne": true,
+      "death": false,
+      "squash": false
+    },
+    "failures": [
+      "drift: 프레임 0 높이 92 가 평균 94.3 에서 ±2px 초과",
+      "drift: 프레임 1 높이 92 가 평균 94.3 에서 ±2px 초과",
+      "drift: 프레임 2 높이 99 가 평균 94.3 에서 ±2px 초과"
+    ],
+    "metrics": [
+      {
+        "frame": 0,
+        "colors": 20,
+        "feet_row": 120,
+        "height": 92,
+        "center_x": 64.0
+      },
+      {
+        "frame": 1,
+        "colors": 20,
+        "feet_row": 120,
+        "height": 92,
+        "center_x": 63.5
+      },
+      {
+        "frame": 2,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 99,
+        "center_x": 63.5
+      }
+    ],
+    "expected_spec_warning": "Hero_Apex: 기존 규격표에 없는 신규 공중 동작",
+    "interpretation": "높이 드리프트 FAIL 3건 유지. 승인 상승(바닥120)과 낙하(바닥127)의 다리 자세 연결. 규격표 부재 경고와는 별개이며 전체 ASF 통과로 간주하지 않음."
+  }
+}

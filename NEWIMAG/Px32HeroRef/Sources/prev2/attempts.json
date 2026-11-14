@@ -1,0 +1,281 @@
+{
+  "scope": "이번 V9 1단계 수정 작업",
+  "max_calls_per_item_this_revision": 3,
+  "total_calls_this_revision": 9,
+  "counts_this_revision": {
+    "Bag_Held_Front": 2,
+    "Bag_Held_Open": 1,
+    "Bag_Hip_Front": 2,
+    "Bag_Hip_Open": 1,
+    "Restore_Back": 1,
+    "Restore_Front": 1,
+    "Restore_Side": 1
+  },
+  "items": [
+    {
+      "item": "Bag_Held_Front",
+      "attempt": 1,
+      "tool": "built-in image_gen",
+      "source": "Sources/V9Fix_Bag_Held_Front_1_generated.png",
+      "prompt": "Sources/V9Fix_Bag_Held_Front_1_prompt.txt",
+      "selection": "입 색상 일부만 채택; 이빨은 2차 전용 생성본 채택"
+    },
+    {
+      "item": "Bag_Held_Front",
+      "attempt": 2,
+      "tool": "built-in image_gen",
+      "source": "Sources/V9Fix_Bag_Held_Front_2_generated.png",
+      "prompt": "Sources/V9Fix_Bag_Held_Front_2_prompt.txt",
+      "selection": "채택"
+    },
+    {
+      "item": "Bag_Held_Open",
+      "attempt": 1,
+      "tool": "built-in image_gen",
+      "source": "Sources/V9Fix_Bag_Held_Open_1_generated.png",
+      "prompt": "Sources/V9Fix_Bag_Held_Open_1_prompt.txt",
+      "selection": "채택"
+    },
+    {
+      "item": "Bag_Hip_Front",
+      "attempt": 1,
+      "tool": "built-in image_gen",
+      "source": "Sources/V9Fix_Bag_Hip_Front_1_generated.png",
+      "prompt": "Sources/V9Fix_Bag_Hip_Front_1_prompt.txt",
+      "selection": "입 색상 일부만 채택; 이빨은 2차 전용 생성본 채택"
+    },
+    {
+      "item": "Bag_Hip_Front",
+      "attempt": 2,
+      "tool": "built-in image_gen",
+      "source": "Sources/V9Fix_Bag_Hip_Front_2_generated.png",
+      "prompt": "Sources/V9Fix_Bag_Hip_Front_2_prompt.txt",
+      "selection": "채택"
+    },
+    {
+      "item": "Bag_Hip_Open",
+      "attempt": 1,
+      "tool": "built-in image_gen",
+      "source": "Sources/V9Fix_Bag_Hip_Open_1_generated.png",
+      "prompt": "Sources/V9Fix_Bag_Hip_Open_1_prompt.txt",
+      "selection": "채택"
+    },
+    {
+      "item": "Restore_Back",
+      "attempt": 1,
+      "tool": "built-in image_gen",
+      "source": "Sources/V9Fix_Restore_Back_1_generated.png",
+      "prompt": "Sources/V9Fix_Restore_Back_1_prompt.txt",
+      "selection": "채택"
+    },
+    {
+      "item": "Restore_Front",
+      "attempt": 1,
+      "tool": "built-in image_gen",
+      "source": "Sources/V9Fix_Restore_Front_1_generated.png",
+      "prompt": "Sources/V9Fix_Restore_Front_1_prompt.txt",
+      "selection": "채택"
+    },
+    {
+      "item": "Restore_Side",
+      "attempt": 1,
+      "tool": "built-in image_gen",
+      "source": "Sources/V9Fix_Restore_Side_1_generated.png",
+      "prompt": "Sources/V9Fix_Restore_Side_1_prompt.txt",
+      "selection": "채택"
+    }
+  ],
+  "inherited_history": [
+    {
+      "item": "Arm_Back",
+      "attempt": 1,
+      "source": "Sources/Arm_Back_1_generated.png",
+      "prompt": "Sources/Arm_Back_1_prompt.txt",
+      "note": "이전 작업 원본"
+    },
+    {
+      "item": "Arm_Back",
+      "attempt": 2,
+      "source": "Sources/Arm_Back_2_generated.png",
+      "prompt": "Sources/Arm_Back_2_prompt.txt",
+      "note": "이전 작업 원본"
+    },
+    {
+      "item": "Arm_Forward",
+      "attempt": 1,
+      "source": "Sources/Arm_Forward_1_generated.png",
+      "prompt": "Sources/Arm_Forward_1_prompt.txt",
+      "note": "이전 작업 원본"
+    },
+    {
+      "item": "Arm_Forward",
+      "attempt": 2,
+      "source": "Sources/Arm_Forward_2_generated.png",
+      "prompt": "Sources/Arm_Forward_2_prompt.txt",
+      "note": "이전 작업 원본"
+    },
+    {
+      "item": "Arm_HandOnHip",
+      "attempt": 1,
+      "source": "Sources/Arm_HandOnHip_1_generated.png",
+      "prompt": "Sources/Arm_HandOnHip_1_prompt.txt",
+      "note": "이전 작업 원본"
+    },
+    {
+      "item": "Arm_HandOnHip",
+      "attempt": 2,
+      "source": "Sources/Arm_HandOnHip_2_generated.png",
+      "prompt": "Sources/Arm_HandOnHip_2_prompt.txt",
+      "note": "이전 작업 원본"
+    },
+    {
+      "item": "Back",
+      "attempt": 1,
+      "source": "Sources/Back_1_generated.png",
+      "prompt": null,
+      "note": "이전 작업 원본. 누락된 프롬프트는 추정 작성하지 않음"
+    },
+    {
+      "item": "Bag_Held_Front",
+      "attempt": 1,
+      "source": "Sources/Bag_Held_Front_1_generated.png",
+      "prompt": "Sources/Bag_Held_Front_1_prompt.txt",
+      "note": "이전 작업 원본"
+    },
+    {
+      "item": "Bag_Held_Open",
+      "attempt": 1,
+      "source": "Sources/Bag_Held_Open_1_generated.png",
+      "prompt": "Sources/Bag_Held_Open_1_prompt.txt",
+      "note": "이전 작업 원본"
+    },
+    {
+      "item": "Bag_Held_Open",
+      "attempt": 2,
+      "source": "Sources/Bag_Held_Open_2_generated.png",
+      "prompt": "Sources/Bag_Held_Open_2_prompt.txt",
+      "note": "이전 작업 원본"
+    },
+    {
+      "item": "Bag_Held_Side",
+      "attempt": 1,
+      "source": "Sources/Bag_Held_Side_1_generated.png",
+      "prompt": "Sources/Bag_Held_Side_1_prompt.txt",
+      "note": "이전 작업 원본"
+    },
+    {
+      "item": "Bag_Held_Side",
+      "attempt": 2,
+      "source": "Sources/Bag_Held_Side_2_generated.png",
+      "prompt": "Sources/Bag_Held_Side_2_prompt.txt",
+      "note": "이전 작업 원본"
+    },
+    {
+      "item": "Bag_Held_ThreeQuarter",
+      "attempt": 1,
+      "source": "Sources/Bag_Held_ThreeQuarter_1_generated.png",
+      "prompt": "Sources/Bag_Held_ThreeQuarter_1_prompt.txt",
+      "note": "이전 작업 원본"
+    },
+    {
+      "item": "Bag_Hip_Front",
+      "attempt": 1,
+      "source": "Sources/Bag_Hip_Front_1_generated.png",
+      "prompt": "Sources/Bag_Hip_Front_1_prompt.txt",
+      "note": "이전 작업 원본"
+    },
+    {
+      "item": "Bag_Hip_Front",
+      "attempt": 2,
+      "source": "Sources/Bag_Hip_Front_2_generated.png",
+      "prompt": "Sources/Bag_Hip_Front_2_prompt.txt",
+      "note": "이전 작업 원본"
+    },
+    {
+      "item": "Bag_Hip_Open",
+      "attempt": 1,
+      "source": "Sources/Bag_Hip_Open_1_generated.png",
+      "prompt": "Sources/Bag_Hip_Open_1_prompt.txt",
+      "note": "이전 작업 원본"
+    },
+    {
+      "item": "Bag_Hip_Open",
+      "attempt": 2,
+      "source": "Sources/Bag_Hip_Open_2_generated.png",
+      "prompt": "Sources/Bag_Hip_Open_2_prompt.txt",
+      "note": "이전 작업 원본"
+    },
+    {
+      "item": "Bag_Hip_Side",
+      "attempt": 1,
+      "source": "Sources/Bag_Hip_Side_1_generated.png",
+      "prompt": "Sources/Bag_Hip_Side_1_prompt.txt",
+      "note": "이전 작업 원본"
+    },
+    {
+      "item": "Bag_Hip_ThreeQuarter",
+      "attempt": 1,
+      "source": "Sources/Bag_Hip_ThreeQuarter_1_generated.png",
+      "prompt": "Sources/Bag_Hip_ThreeQuarter_1_prompt.txt",
+      "note": "이전 작업 원본"
+    },
+    {
+      "item": "Front",
+      "attempt": 1,
+      "source": "Sources/Front_1_generated.png",
+      "prompt": "Sources/Front_1_prompt.txt",
+      "note": "이전 작업 원본"
+    },
+    {
+      "item": "Front",
+      "attempt": 2,
+      "source": "Sources/Front_2_generated.png",
+      "prompt": "Sources/Front_2_prompt.txt",
+      "note": "이전 작업 원본"
+    },
+    {
+      "item": "Front",
+      "attempt": 3,
+      "source": "Sources/Front_3_generated.png",
+      "prompt": "Sources/Front_3_prompt.txt",
+      "note": "이전 작업 원본"
+    },
+    {
+      "item": "Side",
+      "attempt": 1,
+      "source": "Sources/Side_1_generated.png",
+      "prompt": "Sources/Side_1_prompt.txt",
+      "note": "이전 작업 원본"
+    },
+    {
+      "item": "Side",
+      "attempt": 2,
+      "source": "Sources/Side_2_generated.png",
+      "prompt": "Sources/Side_2_prompt.txt",
+      "note": "이전 작업 원본"
+    },
+    {
+      "item": "Side",
+      "attempt": 3,
+      "source": "Sources/Side_3_generated.png",
+      "prompt": "Sources/Side_3_prompt.txt",
+      "note": "이전 작업 원본"
+    },
+    {
+      "item": "ThreeQuarter",
+      "attempt": 1,
+      "source": "Sources/ThreeQuarter_1_generated.png",
+      "prompt": "Sources/ThreeQuarter_1_prompt.txt",
+      "note": "이전 작업 원본"
+    },
+    {
+      "item": "ThreeQuarter",
+      "attempt": 2,
+      "source": "Sources/ThreeQuarter_2_generated.png",
+      "prompt": "Sources/ThreeQuarter_2_prompt.txt",
+      "note": "이전 작업 원본"
+    }
+  ],
+  "inherited_count": 27,
+  "budget_note": "이전 생성 이력과 이번 수정 이력을 분리. 이번 입 전용 2차 생성은 같은 앞면 항목의 2회째로 계산. 3/4 입은 앞면 픽셀을 합성하여 추가 생성 없음. 복구 패치는 Restore_* 항목. 이전+현재 누적을 3회 이하로 주장하지 않음"
+}

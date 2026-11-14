@@ -1,0 +1,94 @@
+{
+  "total_including_previous": 4,
+  "previous": 2,
+  "this_session": 2,
+  "unique_generated_frames": {
+    "RunStart_F1": {
+      "used": 1,
+      "limit": 3,
+      "selected": 1,
+      "resumed_existing": true,
+      "generated": "Sources/RunStart_F1_generated1.png",
+      "prompt": null
+    },
+    "RunStop_F1": {
+      "used": 1,
+      "limit": 3,
+      "selected": 1,
+      "resumed_existing": true,
+      "generated": "Sources/RunStop_F1_generated1.png",
+      "prompt": "Sources/RunStop_F1_prompt1.txt"
+    },
+    "RunStop_F2": {
+      "used": 1,
+      "limit": 3,
+      "selected": 1,
+      "resumed_existing": false,
+      "generated": "Sources/RunStop_F2_generated1.png",
+      "prompt": "Sources/RunStop_F2_prompt1.txt"
+    },
+    "Turn_F1": {
+      "used": 1,
+      "limit": 3,
+      "selected": 1,
+      "resumed_existing": false,
+      "generated": "Sources/Turn_F1_generated1.png",
+      "prompt": "Sources/Turn_F1_prompt1.txt"
+    }
+  },
+  "reused_frames": {
+    "RunStart": [
+      "Idle0",
+      "RunStart_F1",
+      "Run0"
+    ],
+    "RunStop": [
+      "Run9",
+      "RunStop_F1",
+      "RunStop_F2",
+      "Idle0"
+    ],
+    "Turn": [
+      "RunStop_F1",
+      "Turn_F1",
+      "Run0"
+    ]
+  },
+  "note": "RunStart F1 prior prompt missing on resume; original generated image/recovery preserved. Turn F0 reuses RunStop F1, no new generation.",
+  "screen_side_bag": {
+    "new_imagegen_calls": 0,
+    "method": "approved pixel mask compositing, integer translation, body mirror; no drawing",
+    "limit_per_frame": 3
+  },
+  "head_bundle_lock": {
+    "built_in_imagegen": true,
+    "calls": 1,
+    "limit_per_frame": 3,
+    "per_frame": {
+      "Turn_F0": 1,
+      "other_frames": 0
+    },
+    "prompt": "Run/Sources/HeadBundle_prompt1.txt",
+    "method": "integer block recovery, approved palette mapping, binary alpha, integer shift, mirror and mask composite"
+  },
+  "whole_head_redraw": {
+    "tool": "built-in image_gen",
+    "limit_per_frame": 3,
+    "calls_including_previous_session": 1,
+    "calls_this_session": 1,
+    "previous_session_calls": 0,
+    "per_frame": {
+      "Turn_F0": {
+        "attempts": 1,
+        "selected": 1,
+        "generated": "Sources/WholeHead_Turn_generated1.png",
+        "prompt": "Sources/WholeHead_Turn_prompt1.txt"
+      },
+      "RunStart_F2_RunStop_F0_Run_L": {
+        "attempts": 0,
+        "method": "reuse completed Run heads and exact horizontal mirror"
+      }
+    },
+    "note": "Earlier unrelated revisions remain in their original attempt records. Whole-head counts include the interrupted session. Frame00 prompt was not present in recovery files; it is not reconstructed as an exact historical prompt."
+  }
+}

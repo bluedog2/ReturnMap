@@ -1,0 +1,9 @@
+﻿from pathlib import Path
+p=Path('NEWIMAG/Px32HeroV9/Run/Sources')
+t=Path('docs/hero-model-sheet-plan.md').read_text(encoding='utf-8');table=t[t.index('| 부위 |'):t.index('\n확정(')]
+for i in [0,2]:
+ s=f'''Use case: precise-object-edit. Edit target image 1: exact running sprite key {i}, shown enlarged as 8x8 blocks from 128x128. Images 2 and 3 are ONLY sleeve and fingerless glove style references, NOT pose/body references.
+Remove the large toothy suitcase held at image-left and remove the rear arm that was holding it. Restore any hidden jacket hem and body naturally. Draw a new swinging rear arm on image-left: {'swing it backward toward image-left, elbow slightly bent, fist back at about logical x32 y88' if i==0 else 'bend rear elbow and swing forearm forward toward the waist, fist at about logical x63 y88, opposite the rearward leg'}. White oversized long puff sleeve ALL THE WAY TO WRIST, immediately joined to black fingerless glove, NO naked forearm. Preserve the running leg pose, all head/hair/face pixels, torso, and image-right front arm exactly. Do NOT add any bag, chain or other accessory; the small approved bag will be composited separately later. The original held bag pixels around x29..53 y89..110 must be fully removed; leave transparent background where nothing is behind them. Only edit image-left rear sleeve/glove and former bag area x27..66 y77..110. Do not change original visible leg pixels, boots, front arm, hair, face, or body scale. Keep the 128x128 logical grid aligned exactly with image 1; output an exact enlarged pixel-art image, preferably 1024x1024 with 8x8 blocks. Transparent background, no checkerboard, no text, no guide marks. Flat hard pixel edges, existing palette, no smoothing. Head top and ground same as image 1.
+Design specification verbatim (bag is NOT to be drawn during this edit):
+'''+table
+ (p/f'Key{i}_prompt1.txt').write_text(s,encoding='utf-8')

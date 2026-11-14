@@ -1,0 +1,54 @@
+{
+  "tool": "built-in image_gen",
+  "per_frame_limit": 3,
+  "total_calls": 4,
+  "frames": [
+    {
+      "frame": "F0",
+      "calls": 3,
+      "selected_attempt": 3,
+      "generated_files": [
+        "Sources/V3_F0_generated1.png",
+        "Sources/V3_F0_generated2.png",
+        "Sources/V3_F0_generated3.png"
+      ],
+      "prompts": [
+        "Sources/V3_F0_prompt1.txt",
+        "Sources/V3_F0_prompt2.txt",
+        "Sources/V3_F0_prompt3.txt"
+      ]
+    },
+    {
+      "frame": "F1",
+      "calls": 1,
+      "selected_attempt": 1,
+      "generated_files": [
+        "Sources/V3_F1_generated1.png"
+      ],
+      "prompts": [
+        "Sources/V3_F1_prompt1.txt"
+      ]
+    },
+    {
+      "frame": "F2",
+      "calls": 0,
+      "selected_attempt": null,
+      "generated_files": [],
+      "prompts": []
+    },
+    {
+      "frame": "F3",
+      "calls": 0,
+      "selected_attempt": null,
+      "generated_files": [],
+      "prompts": []
+    }
+  ],
+  "selection": {
+    "F0": "3회차. 1회차 상체 과도 이동, 2회차 정면화로 미채택.",
+    "F1": "1회차. 더 큰 젖힘과 휘날림.",
+    "F2": "prev2 원본 바이트 동일, 이음새 검사만.",
+    "F3": "prev2 원본 바이트 동일."
+  },
+  "previous_run": "Sources/prev2/attempts.json"
+}

@@ -1,0 +1,401 @@
+{
+  "master_byte_identical": true,
+  "master_mask_exact": true,
+  "master": {
+    "frame": "master",
+    "colors": 20,
+    "approved_palette": true,
+    "alpha": [
+      0,
+      255
+    ],
+    "top": 27,
+    "floor": 127,
+    "outside_mismatch": 0,
+    "head_unchanged": true,
+    "floor_row_unchanged": true,
+    "visual_3x": {
+      "long_sleeves": "통과",
+      "black_gloves": "통과",
+      "bag_fangs": "통과",
+      "asymmetric_legs": "통과",
+      "old_bag_remnants": "없음",
+      "seams": "통과"
+    }
+  },
+  "frames": [
+    {
+      "frame": "F0",
+      "colors": 20,
+      "approved_palette": true,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mismatch": 0,
+      "head_unchanged": true,
+      "floor_row_unchanged": true,
+      "visual_3x": {
+        "long_sleeves": "통과",
+        "black_gloves": "통과",
+        "bag_fangs": "통과",
+        "asymmetric_legs": "통과",
+        "old_bag_remnants": "없음",
+        "seams": "통과"
+      },
+      "body_translation": [
+        0,
+        0
+      ],
+      "bag_translation": [
+        -2,
+        0
+      ],
+      "seam_generation_attempts": 0
+    },
+    {
+      "frame": "F1",
+      "colors": 20,
+      "approved_palette": true,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 26,
+      "floor": 127,
+      "outside_mismatch": 0,
+      "head_unchanged": true,
+      "floor_row_unchanged": true,
+      "visual_3x": {
+        "long_sleeves": "통과",
+        "black_gloves": "통과",
+        "bag_fangs": "통과",
+        "asymmetric_legs": "통과",
+        "old_bag_remnants": "없음",
+        "seams": "통과"
+      },
+      "body_translation": [
+        -2,
+        0
+      ],
+      "bag_translation": [
+        0,
+        0
+      ],
+      "seam_generation_attempts": 0
+    },
+    {
+      "frame": "F2",
+      "colors": 20,
+      "approved_palette": true,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 26,
+      "floor": 127,
+      "outside_mismatch": 0,
+      "head_unchanged": true,
+      "floor_row_unchanged": true,
+      "visual_3x": {
+        "long_sleeves": "통과",
+        "black_gloves": "통과",
+        "bag_fangs": "통과",
+        "asymmetric_legs": "통과",
+        "old_bag_remnants": "없음",
+        "seams": "통과"
+      },
+      "body_translation": [
+        0,
+        0
+      ],
+      "bag_translation": [
+        -2,
+        0
+      ],
+      "seam_generation_attempts": 0
+    },
+    {
+      "frame": "F3",
+      "colors": 20,
+      "approved_palette": true,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mismatch": 0,
+      "head_unchanged": true,
+      "floor_row_unchanged": true,
+      "visual_3x": {
+        "long_sleeves": "통과",
+        "black_gloves": "통과",
+        "bag_fangs": "통과",
+        "asymmetric_legs": "통과",
+        "old_bag_remnants": "없음",
+        "seams": "통과"
+      },
+      "body_translation": [
+        -2,
+        0
+      ],
+      "bag_translation": [
+        0,
+        0
+      ],
+      "seam_generation_attempts": 0
+    },
+    {
+      "frame": "F4",
+      "colors": 20,
+      "approved_palette": true,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 27,
+      "floor": 127,
+      "outside_mismatch": 0,
+      "head_unchanged": true,
+      "floor_row_unchanged": true,
+      "visual_3x": {
+        "long_sleeves": "통과",
+        "black_gloves": "통과",
+        "bag_fangs": "통과",
+        "asymmetric_legs": "통과",
+        "old_bag_remnants": "없음",
+        "seams": "통과"
+      },
+      "body_translation": [
+        -1,
+        0
+      ],
+      "bag_translation": [
+        -2,
+        0
+      ],
+      "seam_generation_attempts": 0
+    },
+    {
+      "frame": "F5",
+      "colors": 20,
+      "approved_palette": true,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 26,
+      "floor": 127,
+      "outside_mismatch": 0,
+      "head_unchanged": true,
+      "floor_row_unchanged": true,
+      "visual_3x": {
+        "long_sleeves": "통과",
+        "black_gloves": "통과",
+        "bag_fangs": "통과",
+        "asymmetric_legs": "통과",
+        "old_bag_remnants": "없음",
+        "seams": "통과"
+      },
+      "body_translation": [
+        -2,
+        0
+      ],
+      "bag_translation": [
+        -1,
+        0
+      ],
+      "seam_generation_attempts": 0
+    },
+    {
+      "frame": "I2-3",
+      "colors": 20,
+      "approved_palette": true,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 26,
+      "floor": 127,
+      "outside_mismatch": 0,
+      "head_unchanged": true,
+      "floor_row_unchanged": true,
+      "visual_3x": {
+        "long_sleeves": "통과",
+        "black_gloves": "통과",
+        "bag_fangs": "통과",
+        "asymmetric_legs": "통과",
+        "old_bag_remnants": "없음",
+        "seams": "통과"
+      },
+      "generation_attempts": 1,
+      "distinct_from_before": true,
+      "distinct_from_after": true
+    },
+    {
+      "frame": "I1-2",
+      "colors": 20,
+      "approved_palette": true,
+      "alpha": [
+        0,
+        255
+      ],
+      "top": 26,
+      "floor": 127,
+      "outside_mismatch": 0,
+      "head_unchanged": true,
+      "floor_row_unchanged": true,
+      "visual_3x": {
+        "long_sleeves": "통과",
+        "black_gloves": "통과",
+        "bag_fangs": "통과",
+        "asymmetric_legs": "통과",
+        "old_bag_remnants": "없음",
+        "seams": "통과"
+      },
+      "generation_attempts": 1,
+      "distinct_from_before": true,
+      "distinct_from_after": true
+    }
+  ],
+  "order_8": [
+    "F0",
+    "F1",
+    "I1-2",
+    "F2",
+    "I2-3",
+    "F3",
+    "F4",
+    "F5"
+  ],
+  "changes": [
+    3021,
+    3105,
+    3134,
+    2724,
+    2710,
+    3030
+  ],
+  "selected_edges": [
+    2,
+    1
+  ],
+  "gifs": {
+    "Hero_Idle_6_3x.gif": {
+      "frames": 6,
+      "total_ms": 750,
+      "durations_ms": [
+        120,
+        130,
+        120,
+        130,
+        120,
+        130
+      ],
+      "visible_pixel_mismatches": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "Hero_Idle_8_3x.gif": {
+      "frames": 8,
+      "total_ms": 1000,
+      "durations_ms": [
+        120,
+        130,
+        120,
+        130,
+        120,
+        130,
+        120,
+        130
+      ],
+      "visible_pixel_mismatches": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "Compare_3x.gif": {
+      "frames": 24,
+      "total_ms": 3000,
+      "durations_ms": [
+        120,
+        130,
+        120,
+        130,
+        120,
+        130,
+        120,
+        130,
+        120,
+        130,
+        120,
+        130,
+        120,
+        130,
+        120,
+        130,
+        120,
+        130,
+        120,
+        130,
+        120,
+        130,
+        120,
+        130
+      ],
+      "visible_pixel_mismatches": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "source_sha256": "cd8db8384fcc54b2781eb09bb063975e4bf58b1dd234378f03aa8690ead018e1",
+  "master_source_sha256": "7fa7e0c7b50c659415936ef58bbd8a2e696abea631cbb0148fce9fdea19ab1c1",
+  "measurement_roi": [
+    66,
+    78,
+    87,
+    98
+  ],
+  "measurement_method": "RGBA mismatch minimum over integer dx/dy -3..3 on visible torso/hip band; ties prefer shortest shift. Original hand-drawn frames are not exact translations.",
+  "bag_delay": "cyclic previous frame, including F0 <- F5",
+  "preview_scaling": "integer pixel repetition only; no artwork resampling or rotation",
+  "intermediate_scope": "Generated torso/arm/hem only; head and legs inherited from preceding frame, bag/chain protected.",
+  "settings_review": "Master identity retained: platinum ponytail, red eyes and Z hairpin, white jacket/red lining, crop top, shorts/belt, high-tops; long sleeves/gloves/fangs/asymmetric legs visually checked at 3x for every frame."
+}

@@ -1,0 +1,146 @@
+{
+  "attempts": 3,
+  "selected_attempt": 3,
+  "generation": "built-in image_gen",
+  "recovery": {
+    "origin_center": [
+      182,
+      240
+    ],
+    "pitch": 114,
+    "grid": [
+      7,
+      12
+    ],
+    "translation": [
+      63,
+      81
+    ],
+    "method": "coarse block center recovery, nearest approved palette, binary alpha; no image resize/rotation"
+  },
+  "free_bbox": [
+    63,
+    81,
+    70,
+    93
+  ],
+  "free_pixels": 38,
+  "colors": [
+    [
+      25,
+      24,
+      31
+    ],
+    [
+      208,
+      190,
+      184
+    ],
+    [
+      247,
+      238,
+      228
+    ]
+  ],
+  "alpha": [
+    0,
+    255
+  ],
+  "palette_valid": true,
+  "poses": {
+    "Down": {
+      "layer_visible_pixels": 37,
+      "composited_pixels": 37,
+      "visible_rows": [
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92
+      ],
+      "outside_mask_mismatch": 0,
+      "bag_mismatch": 0,
+      "occluder_mismatch": 0
+    },
+    "HandOnHip": {
+      "layer_visible_pixels": 32,
+      "composited_pixels": 32,
+      "visible_rows": [
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92
+      ],
+      "outside_mask_mismatch": 0,
+      "bag_mismatch": 0,
+      "occluder_mismatch": 0
+    }
+  },
+  "protected_files_unchanged": true,
+  "protected_hashes": {
+    "Turnaround\\Hero_Back.png": "70e3bea1f7088d81cc77db586f67418663a3a9d099e7fa3727f26a6c7c4b120d",
+    "Turnaround\\Hero_Front.png": "77b56f0c89109d6f8118f94ba5bc296c8ab694d39de5f362a726e168024cb05f",
+    "Turnaround\\Hero_Side.png": "93c51c769cf54ef14866965a2352439b3b8b6e417891a8330715d106e9f2a6aa",
+    "Turnaround\\Hero_ThreeQuarter.png": "79bf4c20ad67400bbb48d64d63938a148a16ddac750cc317c39a32565fd71080",
+    "Turnaround\\Hips_8x.png": "c3596cd76522fd77a55d9b9204235054918b1136dc39dcd5e64f3c7733562674",
+    "Turnaround\\R3_Hips_Review_7x.png": "2962965e16e4b5225c397b78ce6de8c66a430193f867d8a751f963848a49f334",
+    "Turnaround\\Turnaround_1x.png": "cd22292097d700c565d9b418ec48633da71a6ec2de6cd11bfc098066bab6acd8",
+    "Turnaround\\Turnaround_4x.png": "995057269b971a487e26825679b57845801bb581d6684de8f9f33fceb82d126a",
+    "Arms\\Arms_4x.png": "af43300e2736845557cbaddc7cce372f7458f9b91126d7b71f3569625ae6cecf",
+    "Arms\\Arm_Back.png": "8563322504f7ad8484e366e4397f73a0627b9dbe4a2df595ee62de7e684caaf6",
+    "Arms\\Arm_Down.png": "79bf4c20ad67400bbb48d64d63938a148a16ddac750cc317c39a32565fd71080",
+    "Arms\\Arm_Forward.png": "c5daaa0007e191c88fe5d9428a09a16594384f91539821b220d5b044bddfe819",
+    "Arms\\Arm_HandOnHip.png": "1b7aa9cd6209d8a188a1d0d5d994957a0455c516509f8079b96158bd90b8dd68",
+    "Arms\\Hands_8x.png": "df1d7624efb3df15a652d1174e0d06db39658f5462f525868a64fea2fcee6fd8",
+    "Arms\\R3b_Compare_7x.png": "b9ea7f9d796aca0291dfaaa9e15e0cc77f3558bba3804a5b0d3db42bcee1dca6",
+    "Arms\\R3c_Compare_7x.png": "197d682cecf8cd26440dad6b19d0d1ee04700105a0376baff9afd5bb8ff303de",
+    "Arms\\R3d_Compare_7x.png": "5fcdf91b078cd25d68fbfb554e584c3e3cfbd2f59d4176d16e0b168f6f0e6c73",
+    "Bag\\BagTeeth_16x.png": "ce791caa27382fe204c3494ae836fe9656719dcc5ce3a2d6889747676fd3f740",
+    "Bag\\Bag_8x.png": "57259c61e76c2dd0807ad3c2e029372697e230609c13d42df675cc67c91c247f",
+    "Bag\\Bag_Held_Front.png": "af6376f4f9e9ec6010e4883ae4e5e82cfbaa4dbfb5293f40aa3cdd54e730d36c",
+    "Bag\\Bag_Held_Open.png": "ac5f33800b7ceb146f60a74cb54b8cc72763d9056f9f83a3ee9123f686c3fef7",
+    "Bag\\Bag_Held_Side.png": "e5f73488a7af3d8172716e5d39be4fa38e9ad0f91c1607c1585c1d221f36ae30",
+    "Bag\\Bag_Held_ThreeQuarter.png": "051d2481f40a2c9a54b074ed257b33e950aa219078774bc443d516b131cf279f",
+    "Bag\\Bag_Hip_Front.png": "f7a3cc6ec1420d7e3465680931368cd9df18a48d7a3469c44aa3a0d874459aae",
+    "Bag\\Bag_Hip_Open.png": "5a41b2821d6eafb57566b535ac69c4ae94b913b60893a48911add8135f7c2b7d",
+    "Bag\\Bag_Hip_Side.png": "a71d2985c7592d73ca4e738539f4a18a19f0b8bb0fd2bf6b2fe6555ebdd5685b",
+    "Bag\\Bag_Hip_ThreeQuarter.png": "0cac9df72bec9fad11da05697677a3b0859c1a54ba536b04d1d2be5a22dd9453"
+  },
+  "preview_order": [
+    "Down",
+    "HandOnHip"
+  ],
+  "preview_crop_inclusive": [
+    44,
+    78,
+    80,
+    110
+  ],
+  "composition_order": "restore old chain from r3 bagless; connector behind jacket/arms and existing bag; never overwrite production files",
+  "self_assessment": {
+    "status": "partial_not_all_requirements_met",
+    "readability_3x": "?? ??? ??? 2~4? ?? ??? ?? ??? ???? ??",
+    "ring": "?? 3x3 ?? ??, ?? ?? ? 4px",
+    "visible_length": "12??? ?? 4~8px ??",
+    "occlusion": "?? ? ?? ??? ? ?? ???/?? ?? ??? ??; ?? ?? ?? ?? ??",
+    "below_hem": "y89~92 ?? ?? ??",
+    "no_further_generation": "image_gen 3/3? ??",
+    "handoff": "??? ?? ???? ?? ?? ???. Claude ?? ? ??? ?? ?? ??"
+  },
+  "down_below_hem_y89_to92_pixels": 9
+}

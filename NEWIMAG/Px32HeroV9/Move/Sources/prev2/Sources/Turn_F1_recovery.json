@@ -1,0 +1,13 @@
+{
+  "method": "integer block center recovery",
+  "pitch": 10,
+  "origin": [
+    -17,
+    -11
+  ],
+  "source_size": [
+    1254,
+    1254
+  ],
+  "resampling": false
+}

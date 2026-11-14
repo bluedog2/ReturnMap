@@ -1,0 +1,472 @@
+{
+  "status": "deliverables_complete_with_limitations",
+  "frames": {
+    "RunStart_F0": {
+      "source": "Idle0",
+      "generated_pose": false,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 27,
+      "floor": 127,
+      "bag_position": [
+        51,
+        95
+      ],
+      "outside_composite_mask_mismatch": 0,
+      "approved_endpoint_mismatch": 0,
+      "alignment": null
+    },
+    "RunStart_F1": {
+      "source": "RunStart_F1",
+      "generated_pose": true,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 27,
+      "floor": 127,
+      "bag_position": [
+        50,
+        95
+      ],
+      "outside_composite_mask_mismatch": 0,
+      "approved_endpoint_mismatch": null,
+      "alignment": {
+        "head_translation": [
+          0,
+          0
+        ],
+        "lower_translation": [
+          0,
+          3
+        ],
+        "composite_seam_y": 104
+      }
+    },
+    "RunStart_F2": {
+      "source": "Run0",
+      "generated_pose": false,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 27,
+      "floor": 127,
+      "bag_position": [
+        52,
+        95
+      ],
+      "outside_composite_mask_mismatch": 0,
+      "approved_endpoint_mismatch": 0,
+      "alignment": null
+    },
+    "RunStop_F0": {
+      "source": "Run9",
+      "generated_pose": false,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 27,
+      "floor": 127,
+      "bag_position": [
+        52,
+        94
+      ],
+      "outside_composite_mask_mismatch": 0,
+      "approved_endpoint_mismatch": 0,
+      "alignment": null
+    },
+    "RunStop_F1": {
+      "source": "RunStop_F1",
+      "generated_pose": true,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 27,
+      "floor": 127,
+      "bag_position": [
+        55,
+        94
+      ],
+      "outside_composite_mask_mismatch": 0,
+      "approved_endpoint_mismatch": null,
+      "alignment": {
+        "head_translation": [
+          0,
+          -1
+        ],
+        "lower_translation": [
+          0,
+          2
+        ],
+        "composite_seam_y": 104
+      }
+    },
+    "RunStop_F2": {
+      "source": "RunStop_F2",
+      "generated_pose": true,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 27,
+      "floor": 127,
+      "bag_position": [
+        57,
+        93
+      ],
+      "outside_composite_mask_mismatch": 0,
+      "approved_endpoint_mismatch": null,
+      "alignment": {
+        "head_translation": [
+          0,
+          0
+        ],
+        "lower_translation": [
+          0,
+          2
+        ],
+        "composite_seam_y": 104
+      },
+      "approved_head_mismatch": 0
+    },
+    "RunStop_F3": {
+      "source": "Idle0",
+      "generated_pose": false,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 27,
+      "floor": 127,
+      "bag_position": [
+        51,
+        95
+      ],
+      "outside_composite_mask_mismatch": 0,
+      "approved_endpoint_mismatch": 0,
+      "alignment": null
+    },
+    "Turn_F0": {
+      "source": "RunStop_F1",
+      "generated_pose": true,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 27,
+      "floor": 127,
+      "bag_position": [
+        55,
+        94
+      ],
+      "outside_composite_mask_mismatch": 0,
+      "approved_endpoint_mismatch": null,
+      "alignment": {
+        "head_translation": [
+          0,
+          -1
+        ],
+        "lower_translation": [
+          0,
+          2
+        ],
+        "composite_seam_y": 104
+      }
+    },
+    "Turn_F1": {
+      "source": "Turn_F1",
+      "generated_pose": true,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 27,
+      "floor": 127,
+      "bag_position": [
+        54,
+        94
+      ],
+      "outside_composite_mask_mismatch": 0,
+      "approved_endpoint_mismatch": null,
+      "alignment": {
+        "head_translation": [
+          0,
+          0
+        ],
+        "lower_translation": [
+          0,
+          2
+        ],
+        "composite_seam_y": 104
+      },
+      "approved_head_mismatch": 0
+    },
+    "Turn_F2": {
+      "source": "Run0",
+      "generated_pose": false,
+      "colors": 20,
+      "outside_palette": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "head_top": 27,
+      "floor": 127,
+      "bag_position": [
+        52,
+        95
+      ],
+      "outside_composite_mask_mismatch": 0,
+      "approved_endpoint_mismatch": 0,
+      "alignment": null
+    }
+  },
+  "previews": {
+    "RunStart": {
+      "logical_frames": 3,
+      "encoded_frames": 3,
+      "duration_ms": 150,
+      "fps": 20,
+      "visible_mismatch": 0
+    },
+    "RunStop": {
+      "logical_frames": 4,
+      "encoded_frames": 4,
+      "duration_ms": 200,
+      "fps": 20,
+      "visible_mismatch": 0
+    },
+    "Turn": {
+      "logical_frames": 3,
+      "encoded_frames": 3,
+      "duration_ms": 150,
+      "fps": 20,
+      "visible_mismatch": 0
+    },
+    "Start": {
+      "logical_frames": 27,
+      "encoded_frames": 26,
+      "duration_ms": 1350,
+      "fps": 20,
+      "visible_mismatch": 0
+    },
+    "Stop": {
+      "logical_frames": 22,
+      "encoded_frames": 20,
+      "duration_ms": 1100,
+      "fps": 20,
+      "visible_mismatch": 0
+    },
+    "Turn_transition": {
+      "logical_frames": 23,
+      "encoded_frames": 22,
+      "duration_ms": 1150,
+      "fps": 20,
+      "visible_mismatch": 0
+    }
+  },
+  "asf": {
+    "RunStart": {
+      "failures": [],
+      "metrics": [
+        {
+          "frame": 0,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 1,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 62.0
+        },
+        {
+          "frame": 2,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.0
+        }
+      ],
+      "stage": 4,
+      "scale_frames": false
+    },
+    "RunStop": {
+      "failures": [
+        "drift: 프레임 1 가로 중심 59.0 이 평균 63.0 에서 ±2px 초과"
+      ],
+      "metrics": [
+        {
+          "frame": 0,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.0
+        },
+        {
+          "frame": 1,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 59.0
+        },
+        {
+          "frame": 2,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        },
+        {
+          "frame": 3,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.5
+        }
+      ],
+      "stage": 4,
+      "scale_frames": false
+    },
+    "Turn": {
+      "failures": [
+        "drift: 프레임 1 가로 중심 51.5 이 평균 58.2 에서 ±2px 초과",
+        "drift: 프레임 2 가로 중심 64.0 이 평균 58.2 에서 ±2px 초과"
+      ],
+      "metrics": [
+        {
+          "frame": 0,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 59.0
+        },
+        {
+          "frame": 1,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 51.5
+        },
+        {
+          "frame": 2,
+          "colors": 20,
+          "feet_row": 127,
+          "height": 101,
+          "center_x": 64.0
+        }
+      ],
+      "stage": 4,
+      "scale_frames": false
+    }
+  },
+  "endpoint_checks": {
+    "start_first": 0,
+    "start_last": 0,
+    "stop_last": 0,
+    "turn_flipped_last_to_run0": 0
+  },
+  "approved_input_sha256": {
+    "NEWIMAG\\Px32HeroV9\\Idle\\Hero_Idle_8.png": "56912896c3753517375ff834e26e3ff246aa7f0a6826bb75892bd85e674bd1d2",
+    "NEWIMAG\\Px32HeroV9\\Run\\Hero_Run_10.png": "f2a8b19b20d707e4bc64882c3166d98b284cf687aacc7e712082831832b51f90"
+  },
+  "visual_review": {
+    "performed": true,
+    "images": [
+      "Sheet_3x.png",
+      "Waist_8x.png",
+      "Sources/Turn_flip_boundary_3x.png"
+    ],
+    "bag_height": "jacket hem / upper thigh; not below knee or at chest",
+    "hands": "empty, black fingerless gloves, long sleeves",
+    "details": "See README Korean model-setting review table",
+    "limitations": [
+      "ASF center drift: stop 1, turn 2",
+      "Generated torso width and proportions not quantitatively identical to approved Idle",
+      "Backward braking lean is mild",
+      "All arbitrary Run entry phases not runtime-tested",
+      "Prior RunStart F1 prompt missing at resume"
+    ]
+  },
+  "bag_rule": {
+    "offset": [
+      -11,
+      -2
+    ],
+    "delay": "previous pose hip for generated middle frames; exact approved endpoint positions override settling",
+    "placements": {
+      "RunStart_F1": {
+        "previous_hip": [
+          62,
+          97
+        ],
+        "inertia": [
+          -1,
+          0
+        ]
+      },
+      "RunStop_F1": {
+        "previous_hip": [
+          63,
+          96
+        ],
+        "inertia": [
+          3,
+          0
+        ]
+      },
+      "RunStop_F2": {
+        "previous_hip": [
+          65,
+          95
+        ],
+        "inertia": [
+          3,
+          0
+        ]
+      },
+      "Turn_F1": {
+        "previous_hip": [
+          65,
+          95
+        ],
+        "inertia": [
+          0,
+          1
+        ]
+      }
+    }
+  },
+  "bag_source_mismatch": {
+    "RunStart_F1": 0,
+    "RunStop_F1": 0,
+    "RunStop_F2": 0,
+    "Turn_F1": 0
+  }
+}

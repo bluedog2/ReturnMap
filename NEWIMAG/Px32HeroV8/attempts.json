@@ -1,0 +1,19 @@
+{
+  "tool": "built-in image_gen",
+  "new_calls": {"C_hand": 4, "hip_bag": 2, "transition_arm": 2},
+  "limits": {"C_hand": 4, "hip_bag": 3},
+  "prior_preserved": ["A1", "B1"],
+  "attempts": [
+    {"id":"C1", "selected":true, "usage":"공통 C 팔·가방 제거 복원", "reason":"허리 접촉 자세와 아래쪽 팔꿈치 채택, 손 강조점은 C4로 교체"},
+    {"id":"C2", "selected":false, "reason":"손 위치가 위로 달라지고 강조점이 두 픽셀로 남음"},
+    {"id":"C3", "selected":false, "reason":"분리 장갑이 약 6픽셀 폭으로 커서 제외"},
+    {"id":"C4", "selected":true, "usage":"4×4 생성 장갑을 C1 손등에 합성", "reason":"최종 5×4 장갑 ROI 안에 단일 강조점 확보"},
+    {"id":"HipBag1", "selected":false, "reason":"정수 블록 복원 시 몸체가 요청 높이보다 낮음"},
+    {"id":"HipBag2", "selected":true, "usage":"19×15 몸체·3px 고리", "reason":"크기 범위와 위아래 송곳니, 빨간 띠 보존"},
+    {"id":"Stow1", "selected":true, "usage":"전환 2번째 프레임 팔 부분만"},
+    {"id":"Stow2", "selected":true, "usage":"전환 3번째 프레임 팔 부분만"}
+  ],
+  "prompts": "Sources/<id>_prompt.txt",
+  "generated_sources": "Sources/<id>_generated.png",
+  "selected_option": null
+}

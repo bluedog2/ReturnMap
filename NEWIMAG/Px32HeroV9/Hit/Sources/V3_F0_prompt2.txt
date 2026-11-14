@@ -1,0 +1,16 @@
+Use case: precise-object-edit. Edit the attached approved Idle0 pixel sprite into F0 IMPACT, one sprite only. Output 1024x1024 transparent, exact logical 128x128 grid of flat 8x8 blocks. Preserve canvas and foot positions, bottom at logical y127. Same full head and body size, no shrinking or recentering.
+Make recoil OBVIOUS: head center 6 logical pixels LEFT of the reference, shoulders 5 pixels LEFT. Head bends BACK with chin lifted up-right and eyes squeezed shut. Upper body leans backward screen LEFT but retains exactly the original THREE-QUARTER FACING RIGHT orientation; absolutely no chest twisting or turning toward viewer. Both black gloved EMPTY hands are separated in front of chest in reflex guard; long white puff sleeves go to wrists, no bare forearms. Ponytail, bangs and jacket tails whip strongly FORWARD toward screen RIGHT from inertia, not straight down. Keep the original head volume and neck connected. Slightly bend knees to balance but feet remain pinned. Remove bag and chain, those will be composited later.
+Settings:
+|Part|Required|
+|Hair|Long platinum high ponytail, black/red scrunchie, jagged bangs, red Z pin|
+|Face|Red eyes (squeezed shut for impact), fang, ear piercing|
+|Jacket|Oversized white off-shoulder, exposed shoulders/collarbones, red lining/collar, long puff sleeves to wrists|
+|Hands|Black fingerless gloves directly at sleeve ends; empty, separated|
+|Top|Black crop top with red crown, black choker|
+|Bottom|Black shorts, silver buckle, O ring, dangling belt, thigh garter|
+|Legs|Asymmetric black thigh-high and red knee sock|
+|Shoes|Chunky white/black high-tops, red straps; exact original location and size|
+|Bag|Approved dark mimic box with red band and white interlocking teeth restored separately, do not draw|
+|Scale|Exact original head/body size on 128 cell, never shrink|
+Preserve palette, coarse pixel density, boots and lower legs. No text, smooth gradients, antialiasing, effects or new props. This is a stronger hit recoil, not a small flinch.
+CORRECTION PRIORITY: Image 1 is the exact original F0 edit target (mild flinch); image 2 is Idle scale reference. Make a LOCAL POSE EDIT of image 1, not a redesign. Original F0 head is already 3px backward; move it only 3px more LEFT (total 6 relative to Idle), shoulders only 3px more LEFT. Keep hips, shorts, belt, knees and boots EXACTLY as image 1. Tip head backward to lift chin clearly; swing long ponytail and bangs rightward. Keep original large head size. The earlier attempt moved torso much too far left. Do not do that. Keep belly connected over the existing pelvis. Only modest backward displacement but clearly tilted head and flying hair/jacket. Keep shoulders in original 3/4 right perspective.

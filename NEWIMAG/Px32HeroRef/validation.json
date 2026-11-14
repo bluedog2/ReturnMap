@@ -1,0 +1,1083 @@
+{
+  "stage": 1,
+  "revision": "재요청 2",
+  "status": "partial_constraints_conflict",
+  "all_requirements_pass": false,
+  "production_ready": false,
+  "summary": [
+    [
+      "몸·얼굴·머리·소매·장갑",
+      "통과",
+      "보호 영역 불일치 0, 바닥 127"
+    ],
+    [
+      "가방 디자인·Open 2종",
+      "통과",
+      "Bag 전체 파일 해시 동일; 정수 평행이동"
+    ],
+    [
+      "앞면·3/4 가방 본체 가림",
+      "통과",
+      "앞면 기본 자세 및 3/4 팔 4자세 모두 0px"
+    ],
+    [
+      "4면 본체 윗변·끈",
+      "통과",
+      "윗변 y104(차이 0), 생성 체인 12×2px"
+    ],
+    [
+      "허벅지 중간·무릎 위",
+      "미통과",
+      "원본 높이 유지 시 아랫변 y116~119로 무릎 아래"
+    ],
+    [
+      "3배 육안 확인",
+      "부분 통과",
+      "이빨 상자 식별 가능; 가방이 무릎 부근까지 내려옴"
+    ],
+    [
+      "마스크·팔레트·알파",
+      "통과",
+      "마스크 밖 0, 최대 20색, 알파 0/255"
+    ],
+    [
+      "백업·확대본·생성 횟수",
+      "완료",
+      "Sources/prev2, Hips_8x.png, image_gen 1/3회"
+    ]
+  ],
+  "placements": {
+    "Front": {
+      "asset": "Bag/Bag_Hip_Front.png",
+      "translation": [
+        70,
+        101
+      ],
+      "box_top": 104,
+      "bottom": 116,
+      "chain_translation": [
+        76,
+        89
+      ],
+      "chain_length": 12,
+      "chain_width": 2,
+      "visible_bbox": [
+        70,
+        101,
+        87,
+        117
+      ]
+    },
+    "ThreeQuarter": {
+      "asset": "Bag/Bag_Hip_ThreeQuarter.png",
+      "translation": [
+        75,
+        101
+      ],
+      "box_top": 104,
+      "bottom": 116,
+      "chain_translation": [
+        80,
+        89
+      ],
+      "chain_length": 12,
+      "chain_width": 2,
+      "visible_bbox": [
+        75,
+        101,
+        93,
+        117
+      ]
+    },
+    "Side": {
+      "asset": "Bag/Bag_Hip_ThreeQuarter.png",
+      "translation": [
+        66,
+        101
+      ],
+      "box_top": 104,
+      "bottom": 116,
+      "chain_translation": [
+        80,
+        89
+      ],
+      "chain_length": 12,
+      "chain_width": 2,
+      "visible_bbox": [
+        79,
+        102,
+        84,
+        117
+      ]
+    },
+    "Back": {
+      "asset": "Bag/Bag_Hip_Side.png",
+      "translation": [
+        40,
+        100
+      ],
+      "box_top": 104,
+      "bottom": 119,
+      "chain_translation": [
+        45,
+        89
+      ],
+      "chain_length": 12,
+      "chain_width": 2,
+      "visible_bbox": [
+        40,
+        100,
+        51,
+        120
+      ]
+    }
+  },
+  "preservation": {
+    "Front": {
+      "outside_edit_mask_mismatch": 0,
+      "head_face_mismatch": 0,
+      "body_bag_mismatch": 0,
+      "handle_occluded_pixels": 9,
+      "head_top": 27,
+      "sole": 127,
+      "lowered_arm_mismatch": 0
+    },
+    "ThreeQuarter": {
+      "outside_edit_mask_mismatch": 0,
+      "head_face_mismatch": 0,
+      "body_bag_mismatch": 0,
+      "handle_occluded_pixels": 0,
+      "head_top": 27,
+      "sole": 127,
+      "lowered_arm_mismatch": 0
+    },
+    "Side": {
+      "outside_edit_mask_mismatch": 0,
+      "head_face_mismatch": 0,
+      "body_bag_mismatch": null,
+      "handle_occluded_pixels": 16,
+      "head_top": 26,
+      "sole": 127
+    },
+    "Back": {
+      "outside_edit_mask_mismatch": 0,
+      "head_face_mismatch": 0,
+      "body_bag_mismatch": 0,
+      "handle_occluded_pixels": 0,
+      "head_top": 28,
+      "sole": 127,
+      "lowered_arm_mismatch": 0
+    }
+  },
+  "arm_checks": {
+    "Down": {
+      "actual_pose_region_mismatch": 0,
+      "outside_revision_mask_mismatch": 0,
+      "bag_body_occluded_pixels": 0,
+      "idle0_outside_mask_mismatch": 0
+    },
+    "HandOnHip": {
+      "actual_pose_region_mismatch": 0,
+      "outside_revision_mask_mismatch": 0,
+      "bag_body_occluded_pixels": 0,
+      "idle0_outside_mask_mismatch": 0
+    },
+    "Forward": {
+      "actual_pose_region_mismatch": 0,
+      "outside_revision_mask_mismatch": 0,
+      "bag_body_occluded_pixels": 0,
+      "idle0_outside_mask_mismatch": 0
+    },
+    "Back": {
+      "actual_pose_region_mismatch": 0,
+      "outside_revision_mask_mismatch": 0,
+      "bag_body_occluded_pixels": 0,
+      "idle0_outside_mask_mismatch": 0
+    }
+  },
+  "bag_file_hash_unchanged": {
+    "Bag_8x.png": true,
+    "Bag_Held_Front.png": true,
+    "Bag_Held_Open.png": true,
+    "Bag_Held_Side.png": true,
+    "Bag_Held_ThreeQuarter.png": true,
+    "Bag_Hip_Front.png": true,
+    "Bag_Hip_Open.png": true,
+    "Bag_Hip_Side.png": true,
+    "Bag_Hip_ThreeQuarter.png": true,
+    "BagTeeth_16x.png": true
+  },
+  "artifacts": [
+    {
+      "size": [
+        128,
+        128
+      ],
+      "bbox": [
+        32,
+        28,
+        79,
+        128
+      ],
+      "colors": 17,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 127,
+      "path": "Turnaround/Hero_Back.png"
+    },
+    {
+      "size": [
+        128,
+        128
+      ],
+      "bbox": [
+        26,
+        27,
+        92,
+        128
+      ],
+      "colors": 20,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 127,
+      "path": "Turnaround/Hero_Front.png"
+    },
+    {
+      "size": [
+        128,
+        128
+      ],
+      "bbox": [
+        26,
+        26,
+        92,
+        128
+      ],
+      "colors": 18,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 127,
+      "path": "Turnaround/Hero_Side.png"
+    },
+    {
+      "size": [
+        128,
+        128
+      ],
+      "bbox": [
+        30,
+        27,
+        99,
+        128
+      ],
+      "colors": 20,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 127,
+      "path": "Turnaround/Hero_ThreeQuarter.png"
+    },
+    {
+      "size": [
+        128,
+        128
+      ],
+      "bbox": [
+        30,
+        27,
+        99,
+        128
+      ],
+      "colors": 20,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 127,
+      "path": "Arms/Arm_Back.png"
+    },
+    {
+      "size": [
+        128,
+        128
+      ],
+      "bbox": [
+        30,
+        27,
+        99,
+        128
+      ],
+      "colors": 20,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 127,
+      "path": "Arms/Arm_Down.png"
+    },
+    {
+      "size": [
+        128,
+        128
+      ],
+      "bbox": [
+        30,
+        27,
+        104,
+        128
+      ],
+      "colors": 20,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 127,
+      "path": "Arms/Arm_Forward.png"
+    },
+    {
+      "size": [
+        128,
+        128
+      ],
+      "bbox": [
+        30,
+        27,
+        99,
+        128
+      ],
+      "colors": 20,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 127,
+      "path": "Arms/Arm_HandOnHip.png"
+    },
+    {
+      "size": [
+        22,
+        20
+      ],
+      "bbox": [
+        0,
+        0,
+        22,
+        20
+      ],
+      "colors": 9,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 19,
+      "path": "Bag/Bag_Held_Front.png"
+    },
+    {
+      "size": [
+        28,
+        30
+      ],
+      "bbox": [
+        0,
+        0,
+        28,
+        30
+      ],
+      "colors": 12,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 29,
+      "path": "Bag/Bag_Held_Open.png"
+    },
+    {
+      "size": [
+        15,
+        19
+      ],
+      "bbox": [
+        0,
+        0,
+        15,
+        19
+      ],
+      "colors": 12,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 18,
+      "path": "Bag/Bag_Held_Side.png"
+    },
+    {
+      "size": [
+        25,
+        22
+      ],
+      "bbox": [
+        0,
+        0,
+        25,
+        22
+      ],
+      "colors": 11,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 21,
+      "path": "Bag/Bag_Held_ThreeQuarter.png"
+    },
+    {
+      "size": [
+        17,
+        16
+      ],
+      "bbox": [
+        0,
+        0,
+        17,
+        16
+      ],
+      "colors": 10,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 15,
+      "path": "Bag/Bag_Hip_Front.png"
+    },
+    {
+      "size": [
+        20,
+        23
+      ],
+      "bbox": [
+        0,
+        0,
+        20,
+        23
+      ],
+      "colors": 11,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 22,
+      "path": "Bag/Bag_Hip_Open.png"
+    },
+    {
+      "size": [
+        11,
+        20
+      ],
+      "bbox": [
+        0,
+        0,
+        11,
+        20
+      ],
+      "colors": 10,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 19,
+      "path": "Bag/Bag_Hip_Side.png"
+    },
+    {
+      "size": [
+        18,
+        16
+      ],
+      "bbox": [
+        0,
+        0,
+        18,
+        16
+      ],
+      "colors": 10,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "floor_row": 15,
+      "path": "Bag/Bag_Hip_ThreeQuarter.png"
+    }
+  ],
+  "chain": {
+    "size": [
+      2,
+      12
+    ],
+    "bbox": [
+      0,
+      0,
+      2,
+      12
+    ],
+    "colors": 3,
+    "alpha_values": [
+      255
+    ],
+    "floor_row": 11
+  },
+  "visual_review": {
+    "performed": true,
+    "files": [
+      "Sources/Turnaround_review_3x.png",
+      "Sources/Arms_review_3x.png",
+      "Turnaround/Hips_8x.png"
+    ],
+    "result": "이빨 상자는 드러나지만 무릎 위·허벅지 중간 목표 미달"
+  },
+  "limitations": [
+    "앞면 손의 최하단은 y103. 본체 가림 0을 확보한 윗변은 y104, 원본 본체 높이 13px(뒤 16px)로 아랫변 y116~119. 무릎 위 조건과 동시 충족하지 못함.",
+    "가방 본체 가림과 손잡이 가림을 분리 측정. 앞면의 기존 손잡이는 장갑 뒤에 일부 가려짐.",
+    "12px는 생성 체인 전체 자산 길이. 소매 뒤 구간은 가려지며 기존 허리 고리~체인 접속은 육안 판정이 필요함.",
+    "앞면 팔 4자세 원본은 없으므로 앞면 기본 자세와 기존 3/4 팔 4자세만 검증.",
+    "3/4 돌출은 보이는 허벅지 경계 x87 대비 가방 우측 끝 x92로 5px. Side는 앞 모서리 5열만 노출.",
+    "뒷면은 승인된 Bag_Hip_Side 원본을 유지하며 이빨 없음."
+  ],
+  "processing": "built-in image_gen 체인 생성 1회; 고정 68px 격자 샘플링, 승인 팔레트 매핑, 알파 이진화. 가방/몸 리사이즈 및 코드 드로잉 없음. 기존 생성된 가방 없는 몸체로 이전 자리만 복구.",
+  "settings": [
+    {
+      "item": "머리",
+      "status": "통과",
+      "evidence": "백금발 포니테일·밴드·삐침·Z핀: 승인 픽셀 보존"
+    },
+    {
+      "item": "얼굴",
+      "status": "통과",
+      "evidence": "빨간 눈·송곳니·웃음·피어싱: 승인 픽셀 보존"
+    },
+    {
+      "item": "외투",
+      "status": "통과",
+      "evidence": "오버사이즈 재킷·빨간 안감·손목까지 긴 소매 보존"
+    },
+    {
+      "item": "손",
+      "status": "통과",
+      "evidence": "승인된 검은 장갑과 팔 4자세 픽셀 보존"
+    },
+    {
+      "item": "상의",
+      "status": "통과",
+      "evidence": "검은 크롭 탑·빨간 무늬·초커 보존"
+    },
+    {
+      "item": "하의",
+      "status": "통과",
+      "evidence": "기존 가방 영역만 생성 복구; 반바지·벨트 연결"
+    },
+    {
+      "item": "다리",
+      "status": "통과",
+      "evidence": "검정 니하이·빨간 양말 비대칭 보존"
+    },
+    {
+      "item": "신발",
+      "status": "통과",
+      "evidence": "하이탑·빨간 스트랩·발바닥 행 보존"
+    },
+    {
+      "item": "가방",
+      "status": "통과",
+      "evidence": "Bag 전체 파일 해시 동일; Open 2종 포함 변경 없음."
+    },
+    {
+      "item": "가방 위치(평소)",
+      "status": "미통과",
+      "evidence": "본체 가림 0과 높이 정렬 완료. 무릎 위 조건 미달."
+    },
+    {
+      "item": "가방 위치(긴 대기)",
+      "status": "해당 없음",
+      "evidence": "든 크기 자산만 수정. 긴 대기 애니메이션은 이번 단계 범위 밖"
+    },
+    {
+      "item": "크기",
+      "status": "통과",
+      "evidence": "128셀, 머리 26~28·바닥 127 유지; 인체 축소 없음"
+    }
+  ],
+  "r3": {
+    "placement": {
+      "Front": {
+        "asset": "Bag/Bag_Hip_Front.png",
+        "translation": [
+          40,
+          98
+        ],
+        "box_top": 101,
+        "bottom": 113,
+        "chain_translation": [
+          46,
+          89
+        ],
+        "chain_length": 9,
+        "hidden_by_arm_px": 29,
+        "changed_outside_layer": 0
+      },
+      "ThreeQuarter": {
+        "asset": "Bag/Bag_Hip_ThreeQuarter.png",
+        "translation": [
+          51,
+          98
+        ],
+        "box_top": 101,
+        "bottom": 113,
+        "chain_translation": [
+          56,
+          89
+        ],
+        "chain_length": 9,
+        "hidden_by_arm_px": 2,
+        "changed_outside_layer": 0
+      },
+      "Side": {
+        "asset": "Bag/Bag_Hip_ThreeQuarter.png",
+        "translation": [
+          60,
+          98
+        ],
+        "box_top": 101,
+        "bottom": 113,
+        "chain_translation": [
+          65,
+          89
+        ],
+        "chain_length": 9,
+        "hidden_by_arm_px": 0,
+        "changed_outside_layer": 0
+      },
+      "Back": {
+        "asset": "Bag/Bag_Hip_Side.png",
+        "translation": [
+          61,
+          97
+        ],
+        "box_top": 101,
+        "bottom": 116,
+        "chain_translation": [
+          66,
+          89
+        ],
+        "chain_length": 9,
+        "hidden_by_arm_px": 2,
+        "changed_outside_layer": 0
+      },
+      "Arm_Down": {
+        "bag_px_hidden_by_arm": 2
+      },
+      "Arm_HandOnHip": {
+        "bag_px_hidden_by_arm": 5
+      },
+      "Arm_Forward": {
+        "bag_px_hidden_by_arm": 0
+      },
+      "Arm_Back": {
+        "bag_px_hidden_by_arm": 4
+      }
+    },
+    "stats": {
+      "Front": {
+        "colors": 20,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "top": 27
+      },
+      "ThreeQuarter": {
+        "colors": 20,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "top": 27
+      },
+      "Side": {
+        "colors": 18,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "top": 26
+      },
+      "Back": {
+        "colors": 17,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127,
+        "top": 28
+      },
+      "Arm_Down": {
+        "colors": 20,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "Arm_HandOnHip": {
+        "colors": 20,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "Arm_Forward": {
+        "colors": 20,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      },
+      "Arm_Back": {
+        "colors": 20,
+        "alpha": [
+          0,
+          255
+        ],
+        "floor": 127
+      }
+    }
+  },
+  "r3b": {
+    "placement": {
+      "Front": {
+        "asset": "Bag/Bag_Hip_Front.png",
+        "translation": [
+          40,
+          98
+        ],
+        "box_top": 101,
+        "bottom": 113,
+        "chain_translation": [
+          46,
+          89
+        ],
+        "chain_length": 9,
+        "hidden_by_arm_px": 29,
+        "changed_outside_layer": 0
+      },
+      "ThreeQuarter": {
+        "asset": "Bag/Bag_Hip_ThreeQuarter.png",
+        "translation": [
+          47,
+          95
+        ],
+        "box_top": 98,
+        "bottom": 110,
+        "chain_translation": [
+          52,
+          89
+        ],
+        "chain_length": 6,
+        "hidden_by_arm_px": 36,
+        "changed_outside_layer": 0
+      },
+      "Side": {
+        "asset": "Bag/Bag_Hip_ThreeQuarter.png",
+        "translation": [
+          60,
+          98
+        ],
+        "box_top": 101,
+        "bottom": 113,
+        "chain_translation": [
+          65,
+          89
+        ],
+        "chain_length": 9,
+        "hidden_by_arm_px": 0,
+        "changed_outside_layer": 0
+      },
+      "Back": {
+        "asset": "Bag/Bag_Hip_Side.png",
+        "translation": [
+          61,
+          97
+        ],
+        "box_top": 101,
+        "bottom": 116,
+        "chain_translation": [
+          66,
+          89
+        ],
+        "chain_length": 9,
+        "hidden_by_arm_px": 2,
+        "changed_outside_layer": 0
+      },
+      "Arm_Down": {
+        "bag_px_hidden_by_arm": 36
+      },
+      "Arm_HandOnHip": {
+        "bag_px_hidden_by_arm": 2
+      },
+      "Arm_Forward": {
+        "bag_px_hidden_by_arm": 0
+      },
+      "Arm_Back": {
+        "bag_px_hidden_by_arm": 5
+      }
+    }
+  },
+  "r3c": {
+    "placement": {
+      "Front": {
+        "asset": "Bag/Bag_Hip_Front.png",
+        "translation": [
+          40,
+          98
+        ],
+        "box_top": 101,
+        "bottom": 113,
+        "chain_translation": [
+          46,
+          89
+        ],
+        "chain_length": 9,
+        "hidden_by_arm_px": 29,
+        "changed_outside_layer": 0
+      },
+      "ThreeQuarter": {
+        "asset": "Bag/Bag_Hip_ThreeQuarter.png",
+        "translation": [
+          51,
+          92
+        ],
+        "box_top": 95,
+        "bottom": 107,
+        "chain_translation": [
+          56,
+          89
+        ],
+        "chain_length": 3,
+        "hidden_by_arm_px": 31,
+        "changed_outside_layer": 0
+      },
+      "Side": {
+        "asset": "Bag/Bag_Hip_ThreeQuarter.png",
+        "translation": [
+          60,
+          98
+        ],
+        "box_top": 101,
+        "bottom": 113,
+        "chain_translation": [
+          65,
+          89
+        ],
+        "chain_length": 9,
+        "hidden_by_arm_px": 0,
+        "changed_outside_layer": 0
+      },
+      "Back": {
+        "asset": "Bag/Bag_Hip_Side.png",
+        "translation": [
+          61,
+          97
+        ],
+        "box_top": 101,
+        "bottom": 116,
+        "chain_translation": [
+          66,
+          89
+        ],
+        "chain_length": 9,
+        "hidden_by_arm_px": 2,
+        "changed_outside_layer": 0
+      },
+      "Arm_Down": {
+        "bag_px_hidden_by_arm": 31
+      },
+      "Arm_HandOnHip": {
+        "bag_px_hidden_by_arm": 5
+      },
+      "Arm_Forward": {
+        "bag_px_hidden_by_arm": 0
+      },
+      "Arm_Back": {
+        "bag_px_hidden_by_arm": 4
+      }
+    }
+  },
+  "r3d": {
+    "placement": {
+      "Front": {
+        "asset": "Bag/Bag_Hip_Front.png",
+        "translation": [
+          40,
+          98
+        ],
+        "box_top": 101,
+        "bottom": 113,
+        "chain_translation": [
+          46,
+          89
+        ],
+        "chain_length": 9,
+        "hidden_by_arm_px": 29,
+        "changed_outside_layer": 0
+      },
+      "ThreeQuarter": {
+        "asset": "Bag/Bag_Hip_ThreeQuarter.png",
+        "translation": [
+          53,
+          92
+        ],
+        "box_top": 95,
+        "bottom": 107,
+        "chain_translation": [
+          58,
+          89
+        ],
+        "chain_length": 3,
+        "hidden_by_arm_px": 15,
+        "changed_outside_layer": 0
+      },
+      "Side": {
+        "asset": "Bag/Bag_Hip_ThreeQuarter.png",
+        "translation": [
+          60,
+          98
+        ],
+        "box_top": 101,
+        "bottom": 113,
+        "chain_translation": [
+          65,
+          89
+        ],
+        "chain_length": 9,
+        "hidden_by_arm_px": 0,
+        "changed_outside_layer": 0
+      },
+      "Back": {
+        "asset": "Bag/Bag_Hip_Side.png",
+        "translation": [
+          61,
+          97
+        ],
+        "box_top": 101,
+        "bottom": 116,
+        "chain_translation": [
+          66,
+          89
+        ],
+        "chain_length": 9,
+        "hidden_by_arm_px": 2,
+        "changed_outside_layer": 0
+      },
+      "Arm_Down": {
+        "bag_px_hidden_by_arm": 15
+      },
+      "Arm_HandOnHip": {
+        "bag_px_hidden_by_arm": 7
+      },
+      "Arm_Forward": {
+        "bag_px_hidden_by_arm": 0
+      },
+      "Arm_Back": {
+        "bag_px_hidden_by_arm": 2
+      }
+    }
+  },
+  "r3e": {
+    "placement": {
+      "Front": {
+        "asset": "Bag/Bag_Hip_Front.png",
+        "translation": [
+          40,
+          98
+        ],
+        "box_top": 101,
+        "bottom": 113,
+        "chain_translation": [
+          46,
+          89
+        ],
+        "chain_length": 9,
+        "hidden_by_arm_px": 29,
+        "changed_outside_layer": 0
+      },
+      "ThreeQuarter": {
+        "asset": "Bag/Bag_Hip_ThreeQuarter.png",
+        "translation": [
+          53,
+          95
+        ],
+        "box_top": 98,
+        "bottom": 110,
+        "chain_translation": [
+          58,
+          89
+        ],
+        "chain_length": 6,
+        "hidden_by_arm_px": 6,
+        "changed_outside_layer": 0
+      },
+      "Side": {
+        "asset": "Bag/Bag_Hip_ThreeQuarter.png",
+        "translation": [
+          60,
+          98
+        ],
+        "box_top": 101,
+        "bottom": 113,
+        "chain_translation": [
+          65,
+          89
+        ],
+        "chain_length": 9,
+        "hidden_by_arm_px": 0,
+        "changed_outside_layer": 0
+      },
+      "Back": {
+        "asset": "Bag/Bag_Hip_Side.png",
+        "translation": [
+          61,
+          97
+        ],
+        "box_top": 101,
+        "bottom": 116,
+        "chain_translation": [
+          66,
+          89
+        ],
+        "chain_length": 9,
+        "hidden_by_arm_px": 2,
+        "changed_outside_layer": 0
+      },
+      "Arm_Down": {
+        "bag_px_hidden_by_arm": 6
+      },
+      "Arm_HandOnHip": {
+        "bag_px_hidden_by_arm": 7
+      },
+      "Arm_Forward": {
+        "bag_px_hidden_by_arm": 0
+      },
+      "Arm_Back": {
+        "bag_px_hidden_by_arm": 2
+      }
+    }
+  }
+}

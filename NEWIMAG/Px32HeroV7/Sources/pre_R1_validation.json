@@ -1,0 +1,430 @@
+{
+  "production_ready": false,
+  "mask_semantic_review_pass": false,
+  "bag_size": [
+    23,
+    19
+  ],
+  "bag_master_sha256": "d95ab7d59c0b4fa30a2d4cb4638cc8be41723266ebe9934f76d32d456ce85c9f",
+  "processing": {
+    "alpha_threshold": 128,
+    "palette": "approved Idle 20 RGB colors; original outside-mask RGBA untouched",
+    "recovery": "fixed block centers; Idle 4px, Run 3px with512px row stride, bag32px",
+    "no_rotation_or_resampling": true
+  },
+  "sheets": {
+    "Idle": {
+      "size": [
+        768,
+        128
+      ],
+      "frames": [
+        {
+          "frame": 0,
+          "mask": "Masks/Idle_00.png",
+          "mask_sha256": "ecc7e1bb8f4e1ce2fb3753656bc3f9afa5ec4cc679443b14c4888cd2e4057463",
+          "mask_pixels": 1009,
+          "outside_mask_mismatch_count": 0,
+          "bag_xy": [
+            40,
+            94
+          ],
+          "bag_size": [
+            23,
+            19
+          ],
+          "bag_opaque_pixel_mismatch_count": 0,
+          "bag_layer_identical_under_translation": true,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "source_bottom_opaque_row": 127,
+          "production_ready": false
+        },
+        {
+          "frame": 1,
+          "mask": "Masks/Idle_01.png",
+          "mask_sha256": "ecc7e1bb8f4e1ce2fb3753656bc3f9afa5ec4cc679443b14c4888cd2e4057463",
+          "mask_pixels": 1009,
+          "outside_mask_mismatch_count": 0,
+          "bag_xy": [
+            40,
+            94
+          ],
+          "bag_size": [
+            23,
+            19
+          ],
+          "bag_opaque_pixel_mismatch_count": 0,
+          "bag_layer_identical_under_translation": true,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "source_bottom_opaque_row": 127,
+          "production_ready": false
+        },
+        {
+          "frame": 2,
+          "mask": "Masks/Idle_02.png",
+          "mask_sha256": "9ad49cb160535162ac73bf0c906c303480fee2c567df90de48b410a9003fa179",
+          "mask_pixels": 1032,
+          "outside_mask_mismatch_count": 0,
+          "bag_xy": [
+            40,
+            95
+          ],
+          "bag_size": [
+            23,
+            19
+          ],
+          "bag_opaque_pixel_mismatch_count": 0,
+          "bag_layer_identical_under_translation": true,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "source_bottom_opaque_row": 127,
+          "production_ready": false
+        },
+        {
+          "frame": 3,
+          "mask": "Masks/Idle_03.png",
+          "mask_sha256": "9ad49cb160535162ac73bf0c906c303480fee2c567df90de48b410a9003fa179",
+          "mask_pixels": 1032,
+          "outside_mask_mismatch_count": 0,
+          "bag_xy": [
+            40,
+            95
+          ],
+          "bag_size": [
+            23,
+            19
+          ],
+          "bag_opaque_pixel_mismatch_count": 0,
+          "bag_layer_identical_under_translation": true,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "source_bottom_opaque_row": 127,
+          "production_ready": false
+        },
+        {
+          "frame": 4,
+          "mask": "Masks/Idle_04.png",
+          "mask_sha256": "ecc7e1bb8f4e1ce2fb3753656bc3f9afa5ec4cc679443b14c4888cd2e4057463",
+          "mask_pixels": 1009,
+          "outside_mask_mismatch_count": 0,
+          "bag_xy": [
+            40,
+            94
+          ],
+          "bag_size": [
+            23,
+            19
+          ],
+          "bag_opaque_pixel_mismatch_count": 0,
+          "bag_layer_identical_under_translation": true,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "source_bottom_opaque_row": 127,
+          "production_ready": false
+        },
+        {
+          "frame": 5,
+          "mask": "Masks/Idle_05.png",
+          "mask_sha256": "ecc7e1bb8f4e1ce2fb3753656bc3f9afa5ec4cc679443b14c4888cd2e4057463",
+          "mask_pixels": 1009,
+          "outside_mask_mismatch_count": 0,
+          "bag_xy": [
+            40,
+            94
+          ],
+          "bag_size": [
+            23,
+            19
+          ],
+          "bag_opaque_pixel_mismatch_count": 0,
+          "bag_layer_identical_under_translation": true,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "source_bottom_opaque_row": 127,
+          "production_ready": false
+        }
+      ],
+      "colors": 20,
+      "outside_mask_mismatch_count": 0,
+      "source_sha256_unchanged": true,
+      "source_sha256": "cd8db8384fcc54b2781eb09bb063975e4bf58b1dd234378f03aa8690ead018e1",
+      "attempts": 3,
+      "selected_arm_attempt": 1,
+      "selected_bag_attempt": "Idle3(shared)",
+      "gif_requested_fps": 8,
+      "gif_delays_cs": [
+        12,
+        13,
+        13,
+        12,
+        12,
+        13
+      ],
+      "production_ready": false,
+      "failure_reasons": [
+        "벨트 고리의 몸통 접합이 불명확하며 가방이 손에 매달린 것처럼 보일 수 있음",
+        "가방 아래 모서리에 생성 잔여 픽셀이 있으며 원본 1px 외곽선과 접합 품질 미달",
+        "새 가방 영역 일부가 기존 다리/신발 실루엣과 겹쳐 엄격한 의미 마스크 조건 미달"
+      ]
+    },
+    "Run": {
+      "size": [
+        1024,
+        128
+      ],
+      "frames": [
+        {
+          "frame": 0,
+          "mask": "Masks/Run_00.png",
+          "mask_sha256": "8e4e68ad1e8589a3d67337b5d466e6524696f1ce413dbf49db280813e1c4f8c5",
+          "mask_pixels": 860,
+          "outside_mask_mismatch_count": 0,
+          "bag_xy": [
+            31,
+            94
+          ],
+          "bag_size": [
+            23,
+            19
+          ],
+          "bag_opaque_pixel_mismatch_count": 0,
+          "bag_layer_identical_under_translation": true,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "source_bottom_opaque_row": 127,
+          "production_ready": false
+        },
+        {
+          "frame": 1,
+          "mask": "Masks/Run_01.png",
+          "mask_sha256": "08994cecb3cf001b4996af1ac14d605405b25b7950695acdc447760b2f35c2bc",
+          "mask_pixels": 863,
+          "outside_mask_mismatch_count": 0,
+          "bag_xy": [
+            32,
+            95
+          ],
+          "bag_size": [
+            23,
+            19
+          ],
+          "bag_opaque_pixel_mismatch_count": 0,
+          "bag_layer_identical_under_translation": true,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "source_bottom_opaque_row": 127,
+          "production_ready": false
+        },
+        {
+          "frame": 2,
+          "mask": "Masks/Run_02.png",
+          "mask_sha256": "9fee0b4378f3fc5a4c7a61fc1e79253579669292f8aa1f95aaad0ce1ce58a9a0",
+          "mask_pixels": 917,
+          "outside_mask_mismatch_count": 0,
+          "bag_xy": [
+            32,
+            93
+          ],
+          "bag_size": [
+            23,
+            19
+          ],
+          "bag_opaque_pixel_mismatch_count": 0,
+          "bag_layer_identical_under_translation": true,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "source_bottom_opaque_row": 127,
+          "production_ready": false
+        },
+        {
+          "frame": 3,
+          "mask": "Masks/Run_03.png",
+          "mask_sha256": "da3f3923bdf347e3424503c8c2f2712d54b8ef8217a1b0486737749607284353",
+          "mask_pixels": 860,
+          "outside_mask_mismatch_count": 0,
+          "bag_xy": [
+            30,
+            92
+          ],
+          "bag_size": [
+            23,
+            19
+          ],
+          "bag_opaque_pixel_mismatch_count": 0,
+          "bag_layer_identical_under_translation": true,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "source_bottom_opaque_row": 127,
+          "production_ready": false
+        },
+        {
+          "frame": 4,
+          "mask": "Masks/Run_04.png",
+          "mask_sha256": "8e4e68ad1e8589a3d67337b5d466e6524696f1ce413dbf49db280813e1c4f8c5",
+          "mask_pixels": 860,
+          "outside_mask_mismatch_count": 0,
+          "bag_xy": [
+            31,
+            94
+          ],
+          "bag_size": [
+            23,
+            19
+          ],
+          "bag_opaque_pixel_mismatch_count": 0,
+          "bag_layer_identical_under_translation": true,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "source_bottom_opaque_row": 127,
+          "production_ready": false
+        },
+        {
+          "frame": 5,
+          "mask": "Masks/Run_05.png",
+          "mask_sha256": "42422ebffdfcfc24c1d03fc2bc282aae4993c2c6b695a926b1b55ee4aa325ad2",
+          "mask_pixels": 906,
+          "outside_mask_mismatch_count": 0,
+          "bag_xy": [
+            32,
+            94
+          ],
+          "bag_size": [
+            23,
+            19
+          ],
+          "bag_opaque_pixel_mismatch_count": 0,
+          "bag_layer_identical_under_translation": true,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "source_bottom_opaque_row": 127,
+          "production_ready": false
+        },
+        {
+          "frame": 6,
+          "mask": "Masks/Run_06.png",
+          "mask_sha256": "714ab1a32c95f479651086212505327116960750bc064a068da8d336d9c42763",
+          "mask_pixels": 862,
+          "outside_mask_mismatch_count": 0,
+          "bag_xy": [
+            33,
+            92
+          ],
+          "bag_size": [
+            23,
+            19
+          ],
+          "bag_opaque_pixel_mismatch_count": 0,
+          "bag_layer_identical_under_translation": true,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "source_bottom_opaque_row": 127,
+          "production_ready": false
+        },
+        {
+          "frame": 7,
+          "mask": "Masks/Run_07.png",
+          "mask_sha256": "1346b4cf9d7acd83a97169f395ab249d27b8dfc4dd83e74747462a247bd20780",
+          "mask_pixels": 906,
+          "outside_mask_mismatch_count": 0,
+          "bag_xy": [
+            31,
+            92
+          ],
+          "bag_size": [
+            23,
+            19
+          ],
+          "bag_opaque_pixel_mismatch_count": 0,
+          "bag_layer_identical_under_translation": true,
+          "colors": 20,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bottom_opaque_row": 127,
+          "source_bottom_opaque_row": 127,
+          "production_ready": false
+        }
+      ],
+      "colors": 20,
+      "outside_mask_mismatch_count": 0,
+      "source_sha256_unchanged": true,
+      "source_sha256": "84b118010251f4563687e60b68f03080dbc04add3771f4f64b72fde0c1a76b93",
+      "attempts": 3,
+      "selected_arm_attempt": 3,
+      "selected_bag_attempt": "Idle3(shared)",
+      "gif_requested_fps": 18,
+      "gif_delays_cs": [
+        6,
+        5,
+        6,
+        5,
+        6,
+        5,
+        6,
+        5
+      ],
+      "production_ready": false,
+      "failure_reasons": [
+        "벨트 고리의 몸통 접합이 불명확하며 가방이 손에 매달린 것처럼 보일 수 있음",
+        "가방 아래 모서리에 생성 잔여 픽셀이 있으며 원본 1px 외곽선과 접합 품질 미달",
+        "새 가방 영역 일부가 기존 다리/신발 실루엣과 겹쳐 엄격한 의미 마스크 조건 미달",
+        "앞/뒤 팔 교대 및 다리와 반대 위상 전체 검증 미달"
+      ]
+    }
+  }
+}

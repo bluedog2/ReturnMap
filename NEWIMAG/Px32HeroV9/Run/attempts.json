@@ -1,0 +1,178 @@
+{
+  "tool": "built-in image_gen",
+  "max_per_frame": 3,
+  "frames": {
+    "0": {
+      "attempts": 1,
+      "selected": 1,
+      "prompt": "Sources/Key0_prompt1.txt",
+      "generated": "Sources/Key0_generated1.png",
+      "reason": "긴 뒤소매·장갑 및 가방 제거 영역 사용. 전신 생성 변화는 마스크 밖 폐기."
+    },
+    "2": {
+      "attempts": 1,
+      "selected": 1,
+      "prompt": "Sources/Key2_prompt1.txt",
+      "generated": "Sources/Key2_generated1.png",
+      "reason": "긴 뒤소매·장갑 및 가방 제거 영역 사용. 전신 생성 변화는 마스크 밖 폐기."
+    },
+    "1": {
+      "attempts": 1,
+      "selected": 1,
+      "prompt": "Sources/F1_prompt1.txt",
+      "generated": "Sources/F1_generated1.png",
+      "reason": "first result selected; masked rear sleeve restoration"
+    },
+    "3": {
+      "attempts": 1,
+      "selected": 1,
+      "prompt": "Sources/F3_prompt1.txt",
+      "generated": "Sources/F3_generated1.png",
+      "reason": "first result selected; masked rear sleeve restoration"
+    },
+    "4": {
+      "attempts": 2,
+      "selected": 2,
+      "prompt": "Sources/F4_prompt2.txt",
+      "generated": "Sources/F4_generated2.png",
+      "reason": "4/5 first result rejected: new boot pixels in removed bag area; second used"
+    },
+    "5": {
+      "attempts": 2,
+      "selected": 2,
+      "prompt": "Sources/F5_prompt2.txt",
+      "generated": "Sources/F5_generated2.png",
+      "reason": "4/5 first result rejected: new boot pixels in removed bag area; second used"
+    },
+    "6": {
+      "attempts": 1,
+      "selected": 1,
+      "prompt": "Sources/F6_prompt1.txt",
+      "generated": "Sources/F6_generated1.png",
+      "reason": "first result selected; masked rear sleeve restoration"
+    },
+    "7": {
+      "attempts": 1,
+      "selected": 1,
+      "prompt": "Sources/F7_prompt1.txt",
+      "generated": "Sources/F7_generated1.png",
+      "reason": "first result selected; masked rear sleeve restoration"
+    },
+    "I5": {
+      "attempts": 1,
+      "selected": 1,
+      "prompt": "Sources/Between_5_prompt1.txt",
+      "generated": "Sources/Between_5_generated1.png"
+    },
+    "I7": {
+      "attempts": 1,
+      "selected": 1,
+      "prompt": "Sources/Between_7_prompt1.txt",
+      "generated": "Sources/Between_7_generated1.png"
+    }
+  },
+  "face_lock": {
+    "new_imagegen_calls": 0,
+    "method": "approved pixel mask compositing, integer translation, body mirror; no drawing",
+    "limit_per_frame": 3
+  },
+  "head_bundle_lock": {
+    "built_in_imagegen": true,
+    "calls": 9,
+    "limit_per_frame": 3,
+    "per_frame": {
+      "Run_Key0": 0,
+      "Run_F1": 1,
+      "Run_Key2": 1,
+      "Run_F3": 1,
+      "Run_F4": 1,
+      "Run_F5": 1,
+      "Run_I5-6": 1,
+      "Run_F6": 1,
+      "Run_F7": 1,
+      "Run_I7-0": 1
+    },
+    "prompt": "Run/Sources/HeadBundle_prompt1.txt",
+    "method": "integer block recovery, approved palette mapping, binary alpha, integer shift, mirror and mask composite"
+  },
+  "whole_head_redraw": {
+    "tool": "built-in image_gen",
+    "limit_per_frame": 3,
+    "calls_including_previous_session": 13,
+    "calls_this_session": 9,
+    "previous_session_calls": 4,
+    "per_frame": {
+      "0": {
+        "attempts": 2,
+        "selected": 2,
+        "generated": "Sources/WholeHead_00_generated2.png",
+        "prompt": null,
+        "reason": "previously completed, retained unchanged"
+      },
+      "1": {
+        "attempts": 1,
+        "selected": 1,
+        "generated": "Sources/WholeHead_01_generated1.png",
+        "prompt": "Sources/WholeHead_01_prompt1.txt",
+        "reason": "whole-head result visually reviewed at 6x"
+      },
+      "2": {
+        "attempts": 1,
+        "selected": 1,
+        "generated": "Sources/WholeHead_02_generated1.png",
+        "prompt": "Sources/WholeHead_02_prompt1.txt",
+        "reason": "whole-head result visually reviewed at 6x"
+      },
+      "3": {
+        "attempts": 1,
+        "selected": 1,
+        "generated": "Sources/WholeHead_03_generated1.png",
+        "prompt": "Sources/WholeHead_03_prompt1.txt",
+        "reason": "whole-head result visually reviewed at 6x"
+      },
+      "4": {
+        "attempts": 2,
+        "selected": 2,
+        "generated": "Sources/WholeHead_04_generated2.png",
+        "prompt": "Sources/WholeHead_04_prompt2.txt",
+        "reason": "attempt1 rejected: lifted tail left black gap; attempt2 connected"
+      },
+      "5": {
+        "attempts": 2,
+        "selected": 2,
+        "generated": "Sources/WholeHead_05_generated2.png",
+        "prompt": "Sources/WholeHead_05_prompt2.txt",
+        "reason": "previously completed, retained unchanged"
+      },
+      "6": {
+        "attempts": 1,
+        "selected": 1,
+        "generated": "Sources/WholeHead_06_generated1.png",
+        "prompt": "Sources/WholeHead_06_prompt1.txt",
+        "reason": "whole-head result visually reviewed at 6x"
+      },
+      "7": {
+        "attempts": 1,
+        "selected": 1,
+        "generated": "Sources/WholeHead_07_generated1.png",
+        "prompt": "Sources/WholeHead_07_prompt1.txt",
+        "reason": "whole-head result visually reviewed at 6x"
+      },
+      "8": {
+        "attempts": 1,
+        "selected": 1,
+        "generated": "Sources/WholeHead_08_generated1.png",
+        "prompt": "Sources/WholeHead_08_prompt1.txt",
+        "reason": "whole-head result visually reviewed at 6x"
+      },
+      "9": {
+        "attempts": 1,
+        "selected": 1,
+        "generated": "Sources/WholeHead_09_generated1.png",
+        "prompt": "Sources/WholeHead_09_prompt1.txt",
+        "reason": "whole-head result visually reviewed at 6x"
+      }
+    },
+    "note": "Earlier unrelated revisions remain in their original attempt records. Whole-head counts include the interrupted session. Frame00 prompt was not present in recovery files; it is not reconstructed as an exact historical prompt."
+  }
+}

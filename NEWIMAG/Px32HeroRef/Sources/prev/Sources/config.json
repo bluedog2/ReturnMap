@@ -1,0 +1,85 @@
+{
+  "turnaround": {
+    "Front": [
+      3,
+      10
+    ],
+    "Side": [
+      3,
+      10
+    ],
+    "Back": [
+      1,
+      11
+    ]
+  },
+  "bags": {
+    "Bag_Hip_Front": [
+      1,
+      40
+    ],
+    "Bag_Hip_Side": [
+      1,
+      40
+    ],
+    "Bag_Hip_ThreeQuarter": [
+      1,
+      50
+    ],
+    "Bag_Hip_Open": [
+      2,
+      50
+    ],
+    "Bag_Held_Front": [
+      1,
+      40
+    ],
+    "Bag_Held_Side": [
+      2,
+      35
+    ],
+    "Bag_Held_ThreeQuarter": [
+      1,
+      45
+    ],
+    "Bag_Held_Open": [
+      2,
+      45
+    ]
+  },
+  "arms": {
+    "HandOnHip": 2,
+    "Forward": 2,
+    "Back": 2
+  },
+  "hip_position": [
+    60,
+    87
+  ],
+  "hand_rois": [
+    [
+      48,
+      97,
+      6,
+      5
+    ],
+    [
+      55,
+      87,
+      6,
+      5
+    ],
+    [
+      98,
+      71,
+      9,
+      11
+    ],
+    [
+      35,
+      92,
+      8,
+      7
+    ]
+  ]
+}

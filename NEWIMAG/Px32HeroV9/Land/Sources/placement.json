@@ -1,0 +1,123 @@
+{
+  "order": [
+    "F0",
+    "I0",
+    "F1",
+    "F2"
+  ],
+  "frames": {
+    "F0": {
+      "source_frame": 0,
+      "hip": [
+        62,
+        102
+      ],
+      "previous_hip": [
+        62,
+        102
+      ],
+      "offset": [
+        -11,
+        -2
+      ],
+      "inertia": [
+        0,
+        0
+      ],
+      "review_translation": [
+        0,
+        0
+      ],
+      "bag_position": [
+        51,
+        100
+      ],
+      "outside_mask_mismatch": 0
+    },
+    "I0": {
+      "source_frame": 0,
+      "hip": [
+        62,
+        102
+      ],
+      "previous_hip": [
+        62,
+        102
+      ],
+      "offset": [
+        -11,
+        -2
+      ],
+      "inertia": [
+        0,
+        2
+      ],
+      "review_translation": [
+        0,
+        0
+      ],
+      "bag_position": [
+        51,
+        102
+      ],
+      "outside_mask_mismatch": 0
+    },
+    "F1": {
+      "source_frame": 1,
+      "hip": [
+        62,
+        94
+      ],
+      "previous_hip": [
+        62,
+        102
+      ],
+      "offset": [
+        -11,
+        -2
+      ],
+      "inertia": [
+        0,
+        1
+      ],
+      "review_translation": [
+        0,
+        -6
+      ],
+      "bag_position": [
+        51,
+        95
+      ],
+      "outside_mask_mismatch": 0
+    },
+    "F2": {
+      "source_frame": 2,
+      "hip": [
+        63,
+        90
+      ],
+      "previous_hip": [
+        62,
+        94
+      ],
+      "offset": [
+        -11,
+        -2
+      ],
+      "inertia": [
+        0,
+        0
+      ],
+      "review_translation": [
+        0,
+        0
+      ],
+      "bag_position": [
+        51,
+        92
+      ],
+      "outside_mask_mismatch": 0
+    }
+  },
+  "entry_anchor": "Land contact pose initialized; not previous Fall anchor"
+}

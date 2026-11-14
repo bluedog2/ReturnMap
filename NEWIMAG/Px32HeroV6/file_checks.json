@@ -1,0 +1,43 @@
+{
+  "artifact_checks_pass": true,
+  "production_ready": false,
+  "approved_source_sha256_unchanged": true,
+  "compare_dimensions": [
+    3456,
+    768
+  ],
+  "sheets": {
+    "Idle": {
+      "dimensions_alpha_palette": true,
+      "exact_approved_head_per_frame": true,
+      "gif_decode_exact_pixel_repeat": true,
+      "frames": 6,
+      "delays_cs": [
+        12,
+        13,
+        13,
+        12,
+        12,
+        13
+      ],
+      "production_ready": false
+    },
+    "Run": {
+      "dimensions_alpha_palette": true,
+      "exact_approved_head_per_frame": true,
+      "gif_decode_exact_pixel_repeat": true,
+      "frames": 8,
+      "delays_cs": [
+        6,
+        5,
+        6,
+        5,
+        6,
+        5,
+        6,
+        5
+      ],
+      "production_ready": false
+    }
+  }
+}

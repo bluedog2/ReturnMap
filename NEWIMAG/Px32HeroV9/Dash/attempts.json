@@ -1,0 +1,47 @@
+{
+  "tool": "built-in image_gen",
+  "limit_per_frame": 3,
+  "frames": {
+    "F0": {
+      "attempts": 1,
+      "selected": 1,
+      "prompt": "Sources/F0_prompt1.txt",
+      "generated": "Sources/F0_generated1.png"
+    },
+    "F1": {
+      "attempts": 1,
+      "selected": 1,
+      "prompt": "Sources/F1_prompt1.txt",
+      "generated": "Sources/F1_generated1.png"
+    },
+    "F2": {
+      "attempts": 1,
+      "selected": 1,
+      "prompt": "Sources/F2_prompt1.txt",
+      "generated": "Sources/F2_generated1.png"
+    },
+    "F3": {
+      "attempts": 1,
+      "selected": 1,
+      "prompt": "Sources/F3_prompt1.txt",
+      "generated": "Sources/F3_generated1.png"
+    },
+    "I3": {
+      "attempts": 1,
+      "selected": 1,
+      "prompt": "Sources/I3_prompt1.txt",
+      "generated": "Sources/I3_generated1.png"
+    },
+    "F4": {
+      "attempts": 1,
+      "selected": 1,
+      "prompt": "Sources/F4_prompt1.txt",
+      "generated": "Sources/F4_generated1.png"
+    }
+  },
+  "chain": {
+    "attempts": 1,
+    "prompt": "Sources/Chain_prompt1.txt",
+    "generated": "Sources/Chain_generated1.png"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "0": {
+    "source": "WholeHead_Turn_generated1.png",
+    "pitch": 10,
+    "origin": [
+      -14,
+      -23
+    ],
+    "whole_head_translation": [
+      0,
+      -2
+    ],
+    "error": 6703493.333333333,
+    "old_top": 23,
+    "new_top": 23,
+    "outside_mask_mismatch": 0
+  }
+}

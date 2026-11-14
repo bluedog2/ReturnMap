@@ -1,0 +1,242 @@
+{
+  "tool": "built-in image_gen",
+  "total_calls_conservative": 25,
+  "saved_generated_images": 24,
+  "current_run_calls": 0,
+  "frames": [
+    {
+      "frame": "BagOut_F0",
+      "calls": 0,
+      "limit": 3,
+      "prior_run_calls": 0,
+      "generated_files": [],
+      "note": ""
+    },
+    {
+      "frame": "BagOut_F1",
+      "calls": 3,
+      "limit": 3,
+      "prior_run_calls": 2,
+      "generated_files": [
+        "BagOut_F1_generated1.png",
+        "BagOut_F1_generated3.png"
+      ],
+      "note": "이전 prompt2 존재, 원본 없음: 이전 호출 여부 불명으로 1회 사용을 보수적으로 포함"
+    },
+    {
+      "frame": "BagOut_F2",
+      "calls": 3,
+      "limit": 3,
+      "prior_run_calls": 0,
+      "generated_files": [
+        "BagOut_F2_generated1.png",
+        "BagOut_F2_generated2.png",
+        "BagOut_F2_generated3.png"
+      ],
+      "note": ""
+    },
+    {
+      "frame": "BagOut_F3",
+      "calls": 2,
+      "limit": 3,
+      "prior_run_calls": 0,
+      "generated_files": [
+        "BagOut_F3_generated1.png",
+        "BagOut_F3_generated2.png"
+      ],
+      "note": ""
+    },
+    {
+      "frame": "BagOut_F4",
+      "calls": 1,
+      "limit": 3,
+      "prior_run_calls": 0,
+      "generated_files": [
+        "BagOut_F4_generated1.png"
+      ],
+      "note": ""
+    },
+    {
+      "frame": "BagOut_F5",
+      "calls": 0,
+      "limit": 3,
+      "prior_run_calls": 0,
+      "generated_files": [],
+      "note": ""
+    },
+    {
+      "frame": "LongIdle_F0",
+      "calls": 1,
+      "limit": 3,
+      "prior_run_calls": 1,
+      "generated_files": [
+        "LongIdle_F0_generated1.png"
+      ],
+      "note": ""
+    },
+    {
+      "frame": "LongIdle_F1",
+      "calls": 1,
+      "limit": 3,
+      "prior_run_calls": 1,
+      "generated_files": [
+        "LongIdle_F1_generated1.png"
+      ],
+      "note": ""
+    },
+    {
+      "frame": "LongIdle_F2",
+      "calls": 1,
+      "limit": 3,
+      "prior_run_calls": 1,
+      "generated_files": [
+        "LongIdle_F2_generated1.png"
+      ],
+      "note": ""
+    },
+    {
+      "frame": "LongIdle_F3",
+      "calls": 1,
+      "limit": 3,
+      "prior_run_calls": 1,
+      "generated_files": [
+        "LongIdle_F3_generated1.png"
+      ],
+      "note": ""
+    },
+    {
+      "frame": "LongIdle_F4",
+      "calls": 1,
+      "limit": 3,
+      "prior_run_calls": 1,
+      "generated_files": [
+        "LongIdle_F4_generated1.png"
+      ],
+      "note": ""
+    },
+    {
+      "frame": "LongIdle_F5",
+      "calls": 1,
+      "limit": 3,
+      "prior_run_calls": 1,
+      "generated_files": [
+        "LongIdle_F5_generated1.png"
+      ],
+      "note": ""
+    },
+    {
+      "frame": "LongIdle_F6",
+      "calls": 1,
+      "limit": 3,
+      "prior_run_calls": 1,
+      "generated_files": [
+        "LongIdle_F6_generated1.png"
+      ],
+      "note": ""
+    },
+    {
+      "frame": "LongIdle_F7",
+      "calls": 1,
+      "limit": 3,
+      "prior_run_calls": 1,
+      "generated_files": [
+        "LongIdle_F7_generated1.png"
+      ],
+      "note": ""
+    },
+    {
+      "frame": "LongIdle_F8",
+      "calls": 1,
+      "limit": 3,
+      "prior_run_calls": 1,
+      "generated_files": [
+        "LongIdle_F8_generated1.png"
+      ],
+      "note": ""
+    },
+    {
+      "frame": "LongIdle_F9",
+      "calls": 1,
+      "limit": 3,
+      "prior_run_calls": 1,
+      "generated_files": [
+        "LongIdle_F9_generated1.png"
+      ],
+      "note": ""
+    },
+    {
+      "frame": "LongIdle_F10",
+      "calls": 1,
+      "limit": 3,
+      "prior_run_calls": 1,
+      "generated_files": [
+        "LongIdle_F10_generated1.png"
+      ],
+      "note": ""
+    },
+    {
+      "frame": "LongIdle_F11",
+      "calls": 1,
+      "limit": 3,
+      "prior_run_calls": 1,
+      "generated_files": [
+        "LongIdle_F11_generated1.png"
+      ],
+      "note": ""
+    },
+    {
+      "frame": "BagIn_F0",
+      "calls": 0,
+      "limit": 3,
+      "prior_run_calls": 0,
+      "generated_files": [],
+      "note": ""
+    },
+    {
+      "frame": "BagIn_F1",
+      "calls": 1,
+      "limit": 3,
+      "prior_run_calls": 0,
+      "generated_files": [
+        "BagIn_F1_generated1.png"
+      ],
+      "note": ""
+    },
+    {
+      "frame": "BagIn_F2",
+      "calls": 1,
+      "limit": 3,
+      "prior_run_calls": 0,
+      "generated_files": [
+        "BagIn_F2_generated1.png"
+      ],
+      "note": ""
+    },
+    {
+      "frame": "BagIn_F3",
+      "calls": 0,
+      "limit": 3,
+      "prior_run_calls": 0,
+      "generated_files": [],
+      "note": ""
+    }
+  ],
+  "resumed_session_calls": 0,
+  "previous_frame_calls": 23,
+  "shared_assets": [
+    {
+      "asset": "Bag_Open_Same",
+      "calls": 1,
+      "limit": 3,
+      "source": "Bag_Open_generated1.png",
+      "reused": true
+    },
+    {
+      "asset": "BodyRestore",
+      "calls": 1,
+      "source": "BodyRestore_generated1.png",
+      "reused": true
+    }
+  ],
+  "note": "이전 장별 호출 23회(원본 없는 F1 2회차 포함) + 열린 가방 1회 + 공용 몸 복원 1회 = 누적 25회. 이번 재개는 생성 0회. F1/F2는 이미 3회 사용하여 추가 생성하지 않음."
+}

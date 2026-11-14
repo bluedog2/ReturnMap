@@ -1,0 +1,98 @@
+{
+  "RunStart": {
+    "failures": [],
+    "metrics": [
+      {
+        "frame": 0,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 101,
+        "center_x": 64.5
+      },
+      {
+        "frame": 1,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 101,
+        "center_x": 62.0
+      },
+      {
+        "frame": 2,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 101,
+        "center_x": 64.0
+      }
+    ],
+    "stage": 4,
+    "scale_frames": false
+  },
+  "RunStop": {
+    "failures": [
+      "drift: 프레임 1 가로 중심 59.0 이 평균 63.0 에서 ±2px 초과"
+    ],
+    "metrics": [
+      {
+        "frame": 0,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 101,
+        "center_x": 64.0
+      },
+      {
+        "frame": 1,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 101,
+        "center_x": 59.0
+      },
+      {
+        "frame": 2,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 101,
+        "center_x": 64.5
+      },
+      {
+        "frame": 3,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 101,
+        "center_x": 64.5
+      }
+    ],
+    "stage": 4,
+    "scale_frames": false
+  },
+  "Turn": {
+    "failures": [
+      "drift: 프레임 1 가로 중심 51.5 이 평균 58.2 에서 ±2px 초과",
+      "drift: 프레임 2 가로 중심 64.0 이 평균 58.2 에서 ±2px 초과"
+    ],
+    "metrics": [
+      {
+        "frame": 0,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 101,
+        "center_x": 59.0
+      },
+      {
+        "frame": 1,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 101,
+        "center_x": 51.5
+      },
+      {
+        "frame": 2,
+        "colors": 20,
+        "feet_row": 127,
+        "height": 101,
+        "center_x": 64.0
+      }
+    ],
+    "stage": 4,
+    "scale_frames": false
+  }
+}

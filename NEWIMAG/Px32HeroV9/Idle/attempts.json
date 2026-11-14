@@ -1,0 +1,55 @@
+{
+  "tool": "built-in image_gen",
+  "intermediates": [
+    {
+      "edge": "1->2",
+      "attempt": 1,
+      "status": "채택",
+      "generated": "Sources/Between_1_generated1.png",
+      "prompt": "Sources/Between_1_prompt.txt",
+      "recovery": "Sources/recovery.json",
+      "reason": "정수 블록 복원 후 몸통 마스크 합성; 앞뒤와 다른 중간 자세, 보호 영역 원본 보존"
+    },
+    {
+      "edge": "2->3",
+      "attempt": 1,
+      "status": "채택",
+      "generated": "Sources/Between_2_generated1.png",
+      "prompt": "Sources/Between_2_prompt.txt",
+      "recovery": "Sources/recovery.json",
+      "reason": "정수 블록 복원 후 몸통 마스크 합성; 앞뒤와 다른 중간 자세, 보호 영역 원본 보존"
+    }
+  ],
+  "seams": [
+    {
+      "frame": 0,
+      "attempts": 0,
+      "reason": "정수 패치 합성 후 소매·장갑·밑단 이음새 수정 불필요; 원래 가방 잔여는 제거 마스크 보완으로 해소"
+    },
+    {
+      "frame": 1,
+      "attempts": 0,
+      "reason": "정수 패치 합성 후 소매·장갑·밑단 이음새 수정 불필요; 원래 가방 잔여는 제거 마스크 보완으로 해소"
+    },
+    {
+      "frame": 2,
+      "attempts": 0,
+      "reason": "정수 패치 합성 후 소매·장갑·밑단 이음새 수정 불필요; 원래 가방 잔여는 제거 마스크 보완으로 해소"
+    },
+    {
+      "frame": 3,
+      "attempts": 0,
+      "reason": "정수 패치 합성 후 소매·장갑·밑단 이음새 수정 불필요; 원래 가방 잔여는 제거 마스크 보완으로 해소"
+    },
+    {
+      "frame": 4,
+      "attempts": 0,
+      "reason": "정수 패치 합성 후 소매·장갑·밑단 이음새 수정 불필요; 원래 가방 잔여는 제거 마스크 보완으로 해소"
+    },
+    {
+      "frame": 5,
+      "attempts": 0,
+      "reason": "정수 패치 합성 후 소매·장갑·밑단 이음새 수정 불필요; 원래 가방 잔여는 제거 마스크 보완으로 해소"
+    }
+  ]
+}

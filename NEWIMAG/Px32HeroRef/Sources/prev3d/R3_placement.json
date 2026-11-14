@@ -1,0 +1,78 @@
+{
+  "Front": {
+    "asset": "Bag/Bag_Hip_Front.png",
+    "translation": [
+      40,
+      98
+    ],
+    "box_top": 101,
+    "bottom": 113,
+    "chain_translation": [
+      46,
+      89
+    ],
+    "chain_length": 9,
+    "hidden_by_arm_px": 29,
+    "changed_outside_layer": 0
+  },
+  "ThreeQuarter": {
+    "asset": "Bag/Bag_Hip_ThreeQuarter.png",
+    "translation": [
+      51,
+      92
+    ],
+    "box_top": 95,
+    "bottom": 107,
+    "chain_translation": [
+      56,
+      89
+    ],
+    "chain_length": 3,
+    "hidden_by_arm_px": 31,
+    "changed_outside_layer": 0
+  },
+  "Side": {
+    "asset": "Bag/Bag_Hip_ThreeQuarter.png",
+    "translation": [
+      60,
+      98
+    ],
+    "box_top": 101,
+    "bottom": 113,
+    "chain_translation": [
+      65,
+      89
+    ],
+    "chain_length": 9,
+    "hidden_by_arm_px": 0,
+    "changed_outside_layer": 0
+  },
+  "Back": {
+    "asset": "Bag/Bag_Hip_Side.png",
+    "translation": [
+      61,
+      97
+    ],
+    "box_top": 101,
+    "bottom": 116,
+    "chain_translation": [
+      66,
+      89
+    ],
+    "chain_length": 9,
+    "hidden_by_arm_px": 2,
+    "changed_outside_layer": 0
+  },
+  "Arm_Down": {
+    "bag_px_hidden_by_arm": 31
+  },
+  "Arm_HandOnHip": {
+    "bag_px_hidden_by_arm": 5
+  },
+  "Arm_Forward": {
+    "bag_px_hidden_by_arm": 0
+  },
+  "Arm_Back": {
+    "bag_px_hidden_by_arm": 4
+  }
+}

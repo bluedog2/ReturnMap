@@ -1,0 +1,2684 @@
+{
+  "production_ready": false,
+  "reference_sha256": "cd8db8384fcc54b2781eb09bb063975e4bf58b1dd234378f03aa8690ead018e1",
+  "reference": {
+    "shoulder_width": 37,
+    "shoulder_bbox": [
+      51,
+      70,
+      87,
+      79
+    ],
+    "torso_height": 15,
+    "leg_lengths": [
+      21.03,
+      19.44
+    ],
+    "shoe_sizes": [
+      [
+        20,
+        16
+      ],
+      [
+        18,
+        16
+      ]
+    ],
+    "shoe_bboxes": [
+      [
+        48,
+        112,
+        67,
+        127
+      ],
+      [
+        77,
+        112,
+        94,
+        127
+      ]
+    ],
+    "bag_size": [
+      23,
+      17
+    ],
+    "bag_bbox": [
+      40,
+      85,
+      62,
+      101
+    ],
+    "body_without_bag_pixels": 1802,
+    "landmarks": {
+      "bag": [
+        40,
+        85,
+        62,
+        101
+      ],
+      "shoulder": [
+        51,
+        70,
+        88,
+        79
+      ],
+      "neck": [
+        77,
+        73
+      ],
+      "belt": [
+        77,
+        88
+      ],
+      "legs": [
+        [
+          [
+            67,
+            96
+          ],
+          [
+            61,
+            108
+          ],
+          [
+            58,
+            115
+          ]
+        ],
+        [
+          [
+            82,
+            96
+          ],
+          [
+            85,
+            108
+          ],
+          [
+            86,
+            115
+          ]
+        ]
+      ],
+      "shoes": [
+        [
+          48,
+          112,
+          67,
+          127
+        ],
+        [
+          76,
+          112,
+          95,
+          127
+        ]
+      ]
+    },
+    "measurement_uncertainty_px": 2,
+    "occluded_joints_estimated": false
+  },
+  "measurement_method": "수동 의미 영역 주석. 좌표는 선택 후보의 복원·crop 몸 로컬 좌표, 양끝 포함. 가방 ROI를 body mask에서 제외한다. 어깨는 상완 상단 silhouette band의 bbox 폭, 몸통은 목 landmark부터 벨트 중심까지 y 차이, 다리는 hip-knee-ankle 두 선분 유클리드 길이(근사), 신발은 주석 ROI 안 불투명 bbox. 겹침으로 보이지 않는 관절은 추정이며 ±2px 제작 통과 증명으로 사용하지 않는다.",
+  "measurement_limitations": [
+    "가방 사각 ROI를 보수적으로 제외. 가려진 몸 픽셀은 복원/측정 불가.",
+    "다리 관절은 수동 추정치이며 가림으로 인한 오차 존재. ±2px 제작 통과의 증명으로 사용하지 않음.",
+    "외곽선/가방 모양 일치는 시각검수 미달."
+  ],
+  "border_policy": "접지127행 우선, 접지 하단만1px투명 예외. 상단/좌우1px투명. 공중3/7은127기준 위로 이동.",
+  "recovery_policy": "원본 블록 간격 Idle3=8px, Run2=7px 시트 전체 고정. 크기에 맞춘 프레임별 배율 없음. 불완전 생성 격자의 근사 복원. 미리보기만 픽셀 반복.",
+  "sheets": {
+    "Idle": {
+      "dimensions": [
+        768,
+        128
+      ],
+      "attempt_count": 3,
+      "selected_attempt": 3,
+      "frames": [
+        {
+          "frame": 0,
+          "head_source_frame": 0,
+          "head_translation": [
+            0,
+            4
+          ],
+          "body_translation": [
+            57,
+            76
+          ],
+          "neck_source": [
+            20,
+            1
+          ],
+          "neck_reference": [
+            77,
+            73
+          ],
+          "airborne_translation_y": 0,
+          "head_top_y": 31,
+          "height": 97,
+          "bbox": [
+            30,
+            31,
+            98,
+            127
+          ],
+          "center_x": 64.0,
+          "head_pixel_count": 2180,
+          "head_pixel_exact": true,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "color_count": 20,
+          "top_side_border_clear": true,
+          "bottom_border_clear": false,
+          "clipped_pixels": 0,
+          "anatomy": {
+            "shoulder_width": 27,
+            "shoulder_bbox": [
+              6,
+              5,
+              32,
+              12
+            ],
+            "torso_height": 17,
+            "leg_lengths": [
+              17.52,
+              15.06
+            ],
+            "shoe_sizes": [
+              [
+                16,
+                13
+              ],
+              [
+                15,
+                13
+              ]
+            ],
+            "shoe_bboxes": [
+              [
+                3,
+                39,
+                18,
+                51
+              ],
+              [
+                21,
+                39,
+                35,
+                51
+              ]
+            ],
+            "bag_size": [
+              14,
+              11
+            ],
+            "bag_bbox": [
+              4,
+              21,
+              17,
+              31
+            ],
+            "body_without_bag_pixels": 1222,
+            "landmarks": {
+              "bag": [
+                4,
+                21,
+                17,
+                31
+              ],
+              "shoulder": [
+                6,
+                5,
+                32,
+                12
+              ],
+              "neck": [
+                20,
+                1
+              ],
+              "belt": [
+                24,
+                18
+              ],
+              "legs": [
+                [
+                  [
+                    21,
+                    25
+                  ],
+                  [
+                    15,
+                    34
+                  ],
+                  [
+                    12,
+                    40
+                  ]
+                ],
+                [
+                  [
+                    27,
+                    25
+                  ],
+                  [
+                    28,
+                    34
+                  ],
+                  [
+                    28,
+                    40
+                  ]
+                ]
+              ],
+              "shoes": [
+                [
+                  3,
+                  39,
+                  18,
+                  51
+                ],
+                [
+                  20,
+                  39,
+                  35,
+                  51
+                ]
+              ]
+            },
+            "measurement_uncertainty_px": 2,
+            "occluded_joints_estimated": true
+          },
+          "size_delta": {
+            "shoulder": -10,
+            "torso": 2,
+            "legs": [
+              -3.51,
+              -4.38
+            ],
+            "shoes": [
+              [
+                -4,
+                -3
+              ],
+              [
+                -3,
+                -3
+              ]
+            ]
+          },
+          "body_size_pass": false,
+          "production_ready": false
+        },
+        {
+          "frame": 1,
+          "head_source_frame": 1,
+          "head_translation": [
+            0,
+            3
+          ],
+          "body_translation": [
+            57,
+            75
+          ],
+          "neck_source": [
+            20,
+            1
+          ],
+          "neck_reference": [
+            77,
+            73
+          ],
+          "airborne_translation_y": 0,
+          "head_top_y": 29,
+          "height": 99,
+          "bbox": [
+            30,
+            29,
+            97,
+            127
+          ],
+          "center_x": 63.5,
+          "head_pixel_count": 2174,
+          "head_pixel_exact": true,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "color_count": 20,
+          "top_side_border_clear": true,
+          "bottom_border_clear": false,
+          "clipped_pixels": 0,
+          "anatomy": {
+            "shoulder_width": 27,
+            "shoulder_bbox": [
+              6,
+              6,
+              32,
+              13
+            ],
+            "torso_height": 17,
+            "leg_lengths": [
+              17.52,
+              15.06
+            ],
+            "shoe_sizes": [
+              [
+                16,
+                13
+              ],
+              [
+                15,
+                13
+              ]
+            ],
+            "shoe_bboxes": [
+              [
+                3,
+                40,
+                18,
+                52
+              ],
+              [
+                21,
+                40,
+                35,
+                52
+              ]
+            ],
+            "bag_size": [
+              14,
+              11
+            ],
+            "bag_bbox": [
+              4,
+              22,
+              17,
+              32
+            ],
+            "body_without_bag_pixels": 1252,
+            "landmarks": {
+              "bag": [
+                4,
+                22,
+                17,
+                32
+              ],
+              "shoulder": [
+                6,
+                6,
+                32,
+                13
+              ],
+              "neck": [
+                20,
+                2
+              ],
+              "belt": [
+                24,
+                19
+              ],
+              "legs": [
+                [
+                  [
+                    21,
+                    26
+                  ],
+                  [
+                    15,
+                    35
+                  ],
+                  [
+                    12,
+                    41
+                  ]
+                ],
+                [
+                  [
+                    27,
+                    26
+                  ],
+                  [
+                    28,
+                    35
+                  ],
+                  [
+                    28,
+                    41
+                  ]
+                ]
+              ],
+              "shoes": [
+                [
+                  3,
+                  40,
+                  18,
+                  52
+                ],
+                [
+                  20,
+                  40,
+                  35,
+                  52
+                ]
+              ]
+            },
+            "measurement_uncertainty_px": 2,
+            "occluded_joints_estimated": true
+          },
+          "size_delta": {
+            "shoulder": -10,
+            "torso": 2,
+            "legs": [
+              -3.51,
+              -4.38
+            ],
+            "shoes": [
+              [
+                -4,
+                -3
+              ],
+              [
+                -3,
+                -3
+              ]
+            ]
+          },
+          "body_size_pass": false,
+          "production_ready": false
+        },
+        {
+          "frame": 2,
+          "head_source_frame": 2,
+          "head_translation": [
+            0,
+            2
+          ],
+          "body_translation": [
+            57,
+            74
+          ],
+          "neck_source": [
+            20,
+            1
+          ],
+          "neck_reference": [
+            77,
+            73
+          ],
+          "airborne_translation_y": 0,
+          "head_top_y": 28,
+          "height": 100,
+          "bbox": [
+            30,
+            28,
+            98,
+            127
+          ],
+          "center_x": 64.0,
+          "head_pixel_count": 2251,
+          "head_pixel_exact": true,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "color_count": 20,
+          "top_side_border_clear": true,
+          "bottom_border_clear": false,
+          "clipped_pixels": 0,
+          "anatomy": {
+            "shoulder_width": 27,
+            "shoulder_bbox": [
+              6,
+              7,
+              32,
+              14
+            ],
+            "torso_height": 17,
+            "leg_lengths": [
+              17.52,
+              15.06
+            ],
+            "shoe_sizes": [
+              [
+                16,
+                13
+              ],
+              [
+                15,
+                13
+              ]
+            ],
+            "shoe_bboxes": [
+              [
+                3,
+                41,
+                18,
+                53
+              ],
+              [
+                21,
+                41,
+                35,
+                53
+              ]
+            ],
+            "bag_size": [
+              14,
+              11
+            ],
+            "bag_bbox": [
+              4,
+              23,
+              17,
+              33
+            ],
+            "body_without_bag_pixels": 1286,
+            "landmarks": {
+              "bag": [
+                4,
+                23,
+                17,
+                33
+              ],
+              "shoulder": [
+                6,
+                7,
+                32,
+                14
+              ],
+              "neck": [
+                20,
+                3
+              ],
+              "belt": [
+                24,
+                20
+              ],
+              "legs": [
+                [
+                  [
+                    21,
+                    27
+                  ],
+                  [
+                    15,
+                    36
+                  ],
+                  [
+                    12,
+                    42
+                  ]
+                ],
+                [
+                  [
+                    27,
+                    27
+                  ],
+                  [
+                    28,
+                    36
+                  ],
+                  [
+                    28,
+                    42
+                  ]
+                ]
+              ],
+              "shoes": [
+                [
+                  3,
+                  41,
+                  18,
+                  53
+                ],
+                [
+                  20,
+                  41,
+                  35,
+                  53
+                ]
+              ]
+            },
+            "measurement_uncertainty_px": 2,
+            "occluded_joints_estimated": true
+          },
+          "size_delta": {
+            "shoulder": -10,
+            "torso": 2,
+            "legs": [
+              -3.51,
+              -4.38
+            ],
+            "shoes": [
+              [
+                -4,
+                -3
+              ],
+              [
+                -3,
+                -3
+              ]
+            ]
+          },
+          "body_size_pass": false,
+          "production_ready": false
+        },
+        {
+          "frame": 3,
+          "head_source_frame": 3,
+          "head_translation": [
+            0,
+            2
+          ],
+          "body_translation": [
+            57,
+            74
+          ],
+          "neck_source": [
+            20,
+            1
+          ],
+          "neck_reference": [
+            77,
+            73
+          ],
+          "airborne_translation_y": 0,
+          "head_top_y": 29,
+          "height": 99,
+          "bbox": [
+            30,
+            29,
+            97,
+            127
+          ],
+          "center_x": 63.5,
+          "head_pixel_count": 2161,
+          "head_pixel_exact": true,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "color_count": 20,
+          "top_side_border_clear": true,
+          "bottom_border_clear": false,
+          "clipped_pixels": 0,
+          "anatomy": {
+            "shoulder_width": 27,
+            "shoulder_bbox": [
+              6,
+              7,
+              32,
+              14
+            ],
+            "torso_height": 17,
+            "leg_lengths": [
+              17.52,
+              15.06
+            ],
+            "shoe_sizes": [
+              [
+                16,
+                13
+              ],
+              [
+                15,
+                13
+              ]
+            ],
+            "shoe_bboxes": [
+              [
+                3,
+                41,
+                18,
+                53
+              ],
+              [
+                21,
+                41,
+                35,
+                53
+              ]
+            ],
+            "bag_size": [
+              14,
+              11
+            ],
+            "bag_bbox": [
+              4,
+              23,
+              17,
+              33
+            ],
+            "body_without_bag_pixels": 1279,
+            "landmarks": {
+              "bag": [
+                4,
+                23,
+                17,
+                33
+              ],
+              "shoulder": [
+                6,
+                7,
+                32,
+                14
+              ],
+              "neck": [
+                20,
+                3
+              ],
+              "belt": [
+                24,
+                20
+              ],
+              "legs": [
+                [
+                  [
+                    21,
+                    27
+                  ],
+                  [
+                    15,
+                    36
+                  ],
+                  [
+                    12,
+                    42
+                  ]
+                ],
+                [
+                  [
+                    27,
+                    27
+                  ],
+                  [
+                    28,
+                    36
+                  ],
+                  [
+                    28,
+                    42
+                  ]
+                ]
+              ],
+              "shoes": [
+                [
+                  3,
+                  41,
+                  18,
+                  53
+                ],
+                [
+                  20,
+                  41,
+                  35,
+                  53
+                ]
+              ]
+            },
+            "measurement_uncertainty_px": 2,
+            "occluded_joints_estimated": true
+          },
+          "size_delta": {
+            "shoulder": -10,
+            "torso": 2,
+            "legs": [
+              -3.51,
+              -4.38
+            ],
+            "shoes": [
+              [
+                -4,
+                -3
+              ],
+              [
+                -3,
+                -3
+              ]
+            ]
+          },
+          "body_size_pass": false,
+          "production_ready": false
+        },
+        {
+          "frame": 4,
+          "head_source_frame": 4,
+          "head_translation": [
+            0,
+            3
+          ],
+          "body_translation": [
+            57,
+            75
+          ],
+          "neck_source": [
+            20,
+            1
+          ],
+          "neck_reference": [
+            77,
+            73
+          ],
+          "airborne_translation_y": 0,
+          "head_top_y": 30,
+          "height": 98,
+          "bbox": [
+            29,
+            30,
+            98,
+            127
+          ],
+          "center_x": 63.5,
+          "head_pixel_count": 2210,
+          "head_pixel_exact": true,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "color_count": 20,
+          "top_side_border_clear": true,
+          "bottom_border_clear": false,
+          "clipped_pixels": 0,
+          "anatomy": {
+            "shoulder_width": 27,
+            "shoulder_bbox": [
+              6,
+              6,
+              32,
+              13
+            ],
+            "torso_height": 17,
+            "leg_lengths": [
+              17.52,
+              15.06
+            ],
+            "shoe_sizes": [
+              [
+                16,
+                13
+              ],
+              [
+                15,
+                13
+              ]
+            ],
+            "shoe_bboxes": [
+              [
+                3,
+                40,
+                18,
+                52
+              ],
+              [
+                21,
+                40,
+                35,
+                52
+              ]
+            ],
+            "bag_size": [
+              14,
+              11
+            ],
+            "bag_bbox": [
+              4,
+              22,
+              17,
+              32
+            ],
+            "body_without_bag_pixels": 1252,
+            "landmarks": {
+              "bag": [
+                4,
+                22,
+                17,
+                32
+              ],
+              "shoulder": [
+                6,
+                6,
+                32,
+                13
+              ],
+              "neck": [
+                20,
+                2
+              ],
+              "belt": [
+                24,
+                19
+              ],
+              "legs": [
+                [
+                  [
+                    21,
+                    26
+                  ],
+                  [
+                    15,
+                    35
+                  ],
+                  [
+                    12,
+                    41
+                  ]
+                ],
+                [
+                  [
+                    27,
+                    26
+                  ],
+                  [
+                    28,
+                    35
+                  ],
+                  [
+                    28,
+                    41
+                  ]
+                ]
+              ],
+              "shoes": [
+                [
+                  3,
+                  40,
+                  18,
+                  52
+                ],
+                [
+                  20,
+                  40,
+                  35,
+                  52
+                ]
+              ]
+            },
+            "measurement_uncertainty_px": 2,
+            "occluded_joints_estimated": true
+          },
+          "size_delta": {
+            "shoulder": -10,
+            "torso": 2,
+            "legs": [
+              -3.51,
+              -4.38
+            ],
+            "shoes": [
+              [
+                -4,
+                -3
+              ],
+              [
+                -3,
+                -3
+              ]
+            ]
+          },
+          "body_size_pass": false,
+          "production_ready": false
+        },
+        {
+          "frame": 5,
+          "head_source_frame": 5,
+          "head_translation": [
+            0,
+            4
+          ],
+          "body_translation": [
+            57,
+            76
+          ],
+          "neck_source": [
+            20,
+            1
+          ],
+          "neck_reference": [
+            77,
+            73
+          ],
+          "airborne_translation_y": 0,
+          "head_top_y": 30,
+          "height": 98,
+          "bbox": [
+            30,
+            30,
+            97,
+            127
+          ],
+          "center_x": 63.5,
+          "head_pixel_count": 2164,
+          "head_pixel_exact": true,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "color_count": 20,
+          "top_side_border_clear": true,
+          "bottom_border_clear": false,
+          "clipped_pixels": 0,
+          "anatomy": {
+            "shoulder_width": 27,
+            "shoulder_bbox": [
+              6,
+              5,
+              32,
+              12
+            ],
+            "torso_height": 17,
+            "leg_lengths": [
+              17.52,
+              15.06
+            ],
+            "shoe_sizes": [
+              [
+                16,
+                13
+              ],
+              [
+                15,
+                13
+              ]
+            ],
+            "shoe_bboxes": [
+              [
+                3,
+                39,
+                18,
+                51
+              ],
+              [
+                21,
+                39,
+                35,
+                51
+              ]
+            ],
+            "bag_size": [
+              14,
+              11
+            ],
+            "bag_bbox": [
+              4,
+              21,
+              17,
+              31
+            ],
+            "body_without_bag_pixels": 1224,
+            "landmarks": {
+              "bag": [
+                4,
+                21,
+                17,
+                31
+              ],
+              "shoulder": [
+                6,
+                5,
+                32,
+                12
+              ],
+              "neck": [
+                20,
+                1
+              ],
+              "belt": [
+                24,
+                18
+              ],
+              "legs": [
+                [
+                  [
+                    21,
+                    25
+                  ],
+                  [
+                    15,
+                    34
+                  ],
+                  [
+                    12,
+                    40
+                  ]
+                ],
+                [
+                  [
+                    27,
+                    25
+                  ],
+                  [
+                    28,
+                    34
+                  ],
+                  [
+                    28,
+                    40
+                  ]
+                ]
+              ],
+              "shoes": [
+                [
+                  3,
+                  39,
+                  18,
+                  51
+                ],
+                [
+                  20,
+                  39,
+                  35,
+                  51
+                ]
+              ]
+            },
+            "measurement_uncertainty_px": 2,
+            "occluded_joints_estimated": true
+          },
+          "size_delta": {
+            "shoulder": -10,
+            "torso": 2,
+            "legs": [
+              -3.51,
+              -4.38
+            ],
+            "shoes": [
+              [
+                -4,
+                -3
+              ],
+              [
+                -3,
+                -3
+              ]
+            ]
+          },
+          "body_size_pass": false,
+          "production_ready": false
+        }
+      ],
+      "head_range": 3,
+      "max_adjacent_head_delta_including_loop": 2,
+      "height_motion_pass": false,
+      "color_count": 20,
+      "production_ready": false,
+      "failure_reasons": [
+        "몸 크기 ±2px 전체 조건 미달.",
+        "가방이 원본보다 작으며 이빨/외곽 모양 일치 미달.",
+        "외곽선 정확한1px 미보장.",
+        "머리 위 y26~27 및 키 변화±1px 미달."
+      ],
+      "bag_shape_consistent": false,
+      "bag_lag_pass": false,
+      "outline_1px_pass": false,
+      "gif": {
+        "requested_fps": 8,
+        "delay_centiseconds": [
+          12,
+          13,
+          13,
+          12,
+          12,
+          13
+        ],
+        "loop": true
+      }
+    },
+    "Run": {
+      "dimensions": [
+        1024,
+        128
+      ],
+      "attempt_count": 3,
+      "selected_attempt": 2,
+      "frames": [
+        {
+          "frame": 0,
+          "head_source_frame": 0,
+          "head_translation": [
+            0,
+            2
+          ],
+          "body_translation": [
+            51,
+            74
+          ],
+          "neck_source": [
+            26,
+            1
+          ],
+          "neck_reference": [
+            77,
+            73
+          ],
+          "airborne_translation_y": 0,
+          "head_top_y": 29,
+          "height": 99,
+          "bbox": [
+            30,
+            29,
+            98,
+            127
+          ],
+          "center_x": 64.0,
+          "head_pixel_count": 2180,
+          "head_pixel_exact": true,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "color_count": 20,
+          "top_side_border_clear": true,
+          "bottom_border_clear": false,
+          "clipped_pixels": 0,
+          "anatomy": {
+            "shoulder_width": 28,
+            "shoulder_bbox": [
+              8,
+              5,
+              35,
+              13
+            ],
+            "torso_height": 19,
+            "leg_lengths": [
+              19.32,
+              22.22
+            ],
+            "shoe_sizes": [
+              [
+                19,
+                12
+              ],
+              [
+                18,
+                16
+              ]
+            ],
+            "shoe_bboxes": [
+              [
+                29,
+                42,
+                47,
+                53
+              ],
+              [
+                0,
+                38,
+                17,
+                53
+              ]
+            ],
+            "bag_size": [
+              15,
+              14
+            ],
+            "bag_bbox": [
+              4,
+              20,
+              18,
+              33
+            ],
+            "body_without_bag_pixels": 1365,
+            "landmarks": {
+              "bag": [
+                3,
+                20,
+                18,
+                33
+              ],
+              "shoulder": [
+                8,
+                5,
+                35,
+                13
+              ],
+              "neck": [
+                26,
+                1
+              ],
+              "belt": [
+                29,
+                20
+              ],
+              "legs": [
+                [
+                  [
+                    30,
+                    26
+                  ],
+                  [
+                    34,
+                    37
+                  ],
+                  [
+                    37,
+                    44
+                  ]
+                ],
+                [
+                  [
+                    24,
+                    27
+                  ],
+                  [
+                    17,
+                    36
+                  ],
+                  [
+                    8,
+                    42
+                  ]
+                ]
+              ],
+              "shoes": [
+                [
+                  29,
+                  42,
+                  47,
+                  53
+                ],
+                [
+                  0,
+                  38,
+                  17,
+                  53
+                ]
+              ]
+            },
+            "measurement_uncertainty_px": 2,
+            "occluded_joints_estimated": true
+          },
+          "size_delta": {
+            "shoulder": -9,
+            "torso": 4,
+            "legs": [
+              -1.71,
+              2.78
+            ],
+            "shoes": [
+              [
+                -1,
+                -4
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          },
+          "body_size_pass": false,
+          "production_ready": false
+        },
+        {
+          "frame": 1,
+          "head_source_frame": 0,
+          "head_translation": [
+            0,
+            3
+          ],
+          "body_translation": [
+            55,
+            75
+          ],
+          "neck_source": [
+            22,
+            1
+          ],
+          "neck_reference": [
+            77,
+            73
+          ],
+          "airborne_translation_y": 0,
+          "head_top_y": 30,
+          "height": 98,
+          "bbox": [
+            30,
+            30,
+            98,
+            127
+          ],
+          "center_x": 64.0,
+          "head_pixel_count": 2180,
+          "head_pixel_exact": true,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "color_count": 20,
+          "top_side_border_clear": true,
+          "bottom_border_clear": false,
+          "clipped_pixels": 0,
+          "anatomy": {
+            "shoulder_width": 24,
+            "shoulder_bbox": [
+              6,
+              5,
+              29,
+              14
+            ],
+            "torso_height": 19,
+            "leg_lengths": [
+              19.22,
+              22.39
+            ],
+            "shoe_sizes": [
+              [
+                18,
+                12
+              ],
+              [
+                13,
+                13
+              ]
+            ],
+            "shoe_bboxes": [
+              [
+                13,
+                41,
+                30,
+                52
+              ],
+              [
+                7,
+                34,
+                19,
+                46
+              ]
+            ],
+            "bag_size": [
+              16,
+              14
+            ],
+            "bag_bbox": [
+              0,
+              21,
+              15,
+              34
+            ],
+            "body_without_bag_pixels": 1122,
+            "landmarks": {
+              "bag": [
+                0,
+                21,
+                15,
+                34
+              ],
+              "shoulder": [
+                6,
+                5,
+                29,
+                14
+              ],
+              "neck": [
+                22,
+                1
+              ],
+              "belt": [
+                25,
+                20
+              ],
+              "legs": [
+                [
+                  [
+                    24,
+                    25
+                  ],
+                  [
+                    26,
+                    34
+                  ],
+                  [
+                    20,
+                    42
+                  ]
+                ],
+                [
+                  [
+                    28,
+                    24
+                  ],
+                  [
+                    30,
+                    29
+                  ],
+                  [
+                    15,
+                    37
+                  ]
+                ]
+              ],
+              "shoes": [
+                [
+                  13,
+                  41,
+                  30,
+                  52
+                ],
+                [
+                  7,
+                  34,
+                  19,
+                  46
+                ]
+              ]
+            },
+            "measurement_uncertainty_px": 2,
+            "occluded_joints_estimated": true
+          },
+          "size_delta": {
+            "shoulder": -13,
+            "torso": 4,
+            "legs": [
+              -1.81,
+              2.95
+            ],
+            "shoes": [
+              [
+                -2,
+                -4
+              ],
+              [
+                -5,
+                -3
+              ]
+            ]
+          },
+          "body_size_pass": false,
+          "production_ready": false
+        },
+        {
+          "frame": 2,
+          "head_source_frame": 0,
+          "head_translation": [
+            0,
+            1
+          ],
+          "body_translation": [
+            53,
+            73
+          ],
+          "neck_source": [
+            24,
+            1
+          ],
+          "neck_reference": [
+            77,
+            73
+          ],
+          "airborne_translation_y": 0,
+          "head_top_y": 28,
+          "height": 100,
+          "bbox": [
+            30,
+            28,
+            98,
+            127
+          ],
+          "center_x": 64.0,
+          "head_pixel_count": 2180,
+          "head_pixel_exact": true,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "color_count": 20,
+          "top_side_border_clear": true,
+          "bottom_border_clear": false,
+          "clipped_pixels": 0,
+          "anatomy": {
+            "shoulder_width": 27,
+            "shoulder_bbox": [
+              6,
+              5,
+              32,
+              14
+            ],
+            "torso_height": 19,
+            "leg_lengths": [
+              27.67,
+              19.89
+            ],
+            "shoe_sizes": [
+              [
+                15,
+                14
+              ],
+              [
+                13,
+                14
+              ]
+            ],
+            "shoe_bboxes": [
+              [
+                0,
+                41,
+                14,
+                54
+              ],
+              [
+                21,
+                38,
+                33,
+                51
+              ]
+            ],
+            "bag_size": [
+              17,
+              14
+            ],
+            "bag_bbox": [
+              1,
+              20,
+              17,
+              33
+            ],
+            "body_without_bag_pixels": 1232,
+            "landmarks": {
+              "bag": [
+                1,
+                20,
+                17,
+                33
+              ],
+              "shoulder": [
+                6,
+                5,
+                32,
+                14
+              ],
+              "neck": [
+                24,
+                1
+              ],
+              "belt": [
+                27,
+                20
+              ],
+              "legs": [
+                [
+                  [
+                    27,
+                    23
+                  ],
+                  [
+                    19,
+                    33
+                  ],
+                  [
+                    8,
+                    43
+                  ]
+                ],
+                [
+                  [
+                    29,
+                    23
+                  ],
+                  [
+                    35,
+                    29
+                  ],
+                  [
+                    32,
+                    40
+                  ]
+                ]
+              ],
+              "shoes": [
+                [
+                  0,
+                  41,
+                  17,
+                  54
+                ],
+                [
+                  21,
+                  38,
+                  41,
+                  51
+                ]
+              ]
+            },
+            "measurement_uncertainty_px": 2,
+            "occluded_joints_estimated": true
+          },
+          "size_delta": {
+            "shoulder": -10,
+            "torso": 4,
+            "legs": [
+              6.64,
+              0.45
+            ],
+            "shoes": [
+              [
+                -5,
+                -2
+              ],
+              [
+                -5,
+                -2
+              ]
+            ]
+          },
+          "body_size_pass": false,
+          "production_ready": false
+        },
+        {
+          "frame": 3,
+          "head_source_frame": 0,
+          "head_translation": [
+            -1,
+            2
+          ],
+          "body_translation": [
+            53,
+            74
+          ],
+          "neck_source": [
+            23,
+            1
+          ],
+          "neck_reference": [
+            77,
+            73
+          ],
+          "airborne_translation_y": -4,
+          "head_top_y": 29,
+          "height": 95,
+          "bbox": [
+            29,
+            29,
+            99,
+            123
+          ],
+          "center_x": 64.0,
+          "head_pixel_count": 2180,
+          "head_pixel_exact": true,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "color_count": 20,
+          "top_side_border_clear": true,
+          "bottom_border_clear": true,
+          "clipped_pixels": 0,
+          "anatomy": {
+            "shoulder_width": 27,
+            "shoulder_bbox": [
+              6,
+              5,
+              32,
+              13
+            ],
+            "torso_height": 18,
+            "leg_lengths": [
+              26.35,
+              17.15
+            ],
+            "shoe_sizes": [
+              [
+                15,
+                13
+              ],
+              [
+                16,
+                13
+              ]
+            ],
+            "shoe_bboxes": [
+              [
+                0,
+                37,
+                14,
+                49
+              ],
+              [
+                31,
+                34,
+                46,
+                46
+              ]
+            ],
+            "bag_size": [
+              17,
+              14
+            ],
+            "bag_bbox": [
+              2,
+              19,
+              18,
+              32
+            ],
+            "body_without_bag_pixels": 1182,
+            "landmarks": {
+              "bag": [
+                2,
+                19,
+                18,
+                32
+              ],
+              "shoulder": [
+                6,
+                5,
+                32,
+                13
+              ],
+              "neck": [
+                23,
+                1
+              ],
+              "belt": [
+                26,
+                19
+              ],
+              "legs": [
+                [
+                  [
+                    27,
+                    23
+                  ],
+                  [
+                    17,
+                    33
+                  ],
+                  [
+                    7,
+                    40
+                  ]
+                ],
+                [
+                  [
+                    29,
+                    23
+                  ],
+                  [
+                    35,
+                    26
+                  ],
+                  [
+                    38,
+                    36
+                  ]
+                ]
+              ],
+              "shoes": [
+                [
+                  0,
+                  37,
+                  14,
+                  49
+                ],
+                [
+                  31,
+                  34,
+                  46,
+                  46
+                ]
+              ]
+            },
+            "measurement_uncertainty_px": 2,
+            "occluded_joints_estimated": true
+          },
+          "size_delta": {
+            "shoulder": -10,
+            "torso": 3,
+            "legs": [
+              5.32,
+              -2.29
+            ],
+            "shoes": [
+              [
+                -5,
+                -3
+              ],
+              [
+                -2,
+                -3
+              ]
+            ]
+          },
+          "body_size_pass": false,
+          "production_ready": false
+        },
+        {
+          "frame": 4,
+          "head_source_frame": 0,
+          "head_translation": [
+            0,
+            2
+          ],
+          "body_translation": [
+            51,
+            74
+          ],
+          "neck_source": [
+            26,
+            1
+          ],
+          "neck_reference": [
+            77,
+            73
+          ],
+          "airborne_translation_y": 0,
+          "head_top_y": 29,
+          "height": 99,
+          "bbox": [
+            30,
+            29,
+            98,
+            127
+          ],
+          "center_x": 64.0,
+          "head_pixel_count": 2180,
+          "head_pixel_exact": true,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "color_count": 20,
+          "top_side_border_clear": true,
+          "bottom_border_clear": false,
+          "clipped_pixels": 0,
+          "anatomy": {
+            "shoulder_width": 27,
+            "shoulder_bbox": [
+              8,
+              5,
+              34,
+              13
+            ],
+            "torso_height": 19,
+            "leg_lengths": [
+              27.2,
+              19.02
+            ],
+            "shoe_sizes": [
+              [
+                16,
+                16
+              ],
+              [
+                19,
+                11
+              ]
+            ],
+            "shoe_bboxes": [
+              [
+                0,
+                38,
+                15,
+                53
+              ],
+              [
+                29,
+                43,
+                47,
+                53
+              ]
+            ],
+            "bag_size": [
+              15,
+              14
+            ],
+            "bag_bbox": [
+              4,
+              21,
+              18,
+              34
+            ],
+            "body_without_bag_pixels": 1308,
+            "landmarks": {
+              "bag": [
+                3,
+                21,
+                18,
+                34
+              ],
+              "shoulder": [
+                8,
+                5,
+                34,
+                13
+              ],
+              "neck": [
+                26,
+                1
+              ],
+              "belt": [
+                29,
+                20
+              ],
+              "legs": [
+                [
+                  [
+                    29,
+                    25
+                  ],
+                  [
+                    18,
+                    33
+                  ],
+                  [
+                    7,
+                    41
+                  ]
+                ],
+                [
+                  [
+                    30,
+                    26
+                  ],
+                  [
+                    34,
+                    36
+                  ],
+                  [
+                    36,
+                    44
+                  ]
+                ]
+              ],
+              "shoes": [
+                [
+                  0,
+                  38,
+                  15,
+                  53
+                ],
+                [
+                  29,
+                  43,
+                  47,
+                  53
+                ]
+              ]
+            },
+            "measurement_uncertainty_px": 2,
+            "occluded_joints_estimated": true
+          },
+          "size_delta": {
+            "shoulder": -10,
+            "torso": 4,
+            "legs": [
+              6.17,
+              -0.42
+            ],
+            "shoes": [
+              [
+                -4,
+                0
+              ],
+              [
+                1,
+                -5
+              ]
+            ]
+          },
+          "body_size_pass": false,
+          "production_ready": false
+        },
+        {
+          "frame": 5,
+          "head_source_frame": 0,
+          "head_translation": [
+            0,
+            4
+          ],
+          "body_translation": [
+            55,
+            76
+          ],
+          "neck_source": [
+            22,
+            1
+          ],
+          "neck_reference": [
+            77,
+            73
+          ],
+          "airborne_translation_y": 0,
+          "head_top_y": 31,
+          "height": 97,
+          "bbox": [
+            30,
+            31,
+            98,
+            127
+          ],
+          "center_x": 64.0,
+          "head_pixel_count": 2180,
+          "head_pixel_exact": true,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "color_count": 20,
+          "top_side_border_clear": true,
+          "bottom_border_clear": false,
+          "clipped_pixels": 0,
+          "anatomy": {
+            "shoulder_width": 25,
+            "shoulder_bbox": [
+              6,
+              5,
+              30,
+              14
+            ],
+            "torso_height": 18,
+            "leg_lengths": [
+              16.65,
+              18.71
+            ],
+            "shoe_sizes": [
+              [
+                17,
+                12
+              ],
+              [
+                17,
+                11
+              ]
+            ],
+            "shoe_bboxes": [
+              [
+                5,
+                34,
+                21,
+                45
+              ],
+              [
+                14,
+                41,
+                30,
+                51
+              ]
+            ],
+            "bag_size": [
+              16,
+              14
+            ],
+            "bag_bbox": [
+              0,
+              19,
+              15,
+              32
+            ],
+            "body_without_bag_pixels": 1090,
+            "landmarks": {
+              "bag": [
+                0,
+                19,
+                15,
+                32
+              ],
+              "shoulder": [
+                6,
+                5,
+                30,
+                14
+              ],
+              "neck": [
+                22,
+                1
+              ],
+              "belt": [
+                25,
+                19
+              ],
+              "legs": [
+                [
+                  [
+                    24,
+                    24
+                  ],
+                  [
+                    19,
+                    32
+                  ],
+                  [
+                    13,
+                    36
+                  ]
+                ],
+                [
+                  [
+                    26,
+                    25
+                  ],
+                  [
+                    24,
+                    34
+                  ],
+                  [
+                    21,
+                    43
+                  ]
+                ]
+              ],
+              "shoes": [
+                [
+                  5,
+                  34,
+                  21,
+                  45
+                ],
+                [
+                  14,
+                  41,
+                  30,
+                  51
+                ]
+              ]
+            },
+            "measurement_uncertainty_px": 2,
+            "occluded_joints_estimated": true
+          },
+          "size_delta": {
+            "shoulder": -12,
+            "torso": 3,
+            "legs": [
+              -4.38,
+              -0.73
+            ],
+            "shoes": [
+              [
+                -3,
+                -4
+              ],
+              [
+                -1,
+                -5
+              ]
+            ]
+          },
+          "body_size_pass": false,
+          "production_ready": false
+        },
+        {
+          "frame": 6,
+          "head_source_frame": 0,
+          "head_translation": [
+            0,
+            2
+          ],
+          "body_translation": [
+            54,
+            74
+          ],
+          "neck_source": [
+            23,
+            1
+          ],
+          "neck_reference": [
+            77,
+            73
+          ],
+          "airborne_translation_y": 0,
+          "head_top_y": 29,
+          "height": 99,
+          "bbox": [
+            30,
+            29,
+            98,
+            127
+          ],
+          "center_x": 64.0,
+          "head_pixel_count": 2180,
+          "head_pixel_exact": true,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "color_count": 20,
+          "top_side_border_clear": true,
+          "bottom_border_clear": false,
+          "clipped_pixels": 0,
+          "anatomy": {
+            "shoulder_width": 26,
+            "shoulder_bbox": [
+              6,
+              5,
+              31,
+              14
+            ],
+            "torso_height": 19,
+            "leg_lengths": [
+              19.15,
+              24.85
+            ],
+            "shoe_sizes": [
+              [
+                15,
+                12
+              ],
+              [
+                15,
+                14
+              ]
+            ],
+            "shoe_bboxes": [
+              [
+                19,
+                38,
+                33,
+                49
+              ],
+              [
+                0,
+                40,
+                14,
+                53
+              ]
+            ],
+            "bag_size": [
+              16,
+              14
+            ],
+            "bag_bbox": [
+              1,
+              20,
+              16,
+              33
+            ],
+            "body_without_bag_pixels": 1202,
+            "landmarks": {
+              "bag": [
+                1,
+                20,
+                16,
+                33
+              ],
+              "shoulder": [
+                6,
+                5,
+                31,
+                14
+              ],
+              "neck": [
+                23,
+                1
+              ],
+              "belt": [
+                26,
+                20
+              ],
+              "legs": [
+                [
+                  [
+                    27,
+                    24
+                  ],
+                  [
+                    32,
+                    29
+                  ],
+                  [
+                    27,
+                    40
+                  ]
+                ],
+                [
+                  [
+                    25,
+                    26
+                  ],
+                  [
+                    17,
+                    35
+                  ],
+                  [
+                    7,
+                    43
+                  ]
+                ]
+              ],
+              "shoes": [
+                [
+                  19,
+                  38,
+                  40,
+                  50
+                ],
+                [
+                  0,
+                  40,
+                  16,
+                  53
+                ]
+              ]
+            },
+            "measurement_uncertainty_px": 2,
+            "occluded_joints_estimated": true
+          },
+          "size_delta": {
+            "shoulder": -11,
+            "torso": 4,
+            "legs": [
+              -1.88,
+              5.41
+            ],
+            "shoes": [
+              [
+                -5,
+                -4
+              ],
+              [
+                -3,
+                -2
+              ]
+            ]
+          },
+          "body_size_pass": false,
+          "production_ready": false
+        },
+        {
+          "frame": 7,
+          "head_source_frame": 0,
+          "head_translation": [
+            -1,
+            2
+          ],
+          "body_translation": [
+            52,
+            74
+          ],
+          "neck_source": [
+            24,
+            1
+          ],
+          "neck_reference": [
+            77,
+            73
+          ],
+          "airborne_translation_y": -3,
+          "head_top_y": 29,
+          "height": 96,
+          "bbox": [
+            29,
+            29,
+            99,
+            124
+          ],
+          "center_x": 64.0,
+          "head_pixel_count": 2180,
+          "head_pixel_exact": true,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "color_count": 20,
+          "top_side_border_clear": true,
+          "bottom_border_clear": true,
+          "clipped_pixels": 0,
+          "anatomy": {
+            "shoulder_width": 28,
+            "shoulder_bbox": [
+              6,
+              5,
+              33,
+              14
+            ],
+            "torso_height": 19,
+            "leg_lengths": [
+              18.33,
+              25.54
+            ],
+            "shoe_sizes": [
+              [
+                17,
+                13
+              ],
+              [
+                17,
+                12
+              ]
+            ],
+            "shoe_bboxes": [
+              [
+                31,
+                36,
+                47,
+                48
+              ],
+              [
+                0,
+                39,
+                16,
+                50
+              ]
+            ],
+            "bag_size": [
+              17,
+              14
+            ],
+            "bag_bbox": [
+              2,
+              20,
+              18,
+              33
+            ],
+            "body_without_bag_pixels": 1176,
+            "landmarks": {
+              "bag": [
+                2,
+                20,
+                18,
+                33
+              ],
+              "shoulder": [
+                6,
+                5,
+                33,
+                14
+              ],
+              "neck": [
+                24,
+                1
+              ],
+              "belt": [
+                27,
+                20
+              ],
+              "legs": [
+                [
+                  [
+                    27,
+                    24
+                  ],
+                  [
+                    33,
+                    30
+                  ],
+                  [
+                    37,
+                    39
+                  ]
+                ],
+                [
+                  [
+                    26,
+                    25
+                  ],
+                  [
+                    16,
+                    35
+                  ],
+                  [
+                    7,
+                    42
+                  ]
+                ]
+              ],
+              "shoes": [
+                [
+                  31,
+                  36,
+                  47,
+                  48
+                ],
+                [
+                  0,
+                  39,
+                  16,
+                  50
+                ]
+              ]
+            },
+            "measurement_uncertainty_px": 2,
+            "occluded_joints_estimated": true
+          },
+          "size_delta": {
+            "shoulder": -9,
+            "torso": 4,
+            "legs": [
+              -2.7,
+              6.1
+            ],
+            "shoes": [
+              [
+                -3,
+                -3
+              ],
+              [
+                -1,
+                -4
+              ]
+            ]
+          },
+          "body_size_pass": false,
+          "production_ready": false
+        }
+      ],
+      "head_range": 3,
+      "max_adjacent_head_delta_including_loop": 2,
+      "height_motion_pass": true,
+      "color_count": 20,
+      "production_ready": false,
+      "failure_reasons": [
+        "몸 크기 ±2px 전체 조건 미달.",
+        "가방이 원본보다 작으며 이빨/외곽 모양 일치 미달.",
+        "외곽선 정확한1px 미보장.",
+        "0/4 검은 스타킹/맨다리 교대 확인. 밀기·공중 연결과 반대 팔 스윙 완전 통과는 보류.",
+        "가방이 벨트에 대해1~2px 늦게 따라오는 움직임 미확정."
+      ],
+      "bag_shape_consistent": false,
+      "bag_lag_pass": false,
+      "outline_1px_pass": false,
+      "gif": {
+        "requested_fps": 18,
+        "delay_centiseconds": [
+          6,
+          5,
+          6,
+          5,
+          6,
+          5,
+          6,
+          5
+        ],
+        "loop": true
+      }
+    }
+  }
+}
