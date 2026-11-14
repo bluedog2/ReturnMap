@@ -162,6 +162,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Hero_Land_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 021d3b091867ce8418b3a8ef37f67f5e
+      internalID: -358345265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -179,6 +201,7 @@ TextureImporter:
       Hero_Land_0: 28024220
       Hero_Land_1: 1634289203
       Hero_Land_2: -1556758706
+      Hero_Land_3: -358345265
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

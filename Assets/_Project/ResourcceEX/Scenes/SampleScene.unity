@@ -7228,6 +7228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e550afd3510784daaeeb66aa1517f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReTrap.PlayerAnimationFSM
+  idleToLongIdleDelay: 6
+  longIdleLoops: 3
 --- !u!114 &1250373947
 MonoBehaviour:
   m_ObjectHideFlags: 0

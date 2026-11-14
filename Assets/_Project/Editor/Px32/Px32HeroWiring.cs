@@ -15,7 +15,7 @@ namespace ReTrap.EditorTools
     /// 메뉴 <b>ReTrap → Setup → Px32 주인공 연결</b> (멱등, 대화상자 없음 → 배치모드 가능):
     /// <c>-executeMethod ReTrap.EditorTools.Px32HeroWiring.Run</c>
     /// <list type="number">
-    ///   <item>주인공 시트 8종(Hero_Run/JumpStart/Fall/Land/Dash/Hit/Death + 기존 Idle)이 모두 규격 프레임 수로 있을 때만 진행
+    ///   <item>주인공 시트 16종(Idle/Run/JumpStart/Rise/Apex/Fall/Land/Dash/Hit/Death/BagOut/LongIdle/BagIn/RunStart/RunStop/Turn)이 모두 규격 프레임 수로 있을 때만 진행
     ///         (없으면 "아트 미입고"로 중단 — 반쪽 연결 방지). 클립은 <see cref="SpriteClipRebinder.RunApplyHero"/> 로 재배선.</item>
     ///   <item>SampleScene 의 Player: Visual 스케일 1 · 위치 = 콜라이더 바닥, 캡슐 콜라이더 (0.75, 1.875)
     ///         (바닥 높이 유지, 화풍 v2), Rigidbody2D 보간 Interpolate, vcam TargetOffset.y 1.0, DashGaugeUI offset (1.0, 1.7).
@@ -30,10 +30,12 @@ namespace ReTrap.EditorTools
         private const string ControllerPath = "Assets/_Project/ResourcceEX/Animations/Lord_Controller.controller";
         private const string SheetDir       = "Assets/_Project/ResourcceEX/Sprites/Px32/Player";
 
-        private static readonly (string sheet, int frames)[] Sheets =
+        /// <summary>주인공 시트 16종 (프레임 수는 <see cref="Px32Rules.GetSheetSpec"/> 에서).</summary>
+        private static readonly string[] Sheets =
         {
-            ("Hero_Idle", 6), ("Hero_Run", 8), ("Hero_JumpStart", 3), ("Hero_Fall", 2),
-            ("Hero_Land", 3), ("Hero_Dash", 5), ("Hero_Hit", 3), ("Hero_Death", 6),
+            "Hero_Idle", "Hero_Run", "Hero_JumpStart", "Hero_Rise", "Hero_Apex", "Hero_Fall",
+            "Hero_Land", "Hero_Dash", "Hero_Hit", "Hero_Death", "Hero_BagOut", "Hero_LongIdle",
+            "Hero_BagIn", "Hero_RunStart", "Hero_RunStop", "Hero_Turn",
         };
 
         // 화풍 v2 (docs/hero-b-scale-impact.md D1 ②): 아트 키 80px, 판정은 머리 꼭대기·포니테일 제외 60px
@@ -52,11 +54,12 @@ namespace ReTrap.EditorTools
             // 메뉴 실행 시 저장 안 된 씬 변경을 묻지 않고 버리지 않도록
             if (!Application.isBatchMode && !EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) return;
 
-            // 1) 아트 입고 확인 — 8종 모두 새 규격 셀(Px32Rules.HeroCell)로 있을 때만 진행
+            // 1) 아트 입고 확인 — 16종 모두 새 규격 셀(Px32Rules.HeroCell)로 있을 때만 진행
             //    (구 64 셀 시트에 새 콜라이더를 붙이는 반쪽 연결 방지)
             AssetDatabase.Refresh();
-            foreach (var (sheet, frames) in Sheets)
+            foreach (var sheet in Sheets)
             {
+                int frames = Px32Rules.GetSheetSpec("Player", sheet).frames;
                 string path = $"{SheetDir}/{sheet}.png";
                 var sprites = File.Exists(Path.Combine(Directory.GetParent(Application.dataPath).FullName, path))
                     ? AssetDatabase.LoadAllAssetsAtPath(path).OfType<Sprite>().ToArray()
@@ -100,6 +103,7 @@ namespace ReTrap.EditorTools
             }
 
             // 3) 주인공 클립: 빈 경로 m_Sprite 바인딩 → "Visual", 이어서 재배선
+            EnsureNewClips();
             FixEmptyPathSpriteBindings();
             if (!SpriteClipRebinder.RunApplyHero())
             {
@@ -157,6 +161,26 @@ namespace ReTrap.EditorTools
                         found = true;
                     }
                 }
+            // 새 state 추가 / motion 맞춤 (기본 state Idle 유지)
+            var sm = ctrl.layers[0].stateMachine;
+            foreach (var (stateName, clipName) in ControllerStates)
+            {
+                var motion = AssetDatabase.LoadAssetAtPath<AnimationClip>($"Assets/_Project/ResourcceEX/Animations/{clipName}.anim");
+                if (motion == null)
+                {
+                    Debug.LogWarning($"[Px32HeroWiring] 클립 {clipName}.anim 없음 — state {stateName} 건너뜀");
+                    continue;
+                }
+                var st = sm.states.Select(x => x.state).FirstOrDefault(x => x.name == stateName);
+                if (st == null)
+                {
+                    st = sm.AddState(stateName);
+                    st.writeDefaultValues = false;
+                    st.speed = 1f;
+                    Debug.Log($"[Px32HeroWiring] Lord_Controller state 추가: {stateName}");
+                }
+                st.motion = motion;
+            }
             if (!found) Debug.LogWarning("[Px32HeroWiring] Lord_Controller 에서 Land state 를 찾지 못함 (최상위 state machine 만 검색)");
             EditorUtility.SetDirty(ctrl);
 
@@ -195,7 +219,48 @@ namespace ReTrap.EditorTools
         }
 
         private static readonly string[] HeroClips =
-            { "Idle", "Run", "Jump_Start", "Jump_Loop", "Fall_Loop", "Land", "Dash", "Lord_Hit", "Death" };
+            { "Idle", "Run", "Jump_Start", "Jump_Loop", "Fall_Loop", "Apex", "Land", "Dash", "Lord_Hit", "Death",
+              "Bag_Out", "Long_Idle", "Bag_In", "Run_Start", "Run_Stop", "Turn" };
+
+        /// <summary>새로 추가된 클립(.anim) → 시트. 이미 있으면 건드리지 않는다.</summary>
+        private static readonly (string clip, string sheet)[] NewClips =
+        {
+            ("Apex", "Hero_Apex"), ("Bag_Out", "Hero_BagOut"), ("Long_Idle", "Hero_LongIdle"), ("Bag_In", "Hero_BagIn"),
+            ("Run_Start", "Hero_RunStart"), ("Run_Stop", "Hero_RunStop"), ("Turn", "Hero_Turn"),
+        };
+
+        /// <summary>
+        /// 새 클립 7종의 .anim 이 없으면 만든다 (Visual/SpriteRenderer.m_Sprite 바인딩에 시트 0번 키 하나 —
+        /// 실제 프레임은 이어지는 SpriteClipRebinder 가 채운다). 멱등.
+        /// </summary>
+        private static void EnsureNewClips()
+        {
+            foreach (var (name, sheet) in NewClips)
+            {
+                string path = $"Assets/_Project/ResourcceEX/Animations/{name}.anim";
+                if (AssetDatabase.LoadAssetAtPath<AnimationClip>(path) != null) continue;
+                var first = AssetDatabase.LoadAllAssetsAtPath($"{SheetDir}/{sheet}.png").OfType<Sprite>()
+                    .OrderBy(sp => sp.name, System.StringComparer.Ordinal).FirstOrDefault();
+                if (first == null)
+                {
+                    Debug.LogWarning($"[Px32HeroWiring] {name}: 시트 {sheet} 스프라이트 없음 — 클립 생성 건너뜀");
+                    continue;
+                }
+                var clip = new AnimationClip();
+                var binding = EditorCurveBinding.PPtrCurve("Visual", typeof(SpriteRenderer), "m_Sprite");
+                AnimationUtility.SetObjectReferenceCurve(clip, binding,
+                    new[] { new ObjectReferenceKeyframe { time = 0f, value = first } });
+                AssetDatabase.CreateAsset(clip, path);
+                Debug.Log($"[Px32HeroWiring] 새 클립 생성: {path}");
+            }
+        }
+
+        /// <summary>컨트롤러에 없는 state 를 추가하고(전이 없음 — FSM 이 CrossFade 로 구동), 있으면 motion 만 맞춘다.</summary>
+        private static readonly (string state, string clip)[] ControllerStates =
+        {
+            ("Apex", "Apex"), ("Fall_Loop", "Fall_Loop"), ("Bag_Out", "Bag_Out"), ("Long_Idle", "Long_Idle"),
+            ("Bag_In", "Bag_In"), ("Run_Start", "Run_Start"), ("Run_Stop", "Run_Stop"), ("Turn", "Turn"),
+        };
 
         /// <summary>주인공 클립의 SpriteRenderer.m_Sprite 바인딩 경로가 ""(루트)이면 "Visual" 로 옮긴다 (커브 유지). 이미 고쳐졌으면 no-op.</summary>
         private static void FixEmptyPathSpriteBindings()

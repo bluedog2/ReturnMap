@@ -162,6 +162,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Hero_Hit_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25cdc80af2407fe49b4986c10de62a3d
+      internalID: 832163528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -179,6 +201,7 @@ TextureImporter:
       Hero_Hit_0: -1801697409
       Hero_Hit_1: -410519260
       Hero_Hit_2: 175129751
+      Hero_Hit_3: 832163528
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

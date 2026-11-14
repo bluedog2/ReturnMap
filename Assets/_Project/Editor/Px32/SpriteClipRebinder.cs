@@ -39,26 +39,38 @@ namespace ReTrap.EditorTools
             public bool   Loop;
         }
 
-        // 상태별 규격 (docs/animation-plan.md V4). 주인공 Idle 6@8 · Run 8@18 · JumpStart 3@15 · Fall 2@8 루프 · Land 3@15 · Dash 5@24 · Hit 3@12 · Death 6@10
+        // 상태별 규격은 Px32Rules.GetSheetSpec("Player", 시트) 에서 가져온다 (주인공 16종: V9 시트)
         private static List<Entry> BuildTable()
         {
             var t = new List<Entry>();
-            void Hero(string clip, string sheet, int n, float fps, bool loop) => t.Add(new Entry
+            void Hero(string clip, string sheet)
             {
-                ClipPath  = $"{AnimRoot}/{clip}.anim",
-                SheetPath = $"{SheetRoot}/Player/{sheet}.png",
-                Frames = n, Fps = fps, Loop = loop,
-            });
+                var spec = Px32Rules.GetSheetSpec("Player", sheet);
+                if (spec == null) { Debug.LogError($"[SpriteClipRebinder] 규격표에 없는 주인공 시트: {sheet}"); return; }
+                t.Add(new Entry
+                {
+                    ClipPath  = $"{AnimRoot}/{clip}.anim",
+                    SheetPath = $"{SheetRoot}/Player/{sheet}.png",
+                    Frames = spec.frames, Fps = spec.fps, Loop = spec.loop,
+                });
+            }
 
-            Hero("Idle",       "Hero_Idle",      6, 8,  true);
-            Hero("Run",        "Hero_Run",       8, 18, true);
-            Hero("Jump_Start", "Hero_JumpStart", 3, 15, false);
-            Hero("Jump_Loop",  "Hero_Fall",      2, 8,  true);   // Fall 공유
-            Hero("Fall_Loop",  "Hero_Fall",      2, 8,  true);
-            Hero("Land",       "Hero_Land",      3, 15, false);
-            Hero("Dash",       "Hero_Dash",      5, 24, false);  // 대시 0.21s 와 길이 일치
-            Hero("Lord_Hit",   "Hero_Hit",       3, 12, false);
-            Hero("Death",      "Hero_Death",     6, 10, false);
+            Hero("Idle",       "Hero_Idle");
+            Hero("Run",        "Hero_Run");
+            Hero("Jump_Start", "Hero_JumpStart");
+            Hero("Jump_Loop",  "Hero_Rise");     // 상승 루프
+            Hero("Fall_Loop",  "Hero_Fall");
+            Hero("Apex",       "Hero_Apex");
+            Hero("Land",       "Hero_Land");
+            Hero("Dash",       "Hero_Dash");
+            Hero("Lord_Hit",   "Hero_Hit");
+            Hero("Death",      "Hero_Death");
+            Hero("Bag_Out",    "Hero_BagOut");
+            Hero("Long_Idle",  "Hero_LongIdle");
+            Hero("Bag_In",     "Hero_BagIn");
+            Hero("Run_Start",  "Hero_RunStart");
+            Hero("Run_Stop",   "Hero_RunStop");
+            Hero("Turn",       "Hero_Turn");
 
             // 적: 5종 × 4상태 — 상태 규격은 종 공통 (Idle 4@6 · Run 6@10 · Hit 2@10 · Death 6@10)
             string[] species = { "Goblin_Raider", "Imp_Flyer", "Skeleton_Archer", "Elite_Knight", "Orc_Brute" };
@@ -85,7 +97,7 @@ namespace ReTrap.EditorTools
         [MenuItem("ReTrap/Art/Px32 클립 재배선 (적용)", false, 131)]
         public static void RunApply() => Run(true);
 
-        /// <summary>주인공 클립 9개만 적용한다 (Px32HeroWiring 용). 전부 재배선되면 true, 하나라도 건너뛰면 false.</summary>
+        /// <summary>주인공 클립 16개만 적용한다 (Px32HeroWiring 용). 전부 재배선되면 true, 하나라도 건너뛰면 false.</summary>
         public static bool RunApplyHero() => Run(true, heroOnly: true);
 
         /// <summary>적 클립 20개만 적용한다 (Px32EnemyWiring 용). 전부 재배선되면 true, 하나라도 건너뛰면 false.</summary>

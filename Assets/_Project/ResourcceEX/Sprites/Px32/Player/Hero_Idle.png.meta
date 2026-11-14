@@ -228,6 +228,50 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Hero_Idle_6
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4feeb7596bb0aa4292ec2ac402d705d
+      internalID: -2077340236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Idle_7
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f73fd6efb8e513409537b6ae663ebe4
+      internalID: -1415058624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -248,6 +292,8 @@ TextureImporter:
       Hero_Idle_3: -867819587
       Hero_Idle_4: 1338510452
       Hero_Idle_5: 1676912920
+      Hero_Idle_6: -2077340236
+      Hero_Idle_7: -1415058624
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

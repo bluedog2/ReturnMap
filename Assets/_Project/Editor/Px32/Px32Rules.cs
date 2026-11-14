@@ -57,11 +57,13 @@ namespace ReTrap.EditorTools
             return i < 0 ? "" : baseName.Substring(i + 1);
         }
 
-        /// <summary>공중 애니(기준선 드리프트 예외): Jump*, Fall*, Imp 계열 전부.</summary>
+        /// <summary>공중 애니(기준선 드리프트 예외): Jump*, Rise, Apex, Fall*, Imp 계열 전부.</summary>
         public static bool IsAirborne(string baseName)
         {
             string anim = AnimOf(baseName);
             return anim.StartsWith("Jump", StringComparison.OrdinalIgnoreCase)
+                || anim.Equals("Rise", StringComparison.OrdinalIgnoreCase)
+                || anim.Equals("Apex", StringComparison.OrdinalIgnoreCase)
                 || anim.StartsWith("Fall", StringComparison.OrdinalIgnoreCase)
                 || baseName.StartsWith("Imp", StringComparison.OrdinalIgnoreCase);
         }
@@ -70,14 +72,25 @@ namespace ReTrap.EditorTools
         public static bool IsDeath(string baseName)
             => AnimOf(baseName).Equals("Death", StringComparison.OrdinalIgnoreCase);
 
-        /// <summary>웅크림·착지 찌그러짐·움찔·돌진 기울기 애니(높이 드리프트 예외 — 자세 높이가 바뀌는 게 정상): JumpStart·Land·Hit·Dash.</summary>
+        /// <summary>웅크림·착지 찌그러짐·움찔·돌진 기울기 애니(높이 드리프트 예외 — 자세 높이가 바뀌는 게 정상): JumpStart·Apex·Land·Hit·Dash·Turn.</summary>
         public static bool IsSquash(string baseName)
         {
             string anim = AnimOf(baseName);
             return anim.Equals("JumpStart", StringComparison.OrdinalIgnoreCase)
+                || anim.Equals("Apex", StringComparison.OrdinalIgnoreCase)
                 || anim.Equals("Land", StringComparison.OrdinalIgnoreCase)
                 || anim.Equals("Hit", StringComparison.OrdinalIgnoreCase)
-                || anim.Equals("Dash", StringComparison.OrdinalIgnoreCase);
+                || anim.Equals("Dash", StringComparison.OrdinalIgnoreCase)
+                || anim.Equals("Turn", StringComparison.OrdinalIgnoreCase);
+        }
+
+        /// <summary>자세상 가로 중심 이동이 정상인 애니(가로 드리프트 예외): Hit·RunStop·Turn.</summary>
+        public static bool IsShift(string baseName)
+        {
+            string anim = AnimOf(baseName);
+            return anim.Equals("Hit", StringComparison.OrdinalIgnoreCase)
+                || anim.Equals("RunStop", StringComparison.OrdinalIgnoreCase)
+                || anim.Equals("Turn", StringComparison.OrdinalIgnoreCase);
         }
 
         /// <summary>
@@ -133,19 +146,28 @@ namespace ReTrap.EditorTools
 
         private static SheetSpec CharacterSpec(string category, string baseName, string anim, int heroCell, int enemyCell)
         {
+            // 주인공 프레임 수·fps 는 PlayerAnimationFSM.HeroAnimTiming 과 일치해야 함
             if (category == "Player" && baseName.StartsWith("Hero_", StringComparison.OrdinalIgnoreCase))
             {
                 var bottom = new Vector2(0.5f, 0f);
                 switch (anim)
                 {
-                    case "Idle":      return Sheet(heroCell, 6,  8f, true,  bottom);
-                    case "Run":       return Sheet(heroCell, 8, 18f, true,  bottom);  // 이동 8칸/초 — 한 걸음 1.8칸 (docs/animation-plan.md)
-                    case "JumpStart": return Sheet(heroCell, 3, 15f, false, bottom);
-                    case "Fall":      return Sheet(heroCell, 2,  8f, true,  bottom);
-                    case "Land":      return Sheet(heroCell, 3, 15f, false, bottom);
-                    case "Dash":      return Sheet(heroCell, 5, 24f, false, bottom);  // 대시 0.21s(PlayerController.dashDuration)와 길이 일치
-                    case "Hit":       return Sheet(heroCell, 3, 12f, false, bottom);
-                    case "Death":     return Sheet(heroCell, 6, 10f, false, bottom);
+                    case "Idle":      return Sheet(heroCell, 8,  8f, true,  bottom);
+                    case "Run":       return Sheet(heroCell, 10, 22f, true, bottom);  // 이동 8칸/초 (docs/animation-plan-v6.md)
+                    case "JumpStart": return Sheet(heroCell, 4, 20f, false, bottom);
+                    case "Rise":      return Sheet(heroCell, 3, 10f, true,  bottom);
+                    case "Apex":      return Sheet(heroCell, 3, 12f, false, bottom);
+                    case "Fall":      return Sheet(heroCell, 4, 10f, true,  bottom);
+                    case "Land":      return Sheet(heroCell, 4, 20f, false, bottom);
+                    case "Dash":      return Sheet(heroCell, 6, 28f, false, bottom);
+                    case "Hit":       return Sheet(heroCell, 4, 16f, false, bottom);
+                    case "Death":     return Sheet(heroCell, 10, 12f, false, bottom);
+                    case "BagOut":    return Sheet(heroCell, 6, 12f, false, bottom);
+                    case "LongIdle":  return Sheet(heroCell, 12, 10f, true, bottom);
+                    case "BagIn":     return Sheet(heroCell, 4, 12f, false, bottom);
+                    case "RunStart":  return Sheet(heroCell, 3, 20f, false, bottom);
+                    case "RunStop":   return Sheet(heroCell, 4, 20f, false, bottom);
+                    case "Turn":      return Sheet(heroCell, 3, 20f, false, bottom);
                 }
                 return null;
             }

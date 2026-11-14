@@ -33,15 +33,17 @@ def anim_of(name):
 def rules_for(name):
     a = anim_of(name).lower()
     return {
-        'airborne': a.startswith('jump') or a.startswith('fall') or name.lower().startswith('imp'),
+        'airborne': a.startswith('jump') or a in ('rise', 'apex') or a.startswith('fall') or name.lower().startswith('imp'),
         'death': a == 'death',
-        'squash': a in ('jumpstart', 'land', 'hit', 'dash'),
+        'squash': a in ('jumpstart', 'apex', 'land', 'hit', 'dash', 'turn'),
+        'shift': a in ('hit', 'runstop', 'turn'),
     }
 
 
 # Px32Rules.CharacterSpec 복사본: (셀, 프레임 수). Px32Rules.cs 가 바뀌면 같이 고친다.
 HERO_CELL = 128
-HERO_FRAMES = {'Idle': 6, 'Run': 8, 'JumpStart': 3, 'Fall': 2, 'Land': 3, 'Dash': 5, 'Hit': 3, 'Death': 6}
+HERO_FRAMES = {'Idle': 8, 'Run': 10, 'JumpStart': 4, 'Rise': 3, 'Apex': 3, 'Fall': 4, 'Land': 4, 'Dash': 6, 'Hit': 4, 'Death': 10,
+               'BagOut': 6, 'LongIdle': 12, 'BagIn': 4, 'RunStart': 3, 'RunStop': 4, 'Turn': 3}
 ENEMY_FRAMES = {'Idle': 4, 'Run': 6, 'Hit': 2, 'Death': 6}
 ENEMY_CELL = (('Goblin', 96), ('Imp', 96), ('Skeleton', 128), ('Elite', 128), ('Orc', 160))
 
@@ -135,7 +137,7 @@ def check(sheet, cell, frames, palette, rules):
         mc = sum(m['center_x'] for m in live) / len(live)
         mh = sum(m['height'] for m in live) / len(live)
         for m in live:
-            if abs(m['center_x'] - mc) > DRIFT_TOL:
+            if not rules['shift'] and abs(m['center_x'] - mc) > DRIFT_TOL:
                 fails.append(f"drift: 프레임 {m['frame']} 가로 중심 {m['center_x']:.1f} 이 평균 {mc:.1f} 에서 ±{DRIFT_TOL:g}px 초과")
             if not rules['squash'] and abs(m['height'] - mh) > DRIFT_TOL:
                 fails.append(f"drift: 프레임 {m['frame']} 높이 {m['height']} 가 평균 {mh:.1f} 에서 ±{DRIFT_TOL:g}px 초과")

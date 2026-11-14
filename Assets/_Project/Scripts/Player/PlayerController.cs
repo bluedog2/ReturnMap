@@ -71,6 +71,15 @@ namespace ReTrap
         /// 애니메이션이 정점에서 너무 일찍 하강 모션으로 바뀌는 것을 방지합니다.
         /// </summary>
         public bool    IsFalling       => rb.linearVelocity.y < -hangTimeThreshold;
+
+        /// <summary>정점 체공(hang time) 속도 문턱값. FSM 의 상승·정점·하강 판정이 같은 값을 쓴다.</summary>
+        public float   HangTimeThreshold => hangTimeThreshold;
+
+        /// <summary>
+        /// FSM 전환 그림용 시선 덮어쓰기. 0=없음, +1=오른쪽, -1=왼쪽.
+        /// 그림 반전(flipX)에만 영향을 주며 조작·대시 방향(<see cref="IsFacingRight"/>)은 바뀌지 않는다.
+        /// </summary>
+        public int     VisualFacingOverride { get; set; }
         public bool    IsDashing       { get; private set; }
         public bool    IsFacingRight   { get; private set; } = true;
         public int     RemainingDashes { get; private set; }
@@ -411,7 +420,10 @@ namespace ReTrap
         private void ApplyFlip()
         {
             if (visualSR != null)
-                visualSR.flipX = !IsFacingRight;
+            {
+                bool right = VisualFacingOverride != 0 ? VisualFacingOverride > 0 : IsFacingRight;
+                visualSR.flipX = !right;
+            }
         }
 
         // ── Gizmos ────────────────────────────────────────────────────────────
